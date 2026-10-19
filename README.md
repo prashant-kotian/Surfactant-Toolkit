@@ -64,6 +64,7 @@ benchmark/
   build_tables.py       renders the per-set diagnostic tables from that JSON
 docs/                   validation-tier audit table (guarded by tests/test_validation_tiers.py)
 results/                generated: TABLE200.md, CLASSIFICATION200.md, bench200.json,
+                        figs_data/*.tsv (paste-ready figure sources),
                         per_question_results_200.csv, tables.md/.tex,
                         per_question_results.csv, REPRODUCIBILITY.md
 ```

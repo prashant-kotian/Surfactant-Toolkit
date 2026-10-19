@@ -16,6 +16,7 @@ python3 benchmark/build_results.py
 python3 benchmark/build_tables.py
 python3 benchmark/build_question_set.py
 python3 benchmark/build_bench200.py
+python3 benchmark/build_figure_data.py   # results/figs_data/*.tsv for manuscript figures
 ```
 
 The graders read only committed transcripts (`benchmark/source_sets/*/`,
