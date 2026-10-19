@@ -1,1 +1,0 @@
-FAILED: clipboard empty, template-only, or no real FINAL_JSON

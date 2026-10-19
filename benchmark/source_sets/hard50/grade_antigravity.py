@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from grade_hard50 import GOLD, extract_final_json, grade_field
+from grade_unaugmented_legacy import GOLD, extract_final_json, grade_field
 
 HERE = Path(__file__).resolve().parent
 

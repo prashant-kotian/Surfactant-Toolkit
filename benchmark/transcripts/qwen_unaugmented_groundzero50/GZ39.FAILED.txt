@@ -1,1 +1,0 @@
-FAILED: search detected on all attempts

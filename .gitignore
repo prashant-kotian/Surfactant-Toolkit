@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# harness crash dumps / debug backups (internal working files)
+*.FAILED.txt
+*.RAW.txt

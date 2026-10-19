@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-19T10:29Z",
+ "generated": "2026-10-19T12:17Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "eb865cccaeac-dirty",
+ "toolkit_state": "1404289451d6-dirty",
  "gold_sha": {
   "groundzero": "17cd0b885755",
   "hard50": "f40d50ad8e78",
