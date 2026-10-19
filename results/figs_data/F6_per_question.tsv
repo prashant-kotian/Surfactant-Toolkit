@@ -393,7 +393,7 @@ SB-048	mixed_micelles	computational	Claude	aug	1
 SB-048	mixed_micelles	computational	ChatGPT	unaug	0
 SB-048	mixed_micelles	computational	ChatGPT	aug	1
 SB-048	mixed_micelles	computational	DeepSeek	unaug	1
-SB-048	mixed_micelles	computational	DeepSeek	aug	0
+SB-048	mixed_micelles	computational	DeepSeek	aug	1
 SB-048	mixed_micelles	computational	Qwen	unaug	1
 SB-048	mixed_micelles	computational	Gemini	unaug	1
 SB-048	mixed_micelles	computational	Gemini-CLI	unaug	0
@@ -450,7 +450,7 @@ SB-054	kinetics_transport	computational	Claude	aug	1
 SB-054	kinetics_transport	computational	ChatGPT	unaug	0
 SB-054	kinetics_transport	computational	ChatGPT	aug	1
 SB-054	kinetics_transport	computational	DeepSeek	unaug	0
-SB-054	kinetics_transport	computational	DeepSeek	aug	0
+SB-054	kinetics_transport	computational	DeepSeek	aug	1
 SB-054	kinetics_transport	computational	Qwen	unaug	0
 SB-054	kinetics_transport	computational	Gemini	unaug	0
 SB-054	kinetics_transport	computational	Gemini-CLI	unaug	1
@@ -670,7 +670,7 @@ SB-076	emulsion_hld	computational	Claude	aug	1
 SB-076	emulsion_hld	computational	ChatGPT	unaug	1
 SB-076	emulsion_hld	computational	ChatGPT	aug	0
 SB-076	emulsion_hld	computational	DeepSeek	unaug	1
-SB-076	emulsion_hld	computational	DeepSeek	aug	1
+SB-076	emulsion_hld	computational	DeepSeek	aug	0
 SB-076	emulsion_hld	computational	Qwen	unaug	1
 SB-076	emulsion_hld	computational	Gemini	unaug	0
 SB-076	emulsion_hld	computational	Gemini-CLI	unaug	1
@@ -1065,9 +1065,6 @@ SB-118	micelle_structure	computational	Qwen	unaug	0
 SB-118	micelle_structure	computational	Gemini	unaug	0
 SB-118	micelle_structure	computational	Gemini-CLI	unaug	0
 SB-118	micelle_structure	computational	Gemini-CLI	aug	1
-SB-119	colloid_electrostatics	computational	Claude	aug	1
-SB-119	colloid_electrostatics	computational	ChatGPT	aug	1
-SB-119	colloid_electrostatics	computational	DeepSeek	aug	1
 SB-120	colloid_electrostatics	analytical	Claude	unaug	0
 SB-120	colloid_electrostatics	analytical	Claude	aug	1
 SB-120	colloid_electrostatics	analytical	ChatGPT	unaug	0

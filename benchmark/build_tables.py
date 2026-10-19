@@ -44,7 +44,7 @@ def flags(key: str) -> list[str]:
         f.append("count-only")
     if c.get("partial"):
         f.append(f"partial coverage (n={c['n']})")
-    if c.get("gold_state") != "post-fix":
+    if c.get("gold_state") == "PRE-FIX gold":
         f.append("PRE-FIX gold")
     if key in PENDING:
         f.append(PENDING[key])

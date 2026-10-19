@@ -9,7 +9,9 @@ All commands run from the repository root.
 export PYTHONPATH=$PWD/src
 python3 benchmark/source_sets/groundzero/grade_unaugmented.py
 python3 benchmark/source_sets/groundzero/grade_chat_runs.py
+(cd benchmark/source_sets/groundzero && python3 grade_antigravity.py && python3 grade_augmented_deepseek.py)
 python3 benchmark/source_sets/hard50/grade_chat_runs.py
+(cd benchmark/source_sets/hard50 && python3 grade_antigravity.py && python3 grade_augmented_deepseek.py && python3 grade_claude50.py)
 python3 benchmark/source_sets/extrahard/grade_unaugmented.py
 python3 benchmark/source_sets/extrahard/grade_augmented_chat_runs.py
 python3 benchmark/build_results.py
@@ -37,7 +39,7 @@ per-source-set cells; `build_bench200.py` derives them from the same JSONs.
 ## 2. Test suite
 
 ```bash
-PYTHONPATH=src python3 -m pytest -q        # 828 passed
+PYTHONPATH=src python3 -m pytest -q        # 832 passed
 ```
 
 ## 3. Executing new model runs (optional)

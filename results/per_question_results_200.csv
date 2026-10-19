@@ -393,7 +393,7 @@ SB-048,GZ-48,groundzero,computational,mixed_micelles,Claude,aug,1,
 SB-048,GZ-48,groundzero,computational,mixed_micelles,ChatGPT,unaug,0,
 SB-048,GZ-48,groundzero,computational,mixed_micelles,ChatGPT,aug,1,
 SB-048,GZ-48,groundzero,computational,mixed_micelles,DeepSeek,unaug,1,partial transcript
-SB-048,GZ-48,groundzero,computational,mixed_micelles,DeepSeek,aug,0,partial transcript
+SB-048,GZ-48,groundzero,computational,mixed_micelles,DeepSeek,aug,1,partial transcript
 SB-048,GZ-48,groundzero,computational,mixed_micelles,Qwen,unaug,1,
 SB-048,GZ-48,groundzero,computational,mixed_micelles,Gemini,unaug,1,partial transcript
 SB-048,GZ-48,groundzero,computational,mixed_micelles,Gemini-CLI,unaug,0,
@@ -450,7 +450,7 @@ SB-054,H-04,hard50,computational,kinetics_transport,Claude,aug,1,
 SB-054,H-04,hard50,computational,kinetics_transport,ChatGPT,unaug,0,count-only grading
 SB-054,H-04,hard50,computational,kinetics_transport,ChatGPT,aug,1,
 SB-054,H-04,hard50,computational,kinetics_transport,DeepSeek,unaug,0,count-only grading
-SB-054,H-04,hard50,computational,kinetics_transport,DeepSeek,aug,0,SI-only grading
+SB-054,H-04,hard50,computational,kinetics_transport,DeepSeek,aug,1,SI-only grading
 SB-054,H-04,hard50,computational,kinetics_transport,Qwen,unaug,0,count-only grading
 SB-054,H-04,hard50,computational,kinetics_transport,Gemini,unaug,0,count-only grading
 SB-054,H-04,hard50,computational,kinetics_transport,Gemini-CLI,unaug,1,
@@ -670,7 +670,7 @@ SB-076,H-26,hard50,computational,emulsion_hld,Claude,aug,1,
 SB-076,H-26,hard50,computational,emulsion_hld,ChatGPT,unaug,1,count-only grading
 SB-076,H-26,hard50,computational,emulsion_hld,ChatGPT,aug,0,
 SB-076,H-26,hard50,computational,emulsion_hld,DeepSeek,unaug,1,count-only grading
-SB-076,H-26,hard50,computational,emulsion_hld,DeepSeek,aug,1,SI-only grading
+SB-076,H-26,hard50,computational,emulsion_hld,DeepSeek,aug,0,SI-only grading
 SB-076,H-26,hard50,computational,emulsion_hld,Qwen,unaug,1,count-only grading
 SB-076,H-26,hard50,computational,emulsion_hld,Gemini,unaug,0,count-only grading
 SB-076,H-26,hard50,computational,emulsion_hld,Gemini-CLI,unaug,1,
@@ -1065,9 +1065,6 @@ SB-118,X-18,extrahard,computational,micelle_structure,Qwen,unaug,0,count-only gr
 SB-118,X-18,extrahard,computational,micelle_structure,Gemini,unaug,0,count-only grading
 SB-118,X-18,extrahard,computational,micelle_structure,Gemini-CLI,unaug,0,
 SB-118,X-18,extrahard,computational,micelle_structure,Gemini-CLI,aug,1,
-SB-119,X-19,extrahard,computational,colloid_electrostatics,Claude,aug,1,count-only grading
-SB-119,X-19,extrahard,computational,colloid_electrostatics,ChatGPT,aug,1,count-only grading
-SB-119,X-19,extrahard,computational,colloid_electrostatics,DeepSeek,aug,1,count-only grading
 SB-120,X-20,extrahard,analytical,colloid_electrostatics,Claude,unaug,0,count-only grading
 SB-120,X-20,extrahard,analytical,colloid_electrostatics,Claude,aug,1,count-only grading
 SB-120,X-20,extrahard,analytical,colloid_electrostatics,ChatGPT,unaug,0,count-only grading

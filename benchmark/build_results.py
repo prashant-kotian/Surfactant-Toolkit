@@ -10,14 +10,15 @@ Contract
 * CELLS registry: bank x model x condition -> the committed grading JSON and
   how to read it. Every such JSON is produced by a grader in this repo that
   runs against the corrected golds (GZ-48 / H-04 / H-26 fixes 2026-10-18).
-* EXCLUSIONS are DATA, applied symmetrically to every cell of the affected
-  bank/condition: images the harness cannot deliver (GZ-15,36-40; H-36,37,38),
-  retired-ambiguous questions (GZ-26), and question-authoring windows
-  (X-19 on X50 unaugmented + agy-augmented cells only: the chat-model
-  augmented cells were run 2026-10-12+ against fixed packets and legitimately
-  include X-19).
-* `gold_state` records whether a source was graded before or after the
-  2026-10-18 gold corrections (mtime-derived, honest provenance).
+* EXCLUSIONS are DATA, applied to every cell of every arm: images the harness
+  cannot deliver (GZ-15,36-40; H-36,37,38), retired-ambiguous questions
+  (GZ-26), and question-authoring windows (X-19). X-19 is excluded from all
+  arms, including the chat-model augmented cells run against the fixed packet,
+  so every unaugmented/augmented pair is scored on the same questions.
+* `gold_state` is verified, not inferred: for the questions whose gold was
+  corrected 2026-10-18 (GZ-48, H-04, H-26), every gold value stored in the
+  cell's grading records must equal the current gold ("post-fix"); a mismatch
+  is "PRE-FIX gold"; sources without per-field gold are "not field-verifiable".
 
 Usage:  python3 benchmark/build_results.py
 Writes benchmark/../results/results.json and ../results/results_summary.md.
@@ -54,18 +55,16 @@ CELLS: list[tuple[str, dict]] = [
                   fmt="V", harness="mcp")),
     ("groundzero", dict(model="*", cond="unaug", src=B / "source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
                   fmt="V", harness="mcp", multi=True,
-                  only=["chatgpt", "gemini", "claude"],
+                  only=["chatgpt", "gemini", "claude"], note_for=["claude"],
                   gap_note="Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes "
                            "a genuinely truncated GZ-01..10-only Sept-18 capture used through "
                            "2026-10-18). Full coverage, n=43 after standard exclusions, same as "
                            "ChatGPT/Gemini; long-prose fields resolved via the grader's "
                            "JUDGMENT_RESOLUTIONS table (one rationale per field)")),
     ("groundzero", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/groundzero/antigravity_unaugmented_grade_results.json",
-                  fmt="V", harness="agy-cli",
-                  gap_note="graded against pre-fix gold (2026-09-19 run)")),
+                  fmt="V", harness="agy-cli")),
     ("groundzero", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/groundzero/antigravity_augmented_grade_results.json",
-                  fmt="V", harness="agy-cli",
-                  gap_note="graded against pre-fix gold (2026-09-19 run)")),
+                  fmt="V", harness="agy-cli")),
     ("groundzero", dict(model="DeepSeek", cond="aug", src=B / "source_sets/groundzero/deepseek_augmented_grade_results.json",
                   fmt="V", harness="mcp", si_only=True)),
     # ---- Hard50 (new) ------------------------------------------------------
@@ -74,8 +73,7 @@ CELLS: list[tuple[str, dict]] = [
     ("hard50", dict(model="ChatGPT", cond="aug", src=B / "source_sets/hard50/chatgpt_augmented_grade_results.json",
                     fmt="V", harness="mcp")),
     ("hard50", dict(model="Claude", cond="unaug", src=B / "source_sets/hard50/claude_unaugmented_grade_results.json", pick="results",
-                    fmt="OK", harness="mcp",
-                    gap_note="graded against pre-fix gold (H-04/H-26 flips not applied)")),
+                    fmt="OK", harness="mcp")),
     ("hard50", dict(model="*", cond="unaug", src=B / "source_sets/hard50/unaugmented_grade_stats.json", pick="baseline",
                     fmt="P", harness="cli", multi=True, count_only=True)),
     ("hard50", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/hard50/antigravity_unaugmented_grade_results.json",
@@ -110,9 +108,10 @@ EXCLUSIONS: dict[str, list[tuple[list[str], list[str], str]]] = {
          "image/figure-based questions excluded from all cells"),
     ],
     "extrahard": [
-        (["unaug", "aug:Gemini-CLI"], ["X-19"],
+        (["*"], ["X-19"],
          "question body carried a kappa*a typo (1.45 vs 14.5) at run time for "
-         "the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it"),
+         "the pre-fix packets (fixed in-bank 2026-10-16); excluded from every "
+         "arm so unaugmented/augmented pairs share one question set"),
     ],
 }
 
@@ -134,6 +133,43 @@ def gold_ids(bank: str) -> list[str]:
     g = load(GOLDS[bank])
     items = g["questions"] if isinstance(g, dict) and "questions" in g else g
     return [q for q in items if q not in NON_Q and not str(q).startswith("_")]
+
+
+CORRECTED = {"groundzero": ["GZ-48"], "hard50": ["H-04", "H-26"]}   # 2026-10-18 gold fixes
+
+
+def current_gold(bank: str, q: str) -> dict:
+    g = load(GOLDS[bank])
+    e = (g["questions"] if isinstance(g, dict) and "questions" in g else g)[q]
+    if "gold" in e:                                     # groundzero layout
+        return {k: v for k, v in e["gold"].items() if not isinstance(v, str)}
+    return {k: f.get("value") for k, f in e.get("fields", {}).items()}   # hard50 layout
+
+
+def same(a, b) -> bool:
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        return abs(a - b) <= 1e-6 * max(1.0, abs(b))
+    return a == b
+
+
+def verify_gold(bank: str, obj) -> str:
+    """post-fix / PRE-FIX gold / not field-verifiable, from the gold values the
+    grader stored in this cell's records for the corrected questions."""
+    checked = False
+    for q in CORRECTED.get(bank, []):
+        rec = obj.get(q) if isinstance(obj, dict) else None
+        if not isinstance(rec, dict):
+            continue
+        flds = {k: f for k, f in rec.get("fields", {}).items()
+                if isinstance(f, dict) and "gold" in f}
+        if not flds:
+            return "not field-verifiable"
+        cur = current_gold(bank, q)
+        for k, f in flds.items():
+            if k in cur and not same(f["gold"], cur[k]):
+                return "PRE-FIX gold"
+        checked = True
+    return "post-fix" if checked or bank not in CORRECTED else "not field-verifiable"
 
 
 def normalize_cell(obj, fmt: str, ids: list[str]):
@@ -233,7 +269,6 @@ def main() -> int:
                 gaps.append(dict(**base, model=model, reason="no gradable records in source"))
                 continue
             passed = [q for q in graded if verdicts[q]]
-            mtime = datetime.fromtimestamp(spec["src"].stat().st_mtime, timezone.utc).strftime("%Y-%m-%d")
             cells[f"{bank}|{model}|{spec['cond']}"] = dict(
                 n=len(graded), passed=len(passed),
                 pct=round(100 * len(passed) / len(graded), 1),
@@ -243,9 +278,10 @@ def main() -> int:
                 source_sha=sha(spec["src"]),
                 partial=(len(graded) < 50 - len(ex)
                          and spec["fmt"] == "V"),
-                gold_state=("post-fix" if mtime >= GOLD_FIX_DATE else "PRE-FIX gold"),
+                gold_state=verify_gold(bank, obj),
                 count_only=count_only, si_only=bool(spec.get("si_only")),
-                note=spec.get("gap_note"),
+                note=(spec.get("gap_note")
+                      if nm in spec.get("note_for", [nm]) else None),
             )
 
     # documented gaps (no machine source)
@@ -291,7 +327,7 @@ def main() -> int:
     print(f"cells={len(cells)} gaps={len(gaps)} toolkit={tk_sha}")
     for k, c in sorted(cells.items()):
         flag = " [SI-only]" if c["si_only"] else ""
-        flag += " [PRE-FIX]" if c["gold_state"] != "post-fix" else ""
+        flag += " [PRE-FIX]" if c["gold_state"] == "PRE-FIX gold" else ""
         flag += " [count-only]" if c["count_only"] else ""
         print(f"  {k:42s} {c['passed']:3d}/{c['n']:3d} {c['pct']:5.1f}%{flag}")
     return 0

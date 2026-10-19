@@ -139,29 +139,29 @@
   "found_block": true,
   "fields": {
    "delta_H_kJ_per_mol": {
-    "ok": false,
-    "gold": -4.88323966613954,
+    "ok": true,
+    "gold": -2.8464007822,
     "got": -2.846400782241967,
     "bucket": "arithmetic",
     "type": "number"
    },
    "delta_S_J_per_mol_K": {
     "ok": true,
-    "gold": 108.31968751521285,
+    "gold": 115.1227961277,
     "got": 115.12279612768563,
     "bucket": "arithmetic",
     "type": "number"
    },
    "delta_Cp_J_per_mol_K": {
     "ok": true,
-    "gold": -814.7355535586681,
+    "gold": -814.735553559,
     "got": -814.7355535590141,
     "bucket": "arithmetic",
     "type": "number"
    },
    "delta_G_298_kJ_per_mol": {
     "ok": true,
-    "gold": -37.17026244771136,
+    "gold": -37.1702624477,
     "got": -37.1309632972165,
     "bucket": "arithmetic",
     "type": "number"
@@ -174,7 +174,7 @@
     "type": "exact"
    }
   },
-  "pass": false,
+  "pass": true,
   "answer": {
    "delta_H_kJ_per_mol": -2.846400782241967,
    "delta_S_J_per_mol_K": 115.12279612768563,
@@ -1208,28 +1208,28 @@
     "type": "exact"
    },
    "total_carbons": {
-    "ok": true,
-    "gold": 42,
+    "ok": false,
+    "gold": 43,
     "got": 42,
     "bucket": "arithmetic",
     "type": "exact"
    },
    "molecular_weight": {
-    "ok": true,
-    "gold": 799.1369999999998,
+    "ok": false,
+    "gold": 813.164,
     "got": 798.777,
     "bucket": "arithmetic",
     "type": "number"
    },
    "hlb_griffin": {
-    "ok": true,
-    "gold": 13.655906308930758,
+    "ok": false,
+    "gold": 13.4202448707,
     "got": 13.66,
     "bucket": "arithmetic",
     "type": "number"
    }
   },
-  "pass": true,
+  "pass": false,
   "answer": {
    "n_ethylene_oxide_units": 12,
    "total_carbons": 42,

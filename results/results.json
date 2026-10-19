@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-19T16:20Z",
+ "generated": "2026-10-19T18:23Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "9c7a64c22c97-dirty",
+ "toolkit_state": "7bfe35b431a0-dirty",
  "gold_sha": {
   "groundzero": "30173710f4c0",
   "hard50": "6e0b5e14751f",
@@ -346,7 +346,7 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
-   "note": "Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes a genuinely truncated GZ-01..10-only Sept-18 capture used through 2026-10-18). Full coverage, n=43 after standard exclusions, same as ChatGPT/Gemini; long-prose fields resolved via the grader's JUDGMENT_RESOLUTIONS table (one rationale per field)"
+   "note": null
   },
   "groundzero|Gemini|unaug": {
    "n": 33,
@@ -404,7 +404,7 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
-   "note": "Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes a genuinely truncated GZ-01..10-only Sept-18 capture used through 2026-10-18). Full coverage, n=43 after standard exclusions, same as ChatGPT/Gemini; long-prose fields resolved via the grader's JUDGMENT_RESOLUTIONS table (one rationale per field)"
+   "note": null
   },
   "groundzero|Claude|unaug": {
    "n": 43,
@@ -535,12 +535,12 @@
    },
    "harness": "agy-cli",
    "source": "benchmark/source_sets/groundzero/antigravity_unaugmented_grade_results.json",
-   "source_sha": "fe508049c4f5",
+   "source_sha": "c58703abce24",
    "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
-   "note": "graded against pre-fix gold (2026-09-19 run)"
+   "note": null
   },
   "groundzero|Gemini-CLI|aug": {
    "n": 43,
@@ -603,17 +603,17 @@
    },
    "harness": "agy-cli",
    "source": "benchmark/source_sets/groundzero/antigravity_augmented_grade_results.json",
-   "source_sha": "48341cda22e3",
+   "source_sha": "5a753572989a",
    "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
-   "note": "graded against pre-fix gold (2026-09-19 run)"
+   "note": null
   },
   "groundzero|DeepSeek|aug": {
    "n": 40,
-   "passed": 32,
-   "pct": 80.0,
+   "passed": 33,
+   "pct": 82.5,
    "excluded": [
     "GZ-15",
     "GZ-36",
@@ -663,12 +663,12 @@
     "GZ-45": true,
     "GZ-46": true,
     "GZ-47": true,
-    "GZ-48": false,
+    "GZ-48": true,
     "GZ-50": true
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/groundzero/deepseek_augmented_grade_results.json",
-   "source_sha": "edb31236c487",
+   "source_sha": "42ac653966c4",
    "partial": true,
    "gold_state": "post-fix",
    "count_only": false,
@@ -877,7 +877,7 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
-   "note": "graded against pre-fix gold (H-04/H-26 flips not applied)"
+   "note": null
   },
   "hard50|ChatGPT|unaug": {
    "n": 47,
@@ -942,7 +942,7 @@
    "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "c39dc851fee0",
    "partial": false,
-   "gold_state": "post-fix",
+   "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
    "note": null
@@ -1010,7 +1010,7 @@
    "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "c39dc851fee0",
    "partial": false,
-   "gold_state": "post-fix",
+   "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
    "note": null
@@ -1078,7 +1078,7 @@
    "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "c39dc851fee0",
    "partial": false,
-   "gold_state": "post-fix",
+   "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
    "note": null
@@ -1146,7 +1146,7 @@
    "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "c39dc851fee0",
    "partial": false,
-   "gold_state": "post-fix",
+   "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
    "note": null
@@ -1301,7 +1301,7 @@
     "H-01": true,
     "H-02": true,
     "H-03": true,
-    "H-04": false,
+    "H-04": true,
     "H-05": true,
     "H-06": false,
     "H-07": true,
@@ -1323,7 +1323,7 @@
     "H-23": true,
     "H-24": true,
     "H-25": true,
-    "H-26": true,
+    "H-26": false,
     "H-27": true,
     "H-28": true,
     "H-29": true,
@@ -1348,7 +1348,7 @@
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/hard50/deepseek_augmented_grade_results.json",
-   "source_sha": "456edcae4185",
+   "source_sha": "2ae21eb719d3",
    "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
@@ -1362,7 +1362,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1430,7 +1430,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1498,7 +1498,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1566,7 +1566,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": false,
     "X-02": false,
@@ -1634,7 +1634,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": false,
     "X-02": false,
@@ -1696,11 +1696,13 @@
    "note": null
   },
   "extrahard|Claude|aug": {
-   "n": 50,
-   "passed": 50,
+   "n": 49,
+   "passed": 49,
    "pct": 100.0,
-   "excluded": [],
-   "exclude_reason": null,
+   "excluded": [
+    "X-19"
+   ],
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1720,7 +1722,6 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
-    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1763,11 +1764,13 @@
    "note": null
   },
   "extrahard|DeepSeek|aug": {
-   "n": 50,
-   "passed": 48,
-   "pct": 96.0,
-   "excluded": [],
-   "exclude_reason": null,
+   "n": 49,
+   "passed": 47,
+   "pct": 95.9,
+   "excluded": [
+    "X-19"
+   ],
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1787,7 +1790,6 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
-    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1830,11 +1832,13 @@
    "note": null
   },
   "extrahard|ChatGPT|aug": {
-   "n": 50,
-   "passed": 50,
+   "n": 49,
+   "passed": 49,
    "pct": 100.0,
-   "excluded": [],
-   "exclude_reason": null,
+   "excluded": [
+    "X-19"
+   ],
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1854,7 +1858,6 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
-    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1903,7 +1906,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": false,
     "X-02": false,
@@ -1971,7 +1974,7 @@
    "excluded": [
     "X-19"
    ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it",
+   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
     "X-01": true,
     "X-02": true,

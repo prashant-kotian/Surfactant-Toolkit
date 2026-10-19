@@ -12,11 +12,11 @@ analytical	74	Gemini	aug	0	0	NA
 analytical	74	Gemini-CLI	unaug	56	64	87.5
 analytical	74	Gemini-CLI	aug	65	65	100.0
 computational	114	Claude	unaug	71	111	64.0
-computational	114	Claude	aug	109	113	96.5
+computational	114	Claude	aug	108	112	96.4
 computational	114	ChatGPT	unaug	73	108	67.6
-computational	114	ChatGPT	aug	107	113	94.7
+computational	114	ChatGPT	aug	106	112	94.6
 computational	114	DeepSeek	unaug	69	111	62.2
-computational	114	DeepSeek	aug	103	111	92.8
+computational	114	DeepSeek	aug	103	110	93.6
 computational	114	Qwen	unaug	55	112	49.1
 computational	114	Qwen	aug	0	0	NA
 computational	114	Gemini	unaug	52	105	49.5

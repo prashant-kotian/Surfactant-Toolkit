@@ -28,10 +28,10 @@ per-source-set graders and is exercised by their self-tests.
   chart files retained in the source directory for reference) and one retired
   ambiguous question (GZ-26).
 - hard50 n=47: three figure-dependent questions (H-36..38).
-- extrahard unaugmented cells and the Antigravity augmented cell of 2026-10-09
-  score n=49: X-19's question text carried an authoring typo until 2026-10-16;
-  cells executed after the fix include it at n=50 (Claude and ChatGPT
-  augmented extrahard are full-set).
+- extrahard n=49 in every arm: X-19's question text carried an authoring typo
+  until 2026-10-16. It is excluded from all arms, including the augmented
+  cells run after the fix (which had included it at n=50 until 2026-10-19),
+  so every unaugmented/augmented pair is scored on the same questions.
 - orig_hard50 scores n=50; NOT_ANSWERED records (Claude unaugmented 1, ChatGPT
   unaugmented 4) reflect no answer content captured and are excluded from n
   as ungradable rather than scored as failures.
@@ -53,9 +53,21 @@ are reported but should be read as descriptive only.
 
 H-04 (reference-temperature mismatch), H-26 (surfactant identity), GZ-48
 (factor-of-2 row mix-up): golds corrected on 2026-10-18 with per-field
-`remediation_note`; all cells re-graded programmatically. The GZ-48 correction
-revealed a masked model error (Antigravity unaugmented PASS->FAIL): reported
-rather than smoothed. See `results/REPRODUCIBILITY.md`.
+`remediation_note`. The GZ-48 correction revealed a masked model error
+(Antigravity unaugmented PASS->FAIL): reported rather than smoothed. See
+`results/REPRODUCIBILITY.md`.
+
+Re-grade completeness (2026-10-19): the DeepSeek augmented groundzero and
+hard50 cells had NOT been re-graded after the gold corrections (their graders
+sat outside the documented chain; the hard50 one also had a stale import and
+answer path). Re-graded: GZ-48 FAIL->PASS, H-04 FAIL->PASS, H-26 PASS->FAIL
+(DeepSeek's 42-carbon answer matched the superseded gold). `gold_state` is now
+verified from the gold values stored in each cell's records rather than
+inferred from file dates; every per-field cell verifies as post-fix, and the
+count-only hard50 unaugmented cells are labelled "not field-verifiable". All
+graders that produce a reported cell now run in REPRODUCE.md section 1, and
+Claude's hard50 unaugmented transcript is committed in-repo
+(`benchmark/source_sets/hard50/claude_unaugmented/`).
 
 Claude's groundzero-unaugmented row (2026-10-19): the 10-question partial used
 through 2026-10-18 was a different, genuinely truncated Sept-2026 capture; a

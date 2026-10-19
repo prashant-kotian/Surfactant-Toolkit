@@ -36,11 +36,11 @@ cmc_measurement	17	Gemini	aug	0	0	NA
 cmc_measurement	17	Gemini-CLI	unaug	4	10	40.0
 cmc_measurement	17	Gemini-CLI	aug	13	13	100.0
 colloid_electrostatics	12	Claude	unaug	6	11	54.5
-colloid_electrostatics	12	Claude	aug	12	12	100.0
+colloid_electrostatics	12	Claude	aug	11	11	100.0
 colloid_electrostatics	12	ChatGPT	unaug	6	10	60.0
-colloid_electrostatics	12	ChatGPT	aug	12	12	100.0
+colloid_electrostatics	12	ChatGPT	aug	11	11	100.0
 colloid_electrostatics	12	DeepSeek	unaug	5	11	45.5
-colloid_electrostatics	12	DeepSeek	aug	12	12	100.0
+colloid_electrostatics	12	DeepSeek	aug	11	11	100.0
 colloid_electrostatics	12	Qwen	unaug	6	11	54.5
 colloid_electrostatics	12	Qwen	aug	0	0	NA
 colloid_electrostatics	12	Gemini	unaug	3	11	27.3
@@ -64,7 +64,7 @@ emulsion_hld	19	Claude	aug	19	19	100.0
 emulsion_hld	19	ChatGPT	unaug	16	19	84.2
 emulsion_hld	19	ChatGPT	aug	18	19	94.7
 emulsion_hld	19	DeepSeek	unaug	17	19	89.5
-emulsion_hld	19	DeepSeek	aug	18	19	94.7
+emulsion_hld	19	DeepSeek	aug	17	19	89.5
 emulsion_hld	19	Qwen	unaug	16	19	84.2
 emulsion_hld	19	Qwen	aug	0	0	NA
 emulsion_hld	19	Gemini	unaug	11	17	64.7
@@ -100,7 +100,7 @@ kinetics_transport	11	Claude	aug	11	11	100.0
 kinetics_transport	11	ChatGPT	unaug	5	11	45.5
 kinetics_transport	11	ChatGPT	aug	11	11	100.0
 kinetics_transport	11	DeepSeek	unaug	6	11	54.5
-kinetics_transport	11	DeepSeek	aug	10	11	90.9
+kinetics_transport	11	DeepSeek	aug	11	11	100.0
 kinetics_transport	11	Qwen	unaug	3	11	27.3
 kinetics_transport	11	Qwen	aug	0	0	NA
 kinetics_transport	11	Gemini	unaug	5	10	50.0
@@ -136,7 +136,7 @@ mixed_micelles	43	Claude	aug	40	41	97.6
 mixed_micelles	43	ChatGPT	unaug	26	41	63.4
 mixed_micelles	43	ChatGPT	aug	36	41	87.8
 mixed_micelles	43	DeepSeek	unaug	26	40	65.0
-mixed_micelles	43	DeepSeek	aug	37	40	92.5
+mixed_micelles	43	DeepSeek	aug	38	40	95.0
 mixed_micelles	43	Qwen	unaug	23	41	56.1
 mixed_micelles	43	Qwen	aug	0	0	NA
 mixed_micelles	43	Gemini	unaug	21	41	51.2

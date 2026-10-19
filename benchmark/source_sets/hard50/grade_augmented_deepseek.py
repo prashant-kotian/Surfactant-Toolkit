@@ -7,10 +7,10 @@ Usage: python grade_augmented_deepseek_hard50.py
 import json
 from pathlib import Path
 
-from grade_hard50 import GOLD, extract_final_json, grade_field, field_bucket
+from grade_unaugmented_legacy import GOLD, extract_final_json, grade_field, field_bucket
 
 HERE = Path(__file__).resolve().parent
-ANSWERS_DIR = HERE / "augmented_runs_deepseek_2026-10-15" / "source_sets/hard50"
+ANSWERS_DIR = HERE / "augmented_runs_deepseek_2026-10-15" / "hard50"
 
 results = {}
 for qid, gold in sorted(GOLD.items()):

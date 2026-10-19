@@ -8,11 +8,11 @@
     "gold": 2.5118612800073175,
     "model": 2.51186
    },
-   "isotherm_model": {
+   "charge_type": {
     "ok": true,
     "kind": "string",
-    "gold": "langmuir (BIC-selected over Frumkin)",
-    "model": "langmuir (BIC-selected over Frumkin)"
+    "gold": "anionic",
+    "model": "anionic"
    },
    "a_min_nm2": {
     "ok": true,
@@ -20,29 +20,35 @@
     "gold": 1.1558892601017348,
     "model": 1.15589
    },
-   "charge_type": {
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "isotherm_model": {
     "ok": true,
     "kind": "string",
-    "gold": "anionic",
-    "model": "anionic"
+    "gold": "langmuir (BIC-selected over Frumkin)",
+    "model": "langmuir (BIC-selected over Frumkin)"
    },
    "gamma_max_mol_per_m2": {
     "ok": true,
     "kind": "numeric",
     "gold": 1.436590099494216e-06,
     "model": 1.43659e-06
-   },
-   "delta_g_mic_kJ_per_mol": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
    }
   }
  },
  "GZ-02": {
   "verdict": "PASS",
   "fields": {
+   "selected_mixture_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "eommm_asymmetric_margules",
+    "model": "eommm_asymmetric_margules"
+   },
    "model_parameters": {
     "ok": true,
     "kind": "dict-skipped",
@@ -55,23 +61,17 @@
      "W21": -2.6
     }
    },
-   "synergy_classification": {
-    "ok": true,
-    "kind": "string",
-    "gold": "synergistic",
-    "model": "synergistic"
-   },
-   "selected_mixture_model": {
-    "ok": true,
-    "kind": "string",
-    "gold": "eommm_asymmetric_margules",
-    "model": "eommm_asymmetric_margules"
-   },
    "component1_charge_type": {
     "ok": true,
     "kind": "string",
     "gold": "zwitterionic",
     "model": "zwitterionic"
+   },
+   "synergy_classification": {
+    "ok": true,
+    "kind": "string",
+    "gold": "synergistic",
+    "model": "synergistic"
    }
   }
  },
@@ -101,12 +101,11 @@
  "GZ-04": {
   "verdict": "PASS",
   "fields": {
-   "charge_confidence": {
+   "structural_family": {
     "ok": true,
-    "kind": "judgment",
-    "gold": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
-    "model": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
-    "rationale": "exact match to gold"
+    "kind": "string",
+    "gold": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)",
+    "model": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)"
    },
    "hlb": {
     "ok": true,
@@ -114,11 +113,12 @@
     "gold": null,
     "model": null
    },
-   "structural_family": {
+   "charge_confidence": {
     "ok": true,
-    "kind": "string",
-    "gold": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)",
-    "model": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)"
+    "kind": "judgment",
+    "gold": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
+    "model": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
+    "rationale": "exact match to gold"
    },
    "charge_type": {
     "ok": true,
@@ -131,19 +131,7 @@
  "GZ-05": {
   "verdict": "PASS",
   "fields": {
-   "delta_h_endpoint_kJ_per_mol": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": -13.592197635471393,
-    "model": -13.592
-   },
    "delta_s_mic_J_per_mol_K": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
-   },
-   "delta_g_mic_kJ_per_mol": {
     "ok": true,
     "kind": "null-check",
     "gold": null,
@@ -178,11 +166,23 @@
     ],
     "rationale": "same grade_field() list-type gap; values match to 3-4 significant figures (-12.516 vs -12.51622692462097, -14.81 vs -14.810140401192402)"
    },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
    "self_consistent": {
     "ok": true,
     "kind": "bool",
     "gold": true,
     "model": true
+   },
+   "delta_h_endpoint_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -13.592197635471393,
+    "model": -13.592
    }
   }
  },
@@ -217,11 +217,11 @@
  "GZ-08": {
   "verdict": "PASS",
   "fields": {
-   "K": {
+   "isotherm_model": {
     "ok": true,
-    "kind": "numeric",
-    "gold": 8772000.0,
-    "model": 8772000.0
+    "kind": "string",
+    "gold": "langmuir/szyszkowski",
+    "model": "langmuir/szyszkowski"
    },
    "gamma_max_mol_per_m2": {
     "ok": true,
@@ -229,11 +229,11 @@
     "gold": 2.21e-06,
     "model": 2.21e-06
    },
-   "isotherm_model": {
+   "K": {
     "ok": true,
-    "kind": "string",
-    "gold": "langmuir/szyszkowski",
-    "model": "langmuir/szyszkowski"
+    "kind": "numeric",
+    "gold": 8772000.0,
+    "model": 8772000.0
    },
    "charge_type": {
     "ok": true,
@@ -252,24 +252,59 @@
     "gold": -2.296704358326928,
     "model": -2.2967
    },
-   "work_of_adhesion_mJ_per_m2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 49.25670435832693,
-    "model": 49.2567
-   },
    "spontaneous_wetting": {
     "ok": true,
     "kind": "bool",
     "gold": false,
     "model": false
+   },
+   "work_of_adhesion_mJ_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 49.25670435832693,
+    "model": 49.2567
    }
   }
  },
  "GZ-10": {
   "verdict": "PASS",
   "fields": {
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "cpp": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.46969136100515557,
+    "model": 0.46969
+   },
    "predicted_morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   }
+  }
+ },
+ "GZ-11": {
+  "verdict": "PASS",
+  "fields": {
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "morphology_measured_area": {
     "ok": true,
     "kind": "string",
     "gold": "cylindrical/rodlike micelle",
@@ -281,28 +316,17 @@
     "gold": 350.2,
     "model": 350.2
    },
-   "cpp": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.46969136100515557,
-    "model": 0.46969
-   },
-   "critical_length_A": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 16.68,
-    "model": 16.68
-   }
-  }
- },
- "GZ-11": {
-  "verdict": "PASS",
-  "fields": {
    "cpp_electrostatic_area": {
     "ok": true,
     "kind": "numeric",
     "gold": 0.31209541232517773,
     "model": 0.3121
+   },
+   "electrostatic_headgroup_area_A2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 67.27174770212636,
+    "model": 67.2717
    },
    "morphology_electrostatic_area": {
     "ok": true,
@@ -315,59 +339,29 @@
     "kind": "numeric",
     "gold": 0.46969136100515557,
     "model": 0.46969
-   },
-   "critical_length_A": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 16.68,
-    "model": 16.68
-   },
-   "tail_volume_A3": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 350.2,
-    "model": 350.2
-   },
-   "morphology_measured_area": {
-    "ok": true,
-    "kind": "string",
-    "gold": "cylindrical/rodlike micelle",
-    "model": "cylindrical/rodlike micelle"
-   },
-   "electrostatic_headgroup_area_A2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 67.27174770212636,
-    "model": 67.2717
    }
   }
  },
  "GZ-12": {
   "verdict": "PASS",
   "fields": {
-   "f1_at_x1_0.90": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 1.0125688763683443,
-    "model": 1.0126
-   },
    "f2_at_x1_0.90": {
     "ok": true,
     "kind": "numeric",
     "gold": 0.3154843161590624,
     "model": 0.3155
+   },
+   "f1_at_x1_0.90": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.0125688763683443,
+    "model": 1.0126
    }
   }
  },
  "GZ-13": {
   "verdict": "PASS",
   "fields": {
-   "n_ethylene_oxide_units": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 10,
-    "model": 10
-   },
    "hlb_griffin": {
     "ok": true,
     "kind": "numeric",
@@ -379,6 +373,12 @@
     "kind": "numeric",
     "gold": 682.9770000000001,
     "model": 682.977
+   },
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 10,
+    "model": 10
    }
   }
  },
@@ -403,11 +403,11 @@
  "GZ-15": {
   "verdict": "PASS",
   "fields": {
-   "gamma_plateau_mN_per_m": {
+   "estimated_cmc_mM": {
     "ok": true,
     "kind": "numeric",
-    "gold": 27.5,
-    "model": 27.5
+    "gold": 2.5118612800073175,
+    "model": 2.51
    },
    "gamma_lowest_conc_mN_per_m": {
     "ok": true,
@@ -415,28 +415,28 @@
     "gold": 62.22,
     "model": 62.22
    },
-   "estimated_cmc_mM": {
+   "gamma_plateau_mN_per_m": {
     "ok": true,
     "kind": "numeric",
-    "gold": 2.5118612800073175,
-    "model": 2.51
+    "gold": 27.5,
+    "model": 27.5
    }
   }
  },
  "GZ-16": {
   "verdict": "PASS",
   "fields": {
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
    "cmc_mM": {
     "ok": true,
     "kind": "numeric",
     "gold": 9.1815,
     "model": 9.1815
-   },
-   "a_min_nm2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.4846,
-    "model": 0.4846
    },
    "charge_type": {
     "ok": true,
@@ -444,40 +444,40 @@
     "gold": "anionic",
     "model": "anionic"
    },
-   "delta_s_mic_J_per_mol_K": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
-   },
-   "gamma_max_mol_per_m2": {
+   "a_min_nm2": {
     "ok": true,
     "kind": "numeric",
-    "gold": 3.4268e-06,
-    "model": 3.4268e-06
+    "gold": 0.4846,
+    "model": 0.4846
    },
    "delta_g_mic_kJ_per_mol": {
     "ok": true,
     "kind": "numeric",
     "gold": -27.271,
     "model": -27.271
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 3.4268e-06,
+    "model": 3.4268e-06
    }
   }
  },
  "GZ-17": {
   "verdict": "PASS",
   "fields": {
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
    "cmc_mM": {
     "ok": true,
     "kind": "numeric",
     "gold": 8.185,
     "model": 8.185
-   },
-   "a_min_nm2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.702,
-    "model": 0.702
    },
    "charge_type": {
     "ok": true,
@@ -485,7 +485,13 @@
     "gold": "cationic",
     "model": "cationic"
    },
-   "delta_s_mic_J_per_mol_K": {
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.702,
+    "model": 0.702
+   },
+   "delta_g_mic_kJ_per_mol": {
     "ok": true,
     "kind": "null-check",
     "gold": null,
@@ -496,12 +502,6 @@
     "kind": "numeric",
     "gold": 2.3656e-06,
     "model": 2.3656e-06
-   },
-   "delta_g_mic_kJ_per_mol": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
    }
   }
  },
@@ -514,17 +514,11 @@
     "gold": 16.68,
     "model": 16.68
    },
-   "axial_ratio": {
+   "cpp": {
     "ok": true,
     "kind": "numeric",
-    "gold": 1.135,
-    "model": 1.135
-   },
-   "morphology": {
-    "ok": true,
-    "kind": "string",
-    "gold": "cylindrical/rodlike micelle",
-    "model": "cylindrical/rodlike micelle"
+    "gold": 0.4697,
+    "model": 0.4697
    },
    "tail_volume_A3": {
     "ok": true,
@@ -532,28 +526,34 @@
     "gold": 350.2,
     "model": 350.2
    },
-   "cpp": {
+   "morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "axial_ratio": {
     "ok": true,
     "kind": "numeric",
-    "gold": 0.4697,
-    "model": 0.4697
+    "gold": 1.135,
+    "model": 1.135
    }
   }
  },
  "GZ-19": {
   "verdict": "PASS",
   "fields": {
-   "v_bar_full_cm3_per_g": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
-   },
    "tail_molar_volume_contribution_cm3_per_mol": {
     "ok": true,
     "kind": "numeric",
     "gold": 210.9,
     "model": 210.9
+   },
+   "v_bar_full_cm3_per_g": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
    }
   }
  },
@@ -566,11 +566,11 @@
     "gold": 2.5119,
     "model": 2.5119
    },
-   "isotherm_model": {
+   "charge_type": {
     "ok": true,
     "kind": "string",
-    "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
-    "model": "langmuir (BIC-selected over Frumkin)"
+    "gold": "anionic",
+    "model": "anionic"
    },
    "a_min_nm2": {
     "ok": true,
@@ -578,46 +578,34 @@
     "gold": 1.1559,
     "model": 1.1559
    },
-   "charge_type": {
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -34.468,
+    "model": -34.468
+   },
+   "isotherm_model": {
     "ok": true,
     "kind": "string",
-    "gold": "anionic",
-    "model": "anionic"
+    "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+    "model": "langmuir (BIC-selected over Frumkin)"
    },
    "gamma_max_mol_per_m2": {
     "ok": true,
     "kind": "numeric",
     "gold": 1.4366e-06,
     "model": 1.4366e-06
-   },
-   "delta_g_mic_kJ_per_mol": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": -34.468,
-    "model": -34.468
    }
   }
  },
  "GZ-21": {
   "verdict": "PASS",
   "fields": {
-   "cpp_measured_area": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.352,
-    "model": 0.35215
-   },
    "critical_length_A": {
     "ok": true,
     "kind": "numeric",
     "gold": 16.68,
     "model": 16.68
-   },
-   "tail_volume_A3": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 350.2,
-    "model": 350.2
    },
    "morphology_measured_area": {
     "ok": true,
@@ -625,11 +613,23 @@
     "gold": "cylindrical/rodlike micelle",
     "model": "cylindrical/rodlike micelle"
    },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   },
    "electrostatic_headgroup_area_A2": {
     "ok": true,
     "kind": "null-check",
     "gold": null,
     "model": null
+   },
+   "cpp_measured_area": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.352,
+    "model": 0.35215
    }
   }
  },
@@ -640,19 +640,19 @@
  "GZ-23": {
   "verdict": "PASS",
   "fields": {
-   "valid_hlb_method": {
-    "ok": true,
-    "kind": "manual-override",
-    "gold": "griffin (mass-ratio method)",
-    "model": "griffin",
-    "rationale": "'griffin' exact match to gold's core value"
-   },
    "structural_family": {
     "ok": true,
     "kind": "manual-override",
     "gold": "dimeric/gemini (two quaternary-ammonium headgroup units in one molecule)",
     "model": "dimeric/gemini",
     "rationale": "'dimeric/gemini' exact match to gold's core value"
+   },
+   "valid_hlb_method": {
+    "ok": true,
+    "kind": "manual-override",
+    "gold": "griffin (mass-ratio method)",
+    "model": "griffin",
+    "rationale": "'griffin' exact match to gold's core value"
    },
    "charge_type": {
     "ok": true,
@@ -665,12 +665,6 @@
  "GZ-24": {
   "verdict": "PASS",
   "fields": {
-   "beta_rubingh": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": -4.236,
-    "model": -4.236
-   },
    "interaction_character": {
     "ok": true,
     "kind": "string",
@@ -683,6 +677,12 @@
     "gold": 0.5033,
     "model": 0.5033
    },
+   "beta_rubingh": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -4.236,
+    "model": -4.236
+   },
    "maeda_deltag_kJ_per_mol": {
     "ok": true,
     "kind": "null-check",
@@ -694,6 +694,12 @@
  "GZ-25": {
   "verdict": "PASS",
   "fields": {
+   "selected_mixture_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "eommm_asymmetric_margules",
+    "model": "eommm_asymmetric_margules"
+   },
    "model_parameters": {
     "ok": true,
     "kind": "dict-skipped",
@@ -712,35 +718,23 @@
     "gold": "genuinely asymmetric (W12 and W21 have OPPOSITE signs) -- not a simple mirror-image 'synergistic' or 'antagonistic' label the way GZ-02's system was; a well-reasoned answer should note this asymmetry rather than forcing one blanket classification",
     "model": "genuinely asymmetric",
     "rationale": "model explicitly states the required asymmetry (opposite-sign W12/W21), matching gold's core requirement"
-   },
-   "selected_mixture_model": {
-    "ok": true,
-    "kind": "string",
-    "gold": "eommm_asymmetric_margules",
-    "model": "eommm_asymmetric_margules"
    }
   }
  },
  "GZ-26": {
   "verdict": "PASS",
   "fields": {
-   "delta_h_wide_kJ_per_mol": {
+   "delta_h_low_regime_kJ_per_mol": {
     "ok": true,
     "kind": "numeric",
-    "gold": -3.085,
-    "model": -3.085
+    "gold": 0.904,
+    "model": 0.904
    },
    "delta_h_high_regime_kJ_per_mol": {
     "ok": true,
     "kind": "numeric",
     "gold": -8.574,
     "model": -8.574
-   },
-   "delta_h_low_regime_kJ_per_mol": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.904,
-    "model": 0.904
    },
    "delta_g_mic_kJ_per_mol": {
     "ok": true,
@@ -753,29 +747,35 @@
     "kind": "bool",
     "gold": false,
     "model": false
+   },
+   "delta_h_wide_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -3.085,
+    "model": -3.085
    }
   }
  },
  "GZ-27": {
   "verdict": "PASS",
   "fields": {
+   "rh_perrin_corrected_nm": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.634,
+    "model": 2.634
+   },
    "critical_length_A": {
     "ok": true,
     "kind": "numeric",
     "gold": 16.68,
     "model": 16.68
    },
-   "axial_ratio": {
+   "cpp": {
     "ok": true,
     "kind": "numeric",
-    "gold": 1.135,
-    "model": 1.135
-   },
-   "morphology": {
-    "ok": true,
-    "kind": "string",
-    "gold": "cylindrical/rodlike micelle",
-    "model": "cylindrical/rodlike micelle"
+    "gold": 0.4697,
+    "model": 0.4697
    },
    "tail_volume_A3": {
     "ok": true,
@@ -783,11 +783,17 @@
     "gold": 350.2,
     "model": 350.2
    },
-   "cpp": {
+   "rh_naive_stokes_einstein_nm": {
     "ok": true,
     "kind": "numeric",
-    "gold": 0.4697,
-    "model": 0.4697
+    "gold": 2.638,
+    "model": 2.638
+   },
+   "morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
    },
    "direction_of_correction": {
     "ok": true,
@@ -796,17 +802,11 @@
     "model": "smaller; an elongated prolate particle experiences greater friction than an equal-volume sphere (Perrin factor > 1), so naive Stokes-Einstein overstates size and shape correction reduces it",
     "rationale": "model says 'smaller' with the same Perrin-factor>1 reasoning as gold"
    },
-   "rh_naive_stokes_einstein_nm": {
+   "axial_ratio": {
     "ok": true,
     "kind": "numeric",
-    "gold": 2.638,
-    "model": 2.638
-   },
-   "rh_perrin_corrected_nm": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 2.634,
-    "model": 2.634
+    "gold": 1.135,
+    "model": 1.135
    }
   }
  },
@@ -830,6 +830,12 @@
  "GZ-29": {
   "verdict": "PASS",
   "fields": {
+   "physically_meaningful_interaction": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   },
    "frumkin_a": {
     "ok": true,
     "kind": "numeric",
@@ -842,12 +848,6 @@
     "gold": "frumkin (wins by BIC, delta_bic=+4.40)",
     "model": "frumkin",
     "rationale": "'frumkin' exact match to gold's core value; '(wins by BIC, delta_bic=+4.40)' is justification text"
-   },
-   "physically_meaningful_interaction": {
-    "ok": true,
-    "kind": "bool",
-    "gold": false,
-    "model": false
    }
   }
  },
@@ -871,11 +871,11 @@
  "GZ-31": {
   "verdict": "PASS",
   "fields": {
-   "charge_type": {
+   "structural_family": {
     "ok": true,
     "kind": "string",
-    "gold": "cationic",
-    "model": "cationic"
+    "gold": "dimeric/gemini",
+    "model": "dimeric/gemini"
    },
    "spacer_carbons": {
     "ok": true,
@@ -883,17 +883,17 @@
     "gold": 6,
     "model": 6
    },
-   "structural_family": {
-    "ok": true,
-    "kind": "string",
-    "gold": "dimeric/gemini",
-    "model": "dimeric/gemini"
-   },
    "tail_carbons_per_tail": {
     "ok": true,
     "kind": "numeric",
     "gold": 12,
     "model": 12
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic"
    },
    "n_tails": {
     "ok": true,
@@ -906,11 +906,11 @@
  "GZ-32": {
   "verdict": "PASS",
   "fields": {
-   "tail_carbons_total": {
+   "backbone_carbons": {
     "ok": true,
     "kind": "numeric",
-    "gold": 16,
-    "model": 16
+    "gold": 4,
+    "model": 4
    },
    "tail_description": {
     "ok": true,
@@ -919,11 +919,11 @@
     "model": "two identical 2-ethylhexyl groups (each an 8-carbon branched chain: a 6-carbon backbone with a 2-carbon ethyl branch at the second position)",
     "rationale": "near-verbatim match to gold's 2-ethylhexyl/8-carbon/C2-branch description"
    },
-   "backbone_carbons": {
+   "total_carbons": {
     "ok": true,
     "kind": "numeric",
-    "gold": 4,
-    "model": 4
+    "gold": 20,
+    "model": 20
    },
    "tails_branched": {
     "ok": true,
@@ -931,23 +931,17 @@
     "gold": true,
     "model": true
    },
-   "total_carbons": {
+   "tail_carbons_total": {
     "ok": true,
     "kind": "numeric",
-    "gold": 20,
-    "model": 20
+    "gold": 16,
+    "model": 16
    }
   }
  },
  "GZ-33": {
   "verdict": "PASS",
   "fields": {
-   "n_ethylene_oxide_units": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 23,
-    "model": 23
-   },
    "hlb_griffin": {
     "ok": true,
     "kind": "numeric",
@@ -959,6 +953,12 @@
     "kind": "numeric",
     "gold": 1199.56,
     "model": 1199.56
+   },
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 23,
+    "model": 23
    }
   }
  },
@@ -982,6 +982,18 @@
  "GZ-35": {
   "verdict": "PASS",
   "fields": {
+   "structural_family": {
+    "ok": true,
+    "kind": "string",
+    "gold": "glycolipid biosurfactant (disaccharide headgroup)",
+    "model": "glycolipid biosurfactant (disaccharide headgroup)"
+   },
+   "n_sugar_rings": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2,
+    "model": 2
+   },
    "valid_hlb_method": {
     "ok": true,
     "kind": "judgment",
@@ -996,58 +1008,46 @@
     "model": "moderate (carboxylic acid, pKa~4-5 -- ionized at typical surfactant-testing pH but not at low pH)",
     "rationale": "exact match to gold"
    },
-   "n_sugar_rings": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 2,
-    "model": 2
-   },
    "charge_type": {
     "ok": true,
     "kind": "string",
     "gold": "anionic",
     "model": "anionic"
-   },
-   "structural_family": {
-    "ok": true,
-    "kind": "string",
-    "gold": "glycolipid biosurfactant (disaccharide headgroup)",
-    "model": "glycolipid biosurfactant (disaccharide headgroup)"
    }
   }
  },
  "GZ-36": {
   "verdict": "PASS",
   "fields": {
-   "process_character": {
-    "ok": true,
-    "kind": "string",
-    "gold": "exothermic (delta_h_mic < 0)",
-    "model": "exothermic"
-   },
    "slope_sign": {
     "ok": true,
     "kind": "judgment",
     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
     "model": "negative",
     "rationale": "exact match ('negative'); only flagged needs-judgment because gold string is long"
+   },
+   "process_character": {
+    "ok": true,
+    "kind": "string",
+    "gold": "exothermic (delta_h_mic < 0)",
+    "model": "exothermic"
    }
   }
  },
  "GZ-37": {
   "verdict": "PASS",
   "fields": {
-   "f2_at_x1_0.5": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.51,
-    "model": 0.51
-   },
    "f1_at_x1_0.5": {
     "ok": true,
     "kind": "numeric",
     "gold": 1.32,
     "model": 1.32
+   },
+   "f2_at_x1_0.5": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.51,
+    "model": 0.51
    },
    "which_is_larger_at_0.5": {
     "ok": true,
@@ -1078,35 +1078,35 @@
  "GZ-39": {
   "verdict": "PASS",
   "fields": {
+   "deviation_region": {
+    "ok": true,
+    "kind": "string",
+    "gold": "above roughly 2-3 mM (near/above the real CMC)",
+    "model": "above roughly 2-3 mM (near and above the CMC)"
+   },
    "deviation_reason": {
     "ok": true,
     "kind": "judgment",
     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
     "model": "The fitted curve is a pre-CMC monolayer adsorption isotherm (e.g. Szyszkowski model) that assumes all surfactant exists as free monomers adsorbing at the air-water interface. Above the critical micelle concentration (~2-3 mM), micelles form in bulk solution, fixing the monomer chemical potential and causing the surface tension to plateau. The pre-CMC isotherm model lacks a micellization mechanism and thus incorrectly predicts a continued steep decline in surface tension.",
     "rationale": "matches gold's monomer-saturation/plateau physical reasoning"
-   },
-   "deviation_region": {
-    "ok": true,
-    "kind": "string",
-    "gold": "above roughly 2-3 mM (near/above the real CMC)",
-    "model": "above roughly 2-3 mM (near and above the CMC)"
    }
   }
  },
  "GZ-40": {
   "verdict": "PASS",
   "fields": {
-   "which_shows_plain_plateau": {
-    "ok": true,
-    "kind": "string",
-    "gold": "Surfactant A",
-    "model": "Surfactant A"
-   },
    "which_shows_dip_then_rise": {
     "ok": true,
     "kind": "string",
     "gold": "Surfactant B",
     "model": "Surfactant B"
+   },
+   "which_shows_plain_plateau": {
+    "ok": true,
+    "kind": "string",
+    "gold": "Surfactant A",
+    "model": "Surfactant A"
    }
   }
  },
@@ -1119,17 +1119,17 @@
     "gold": true,
     "model": true
    },
-   "micelle_molar_mass_g_per_mol": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 66600,
-    "model": 66600
-   },
    "aggregation_number": {
     "ok": true,
     "kind": "numeric",
     "gold": 106.6,
     "model": 106.6
+   },
+   "micelle_molar_mass_g_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 66600,
+    "model": 66600
    }
   }
  },
@@ -1200,17 +1200,17 @@
     "gold": 13.87,
     "model": 13.87
    },
-   "hexadecane_physically_achievable": {
-    "ok": true,
-    "kind": "bool",
-    "gold": false,
-    "model": false
-   },
    "s_star_hexadecane_pct": {
     "ok": true,
     "kind": "numeric",
     "gold": 179.47,
     "model": 179.47
+   },
+   "hexadecane_physically_achievable": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
    }
   }
  },
@@ -1227,40 +1227,34 @@
     "gold": 0.505155,
     "model": 1.01
    },
-   "f1_at_alpha1_0.60": {
-    "ok": false,
-    "kind": "numeric",
-    "gold": 0.263467,
-    "model": 0.527
-   },
    "x1_rodenas_at_alpha1_0.60": {
     "ok": true,
     "kind": "numeric",
     "gold": 0.384127,
     "model": 0.384
+   },
+   "f1_at_alpha1_0.60": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 0.263467,
+    "model": 0.527
    }
   }
  },
  "GZ-49": {
   "verdict": "PASS",
   "fields": {
-   "w21": {
+   "w12": {
     "ok": true,
     "kind": "numeric",
-    "gold": -2.82,
-    "model": -2.82
+    "gold": -3.25,
+    "model": -3.25
    },
    "f2_at_x1_0.10": {
     "ok": true,
     "kind": "numeric",
     "gold": 0.965,
     "model": 0.965
-   },
-   "f2_at_x1_0.90": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.095,
-    "model": 0.095
    },
    "f1_at_x1_0.10": {
     "ok": true,
@@ -1274,29 +1268,35 @@
     "gold": 0.976,
     "model": 0.976
    },
-   "w12": {
+   "f2_at_x1_0.90": {
     "ok": true,
     "kind": "numeric",
-    "gold": -3.25,
-    "model": -3.25
+    "gold": 0.095,
+    "model": 0.095
+   },
+   "w21": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -2.82,
+    "model": -2.82
    }
   }
  },
  "GZ-50": {
   "verdict": "PASS",
   "fields": {
+   "delta_g_mic_at_283.15K": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -35.18,
+    "model": -35.18
+   },
    "trend": {
     "ok": true,
     "kind": "judgment",
     "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
     "model": "Monotonically more negative (more thermodynamically favorable) across the entire temperature range, from -35.18 kJ/mol at 283.15 K to -38.87 kJ/mol at 318.15 K",
     "rationale": "matches gold's monotonic-despite-non-monotonic-CMC claim essentially verbatim"
-   },
-   "delta_g_mic_at_283.15K": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": -35.18,
-    "model": -35.18
    },
    "delta_g_mic_at_318.15K": {
     "ok": true,

@@ -61,7 +61,7 @@ def grade_condition(label: str, raw_dir: Path):
             reason = r.get("reason", "")
             print(f"  {qid}: {r['verdict']}  {bad if bad else reason}")
 
-    out_path = HERE / f"grade_results_antigravity_hard50_{label}.json"
+    out_path = HERE / f"antigravity_{label}_grade_results.json"   # the file build_results.py reads
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=1, default=str)
     return results, n_pass

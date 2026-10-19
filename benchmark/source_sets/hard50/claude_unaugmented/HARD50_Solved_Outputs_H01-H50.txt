@@ -1,0 +1,541 @@
+HARD50 INTERFACIAL SCIENCE — COMPILED OUTPUTS H-01 TO H-50
+============================================================
+
+Notes:
+- Numerical results reproduce the completed question-by-question calculations.
+- H-36 through H-40 incorporate direct inspection of the supplied charts.
+- H-37 is no longer indeterminate; its chart-derived values are included.
+
+FINAL_JSON:
+{
+  "optical_constant_K": 1.32395e-7,
+  "micelle_mw": 35888.0,
+  "aggregation_number": 80.0001,
+  "delta_g_mass_action_kJ_per_mol": -33.6837
+}
+END OF QUESTION H-01
+================
+
+FINAL_JSON:
+{
+  "cmc_mM": 5.75,
+  "beta": 0.65625,
+  "alpha": 0.34375,
+  "delta_g_mic_kJ_per_mol": -30.5626
+}
+END OF QUESTION H-02
+================
+
+FINAL_JSON:
+{
+  "cmc_mM": 3.6926,
+  "three_segment_selected": true,
+  "n_baseline_points": 3,
+  "gamma_max_mol_per_m2": 1.69394e-6,
+  "a_min_nm2": 0.9803,
+  "delta_g_mic_kJ_per_mol": -31.2332
+}
+END OF QUESTION H-03
+================
+
+FINAL_JSON:
+{
+  "delta_H_kJ_per_mol": -2.84694,
+  "delta_S_J_per_mol_K": 115.1185,
+  "delta_Cp_J_per_mol_K": -814.890,
+  "delta_G_298_kJ_per_mol": -37.1695,
+  "driver": "entropy-driven"
+}
+END OF QUESTION H-04
+================
+
+FINAL_JSON:
+{
+  "beta_mean": -1.35575,
+  "beta_std": 0.763522,
+  "x1_at_alpha2_0p60": 0.710824,
+  "f1": 0.892818,
+  "f2": 0.504079,
+  "gexc_kJ_per_mol": -0.690835
+}
+END OF QUESTION H-05
+================
+
+FINAL_JSON:
+{
+  "selected_model": "EOMMM",
+  "selected_bic": -61.61735,
+  "rubingh_beta_mean": -1.82673,
+  "interaction_character": "synergistic",
+  "w12": -3.51048,
+  "w21": -0.904569
+}
+END OF QUESTION H-06
+================
+
+FINAL_JSON:
+{
+  "selected_model": "Langmuir",
+  "delta_bic": -2.01589,
+  "frumkin_a": 0.0235029,
+  "physically_meaningful_interaction": false,
+  "raw_rss_frumkin_lower_than_langmuir": true
+}
+END OF QUESTION H-07
+================
+
+FINAL_JSON:
+{
+  "cmc_conductivity_mM": 5.75,
+  "cmc_tensiometry_mM": 6.05322,
+  "agree_within_2pct": false,
+  "beta": 0.65625,
+  "delta_g_mic_kJ_per_mol": -30.5626
+}
+END OF QUESTION H-08
+================
+
+FINAL_JSON:
+{
+  "k": 0.1599998,
+  "cc": -1.4000041,
+  "fit_r2": 0.999999999,
+  "s_star_EACN16_dT10_pct": 57.9744,
+  "hld_at_S3": -2.96139,
+  "winsor_type": "I",
+  "s_star_achievable_in_water": false
+}
+END OF QUESTION H-09
+================
+
+FINAL_JSON:
+{
+  "x1_rodenas_at_alpha1_0p55": 0.683631,
+  "x1_rubingh_at_alpha1_0p55": 0.723127,
+  "f1_rodenas": 0.927821,
+  "f2_rodenas": 0.357899,
+  "mean_abs_x1_difference": 0.0500655,
+  "estimators_agree_within_0p05": false,
+  "model_independent_method": "Rodenas"
+}
+END OF QUESTION H-10
+================
+
+FINAL_JSON:
+{
+  "n_points_without_solution": 2,
+  "alpha1_no_root_1": 0.70,
+  "alpha1_no_root_2": 0.85,
+  "beta_mean": -0.0447851,
+  "beta_std": 2.24449,
+  "n_points_used": 3
+}
+END OF QUESTION H-11
+================
+
+FINAL_JSON:
+{
+  "selected_model": "Frumkin",
+  "frumkin_a": 2.53330,
+  "condensation_regime_flagged": true,
+  "a_trustworthy_downstream_unexamined": false
+}
+END OF QUESTION H-12
+================
+
+FINAL_JSON:
+{
+  "cpp": 0.419904,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": null,
+  "conflict_detected": true
+}
+END OF QUESTION H-13
+================
+
+FINAL_JSON:
+{
+  "charge_type": "dicationic",
+  "structural_family": "12-4-12 quaternary-ammonium gemini/dimeric surfactant",
+  "davies_hlb": null,
+  "valid_method": "Griffin",
+  "hlb": 6.22
+}
+END OF QUESTION H-14
+================
+
+FINAL_JSON:
+{
+  "micelle_mw": 399.998,
+  "aggregation_number": 0.639997,
+  "physically_valid": false,
+  "why": "The aggregation number is smaller than one and therefore impossible for a micelle."
+}
+END OF QUESTION H-15
+================
+
+FINAL_JSON:
+{
+  "cmc_mM": 4.19949,
+  "beta": 0.72,
+  "delta_g_mic_kJ_per_mol": -30.1098,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Micellization enthalpy or temperature-dependent CMC data for a van't Hoff analysis."
+}
+END OF QUESTION H-16
+================
+
+FINAL_JSON:
+{
+  "solubility_estimate_M": 0.000602307,
+  "solubility_source": "Structure-based ESOL/QSPR estimate, not a measurement",
+  "msr": 0.211766
+}
+END OF QUESTION H-17
+================
+
+FINAL_JSON:
+{
+  "charge_type_at_ph": "mixed neutral and cationic populations",
+  "fraction_protonated_at_low_pka": 0.386863,
+  "fraction_protonated_at_high_pka": 0.613137,
+  "confidence": "low"
+}
+END OF QUESTION H-18
+================
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.42248e-6,
+  "a_min_nm2": 0.223718,
+  "delta_g_mic_kJ_per_mol": -28.5033,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Micellization enthalpy or temperature-dependent CMC data for a van't Hoff analysis."
+}
+END OF QUESTION H-19
+================
+
+FINAL_JSON:
+{
+  "dn_dc_for_this_compound": null,
+  "sls_aggregation_number": null,
+  "what_is_missing": "AOT-specific dn/dc in the stated solvent at 632.8 nm and 298.15 K, measured by differential refractometry."
+}
+END OF QUESTION H-20
+================
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 3.06581e-6,
+  "a_min_from_slope_A2": 54.1632,
+  "discrepancy_vs_literature_pct": 21.1705
+}
+END OF QUESTION H-21
+================
+
+FINAL_JSON:
+{
+  "clint_cmc_mM": 4.72727,
+  "deviation_from_measured_pct": 16.7228,
+  "x1_rubingh": 0.720324,
+  "beta_rubingh": -0.830859
+}
+END OF QUESTION H-22
+================
+
+FINAL_JSON:
+{
+  "delta_h_endpoint_kJ_per_mol": -5.34381,
+  "agrees_with_cited_value": true,
+  "reported_value_source": "Own endpoint van't Hoff calculation from the given first and last CMC-temperature rows"
+}
+END OF QUESTION H-23
+================
+
+FINAL_JSON:
+{
+  "rh_nm": 2.22991,
+  "aggregation_number": 69,
+  "bias_direction": "overestimate because the hydrodynamic radius includes hydration and other non-dry volume"
+}
+END OF QUESTION H-24
+================
+
+FINAL_JSON:
+{
+  "ionic_strength_mM": 105.0,
+  "debye_length_nm": 0.938164,
+  "kappa_a": 2.66478,
+  "henry_f": 1.08246,
+  "treatment": "Ohshima approximation to the full Henry function in the intermediate-kappa-a regime"
+}
+END OF QUESTION H-25
+================
+
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": 12,
+  "total_carbons": 42,
+  "molecular_weight": 799.137,
+  "hlb_griffin": 13.6558
+}
+END OF QUESTION H-26
+================
+
+FINAL_JSON:
+{
+  "total_carbons": 20,
+  "tail_carbons_each": 8,
+  "tail_carbons_total": 16,
+  "backbone_carbons": 4,
+  "tails_branched": true,
+  "molecular_weight": 444.56,
+  "n_ester_groups": 2,
+  "n_sulfonate_groups": 1
+}
+END OF QUESTION H-27
+================
+
+FINAL_JSON:
+{
+  "charge_type": "neutral/nonionic as drawn; ionizable to an anion by carboxyl deprotonation",
+  "structural_family": "acidic sophorolipid glycolipid biosurfactant",
+  "n_sugar_rings": 2,
+  "molecular_weight": 706.82,
+  "n_ester_groups": 2,
+  "n_carboxylic_acid_groups": 1
+}
+END OF QUESTION H-28
+================
+
+FINAL_JSON:
+{
+  "n_propylene_oxide_units": 5,
+  "n_ethylene_oxide_units": 8,
+  "molecular_weight": 829.163,
+  "hlb_griffin": 15.9161
+}
+END OF QUESTION H-29
+================
+
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "single-tail quaternary-ammonium surfactant",
+  "tail_carbons": 12,
+  "cpp": 0.352150,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 2.06265,
+  "rh_naive_nm": 2.75607,
+  "rh_perrin_corrected_nm": 2.63002
+}
+END OF QUESTION H-30
+================
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 8.05885e-7,
+  "a_min_nm2": 2.06052,
+  "delta_g_mic_kJ_per_mol": -29.4304
+}
+END OF QUESTION H-31
+================
+
+FINAL_JSON:
+{
+  "rh_naive_nm": 3.27054,
+  "rh_perrin_corrected_nm": 3.26553
+}
+END OF QUESTION H-32
+================
+
+FINAL_JSON:
+{
+  "capillary_number": 3.96875e-7,
+  "exceeds_threshold": false,
+  "velocity_needed_ft_per_day": 75.5906
+}
+END OF QUESTION H-33
+================
+
+FINAL_JSON:
+{
+  "x1_mole_fraction": 0.665068,
+  "clint_cmc_mM": 9.84265,
+  "deviation_from_measured_pct": 21.5142,
+  "x1_rubingh": 0.708424,
+  "beta_rubingh": -1.02973
+}
+END OF QUESTION H-34
+================
+
+FINAL_JSON:
+{
+  "debye_length_nm": 1.89630,
+  "kappa_a": 1.31836,
+  "zeta_mV": 34.6286
+}
+END OF QUESTION H-35
+================
+
+FINAL_JSON:
+{
+  "arrhenius_slope": -0.3009,
+  "delta_h_kJ_per_mol": -2.502,
+  "process": "exothermic",
+  "single_straight_line_adequate": false
+}
+END OF QUESTION H-36
+================
+
+FINAL_JSON:
+{
+  "gamma_A": 60.2,
+  "gamma_B": 70.5,
+  "delta_gamma_A_minus_B": -10.3,
+  "larger_K_curve": "A"
+}
+END OF QUESTION H-37
+================
+
+FINAL_JSON:
+{
+  "cmc_in_chart_units": 5750,
+  "cmc_in_molar": 0.00575,
+  "beta_from_chart": 0.65625,
+  "delta_g_mic_kJ_per_mol": -30.5626
+}
+END OF QUESTION H-38
+================
+
+FINAL_JSON:
+{
+  "outlier_alpha2": 0.60,
+  "beta_mean_excluding_outlier": -1.187970,
+  "beta_std_excluding_outlier": 0.767862,
+  "n_points_used": 4
+}
+END OF QUESTION H-39
+================
+
+FINAL_JSON:
+{
+  "mean_including_all": 59.0,
+  "mean_excluding_inconsistent": 55.5,
+  "geometric_reference": 55.51,
+  "all_three_include_reference": false,
+  "excluded": "SLS/DLS"
+}
+END OF QUESTION H-40
+================
+
+FINAL_JSON:
+{
+  "alpha1_of_corrupted_point": 0.8061,
+  "beta_mean_clean": -3.199746,
+  "pointwise_beta_at_corrupted_point": null,
+  "n_points_used_clean": 4
+}
+END OF QUESTION H-41
+================
+
+FINAL_JSON:
+{
+  "corrupted_temperature_K": 308.15,
+  "delta_H_all_points": 27.0795,
+  "delta_H_cleaned": -3.09134,
+  "n_points_flagged": 1
+}
+END OF QUESTION H-42
+================
+
+FINAL_JSON:
+{
+  "hld_if_cc_neg0p92": -0.910562,
+  "winsor_if_cc_neg0p92": "I",
+  "hld_if_cc_pos2p4": 2.40944,
+  "winsor_if_cc_pos2p4": "II",
+  "source_number": 2
+}
+END OF QUESTION H-43
+================
+
+FINAL_JSON:
+{
+  "nagg_sls": 54.4853,
+  "nagg_geometric": 55.5086,
+  "methods_consistent_within_literature_range": true,
+  "most_reliable": "SLS"
+}
+END OF QUESTION H-44
+================
+
+FINAL_JSON:
+{
+  "c20_recomputed_mM": 0.315236,
+  "pc20_recomputed": 3.50136,
+  "draft_values_match_data": false,
+  "which_draft_values_wrong": "both"
+}
+END OF QUESTION H-45
+================
+
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 7.26438,
+  "isotherm_model": "Frumkin",
+  "condensation_caveat_flagged": true,
+  "gamma_max_mol_per_m2": 1.51172e-6,
+  "a_min_nm2": 1.09844,
+  "delta_g_mic_kJ_per_mol": -29.0358
+}
+END OF QUESTION H-46
+================
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 1.41075e-6,
+  "a_min_nm2": 1.17706,
+  "delta_g_mic_kJ_per_mol": -30.5626,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Micellization enthalpy or temperature-dependent CMC data for a van't Hoff analysis."
+}
+END OF QUESTION H-47
+================
+
+FINAL_JSON:
+{
+  "hld_value": -1.02056,
+  "winsor_type": "I",
+  "cpp": 0.469691,
+  "cpp_morphology": "cylindrical/rodlike micelle",
+  "frameworks_consistent": true
+}
+END OF QUESTION H-48
+================
+
+FINAL_JSON:
+{
+  "delta_g_from_cmc_kJ_per_mol": -27.8894,
+  "delta_s_J_per_mol_K": 76.7714,
+  "delta_g_recomputed_kJ_per_mol": -27.8894,
+  "self_consistent": true
+}
+END OF QUESTION H-49
+================
+
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "n_carbons": 12,
+  "cpp": 0.469691,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": null,
+  "rh_naive_nm": 2.63753,
+  "rh_perrin_nm": null,
+  "delta_g_mic": null,
+  "missing_for_delta_g": "The CMC and the counterion dissociation alpha or binding beta for this system."
+}
+END OF QUESTION H-50
+================

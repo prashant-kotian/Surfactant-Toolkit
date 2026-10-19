@@ -43,12 +43,26 @@ Full §1 chain re-run (graders included) through `build_figure_data.py`:
   failures reconcile to F1 (456 = 456). All figure-data cross-checks pass.
 - Test suite: 828 passed (823 + 5 F8 regression tests).
 
+## Re-run after the exclusion and re-grade audit (2026-10-19, Windows, Python 3.14)
+
+- X-19 now excluded from every arm (the three post-fix augmented extrahard
+  cells drop from n=50 to 49); grand augmented: Claude 180/189, ChatGPT
+  174/189, DeepSeek 173/186.
+- DeepSeek augmented groundzero/hard50 re-graded against the corrected golds
+  (GZ-48 FAIL->PASS, H-04 FAIL->PASS, H-26 PASS->FAIL); `gold_state` verified
+  from stored gold values. All reported-cell graders now in REPRODUCE.md §1;
+  Antigravity and Claude-hard50 cells re-graded from the repository with zero
+  verdict differences.
+- Grand CSV rows = sum of grand denominators (1821).
+- Test suite: 832 passed (828 + 4 exclusion/gold-state regression tests).
+
 ## Accepted non-determinism (documented, not chased)
 
 - `source_sha` in the ledger hashes the grading-JSON bytes as last written;
   a fresh re-grade may reformat (not revalue) them.
-- `gold_state` flags derive from source-file mtimes; a re-run after the
-  2026-10-18 gold corrections reads `post-fix` by design.
+- `gold_state` is verified from the gold values stored in each cell's grading
+  records (not file dates); count-only sources without per-field gold read
+  `not field-verifiable`.
 - Exclusion policy and ungradeable-record rules live in `build_results.py`
   and `question_set.json` as data; changing them changes denominators by
   design, not by drift.

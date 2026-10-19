@@ -11,14 +11,13 @@ import re
 import sys
 from pathlib import Path
 
-import grade_hard50 as gh
+import grade_unaugmented_legacy as gh
 
 HERE = Path(__file__).resolve().parent
-# Original hardcoded upload path (/home/user/uploads/HARD50_full_solutions.txt)
-# does not exist on this machine -- recovered equivalent transcript located
-# in Downloads (2026-10-18), all 50 questions present (incl. H-24, which the
-# original #### -divided source was missing).
-CLAUDE_FILE = Path(r"C:\Users\Prashant Kotian\Downloads\HARD50_Solved_Outputs_H01-H50.txt")
+# Recovered transcript (2026-10-18), all 50 questions present (incl. H-24, which
+# the original ####-divided source was missing); committed in-repo 2026-10-19 so
+# this cell regrades from the repository alone.
+CLAUDE_FILE = HERE / "claude_unaugmented" / "HARD50_Solved_Outputs_H01-H50.txt"
 
 # divider-based split: 74 '#' line, id, 74 '#' line (legacy format, unused
 # for the recovered file below but kept for reference)
@@ -94,8 +93,9 @@ def main():
     summary_adj = gh.summarize({"claude": adj})
 
     # cross-check with the existing 4-model results (gold suspects across 5 models)
-    old = json.load(open(HERE / "grade_hard50_results.json"))
-    merged = dict(old["results"])
+    # optional: the first-release 4-model results are not shipped in this repo
+    old_p = HERE / "grade_hard50_results.json"
+    merged = dict(json.load(open(old_p))["results"]) if old_p.exists() else {}
     merged["claude"] = results
     suspects = gh.cross_check(merged)
 

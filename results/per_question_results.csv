@@ -17,7 +17,6 @@ extrahard|ChatGPT|aug,X-15,1
 extrahard|ChatGPT|aug,X-16,1
 extrahard|ChatGPT|aug,X-17,1
 extrahard|ChatGPT|aug,X-18,1
-extrahard|ChatGPT|aug,X-19,1
 extrahard|ChatGPT|aug,X-20,1
 extrahard|ChatGPT|aug,X-21,1
 extrahard|ChatGPT|aug,X-22,1
@@ -116,7 +115,6 @@ extrahard|Claude|aug,X-15,1
 extrahard|Claude|aug,X-16,1
 extrahard|Claude|aug,X-17,1
 extrahard|Claude|aug,X-18,1
-extrahard|Claude|aug,X-19,1
 extrahard|Claude|aug,X-20,1
 extrahard|Claude|aug,X-21,1
 extrahard|Claude|aug,X-22,1
@@ -215,7 +213,6 @@ extrahard|DeepSeek|aug,X-15,1
 extrahard|DeepSeek|aug,X-16,1
 extrahard|DeepSeek|aug,X-17,1
 extrahard|DeepSeek|aug,X-18,1
-extrahard|DeepSeek|aug,X-19,1
 extrahard|DeepSeek|aug,X-20,1
 extrahard|DeepSeek|aug,X-21,1
 extrahard|DeepSeek|aug,X-22,1
@@ -702,7 +699,7 @@ groundzero|DeepSeek|aug,GZ-44,1
 groundzero|DeepSeek|aug,GZ-45,1
 groundzero|DeepSeek|aug,GZ-46,1
 groundzero|DeepSeek|aug,GZ-47,1
-groundzero|DeepSeek|aug,GZ-48,0
+groundzero|DeepSeek|aug,GZ-48,1
 groundzero|DeepSeek|aug,GZ-50,1
 groundzero|DeepSeek|unaug,GZ-01,0
 groundzero|DeepSeek|unaug,GZ-02,0
@@ -1099,7 +1096,7 @@ hard50|Claude|unaug,H-50,0
 hard50|DeepSeek|aug,H-01,1
 hard50|DeepSeek|aug,H-02,1
 hard50|DeepSeek|aug,H-03,1
-hard50|DeepSeek|aug,H-04,0
+hard50|DeepSeek|aug,H-04,1
 hard50|DeepSeek|aug,H-05,1
 hard50|DeepSeek|aug,H-06,0
 hard50|DeepSeek|aug,H-07,1
@@ -1121,7 +1118,7 @@ hard50|DeepSeek|aug,H-22,1
 hard50|DeepSeek|aug,H-23,1
 hard50|DeepSeek|aug,H-24,1
 hard50|DeepSeek|aug,H-25,1
-hard50|DeepSeek|aug,H-26,1
+hard50|DeepSeek|aug,H-26,0
 hard50|DeepSeek|aug,H-27,1
 hard50|DeepSeek|aug,H-28,1
 hard50|DeepSeek|aug,H-29,1

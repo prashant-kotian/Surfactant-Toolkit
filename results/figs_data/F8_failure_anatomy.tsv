@@ -27,10 +27,10 @@ Claude	unaug	hard50	selection_or_convention	4
 Claude	unaug	orig_hard50	magnitude_error	17
 Claude	unaug	orig_hard50	precision_drift	7
 DeepSeek	aug	extrahard	unclassified	2
-DeepSeek	aug	groundzero	magnitude_error	3
+DeepSeek	aug	groundzero	magnitude_error	2
 DeepSeek	aug	groundzero	magnitude_error+selection_or_convention	1
 DeepSeek	aug	groundzero	selection_or_convention	4
-DeepSeek	aug	hard50	magnitude_error	1
+DeepSeek	aug	hard50	magnitude_error+precision_drift	1
 DeepSeek	aug	hard50	magnitude_error+selection_or_convention	1
 DeepSeek	aug	hard50	no_answer	1
 DeepSeek	aug	orig_hard50	magnitude_error	1
