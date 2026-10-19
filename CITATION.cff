@@ -3,5 +3,5 @@ title: Surfactant Toolkit and Paper-3 benchmark artifact
 message: If you use this code or the benchmark, please cite the accompanying manuscript.
 authors:
   - name: Kotian, Prashant (and co-authors per manuscript)
-repository-code: https://github.com/prashant-kotian/paper3-artifact
+repository-code: https://github.com/prashant-kotian/Surfactant-Toolkit
 license: MIT

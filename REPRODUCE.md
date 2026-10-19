@@ -1,23 +1,46 @@
-# Reproduce the manuscript numbers
+# Reproduction guide
+
+Environment: Python 3.11+ on Linux/macOS/Windows; `pip install rdkit "mcp[cli]"`.
+All commands run from the repository root.
+
+## 1. Results chain (no network, no model access required)
 
 ```bash
-pip install rdkit "mcp[cli]"            # only external deps (see pyproject extras)
-python3 benchmark/paper3_groundzero/grade_unaugmented_gz50.py
-python3 benchmark/paper3_groundzero/grade_session_new_gz50.py
-python3 benchmark/paper3_hard50/grade_session_new_h50.py
-PYTHONPATH=src python3 benchmark/paper3_extra50/grade_unaugmented_5models.py
-PYTHONPATH=src python3 benchmark/paper3_extra50/grade_augmented_claude_deepseek.py
-python3 benchmark/results_master.py      # -> benchmark/RESULTS_MASTER.{json,md}
-python3 benchmark/make_tables.py         # -> paper3/RESULTS_*
+export PYTHONPATH=$PWD/src
+python3 benchmark/groundzero_50/grade_unaugmented.py
+python3 benchmark/groundzero_50/grade_chat_runs.py
+python3 benchmark/hard50/grade_chat_runs.py
+python3 benchmark/extrahard50/grade_unaugmented.py
+python3 benchmark/extrahard50/grade_augmented_chat_runs.py
+python3 benchmark/build_results.py
+python3 benchmark/build_tables.py
 ```
-Expected at the freeze tag: `cells=30 gaps=1`; `RESULTS_PER_Q.csv`
-byte-identical to the committed copy. The per-question graders are
-deterministic given the committed transcripts and golds; re-running the
-chain may rewrite JSON serialization (different `source_sha` values in the
-provenance ledger) without changing any verdict — verdict-level equality is
-the reproducibility criterion, and `toolkit_state` reports this repo's own
-HEAD (self-contained layout; `$TOOLKIT_DIR` overrides).
 
-Augmented-condition execution (optional, needs API access):
-`benchmark/harness/` + `src/surfactantkit/mcp_server` (MCP config per
-harness README). Test suite: `PYTHONPATH=src python3 -m pytest -q` → 823 passed.
+The graders read only committed transcripts (`benchmark/**/`,
+`benchmark/transcripts/`) and bank golds, and rewrite the committed grading
+JSONs; `build_results.py` then assembles `results/results.json` and
+`build_tables.py` renders the manuscript tables. Expected at this release:
+30 result cells, 1 declared data gap, and `results/per_question_results.csv`
+byte-identical to the committed file. Re-runs may differ from the committed
+bytes only in JSON formatting (the provenance ledger's `source_sha` column
+tracks this); verdict data must not change.
+
+## 2. Test suite
+
+```bash
+PYTHONPATH=src python3 -m pytest -q        # 823 passed
+```
+
+## 3. Executing new model runs (optional)
+
+Augmented condition: start the toolkit MCP server (`src/surfactantkit/mcp_server`)
+behind any MCP-capable client; the `benchmark/mcp_harness/` scripts show the
+exact server configuration used for the reported runs. Unaugmented condition:
+pose the text of `benchmark/*/question_bank*.txt` unmodified, saving one
+transcript file per question in the run's transcript directory (any layout —
+new graders read the per-question `.txt` files with a `FINAL_JSON:` block as
+the last element, which all runs follow).
+
+Note: `results/results.json` records the toolkit commit used at grade time in
+`toolkit_state`; for this self-contained repository that is this repository's
+own HEAD (override with `$TOOLKIT_DIR`).

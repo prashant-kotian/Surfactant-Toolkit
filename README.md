@@ -1,34 +1,70 @@
-# Surfactant Toolkit Paper-3 artifact: toolkit + benchmark + results chain
+# Surfactant Toolkit
 
-Complete, self-contained artifact for *Paper 3* (agentic LLM evaluation on
-surfactant/interfacial-chemistry computation): the **SurfToolkit** library, its
-test suite, three 50-question benchmark banks with toolkit-recomputed golds,
-the per-question run transcripts (raw model outputs), the committed graders,
-and a single machine-graded results pipeline that emits every number in the
-manuscript.
+A computation toolkit for surfactant and interfacial chemistry, with the
+benchmark used to evaluate large language models with and without tool access
+(Paper 3). This repository is the complete submission artifact: the library,
+its test suite, three question banks with recomputed reference answers (golds),
+raw model-answer transcripts, the graders, and the results pipeline. Every
+number reported in the manuscript is regenerated from this tree; none is
+typed by hand.
+
+## Layout
 
 ```
-src/surfactantkit/          the toolkit (library + MCP server; see docs)
-tests/                      823-test suite   (pip install rdkit "mcp[cli]"; PYTHONPATH=src pytest -q)
-benchmark/paper3_groundzero/    GroundZero-50 bank: gold, graders, transcripts (incl. image-question charts)
-benchmark/paper3_hard50/        Hard50 bank: same layout
-benchmark/paper3_extra50/       ExtraHard-50 bank: same layout
-benchmark/harness/              MCP harness (augmented condition)
-session_pull/                   chat-UI transcripts, one .txt per question (+ .RAW captures for recaptured items)
-new extrahard set output-.../   ExtraHard unaugmented transcripts + grading JSON
-benchmark/results_master.py     assembles ALL reported cells from committed JSONs, with sha provenance
-benchmark/make_tables.py        generates manuscript tables + prose-section from RESULTS_MASTER.json
-paper3/                         manuscript draft (skeleton + rendered section), SI tables, gauntlet record
+src/surfactantkit/      toolkit library (CMC, mixed micellization, thermodynamics,
+                        model selection, adsorption, HLD, QSPR connectors) + MCP server
+tests/                  test suite (823 tests)
+benchmark/
+  groundzero_50/        Question bank 1: definitional/standard-practice items (GZ-01..50)
+  hard50/               Question bank 2: multi-step computation items (H-01..50)
+  extrahard50/          Question bank 3: adversarial items (X-01..50)
+  mcp_harness/          Model Context Protocol harness used for the augmented condition
+  transcripts/          raw model answers, one file per run/question
+  build_results.py      collects all graded cells into results/results.json (+ summary)
+  build_tables.py       renders manuscript tables and SI artifacts from that JSON
+results/                generated: results.json, tables.md/.tex, per_question_results.csv,
+                        REPRODUCIBILITY.md
 ```
 
-**Policy that shapes this repo:** every manuscript number is generated — no
-hand-typed values, report-only figures are refused and listed as gaps, and
-exclusions are declared data applied symmetrically across a bank/condition.
-Directory names with historical typos (`unagumented 18th sept`) are preserved
-verbatim because committed graders read those exact paths; provenance beats
-typo fixes here. The internal engineering history (audit briefs, agent
-run-logs, scratch) stays in the authors' private work repo; see
-`MANIFEST.md` for what was excluded, and `paper3/GAUNTLET.md` for the
-fresh-clone reproducibility record this artifact passed.
+Each bank directory contains its `question_bank*.txt` inputs, `gold_answers.json`
+(reference values, with `remediation_note` fields where golds were corrected),
+the grader scripts, and per-run grading JSONs.
 
-Citation: `CITATION.cff`. License: MIT (`LICENSE`).
+## Install and run
+
+```bash
+pip install rdkit "mcp[cli]"        # only external deps (see pyproject extras)
+PYTHONPATH=src python3 -m pytest -q  # 823 passed
+```
+
+Reproduce the reported numbers (deterministic given the committed transcripts):
+
+```bash
+python3 benchmark/groundzero_50/grade_unaugmented.py
+python3 benchmark/groundzero_50/grade_chat_runs.py
+python3 benchmark/hard50/grade_chat_runs.py
+PYTHONPATH=src python3 benchmark/extrahard50/grade_unaugmented.py
+PYTHONPATH=src python3 benchmark/extrahard50/grade_augmented_chat_runs.py
+python3 benchmark/build_results.py     # -> results/results.json, results_summary.md
+python3 benchmark/build_tables.py      # -> results/tables.md, tables.tex, per_question_results.csv
+```
+
+`per_question_results.csv` must match the committed copy byte for byte; see
+`results/REPRODUCIBILITY.md` for the recorded verification.
+
+## Data and provenance policy
+
+- Reference values are recomputed by the toolkit (`src/surfactantkit/`); gold
+  corrections made during audit are recorded as machine-readable
+  `remediation_note` fields on the affected entries, with cause.
+- Questions excluded from scoring (undeliverable multimodal inputs, retired
+  ambiguous wording, and items affected by a pre-fix question packet) are
+  declared in `build_results.py` as data, applied identically to every model
+  in the affected bank, with the denominator reported (n after exclusions).
+- Answers lost to capture defects (no recoverable record) are treated as
+  ungradable and excluded from denominators, not scored against the model;
+  cells covering fewer than the full bank are flagged `partial coverage`.
+- Every grading input carries a content hash in the provenance ledger
+  (`results/results_summary.md`).
+
+License: MIT. Citation: `CITATION.cff`.

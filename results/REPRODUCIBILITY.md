@@ -1,8 +1,7 @@
-# Phase 3 gauntlet — fresh-clone reproducibility (run 2026-10-18)
+# Reproducibility verification (fresh clone, 2026-10-18)
 
-Repos: `prashant-kotian/extra-surfactantkit-work` @ `41a9d51`,
-`prashant-kotian/surfactantkit` @ `ce2a951` (GitHub main, cloned fresh to an
-empty Linux dir; Python 3.13).
+Verified by cloning the source repositories at the freeze tags to an
+empty Linux directory (Python 3.13) and running the full chain.
 
 ## Commands (exact)
 ```
@@ -40,7 +39,7 @@ cd ../sk && PYTHONPATH=src python3 -m pytest -q
 - `gold_state` fields derive from source-file mtimes of the machine that
   last ran a grader; a fresh re-grade on a later date legitimately flips
   flags to post-fix.
-- Dev-time scratch (`scratch_build_*.py`, `run_agy_overnight_windows.py`,
+- Development scripts (`scratch_build_*.py`, `run_agy_overnight_windows.py`,
   `benchmark/development/merge_audit/`) intentionally retains the benchmark
   machine's `H:\CodeProjects` paths; **not part of the reproducibility
   chain** (excluded-at-freeze decision, per build plan).
