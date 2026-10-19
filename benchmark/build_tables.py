@@ -30,8 +30,8 @@ BANKNAME = {"groundzero": "GroundZero-50", "hard50": "Hard50 (new)", "extrahard"
 
 # Manual overlay — remove entries as the corresponding backend steps land.
 PENDING = {   # §1b RESOLVED at merge 4ccbd87 (full recaptures, re-graded 2026-10-18)
-    "X50|Gemini-CLI|aug": "pro-high tier (retired) — disclosed, final",
-    "X50|Gemini-CLI|unaug": "pro-high tier (retired) — disclosed, final",
+    "extrahard|Gemini-CLI|aug": "pro-high tier (retired) — disclosed, final",
+    "extrahard|Gemini-CLI|unaug": "pro-high tier (retired) — disclosed, final",
 }
 
 
