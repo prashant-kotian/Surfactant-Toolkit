@@ -1,4 +1,11 @@
 # Surfactant Toolkit — validation-tier audit
+
+> **Context.** Point-in-time audit record (2026-09-30), reproduced from the
+> project's development repository as provenance for the validation-tier
+> registry. Findings cite the codebase state at that date (counts, file names,
+> local paths); all P0/P1 process items are resolved in this artifact. The
+> tier table in §1.1 is machine-checked against the code registry by
+> `tests/test_validation_tiers.py`; edit it only together with the registry.
 **Date:** 2026-09-30 · **Scope:** `src/surfactantkit/`, repository tests and benchmark data only — no code, config, or doc files were modified; this file is the only addition.
 
 ---

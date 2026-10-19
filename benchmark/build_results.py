@@ -34,9 +34,9 @@ HERE = Path(__file__).resolve().parent            # <repo>/benchmark
 REPO = HERE.parent
 B = HERE
 
-GOLDS = {"GZ50": B / "groundzero_50/gold_answers.json",
-         "H50new": B / "hard50/gold_answers.json",
-         "X50": B / "extrahard50/gold_answers.json"}
+GOLDS = {"groundzero": B / "source_sets/groundzero/gold_answers.json",
+         "hard50": B / "source_sets/hard50/gold_answers.json",
+         "extrahard": B / "source_sets/extrahard/gold_answers.json"}
 GOLD_FIX_DATE = "2026-10-18"
 
 # ---------------------------------------------------------------- registry --
@@ -44,71 +44,71 @@ GOLD_FIX_DATE = "2026-10-18"
 #      B = {qid:bool} | A = {qid:{pass,fields:{name:bool}}}
 CELLS: list[tuple[str, dict]] = [
     # ---- GroundZero 50 -----------------------------------------------------
-    ("GZ50", dict(model="Claude", cond="aug", src=B / "groundzero_50/claude_augmented_grade_results.json",
+    ("groundzero", dict(model="Claude", cond="aug", src=B / "source_sets/groundzero/claude_augmented_grade_results.json",
                   fmt="V", harness="mcp")),
-    ("GZ50", dict(model="ChatGPT", cond="aug", src=B / "groundzero_50/chatgpt_augmented_grade_results.json",
+    ("groundzero", dict(model="ChatGPT", cond="aug", src=B / "source_sets/groundzero/chatgpt_augmented_grade_results.json",
                   fmt="V", harness="mcp")),
-    ("GZ50", dict(model="Qwen", cond="unaug", src=B / "groundzero_50/qwen_unaugmented_grade_results.json",
+    ("groundzero", dict(model="Qwen", cond="unaug", src=B / "source_sets/groundzero/qwen_unaugmented_grade_results.json",
                   fmt="V", harness="mcp")),
-    ("GZ50", dict(model="DeepSeek", cond="unaug", src=B / "groundzero_50/deepseek_unaugmented_grade_results.json",
+    ("groundzero", dict(model="DeepSeek", cond="unaug", src=B / "source_sets/groundzero/deepseek_unaugmented_grade_results.json",
                   fmt="V", harness="mcp")),
-    ("GZ50", dict(model="*", cond="unaug", src=B / "groundzero_50/unaugmented_2026-09-21/grade_results.json",
+    ("groundzero", dict(model="*", cond="unaug", src=B / "source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
                   fmt="V", harness="mcp", multi=True,
                   only=["chatgpt", "gemini", "claude"],
                   gap_note="Claude: only GZ-01..10 recoverable from the only Sept-18 "
                            "transcript found on the benchmark machine (file ends "
                            "'END OF SOLUTIONS' after GZ-10); GZ-11..50 genuinely absent, "
                            "scored as a 10-question partial, not a 50-question cell")),
-    ("GZ50", dict(model="Gemini-CLI", cond="unaug", src=B / "groundzero_50/antigravity_unaugmented_grade_results.json",
+    ("groundzero", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/groundzero/antigravity_unaugmented_grade_results.json",
                   fmt="V", harness="agy-cli",
                   gap_note="graded against pre-fix gold (2026-09-19 run)")),
-    ("GZ50", dict(model="Gemini-CLI", cond="aug", src=B / "groundzero_50/antigravity_augmented_grade_results.json",
+    ("groundzero", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/groundzero/antigravity_augmented_grade_results.json",
                   fmt="V", harness="agy-cli",
                   gap_note="graded against pre-fix gold (2026-09-19 run)")),
-    ("GZ50", dict(model="DeepSeek", cond="aug", src=B / "groundzero_50/deepseek_augmented_grade_results.json",
+    ("groundzero", dict(model="DeepSeek", cond="aug", src=B / "source_sets/groundzero/deepseek_augmented_grade_results.json",
                   fmt="V", harness="mcp", si_only=True)),
     # ---- Hard50 (new) ------------------------------------------------------
-    ("H50new", dict(model="Claude", cond="aug", src=B / "hard50/claude_augmented_grade_results.json",
+    ("hard50", dict(model="Claude", cond="aug", src=B / "source_sets/hard50/claude_augmented_grade_results.json",
                     fmt="V", harness="mcp")),
-    ("H50new", dict(model="ChatGPT", cond="aug", src=B / "hard50/chatgpt_augmented_grade_results.json",
+    ("hard50", dict(model="ChatGPT", cond="aug", src=B / "source_sets/hard50/chatgpt_augmented_grade_results.json",
                     fmt="V", harness="mcp")),
-    ("H50new", dict(model="Claude", cond="unaug", src=B / "hard50/claude_unaugmented_grade_results.json", pick="results",
+    ("hard50", dict(model="Claude", cond="unaug", src=B / "source_sets/hard50/claude_unaugmented_grade_results.json", pick="results",
                     fmt="OK", harness="mcp",
                     gap_note="graded against pre-fix gold (H-04/H-26 flips not applied)")),
-    ("H50new", dict(model="*", cond="unaug", src=B / "hard50/unaugmented_grade_stats.json", pick="baseline",
+    ("hard50", dict(model="*", cond="unaug", src=B / "source_sets/hard50/unaugmented_grade_stats.json", pick="baseline",
                     fmt="P", harness="cli", multi=True, count_only=True)),
-    ("H50new", dict(model="Gemini-CLI", cond="unaug", src=B / "hard50/antigravity_unaugmented_grade_results.json",
+    ("hard50", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/hard50/antigravity_unaugmented_grade_results.json",
                     fmt="V", harness="agy-cli")),
-    ("H50new", dict(model="Gemini-CLI", cond="aug", src=B / "hard50/antigravity_augmented_grade_results.json",
+    ("hard50", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/hard50/antigravity_augmented_grade_results.json",
                     fmt="V", harness="agy-cli")),
-    ("H50new", dict(model="DeepSeek", cond="aug", src=B / "hard50/deepseek_augmented_grade_results.json",
+    ("hard50", dict(model="DeepSeek", cond="aug", src=B / "source_sets/hard50/deepseek_augmented_grade_results.json",
                     fmt="OK", harness="mcp", si_only=True)),
     # ---- Extra50 ------------------------------------------------------------
-    ("X50", dict(model="*", cond="unaug", src=REPO / "benchmark/transcripts/extrahard50_unaugmented/grade_results.json",
+    ("extrahard", dict(model="*", cond="unaug", src=REPO / "benchmark/transcripts/extrahard50_unaugmented/grade_results.json",
                  fmt="P", harness="mcp", multi=True)),
-    ("X50", dict(model="Claude", cond="aug", src=B / "extrahard50/augmented_runs_2026-10-12/grade_results_augmented.json", pick="Claude",
+    ("extrahard", dict(model="Claude", cond="aug", src=B / "source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json", pick="Claude",
                  fmt="P", harness="mcp")),
-    ("X50", dict(model="DeepSeek", cond="aug", src=B / "extrahard50/augmented_runs_2026-10-12/grade_results_augmented.json", pick="DeepSeek",
+    ("extrahard", dict(model="DeepSeek", cond="aug", src=B / "source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json", pick="DeepSeek",
                  fmt="P", harness="mcp")),
-    ("X50", dict(model="ChatGPT", cond="aug", src=B / "extrahard50/augmented_runs_2026-10-12/grade_results_chatgpt.json",
+    ("extrahard", dict(model="ChatGPT", cond="aug", src=B / "source_sets/extrahard/augmented_runs_2026-10-12/grade_results_chatgpt.json",
                  fmt="P", harness="mcp")),
-    ("X50", dict(model="Gemini-CLI", cond="unaug", src=B / "extrahard50/antigravity_unaugmented_grade_results.json",
+    ("extrahard", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/extrahard/antigravity_unaugmented_grade_results.json",
                  fmt="A", harness="agy-cli")),
-    ("X50", dict(model="Gemini-CLI", cond="aug", src=B / "extrahard50/antigravity_augmented_grade_results.json",
+    ("extrahard", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/extrahard/antigravity_augmented_grade_results.json",
                  fmt="A", harness="agy-cli")),
 ]
 
 EXCLUSIONS: dict[str, list[tuple[list[str], list[str], str]]] = {
-    "GZ50": [
+    "groundzero": [
         (["*"], ["GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40"],
          "question requires image/chart input the harnesses cannot deliver"),
         (["*"], ["GZ-26"], "ambiguous question wording; retired 2026-10-18"),
     ],
-    "H50new": [
+    "hard50": [
         (["*"], ["H-36", "H-37", "H-38"],
          "image/figure-based questions excluded from all cells"),
     ],
-    "X50": [
+    "extrahard": [
         (["unaug", "aug:Gemini-CLI"], ["X-19"],
          "question body carried a kappa*a typo (1.45 vs 14.5) at run time for "
          "the pre-fix packets; fixed in-bank 2026-10-16, later-run cells keep it"),
@@ -256,7 +256,7 @@ def main() -> int:
     # is genuinely partial (GZ-01..10 only, ends "END OF SOLUTIONS") -- now a
     # real 10-question cell via the CELLS entry above, not a gap.
 
-    gaps.append(dict(bank="GZ50", model="Gemini", cond="unaug",
+    gaps.append(dict(bank="groundzero", model="Gemini", cond="unaug",
                      reason="repo transcripts for the Sept-21 Gemini direct run: 11 no-content "
                             "records (ungradeable, excluded) + 8 NEEDS_JUDGMENT scored as "
                             "conservative FAIL inside n=33. The 200Q report's 22/50 came from "
@@ -273,7 +273,7 @@ def main() -> int:
     )
     (HERE / "../results/results.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
 
-    md = ["# RESULTS_MASTER (generated - do not hand-edit; rerun benchmark/build_results.py)", ""]
+    md = ["# Grading ledger, per source set (generated - do not hand-edit; rerun benchmark/build_results.py). Headline table: results/TABLE200.md", ""]
     for cond in ("unaug", "aug"):
         md += [f"## {cond}", "",
                "| bank | model | passed/n | % | gold | count-only | source |",

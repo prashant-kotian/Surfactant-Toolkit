@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-19T10:02Z",
+ "generated": "2026-10-19T10:29Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "4ab928f1d14e-dirty",
+ "toolkit_state": "eb865cccaeac-dirty",
  "gold_sha": {
-  "GZ50": "17cd0b885755",
-  "H50new": "f40d50ad8e78",
-  "X50": "65523307b724"
+  "groundzero": "17cd0b885755",
+  "hard50": "f40d50ad8e78",
+  "extrahard": "65523307b724"
  },
  "gold_fix_date": "2026-10-18",
  "cells": {
-  "GZ50|Claude|aug": {
+  "groundzero|Claude|aug": {
    "n": 43,
    "passed": 36,
    "pct": 83.7,
@@ -69,7 +69,7 @@
     "GZ-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/claude_augmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/claude_augmented_grade_results.json",
    "source_sha": "0e391e177120",
    "partial": false,
    "gold_state": "post-fix",
@@ -77,7 +77,7 @@
    "si_only": false,
    "note": null
   },
-  "GZ50|ChatGPT|aug": {
+  "groundzero|ChatGPT|aug": {
    "n": 43,
    "passed": 31,
    "pct": 72.1,
@@ -137,7 +137,7 @@
     "GZ-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/chatgpt_augmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/chatgpt_augmented_grade_results.json",
    "source_sha": "acecfd25766d",
    "partial": false,
    "gold_state": "post-fix",
@@ -145,7 +145,7 @@
    "si_only": false,
    "note": null
   },
-  "GZ50|Qwen|unaug": {
+  "groundzero|Qwen|unaug": {
    "n": 43,
    "passed": 27,
    "pct": 62.8,
@@ -205,7 +205,7 @@
     "GZ-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/qwen_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/qwen_unaugmented_grade_results.json",
    "source_sha": "5b42285f44a8",
    "partial": false,
    "gold_state": "post-fix",
@@ -213,7 +213,7 @@
    "si_only": false,
    "note": null
   },
-  "GZ50|DeepSeek|unaug": {
+  "groundzero|DeepSeek|unaug": {
    "n": 42,
    "passed": 29,
    "pct": 69.0,
@@ -272,7 +272,7 @@
     "GZ-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/deepseek_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json",
    "source_sha": "f28606937ad9",
    "partial": true,
    "gold_state": "post-fix",
@@ -280,7 +280,7 @@
    "si_only": false,
    "note": null
   },
-  "GZ50|ChatGPT|unaug": {
+  "groundzero|ChatGPT|unaug": {
    "n": 43,
    "passed": 22,
    "pct": 51.2,
@@ -340,15 +340,15 @@
     "GZ-50": false
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/unaugmented_2026-09-21/grade_results.json",
-   "source_sha": "eab84341123c",
+   "source": "benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
+   "source_sha": "54beb1e5502c",
    "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
    "note": "Claude: only GZ-01..10 recoverable from the only Sept-18 transcript found on the benchmark machine (file ends 'END OF SOLUTIONS' after GZ-10); GZ-11..50 genuinely absent, scored as a 10-question partial, not a 50-question cell"
   },
-  "GZ50|Gemini|unaug": {
+  "groundzero|Gemini|unaug": {
    "n": 33,
    "passed": 10,
    "pct": 30.3,
@@ -398,15 +398,15 @@
     "GZ-49": false
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/unaugmented_2026-09-21/grade_results.json",
-   "source_sha": "eab84341123c",
+   "source": "benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
+   "source_sha": "54beb1e5502c",
    "partial": true,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
    "note": "Claude: only GZ-01..10 recoverable from the only Sept-18 transcript found on the benchmark machine (file ends 'END OF SOLUTIONS' after GZ-10); GZ-11..50 genuinely absent, scored as a 10-question partial, not a 50-question cell"
   },
-  "GZ50|Claude|unaug": {
+  "groundzero|Claude|unaug": {
    "n": 10,
    "passed": 5,
    "pct": 50.0,
@@ -433,15 +433,15 @@
     "GZ-10": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/unaugmented_2026-09-21/grade_results.json",
-   "source_sha": "eab84341123c",
+   "source": "benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
+   "source_sha": "54beb1e5502c",
    "partial": true,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
    "note": "Claude: only GZ-01..10 recoverable from the only Sept-18 transcript found on the benchmark machine (file ends 'END OF SOLUTIONS' after GZ-10); GZ-11..50 genuinely absent, scored as a 10-question partial, not a 50-question cell"
   },
-  "GZ50|Gemini-CLI|unaug": {
+  "groundzero|Gemini-CLI|unaug": {
    "n": 43,
    "passed": 42,
    "pct": 97.7,
@@ -501,7 +501,7 @@
     "GZ-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/groundzero_50/antigravity_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/antigravity_unaugmented_grade_results.json",
    "source_sha": "3637904c8a02",
    "partial": false,
    "gold_state": "post-fix",
@@ -509,7 +509,7 @@
    "si_only": false,
    "note": "graded against pre-fix gold (2026-09-19 run)"
   },
-  "GZ50|Gemini-CLI|aug": {
+  "groundzero|Gemini-CLI|aug": {
    "n": 43,
    "passed": 41,
    "pct": 95.3,
@@ -569,7 +569,7 @@
     "GZ-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/groundzero_50/antigravity_augmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/antigravity_augmented_grade_results.json",
    "source_sha": "c08a4aae10a4",
    "partial": false,
    "gold_state": "post-fix",
@@ -577,7 +577,7 @@
    "si_only": false,
    "note": "graded against pre-fix gold (2026-09-19 run)"
   },
-  "GZ50|DeepSeek|aug": {
+  "groundzero|DeepSeek|aug": {
    "n": 40,
    "passed": 32,
    "pct": 80.0,
@@ -634,7 +634,7 @@
     "GZ-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/groundzero_50/deepseek_augmented_grade_results.json",
+   "source": "benchmark/source_sets/groundzero/deepseek_augmented_grade_results.json",
    "source_sha": "8537cdd2b24d",
    "partial": true,
    "gold_state": "post-fix",
@@ -642,7 +642,7 @@
    "si_only": true,
    "note": null
   },
-  "H50new|Claude|aug": {
+  "hard50|Claude|aug": {
    "n": 47,
    "passed": 45,
    "pct": 95.7,
@@ -702,7 +702,7 @@
     "H-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/hard50/claude_augmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/claude_augmented_grade_results.json",
    "source_sha": "d86f784506b9",
    "partial": false,
    "gold_state": "post-fix",
@@ -710,7 +710,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|ChatGPT|aug": {
+  "hard50|ChatGPT|aug": {
    "n": 47,
    "passed": 44,
    "pct": 93.6,
@@ -770,7 +770,7 @@
     "H-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/hard50/chatgpt_augmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/chatgpt_augmented_grade_results.json",
    "source_sha": "4e6f78c94eb5",
    "partial": false,
    "gold_state": "post-fix",
@@ -778,7 +778,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|Claude|unaug": {
+  "hard50|Claude|unaug": {
    "n": 47,
    "passed": 33,
    "pct": 70.2,
@@ -838,7 +838,7 @@
     "H-50": false
    },
    "harness": "mcp",
-   "source": "benchmark/hard50/claude_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/claude_unaugmented_grade_results.json",
    "source_sha": "42c45e2da3cd",
    "partial": false,
    "gold_state": "post-fix",
@@ -846,7 +846,7 @@
    "si_only": false,
    "note": "graded against pre-fix gold (H-04/H-26 flips not applied)"
   },
-  "H50new|ChatGPT|unaug": {
+  "hard50|ChatGPT|unaug": {
    "n": 47,
    "passed": 34,
    "pct": 72.3,
@@ -906,7 +906,7 @@
     "H-50": false
    },
    "harness": "cli",
-   "source": "benchmark/hard50/unaugmented_grade_stats.json",
+   "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "88591d6d66b4",
    "partial": false,
    "gold_state": "post-fix",
@@ -914,7 +914,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|DeepSeek|unaug": {
+  "hard50|DeepSeek|unaug": {
    "n": 47,
    "passed": 31,
    "pct": 66.0,
@@ -974,7 +974,7 @@
     "H-50": false
    },
    "harness": "cli",
-   "source": "benchmark/hard50/unaugmented_grade_stats.json",
+   "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "88591d6d66b4",
    "partial": false,
    "gold_state": "post-fix",
@@ -982,7 +982,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|Gemini|unaug": {
+  "hard50|Gemini|unaug": {
    "n": 47,
    "passed": 29,
    "pct": 61.7,
@@ -1042,7 +1042,7 @@
     "H-50": true
    },
    "harness": "cli",
-   "source": "benchmark/hard50/unaugmented_grade_stats.json",
+   "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "88591d6d66b4",
    "partial": false,
    "gold_state": "post-fix",
@@ -1050,7 +1050,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|Qwen|unaug": {
+  "hard50|Qwen|unaug": {
    "n": 47,
    "passed": 30,
    "pct": 63.8,
@@ -1110,7 +1110,7 @@
     "H-50": false
    },
    "harness": "cli",
-   "source": "benchmark/hard50/unaugmented_grade_stats.json",
+   "source": "benchmark/source_sets/hard50/unaugmented_grade_stats.json",
    "source_sha": "88591d6d66b4",
    "partial": false,
    "gold_state": "post-fix",
@@ -1118,7 +1118,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|Gemini-CLI|unaug": {
+  "hard50|Gemini-CLI|unaug": {
    "n": 47,
    "passed": 46,
    "pct": 97.9,
@@ -1178,7 +1178,7 @@
     "H-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/hard50/antigravity_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/antigravity_unaugmented_grade_results.json",
    "source_sha": "198dda619bdd",
    "partial": false,
    "gold_state": "post-fix",
@@ -1186,7 +1186,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|Gemini-CLI|aug": {
+  "hard50|Gemini-CLI|aug": {
    "n": 47,
    "passed": 47,
    "pct": 100.0,
@@ -1246,7 +1246,7 @@
     "H-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/hard50/antigravity_augmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/antigravity_augmented_grade_results.json",
    "source_sha": "09e72354d484",
    "partial": false,
    "gold_state": "post-fix",
@@ -1254,7 +1254,7 @@
    "si_only": false,
    "note": null
   },
-  "H50new|DeepSeek|aug": {
+  "hard50|DeepSeek|aug": {
    "n": 47,
    "passed": 44,
    "pct": 93.6,
@@ -1314,7 +1314,7 @@
     "H-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/hard50/deepseek_augmented_grade_results.json",
+   "source": "benchmark/source_sets/hard50/deepseek_augmented_grade_results.json",
    "source_sha": "36041a918ab4",
    "partial": false,
    "gold_state": "post-fix",
@@ -1322,7 +1322,7 @@
    "si_only": true,
    "note": null
   },
-  "X50|ChatGPT|unaug": {
+  "extrahard|ChatGPT|unaug": {
    "n": 49,
    "passed": 32,
    "pct": 65.3,
@@ -1390,7 +1390,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Claude|unaug": {
+  "extrahard|Claude|unaug": {
    "n": 49,
    "passed": 33,
    "pct": 67.3,
@@ -1458,7 +1458,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|DeepSeek|unaug": {
+  "extrahard|DeepSeek|unaug": {
    "n": 49,
    "passed": 28,
    "pct": 57.1,
@@ -1526,7 +1526,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Qwen|unaug": {
+  "extrahard|Qwen|unaug": {
    "n": 49,
    "passed": 21,
    "pct": 42.9,
@@ -1594,7 +1594,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Gemini|unaug": {
+  "extrahard|Gemini|unaug": {
    "n": 49,
    "passed": 27,
    "pct": 55.1,
@@ -1662,7 +1662,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Claude|aug": {
+  "extrahard|Claude|aug": {
    "n": 50,
    "passed": 50,
    "pct": 100.0,
@@ -1721,7 +1721,7 @@
     "X-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/extrahard50/augmented_runs_2026-10-12/grade_results_augmented.json",
+   "source": "benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json",
    "source_sha": "f834e22a4171",
    "partial": false,
    "gold_state": "post-fix",
@@ -1729,7 +1729,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|DeepSeek|aug": {
+  "extrahard|DeepSeek|aug": {
    "n": 50,
    "passed": 48,
    "pct": 96.0,
@@ -1788,7 +1788,7 @@
     "X-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/extrahard50/augmented_runs_2026-10-12/grade_results_augmented.json",
+   "source": "benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json",
    "source_sha": "f834e22a4171",
    "partial": false,
    "gold_state": "post-fix",
@@ -1796,7 +1796,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|ChatGPT|aug": {
+  "extrahard|ChatGPT|aug": {
    "n": 50,
    "passed": 50,
    "pct": 100.0,
@@ -1855,7 +1855,7 @@
     "X-50": true
    },
    "harness": "mcp",
-   "source": "benchmark/extrahard50/augmented_runs_2026-10-12/grade_results_chatgpt.json",
+   "source": "benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_chatgpt.json",
    "source_sha": "009e8d7f512c",
    "partial": false,
    "gold_state": "post-fix",
@@ -1863,7 +1863,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Gemini-CLI|unaug": {
+  "extrahard|Gemini-CLI|unaug": {
    "n": 49,
    "passed": 25,
    "pct": 51.0,
@@ -1923,7 +1923,7 @@
     "X-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/extrahard50/antigravity_unaugmented_grade_results.json",
+   "source": "benchmark/source_sets/extrahard/antigravity_unaugmented_grade_results.json",
    "source_sha": "48fb70a0410c",
    "partial": false,
    "gold_state": "post-fix",
@@ -1931,7 +1931,7 @@
    "si_only": false,
    "note": null
   },
-  "X50|Gemini-CLI|aug": {
+  "extrahard|Gemini-CLI|aug": {
    "n": 49,
    "passed": 49,
    "pct": 100.0,
@@ -1991,7 +1991,7 @@
     "X-50": true
    },
    "harness": "agy-cli",
-   "source": "benchmark/extrahard50/antigravity_augmented_grade_results.json",
+   "source": "benchmark/source_sets/extrahard/antigravity_augmented_grade_results.json",
    "source_sha": "056d793768c9",
    "partial": false,
    "gold_state": "post-fix",
@@ -2002,7 +2002,7 @@
  },
  "gaps": [
   {
-   "bank": "GZ50",
+   "bank": "groundzero",
    "model": "Gemini",
    "cond": "unaug",
    "reason": "repo transcripts for the Sept-21 Gemini direct run: 11 no-content records (ungradeable, excluded) + 8 NEEDS_JUDGMENT scored as conservative FAIL inside n=33. The 200Q report's 22/50 came from a fuller backend grading pass; transcript confirmed absent on benchmark machine (RUNS_REPORT 2026-10-18 search)."

@@ -2,11 +2,11 @@
 """build_tables.py — Phase 2: generate every manuscript results artifact from
 ../results/results.json. Numbers are NEVER hand-typed: rerun after each re-grade.
 
-Outputs (paper3/):
+Outputs (results/):
   tables.md / .tex   main tables + exclusion + provenance appendix
   per_question_results.csv          per-cell per-question pass matrix (SI)
 
-Flag policy (PENDING = manual overlay; rest auto-derived from master):
+Flag policy (PENDING = manual overlay; rest auto-derived from results.json):
   * si_only / count_only / PRE-FIX  -> automatic footnote per cell
   * entries in PENDING              -> §1b recovery, agy tier, known gaps
 """
@@ -25,8 +25,8 @@ CELLS: dict = MASTER["cells"]
 
 MODELS = ["Claude", "ChatGPT", "DeepSeek", "Gemini", "Qwen", "Gemini-CLI"]
 DISPLAY = {"Gemini-CLI": "Antigravity CLI", "Gemini": "Gemini (web)"}
-BANKS = ["GZ50", "H50new", "X50"]
-BANKNAME = {"GZ50": "GroundZero-50", "H50new": "Hard50 (new)", "X50": "ExtraHard-50"}
+BANKS = ["groundzero", "hard50", "extrahard"]
+BANKNAME = {"groundzero": "GroundZero-50", "hard50": "Hard50 (new)", "extrahard": "ExtraHard-50"}
 
 # Manual overlay — remove entries as the corresponding backend steps land.
 PENDING = {   # §1b RESOLVED at merge 4ccbd87 (full recaptures, re-graded 2026-10-18)
@@ -57,7 +57,7 @@ def cell(bank: str, model: str, cond: str) -> dict | None:
 
 def build_table(cond: str) -> tuple[list[str], list[str]]:
     """-> (header, rows) with one row per (bank, model); '-' when no cell."""
-    hdr = ["Bank", "Model", "passed", "n", "%", "flags"]
+    hdr = ["Source set", "Model", "passed", "n", "%", "flags"]
     rows = []
     for bank in BANKS:
         for m in MODELS:
@@ -71,7 +71,7 @@ def build_table(cond: str) -> tuple[list[str], list[str]]:
 
 
 def build_delta() -> tuple[list[str], list[str]]:
-    hdr = ["Bank", "Model", "unaug %", "aug %", "Δ pts", "comparability"]
+    hdr = ["Source set", "Model", "unaug %", "aug %", "Δ pts", "comparability"]
     rows = []
     for bank in BANKS:
         for m in MODELS:
@@ -92,7 +92,7 @@ def build_delta() -> tuple[list[str], list[str]]:
 
 
 def build_exclusions() -> tuple[list[str], list[str]]:
-    hdr = ["Bank", "n bank", "n cells", "excluded", "reason"]
+    hdr = ["Source set", "n", "n cells", "excluded", "reason"]
     rows = []
     for bank in BANKS:
         exs, reasons = set(), set()
@@ -175,7 +175,10 @@ def main() -> int:
     OUT.mkdir(exist_ok=True)
     t = render()
     (OUT / "tables.md").write_text(
-        "# Results tables (generated — rerun benchmark/build_tables.py)\n\n"
+        "# Per-source-set results (internal diagnostic view)\n\n"
+        "> These are the authoring groups behind the single SurfBench-200 benchmark;\n"
+        "> the headline table for reporting is `results/TABLE200.md`. (generated — rerun\n"
+        "> benchmark/build_tables.py)\n\n"
         "## Unaugmented\n\n" + t["tbl:unaug"] +
         "\n\n## Augmented\n\n" + t["tbl:aug"] +
         "\n\n## Augmentation lift\n\n" + t["tbl:delta"] +

@@ -1,0 +1,1433 @@
+{
+ "benchmark": "SurfBench-200",
+ "n": 200,
+ "excluded_from_scoring": {
+  "groundzero": {
+   "image_input": [
+    "GZ-15",
+    "GZ-36",
+    "GZ-37",
+    "GZ-38",
+    "GZ-39",
+    "GZ-40"
+   ],
+   "retired_ambiguous": [
+    "GZ-26"
+   ]
+  },
+  "hard50": {
+   "image_input": [
+    "H-36",
+    "H-37",
+    "H-38"
+   ]
+  },
+  "extrahard": {
+   "pre_fix_packet_cells": [
+    "X-19"
+   ]
+  }
+ },
+ "items": [
+  {
+   "sb": "SB-001",
+   "alias": "GZ-01",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-002",
+   "alias": "GZ-02",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-003",
+   "alias": "GZ-03",
+   "source_set": "groundzero",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-004",
+   "alias": "GZ-04",
+   "source_set": "groundzero",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-005",
+   "alias": "GZ-05",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "micelle_thermodynamics"
+  },
+  {
+   "sb": "SB-006",
+   "alias": "GZ-06",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-007",
+   "alias": "GZ-07",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-008",
+   "alias": "GZ-08",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-009",
+   "alias": "GZ-09",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "surface_wetting"
+  },
+  {
+   "sb": "SB-010",
+   "alias": "GZ-10",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-011",
+   "alias": "GZ-11",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-012",
+   "alias": "GZ-12",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-013",
+   "alias": "GZ-13",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-014",
+   "alias": "GZ-14",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-015",
+   "alias": "GZ-15",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-016",
+   "alias": "GZ-16",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-017",
+   "alias": "GZ-17",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-018",
+   "alias": "GZ-18",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-019",
+   "alias": "GZ-19",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-020",
+   "alias": "GZ-20",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-021",
+   "alias": "GZ-21",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-022",
+   "alias": "GZ-22",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-023",
+   "alias": "GZ-23",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-024",
+   "alias": "GZ-24",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-025",
+   "alias": "GZ-25",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-026",
+   "alias": "GZ-26",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-027",
+   "alias": "GZ-27",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-028",
+   "alias": "GZ-28",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "micelle_thermodynamics"
+  },
+  {
+   "sb": "SB-029",
+   "alias": "GZ-29",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-030",
+   "alias": "GZ-30",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-031",
+   "alias": "GZ-31",
+   "source_set": "groundzero",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-032",
+   "alias": "GZ-32",
+   "source_set": "groundzero",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-033",
+   "alias": "GZ-33",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-034",
+   "alias": "GZ-34",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-035",
+   "alias": "GZ-35",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-036",
+   "alias": "GZ-36",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "micelle_thermodynamics"
+  },
+  {
+   "sb": "SB-037",
+   "alias": "GZ-37",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-038",
+   "alias": "GZ-38",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-039",
+   "alias": "GZ-39",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-040",
+   "alias": "GZ-40",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-041",
+   "alias": "GZ-41",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-042",
+   "alias": "GZ-42",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "solubilization"
+  },
+  {
+   "sb": "SB-043",
+   "alias": "GZ-43",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-044",
+   "alias": "GZ-44",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-045",
+   "alias": "GZ-45",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-046",
+   "alias": "GZ-46",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-047",
+   "alias": "GZ-47",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-048",
+   "alias": "GZ-48",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-049",
+   "alias": "GZ-49",
+   "source_set": "groundzero",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-050",
+   "alias": "GZ-50",
+   "source_set": "groundzero",
+   "type": "analytical",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-051",
+   "alias": "H-01",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-052",
+   "alias": "H-02",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-053",
+   "alias": "H-03",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-054",
+   "alias": "H-04",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-055",
+   "alias": "H-05",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-056",
+   "alias": "H-06",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-057",
+   "alias": "H-07",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-058",
+   "alias": "H-08",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-059",
+   "alias": "H-09",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-060",
+   "alias": "H-10",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-061",
+   "alias": "H-11",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-062",
+   "alias": "H-12",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-063",
+   "alias": "H-13",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-064",
+   "alias": "H-14",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-065",
+   "alias": "H-15",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-066",
+   "alias": "H-16",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-067",
+   "alias": "H-17",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "solubilization"
+  },
+  {
+   "sb": "SB-068",
+   "alias": "H-18",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-069",
+   "alias": "H-19",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-070",
+   "alias": "H-20",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-071",
+   "alias": "H-21",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-072",
+   "alias": "H-22",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-073",
+   "alias": "H-23",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_thermodynamics"
+  },
+  {
+   "sb": "SB-074",
+   "alias": "H-24",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-075",
+   "alias": "H-25",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-076",
+   "alias": "H-26",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-077",
+   "alias": "H-27",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-078",
+   "alias": "H-28",
+   "source_set": "hard50",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-079",
+   "alias": "H-29",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-080",
+   "alias": "H-30",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-081",
+   "alias": "H-31",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-082",
+   "alias": "H-32",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-083",
+   "alias": "H-33",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "rheology"
+  },
+  {
+   "sb": "SB-084",
+   "alias": "H-34",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-085",
+   "alias": "H-35",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-086",
+   "alias": "H-36",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_thermodynamics"
+  },
+  {
+   "sb": "SB-087",
+   "alias": "H-37",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-088",
+   "alias": "H-38",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-089",
+   "alias": "H-39",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-090",
+   "alias": "H-40",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-091",
+   "alias": "H-41",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-092",
+   "alias": "H-42",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-093",
+   "alias": "H-43",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-094",
+   "alias": "H-44",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-095",
+   "alias": "H-45",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "analysis_synthesis"
+  },
+  {
+   "sb": "SB-096",
+   "alias": "H-46",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-097",
+   "alias": "H-47",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-098",
+   "alias": "H-48",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-099",
+   "alias": "H-49",
+   "source_set": "hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-100",
+   "alias": "H-50",
+   "source_set": "hard50",
+   "type": "analytical",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-101",
+   "alias": "X-01",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-102",
+   "alias": "X-02",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-103",
+   "alias": "X-03",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-104",
+   "alias": "X-04",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-105",
+   "alias": "X-05",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-106",
+   "alias": "X-06",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-107",
+   "alias": "X-07",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-108",
+   "alias": "X-08",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-109",
+   "alias": "X-09",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-110",
+   "alias": "X-10",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-111",
+   "alias": "X-11",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-112",
+   "alias": "X-12",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-113",
+   "alias": "X-13",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-114",
+   "alias": "X-14",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-115",
+   "alias": "X-15",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-116",
+   "alias": "X-16",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-117",
+   "alias": "X-17",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-118",
+   "alias": "X-18",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-119",
+   "alias": "X-19",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-120",
+   "alias": "X-20",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-121",
+   "alias": "X-21",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-122",
+   "alias": "X-22",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-123",
+   "alias": "X-23",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-124",
+   "alias": "X-24",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-125",
+   "alias": "X-25",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-126",
+   "alias": "X-26",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "data_fitting"
+  },
+  {
+   "sb": "SB-127",
+   "alias": "X-27",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-128",
+   "alias": "X-28",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "data_fitting"
+  },
+  {
+   "sb": "SB-129",
+   "alias": "X-29",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-130",
+   "alias": "X-30",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-131",
+   "alias": "X-31",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-132",
+   "alias": "X-32",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-133",
+   "alias": "X-33",
+   "source_set": "extrahard",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-134",
+   "alias": "X-34",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-135",
+   "alias": "X-35",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-136",
+   "alias": "X-36",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-137",
+   "alias": "X-37",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-138",
+   "alias": "X-38",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-139",
+   "alias": "X-39",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-140",
+   "alias": "X-40",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-141",
+   "alias": "X-41",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-142",
+   "alias": "X-42",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-143",
+   "alias": "X-43",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-144",
+   "alias": "X-44",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "foaming_films"
+  },
+  {
+   "sb": "SB-145",
+   "alias": "X-45",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-146",
+   "alias": "X-46",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-147",
+   "alias": "X-47",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-148",
+   "alias": "X-48",
+   "source_set": "extrahard",
+   "type": "analytical",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-149",
+   "alias": "X-49",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-150",
+   "alias": "X-50",
+   "source_set": "extrahard",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-151",
+   "alias": "Q01",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-152",
+   "alias": "Q02",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-153",
+   "alias": "Q03",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-154",
+   "alias": "Q04",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-155",
+   "alias": "Q05",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-156",
+   "alias": "Q06",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-157",
+   "alias": "Q07",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-158",
+   "alias": "Q08",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-159",
+   "alias": "Q09",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-160",
+   "alias": "Q10",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-161",
+   "alias": "Q11",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-162",
+   "alias": "Q12",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-163",
+   "alias": "Q13",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-164",
+   "alias": "Q14",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-165",
+   "alias": "Q15",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-166",
+   "alias": "Q16",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-167",
+   "alias": "Q17",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-168",
+   "alias": "Q18",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-169",
+   "alias": "Q19",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "identification_terminology"
+  },
+  {
+   "sb": "SB-170",
+   "alias": "Q20",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-171",
+   "alias": "Q21",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-172",
+   "alias": "Q22",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-173",
+   "alias": "Q23",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "packing_morphology"
+  },
+  {
+   "sb": "SB-174",
+   "alias": "Q24",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-175",
+   "alias": "Q25",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-176",
+   "alias": "Q26",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-177",
+   "alias": "Q27",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-178",
+   "alias": "Q28",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-179",
+   "alias": "Q29",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-180",
+   "alias": "Q30",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "colloid_electrostatics"
+  },
+  {
+   "sb": "SB-181",
+   "alias": "Q31",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-182",
+   "alias": "Q32",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-183",
+   "alias": "Q33",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-184",
+   "alias": "Q34",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-185",
+   "alias": "Q35",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "solubilization"
+  },
+  {
+   "sb": "SB-186",
+   "alias": "Q36",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-187",
+   "alias": "Q37",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "mixed_micelles"
+  },
+  {
+   "sb": "SB-188",
+   "alias": "Q38",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-189",
+   "alias": "Q39",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-190",
+   "alias": "Q40",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "micelle_structure"
+  },
+  {
+   "sb": "SB-191",
+   "alias": "Q41",
+   "source_set": "orig_hard50",
+   "type": "conceptual",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-192",
+   "alias": "Q42",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-193",
+   "alias": "Q43",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "cmc_measurement"
+  },
+  {
+   "sb": "SB-194",
+   "alias": "Q44",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "data_fitting"
+  },
+  {
+   "sb": "SB-195",
+   "alias": "Q45",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "kinetics_transport"
+  },
+  {
+   "sb": "SB-196",
+   "alias": "Q46",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "emulsion_hld"
+  },
+  {
+   "sb": "SB-197",
+   "alias": "Q47",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "adsorption"
+  },
+  {
+   "sb": "SB-198",
+   "alias": "Q48",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "surface_wetting"
+  },
+  {
+   "sb": "SB-199",
+   "alias": "Q49",
+   "source_set": "orig_hard50",
+   "type": "computational",
+   "subconcept": "surface_wetting"
+  },
+  {
+   "sb": "SB-200",
+   "alias": "Q50",
+   "source_set": "orig_hard50",
+   "type": "analytical",
+   "subconcept": "surface_wetting"
+  }
+ ]
+}

@@ -1,0 +1,1042 @@
+{
+ "Claude": {
+  "n_pass": 25,
+  "n_fail": 24,
+  "n_not_answered": 1,
+  "pct": 50.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "NOT_ANSWERED",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "FAIL",
+    "detail": "part1 got -17.019 vs gold -26.976"
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "FAIL",
+    "detail": "part1 got 52.8772 vs gold 52.8761"
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.8568 vs gold 2.8566"
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "FAIL",
+    "detail": "part1 got -6.5 vs gold -5.7"
+   },
+   "Q20": {
+    "verdict": "FAIL",
+    "detail": "part1 got 298.36 vs gold 298.61"
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.083 vs gold 1.383"
+   },
+   "Q24": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.09 vs gold -2.0394"
+   },
+   "Q25": {
+    "verdict": "FAIL",
+    "detail": "part1 got 49.655 vs gold 20.219"
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.3029 vs gold 2.3307"
+   },
+   "Q28": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.335 vs gold 40.386"
+   },
+   "Q29": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.7378 vs gold 2.6086"
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "FAIL",
+    "detail": "part1 got -23.146 vs gold -23.148"
+   },
+   "Q32": {
+    "verdict": "FAIL",
+    "detail": "part1 got -22.372 vs gold -23.332"
+   },
+   "Q33": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "FAIL",
+    "detail": "part1 got -6.01 vs gold -5.284"
+   },
+   "Q36": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.745 vs gold 1.51; part2 got 37.002 vs gold 37.558"
+   },
+   "Q37": {
+    "verdict": "FAIL",
+    "detail": "part2 got 0.5686 vs gold 0.4314"
+   },
+   "Q38": {
+    "verdict": "FAIL",
+    "detail": "part2 got 6.13 vs gold 6.75"
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "FAIL",
+    "detail": "part1 got 34.593 vs gold 132.695"
+   },
+   "Q41": {
+    "verdict": "FAIL",
+    "detail": "part1 got 3.8123 vs gold 3.8137"
+   },
+   "Q42": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.433 vs gold 3.512; part2 got 0.823 vs gold 3.239; part3 got 1.751 vs gold 3.821"
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.362 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.3755 vs gold 0.0388"
+   },
+   "Q45": {
+    "verdict": "FAIL",
+    "detail": "part1 got 71.428 vs gold 73.732"
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 38.056 vs gold 64.441"
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "Qwen": {
+  "n_pass": 20,
+  "n_fail": 30,
+  "n_not_answered": 0,
+  "pct": 40.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "FAIL",
+    "detail": "part1 got -3.7 vs gold -3.69997"
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "FAIL",
+    "detail": "part1 got -18.677 vs gold -26.976"
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.94 vs gold 9.9403"
+   },
+   "Q12": {
+    "verdict": "FAIL",
+    "detail": "part1 got 52.8772 vs gold 52.8761"
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.0463 vs gold 0.0495"
+   },
+   "Q16": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.8571 vs gold 2.8566"
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "FAIL",
+    "detail": "part1 got 5.0 vs gold -5.7"
+   },
+   "Q20": {
+    "verdict": "FAIL",
+    "detail": "part1 got 294.26 vs gold 298.61"
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.0862 vs gold -2.0394"
+   },
+   "Q25": {
+    "verdict": "FAIL",
+    "detail": "part1 got 14.26 vs gold 20.219"
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.303 vs gold 2.3307"
+   },
+   "Q28": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.336 vs gold 40.386"
+   },
+   "Q29": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.8612 vs gold 2.6086"
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "FAIL",
+    "detail": "part1 got -23.146 vs gold -23.148"
+   },
+   "Q32": {
+    "verdict": "FAIL",
+    "detail": "part1 got -22.372 vs gold -23.332"
+   },
+   "Q33": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.9787 vs gold 0.0836"
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "FAIL",
+    "detail": "part1 got -6.0 vs gold -5.284"
+   },
+   "Q36": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.681 vs gold 1.51; part2 got 36.955 vs gold 37.558"
+   },
+   "Q37": {
+    "verdict": "FAIL",
+    "detail": "part2 got 0.4311 vs gold 0.4314"
+   },
+   "Q38": {
+    "verdict": "FAIL",
+    "detail": "part1 got 'langmuir' vs gold 'frumkin'; part2 got 2.08 vs gold 6.75"
+   },
+   "Q39": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.0891 vs gold 0.641; part2 got 1.0 vs gold 0.861"
+   },
+   "Q40": {
+    "verdict": "FAIL",
+    "detail": "part1 got 34.97 vs gold 132.695"
+   },
+   "Q41": {
+    "verdict": "FAIL",
+    "detail": "part1 got 3.8114 vs gold 3.8137"
+   },
+   "Q42": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.433 vs gold 3.512; part2 got 1.2 vs gold 3.239; part3 got 1.67 vs gold 3.821"
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.38 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.12 vs gold 0.0388"
+   },
+   "Q45": {
+    "verdict": "FAIL",
+    "detail": "part1 got 71.429 vs gold 73.732"
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 37.952 vs gold 64.441"
+   },
+   "Q48": {
+    "verdict": "FAIL",
+    "detail": "part1 got 41.2293 vs gold 39.82; part2 got 2.6811 vs gold 3.5713"
+   },
+   "Q49": {
+    "verdict": "FAIL",
+    "detail": "part2 got 43.3517 vs gold 43.351"
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "ChatGPT": {
+  "n_pass": 27,
+  "n_fail": 19,
+  "n_not_answered": 4,
+  "pct": 54.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "FAIL",
+    "detail": "part1 got -18.678 vs gold -26.976"
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.8571 vs gold 2.8566"
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "FAIL",
+    "detail": "part1 got 294.26 vs gold 298.61"
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.889 vs gold 1.383"
+   },
+   "Q24": {
+    "verdict": "NOT_ANSWERED",
+    "detail": ""
+   },
+   "Q25": {
+    "verdict": "NOT_ANSWERED",
+    "detail": ""
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.3029 vs gold 2.3307"
+   },
+   "Q28": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.438 vs gold 40.386"
+   },
+   "Q29": {
+    "verdict": "NOT_ANSWERED",
+    "detail": ""
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "FAIL",
+    "detail": "part1 got -23.15 vs gold -23.148"
+   },
+   "Q32": {
+    "verdict": "FAIL",
+    "detail": "part1 got -23.158 vs gold -23.332"
+   },
+   "Q33": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.9787 vs gold 0.0836"
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "FAIL",
+    "detail": "part1 got -6.494 vs gold -5.284"
+   },
+   "Q36": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.681 vs gold 1.51; part2 got 36.955 vs gold 37.558"
+   },
+   "Q37": {
+    "verdict": "FAIL",
+    "detail": "part2 got 0.5686 vs gold 0.4314"
+   },
+   "Q38": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q39": {
+    "verdict": "FAIL",
+    "detail": "part1 got 640.9907 vs gold 0.641"
+   },
+   "Q40": {
+    "verdict": "FAIL",
+    "detail": "part1 got 34.366 vs gold 132.695"
+   },
+   "Q41": {
+    "verdict": "FAIL",
+    "detail": "part1 got 3.8134 vs gold 3.8137"
+   },
+   "Q42": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.433 vs gold 3.512; part2 got 1.358 vs gold 3.239; part3 got 1.562 vs gold 3.821"
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.362 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "NOT_ANSWERED",
+    "detail": ""
+   },
+   "Q45": {
+    "verdict": "FAIL",
+    "detail": "part1 got 71.429 vs gold 73.732"
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 37.949 vs gold 64.441"
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "DeepSeek": {
+  "n_pass": 26,
+  "n_fail": 24,
+  "n_not_answered": 0,
+  "pct": 52.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "FAIL",
+    "detail": "part1 got -18.678 vs gold -26.976"
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.8571 vs gold 2.8566"
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "FAIL",
+    "detail": "part1 got -1.4 vs gold -5.7"
+   },
+   "Q20": {
+    "verdict": "FAIL",
+    "detail": "part1 got 294.26 vs gold 298.61"
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.558 vs gold 1.383"
+   },
+   "Q24": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.0862 vs gold -2.0394"
+   },
+   "Q25": {
+    "verdict": "FAIL",
+    "detail": "part1 got 58.271 vs gold 20.219"
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.3029 vs gold 2.3307"
+   },
+   "Q28": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.335 vs gold 40.386"
+   },
+   "Q29": {
+    "verdict": "FAIL",
+    "detail": "part1 got -3.1106 vs gold 2.6086"
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "FAIL",
+    "detail": "part1 got -22.592 vs gold -23.332"
+   },
+   "Q33": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.0208 vs gold 0.0836"
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "FAIL",
+    "detail": "part1 got -6.26 vs gold -5.284"
+   },
+   "Q36": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.681 vs gold 1.51; part2 got 36.955 vs gold 37.558"
+   },
+   "Q37": {
+    "verdict": "FAIL",
+    "detail": "part2 got 0.5686 vs gold 0.4314"
+   },
+   "Q38": {
+    "verdict": "FAIL",
+    "detail": "part1 got 'langmuir' vs gold 'frumkin'; part2 got 2.08 vs gold 6.75"
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "FAIL",
+    "detail": "part1 got 36.097 vs gold 132.695"
+   },
+   "Q41": {
+    "verdict": "FAIL",
+    "detail": "part1 got 3.8115 vs gold 3.8137"
+   },
+   "Q42": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.352 vs gold 3.512; part2 got 0.295 vs gold 3.239; part3 got 0.415 vs gold 3.821"
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.362 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.0 vs gold 0.0388"
+   },
+   "Q45": {
+    "verdict": "FAIL",
+    "detail": "part1 got 71.429 vs gold 73.732"
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 42.253 vs gold 64.441"
+   },
+   "Q48": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.3735 vs gold 39.82; part2 got 3.2905 vs gold 3.5713"
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "Gemini": {
+  "n_pass": 23,
+  "n_fail": 27,
+  "n_not_answered": 0,
+  "pct": 46.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "FAIL",
+    "detail": "part1 got -18.678 vs gold -26.976"
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "FAIL",
+    "detail": "part2 got -0.1595 vs gold 0.1595"
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.8568 vs gold 2.8566"
+   },
+   "Q17": {
+    "verdict": "FAIL",
+    "detail": "part1 got 10.11 vs gold 33.29"
+   },
+   "Q18": {
+    "verdict": "FAIL",
+    "detail": "part2 got 1.5573 vs gold 1.5473"
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "FAIL",
+    "detail": "part1 got 298.36 vs gold 298.61"
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.0851 vs gold -2.0394"
+   },
+   "Q25": {
+    "verdict": "FAIL",
+    "detail": "part1 got 57.685 vs gold 20.219"
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "FAIL",
+    "detail": "part1 got 2.3029 vs gold 2.3307"
+   },
+   "Q28": {
+    "verdict": "FAIL",
+    "detail": "part1 got 40.314 vs gold 40.386"
+   },
+   "Q29": {
+    "verdict": "FAIL",
+    "detail": "part1 got -2.6171 vs gold 2.6086"
+   },
+   "Q30": {
+    "verdict": "FAIL",
+    "detail": "part1 got -0.02068 vs gold -0.02066"
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "FAIL",
+    "detail": "part1 got -22.202 vs gold -23.332"
+   },
+   "Q33": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.0102 vs gold 0.0836"
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "FAIL",
+    "detail": "part1 got -4.751 vs gold -5.284"
+   },
+   "Q36": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.736 vs gold 1.51; part2 got 37.159 vs gold 37.558"
+   },
+   "Q37": {
+    "verdict": "FAIL",
+    "detail": "part2 got 0.5686 vs gold 0.4314"
+   },
+   "Q38": {
+    "verdict": "FAIL",
+    "detail": "part1 got 'langmuir' vs gold 'frumkin'; part2 got 2.08 vs gold 6.75"
+   },
+   "Q39": {
+    "verdict": "FAIL",
+    "detail": "part1 got 640.991 vs gold 0.641"
+   },
+   "Q40": {
+    "verdict": "FAIL",
+    "detail": "part1 got 35.0 vs gold 132.695"
+   },
+   "Q41": {
+    "verdict": "FAIL",
+    "detail": "part1 got 3.8123 vs gold 3.8137"
+   },
+   "Q42": {
+    "verdict": "FAIL",
+    "detail": "part1 got 1.433 vs gold 3.512; part2 got 1.294 vs gold 3.239; part3 got 1.581 vs gold 3.821"
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 9.362 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.0137 vs gold 0.0388"
+   },
+   "Q45": {
+    "verdict": "FAIL",
+    "detail": "part1 got 71.428 vs gold 73.732"
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 38.856 vs gold 64.441"
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "FAIL",
+    "detail": "part2 got 43.3508 vs gold 43.351"
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ }
+}

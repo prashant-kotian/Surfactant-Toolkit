@@ -1,51 +1,43 @@
-# Reproducibility verification (fresh clone, 2026-10-18)
+# Reproducibility verification (2026-10-19)
 
-Verified by cloning the source repositories at the freeze tags to an
-empty Linux directory (Python 3.13) and running the full chain.
+The results chain was re-run end to end in this repository after the
+single-benchmark restructuring, on Linux with Python 3.13
+(`pip install rdkit "mcp[cli]" pytest`).
 
-## Commands (exact)
-```
-git clone <surfactantkit> sk && git clone <extra-surfactantkit-work> work
-pip install rdkit "mcp[cli]"                 # pyproject deps for the test suite
-export PYTHONPATH=$PWD/sk/src
-cd work
-python3 benchmark/paper3_groundzero/grade_unaugmented_gz50.py
-python3 benchmark/paper3_groundzero/grade_session_new_gz50.py
-python3 benchmark/paper3_hard50/grade_session_new_h50.py
-python3 benchmark/paper3_extra50/grade_unaugmented_5models.py
-python3 benchmark/paper3_extra50/grade_augmented_claude_deepseek.py
-python3 benchmark/results_master.py
-python3 benchmark/make_tables.py
-cd ../sk && PYTHONPATH=src python3 -m pytest -q
-```
+## Procedure
 
-## Results
-- Every grader ran from the clone; regenerated grading JSONs are **JSON-level
-  equal** to the committed artifacts (6/6 files compared by parsed content).
-- `results_master.py` -> `cells=30 gaps=1`, counts identical
-  (X50 unaug 32/33/28/21/27; aug 50/48/50/49; H50new 45/44 aug; agy GZ
-  42/43 unaug post-unmasking).
-- `RESULTS_PER_Q.csv` and `RESULTS_SECTION.md`: **byte-identical**.
-  `RESULTS_TABLES.md` differs only in the provenance-ledger `source_sha`
-  column, because the freshly rewritten grading JSONs differ from the
-  committed (backend-machine-written) bytes while parsing equal —
-  serialization, not data.
-- Toolkit test suite on the fresh clone: **823 passed** (same run, same
-  local dir: 823 passed).
-- `toolkit_state` resolves from sibling `surfactantkit`/`SurfactantKit`/
-  `surfactantkit-computation` or `$TOOLKIT_DIR` (hardened this commit).
+All commands from `REPRODUCE.md` §1, in order (graders included), followed by
+`build_question_set.py` and `build_bench200.py`, then the full test suite.
 
-## Known, accepted non-determinism (documented, not chased)
-- `gold_state` fields derive from source-file mtimes of the machine that
-  last ran a grader; a fresh re-grade on a later date legitimately flips
-  flags to post-fix.
-- Development scripts (`scratch_build_*.py`, `run_agy_overnight_windows.py`,
-  `benchmark/development/merge_audit/`) intentionally retains the benchmark
-  machine's `H:\CodeProjects` paths; **not part of the reproducibility
-  chain** (excluded-at-freeze decision, per build plan).
-- `ungradeable`-record rule and exclusions live in `results_master.py` as
-  data; changing them changes denominators by design, not by drift.
+## Checks performed
+
+- The five grader scripts ran from the tree and rewrote the committed
+  grading JSONs; parsed contents identical.
+- `build_results.py`: 30 result cells, 1 declared data gap; the provenance
+  ledger and per-question CSV regenerated from the rewritten JSONs.
+- `results/per_question_results.csv`: 1346 verdict rows reproduced; all
+  verdicts and denominators unchanged (cell identifiers use the source-set
+  names `groundzero`/`hard50`/`extrahard` after the 2026-10-19 rename).
+- `build_bench200.py`: `results/bench200.json` byte-stable across re-runs;
+  each grand cell equals the sum of its per-source-set cells (e.g. Claude
+  augmented = 36 + 45 + 50 + 50 = 181 of 190 gradable); CSV row count equals
+  the sum of grand denominators (1791).
+- `build_question_set.py`: 200 items, deterministic (rule table + curated
+  overrides; no network, no model access).
+- Test suite: 823 passed.
+
+## Accepted non-determinism (documented, not chased)
+
+- `source_sha` in the ledger hashes the grading-JSON bytes as last written;
+  a fresh re-grade may reformat (not revalue) them.
+- `gold_state` flags derive from source-file mtimes; a re-run after the
+  2026-10-18 gold corrections reads `post-fix` by design.
+- Exclusion policy and ungradeable-record rules live in `build_results.py`
+  and `question_set.json` as data; changing them changes denominators by
+  design, not by drift.
 
 ## Verdict
-**PASS.** Manuscript numbers = this clone's output. Freeze tag:
-`paper3-freeze-2026-10-18` (work repo) + matching toolkit tag.
+
+**PASS.** Reported numbers = this tree's output. The fourth source set's
+orig_hard50 grading JSONs are frozen inputs (first-release harness); their
+generation is outside this repository by design.

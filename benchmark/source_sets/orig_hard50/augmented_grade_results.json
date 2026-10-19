@@ -1,0 +1,834 @@
+{
+ "Claude": {
+  "n_pass": 50,
+  "n_fail": 0,
+  "n_not_answered": 0,
+  "pct": 100.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q25": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q28": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q29": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q33": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q36": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q37": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q38": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q41": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q42": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q43": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q44": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q45": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "ChatGPT": {
+  "n_pass": 50,
+  "n_fail": 0,
+  "n_not_answered": 0,
+  "pct": 100.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q25": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q28": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q29": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q33": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q36": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q37": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q38": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q41": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q42": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q43": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q44": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q45": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "DeepSeek": {
+  "n_pass": 49,
+  "n_fail": 1,
+  "n_not_answered": 0,
+  "pct": 98.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q25": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q28": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q29": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q33": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q36": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q37": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q38": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q41": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q42": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q43": {
+    "verdict": "FAIL",
+    "detail": "part1 got 0.009 vs gold 8.63"
+   },
+   "Q44": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q45": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ },
+ "Antigravity": {
+  "n_pass": 50,
+  "n_fail": 0,
+  "n_not_answered": 0,
+  "pct": 100.0,
+  "questions": {
+   "Q01": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q02": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q03": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q04": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q05": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q06": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q07": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q08": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q09": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q10": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q11": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q12": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q13": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q14": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q15": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q16": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q17": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q18": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q19": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q20": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q21": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q22": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q23": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q24": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q25": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q26": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q27": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q28": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q29": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q30": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q31": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q32": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q33": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q34": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q35": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q36": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q37": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q38": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q39": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q40": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q41": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q42": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q43": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q44": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q45": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q46": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q47": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q48": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q49": {
+    "verdict": "PASS",
+    "detail": ""
+   },
+   "Q50": {
+    "verdict": "PASS",
+    "detail": ""
+   }
+  }
+ }
+}
