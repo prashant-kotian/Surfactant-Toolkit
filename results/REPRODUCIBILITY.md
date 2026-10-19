@@ -26,6 +26,23 @@ All commands from `REPRODUCE.md` §1, in order (graders included), followed by
   overrides; no network, no model access).
 - Test suite: 823 passed.
 
+## Re-run after the Claude groundzero correction (2026-10-19, Windows, Python 3.14)
+
+Full §1 chain re-run (graders included) through `build_figure_data.py`:
+
+- Only the groundzero unaugmented Claude (5/10 -> 27/43) and ChatGPT
+  (22/43 -> 27/43) cells changed; every other cell identical (see DATA_NOTES.md).
+- `results/per_question_results.csv`: 1379 rows (+33 = Claude's 10 -> 43
+  gradable); grand CSV rows = sum of grand denominators (1824).
+- Re-graded session JSONs differing only in formatting (zero parsed
+  differences) were left at their committed bytes.
+- Ledger `src` paths now always POSIX (`build_results.py` previously emitted
+  `\` separators on Windows).
+- `build_figure_data.py`: F8 failure anatomy no longer cross-attributes
+  per-field details between models sharing one multi-model grading JSON; F8
+  failures reconcile to F1 (456 = 456). All figure-data cross-checks pass.
+- Test suite: 828 passed (823 + 5 F8 regression tests).
+
 ## Accepted non-determinism (documented, not chased)
 
 - `source_sha` in the ledger hashes the grading-JSON bytes as last written;

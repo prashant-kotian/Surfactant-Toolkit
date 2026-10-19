@@ -45,19 +45,34 @@ def relerr(gold, got):
     return abs(gold - got) / max(abs(gold), 1e-12)
 
 
-def normalize_detail(path: Path) -> dict:
-    """Return {qid: list-of-(ok, gold, got) | detail-string | None}."""
+def normalize_detail(path: Path, model: str | None = None) -> dict:
+    """Return {qid: list-of-(ok, gold, got) | detail-string | None}.
+
+    Multi-model grading JSONs (top-level keys = model names) are narrowed to
+    `model`'s own subtree first; otherwise every model's records share one
+    qid namespace and the last one walked overwrites the rest.
+    """
     out = {}
     if not path.exists():
         return out
     j = json.loads(path.read_text(encoding="utf-8"))
+    if model and isinstance(j, dict):
+        own = {k.lower(): k for k in j}
+        for name in (model, "Antigravity" if model == "Gemini-CLI" else None):
+            if name and name.lower() in own:
+                j = j[own[name.lower()]]
+                break
     stack = [("", j)]
     while stack:
         prefix, node = stack.pop()
         if isinstance(node, dict):
             if "fields" in node and isinstance(node["fields"], dict):
-                out[prefix] = [(f.get("ok", True), f.get("gold"), f.get("got", f.get("model")))
-                               for f in node["fields"].values() if isinstance(f, dict)]
+                vals = list(node["fields"].values())
+                if any(not isinstance(f, dict) for f in vals):
+                    out[prefix] = None   # bare ok-flags, no gold/got values -> count-only
+                else:
+                    out[prefix] = [(f.get("ok", True), f.get("gold"), f.get("got", f.get("model")))
+                                   for f in vals]
                 continue
             if "verdict" in node:
                 out[prefix] = node.get("detail") or None
@@ -85,6 +100,8 @@ def classify(detail) -> str:
         if "vs gold" in detail:
             return "selection_or_convention"   # string mismatch (e.g. langmuir vs frumkin)
         return "other"
+    if not detail:
+        return "no_answer"               # graded FAIL with no field records at all
     classes = set()
     for ok, gold, got in detail:
         if ok:
@@ -92,7 +109,10 @@ def classify(detail) -> str:
         e = relerr(gold, got)
         classes.add("precision_drift" if e is not None and e < 0.02
                     else ("magnitude_error" if e is not None else "selection_or_convention"))
-    return "+".join(sorted(classes)) if classes else "all_pass"
+    if not classes:
+        raise SystemExit("F8: a failed question has no failing field in its detail "
+                         "(detail mis-attributed to the wrong model/record?)")
+    return "+".join(sorted(classes))
 
 
 def main() -> int:
@@ -227,7 +247,7 @@ def main() -> int:
     rows = Counter()
     detail_src = {}
     for key, cell in rj["cells"].items():
-        detail_src[key] = normalize_detail(ROOT / cell["source"])
+        detail_src[key] = normalize_detail(ROOT / cell["source"], key.split("|")[1])
     for key, cell in rj["cells"].items():
         setn, model, cond = key.split("|")
         det = detail_src.get(key, {})

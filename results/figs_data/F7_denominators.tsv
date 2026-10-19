@@ -1,5 +1,5 @@
 model	condition	source_set	nominal_n	gradable_n	not_gradable_n	coverage
-Claude	unaug	groundzero	50	10	40	partial
+Claude	unaug	groundzero	50	43	7	partial
 Claude	unaug	hard50	50	47	3	full
 Claude	unaug	extrahard	50	49	1	full
 Claude	unaug	orig_hard50	50	49	1	full

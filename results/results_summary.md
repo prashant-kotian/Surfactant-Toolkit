@@ -10,8 +10,8 @@
 | extrahard | Gemini-CLI | 25/49 | 51.0 | post-fix |  | benchmark/source_sets/extrahard/antigravity_unaugmented_grade_results.json |
 | extrahard | Gemini | 27/49 | 55.1 | post-fix | yes | benchmark/transcripts/extrahard50_unaugmented/grade_results.json |
 | extrahard | Qwen | 21/49 | 42.9 | post-fix | yes | benchmark/transcripts/extrahard50_unaugmented/grade_results.json |
-| groundzero | ChatGPT | 22/43 | 51.2 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
-| groundzero | Claude | 5/10 | 50.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
+| groundzero | ChatGPT | 27/43 | 62.8 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
+| groundzero | Claude | 27/43 | 62.8 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | DeepSeek | 29/42 | 69.0 | post-fix |  | benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json |
 | groundzero | Gemini-CLI | 42/43 | 97.7 | post-fix |  | benchmark/source_sets/groundzero/antigravity_unaugmented_grade_results.json |
 | groundzero | Gemini | 10/33 | 30.3 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
@@ -42,4 +42,4 @@
 
 ## gaps
 
-- groundzero Gemini unaug: repo transcripts for the Sept-21 Gemini direct run: 11 no-content records (ungradeable, excluded) + 8 NEEDS_JUDGMENT scored as conservative FAIL inside n=33. The 200Q report's 22/50 came from a fuller backend grading pass; transcript confirmed absent on benchmark machine (RUNS_REPORT 2026-10-18 search).
+- groundzero Gemini unaug: repo transcripts for the Sept-21 Gemini direct run: 11 no-content records (ungradeable, excluded); long-prose fields resolved via the grader's JUDGMENT_RESOLUTIONS table (none swung the total, n=33). The 200Q report's 22/50 came from a fuller backend grading pass; transcript confirmed absent on benchmark machine (RUNS_REPORT 2026-10-18 search).

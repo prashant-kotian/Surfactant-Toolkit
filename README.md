@@ -47,7 +47,7 @@ To rename the benchmark, change the `BENCH_NAME` constant in
 ```
 src/surfactantkit/      toolkit library (CMC, mixed micellization, thermodynamics,
                         model selection, adsorption, HLD, QSPR connectors) + MCP server
-tests/                  test suite (823 tests)
+tests/                  test suite (828 tests)
 benchmark/
   question_set.json     the benchmark: 200 ids, skill types, sub-concepts, exclusions
   build_question_set.py assembles question_set.json from the source-set golds
@@ -77,7 +77,7 @@ the grader scripts, and per-run grading JSONs.
 
 ```bash
 pip install rdkit "mcp[cli]"         # only external deps (see pyproject extras)
-PYTHONPATH=src python3 -m pytest -q  # 823 passed
+PYTHONPATH=src python3 -m pytest -q  # 828 passed
 ```
 
 Reproduce the reported numbers (deterministic given the committed transcripts)

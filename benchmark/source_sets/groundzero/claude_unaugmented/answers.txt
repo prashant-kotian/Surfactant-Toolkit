@@ -1,0 +1,613 @@
+================================================================================
+SURFACTANT / INTERFACIAL CHEMISTRY PROBLEM SET  —  COMPILED FINAL ANSWERS
+Questions GZ-01 through GZ-50
+================================================================================
+
+
+--------------------------------------------------------------------------------
+GZ-01 — AOT (sodium bis(2-ethylhexyl) sulfosuccinate); surface tension data
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.0,
+  "isotherm_model": "Gibbs adsorption isotherm, ionic 1:1 no added salt (prefactor n=2); saturated Langmuir-type monolayer",
+  "gamma_max_mol_per_m2": 1.44e-6,
+  "a_min_nm2": 1.16,
+  "delta_g_mic_kJ_per_mol": null
+}
+
+
+--------------------------------------------------------------------------------
+GZ-02 — DHPC (zwitterionic) + SDS (anionic); Rubingh RST
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "component1_charge_type": "zwitterionic",
+  "selected_mixture_model": "Rubingh regular solution theory (RST)",
+  "model_parameters": {"beta_mean": -3.6, "beta_range": [-4.0, -3.2], "beta_std": 0.33, "f1_range": [0.27, 0.78], "f2_range": [0.12, 0.65], "x1_micelle_DHPC_range": [0.37, 0.74]},
+  "synergy_classification": "synergistic",
+  "independent_check_note": "Motomura's thermodynamic treatment (no regular-solution assumption) gives the same micellar-composition trend as Rubingh - the micelle is strongly enriched in zwitterionic DHPC relative to bulk at all compositions; combined with the model-free fact that the mixed CMC falls below both pure-component CMCs, this independently confirms attractive interaction and synergism."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-03 — 16-6-16 cationic gemini (bis-quat); HLB validity
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "cationic gemini (dimeric) bis-quaternary ammonium surfactant, 16-6-16 type (two C16 tails, two dimethylammonium heads, hexamethylene spacer, 2 Br- counterions)",
+  "hlb": null,
+  "notes": "Davies' group-contribution scheme has no defined group number for a quaternary ammonium head group (only a tertiary amine, +9.4, which does not apply to a permanent N+), and no contribution for the Br- counterions; additionally the two-head/two-tail gemini architecture lies outside the single-head/single-tail assumptions of the HLB framework. Charge type is dicationic; structure is a classic 16-6-16 bis-quat gemini."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-04 — Mono-rhamnolipid (Rha-C10-C10) glycolipid; Davies HLB
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "anionic (weak, pH-dependent carboxylate; drawn as neutral protonated acid)",
+  "charge_confidence": "medium",
+  "structural_family": "glycolipid biosurfactant - mono-rhamnolipid (Rha-C10-C10): rhamnose glycosidically linked to a dimer of 3-hydroxydecanoic acids joined by an ester, with a free terminal carboxylic acid",
+  "hlb": 8.4,
+  "notes": "Davies is applicable in principle since every group (-COOH 2.1, ester 2.4, ether -O- 1.3, -OH, and CH -0.475) is tabulated, but the pyranose ring has no native Davies group and must be decomposed into ether+OH+CH. Value 8.4 assumes the structure as drawn (neutral -COOH) and free -OH (1.9) for the three sugar hydroxyls; 24 hydrophobic carbons give -11.4, hydrophilic sum 12.8. It is approximate: using ring-OH (0.5) gives ~4.2, and the ionized carboxylate (-COO- 19.1) gives ~25, so the practical HLB shifts strongly with pH and OH convention. Confidence in the single number is therefore limited."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-05 — Hexadecane-1-sulfonic acid (anionic); van't Hoff enthalpy
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "delta_h_endpoint_kJ_per_mol": -13.6,
+  "sub_intervals": [{"t_lo_C": 30.0, "t_hi_C": 50.0, "delta_h_kJ_per_mol": -12.5}, {"t_lo_C": 50.0, "t_hi_C": 70.0, "delta_h_kJ_per_mol": -14.8}],
+  "self_consistent": false,
+  "delta_g_mic_kJ_per_mol": null,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+
+--------------------------------------------------------------------------------
+GZ-06 — Micelle Rh 2.637 nm, 100 mM NaCl; Debye/kappa*a/Henry
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "debye_length_nm": 0.962,
+  "kappa_a": 2.74,
+  "henry_function_value": 1.085,
+  "method_used": "Henry's function (Ohshima's closed-form approximation), chosen because kappa*a ~ 2.7 is in the intermediate regime where neither the Huckel (kappa*a<<1, f=1) nor Smoluchowski (kappa*a>>1, f=1.5) limit is valid"
+}
+
+
+--------------------------------------------------------------------------------
+GZ-07 — CTAB; DOSY diffusion -> Rh vs DLS
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "rh_from_diffusion_nm": 1.57,
+  "comment_on_dls_comparison": "The DOSY-derived R_h (~1.57 nm) matches an individual CTAB micelle and reflects the population/number-weighted, most-abundant diffusing species. It is ~25x smaller than the 40 nm DLS value. The discrepancy is expected, not an error: DLS is intensity-weighted (scattering ~ R^6), so a small number fraction of large aggregates (or dust) dominates the signal and inflates the reported radius, while DOSY-NMR reports the small micelles that make up the bulk of the material. The system is therefore polydisperse - predominantly ~1.6 nm micelles with a minor population of ~40 nm large scatterers that dominate light scattering."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-08 — C12E8 (nonionic); pre-CMC adsorption isotherm
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "nonionic",
+  "isotherm_model": "Langmuir-Szyszkowski (Langmuir adsorption isotherm; Frumkin interaction parameter refined to ~0)",
+  "K": 8.77e6,
+  "gamma_max_mol_per_m2": 2.21e-6
+}
+
+
+--------------------------------------------------------------------------------
+GZ-09 — AOT liquid on glass; work of adhesion / spreading coefficient
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "work_of_adhesion_mJ_per_m2": 49.26,
+  "spreading_coefficient_mJ_per_m2": -2.30,
+  "spontaneous_wetting": false
+}
+
+
+--------------------------------------------------------------------------------
+GZ-10 — SDS; Tanford CPP / morphology
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.20,
+  "critical_length_A": 16.680,
+  "cpp": 0.470,
+  "predicted_morphology": "cylindrical/rodlike micelle",
+  "assumptions_or_limitations": "Tanford relations assume a saturated, unbranched, liquid-like alkyl chain (valid for linear C12 SDS) with n_c=12; the CPP result 0.470 sits high in the rodlike window and near the spherical boundary. It is driven by the small measured A_min (44.7 A^2 vs ~60 A^2 for salt-free SDS), implying screened/tightly packed heads (e.g. added salt/high concentration) - conditions under which SDS does form rods. CPP is a geometric mean-field packing model predicting preferred curvature only; it neglects explicit head-group electrostatics, counterion binding, ionic strength, concentration and temperature, so predicted morphology is condition-dependent (salt-free SDS near CMC is experimentally spherical). l_c is the fully extended chain length; the n_c=12 vs 11 tail-carbon choice changes P negligibly (~0.469)."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-11 — SDS; measured vs electrostatic headgroup area / CPP
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.20,
+  "critical_length_A": 16.680,
+  "cpp_measured_area": 0.470,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 52.8,
+  "cpp_electrostatic_area": 0.398,
+  "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+  "comment": "Ionic strength at the CMC of a salt-free 1:1 surfactant equals the CMC (8 mM), giving a Debye length of ~34.0 A; with the sulfate prefactor via a=sqrt(82.0*kappa^-1) this yields a_elec=52.8 A^2. Both the measured (44.70 A^2, P=0.470) and electrostatic (52.8 A^2, P=0.398) areas predict cylindrical/rodlike micelles, so the two approaches agree qualitatively. The electrostatic area is ~18% larger, reflecting looser predicted head-group packing; this lowers CPP toward (but not across) the spherical boundary (which would need a>=63 A^2)."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-12 — Benzethonium (cationic) + DTAB (cationic); asymmetric Margules
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.315,
+  "interaction_model_or_approach": "Two-parameter (three-suffix / sub-regular) Margules model: ln f1 = x2^2[A+2(B-A)x1], ln f2 = x1^2[B+2(A-B)x2], with A=ln gamma1_inf=-3.57, B=ln gamma2_inf=-0.89",
+  "notes": "Single-parameter RST is invalid: at x1=0.808 f1=1.028>1 while f2=0.286<1, impossible for a symmetric one-parameter model. The asymmetric two-parameter Margules model fits all points to <0.003 in ln f. Both A and B negative -> net attractive/synergistic mixing (benzethonium/DTAB). gamma1_inf~0.028 vs gamma2_inf~0.41; f1 crosses unity near x1~0.63. Component 1 = benzethonium chloride, component 2 = DTAB."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-13 — C16E10 (nonionic); EO count, MW, Griffin HLB
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": 10,
+  "molecular_weight_g_per_mol": 682.98,
+  "hlb_griffin": 13.4
+}
+
+
+--------------------------------------------------------------------------------
+GZ-14 — AOT data; lateral-interaction identifiability
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "lateral_interaction_present": false,
+  "confidence_from_this_data_alone": "low",
+  "reasoning": "All six pre-CMC points lie on one perfectly straight gamma-log10(C) line (R^2=1.000000, slope -16.4 mN/m/decade), so by the Gibbs equation the surface excess is constant (Gamma=Gamma_max): the interface is fully saturated across the entire measured range. Lateral (Frumkin) interaction is encoded in the sub-saturation isotherm curvature, which this dataset never samples. An identifiability scan fixing the Frumkin A from 0 up to strongly cooperative reproduces the data within a few tenths mN/m for all A (A trades off with K), so A is not determinable. The data are fully consistent with simple independent adsorption; discriminating lateral interaction would require lower-concentration (unsaturated) data or an independent coverage measurement."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-15 — Chart read: surface tension vs concentration
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "gamma_lowest_conc_mN_per_m": 62,
+  "gamma_plateau_mN_per_m": 28,
+  "estimated_cmc_mM": 2
+}
+
+
+--------------------------------------------------------------------------------
+GZ-16 — SDS (real curved data) + alpha=0.272; CMC, Gibbs, ionic dG
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 9.0,
+  "gamma_max_mol_per_m2": 3.4e-6,
+  "a_min_nm2": 0.48,
+  "delta_g_mic_kJ_per_mol": -37.1,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+
+--------------------------------------------------------------------------------
+GZ-17 — DTAB; surface-tension minimum; dG/dS null (no beta)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "cmc_mM": 16,
+  "gamma_max_mol_per_m2": 2.4e-6,
+  "a_min_nm2": 0.68,
+  "delta_g_mic_kJ_per_mol": null,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+
+--------------------------------------------------------------------------------
+GZ-18 — SDS; CPP + prolate-ellipsoid axial ratio (N=63)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.20,
+  "critical_length_A": 16.680,
+  "cpp": 0.470,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 1.14
+}
+
+
+--------------------------------------------------------------------------------
+GZ-19 — SDS; partial specific volume (tail contribution only)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 210.9,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial (apparent) molar volume of the sulfate head group (-OSO3-) plus the Na+ counterion in water, including electrostriction/hydration effects. Tanford's relation gives only the hydrocarbon tail volume (210.9 cm3/mol here); the head-group volume - from solution density/apparent-molar-volume measurements or tabulated ionic partial molar volumes - is required to get the total molar volume and hence v_bar = V_molar_total/M."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-20 — AOT + alpha=0.39; CMC, Gibbs, ionic dG now computable
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.0,
+  "isotherm_model": "Gibbs adsorption isotherm, ionic 1:1 no added salt (prefactor n=2); saturated Langmuir-type monolayer",
+  "gamma_max_mol_per_m2": 1.44e-6,
+  "a_min_nm2": 1.16,
+  "delta_g_mic_kJ_per_mol": -40.8
+}
+
+
+--------------------------------------------------------------------------------
+GZ-21 — DTAB; CPP (measured) + electrostatic area (prefactor unavailable)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.20,
+  "critical_length_A": 16.680,
+  "cpp_measured_area": 0.352,
+  "morphology_measured_area": "cylindrical/rodlike micelle (marginal - just above the P=1/3 sphere/rod boundary, effectively near-spherical)",
+  "electrostatic_headgroup_area_A2": null,
+  "comment": "Measured-area CPP=0.352 places DTAB just inside the rodlike window but essentially at the sphere-rod boundary (near-spherical); the large head-group area 59.62 A^2 reflects strong quaternary-ammonium repulsion with significant counterion dissociation. The electrostatic-area estimate cannot be completed: the only available prefactor (82.0 A) is for a SULFATE head group; trimethylammonium is a different head-group class and no genuine trimethylammonium-specific prefactor is available, so substituting the sulfate value would be fabrication -> null."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-22 — CTAB (Cc given) & dodecylamine at pH 7; Cc->HLB regression
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "compound1_charge_type": "cationic",
+  "compound1_hlb_via_cc": 21.6,
+  "compound2_charge_type": "cationic",
+  "compound2_hlb_via_cc": null,
+  "notes": "Compound 1 = CTAB, cationic; with Cc=-5.7, HLB=-0.27*(-5.7)+20.1=21.6 (mild extrapolation of a 5-compound regression). Compound 2 = dodecylamine (primary amine, conjugate-acid pKa ~10.6); at pH 7.0 essentially fully protonated -> cationic. Its HLB via the Cc regression cannot be determined because no Cc is given for it; the regression maps a known Cc to HLB and cannot generate Cc -> null."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-23 — 12-4-12 cationic gemini; valid HLB method
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "cationic gemini (dimeric) bis-quaternary-ammonium surfactant, 12-4-12 type (two C12 tails, two dimethylammonium heads, butanediyl spacer, 2 Br- counterions)",
+  "valid_hlb_method": "none",
+  "reasoning": "Griffin applies only to nonionic polyoxyethylene/polyol surfactants; this molecule is ionic with no EO/polyol. Davies has no group number for a quaternary ammonium head group (only a tertiary amine +9.4) nor for Br-, and the two-head/two-tail gemini architecture violates HLB's single-head/single-tail assumption. So no classical HLB method is valid; an ionic/gemini-appropriate approach (PIT, or HLD/characteristic-curvature) would be needed."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-24 — Sodium cholate + SDS (both anionic); Maeda model inappropriate
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "x1_rubingh": 0.503,
+  "beta_rubingh": -4.24,
+  "interaction_character": "strongly synergistic (attractive; large negative deviation from ideal mixing)",
+  "maeda_deltag_kJ_per_mol": null,
+  "reasoning": "Component 1 is sodium cholate (anionic bile salt) and component 2 is SDS (anionic) - both ionic. The Maeda free-energy expression explicitly requires one ionic and one nonionic component; its parameterization depends on that asymmetry, so with two anionic components it is not appropriate and no valid Maeda deltaG can be computed (null). Rubingh RST does apply: mixed CMC 4.07 mM << Clint ideal 11.74 mM giving x1(cholate)=0.503, beta=-4.24, f1,f2<1, beta<0 and |beta|>>|ln(C1/C2)| -> strong synergism."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-25 — DHPC (zwitterionic) + DTAB (cationic); attractive but not synergistic
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "component1_charge_type": "zwitterionic",
+  "selected_mixture_model": "Rubingh regular solution theory (RST)",
+  "model_parameters": {"beta_mean": -1.4, "beta_range": [-2.04, -0.20], "beta_std": 0.68, "x1_micelle_DHPC_range": [0.33, 0.75], "ln_C1_over_C2_abs": 2.16},
+  "interaction_character": "attractive / negative deviation from ideal mixing (beta<0), but NOT formally synergistic: mean |beta|=1.4 < |ln(C1/C2)|=2.16 and the mixed CMC never falls below the lower pure CMC (no CMC minimum).",
+  "independent_check_note": "Motomura's treatment (no RST assumption; nu1=1 DHPC, nu2=2 DTAB) gives the same trend as Rubingh - micelle enriched in component 1 (DHPC) relative to bulk - supporting attractive co-micellization; confirmation is qualitative only because sparse 5-point differentiation makes Motomura values noisy (one slightly >1)."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-26 — 1-dodecyl-3-methylpyridinium bromide; U-shaped CMC(T), alpha=0.268
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "delta_h_wide_kJ_per_mol": -5.34,
+  "delta_h_low_regime_kJ_per_mol": 1.57,
+  "delta_h_high_regime_kJ_per_mol": -14.85,
+  "self_consistent": false,
+  "delta_g_mic_kJ_per_mol": -37.13
+}
+
+
+--------------------------------------------------------------------------------
+GZ-27 — SDS; CPP + prolate axial ratio + Stokes-Einstein + Perrin correction
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.20,
+  "critical_length_A": 16.680,
+  "cpp": 0.470,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 1.14,
+  "rh_naive_stokes_einstein_nm": 2.64,
+  "rh_perrin_corrected_nm": 2.63,
+  "direction_of_correction": "smaller - a prolate ellipsoid has higher translational friction than a sphere of equal volume (Perrin F=1.0014>1), so the naive spherical Stokes-Einstein overestimates size; dividing by F gives a slightly smaller equivalent-sphere radius. Effect is tiny (~0.1%) because the axial ratio is only 1.14 (near-spherical)."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-28 — dG=-37.131; entropy from two enthalpy scenarios
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "delta_s_mic_low_regime_J_per_mol_K": 127.6,
+  "delta_s_mic_high_regime_J_per_mol_K": 95.8
+}
+
+
+--------------------------------------------------------------------------------
+GZ-29 — C12E8; Langmuir vs Frumkin (A identifiable ~0, no interaction)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "selected_model": "Langmuir (Langmuir-Szyszkowski)",
+  "frumkin_a": 0.005,
+  "physically_meaningful_interaction": false,
+  "reasoning": "With Gamma_max fixed at 2.21e-6, Langmuir-Szyszkowski fits perfectly (K=8.8e6 L/mol, R^2=1.000000); Frumkin A=0.005+/-0.002, indistinguishable from zero. Unlike a saturated-branch-only dataset, this data spans the whole isotherm from near-zero coverage (pi~0.5 mN/m) to near-saturation, so an identifiability scan gives a sharp SSE minimum at A=0 - A is genuinely determined (not degenerate) and ~0. Hence no physically meaningful lateral interaction, and the conclusion is reliable."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-30 — a_min unit conversion (Gamma_max = 3.4268e-10 mol/cm^2)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "a_min_nm2": 0.4846,
+  "a_min_A2": 48.46
+}
+
+
+--------------------------------------------------------------------------------
+GZ-31 — 12-6-12 cationic gemini; tails/spacer/count
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "cationic gemini (dimeric) bis-quaternary-ammonium surfactant, 12-6-12 type",
+  "tail_carbons_per_tail": 12,
+  "spacer_carbons": 6,
+  "n_tails": 2
+}
+
+
+--------------------------------------------------------------------------------
+GZ-32 — AOT; carbon counting / branching
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "total_carbons": 20,
+  "tail_carbons_total": 16,
+  "tails_branched": true,
+  "tail_description": "Both tails are branched 2-ethylhexyl groups (not straight-chain): each is a 6-carbon hexyl main chain with a 2-carbon ethyl branch at the 2-position, adjacent to the ester oxygen, giving 8 carbons per tail.",
+  "backbone_carbons": 4
+}
+
+
+--------------------------------------------------------------------------------
+GZ-33 — C12E24; EO count, MW, Griffin HLB
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": 24,
+  "molecular_weight_g_per_mol": 1243.61,
+  "hlb_griffin": 17.3
+}
+
+
+--------------------------------------------------------------------------------
+GZ-34 — Bolaform (not gemini): bis(trimethylammonium)hexadecane
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "true_classification": "bolaform surfactant (bolaamphiphile) - a bis(trimethylammonium) bola, alpha,omega-hexadecanediyl-bis(trimethylammonium) dibromide",
+  "reasoning": "Each quaternary nitrogen bears three methyls and a single bond to the C16 chain - no separate hydrophobic tail. The one hexadecane chain connects the two heads directly, so the entire hydrophobe lies BETWEEN the two heads with nothing beyond them (methyl caps only). A genuine gemini has two tail-plus-head units joined by a spacer with tails projecting OUTWARD beyond the heads. A single bridging chain between two terminal heads with no pendant tails is bolaform, not gemini."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-35 — Acidic diacetylated sophorolipid (glycolipid); 2 sugar rings
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "charge_type": "anionic (weak, pH-dependent; drawn as neutral protonated carboxylic acid)",
+  "charge_confidence": "medium",
+  "structural_family": "glycolipid biosurfactant - acidic (open, non-lactonic), diacetylated sophorolipid: a sophorose (glucose-beta(1->2)-glucose) disaccharide, acetylated at both C6 positions, glycosidically linked to the subterminal hydroxyl of a mono-unsaturated C18 hydroxy fatty acid bearing a free terminal carboxylic acid",
+  "n_sugar_rings": 2,
+  "valid_hlb_method": "Davies group-contribution method (applicable but approximate: all groups have Davies numbers, but the two pyranose rings must be decomposed and the ionizable carboxyl makes it pH-sensitive). Griffin's method is NOT valid - no polyoxyethylene chain, and the ionizable mixed sugar/acetyl/acid/lipid structure is outside Griffin's scope."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-36 — Chart read: ln(CMC) vs 1000/T; enthalpy sign
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "slope_sign": "negative",
+  "process_character": "exothermic",
+  "reasoning": "The ln(CMC) vs 1000/T line falls left to right (negative slope), so d(ln X_cmc)/d(1/T) < 0. Via Gibbs-Helmholtz deltaH_mic = R*d(ln X_cmc)/d(1/T), a negative slope gives deltaH_mic < 0 = exothermic. Equivalently CMC increases with temperature, so heating disfavors micellization; by Le Chatelier the forward process releases heat."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-37 — Chart read: activity coefficients at x1=0.5
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "f1_at_x1_0.5": 1.3,
+  "f2_at_x1_0.5": 0.5,
+  "which_is_larger_at_0.5": "component 1"
+}
+
+
+--------------------------------------------------------------------------------
+GZ-38 — Chart read: CMC in uM
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "estimated_cmc_value": 9,
+  "units_used": "µM"
+}
+
+
+--------------------------------------------------------------------------------
+GZ-39 — Chart read: where fitted pre-CMC isotherm diverges
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "deviation_region": "Above approximately 2 mM (roughly 2-10 mM, i.e. beyond the CMC), where the measured data flatten to a plateau near 27.5-28 mN/m while the fitted isotherm keeps declining.",
+  "deviation_reason": "A pre-CMC adsorption isotherm assumes surface tension is set by monomer bulk activity, treated as continuously increasing with total concentration, so it predicts an unbroken decline. Above the CMC micelles buffer the free-monomer activity at ~the CMC value, so added surfactant goes into micelles and gamma plateaus. The isotherm has no micellization term, so it wrongly predicts continued decrease and diverges from the flat data beyond the CMC."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-40 — Chart read: which surfactant shows dip-then-rise
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "which_shows_dip_then_rise": "B",
+  "which_shows_plain_plateau": "A"
+}
+
+
+--------------------------------------------------------------------------------
+GZ-41 — SLS Debye plot; micelle Mw, aggregation number
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "micelle_molar_mass_g_per_mol": 66592,
+  "aggregation_number": 107,
+  "consistent_with_literature": true,
+  "reasoning": "Debye plot Kc/DeltaR vs c is linear (R^2=0.99999) with K=1.42e-7 mol*cm^2/g^2; intercept 1/Mw=1.502e-5 mol/g gives Mw=66,600 g/mol and positive A2~1.0e-4 (repulsive, good solvent). Monomer 625 g/mol (~C12E10) gives Nagg~107. Nonionic CnEm micelles typically Nagg~50-150 (decreasing with EO length), so ~107 for a C12/~E10 surfactant is within range - consistent with literature; positive A2 corroborates a well-behaved nonionic micelle."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-42 — AOT; conflicting Cc values, which is correct
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "more_likely_correct": "Source 1 (Cc = -0.92)",
+  "reasoning": "The compound is AOT, the archetypal reverse-micelle / w/o-microemulsion surfactant. Two bulky branched 2-ethylhexyl tails and a small head give CPP>1 and a strong preference for negative (reverse, oil-continuous) curvature, i.e. negative Cc (matching literature ~-0.9). A strongly positive Cc of 2.4-3.5 would indicate a very hydrophilic o/w surfactant, contradicting AOT's known behavior. Although Source 2 is primary (usually preferable to a review), its value's sign/magnitude are physically incompatible with this compound, pointing to an error (sign convention, opposite definition, units, or misassignment), so the review's -0.92 is more likely correct."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-43 — DTAB; agreement of two alpha values (0.28 vs 0.29)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "agreement_assessment": "excellent agreement (values effectively identical within measurement uncertainty)",
+  "reasoning": "0.28 vs 0.29 differ by only 0.01 (~3-4% relative), within the normal method-dependent uncertainty of alpha/beta determinations (+/-0.03-0.05). Impact on thermodynamics is negligible: in (2-alpha), 0.28 gives 1.72 and 0.29 gives 1.71 (~0.6% difference), propagating <~0.3 kJ/mol on a ~-37 kJ/mol delta G_mic. High confidence using either value or their mean (0.285)."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-44 — DTAB; SLS Nagg vs geometric Nagg
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "sls_measured_n_agg": 54.5,
+  "geometric_n_agg": 55.5,
+  "agreement": "excellent (differ by ~1 molecule, ~2%)",
+  "reasoning": "SLS: 16800/308.34=54.5. Geometric: sphere of radius l_c=16.68 A has volume 19,437 A^3; /tail volume 350.20 gives 55.5. Agreement to ~2% indicates the measured micelle matches a spherical core of radius = extended C12 tail. Crucially this is not two citations of one technique: SLS is a direct shape-independent measurement, the geometric value an independent theoretical prediction from molecular dimensions + spherical packing. Their convergence is a consilience across independent method classes with no shared assumptions - stronger evidence than same-technique agreement."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-45 — SDS; N=63 at 69 mM vs literature range 44.8-54.2
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "genuine_conflict": false,
+  "reasoning": "SDS aggregation number increases with concentration above the CMC (rising free Na+ screens head-group repulsion, lowering head-group area and allowing growth). N=63 is at 69 mM (~8-9x the ~8 mM CMC), where micelles are genuinely larger. The literature range 44.8-54.2 (mean ~49.5) has unspecified concentrations - likely at/near the CMC and from mixed techniques (fluorescence quenching vs SANS differ). Comparing a specific high-concentration value to a concentration-unspecified survey is not like-for-like, so both can be correct: they are consistent snapshots of concentration-dependent behavior, not a real contradiction."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-46 — SDS HLD-NAC; optimum salinity for toluene & hexadecane
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "s_star_toluene_pct": 13.87,
+  "s_star_hexadecane_pct": 179.5,
+  "hexadecane_physically_achievable": false,
+  "reasoning": "S* = exp(k*EACN - Cc). Toluene (EACN=0): exp(2.63)=13.87% NaCl; hexadecane (EACN=16): exp(5.19)=179.5% NaCl. S* is equivalent NaCl g/100 mL, capped by NaCl aqueous solubility (~36 g/100 mL, ~26 wt%). Toluene's 13.9% is achievable; hexadecane's 179.5% is ~5x the solubility limit -> not physically achievable. SDS is relatively hydrophilic and hexadecane very hydrophobic, so reaching balanced Winsor III would need more salt than water can hold; a more lipophilic surfactant, lipophilic linker/co-surfactant, or temperature/co-oil change would be required."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-47 — C12E8; Szyszkowski predictions and pre/post-CMC validity
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "gamma_at_5e-6": 51.17,
+  "gamma_at_5e-5": 38.68,
+  "gamma_at_2e-4": null,
+  "why_2e-4_null": "2e-4 mol/L is above the CMC (~1e-4 mol/L). The Szyszkowski/Langmuir equation is valid only pre-CMC, where surface tension is governed by monomer bulk activity rising with concentration. Above the CMC micelles buffer monomer activity at ~the CMC value and gamma plateaus (~38 mN/m); extrapolating the equation would falsely predict continued decline (~31 mN/m), so the prediction there is not physically valid."
+}
+
+
+--------------------------------------------------------------------------------
+GZ-48 — SDS + DHPC; Rodenas model-independent micellar composition
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "x1_rodenas_at_alpha1_0.60": 0.357,
+  "f1_at_alpha1_0.60": 0.283,
+  "f2_at_alpha1_0.60": 0.484
+}
+
+
+--------------------------------------------------------------------------------
+GZ-49 — C8E4 (nonionic) + SDS; two-parameter Margules from Gexc
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "w12": -8054.02,
+  "w21": -6996.78,
+  "f1_at_x1_0.10": 0.0771,
+  "f2_at_x1_0.10": 0.9647,
+  "f1_at_x1_0.90": 0.9755,
+  "f2_at_x1_0.90": 0.0949
+}
+
+
+--------------------------------------------------------------------------------
+GZ-50 — 1-dodecyl-3-methylpyridinium bromide; dG(T) trend vs CMC(T)
+--------------------------------------------------------------------------------
+FINAL_JSON:
+{
+  "delta_g_mic_at_283.15K": -35.18,
+  "delta_g_mic_at_318.15K": -38.87,
+  "trend": "delta G_mic decreases monotonically (steadily more negative) with increasing temperature, from -35.18 kJ/mol at 283.15 K to -38.87 kJ/mol at 318.15 K, no minimum/turning point.",
+  "reasoning": "delta G_mic = (2-alpha)*RT*ln(X_cmc). The CMC varies only ~15% over the range, so ln(X_cmc) is nearly constant (~-8.63 to -8.48) and its U-shaped wiggle is negligible. The dominant dependence is the explicit RT prefactor, which grows with T and multiplies a sizeable negative ln(X_cmc), making delta G steadily more negative. This overwhelms the weak non-monotonic CMC contribution, so delta G does NOT mirror the U-shaped (minimum near 298 K) CMC-vs-T curve."
+}
+
+
+================================================================================
+END OF COMPILED ANSWERS (GZ-01 to GZ-50)
+================================================================================

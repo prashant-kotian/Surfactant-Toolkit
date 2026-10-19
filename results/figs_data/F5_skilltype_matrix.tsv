@@ -1,7 +1,7 @@
 type	n_items	model	condition	passed	n	pct
-analytical	74	Claude	unaug	33	51	64.7
+analytical	74	Claude	unaug	40	65	61.5
 analytical	74	Claude	aug	60	65	92.3
-analytical	74	ChatGPT	unaug	37	65	56.9
+analytical	74	ChatGPT	unaug	40	65	61.5
 analytical	74	ChatGPT	aug	57	65	87.7
 analytical	74	DeepSeek	unaug	39	65	60.0
 analytical	74	DeepSeek	aug	59	65	90.8
@@ -11,9 +11,9 @@ analytical	74	Gemini	unaug	31	62	50.0
 analytical	74	Gemini	aug	0	0	NA
 analytical	74	Gemini-CLI	unaug	56	64	87.5
 analytical	74	Gemini-CLI	aug	65	65	100.0
-computational	114	Claude	unaug	59	94	62.8
+computational	114	Claude	unaug	71	111	64.0
 computational	114	Claude	aug	109	113	96.5
-computational	114	ChatGPT	unaug	72	108	66.7
+computational	114	ChatGPT	unaug	73	108	67.6
 computational	114	ChatGPT	aug	107	113	94.7
 computational	114	DeepSeek	unaug	69	111	62.2
 computational	114	DeepSeek	aug	103	111	92.8
@@ -23,9 +23,9 @@ computational	114	Gemini	unaug	52	105	49.5
 computational	114	Gemini	aug	0	0	NA
 computational	114	Gemini-CLI	unaug	51	69	73.9
 computational	114	Gemini-CLI	aug	111	112	99.1
-conceptual	12	Claude	unaug	4	10	40.0
+conceptual	12	Claude	unaug	7	12	58.3
 conceptual	12	Claude	aug	12	12	100.0
-conceptual	12	ChatGPT	unaug	6	12	50.0
+conceptual	12	ChatGPT	unaug	7	12	58.3
 conceptual	12	ChatGPT	aug	11	12	91.7
 conceptual	12	DeepSeek	unaug	6	12	50.0
 conceptual	12	DeepSeek	aug	11	11	100.0

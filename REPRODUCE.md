@@ -37,7 +37,7 @@ per-source-set cells; `build_bench200.py` derives them from the same JSONs.
 ## 2. Test suite
 
 ```bash
-PYTHONPATH=src python3 -m pytest -q        # 823 passed
+PYTHONPATH=src python3 -m pytest -q        # 828 passed
 ```
 
 ## 3. Executing new model runs (optional)

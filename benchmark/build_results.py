@@ -55,10 +55,11 @@ CELLS: list[tuple[str, dict]] = [
     ("groundzero", dict(model="*", cond="unaug", src=B / "source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
                   fmt="V", harness="mcp", multi=True,
                   only=["chatgpt", "gemini", "claude"],
-                  gap_note="Claude: only GZ-01..10 recoverable from the only Sept-18 "
-                           "transcript found on the benchmark machine (file ends "
-                           "'END OF SOLUTIONS' after GZ-10); GZ-11..50 genuinely absent, "
-                           "scored as a 10-question partial, not a 50-question cell")),
+                  gap_note="Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes "
+                           "a genuinely truncated GZ-01..10-only Sept-18 capture used through "
+                           "2026-10-18). Full coverage, n=43 after standard exclusions, same as "
+                           "ChatGPT/Gemini; long-prose fields resolved via the grader's "
+                           "JUDGMENT_RESOLUTIONS table (one rationale per field)")),
     ("groundzero", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/groundzero/antigravity_unaugmented_grade_results.json",
                   fmt="V", harness="agy-cli",
                   gap_note="graded against pre-fix gold (2026-09-19 run)")),
@@ -193,7 +194,7 @@ def main() -> int:
     cells, gaps = {}, []
     for bank, spec in CELLS:
         base = dict(bank=bank, cond=spec["cond"], harness=spec["harness"],
-                    src=str(spec["src"].relative_to(REPO)))
+                    src=spec["src"].relative_to(REPO).as_posix())
         if not spec["src"].exists():
             gaps.append(dict(**base, reason="grading JSON not present in repo (report-only number)"))
             continue
@@ -248,20 +249,18 @@ def main() -> int:
             )
 
     # documented gaps (no machine source)
-    # GZ50 Claude unaug: RESOLVED 2026-10-18 (backend) -- the Sept-18 transcript
-    # was found on the benchmark machine under a differently-named dir
-    # ("unaggumented output/" not "claude_unaugmented_partial/") and copied to the
-    # path the grader expects; the parser's section-separator regex also only
-    # matched dashes, not this file's '=' separators (fixed). The file itself
-    # is genuinely partial (GZ-01..10 only, ends "END OF SOLUTIONS") -- now a
-    # real 10-question cell via the CELLS entry above, not a gap.
+    # GZ50 Claude unaug: RESOLVED 2026-10-19 -- a complete GZ-01..50 transcript
+    # (benchmark/source_sets/groundzero/claude_unaugmented/) supersedes the
+    # truncated GZ-01..10 Sept-18 capture used through 2026-10-18; a full cell
+    # via the CELLS entry above, not a gap.
 
     gaps.append(dict(bank="groundzero", model="Gemini", cond="unaug",
                      reason="repo transcripts for the Sept-21 Gemini direct run: 11 no-content "
-                            "records (ungradeable, excluded) + 8 NEEDS_JUDGMENT scored as "
-                            "conservative FAIL inside n=33. The 200Q report's 22/50 came from "
-                            "a fuller backend grading pass; transcript confirmed absent on "
-                            "benchmark machine (RUNS_REPORT 2026-10-18 search)."))
+                            "records (ungradeable, excluded); long-prose fields resolved via "
+                            "the grader's JUDGMENT_RESOLUTIONS table (none swung the total, "
+                            "n=33). The 200Q report's 22/50 came from a fuller backend grading "
+                            "pass; transcript confirmed absent on benchmark machine "
+                            "(RUNS_REPORT 2026-10-18 search)."))
 
     out = dict(
         generated=now, contract="machine-graded sources only; report numbers land in gaps",

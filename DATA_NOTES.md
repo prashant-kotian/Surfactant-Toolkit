@@ -35,9 +35,6 @@ per-source-set graders and is exercised by their self-tests.
 - orig_hard50 scores n=50; NOT_ANSWERED records (Claude unaugmented 1, ChatGPT
   unaugmented 4) reflect no answer content captured and are excluded from n
   as ungradable rather than scored as failures.
-- Claude's groundzero unaugmented row is a 10-question partial (the only
-  recovered Sept-2026 transcript); it is reported as `partial coverage` in the
-  provenance ledger and excluded from main comparisons.
 - 2026-09-21 Gemini unaugmented groundzero: 11 ungradable (no-content) records
   removed from n; an earlier alternative grading pass (22/50) is not
   reproducible from the transcripts in this repository and is therefore not
@@ -59,3 +56,15 @@ H-04 (reference-temperature mismatch), H-26 (surfactant identity), GZ-48
 `remediation_note`; all cells re-graded programmatically. The GZ-48 correction
 revealed a masked model error (Antigravity unaugmented PASS->FAIL): reported
 rather than smoothed. See `results/REPRODUCIBILITY.md`.
+
+Claude's groundzero-unaugmented row (2026-10-19): the 10-question partial used
+through 2026-10-18 was a different, genuinely truncated Sept-2026 capture; a
+complete GZ-01..50 transcript was subsequently located and verified (all 50
+answer blocks structurally intact, independently-derived rather than copied
+from any gold version). Grading it surfaced that `grade_unaugmented.py` had no
+mechanism to resolve long-prose judgment fields -- `results/results.json`'s
+verdict conversion silently scored every unresolved field as a FAIL, which
+also understated ChatGPT's and Gemini's groundzero-unaugmented rows (Gemini's
+score did not move; no judgment field happened to swing its total). A
+`JUDGMENT_RESOLUTIONS` table (31 entries, one rationale per field, same
+discipline as the Antigravity graders) now resolves every pending field.

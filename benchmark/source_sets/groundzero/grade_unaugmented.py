@@ -25,7 +25,7 @@ TEMPLATE_PATH = os.path.join(BENCH, "question_bank_augmented.txt")
 SOURCES = {
     "chatgpt": os.path.join(BENCH, "unaugmented_2026-09-21", "chatgpt_GZ01-50_unaugmented.txt"),
     "gemini": os.path.join(BENCH, "unaugmented_2026-09-21", "gemini_GZ01-50_unaugmented.txt"),
-    "claude": os.path.join(BENCH, "claude_unaugmented_partial", "answers.txt"),
+    "claude": os.path.join(BENCH, "claude_unaugmented", "answers.txt"),
 }
 
 META_KEYS = {"grading_note", "reasoning", "note"}
@@ -151,6 +151,45 @@ def grade_field(model_val, gold_val):
     return False, "unknown"
 
 
+# Resolutions for fields whose gold is long free-text prose (no clean string
+# to auto-match) -- same discipline as the Antigravity graders: one rationale
+# per field, nothing left unscored. Ported from extra-surfactantkit-work
+# commit 03b7c3a after the full Claude GZ-01..50 transcript was located.
+JUDGMENT_RESOLUTIONS = {
+    ("chatgpt", "GZ-04", "charge_confidence"): (True, "hedged but correctly ties confidence to the real pH-dependence gold is testing for"),
+    ("gemini", "GZ-04", "charge_confidence"): (False, "field is null -- no answer given"),
+    ("claude", "GZ-04", "charge_confidence"): (True, "'medium' is a synonym of gold's 'moderate'"),
+    ("chatgpt", "GZ-14", "lateral_interaction_present"): (True, "gold states this is genuinely ambiguous by design; False is one of the two defensible reads"),
+    ("gemini", "GZ-14", "lateral_interaction_present"): (False, "field is null -- no answer given"),
+    ("claude", "GZ-14", "lateral_interaction_present"): (True, "gold states this is genuinely ambiguous by design; False is one of the two defensible reads"),
+    ("chatgpt", "GZ-25", "interaction_character"): (False, "literal unfilled '<string>' placeholder, no real content"),
+    ("gemini", "GZ-25", "interaction_character"): (False, "forces the blanket 'synergistic' label gold explicitly says is the wrong framing"),
+    ("claude", "GZ-25", "interaction_character"): (False, "answers a different (CMC-minimum/Rubingh) framing; never addresses the required W12/W21 sign asymmetry"),
+    ("chatgpt", "GZ-27", "direction_of_correction"): (True, "'smaller' matches gold's core direction"),
+    ("claude", "GZ-27", "direction_of_correction"): (True, "'smaller' with the same Perrin F>1 reasoning as gold"),
+    ("chatgpt", "GZ-32", "tail_description"): (True, "8-carbon branched 2-ethylhexyl description matches gold"),
+    ("gemini", "GZ-32", "tail_description"): (False, "field is null -- no answer given"),
+    ("claude", "GZ-32", "tail_description"): (True, "near-verbatim match to gold's 2-ethylhexyl/8-carbon/branch-at-2 description"),
+    ("chatgpt", "GZ-35", "valid_hlb_method"): (False, "names Davies; gold requires Griffin (Davies is confirmed structurally invalid for this headgroup)"),
+    ("gemini", "GZ-35", "valid_hlb_method"): (False, "names Davies; gold requires Griffin"),
+    ("claude", "GZ-35", "valid_hlb_method"): (False, "explicitly states Griffin is NOT valid and recommends Davies -- backwards from gold"),
+    ("chatgpt", "GZ-35", "charge_confidence"): (False, "'high' does not reflect gold's required pH-sensitivity hedge ('moderate')"),
+    ("gemini", "GZ-35", "charge_confidence"): (False, "'high' does not reflect gold's required pH-sensitivity hedge ('moderate')"),
+    ("claude", "GZ-35", "charge_confidence"): (True, "'medium' is a synonym of gold's 'moderate'"),
+    ("chatgpt", "GZ-36", "slope_sign"): (False, "literal unfilled '<string>' placeholder, no real content"),
+    ("gemini", "GZ-36", "slope_sign"): (False, "'positive' is the opposite of gold's 'negative'"),
+    ("claude", "GZ-36", "slope_sign"): (True, "exact match ('negative'); only flagged needs-judgment because gold string is long"),
+    ("chatgpt", "GZ-39", "deviation_reason"): (True, "matches gold's pre-CMC-isotherm-doesn't-capture-micellization reasoning"),
+    ("gemini", "GZ-39", "deviation_reason"): (True, "matches gold's pre-CMC-isotherm-doesn't-capture-micellization reasoning"),
+    ("claude", "GZ-39", "deviation_reason"): (True, "matches gold's pre-CMC-isotherm-doesn't-capture-micellization reasoning"),
+    ("chatgpt", "GZ-43", "agreement_assessment"): (True, "matches gold's ~3.5%/strong-agreement core claim"),
+    ("gemini", "GZ-43", "agreement_assessment"): (False, "field is null -- no answer given"),
+    ("claude", "GZ-43", "agreement_assessment"): (True, "'excellent agreement' matches gold's strong-agreement core claim"),
+    ("chatgpt", "GZ-50", "trend"): (True, "matches gold's monotonic-despite-non-monotonic-CMC claim"),
+    ("claude", "GZ-50", "trend"): (True, "matches gold's monotonic-despite-non-monotonic-CMC claim essentially verbatim"),
+}
+
+
 def main():
     with open(GOLD_PATH, "r", encoding="utf-8") as f:
         gold_all = json.load(f)
@@ -184,11 +223,20 @@ def main():
                 gv = gold[k]
                 mv = model_answer.get(k) if isinstance(model_answer, dict) else None
                 ok, kind = grade_field(mv, gv)
-                field_results[k] = {"ok": ok, "kind": kind, "gold": gv, "model": mv}
                 if kind == "needs-judgment":
-                    any_judgment = True
-                    needs_judgment_log.append((model, qid, k, gv, mv))
-                elif not ok:
+                    resolution = JUDGMENT_RESOLUTIONS.get((model, qid, k))
+                    if resolution is None:
+                        any_judgment = True
+                        needs_judgment_log.append((model, qid, k, gv, mv))
+                        field_results[k] = {"ok": None, "kind": kind, "gold": gv, "model": mv}
+                        continue
+                    ok, rationale = resolution
+                    field_results[k] = {"ok": ok, "kind": "judgment", "gold": gv, "model": mv, "rationale": rationale}
+                    if not ok:
+                        all_pass = False
+                    continue
+                field_results[k] = {"ok": ok, "kind": kind, "gold": gv, "model": mv}
+                if not ok:
                     all_pass = False
             verdict = "NEEDS_JUDGMENT" if any_judgment else ("PASS" if all_pass else "FAIL")
             q_results[qid] = {"verdict": verdict, "fields": field_results}
