@@ -57,7 +57,7 @@ CATIONIC_QUAT_CC = {
 }
 
 # Tier 2 bottleneck-resolution additions, 2026-09-15 (see benchmark/
-# paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md items 3/4/5) -- real
+# audit findings, 2026-09 items 3/4/5) -- real
 # literature values for surfactant classes beyond cationic quaternary
 # ammonium, found via web search 2026-09-15. HONEST DISCLOSURE: several
 # primary HLD-NAC sources (Leng & Acosta 2023, J. Surfactants Deterg.

@@ -53,7 +53,7 @@ def counterion_binding_degree(slope_below_cmc: float, slope_above_cmc: float) ->
 
 
 # Tier 2 bottleneck-resolution addition, 2026-09-15 (see benchmark/
-# paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 1): a real
+# audit findings, 2026-09 item 1): a real
 # reference table of counterion binding degree (beta) / dissociation
 # degree (alpha = 1-beta) for the most-studied ionic surfactants,
 # closing this bottleneck for compounds where a real measured value

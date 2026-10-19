@@ -2,7 +2,7 @@
 
 **DeepSeek's number below (39/50) was superseded 2026-10-15** by a further
 targeted-retry push to **48/50 (96.0%)** -- see
-`paper3_hard50/augmented_runs_deepseek_20261015/AUGMENTED_RUN_NOTES_2026-10-15.md`
+`benchmark/hard50/augmented_runs_deepseek_2026-10-15/`
 for the full methodology (per-question root-cause diagnosis, MCP-tool-
 discovery pattern, worked numeric examples) and what the 2 remaining
 disclosed failures (X-30, X-49) are.

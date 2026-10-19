@@ -22,7 +22,9 @@ benchmark/
   transcripts/          raw model answers, one file per run/question
   build_results.py      collects all graded cells into results/results.json (+ summary)
   build_tables.py       renders manuscript tables and SI artifacts from that JSON
+docs/                   validation-tier audit table (guarded by tests/test_validation_tiers.py)
 results/                generated: results.json, tables.md/.tex, per_question_results.csv,
+docs/                   validation-tier audit (registry guard: tests/test_validation_tiers.py)
                         REPRODUCIBILITY.md
 ```
 

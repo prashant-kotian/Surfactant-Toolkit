@@ -218,7 +218,7 @@ def classify_surfactant_charge_type(smiles: str) -> ChargeClassificationResult:
 # --- pH-conditional resolution of the "ambiguous_pH_dependent" case ------
 #
 # Real, buildable [COMPUTE] closure of part of the pH-ambiguous-charge
-# bottleneck (see benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md
+# bottleneck (see audit findings, 2026-09
 # item 14): classify_surfactant_charge_type above correctly refuses to
 # resolve a free-amine surfactant's charge type when solution pH is
 # unstated -- that refusal stays correct and is NOT removed here. What WAS

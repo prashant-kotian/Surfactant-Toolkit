@@ -910,7 +910,7 @@ def aggregation_number_from_quenching_curve(
 AVOGADRO_NUMBER = 6.02214076e23  # /mol, exact SI 2019
 
 # Tier 2 bottleneck-resolution addition, 2026-09-15 (see benchmark/
-# paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 10): real,
+# audit findings, 2026-09 item 10): real,
 # published dn/dc (refractive index increment) values for common
 # surfactant micelles in water, closing this bottleneck for compounds
 # where a real measured value already exists -- for
@@ -1138,7 +1138,7 @@ def estimate_partial_specific_volume_from_tail_and_headgroup(
     specific volume v_bar (cm^3/g) -- the input
     aggregation_number_from_svedberg_equation and aggregation_number_from_dls
     both require as an external, fully-formed, system-specific value (see
-    benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md item 11).
+    audit findings, 2026-09 item 11).
     This REDUCES, not eliminates, that external requirement: the
     hydrophobic TAIL's molar-volume contribution is computed exactly
     from cpp.py's already-verified tanford_tail_volume (an EXACT unit

@@ -32,7 +32,7 @@ from dataclasses import dataclass, field
 WATER_MOLARITY_M = 55.5  # mol/L, same dilute-aqueous-solution convention as thermodynamics.py
 
 # Tier 2 bottleneck-resolution addition, 2026-09-15 (see benchmark/
-# paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 13): real
+# audit findings, 2026-09 item 13): real
 # intrinsic aqueous solubility values for common solubilizates used in
 # real micellar-solubilization studies, closing this bottleneck for
 # compounds molar_solubilization_ratio/micelle_water_partition_
@@ -84,7 +84,7 @@ def estimate_intrinsic_water_solubility_qspr(smiles: str) -> QsprSolubilityEstim
     intrinsic aqueous solubility from structure alone -- closes part of
     the intrinsic_water_solubility_M bottleneck for
     molar_solubilization_ratio/micelle_water_partition_coefficient (see
-    benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md item 13),
+    audit findings, 2026-09 item 13),
     for compounds no real measured value has been sourced for yet.
 
     Method: ESOL (Delaney, J. Chem. Inf. Comput. Sci. 2004, 44, 1000-1005)

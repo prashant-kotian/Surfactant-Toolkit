@@ -207,7 +207,7 @@ def nagarajan_equilibrium_area_ionic(cmc_M: float, tail_length_A: float, headgro
 
 # --- Nagarajan & Ruckenstein's full molecular-thermodynamic headgroup model
 # (Langmuir 7 (1991) 2934-2969) -- Tier 3 bottleneck-resolution addition,
-# 2026-09-15 (see benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md
+# 2026-09-15 (see audit findings, 2026-09
 # item 7). PDF provided directly by the user 2026-09-15 (this exact primary
 # source, not a secondary citation) -- a real, DIFFERENT, more complete
 # electrostatic/dipole headgroup treatment than the simpler 2002-paper
@@ -638,7 +638,7 @@ def estimate_axial_ratio_from_cpp_geometry(cpp: float, aggregation_number: float
     """Real, buildable estimate of the prolate-ellipsoid axial ratio
     (a/b) for a cylindrical/rodlike micelle, closing the [COMPUTE] path
     identified for dynamics.py's Perrin axial_ratio bottleneck (see
-    benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md item 8) --
+    audit findings, 2026-09 item 8) --
     dynamics.hydrodynamic_radius_perrin_corrected's own docstring already
     names "the critical packing parameter's predicted morphology" as one
     legitimate source of axial_ratio; this function makes that concrete

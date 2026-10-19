@@ -18,7 +18,7 @@ from surfactantkit.validation_tiers import (
 )
 
 _ROOT = Path(__file__).resolve().parent.parent
-_AUDIT = _ROOT / "TOOLKIT_AUDIT_2026-09-30.md"
+_AUDIT = _ROOT / "docs" / "validation_tier_audit.md"
 
 
 def _parse_audit_table() -> dict[str, tuple[str, str]]:

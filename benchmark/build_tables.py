@@ -188,7 +188,7 @@ def main() -> int:
         for k in sorted(CELLS):
             for q, p in CELLS[k]["per_q"].items():
                 w.writerow([k, q, int(bool(p))])
-    print(f"paper3/: tables+csv rendered from {len(CELLS)} cells "
+    print(f"results/: tables+csv rendered from {len(CELLS)} cells "
           f"({len(PENDING)} pending flags active)")
     return 0
 

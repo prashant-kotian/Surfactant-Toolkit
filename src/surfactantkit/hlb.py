@@ -471,7 +471,7 @@ def hlb_davies(group_counts: dict[str, int], allow_derived_groups: bool = False)
 # --- Resolution of the Davies-gemini/glycolipid HLB bottleneck --------
 #
 # Tier 3 bottleneck-resolution closure, 2026-09-15 (see benchmark/
-# paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 6). This project
+# audit findings, 2026-09 item 6). This project
 # tested TWICE, with real data, whether Davies' group-additive method
 # could be extended to gemini (bis-headgroup) or glycolipid surfactants
 # (naive doubling of an existing group number; a single combined group
