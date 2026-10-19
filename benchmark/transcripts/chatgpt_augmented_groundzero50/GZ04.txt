@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "anionic, but pH-dependent; neutral when the carboxylic acid is protonated",
+"charge_confidence": "moderate",
+"structural_family": "glycolipid-type surfactant (glycolipid biosurfactant structural family), with a polyhydroxylated sugar ring linked to two long hydroxyacyl/hydrocarbon segments",
+"hlb": null,
+"notes": "Davies HLB was not reported because the connected surfactant-computation tool identifies the Davies group-additivity method as structurally invalid for this glycolipid family; a formal group sum would therefore be misleading. The supplied SMILES contains a free carboxylic acid, so actual charge depends on pH."
+}

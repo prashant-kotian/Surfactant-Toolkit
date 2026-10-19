@@ -1,0 +1,77 @@
+ing is decisively rejected (it over-predicts every mixed CMC — e.g. 7.0 vs 3.6 mM at α₂ = 0.95). The 2-parameter asymmetric fit returns W₁₂ ≈ W₁₂ ≈ −3.6 (essentially equal), so the extra parameter buys nothing and the symmetric single-β model is the right description.
+
+Fitted parameters:
+
+β = −3.63 ± 0.33 (regression across all five points; per-point values −3.2 to −3.9, consistent in sign and magnitude).
+Activity coefficients near equimolar micelle (x₁ ≈ 0.51): f₁ ≈ 0.42, f₂ ≈ 0.39 — both far below 1, a strong negative deviation from ideality (attractive mixing).
+Micellar mole fraction of component 1 rises monotonically with bulk: x₁ ≈ 0.37 → 0.44 → 0.51 → 0.59 → 0.74 as α₁ goes 0.05 → 0.80.
+
+Physically this is what you’d expect: the anionic sulfate head of SDS interacts favorably with the cationic choline of the zwitterion, relieving headgroup repulsion that each pure surfactant otherwise carries.
+
+Synergistic or antagonistic
+
+Synergistic. β is negative, and the condition for a genuine mixed-CMC minimum, |β| > |ln(CMC₁/CMC₂)|, is met: |−3.63| = 3.63 > |ln(1.8/8.3)| = 1.53. The data show this directly — at α₂ = 0.20 the mixed CMC is 1.3 mM, below both pure CMCs (1.8 and 8.3 mM). That’s negative synergism in mixed-micelle formation, not merely a weighted average.
+
+Independent check of the micellar-composition trend
+
+Yes, an independent check supports the same picture. The Rodenas method derives micellar composition purely from the numerical derivative of the CMC–composition curve, with no regular-solution / activity-coefficient assumptions — so it is structurally independent of Rubingh. It returns x₁ ≈ 0.30, 0.53, 0.74, 0.62, 0.72 across the series, sitting in the same range as the Rubingh-fitted x₁ (0.37–0.74) and telling the same story: component 1 is strongly enriched in the micelle relative to the bulk even when the bulk is 95% SDS (micelle already ~30–37% PC). The Rodenas values scatter a little and are mildly non-monotonic at the two richest points — expected, since differentiating five noisy points amplifies measurement error — but the magnitude and direction of the enrichment agree with Rubingh. The independent check confirms the synergistic, strongly-mixing conclusion.
+
+FINAL_JSON:
+{
+“component1_charge_type”: “zwitterionic”,
+“selected_mixture_model”: “Rubingh regular solution theory (symmetric single-beta regular solution); selected over ideal/Clint and 2-parameter asymmetric Margules by BIC”,
+“model_parameters”: {
+“beta”: -3.63,
+“beta_std”: 0.33,
+“beta_convention”: “regression across full series (per-point betas -3.2 to -3.9)”,
+“activity_coefficients_at_x1_0.51”: {“f1”: 0.42, “f2”: 0.39},
+“x1_micellar_component1_vs_alpha1”: {“0.05”: 0.37, “0.10”: 0.44, “0.20”: 0.51, “0.40”: 0.59, “0.80”: 0.74},
+“asymmetric_margules_cross_check”: {“W12”: -3.6, “W21”: -3.6, “note”: “nearly symmetric, justifies single-beta model”}
+},
+“synergy_classification”: “synergistic (negative deviation; |beta|=3.63 > |ln(CMC1/CMC2)|=1.53, and measured mixed CMC of 1.3 mM falls below both pure CMCs)”,
+“independent_check_note”: “Rodenas model-free composition (numerical derivative of the CMC-composition curve, no regular-solution assumptions) gives x1 approximately 0.30-0.74, matching the Rubingh-fitted x1 (0.37-0.74) and confirming strong enrichment of the zwitterionic component in the micelle relative to bulk; the independent trend supports the same synergistic conclusion.”
+}
+
+
+Create a doc
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+
+Progress
+
+2 earlier steps
+
+Classify component charge types
+, Done
+Select mixture model and fit interaction parameter
+, Done
+Classify synergy/antagonism
+, Done
+
+Independent model-free check of micellar composition
+, Done
+Used in this session
+
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

@@ -1,0 +1,57 @@
+To solve this problem using pure reasoning and mathematics without relying on code execution, we can use second-order Taylor expansions to approximate the results of the Monte Carlo simulation. Because the sample size ($N = 10000$) is large, the sample statistics will tightly converge to the theoretical moments of the distribution of $\Delta G_{mic}$.
+
+**1. Formulate the Function and the Inputs**
+Let $G(X, n, T) = \frac{R \cdot T}{1000} \left[ \left(1 + \frac{1}{n}\right) \ln X - \frac{1}{n} \ln n \right]$
+Given values:
+$\mu_X = 0.0062$, $\sigma_X = 0.0004$
+$\mu_n = 38$, $\sigma_n = 3$
+$\mu_T = 298.15$, $\sigma_T = 0.25$
+$R = 8.314462618$
+
+First, evaluate the function at the means of the inputs:
+$1 + 1/\mu_n = 1 + 1/38 \approx 1.0263158$
+$f(\mu_X, \mu_n) = 1.0263158 \ln(0.0062) - \frac{1}{38} \ln(38) \approx 1.0263158(-5.08320) - 0.0263158(3.63759) \approx -5.3127$
+$G(\mu_X, \mu_n, \mu_T) = \frac{8.31446 \times 298.15}{1000} (-5.3127) \approx 2.47896 \times (-5.3127) \approx -13.170 \text{ kJ/mol}$
+
+**2. Compute First and Second Derivatives**
+The partial derivatives of $G$ with respect to the inputs at their means dictate the variance and nonlinear shifts. 
+- **With respect to $X$:**
+  $G_X = \frac{R \cdot T}{1000} \frac{1 + 1/n}{X} \approx 2.47896 \times \frac{1.0263}{0.0062} \approx 410.35$
+  $G_{XX} = \frac{R \cdot T}{1000} \frac{-(1 + 1/n)}{X^2} \approx 2.47896 \times (-26699) \approx -66186$
+- **With respect to $n$:**
+  $G_n = \frac{R \cdot T}{1000} \frac{-\ln X + \ln n - 1}{n^2} \approx 2.47896 \times \frac{7.7208}{1444} \approx 0.0133$
+  $G_{nn} \approx 2.47896 \times \frac{1 - 2(-\ln X + \ln n - 1)}{n^3} \approx -0.00065$
+- **With respect to $T$:**
+  $G_T = \frac{R}{1000} f(\mu_X, \mu_n) \approx -0.0442$
+
+**3. Second-Order Approximation of the Mean**
+Because the equation is strictly nonlinear in $X$ and $n$, the expected value shifts away from $G(\mu)$ proportionally to the second derivatives (a known consequence of Taylor expansion for expectations):
+$\Delta \text{Mean} \approx \frac{1}{2} G_{XX} \sigma_X^2 + \frac{1}{2} G_{nn} \sigma_n^2$
+$\Delta \text{Mean} \approx \frac{1}{2}(-66186)(0.0004)^2 + \frac{1}{2}(-0.00065)(3)^2 \approx -0.0053 - 0.0029 = -0.0082 \text{ kJ/mol}$
+**Output Mean** $\approx -13.170 - 0.0082 = -13.178 \text{ kJ/mol}$
+
+**4. First-Order Approximation of Variance (Standard Deviation)**
+Variance $\approx (G_X \sigma_X)^2 + (G_n \sigma_n)^2 + (G_T \sigma_T)^2$
+Variance $\approx (410.35 \times 0.0004)^2 + (0.0133 \times 3)^2 + (-0.0442 \times 0.25)^2$
+Variance $\approx 0.02694 + 0.00158 + 0.00012 = 0.02864$
+**Output SD** $\approx \sqrt{0.02864} \approx 0.1692 \text{ kJ/mol}$
+
+**5. Evaluate Skewness and Percentiles**
+The distribution exhibits skewness largely due to the $G_{XX}$ non-linearity. 
+We approximate the third central moment $\mu_3 \approx 3(G_X \sigma_X)^2 (G_{XX} \sigma_X^2) \approx 3(0.02694)(-0.0053) \approx -0.000857$.
+The standard skewness coefficient $\gamma_1 = \mu_3 / \text{SD}^3 \approx -0.000857 / (0.1692)^3 \approx -0.177$.
+
+Using Pearson's relation for slightly skewed distributions, the difference between the mean and median is roughly:
+$\text{Mean} - \text{Median} \approx \frac{\mu_3}{6 \cdot \text{Variance}} \approx \frac{-0.000857}{6 \times 0.02864} \approx -0.005$
+Taking the formula requested:
+`skew = (mean - median) / sd` $\approx -0.005 / 0.1692 \approx -0.030$.
+Because $-0.030$ falls strictly between $-0.05$ and $+0.05$, the distribution shape holds the label **"symmetric"** under this strict threshold.
+
+Applying the Cornish-Fisher expansion to refine the percentiles for $\gamma_1 \approx -0.177$:
+$z_{0.025} \approx -1.96 + \frac{-0.177}{6}(1.96^2 - 1) \approx -2.044$
+$z_{0.975} \approx 1.96 + \frac{-0.177}{6}(1.96^2 - 1) \approx 1.876$
+
+**ci_low** $\approx \text{Mean} + z_{0.025} \times \text{SD} \approx -13.178 + (-2.044)(0.1692) \approx -13.524$
+**ci_high** $\approx \text{Mean} + z_{0.975} \times \text{SD} \approx -13.178 + (1.876)(0.1692) \approx -12.861$
+
+FINAL_JSON: {"output_mean": -13.178, "output_sd": 0.169, "ci_low": -13.524, "ci_high": -12.861, "skew_label": "symmetric"}

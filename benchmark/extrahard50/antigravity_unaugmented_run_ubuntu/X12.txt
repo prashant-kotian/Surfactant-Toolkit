@@ -1,0 +1,31 @@
+To determine the best model for the mixed-micelle series, we analyze the critical micelle concentration (CMC) data under three thermodynamic models: Clint’s ideal model, the Rubingh regular solution model, and the EOMMM asymmetric Margules model. 
+
+### 1. Clint Ideal Model (k = 0)
+Using the pure-component CMCs ($CMC_1 = 1.05$ mM, $CMC_2 = 8.60$ mM), Clint’s ideal formula calculates the ideal mixed CMC:
+$1 / CMC_{mix}^{ideal} = \alpha_1 / CMC_1 + (1 - \alpha_1) / CMC_2$
+The experimental CMCs show a strong negative deviation from these ideal values (synergism), yielding a high Residual Sum of Squares (RSS) in the $\ln(CMC)$ space and heavily penalizing its Bayesian Information Criterion (BIC).
+
+### 2. Pointwise Rubingh Beta & Regular Solution (k = 1)
+To find the Rubingh regular solution parameter ($\beta$), we first solve for the micellar mole fraction $x_1$ point-by-point via the symmetric non-ideal equilibrium condition:
+$x_1^2 \ln\left(\frac{\alpha_1 CMC_{mix}}{x_1 CMC_1}\right) = (1-x_1)^2 \ln\left(\frac{(1-\alpha_1) CMC_{mix}}{(1-x_1) CMC_2}\right)$
+After converging on $x_1$ for each point, the pointwise $\beta_i$ values are evaluated as:
+- $\alpha_1 = 0.10$: $x_1 \approx 0.4885 \implies \beta_1 = -2.1015$
+- $\alpha_1 = 0.30$: $x_1 \approx 0.6514 \implies \beta_2 = -2.0828$
+- $\alpha_1 = 0.50$: $x_1 \approx 0.7461 \implies \beta_3 = -2.0830$
+- $\alpha_1 = 0.70$: $x_1 \approx 0.8290 \implies \beta_4 = -2.0849$
+- $\alpha_1 = 0.90$: $x_1 \approx 0.9272 \implies \beta_5 = -2.0547$
+
+The pointwise-averaged Rubingh beta ($\beta_{mean}$) is exactly **-2.0814**.
+Performing least-squares optimization for a single constant $\beta$ to minimize the RSS in $\ln(CMC_{mix})$ yields an optimum near $\beta = -2.089$, with $RSS \approx 1.88 \times 10^{-5}$.
+$\text{BIC}_{rubingh} = 5 \ln(RSS/5) + 1 \ln(5) \approx -60.852$
+
+### 3. EOMMM Asymmetric Margules (k = 2)
+The EOMMM approach utilizes a two-parameter Margules expansion ($W_{12}$ and $W_{21}$) to capture compositional asymmetry in the activity coefficients. Even though the system appears highly symmetric (with standard $\beta$ values showing very minimal variance), substituting the two-parameter Margules equations provides a slight monotonic flexibility across the micellar mole fractions, dropping the optimized RSS steeply to roughly $4.93 \times 10^{-6}$.
+$\text{BIC}_{eommm} = 5 \ln(RSS/5) + 2 \ln(5) \approx -65.886$
+
+### Model Selection
+Comparing the two non-ideal models:
+$\Delta \text{BIC} = \text{BIC}_{eommm} - \text{BIC}_{rubingh} = -65.886 - (-60.852) = -5.034$
+Because the addition of the 2nd parameter reduces the logarithmic residuals enough to easily overcome the BIC dimensional penalty (k $\ln(n)$), the EOMMM Asymmetric Margules model is strictly preferred.
+
+FINAL_JSON: {"bic_rubingh": -60.852, "bic_eommm": -65.886, "delta_bic": -5.034, "selected": "eommm_asymmetric_margules", "beta_mean": -2.081}

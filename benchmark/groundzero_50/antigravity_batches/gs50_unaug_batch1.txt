@@ -1,0 +1,266 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== GZ01 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Real concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.01585, 62.22
+  0.03981, 55.66
+  0.10000, 49.10
+  0.25119, 42.54
+  0.63096, 35.98
+  1.58489, 29.42
+  3.981, 27.5
+  6.31, 27.8
+  10.0, 28.0
+
+Analyze this surfactant and report the critical micelle concentration, the surfactant's charge type, its pre-CMC adsorption behavior (whatever quantities and approach you find most appropriate to characterize it), and the free energy of micellization if it can genuinely be determined from what's given here.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "cmc_mM": <number or null>,
+  "isotherm_model": "<string or null>",
+  "gamma_max_mol_per_m2": <number or null>,
+  "a_min_nm2": <number or null>,
+  "delta_g_mic_kJ_per_mol": <number or null>
+}
+END OF QUESTION
+
+
+=== GZ02 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Analyze this binary surfactant system and report component 1's charge type, the interaction behavior between the two surfactants in their mixed micelles (with whatever model and parameters you find best explain this data), whether the system is synergistic or antagonistic, and whether an independent check of the micellar composition trend -- one that doesn't rely on your chosen model's own assumptions -- supports the same conclusion.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "component1_charge_type": "<string>",
+  "selected_mixture_model": "<string>",
+  "model_parameters": {},
+  "synergy_classification": "<string>",
+  "independent_check_note": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ03 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: [Br-].[Br-].CCCCCCCCCCCCCCCC[N+](C)(C)CCCCCC[N+](C)(C)CCCCCCCCCCCCCCCC
+
+Analyze this structure and report its charge type, its structural family (describe what about the structure supports your answer), and its HLB by Davies' group-contribution method if it can genuinely be computed.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "structural_family": "<string>",
+  "hlb": <number or null>,
+  "notes": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ04 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: CCCCCCCC(CC(=O)O)OC(=O)CC(CCCCCCC)O[C@H]1[C@@H]([C@@H]([C@H]([C@@H](O1)C)O)O)O
+
+Analyze this structure and report its charge type (including your confidence in that assignment), its structural family (describe what about the structure supports your answer), and its HLB by Davies' group-contribution method if it can genuinely be computed.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "charge_confidence": "<string>",
+  "structural_family": "<string>",
+  "hlb": <number or null>,
+  "notes": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ05 ===
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCCCCCCS(=O)(=O)O
+Real CMC measured at each of the following temperatures (same source):
+  T = 30.0 C, CMC = 0.592 mM
+  T = 50.0 C, CMC = 0.805 mM
+  T = 70.0 C, CMC = 1.11 mM
+
+Analyze this surfactant's micellization thermodynamics. Report the enthalpy of micellization using the widest available temperature span, and also report each adjacent temperature pair's own enthalpy separately, noting whether these agree with each other and with the overall result. Also report the free energy and entropy of micellization, if they can genuinely be determined from what's given here.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_endpoint_kJ_per_mol": <number>,
+  "sub_intervals": [{"t_lo_C": <number>, "t_hi_C": <number>, "delta_h_kJ_per_mol": <number>}, ...],
+  "self_consistent": <true|false>,
+  "delta_g_mic_kJ_per_mol": <number or null>,
+  "delta_s_mic_J_per_mol_K": <number or null>
+}
+END OF QUESTION
+
+
+=== GZ06 ===
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+A real surfactant micelle has a measured hydrodynamic radius of 2.637 nm, in an aqueous solution with 100 mM NaCl at 298.15 K.
+
+Analyze this system's electrostatic screening and electrophoretic behavior. Report the Debye screening length, the dimensionless product kappa*a (Debye parameter times the micelle's own radius), and the appropriate electrophoretic mobility correction factor for a particle at this kappa*a -- state which treatment you used and why.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "debye_length_nm": <number>,
+  "kappa_a": <number>,
+  "henry_function_value": <number>,
+  "method_used": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ07 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific system.
+
+A real surfactant-based nanoparticle system was characterized by DOSY-NMR, giving a measured translational diffusion coefficient D = 1.56e-6 cm^2/s, in a solvent of viscosity 0.89 mPa.s at 298.15 K.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+A separate, independent DLS (dynamic light scattering) measurement on the exact same real system reports a hydrodynamic radius of approximately 40 nm.
+
+Analyze this system. Report the hydrodynamic radius implied by the DOSY-NMR diffusion coefficient via the Stokes-Einstein relation, and comment on how it relates to the separately-reported DLS value.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "rh_from_diffusion_nm": <number>,
+  "comment_on_dls_comparison": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ08 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCO
+
+Real concentration-vs-surface-tension data at 298 K (concentration in mol/L, surface tension in mN/m):
+  1.00e-08, 71.539
+  3.00e-08, 70.720
+  1.00e-07, 68.550
+  3.00e-07, 64.935
+  1.00e-06, 59.512
+  3.00e-06, 53.880
+  1.00e-05, 47.426
+  3.00e-05, 41.449
+  8.00e-05, 36.088
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant and report its charge type and its pre-CMC adsorption behavior -- whatever model and parameters you find best fit this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "isotherm_model": "<string>",
+  "K": <number>,
+  "gamma_max_mol_per_m2": <number>
+}
+END OF QUESTION
+
+
+=== GZ09 ===
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real liquid-solid (glass) system has a measured liquid surface tension (gamma_LV) of 25.777 mN/m and a measured contact angle (theta) of 24.370 degrees.
+
+Compound SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Use the Young-Dupre relations: work of adhesion W_A (mJ/m^2) = gamma_LV * (1 + cos(theta)); spreading coefficient S (mJ/m^2) = gamma_LV * (cos(theta) - 1).
+
+Analyze this system and report the work of adhesion, the spreading coefficient, and whether this liquid spontaneously wets this solid.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "work_of_adhesion_mJ_per_m2": <number>,
+  "spreading_coefficient_mJ_per_m2": <number>,
+  "spontaneous_wetting": <true|false>
+}
+END OF QUESTION
+
+
+=== GZ10 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real anionic surfactant has 12 carbons in its hydrophobic tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real, independently measured optimal headgroup area (from the Gibbs adsorption isotherm's own surface-excess slope) for this exact compound is Amin = 44.70 square Angstrom.
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons:
+  Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c
+  Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c
+  Critical packing parameter P = V / (Amin * l_c)
+  Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+Analyze this system and report the tail volume, critical chain length, critical packing parameter, and predicted aggregate morphology. Note any assumptions or limitations in your approach.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_volume_A3": <number>,
+  "critical_length_A": <number>,
+  "cpp": <number>,
+  "predicted_morphology": "<string>",
+  "assumptions_or_limitations": "<string>"
+}
+END OF QUESTION

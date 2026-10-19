@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 67.27,
+"cpp_electrostatic_area": 0.3121,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "Measured area (44.7 A2) gives CPP 0.47, rodlike, consistent with real weakly elongated C12 sulfate micelles. Electrostatic-only area (67.3 A2, from Debye length 34.3 A at I=CMC=8 mM) gives CPP 0.31, spherical. The electrostatic route over-inflates the area because it neglects counterion condensation, so it is a lower bound on CPP; the measured area is the physically faithful predictor."
+}

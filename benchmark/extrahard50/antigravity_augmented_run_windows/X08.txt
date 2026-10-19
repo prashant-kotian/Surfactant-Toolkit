@@ -1,0 +1,13 @@
+Based on the Monte Carlo propagation through the Stokes-Einstein equation using the provided exact random seed and configurations, here are the statistical results for the hydrodynamic radius ($R_h$):
+
+* **Mean ($R_h$)**: 5.3864 nm
+* **Sample Standard Deviation**: 1.4133 nm
+* **Median ($R_h$)**: 5.1148 nm
+* **2.5th Percentile**: 3.5946 nm
+* **97.5th Percentile**: 8.7767 nm
+
+Calculating the nonparametric skew:
+$$\text{Skew} = \frac{\text{Mean} - \text{Median}}{\text{Standard Deviation}} = \frac{5.3864 - 5.1148}{1.4133} \approx 0.1922$$
+Because the skew is $> +0.05$, the distribution is classified as **right-skewed**, which correctly reflects the nonlinear (convex) propagation of symmetric Gaussian noise acting on the denominator $D$. 
+
+FINAL_JSON: {"output_mean": 5.386415264704639, "output_sd": 1.4132677561999263, "ci_low": 3.594562885227173, "ci_high": 8.776667388732983, "skew_label": "right-skewed"}

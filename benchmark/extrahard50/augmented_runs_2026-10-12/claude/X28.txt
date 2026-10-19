@@ -1,0 +1,23 @@
+I'll work through this computationally to be precise.
+
+All steps computed. Here are the results.
+
+**1. excluded_gamma:** Both duplicate rows share the same 4 nearest other points in log₁₀(c) — c = 0.6, 1.0, 2.4, 3.5 — giving an identical fitted value of 55.86 mN/m. The residuals are 9.96 for γ=45.9 and **17.16 for γ=38.7**, so the γ=38.7 row is excluded (larger residual).
+
+**2. cmc_mM:** The RSS-minimizing split of the remaining 9 points falls after the 5th point. Declining segment ends at c=2.40 (log₁₀=0.380), plateau starts at c=3.50 (log₁₀=0.544). CMC = 10^((0.380+0.544)/2) = **2.898 mM**.
+
+**3. gamma_max:** Declining slope = −21.545 per log₁₀ → −9.357 per ln. Γ = −(−9.357)·10⁻³ / (2·8.314462618·298.15) = **1.887 × 10⁻⁶ mol/m²**.
+
+**4. n_used:** 9 points (10 original − 1 excluded duplicate).
+
+**5. conflict_detected:** true — the two readings at c=1.60 mM were flagged and one was excluded by the residual rule.
+
+| Output | Value |
+|---|---|
+| excluded_gamma | 38.7 mN/m |
+| cmc_mM | 2.898 mM |
+| gamma_max | 1.887×10⁻⁶ mol/m² |
+| n_used | 9 |
+| conflict_detected | true |
+
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.898, "gamma_max": 1.887e-06, "n_used": 9, "conflict_detected": true}

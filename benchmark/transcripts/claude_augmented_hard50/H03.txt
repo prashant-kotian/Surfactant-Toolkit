@@ -1,0 +1,108 @@
+box for this.]
+
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Surface tension isotherm for a 1:1 ionic surfactant in water with NO added electrolyte at T = 298.15 K (constructed demonstration dataset; gamma in mN/m, c in mM):
+
+  0.005, 71.9
+  0.010, 71.8
+  0.020, 71.6
+  0.05, 66.5
+  0.10, 61.9
+  0.30, 53.0
+  0.70, 45.0
+  1.50, 38.0
+  3.00, 33.0
+  6.00, 31.2
+  10.00, 31.1
+  16.00, 31.0
+
+Report: the CMC (mM); whether the curve requires a three-segment (flat baseline / decline / plateau) description (true/false) and the number of points in the baseline segment; the maximum surface excess Gamma_max (mol/m^2) from the premicellar slope; the minimum area per molecule A_min (nm^2); and dG_mic (kJ/mol) using the counterion dissociation degree alpha = 0.31 via dG = (1 + alpha)*R*T*ln(X) with X = CMC(mol/L)/55.5, T = 298.15 K. State clearly which Gibbs prefactor n you used and why (the electrolyte condition is given above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "three_segment_selected": <true or false>,
+  "n_baseline_points": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: I'll use the surfactant-computation MCP tools for this.
+Checking the Gibbs prefactor convention for ionic surfactants.
+
+Checking the Gibbs prefactor convention for ionic surfactants.
+
+I’ll use the surfactant-computation MCP tools for this. Let me load the relevant tool schemas first.
+
+Used surfactant-computation: Cmc from surface tension curve
+
+Used surfactant-computation: Cmc from surface tension curve
+
+The tool selected a three-segment model (baseline + decline + plateau). Now the maximum surface excess — this is a 1:1 ionic surfactant with no added electrolyte, so the Gibbs prefactor is n = 2.
+
+Used surfactant-computation
+
+Used surfactant-computation
+
+All values are computed. Here’s the analysis.
+
+Results
+
+CMC. A three-segment break-point fit (baseline → decline → plateau, BIC-selected) gives a CMC of 4.24 mM. The premicellar (declining) segment fits well (R² = 0.998) with a slope of −8.40 mN/m per ln c, and the plateau sits at ~31.1 mN/m.
+
+Three-segment description. True — the data genuinely needs all three segments. The three lowest concentrations (0.005, 0.010, 0.020 mM) sit essentially flat at ~71.7 mN/m (a pre-adsorption baseline where the interface is barely populated), distinct from the steep decline that follows. Baseline points: 3.
+
+Γ_max (premicellar slope). Γ_max = −(1/(nRT))·(dγ/d ln c). For a 1:1 ionic surfactant with no added electrolyte, the Gibbs prefactor is n = 2: with no swamping background salt, both the surfactant ion and its counterion respond to the concentration change and contribute to the interfacial chemical-potential term, so the denominator carries the factor 2. (It would be n = 1 only for a nonionic surfactant, or for an ionic one in excess inert electrolyte where the counterion activity is held fixed.) This yields Γ_max = 1.694 × 10⁻⁶ mol/m².
+
+A_min. A_min = 1/(N_A·Γ_max) = 0.980 nm² per molecule.
+
+ΔG_mic. Using the specified ΔG = (1 + α)·RT·ln(X) with α = 0.31 (so prefactor 1.31) and X = CMC/55.5 = 7.64 × 10⁻⁵: ΔG_mic = −30.8 kJ/mol. Note (1 + α) is identical to the common (2 − β) form here, since the counterion binding degree β = 1 − α = 0.69.
+
+FINAL_JSON:
+{
+“cmc_mM”: 4.24,
+“three_segment_selected”: true,
+“n_baseline_points”: 3,
+“gamma_max_mol_per_m2”: 1.694e-6,
+“a_min_nm2”: 0.980,
+“delta_g_mic_kJ_per_mol”: -30.78
+}
+END OF QUESTION
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

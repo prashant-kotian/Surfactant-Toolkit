@@ -1,0 +1,13 @@
+I'll run the EOMMM global fit on this series with the computation tools.
+
+The fit has a single feasible basin at cmc_margin = 0.10, so the result is unique. A full-plane search found only one optimum, not a degenerate set.
+
+1. **W12** = 0.40
+2. **W21** = 0.80
+3. **r_squared** = 0.9839 (in ln(CMC_mix) space)
+4. **x1_middle_point** = 0.8613 (at alpha1 = 0.55)
+5. **feasible** = true (total_infeasibility ≈ 3.4 × 10⁻¹⁴, well below 1e-6)
+
+The micellar mole fractions across the series are 0.289, 0.651, 0.861, 0.948 and 0.984. The fitted CMC values all fall inside the ±10% band. The first point (alpha1 = 0.15) has the largest deviation: 4.77 mM against 5.19 mM measured.
+
+FINAL_JSON: {"W12": 0.4, "W21": 0.8, "r_squared": 0.9839135971801352, "x1_middle_point": 0.861256575229002, "feasible": true}

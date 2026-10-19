@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"nagg_sls": 54.4853,
+"nagg_geometric": 55.5086,
+"methods_consistent_within_literature_range": true,
+"most_reliable": "SLS"
+}

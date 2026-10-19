@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"selected_model": "frumkin",
+"frumkin_a": 2.5333077215068407,
+"condensation_regime_flagged": true,
+"a_trustworthy_downstream_unexamined": false
+}

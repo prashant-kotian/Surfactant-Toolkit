@@ -1,0 +1,14 @@
+FINAL_JSON: {
+"component1_charge_type": "zwitterionic",
+"selected_mixture_model": "EOMMM asymmetric Margules model",
+"model_parameters": {
+"W12": -1.7,
+"W21": -4.3,
+"r1": 1.0,
+"r2": 2.0,
+"R_squared": 0.9835,
+"rubingh_beta_comparison": -1.3558
+},
+"interaction_character": "Strong synergistic attractive mixing with pronounced composition asymmetry; attraction is substantially stronger for component 2 entering component-1-rich micelles.",
+"independent_check_note": "Rodenas Gibbs-Duhem composition analysis, independent of the selected activity-coefficient model, gives x1 well above bulk alpha1 at every measured composition and compatible asymmetric activity-coefficient deviations, supporting preferential component-1 micellar enrichment and attractive nonideal mixing; exact pointwise x1 values are derivative-sensitive because the series is sparse."
+}

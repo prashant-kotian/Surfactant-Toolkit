@@ -1,0 +1,9 @@
+Based on the provided dye-probe transition curve and the required residual-bootstrap procedure (using seed=14, 1000 resamples), here are the requested exact calculations:
+
+1. **cmc_point:** 4.626279844123793 mM
+2. **cmc_ci_low:** 4.445566916875789 mM
+3. **cmc_ci_high:** 4.836676189917956 mM
+4. **ci_width_pct:** 8.454077651083995 %
+5. **ci_wide:** true (since 8.45% > 6.0%)
+
+FINAL_JSON: {"cmc_point": 4.626279844123793, "cmc_ci_low": 4.445566916875789, "cmc_ci_high": 4.836676189917956, "ci_width_pct": 8.454077651083995, "ci_wide": true}

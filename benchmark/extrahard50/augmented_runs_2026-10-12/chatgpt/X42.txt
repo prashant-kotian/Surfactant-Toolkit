@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 51s
+Analyzed
+ChatGPT said:
+cmc_mM: 4.445222154178574
+rel_diff_L1: 7.766139513501267
+rel_diff_L2: 55.2228383797174
+closer: L1
+either_agrees_15pct: true
+
+FINAL_JSON: {"cmc_mM": 4.445222154178574, "rel_diff_L1": 7.766139513501267, "rel_diff_L2": 55.2228383797174, "closer": "L1", "either_agrees_15pct": true}

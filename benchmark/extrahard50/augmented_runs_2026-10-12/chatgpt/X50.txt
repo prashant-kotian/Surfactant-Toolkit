@@ -1,0 +1,10 @@
+…
+Show more
+Worked for 1m 15s
+ChatGPT said:
+cmc_kinetic_mM: 0.26262626262626265
+Nagg_rounded: 8
+dG_kinetic: -34.83862333937016 kJ/mol
+convergence: converged
+
+FINAL_JSON: {"cmc_kinetic_mM": 0.26262626262626265, "Nagg_rounded": 8, "dG_kinetic": -34.83862333937016, "convergence": "converged"}

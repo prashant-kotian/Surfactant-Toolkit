@@ -1,0 +1,11 @@
+Based on the provided kinetic Monte Carlo problem parameters, I have run the direct Gillespie SSA using the `surfactantkit` MCP tool `kmc_micelle_kinetics`. 
+
+The system was simulated with 350 molecules at a total concentration of 0.030 M, an equilibrium constant of 1800 /M, and a forward rate $k_{on}$ of $5.0 \times 10^6$ /M/s. Starting from a Poisson sample consistent with equilibrium and utilizing pseudo-random draws from NumPy's PCG64 generator seeded precisely with 78, the 50 sampled checkpoints yielded the following properties over the final stationary window:
+
+1. **equilibrium_c1_M**: The mean stationary monomer concentration is exactly 0.000557142857142857 mol/L.
+2. **equilibrium_mean_nagg**: The stationary mean aggregation number (for $n \ge 2$) is 7.165213963341623.
+3. **tau_fit_s**: The exponential relaxation time fit is 0.05287971111143619 s.
+4. **mass_conservation_max_error**: The maximum mass conservation deviation verified over the entire trajectory is 0.
+5. **convergence**: The simulation safely reached the stationary limits and was judged "converged".
+
+FINAL_JSON: {"equilibrium_c1_M": 0.000557142857142857, "equilibrium_mean_nagg": 7.165213963341623, "tau_fit_s": 0.05287971111143619, "mass_conservation_max_error": 0, "convergence": "converged"}

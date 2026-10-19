@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"cmc_point": 3.512,
+"cmc_ci_low": 3.239,
+"cmc_ci_high": 3.821
+}

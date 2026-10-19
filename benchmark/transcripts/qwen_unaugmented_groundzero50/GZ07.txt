@@ -1,0 +1,218 @@
+lues (converted to SI):
+Quantity
+	
+Value
+
+
+𝐷
+D
+	
+1.56
+×
+10
+−
+6
+1.56×10
+−6
+ cm²/s = 
+1.56
+×
+10
+−
+10
+1.56×10
+−10
+ m²/s
+
+
+𝜂
+η
+	
+0.89
+0.89 mPa·s = 
+8.9
+×
+10
+−
+4
+8.9×10
+−4
+ Pa·s
+
+
+𝑇
+T
+	
+298.15 K
+
+
+𝑘
+𝐵
+k
+B
+	​
+
+	
+1.380649
+×
+10
+−
+23
+1.380649×10
+−23
+ J/K
+Step-by-step calculation:
+𝑘
+𝐵
+𝑇
+=
+1.380649
+×
+10
+−
+23
+×
+298.15
+=
+4.1164
+×
+10
+−
+21
+  
+J
+k
+B
+	​
+
+T=1.380649×10
+−23
+×298.15=4.1164×10
+−21
+J
+6
+𝜋
+𝜂
+𝐷
+=
+18.8496
+×
+(
+8.9
+×
+10
+−
+4
+)
+(
+1.56
+×
+10
+−
+10
+)
+=
+2.617
+×
+10
+−
+12
+  
+kg⋅m⋅s
+−
+2
+6πηD=18.8496×(8.9×10
+−4
+)(1.56×10
+−10
+)=2.617×10
+−12
+kg⋅m⋅s
+−2
+𝑅
+ℎ
+=
+4.1164
+×
+10
+−
+21
+2.617
+×
+10
+−
+12
+=
+1.573
+×
+10
+−
+9
+  
+m
+≈
+1.57
+  
+nm
+R
+h
+	​
+
+=
+2.617×10
+−12
+4.1164×10
+−21
+	​
+
+=1.573×10
+−9
+m≈
+1.57nm
+	​
+
+This is entirely consistent with the known hydrodynamic radius of a CTAB micelle (literature values cluster around 1.5–2.5 nm for roughly spherical micelles).
+Part B: Comparison with the DLS Value of ~40 nm
+The DLS result (~40 nm) is roughly 25× larger than the DOSY-NMR value. This is a dramatic and physically meaningful discrepancy, not a simple experimental error:
+Different weighting: DOSY-NMR measures the number-concentration-weighted self-diffusion of the ¹H-bearing surfactant molecules. The signal is dominated by the most populous species—here, individual ~1.6 nm micelles. DLS, by contrast, measures intensity-weighted fluctuations, where scattered intensity scales as 
+𝑅
+ℎ
+6
+R
+h
+6
+	​
+
+ (Rayleigh regime). A single 40 nm scatterer contributes 
+(
+40
+/
+1.6
+)
+6
+≈
+2.4
+×
+10
+8
+(40/1.6)
+6
+≈2.4×10
+8
+ times more intensity than one 1.6 nm micelle. Thus even a vanishingly small number of large objects (dust, rare vesicles, or loose aggregates) will dominate the DLS correlation function.
+Physical interpretation: The 40 nm signal most likely arises from a minor population of large aggregates, dust, or adventitious particles in the DLS cuvette, rather than representing the equilibrium micelle size. CTAB micelles do not grow to 40 nm under normal conditions.
+Consistency check: The DOSY-NMR value of ~1.6 nm agrees well with the expected CTAB micelle radius, confirming that the bulk surfactant is present as normal small micelles. The DLS value should be treated with caution and the sample re-filtered/re-measured.
+Bottom line: DOSY-NMR faithfully reports the true micelle size; the DLS result is an artefact of the extreme 
+𝑅
+6
+R
+6
+ intensity weighting picking up a trace population of much larger scatterers.
+FINAL_JSON:
+{
+"rh_from_diffusion_nm": 1.57,
+"comment_on_dls_comparison": "The DOSY-NMR Stokes-Einstein radius of ~1.57 nm is consistent with individual CTAB micelles. The DLS value of ~40 nm is ~25x larger and almost certainly reflects the extreme R^6 intensity weighting of DLS, which makes it sensitive to trace large aggregates, dust, or rare vesicles invisible to DOSY-NMR. The true equilibrium species in solution is the ~1.6 nm micelle; the 40 nm DLS signal is an artefact of a minor large-particle population dominating the scattered intensity."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

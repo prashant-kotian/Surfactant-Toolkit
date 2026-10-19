@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "surfactantkit"
+version = "0.4.0"
+description = "Mixed-surfactant micellization theory (Clint, Rubingh, Gibbs adsorption) as a tested Python library and MCP server, so AI assistants stop hallucinating CMC and interaction-parameter values."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Prashant D. Kotian" }]
+keywords = ["surfactant", "micelle", "CMC", "Rubingh", "Clint", "colloid", "interfacial-science", "MCP"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = [
+    "rdkit>=2023.9",  # classify.py's SMILES-based charge-type classification --
+                       # the one real external dependency in an otherwise
+                       # zero-dependency library, added 2026-09-13: correct
+                       # SMARTS substructure matching against arbitrary real
+                       # SMILES genuinely needs a real cheminformatics engine,
+                       # not hand-rolled string parsing.
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+mcp = ["mcp[cli]>=2.0"]
+calc = [
+    # computational workers (Phase 1): bootstrap_cmc, poisson_boltzmann,
+    # dls_size_distribution need scipy's optimizers/solvers; mc_aggregation
+    # needs numpy.  The core library stays importable without these -- each
+    # worker lazy-imports and raises a clear error naming this extra.
+    # rdkit is already a core dependency (classify.py), so descriptor_panel
+    # works with the base install.
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.scripts]
+surfactantkit-mcp = "surfactantkit.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

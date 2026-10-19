@@ -1,0 +1,1202 @@
+{
+ "GZ-01": {
+  "verdict": "FAIL",
+  "fields": {
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.1558892601017348,
+    "model": 1.1558892601017348
+   },
+   "cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.5118612800073175,
+    "model": 2.5118612800073175
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": false,
+    "kind": "null-check",
+    "gold": null,
+    "model": -24.797402642896007
+   },
+   "isotherm_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "langmuir (BIC-selected over Frumkin)",
+    "model": "frumkin (BIC-selected over Langmuir)"
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "anionic",
+    "model": "anionic"
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.436590099494216e-06,
+    "model": 1.436590099494216e-06
+   }
+  }
+ },
+ "GZ-02": {
+  "verdict": "FAIL",
+  "fields": {
+   "model_parameters": {
+    "ok": true,
+    "kind": "dict-skipped",
+    "gold": {
+     "W12": -4.6,
+     "W21": -2.6
+    },
+    "model": {
+     "beta": -3.632,
+     "beta_std": 0.327,
+     "beta_unit": "dimensionless"
+    }
+   },
+   "synergy_classification": {
+    "ok": true,
+    "kind": "string",
+    "gold": "synergistic",
+    "model": "synergistic"
+   },
+   "component1_charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "zwitterionic",
+    "model": "zwitterionic"
+   },
+   "selected_mixture_model": {
+    "ok": false,
+    "kind": "string",
+    "gold": "eommm_asymmetric_margules",
+    "model": "rubingh_regular_solution"
+   }
+  }
+ },
+ "GZ-03": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic"
+   },
+   "structural_family": {
+    "ok": true,
+    "kind": "string",
+    "gold": "dimeric/gemini (two headgroup units in one molecule)",
+    "model": "dimeric gemini-type (bis-quaternary ammonium); two C16 alkyl tails, two N+(CH3)2 headgroups joined by a C6 spacer, 2 Br- counterions"
+   },
+   "hlb": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   }
+  }
+ },
+ "GZ-04": {
+  "verdict": "NO_JSON",
+  "fields": {},
+  "reason": "Better DeepSeek extension truncates this long chiral-ring SMILES mid-string before the tool call (CCCCCCCC(CC(=O)O)OC(=O)CC(CCCCCCC)O[C@H]1[C@@H](...)... gets cut off right at '[C@H]', dropping the entire sugar ring) -- a second, distinct manifestation of the same extension-level text-scraping unreliability as H-30/GZ-17's markdown corruption. Retried 3 times total (incl. a fresh page reload and a dedicated clean-environment retry after fixing an unrelated MCP SuperAssistant conflict) -- same truncation reproduced every time; confirmed independent of that conflict, not fixable via prompting."
+ },
+ "GZ-05": {
+  "verdict": "FAIL",
+  "fields": {
+   "self_consistent": {
+    "ok": false,
+    "kind": "bool",
+    "gold": true,
+    "model": false
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": false,
+    "kind": "null-check",
+    "gold": null,
+    "model": -29.93
+   },
+   "delta_s_mic_J_per_mol_K": {
+    "ok": false,
+    "kind": "null-check",
+    "gold": null,
+    "model": 50.28
+   },
+   "delta_h_endpoint_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -13.592197635471393,
+    "model": -13.69
+   },
+   "sub_intervals": {
+    "ok": false,
+    "kind": "unknown",
+    "gold": [
+     {
+      "t_lo_C": 30.0,
+      "t_hi_C": 50.0,
+      "delta_h_kJ_per_mol": -12.51622692462097
+     },
+     {
+      "t_lo_C": 50.0,
+      "t_hi_C": 70.0,
+      "delta_h_kJ_per_mol": -14.810140401192402
+     }
+    ],
+    "model": [
+     {
+      "t_lo_C": 30.0,
+      "t_hi_C": 50.0,
+      "delta_h_kJ_per_mol": -12.52
+     },
+     {
+      "t_lo_C": 50.0,
+      "t_hi_C": 70.0,
+      "delta_h_kJ_per_mol": -14.81
+     }
+    ]
+   }
+  }
+ },
+ "GZ-06": {
+  "verdict": "PASS",
+  "fields": {
+   "kappa_a": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.7429603389170865,
+    "model": 2.74
+   },
+   "debye_length_nm": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.9613700798317342,
+    "model": 0.9614
+   }
+  }
+ },
+ "GZ-07": {
+  "verdict": "PASS",
+  "fields": {
+   "rh_from_diffusion_nm": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.57290454836187,
+    "model": 1.57
+   }
+  }
+ },
+ "GZ-08": {
+  "verdict": "FAIL",
+  "fields": {
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.21e-06,
+    "model": 3e-06
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "nonionic",
+    "model": "nonionic"
+   },
+   "isotherm_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "langmuir/szyszkowski",
+    "model": "frumkin (BIC-selected over Langmuir, \u0394BIC = 14.35)"
+   },
+   "K": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 8772000.0,
+    "model": 19563777.90471785
+   }
+  }
+ },
+ "GZ-09": {
+  "verdict": "PASS",
+  "fields": {
+   "spontaneous_wetting": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   },
+   "work_of_adhesion_mJ_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 49.25670435832693,
+    "model": 49.25726509668378
+   },
+   "spreading_coefficient_mJ_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -2.296704358326928,
+    "model": -2.2967349033162257
+   }
+  }
+ },
+ "GZ-10": {
+  "verdict": "PASS",
+  "fields": {
+   "predicted_morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "cpp": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.46969136100515557,
+    "model": 0.4697
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   }
+  }
+ },
+ "GZ-11": {
+  "verdict": "PASS",
+  "fields": {
+   "cpp_measured_area": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.46969136100515557,
+    "model": 0.4697
+   },
+   "morphology_electrostatic_area": {
+    "ok": true,
+    "kind": "string",
+    "gold": "spherical micelle",
+    "model": "spherical micelle"
+   },
+   "cpp_electrostatic_area": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.31209541232517773,
+    "model": 0.3121
+   },
+   "morphology_measured_area": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "electrostatic_headgroup_area_A2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 67.27174770212636,
+    "model": 67.27
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   }
+  }
+ },
+ "GZ-12": {
+  "verdict": "PASS",
+  "fields": {
+   "f2_at_x1_0.90": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.3154843161590624,
+    "model": 0.26
+   },
+   "f1_at_x1_0.90": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.0125688763683443,
+    "model": 1.01
+   }
+  }
+ },
+ "GZ-13": {
+  "verdict": "PASS",
+  "fields": {
+   "molecular_weight_g_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 682.9770000000001,
+    "model": 665.97
+   },
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 10,
+    "model": 10
+   },
+   "hlb_griffin": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 13.398313559607427,
+    "model": 13.23
+   }
+  }
+ },
+ "GZ-14": {
+  "verdict": "PASS",
+  "fields": {
+   "lateral_interaction_present": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "ambiguous by design -- a=3.788 is real and nonzero (genuine 2D-condensation-regime magnitude), but Langmuir still wins on BIC",
+    "model": true,
+    "rationale": "gold notes this is genuinely ambiguous by design (a nonzero but Langmuir still wins BIC); model's True reflects the real nonzero magnitude, a defensible read"
+   },
+   "confidence_from_this_data_alone": {
+    "ok": true,
+    "kind": "string",
+    "gold": "low",
+    "model": "low"
+   }
+  }
+ },
+ "GZ-15": {
+  "verdict": "PASS",
+  "fields": {
+   "gamma_plateau_mN_per_m": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 27.5,
+    "model": 27.6
+   },
+   "gamma_lowest_conc_mN_per_m": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 62.22,
+    "model": 62.5
+   },
+   "estimated_cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.5118612800073175,
+    "model": 2.51
+   }
+  }
+ },
+ "GZ-16": {
+  "verdict": "PASS",
+  "fields": {
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.4846,
+    "model": 0.485
+   },
+   "cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 9.1815,
+    "model": 9.18
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -27.271,
+    "model": -27.27
+   },
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "anionic",
+    "model": "anionic"
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 3.4268e-06,
+    "model": 3.43e-06
+   }
+  }
+ },
+ "GZ-17": {
+  "verdict": "NO_JSON",
+  "fields": {},
+  "reason": "Better DeepSeek extension markdown-corrupts this DTAB SMILES ([N+](C)(C)C -> [N+](https://c/)(C)C) before the tool call; model detected the corruption but could not escape it (same root cause as HARD50's H-30), and degenerated into a repeated-token loop on retry. Not a toolkit or grading issue."
+ },
+ "GZ-18": {
+  "verdict": "PASS",
+  "fields": {
+   "cpp": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.4697,
+    "model": 0.4697
+   },
+   "morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "axial_ratio": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.135,
+    "model": 1.135
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   }
+  }
+ },
+ "GZ-19": {
+  "verdict": "PASS",
+  "fields": {
+   "tail_molar_volume_contribution_cm3_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 210.9,
+    "model": 210.9
+   },
+   "v_bar_full_cm3_per_g": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   }
+  }
+ },
+ "GZ-20": {
+  "verdict": "PASS",
+  "fields": {
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.1559,
+    "model": 1.1558892601017348
+   },
+   "cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.5119,
+    "model": 2.5118612800073175
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -34.468,
+    "model": -34.468389673625445
+   },
+   "isotherm_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+    "model": "frumkin (BIC-selected over Langmuir)"
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "anionic",
+    "model": "anionic"
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.4366e-06,
+    "model": 1.436590099494216e-06
+   }
+  }
+ },
+ "GZ-21": {
+  "verdict": "PASS",
+  "fields": {
+   "cpp_measured_area": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.352,
+    "model": 0.352
+   },
+   "morphology_measured_area": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "electrostatic_headgroup_area_A2": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   }
+  }
+ },
+ "GZ-22": {
+  "verdict": "PASS",
+  "fields": {}
+ },
+ "GZ-23": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic (strong, pH-independent) \u2014 dicationic"
+   },
+   "valid_hlb_method": {
+    "ok": true,
+    "kind": "string",
+    "gold": "griffin (mass-ratio method)",
+    "model": "Griffin mass-ratio method (HLB = 20 * M_hydrophilic / M_total)"
+   },
+   "structural_family": {
+    "ok": true,
+    "kind": "string",
+    "gold": "dimeric/gemini (two quaternary-ammonium headgroup units in one molecule)",
+    "model": "Gemini (dimeric) cationic surfactant \u2014 bis-quaternary ammonium, twin C12 tails with a C4 butyl spacer, 2Br- salt (12-4-12 type)"
+   }
+  }
+ },
+ "GZ-24": {
+  "verdict": "PASS",
+  "fields": {
+   "x1_rubingh": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.5033,
+    "model": 0.5032784796461098
+   },
+   "maeda_deltag_kJ_per_mol": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "beta_rubingh": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -4.236,
+    "model": -4.23633113340202
+   },
+   "interaction_character": {
+    "ok": true,
+    "kind": "string",
+    "gold": "strongly synergistic/attractive (large negative beta)",
+    "model": "synergistic (attractive, non-ideal mixing; beta < 0)"
+   }
+  }
+ },
+ "GZ-25": {
+  "verdict": "PASS",
+  "fields": {
+   "model_parameters": {
+    "ok": true,
+    "kind": "dict-skipped",
+    "gold": {
+     "W12": -2.7,
+     "W21": 1.1
+    },
+    "model": {
+     "W12_kT": 0.8,
+     "W21_kT": -2.5,
+     "net_interaction_attractive": true,
+     "rubingh_beta_for_reference": -1.36,
+     "rubingh_beta_std": 0.68,
+     "bic_asymmetric_margules": -22.68,
+     "bic_rubingh": -17.62,
+     "bic_ideal": -12.63
+    }
+   },
+   "selected_mixture_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "eommm_asymmetric_margules",
+    "model": "asymmetric Margules (EoMMM 2-parameter excess model)"
+   },
+   "interaction_character": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "genuinely asymmetric (W12 and W21 have OPPOSITE signs) -- not a simple mirror-image 'synergistic' or 'antagonistic' label the way GZ-02's system was; a well-reasoned answer should note this asymmetry rather than forcing one blanket classification",
+    "model": "Attractive and synergistic, but asymmetric. The strongly negative W21 (-2.5 kT) dominates a weakly positive W12 (+0.8 kT), giving net attraction. Physically this is electrostatic ion-pairing/charge neutralization between the cationic DTAB headgroup and the anionic phosphate of the zwitterionic PC lipid, driving CMC_mix well below either pure CMC.",
+    "rationale": "model explicitly flags the asymmetry (opposite-sign W12/W21) gold asks for, not a forced blanket label"
+   }
+  }
+ },
+ "GZ-26": {
+  "verdict": "FAIL",
+  "fields": {
+   "self_consistent": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   },
+   "delta_h_high_regime_kJ_per_mol": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": -8.574,
+    "model": -14.9
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -37.131,
+    "model": -37.13
+   },
+   "delta_h_low_regime_kJ_per_mol": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 0.904,
+    "model": 1.6
+   },
+   "delta_h_wide_kJ_per_mol": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": -3.085,
+    "model": -5.3
+   }
+  }
+ },
+ "GZ-27": {
+  "verdict": "PASS",
+  "fields": {
+   "rh_perrin_corrected_nm": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.634,
+    "model": 2.634
+   },
+   "cpp": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.4697,
+    "model": 0.4697
+   },
+   "morphology": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cylindrical/rodlike micelle",
+    "model": "cylindrical/rodlike micelle"
+   },
+   "rh_naive_stokes_einstein_nm": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2.638,
+    "model": 2.638
+   },
+   "axial_ratio": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.135,
+    "model": 1.135
+   },
+   "critical_length_A": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.68,
+    "model": 16.68
+   },
+   "tail_volume_A3": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 350.2,
+    "model": 350.2
+   },
+   "direction_of_correction": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "the shape-corrected radius is SMALLER than the naive spherical estimate (Perrin friction factor F_P=1.0014 at this mild elongation, R_eff=R_h,apparent/F_P) -- a real, somewhat counter-intuitive direction: an elongated particle experiences MORE drag than a sphere of the same volume, so a naive Stokes-Einstein calculation (which assumes sphericity) OVERSTATES the true equivalent-sphere size once shape is accounted for.",
+    "model": "smaller (Perrin factor > 1 means the naive sphere overestimates the true size for a slightly elongated particle)",
+    "rationale": "model says 'smaller' with the same Perrin-factor>1 reasoning as gold"
+   }
+  }
+ },
+ "GZ-28": {
+  "verdict": "PASS",
+  "fields": {
+   "delta_s_mic_high_regime_J_per_mol_K": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 95.78,
+    "model": 95.78
+   },
+   "delta_s_mic_low_regime_J_per_mol_K": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 127.57,
+    "model": 127.57
+   }
+  }
+ },
+ "GZ-29": {
+  "verdict": "FAIL",
+  "fields": {
+   "physically_meaningful_interaction": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   },
+   "frumkin_a": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 0.00457,
+    "model": 0.00020717158722358727
+   },
+   "selected_model": {
+    "ok": true,
+    "kind": "string",
+    "gold": "frumkin (wins by BIC, delta_bic=+4.40)",
+    "model": "langmuir (BIC-selected over Frumkin)"
+   }
+  }
+ },
+ "GZ-30": {
+  "verdict": "PASS",
+  "fields": {
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.4847,
+    "model": 0.484574
+   },
+   "a_min_A2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 48.47,
+    "model": 48.4574
+   }
+  }
+ },
+ "GZ-31": {
+  "verdict": "PASS",
+  "fields": {
+   "tail_carbons_per_tail": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 12,
+    "model": 12
+   },
+   "n_tails": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2,
+    "model": 2
+   },
+   "spacer_carbons": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 6,
+    "model": 6
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic"
+   },
+   "structural_family": {
+    "ok": true,
+    "kind": "string",
+    "gold": "dimeric/gemini",
+    "model": "gemini (dimeric) quaternary ammonium / bis-quaternary cationic gemini"
+   }
+  }
+ },
+ "GZ-32": {
+  "verdict": "PASS",
+  "fields": {
+   "tail_carbons_total": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16,
+    "model": 16
+   },
+   "total_carbons": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 20,
+    "model": 20
+   },
+   "tails_branched": {
+    "ok": true,
+    "kind": "bool",
+    "gold": true,
+    "model": true
+   },
+   "backbone_carbons": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 4,
+    "model": 4
+   },
+   "tail_description": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "two identical 2-ethylhexyl groups (each an 8-carbon branched chain: a 6-carbon backbone with a 2-carbon ethyl branch at the second position), not straight octyl or dodecyl chains",
+    "model": "Two identical 2-ethylhexyl tails, each 8 carbons: a six-carbon main chain bearing a single ethyl branch at the C2 position; both tails are branched (not straight-chain).",
+    "rationale": "near-verbatim match to gold's 2-ethylhexyl/8-carbon/C2-branch description"
+   }
+  }
+ },
+ "GZ-33": {
+  "verdict": "PASS",
+  "fields": {
+   "molecular_weight_g_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1199.56,
+    "model": 1213.585
+   },
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 23,
+    "model": 24
+   },
+   "hlb_griffin": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 17.18,
+    "model": 16.98
+   }
+  }
+ },
+ "GZ-34": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic (permanent, pH-independent; dication with 2 Br- counterions)"
+   },
+   "true_classification": {
+    "ok": true,
+    "kind": "string",
+    "gold": "bolaform, not a true gemini",
+    "model": "bolaamphiphile / bolaform bis-quaternary ammonium surfactant (head-tail-head), NOT a gemini surfactant"
+   }
+  }
+ },
+ "GZ-35": {
+  "verdict": "FAIL",
+  "fields": {
+   "charge_confidence": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "moderate (carboxylic acid, pKa~4-5 -- ionized at typical surfactant-testing pH but not at low pH)",
+    "model": "moderate",
+    "rationale": "2026-10-15 retry answer is now cleanly 'moderate', an exact match to gold -- superseded from the original run's False resolution, which was based on a hedged 'high...moderate' answer that this retry replaced"
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "anionic",
+    "model": "anionic"
+   },
+   "structural_family": {
+    "ok": true,
+    "kind": "manual-override",
+    "gold": "glycolipid biosurfactant (disaccharide headgroup)",
+    "model": "alkyl diglycoside (glycosidic surfactant with acetylated sugar headgroup)",
+    "rationale": "model's 'alkyl diglycoside (glycosidic surfactant with acetylated sugar headgroup)' is a genuine semantic match to gold's 'glycolipid biosurfactant (disaccharide headgroup)' -- 'di-glycoside' literally means a two-sugar (disaccharide) headgroup, just different vocabulary than gold's phrasing; the lenient token matcher rejected it purely on word choice, not substance."
+   },
+   "n_sugar_rings": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 2,
+    "model": 2
+   },
+   "valid_hlb_method": {
+    "ok": false,
+    "kind": "judgment",
+    "gold": "griffin (mass-ratio method, same real reason as GZ-03/04/23 -- Davies has no group number for a glycoside headgroup, confirmed structurally invalid for this class, not just missing data)",
+    "model": "Davies group contribution",
+    "rationale": "2026-10-15 retry answer now PREFERS Davies ('Davies group-contribution method (preferred)...Griffin...also acceptable'), contradicting gold's conclusion that Davies is structurally invalid for this class and Griffin is the one valid method -- superseded from the original run's True resolution, which was based on different (now-overwritten) answer text"
+   }
+  }
+ },
+ "GZ-36": {
+  "verdict": "NO_JSON",
+  "fields": {},
+  "reason": "No response was generated at all across 3 attempts (incl. a fresh page reload and a dedicated clean-environment retry after fixing an unrelated MCP SuperAssistant conflict) -- same blank-response symptom every time, so ruled out as the SuperAssistant interference that explained similar failures elsewhere (e.g. GZ-26, which DID resolve after that fix). Root cause for GZ-36 specifically remains unidentified."
+ },
+ "GZ-37": {
+  "verdict": "PASS",
+  "fields": {
+   "which_is_larger_at_0.5": {
+    "ok": true,
+    "kind": "string",
+    "gold": "component 1",
+    "model": "Component 1"
+   },
+   "f1_at_x1_0.5": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 1.32,
+    "model": 1.35
+   },
+   "f2_at_x1_0.5": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.51,
+    "model": 0.5
+   }
+  }
+ },
+ "GZ-38": {
+  "verdict": "PASS",
+  "fields": {
+   "estimated_cmc_value": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 9.18,
+    "model": 7.75
+   },
+   "units_used": {
+    "ok": true,
+    "kind": "manual-override",
+    "gold": "\u00b5M (as labeled on the chart)",
+    "model": "\u00b5M",
+    "rationale": "model said exactly '\u00b5M', an exact match to gold's core value -- gold's '(as labeled on the chart)' is descriptive context, not a second required token, but it pushed the lenient string-match below its 34% overlap threshold (1/3 tokens)."
+   }
+  }
+ },
+ "GZ-39": {
+  "verdict": "PASS",
+  "fields": {
+   "deviation_region": {
+    "ok": true,
+    "kind": "string",
+    "gold": "above roughly 2-3 mM (near/above the real CMC)",
+    "model": "Above approximately 1\u20132 mM; clearly evident from ~2 mM to 10 mM, where measured surface tension plateaus at ~27\u201328 mN/m while the fitted pre-CMC isotherm continues to decrease (reaching ~17 mN/m at 10 mM). Agreement is good from 10\u207b\u00b2 to ~1 mM."
+   },
+   "deviation_reason": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+    "model": "A pre-CMC adsorption isotherm assumes surface excess keeps growing with bulk concentration. Above the CMC, excess surfactant forms micelles so the free monomer concentration (and hence the adsorption driving force) becomes constant, and the monolayer is already saturated at \u0393\u221e. The Gibbs/Szyszkowski relation therefore predicts d\u03b3/dlnC \u2192 0 (a plateau), which the pre-CMC model cannot reproduce \u2014 it keeps extrapolating a linear decline in \u03b3, under-predicting the measured plateau by ~10 mN/m.",
+    "rationale": "model's monomer-saturation/plateau explanation matches gold's physical reasoning"
+   }
+  }
+ },
+ "GZ-40": {
+  "verdict": "PASS",
+  "fields": {
+   "which_shows_plain_plateau": {
+    "ok": true,
+    "kind": "string",
+    "gold": "Surfactant A",
+    "model": "Surfactant A"
+   },
+   "which_shows_dip_then_rise": {
+    "ok": true,
+    "kind": "string",
+    "gold": "Surfactant B",
+    "model": "Surfactant B"
+   }
+  }
+ },
+ "GZ-41": {
+  "verdict": "PASS",
+  "fields": {
+   "consistent_with_literature": {
+    "ok": true,
+    "kind": "bool",
+    "gold": true,
+    "model": true
+   },
+   "micelle_molar_mass_g_per_mol": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 66600,
+    "model": 66591.88
+   },
+   "aggregation_number": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 106.6,
+    "model": 106.55
+   }
+  }
+ },
+ "GZ-42": {
+  "verdict": "FAIL",
+  "fields": {
+   "more_likely_correct": {
+    "ok": false,
+    "kind": "string",
+    "gold": "2.4 to 3.5 (Cc strongly positive/lipophilic)",
+    "model": "Source 1 (Cc = -0.92)"
+   }
+  }
+ },
+ "GZ-43": {
+  "verdict": "PASS",
+  "fields": {
+   "agreement_assessment": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "strong agreement -- these two values differ by only ~3.5% relative, well within normal real inter-study variation for this kind of measurement",
+    "model": "The two reported dissociation degrees (0.28 and 0.29) agree to within 0.01, a difference of only ~3.4% relative to their mean of 0.285 \u2014 well within the typical experimental scatter for counterion binding measurements (conductivity, EMF, or surfactant-selective electrode methods routinely show \u00b10.02\u20130.05 absolute uncertainty). This is essentially a consensus value.",
+    "rationale": "model's ~3.4% figure and 'consensus value' conclusion matches gold's 'strong agreement, ~3.5%, within normal variation'"
+   }
+  }
+ },
+ "GZ-44": {
+  "verdict": "PASS",
+  "fields": {
+   "geometric_n_agg": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 55.5,
+    "model": 55.51
+   },
+   "agreement": {
+    "ok": true,
+    "kind": "string",
+    "gold": "strong (within ~2%)",
+    "model": "Agree within ~2%; geometrically consistent with a spherical micelle core for this C12 cationic surfactant."
+   },
+   "sls_measured_n_agg": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 54.5,
+    "model": 54.5
+   }
+  }
+ },
+ "GZ-45": {
+  "verdict": "PASS",
+  "fields": {
+   "genuine_conflict": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   }
+  }
+ },
+ "GZ-46": {
+  "verdict": "PASS",
+  "fields": {
+   "hexadecane_physically_achievable": {
+    "ok": true,
+    "kind": "bool",
+    "gold": false,
+    "model": false
+   },
+   "s_star_hexadecane_pct": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 179.47,
+    "model": 179.47
+   },
+   "s_star_toluene_pct": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 13.87,
+    "model": 13.87
+   }
+  }
+ },
+ "GZ-47": {
+  "verdict": "PASS",
+  "fields": {}
+ },
+ "GZ-48": {
+  "verdict": "FAIL",
+  "fields": {
+   "x1_rodenas_at_alpha1_0.60": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.384,
+    "model": 0.3841268629445308
+   },
+   "f2_at_alpha1_0.60": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 1.01,
+    "model": 0.5051545397783611
+   },
+   "f1_at_alpha1_0.60": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 0.527,
+    "model": 0.263467174623824
+   }
+  }
+ },
+ "GZ-49": {
+  "verdict": "NO_JSON",
+  "fields": {},
+  "reason": "No MCP tool exposes the asymmetric-Margules (EOMMM) two-parameter regression this question needs; the model correctly recognized the gap and tried to fall back to its sandboxed code runner, which requires a manual 'Run Code' click the automated pipeline never provides -- a genuine toolkit-capability gap, not a DeepSeek/extension bug."
+ },
+ "GZ-50": {
+  "verdict": "PASS",
+  "fields": {
+   "delta_g_mic_at_318.15K": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -38.87,
+    "model": -38.873
+   },
+   "trend": {
+    "ok": true,
+    "kind": "judgment",
+    "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
+    "model": "Monotonically more negative with increasing temperature (from -35.18 to -38.87 kJ/mol); no minimum is reproduced.",
+    "rationale": "2026-10-15 retry answer now correctly states 'Monotonically more negative with increasing temperature...no minimum is reproduced', matching gold's core claim -- superseded from the original run's False resolution, which was based on a different (now-overwritten) answer that incorrectly reported a reversal"
+   },
+   "delta_g_mic_at_283.15K": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": -35.18,
+    "model": -35.184
+   }
+  }
+ }
+}

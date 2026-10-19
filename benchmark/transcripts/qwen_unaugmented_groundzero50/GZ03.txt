@@ -1,0 +1,62 @@
+m bearing two methyl groups
+
+
+CCCCCC
+	
+Hexamethylene (C₆) spacer
+
+
+[N+](C)(C)
+	
+Second quaternary ammonium, two methyls
+
+
+CCCCCCCCCCCCCCCC (right)
+	
+Second n-hexadecyl (C₁₆) tail
+The surfactant ion is therefore a dication:
+C₁₆H₃₃–N⁺(CH₃)₂–(CH₂)₆–N⁺(CH₃)₂–C₁₆H₃₃ · 2 Br⁻
+2. Charge Type
+The surface-active ion carries two permanent positive charges (quaternary ammonium centres, pH-independent), balanced by two bromide anions. → Cationic (specifically dicationic).
+3. Structural Family – Gemini (Dimeric) Bis-Quaternary-Ammonium Surfactant
+Key structural evidence:
+Two hydrophobic tails (each C₁₆) attached to two separate ionic head-groups within a single molecule.
+The two head-groups are covalently linked by a short hydrocarbon spacer (–(CH₂)₆–), which is the hallmark of the gemini (a.k.a. dimeric or twin-tailed) surfactant architecture, first systematised by Zana, Menger, and co-workers.
+In the standard shorthand this is a 16-6-16 gemini (two C₁₆ chains, C₆ spacer) with quaternary ammonium (QAC) head-groups.
+This contrasts with a conventional single-chain QAC (e.g., CTAB) which has only one tail and one head-group.
+4. HLB via Davies' Group-Contribution Method
+Davies' formula: HLB = 7 + Σ(hydrophilic group numbers) − Σ(lipophilic group numbers)
+Why it cannot genuinely be applied here:
+No validated Davies group number for –N⁺(CH₃)₂ Br⁻. Davies' original tables (1957) and subsequent standard compilations assign hydrophilic numbers to –SO₄⁻Na⁺ (38.7), –COO⁻Na⁺ (19.1), –OH (1.9), –O– (1.3), etc., but do not provide a reliable, universally accepted contribution for a quaternary ammonium with a halide counterion.
+Gemini architecture is outside the method's scope. Davies' method was parameterised for single-head-group surfactants. A molecule with two ionic head-groups joined by a spacer does not map onto the additive single-head-group scheme without arbitrary doubling, and the spacer's partial burial at the interface is not captured by simple –CH₂– counting.
+Even a naive attempt (using a tentative quaternary-N value ≈ 9.4 per head) would give HLB ≈ 7 + 2(9.4) − 42(0.475) ≈ 5.9, but this number is not trustworthy given points 1 and 2.
+Therefore, an honest Davies HLB cannot be reported.
+5. Summary
+Property
+	
+Value
+
+
+Charge type
+	
+Cationic (dicationic, 2 Br⁻)
+
+
+Family
+	
+Gemini / dimeric bis-quaternary-ammonium surfactant (16-6-16)
+
+
+HLB (Davies)
+	
+Not computable (see above)
+FINAL_JSON:
+{
+"charge_type": "cationic",
+"structural_family": "gemini (dimeric) bis-quaternary-ammonium surfactant; two C16 tails, two N+(CH3)2 headgroups linked by a C6 spacer, 2 Br- counterions",
+"hlb": null,
+"notes": "The molecule is a 16-6-16 gemini QAC. Davies' group-contribution HLB cannot be genuinely computed: (1) no validated Davies group number exists for a quaternary-ammonium-bromide headgroup, and (2) the gemini (dual-headgroup) architecture falls outside the single-headgroup framework for which Davies' method was parameterised."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

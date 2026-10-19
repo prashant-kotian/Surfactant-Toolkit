@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 45s
+Analyzed
+ChatGPT said:
+output_mean: -13.177163106487145 kJ/mol
+output_sd: 0.16737883096701006 kJ/mol
+ci_low: -13.516657353403266 kJ/mol
+ci_high: -12.864409879093754 kJ/mol
+skew_label: symmetric
+
+FINAL_JSON: {"output_mean": -13.177163106487145, "output_sd": 0.16737883096701006, "ci_low": -13.516657353403266, "ci_high": -12.864409879093754, "skew_label": "symmetric"}

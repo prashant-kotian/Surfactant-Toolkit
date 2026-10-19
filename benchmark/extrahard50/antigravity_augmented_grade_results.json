@@ -1,0 +1,511 @@
+{
+ "X-01": {
+  "pass": true,
+  "fields": {
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true,
+   "convergence": true
+  }
+ },
+ "X-02": {
+  "pass": true,
+  "fields": {
+   "ci_wide": true,
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true
+  }
+ },
+ "X-03": {
+  "pass": true,
+  "fields": {
+   "ci_high": true,
+   "ci_low": true,
+   "output_mean": true,
+   "output_sd": true,
+   "skew_label": true
+  }
+ },
+ "X-04": {
+  "pass": true,
+  "fields": {
+   "ci_high": true,
+   "ci_low": true,
+   "output_mean": true,
+   "output_sd": true,
+   "skew_label": true
+  }
+ },
+ "X-05": {
+  "pass": true,
+  "fields": {
+   "ci_high": true,
+   "ci_low": true,
+   "output_mean": true,
+   "output_sd": true,
+   "skew_label": true
+  }
+ },
+ "X-06": {
+  "pass": true,
+  "fields": {
+   "ci_wide": true,
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true
+  }
+ },
+ "X-07": {
+  "pass": true,
+  "fields": {
+   "ci_high": true,
+   "ci_low": true,
+   "output_mean": true,
+   "output_sd": true,
+   "skew_label": true
+  }
+ },
+ "X-08": {
+  "pass": true,
+  "fields": {
+   "ci_high": true,
+   "ci_low": true,
+   "output_mean": true,
+   "output_sd": true,
+   "skew_label": true
+  }
+ },
+ "X-09": {
+  "pass": true,
+  "fields": {
+   "ci_wide": true,
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true
+  }
+ },
+ "X-10": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "kinetic_cmc_M": true,
+   "mass_conserved": true,
+   "mean_aggregation_number": true,
+   "tau_dominant_s": true
+  }
+ },
+ "X-11": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "equilibrium_c1_M": true,
+   "equilibrium_mean_nagg": true,
+   "mass_conservation_max_error": true,
+   "tau_fit_s": true
+  }
+ },
+ "X-12": {
+  "pass": true,
+  "fields": {
+   "beta_mean": true,
+   "bic_eommm": true,
+   "bic_rubingh": true,
+   "delta_bic": true,
+   "selected": true
+  }
+ },
+ "X-13": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "kinetic_cmc_M": true,
+   "mass_conserved": true,
+   "mean_aggregation_number": true,
+   "tau_dominant_s": true
+  }
+ },
+ "X-14": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "exact_max_deviation": true,
+   "free_monomer_fraction": true,
+   "largest_cluster": true,
+   "mean_cluster_size": true
+  }
+ },
+ "X-15": {
+  "pass": true,
+  "fields": {
+   "agree_003": true,
+   "feasible_within_1pct": true,
+   "margin": true,
+   "x1_rodenas": true,
+   "x1_rubingh": true
+  }
+ },
+ "X-16": {
+  "pass": true,
+  "fields": {
+   "W12": true,
+   "W21": true,
+   "feasible": true,
+   "r_squared": true,
+   "x1_first_point": true
+  }
+ },
+ "X-17": {
+  "pass": true,
+  "fields": {
+   "ci_wide": true,
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true
+  }
+ },
+ "X-18": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "exact_max_deviation": true,
+   "free_monomer_fraction": true,
+   "largest_cluster": true,
+   "mean_cluster_size": true
+  }
+ },
+ "X-19": {
+  "pass": false,
+  "fields": {
+   "larger": true,
+   "mu_SI": true,
+   "shift_pct": false,
+   "zeta_corr_mV": false,
+   "zeta_plain_mV": true
+  }
+ },
+ "X-20": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "equilibrium_c1_M": true,
+   "equilibrium_mean_nagg": true,
+   "mass_conservation_max_error": true,
+   "tau_fit_s": true
+  }
+ },
+ "X-21": {
+  "pass": true,
+  "fields": {
+   "W12": true,
+   "W21": true,
+   "feasible": true,
+   "r_squared": true,
+   "x1_last_point": true
+  }
+ },
+ "X-22": {
+  "pass": true,
+  "fields": {
+   "W12": true,
+   "W21": true,
+   "feasible": true,
+   "r_squared": true,
+   "x1_third_point": true
+  }
+ },
+ "X-23": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "exact_max_deviation": true,
+   "free_monomer_fraction": true,
+   "largest_cluster": true,
+   "mean_cluster_size": true
+  }
+ },
+ "X-24": {
+  "pass": true,
+  "fields": {
+   "W12": true,
+   "W21": true,
+   "feasible": true,
+   "r_squared": true,
+   "x1_second_point": true
+  }
+ },
+ "X-25": {
+  "pass": true,
+  "fields": {
+   "W12": true,
+   "W21": true,
+   "feasible": true,
+   "r_squared": true,
+   "x1_middle_point": true
+  }
+ },
+ "X-26": {
+  "pass": true,
+  "fields": {
+   "dH_all": true,
+   "dH_cleaned": true,
+   "flagged_T": true,
+   "n_flagged": true,
+   "r2_cleaned": true
+  }
+ },
+ "X-27": {
+  "pass": true,
+  "fields": {
+   "dH_corrected": true,
+   "dS_corrected": true,
+   "flagged_T": true,
+   "n_flagged": true,
+   "r2_corrected": true
+  }
+ },
+ "X-28": {
+  "pass": true,
+  "fields": {
+   "cmc_mM": true,
+   "conflict_detected": true,
+   "excluded_gamma": true,
+   "gamma_max": true,
+   "n_used": true
+  }
+ },
+ "X-29": {
+  "pass": true,
+  "fields": {
+   "base10_run": true,
+   "corrected_value": true,
+   "ratio_run3_run1": true,
+   "sign_flipped_run": true
+  }
+ },
+ "X-30": {
+  "pass": true,
+  "fields": {
+   "cmc_mM": true,
+   "corrupt_detected": true,
+   "delta_bic": true,
+   "flagged_c": true,
+   "n_used": true
+  }
+ },
+ "X-31": {
+  "pass": true,
+  "fields": {
+   "charge": true,
+   "formula": true,
+   "hlb": true,
+   "mw": true,
+   "n_CH2": true,
+   "n_CH3": true,
+   "n_vinyl_CH": true
+  }
+ },
+ "X-32": {
+  "pass": true,
+  "fields": {
+   "charge": true,
+   "family": true,
+   "formula": true,
+   "mw": true,
+   "n_N_methyls": true,
+   "n_heads": true
+  }
+ },
+ "X-33": {
+  "pass": true,
+  "fields": {
+   "acyl_carbons": true,
+   "charge": true,
+   "formula": true,
+   "mw": true,
+   "n_esters": true,
+   "n_rings": true
+  }
+ },
+ "X-34": {
+  "pass": true,
+  "fields": {
+   "charge": true,
+   "formula": true,
+   "hlb": true,
+   "mw": true,
+   "n_CH3": true,
+   "tail_carbons": true
+  }
+ },
+ "X-35": {
+  "pass": true,
+  "fields": {
+   "confidence_at_8": true,
+   "dominant_at_8": true,
+   "f_cation_pH1062": true,
+   "f_cation_pH13": true,
+   "f_cation_pH8": true
+  }
+ },
+ "X-36": {
+  "pass": true,
+  "fields": {
+   "ci_wide": true,
+   "ci_width_pct": true,
+   "cmc_ci_high": true,
+   "cmc_ci_low": true,
+   "cmc_point": true
+  }
+ },
+ "X-37": {
+  "pass": true,
+  "fields": {
+   "R_perrin_nm": true,
+   "above_1_5": true,
+   "cpp": true,
+   "morphology": true,
+   "p_cyl": true,
+   "p_ell": true
+  }
+ },
+ "X-38": {
+  "pass": true,
+  "fields": {
+   "a0_at_cpp_1_2": true,
+   "a0_at_cpp_1_3": true,
+   "cpp_at_a0_64": true,
+   "morph_at_64": true,
+   "morph_at_95": true
+  }
+ },
+ "X-39": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "equilibrium_c1_M": true,
+   "equilibrium_mean_nagg": true,
+   "mass_conservation_max_error": true,
+   "tau_fit_s": true
+  }
+ },
+ "X-40": {
+  "pass": true,
+  "fields": {
+   "convergence": true,
+   "exact_max_deviation": true,
+   "free_monomer_fraction": true,
+   "largest_cluster": true,
+   "mean_cluster_size": true
+  }
+ },
+ "X-41": {
+  "pass": true,
+  "fields": {
+   "claim_agrees": true,
+   "dG_correct": true,
+   "direction": true,
+   "rel_diff_pct": true,
+   "what_wrong": true
+  }
+ },
+ "X-42": {
+  "pass": true,
+  "fields": {
+   "closer": true,
+   "cmc_mM": true,
+   "either_agrees_15pct": true,
+   "rel_diff_L1": true,
+   "rel_diff_L2": true
+  }
+ },
+ "X-43": {
+  "pass": true,
+  "fields": {
+   "a_min": true,
+   "draft_ok": true,
+   "gamma_correct": true,
+   "n_used": true,
+   "ratio_draft_over_correct": true
+  }
+ },
+ "X-44": {
+  "pass": true,
+  "fields": {
+   "S_star_E16": true,
+   "cc": true,
+   "hld_S3_E12": true,
+   "k": true,
+   "matching_candidate": true,
+   "winsor": true
+  }
+ },
+ "X-45": {
+  "pass": true,
+  "fields": {
+   "beta_mean": true,
+   "claim_agrees": true,
+   "sign": true,
+   "synergy": true,
+   "x1_a050": true
+  }
+ },
+ "X-46": {
+  "pass": true,
+  "fields": {
+   "R_nm": true,
+   "R_perrin_nm": true,
+   "charge": true,
+   "cpp": true,
+   "morphology": true,
+   "mw": true,
+   "n_carbons": true,
+   "p": true
+  }
+ },
+ "X-47": {
+  "pass": true,
+  "fields": {
+   "agree_3pct": true,
+   "beta": true,
+   "cmc_cond": true,
+   "cmc_tens": true,
+   "deltaG": true,
+   "rel_diff_pct": true
+  }
+ },
+ "X-48": {
+  "pass": true,
+  "fields": {
+   "S_star_E16_dT10": true,
+   "achievable": true,
+   "cc": true,
+   "hld_S9_E10": true,
+   "k": true,
+   "winsor": true
+  }
+ },
+ "X-49": {
+  "pass": true,
+  "fields": {
+   "cmc_point": true,
+   "dG_ci_high": true,
+   "dG_ci_low": true,
+   "dG_point": true
+  }
+ },
+ "X-50": {
+  "pass": true,
+  "fields": {
+   "Nagg_rounded": true,
+   "cmc_kinetic_mM": true,
+   "convergence": true,
+   "dG_kinetic": true
+  }
+ }
+}

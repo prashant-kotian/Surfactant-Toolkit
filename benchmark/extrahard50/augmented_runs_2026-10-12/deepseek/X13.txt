@@ -1,0 +1,1 @@
+FINAL_JSON: {"kinetic_cmc_M": 0.00010028567377051737, "tau_dominant_s": 0.010274254078222224, "mean_aggregation_number": 11.432220436694069, "mass_conserved": true, "convergence": "converged"}

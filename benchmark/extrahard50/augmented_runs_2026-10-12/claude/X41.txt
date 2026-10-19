@@ -1,0 +1,38 @@
+**Step 1 — Recompute with the counterion factor**
+
+- CMC/1000 = 4.40/1000 = 0.00440
+- X = 0.00440 / (0.00440 + 55.5) = 0.00440 / 55.50440 = 7.9273×10⁻⁵
+- ln(X) = −9.4426
+- R·T = 8.314462618 × 298.15 = 2478.957 J/mol
+- (2 − β) = 2 − 0.75 = 1.25
+- ΔG = 1.25 × 2478.957 × (−9.4426) = −29 259.8 J/mol
+
+**dG_correct = −29.26 kJ/mol**
+
+**Step 2 — Relative difference**
+
+- |draft − yours| = |(−23.40) − (−29.26)| = 5.860
+- rel_diff = 5.860 / 29.26 × 100 = **20.03 %**
+
+**Step 3 — Agreement within 10%?**
+
+20.03 % > 10 % → **false**
+
+**Step 4 — What is wrong**
+
+The draft's −23.40 kJ/mol is exactly R·T·ln(X) = 2478.957 × (−9.4426) = −23.41 kJ/mol — i.e., it used the single-factor pseudo-phase form and dropped the (2 − β) counterion term. The inputs (CMC, β, T) are the same ones used here; only the counterion factor is missing. → **formula**
+
+**Step 5 — Direction**
+
+Draft (−23.40) vs correct (−29.26): the draft is smaller in magnitude, i.e. **less_negative**.
+
+---
+
+Summary:
+1. dG_correct: **−29.26 kJ/mol**
+2. rel_diff_pct: **20.03 %**
+3. claim_agrees: **false**
+4. what_wrong: **formula**
+5. direction: **less_negative**
+
+FINAL_JSON: {"dG_correct": -29.26, "rel_diff_pct": 20.03, "claim_agrees": false, "what_wrong": "formula", "direction": "less_negative"}

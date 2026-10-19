@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"alpha1_of_corrupted_point": 0.8061,
+"beta_mean_clean": -3.1997457869764085,
+"pointwise_beta_at_corrupted_point": null,
+"n_points_used_clean": 4
+}

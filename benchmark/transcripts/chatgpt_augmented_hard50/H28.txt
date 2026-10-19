@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"structural_family": "glycolipid biosurfactant",
+"n_sugar_rings": 2,
+"molecular_weight": 706.823,
+"n_ester_groups": 2,
+"n_carboxylic_acid_groups": 1
+}

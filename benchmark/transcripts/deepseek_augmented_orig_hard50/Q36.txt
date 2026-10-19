@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"cmc_mM": 1.510,
+"gamma_at_cmc_mN_per_m": 37.558
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"corrupted_temperature_K": 308.15,
+"delta_H_all_points": 14.290057957920272,
+"delta_H_cleaned": -4.204496357780203,
+"n_points_flagged": 1
+}

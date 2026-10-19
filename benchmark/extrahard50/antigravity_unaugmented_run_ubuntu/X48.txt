@@ -1,0 +1,38 @@
+To solve the problem, we first determine the parameters `k` and `Cc` by performing an Ordinary Least Squares (OLS) regression of `ln(S*)` against `EACN`.
+
+**1. Calculate k and Cc:**
+Given the data points:
+* EACN = 6, S* = 3.1978  →  ln(S*) ≈ 1.16246
+* EACN = 9, S* = 3.3944  →  ln(S*) ≈ 1.22213
+* EACN = 12, S* = 3.6068  →  ln(S*) ≈ 1.28282
+* EACN = 15, S* = 3.7844  →  ln(S*) ≈ 1.33089
+
+Using the OLS formulas for slope and intercept:
+* Mean of EACN (x) = 10.5
+* Mean of ln(S*) (y) = 1.24957
+* Slope (k) = Σ((x - x_mean) * (y - y_mean)) / Σ((x - x_mean)²) ≈ 0.0188655
+* Intercept = y_mean - k * x_mean ≈ 1.051486
+
+The balance equation at dT = 0 is `ln(S*) = k * EACN - Cc`. This means the intercept is equal to `-Cc`.
+Therefore, `Cc = -1.051486`.
+
+**2. Optimal Salinity (S*) at EACN = 16 and dT = +10 K:**
+We set HLD = 0 for the optimal state:
+0 = ln(S*) - k*EACN - alpha*dT + Cc
+ln(S*) = k*EACN + alpha*dT - Cc
+ln(S*) = (0.0188655 * 16) + (0.01 * 10) - (-1.051486)
+ln(S*) = 0.301848 + 0.10 + 1.051486 = 1.453334
+S* = exp(1.453334) ≈ 4.2773%
+
+**3. Achievability:**
+The formulation has a hard salt ceiling of 4.0%. Since the calculated S* (4.2773%) is greater than 4.0%, this formulation state is **not achievable** (False).
+
+**4. Calculate HLD at S = 9%, EACN = 10, dT = 0 K:**
+HLD = ln(S) - k*EACN - alpha*dT + Cc
+HLD = ln(9) - (0.0188655 * 10) - 0 + (-1.051486)
+HLD = 2.197225 - 0.188655 - 1.051486 = 0.95708
+
+**5. Winsor Classification:**
+The calculated HLD is 0.95708. Because this value is well above the +0.3 threshold, the phase behavior is classified as **Winsor II**.
+
+FINAL_JSON: {"k": 0.0188655, "cc": -1.051486, "S_star_E16_dT10": 4.2773, "achievable": false, "hld_S9_E10": 0.95708, "winsor": "Winsor II"}

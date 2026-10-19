@@ -1,0 +1,155 @@
+ - x^2/2 + x^4/24 - x^6/720 + x^8/40320...
+x^2/2=0.0904556706485.
+x^4/24=0.032728913410/24=0.00136370472542.
+x^6/720=0.0059210314/720=0.0000082236547.
+x^8/40320 ~0.00107118/40320=0.000000026567.
+x^10 negligible ~? 0.00000000006.
+cos=1 -0.0904556706485 +0.0013637047254 -0.0000082236547 +0.000000026567 -...
+1-0.0904556706485=0.9095443293515.
++0.0013637047254=0.9109080340769.
+-0.0000082236547=0.9108998104222.
++0.000000026567=0.910899836989.
+Next - x10/3628800; x10=x8*x2=0.00107118*0.180911=0.0001938; /3628800=5.34e-11. so cos=0.910899836936. Good.
+
+Then 1+cos=1.910899836936. W=25.777 * that. Compute 25.777*1.910899836936 = 25.777 + 25.777*0.910899836936. Or multiply.
+
+25.777*1.9 =48.9763. Additional 0.010899836936*25.777. Compute 25.777*0.010899836936 = 25.777*(0.01 +0.000899836936). =0.25777 + 25.777*0.000899836936. latter =25.777*(0.0009 -0.000000163064). 0.0009*25.777=0.0231993. subtract 25.777*1.63064e-7=0.000004203? compute 25.777*0.000000163064=0.000004203? 25.777*1.63064=42.032? e-7 =0.0000042032. so 0.0231950968. sum =0.2809650968. total W=48.9763+0.2809650968=49.2572650968. Check via 25.777*1.9108998 yes ~49.2573.
+
+Spreading S=gamma(cos -1)=25.777(0.910899836936-1)=25.777(-0.089100163064). Compute 25.777*0.089100163064. =25.777*(0.09 -0.000899836936). 0.09*25.777=2.31993. subtract 25.777*0.000899836936=0.0231950968. =2.2967349032. negative. S=-2.2967349032 mJ/m2.
+
+Spontaneous wetting? Condition S >=0 for complete spontaneous wetting/spreading. Here S negative, contact angle >0 finite, so no spontaneous wetting (does not spontaneously spread completely). Work adhesion positive. Need answer maybe note partial wetting. Need final JSON exact. Ensure numbers. Could include formulas and units. End with block exactly. No extra after. Need maybe no BDS tools needed. Final answer concise.
+
+Need ensure "spontaneous_wetting": false. Let's produce. Could mention gammaLV = 25.777 mJ/m2. theta 24.370. cos 0.9108998. W_A = 25.777*(1.9108998)=49.2573. S=-2.2967. Because S<0, liquid does not spontaneously wet/spread; it forms finite contact angle. Need note Young-Dupre for S maybe if S>=0 complete wetting. Fine.
+
+Final exactly block.
+
+Given:
+
+𝛾
+𝐿
+𝑉
+=
+25.777
+ mN/m
+=
+25.777
+ 
+mJ/m
+2
+γ
+LV
+	​
+
+=25.777 mN/m=25.777 mJ/m
+2
+
+𝜃
+=
+24.370
+∘
+θ=24.370
+∘
+
+cos
+⁡
+(
+24.370
+∘
+)
+≈
+0.91089984
+cos(24.370
+∘
+)≈0.91089984
+
+Work of adhesion:
+
+𝑊
+𝐴
+=
+𝛾
+𝐿
+𝑉
+(
+1
++
+cos
+⁡
+𝜃
+)
+=
+25.777
+(
+1
++
+0.91089984
+)
+≈
+49.2573
+ 
+mJ/m
+2
+W
+A
+	​
+
+=γ
+LV
+	​
+
+(1+cosθ)=25.777(1+0.91089984)≈49.2573 mJ/m
+2
+
+Spreading coefficient:
+
+𝑆
+=
+𝛾
+𝐿
+𝑉
+(
+cos
+⁡
+𝜃
+−
+1
+)
+=
+25.777
+(
+0.91089984
+−
+1
+)
+≈
+−
+2.2967
+ 
+mJ/m
+2
+S=γ
+LV
+	​
+
+(cosθ−1)=25.777(0.91089984−1)≈−2.2967 mJ/m
+2
+
+Since 
+𝑆
+<
+0
+S<0, the liquid does not spontaneously wet/spread completely on this solid; it remains in a partial-wetting regime with a finite contact angle.
+
+FINAL_JSON:
+{
+"work_of_adhesion_mJ_per_m2": 49.2573,
+"spreading_coefficient_mJ_per_m2": -2.2967,
+"spontaneous_wetting": false
+}
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

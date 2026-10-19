@@ -1,0 +1,44 @@
+To solve for the Rubingh interaction parameter (beta) and the micelle mole fraction ($x_1$), we must solve the given nonlinear equation for each composition ($\alpha_1$) and then use the root $x_1$ to find $\beta_i$. 
+
+The given equation is:
+$x_1^2 \ln\left(\frac{\alpha_1 CMC_{mix}}{x_1 CMC_1}\right) - (1-x_1)^2 \ln\left(\frac{(1-\alpha_1) CMC_{mix}}{(1-x_1) CMC_2}\right) = 0$
+
+With $CMC_1 = 1.30$ mM and $CMC_2 = 7.80$ mM, we process each of the 5 points:
+
+**1. $\alpha_1 = 0.10, CMC_{mix} = 3.56$**
+*   Left term inside ln: $(0.10 \times 3.56) / 1.30 = 0.2738$
+*   Right term inside ln: $(0.90 \times 3.56) / 7.80 = 0.4108$
+*   Solving $x_1^2 \ln(0.2738/x_1) = (1-x_1)^2 \ln(0.4108/(1-x_1))$ yields $x_1 \approx 0.4431$.
+*   $\beta_1 = \ln(0.2738/0.4431) / (1 - 0.4431)^2 \approx -1.55$
+
+**2. $\alpha_1 = 0.30, CMC_{mix} = 2.18$**
+*   Left term inside ln: $(0.30 \times 2.18) / 1.30 = 0.5031$
+*   Right term inside ln: $(0.70 \times 2.18) / 7.80 = 0.1956$
+*   Solving yields $x_1 \approx 0.6288$.
+*   $\beta_2 = \ln(0.5031/0.6288) / (1 - 0.6288)^2 \approx -1.62$
+
+**3. $\alpha_1 = 0.50, CMC_{mix} = 1.75$**
+*   Left term inside ln: $(0.50 \times 1.75) / 1.30 = 0.6731$
+*   Right term inside ln: $(0.50 \times 1.75) / 7.80 = 0.1122$
+*   Solving yields $x_1 \approx 0.7431$.
+*   $\beta_3 = \ln(0.6731/0.7431) / (1 - 0.7431)^2 \approx -1.50$
+
+**4. $\alpha_1 = 0.70, CMC_{mix} = 1.47$**
+*   Left term inside ln: $(0.70 \times 1.47) / 1.30 = 0.7915$
+*   Right term inside ln: $(0.30 \times 1.47) / 7.80 = 0.0565$
+*   Solving yields $x_1 \approx 0.8294$.
+*   $\beta_4 = \ln(0.7915/0.8294) / (1 - 0.8294)^2 \approx -1.61$
+
+**5. $\alpha_1 = 0.90, CMC_{mix} = 1.33$**
+*   Left term inside ln: $(0.90 \times 1.33) / 1.30 = 0.9208$
+*   Right term inside ln: $(0.10 \times 1.33) / 7.80 = 0.0171$
+*   Solving yields $x_1 \approx 0.9286$.
+*   $\beta_5 = \ln(0.9208/0.9286) / (1 - 0.9286)^2 \approx -1.66$
+
+**Pooled Beta & Analysis**
+*   Mean $\beta$ = $(-1.55 - 1.62 - 1.50 - 1.61 - 1.66) / 5 = -1.588 \approx -1.59$.
+*   The sign of $\beta$ is strongly **negative**.
+*   The claim that the Rubingh beta is +0.4 (slightly antagonistic) is demonstrably false because our calculated value diverges from it by far more than 0.3.
+*   Because $\beta < -0.5$, the mixture deviates significantly from ideality in a favorable manner, confirming it is **synergistic**.
+
+FINAL_JSON: {"beta_mean": -1.59, "sign": "negative", "claim_agrees": false, "synergy": "synergistic", "x1_a050": 0.743}

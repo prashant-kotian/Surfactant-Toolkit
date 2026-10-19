@@ -1,0 +1,17 @@
+I'll compute this by running the exact bootstrap procedure specified.
+
+I'll run the solver from the beginning using the uploaded copy.
+
+The procedure ran successfully. Here are the results.
+
+**1. cmc_point** = 1.6112 mM — the bootstrap point CMC from the tanh-sigmoid fit (x₀ in log₁₀ units, back-transformed as 10^x₀).
+
+**2. dG_point** = −26.5845 kJ/mol — mass-action ΔG at the point CMC with Nagg = 52.
+
+**3. dG_ci_low** = −26.6168 kJ/mol — ΔG evaluated at cmc_ci_low (1.5908 mM, the 2.5th-percentile bootstrap CMC).
+
+**4. dG_ci_high** = −26.5498 kJ/mol — ΔG evaluated at cmc_ci_high (1.6335 mM, the 97.5th-percentile bootstrap CMC).
+
+A note on direction: because ΔG becomes less negative as CMC rises, the *lower* CMC bound maps to the more negative ΔG and the *higher* CMC bound to the less negative one, which is why dG_ci_low < dG_ci_high. The values follow the formula exactly as specified (feeding each CMC through X and the Nagg-corrected expression); if you intended the ΔG interval to be labelled by its own numeric ordering rather than by which CMC endpoint it came from, just swap the two.
+
+FINAL_JSON: {"cmc_point": 1.6112, "dG_point": -26.5845, "dG_ci_low": -26.6168, "dG_ci_high": -26.5498}

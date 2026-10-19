@@ -1,0 +1,16 @@
+To find the requested values, I utilized the `bootstrap_cmc` MCP tool from the `surfactantkit` server, ensuring the precise mathematical definition and sequence outlined in the prompt were followed. 
+
+Since the sigmoidal fit must operate on $x = \log_{10}(c)$, I first converted the given concentration values into their base-10 logarithms:
+* `c = [0.35, 0.55, 0.85, 1.20, 1.60, 2.00, 2.50, 3.20, 4.00, 5.20]`
+* `x = [-0.4559319..., -0.2596373..., -0.0705810..., 0.0791812..., 0.2041199..., 0.3010299..., 0.3979400..., 0.5051499..., 0.6020599..., 0.7160033...]`
+
+Using these $x$ values alongside the provided $y$ values, and setting the requested pseudo-random generator seed to 6 and iterations to 1000, the tool yielded the exact midpoint parameters and its non-parametric 95% confidence bounds. 
+
+The returned values were:
+1. **cmc_point**: 1.9989659591083466 mM
+2. **cmc_ci_low**: 1.9734683957737174 mM
+3. **cmc_ci_high**: 2.0207775318134877 mM
+4. **ci_width_pct**: 100 * (2.0207775318134877 - 1.9734683957737174) / 1.9989659591083466 = 2.366680406857944%
+5. **ci_wide**: false (since 2.3666% is not greater than 3.0%)
+
+FINAL_JSON: {"cmc_point": 1.9989659591083466, "cmc_ci_low": 1.9734683957737174, "cmc_ci_high": 2.0207775318134877, "ci_width_pct": 2.366680406857944, "ci_wide": false}

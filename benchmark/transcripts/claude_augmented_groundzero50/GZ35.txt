@@ -1,0 +1,55 @@
+ctant-computation tools as instructed.
+Weighing whether the acid group makes it pH-dependent anionic.
+
+Weighing whether the acid group makes it pH-dependent anionic.
+
+I’ll analyze this structure using the connected surfactant-computation tools as instructed. Let me load the relevant tool schemas first.
+
+Used surfactant-computation
+
+Used surfactant-computation
+Analysis
+
+Charge type — anionic (moderate confidence). The only ionizable moiety in the whole molecule is the terminal carboxyl at the end of the fatty-acid chain (…CH₂C(=O)O → –COOH). There are no sulfate, sulfonate, phosphate, or quaternary-ammonium groups, and no basic amine. A carboxyl has pKa ≈ 4–5, so it sits deprotonated (carboxylate, anionic) at typical surfactant-testing pH (≳6) but reverts to a protonated, effectively nonionic acid below its pKa. The confidence is moderate precisely because the assignment is pH-contingent: note that the SMILES itself is written in the neutral protonated form, so a formal-charge reading alone would mislabel it nonionic — the correct call rests on recognizing the carboxyl as an ionizable anionic group and knowing the working pH. If you’re operating near pH 4–5, confirm the actual solution pH.
+
+Structural family — glycolipid biosurfactant (high confidence). What supports this: two pyranose (hexose) sugar rings joined to one another and glycosidically linked, through the secondary carbon of a long mono-unsaturated (trans) C18 hydroxy-fatty-acid chain. Each sugar also carries a 6-O-acetyl group (–CH₂–O–C(=O)CH₃). The combination of a sugar-ring headgroup + long hydrocarbon tail is the defining glycolipid signature (the classifier found 2 sugar rings, 3 long-chain matches, 0 strong ionic headgroups). Concretely, this is the architecture of an acidic (open, free-acid), diacetylated sophorolipid — a disaccharide (sophorose) head on a hydroxy fatty acid, with the tail terminating in the free –COOH rather than cyclizing into a lactone.
+
+Sugar rings in the headgroup — 2. The two pyranose rings (O[C@H]1…O1 and O[C@H]2…O2) form a disaccharide headgroup (sophorose), not a single-sugar glycoside.
+
+Valid HLB method — Griffin’s (mass-ratio) method, with an important numeric caveat. Davies’ group-contribution method is structurally invalid for this class: a sugar ring’s geometry doesn’t pack like a free lipophilic tail, so no group-additive bookkeeping captures its real contribution (this has been checked against real data for glycolipids, not just flagged as a missing group number). Griffin’s method is the correct method name for a glycolipid. However — and this is the catch for this molecule — Griffin’s validated evidence base is nonionic glycolipids, whereas this structure is anionic once the carboxyl ionizes. Griffin’s formula assumes hydrophilicity scales with polar-group mass, which breaks down when a charge dominates hydrophilicity (and whether a counterion counts as “hydrophilic mass” can swing the number ~2×). So: use Griffin as the method, but do not trust an exact numeric HLB from it here; treat any value as indicative only.
+
+FINAL_JSON:
+{
+“charge_type”: “anionic”,
+“charge_confidence”: “moderate (pH-dependent: carboxyl pKa ~4-5, anionic above ~pH 6, protonated/nonionic below; SMILES is drawn in neutral acid form)”,
+“structural_family”: “glycolipid biosurfactant (acidic, diacetylated sophorolipid: sophorose disaccharide on a C18 mono-unsaturated hydroxy fatty acid)”,
+“n_sugar_rings”: 2,
+“valid_hlb_method”: “Griffin (mass-ratio) method; Davies is structurally invalid for glycolipids. Numeric HLB unreliable here because the free carboxyl makes it anionic while Griffin’s evidence base is nonionic-only”
+}
+
+
+
+
+
+
+1 minute ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

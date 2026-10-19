@@ -1,0 +1,1 @@
+FINAL_JSON: {"f_cation_pH8": 0.99761, "f_cation_pH1062": 0.5, "f_cation_pH13": 0.004154, "dominant_at_8": "cationic", "confidence_at_8": "high"}

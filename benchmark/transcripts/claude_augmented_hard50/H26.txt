@@ -1,0 +1,103 @@
+CP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO
+(i.e. C18 alkyl chain + 12 oxyethylene units + terminal OH; count them off the string).
+
+Hydrophilic mass convention for this question (disclosed): Mh = nEO * 44.053 + 17.008 g/mol (oxyethylene units + terminal OH). Griffin HLB = 20 * Mh / M. Use atomic masses C 12.011, H 1.008, O 15.999 for the molar mass (or an equivalent structured-method computation).
+
+Report: the number of oxyethylene (EO) units; the total number of carbon atoms; the molar mass M (g/mol); and the Griffin HLB.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": <number>,
+  "total_carbons": <number>,
+  "molecular_weight": <number>,
+  "hlb_griffin": <number>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+2 minutes ago
+
+
+
+Claude responded: I'll use the connected surfactant-computation server.
+Calculating the hydrophilic mass and verifying the carbon count.
+
+Calculating the hydrophilic mass and verifying the carbon count.
+
+I’ll use the connected surfactant-computation server. Let me load the relevant tool schemas first.
+
+Used surfactant-computation: Rdkit descriptor panel
+
+Used surfactant-computation: Rdkit descriptor panel
+
+RDKit parsed the structure deterministically. Before computing HLB, let me verify the atom counts against the molecular weight, since the chain length matters.
+
+The panel reports M = 813.164 g/mol, 13 oxygens (n_hba = 13: twelve ether O + one terminal OH), 1 H-bond donor (the terminal OH), and zero rings/unsaturation. With zero degrees of unsaturation, H = 2C + 2, so the molecular formula pins the carbon count:
+
+Using C 12.011, H 1.008, O 15.999: a 43-carbon formula C₄₃H₈₈O₁₃ gives 43·12.011 + 88·1.008 + 13·15.999 = 813.164 g/mol, matching RDKit exactly.
+That means the leading alkyl run is 19 carbons, not 18 — the SMILES has CCCCCCCCCCCCCCCCCCC (C19), so the parenthetical “C18” undercounts by one. Total carbons = 19 (alkyl) + 24 (12 EO × 2C) = 43.
+
+EO units: the tail is OCC × 12 then a terminal O, i.e. 12 oxyethylene units + terminal OH (consistent with 13 oxygens, 1 donor).
+
+Now the hydrophilic mass per the disclosed convention and the Griffin HLB via the server tool:
+
+Used surfactant-computation: Hlb from mw
+
+Used surfactant-computation: Hlb from mw
+
+Here are the results, computed from the structure (RDKit graph parse for the molecular weight and atom counts, and the surfactant server’s Griffin HLB routine for the balance).
+
+Structure read off the SMILES
+
+Tail: OCC repeated 12 times followed by a terminal O → 12 oxyethylene (EO) units + terminal OH (13 oxygens total, 1 H-bond donor — both confirmed by the descriptor panel).
+Head: leading CCCCCCCCCCCCCCCCCCC is a 19-carbon alkyl run (the “C18” in the prompt is one short). Carbons = 19 + 12·2 = 43, giving formula C₄₃H₈₈O₁₃ (saturated, zero rings, so H = 2C+2).
+
+Molar mass (C 12.011, H 1.008, O 15.999): 43·12.011 + 88·1.008 + 13·15.999 = 813.164 g/mol, matching the deterministic RDKit value.
+
+Hydrophilic mass (disclosed convention): Mh = 12·44.053 + 17.008 = 545.644 g/mol.
+
+Griffin HLB: 20·545.644 / 813.164 = 13.42.
+
+FINAL_JSON:
+{
+“n_ethylene_oxide_units”: 12,
+“total_carbons”: 43,
+“molecular_weight”: 813.164,
+“hlb_griffin”: 13.42
+}
+
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

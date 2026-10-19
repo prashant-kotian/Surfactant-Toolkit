@@ -1,0 +1,2160 @@
+{
+  "H-01": {
+    "id": "H-01",
+    "fields": {
+      "optical_constant_K": {
+        "type": "number",
+        "value": 1.3239475741382987e-07,
+        "rel_tol": 0.001
+      },
+      "micelle_mw": {
+        "type": "number",
+        "value": 35887.99999999999,
+        "rel_tol": 0.02
+      },
+      "aggregation_number": {
+        "type": "number",
+        "value": 79.99999999999999,
+        "rel_tol": 0.03
+      },
+      "delta_g_mass_action_kJ_per_mol": {
+        "type": "number",
+        "value": -33.683664539463535,
+        "rel_tol": 0.03
+      }
+    },
+    "_construction": "[8.986740291220914e-06, 1.7047742222993927e-05, 2.431904181555696e-05, 3.091126595251542e-05, 3.691530019382681e-05, 4.2406504252513836e-05]",
+    "family": "F1 arithmetic chain",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "aggregation_number_from_sls_debye_plot",
+      "mass_action_free_energy_of_micellization"
+    ],
+    "mcp_version_b_guidance": "walk K -> Debye plot -> Nagg -> dG in order; every constant is supplied in the prompt",
+    "expected_failure_mechanism": "hand arithmetic on K~1e-7 and lambda^4 (cm conversion); mass-action sign/ln errors",
+    "reference": [
+      "procedural-execution arXiv 2605.00817 (mult/div -32pp, under-execution)",
+      "LinAlg-Bench 2605.16675",
+      "MedMCP-Calc 2601.23049"
+    ],
+    "reference_note": "source: constructed demonstration dataset (forward-generated from Mw=35888 g/mol, A2=4.0e-4, Debye model); axis: arithmetic-execution (10+ sequential numeric operations); Version A: aggregation_number_from_sls_debye_plot + mass_action_free_energy_of_micellization; Version B: walk K -> Debye plot -> Nagg -> dG in order, every constant is supplied; expected failure: hand arithmetic on K~1e-7 / lambda^4, unit slips in cm-vs-nm, mass-action sign errors (procedural-execution diagnostic arXiv 2605.00817: mult/div -32pp, under-execution dominates); ref: LinAlg-Bench 2605.16675 execution-error regime; MedMCP-Calc 2601.23049",
+    "vision_chart": null
+  },
+  "H-02": {
+    "id": "H-02",
+    "fields": {
+      "cmc_mM": {
+        "type": "number",
+        "value": 5.750000000000001,
+        "rel_tol": 0.03
+      },
+      "beta": {
+        "type": "number",
+        "value": 0.6562499999999998,
+        "rel_tol": 0.03
+      },
+      "alpha": {
+        "type": "number",
+        "value": 0.3437500000000002,
+        "rel_tol": 0.03
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.562968865098554,
+        "rel_tol": 0.05
+      }
+    },
+    "family": "F1 arithmetic chain",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "cmc_from_conductivity_curve",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "break -> beta -> counterion factor (2-beta) -> dG; never assume nonionic factor 1.0",
+    "expected_failure_mechanism": "slope-ratio arithmetic; silently dropping the counterion factor",
+    "reference": [
+      "procedural-execution 2605.00817",
+      "MedMCP-Calc 2601.23049 (33.97% best-model calc accuracy)"
+    ],
+    "reference_note": "source: constructed demonstration dataset (forward-generated, true break 5.75 mM, true beta 0.6562); axis: arithmetic-execution (regression + convention chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; Version B: break -> beta -> counterion factor (2-beta) -> dG; expected failure: slope-ratio arithmetic, silently dropping the counterion factor or assuming nonionic (1.0); ref: MedMCP-Calc 2601.23049 calculator-avoidance; procedural-execution 2605.00817",
+    "vision_chart": null
+  },
+  "H-03": {
+    "id": "H-03",
+    "fields": {
+      "cmc_mM": {
+        "type": "number",
+        "value": 4.242640687119285,
+        "rel_tol": 0.05
+      },
+      "three_segment_selected": {
+        "type": "exact",
+        "value": true
+      },
+      "n_baseline_points": {
+        "type": "number",
+        "value": 3,
+        "rel_tol": 0.0
+      },
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 1.6939510915193143e-06,
+        "rel_tol": 0.05
+      },
+      "a_min_nm2": {
+        "type": "number",
+        "value": 0.9802756853413634,
+        "rel_tol": 0.05
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.7825178518657,
+        "rel_tol": 0.05
+      }
+    },
+    "family": "F1 arithmetic chain",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "cmc_from_surface_tension_curve",
+      "gibbs_gamma_max",
+      "gibbs_a_min",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "detect the baseline regime first; state the Gibbs prefactor n implied by 'no added salt'",
+    "expected_failure_mechanism": "missing the flat baseline changes the premicellar slope; Gibbs n=1 vs 2 substitution",
+    "reference": [
+      "AtmosCoder 2608.18726 canonical-method-reuse trap",
+      "GZ-01/39 isotherm recipes"
+    ],
+    "reference_note": "source: constructed demonstration 3-regime tensiometry (forward-generated baseline+decline+plateau); axis: arithmetic-execution (regime detection + Gibbs chain); Version A: cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: detect the baseline regime first, then the Gamma_max chain; state the electrolyte condition; expected failure: silently missing the baseline (changes the premicellar slope), Gibbs prefactor n=1 vs n=2 substitution; ref: AtmosCoder 2608.18726 canonical-method reuse when task conditions invalidate it",
+    "vision_chart": null
+  },
+  "H-04": {
+    "id": "H-04",
+    "fields": {
+      "delta_H_kJ_per_mol": {
+        "type": "number",
+        "value": -2.8464007822,
+        "rel_tol": 0.05,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "delta_S_J_per_mol_K": {
+        "type": "number",
+        "value": 115.1227961277,
+        "rel_tol": 0.08,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "delta_Cp_J_per_mol_K": {
+        "type": "number",
+        "value": -814.735553559,
+        "rel_tol": 0.15,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "delta_G_298_kJ_per_mol": {
+        "type": "number",
+        "value": -37.1702624477,
+        "rel_tol": 0.05,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "driver": {
+        "type": "exact",
+        "value": "entropy_driven"
+      }
+    },
+    "family": "F1 arithmetic chain",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "vant_hoff_multi_point_fit"
+    ],
+    "mcp_version_b_guidance": "build dG(T) rows with (2-beta)=1.732 then allow a dCp term; never a two-point shortcut",
+    "expected_failure_mechanism": "two-point shortcut; 1/T orientation sign slip (toolkit docstring records this exact bug caught in an unaugmented Claude Opus 4.8 run); entropy-vs-enthalpy misjudgment",
+    "reference": [
+      "AtmosCoder sign-convention carry-over",
+      "GZ-26 (universal FAIL recipe on this data)"
+    ],
+    "reference_note": "source: REAL Fu, Fan, Cao & Wang 2019 RSC Adv. 9 28799 Table data for [C12mpy][Br] CMC-vs-T (same 8-point table as GZ-26/28/50/51), beta=0.268 real; axis: arithmetic-execution (8-row multi-point fit with curvature); Version A: vant_hoff_multi_point_fit (returns dH, dS, dCp, dG(T)); Version B: build dG(T) rows with (2-beta), then allow a dCp term; do not use a two-point shortcut; expected failure: two-point substitution, 1/T orientation sign slips (the toolkit's own docstring records this exact sign bug caught in an unaugmented Claude Opus 4.8 pilot), entropy-vs-enthalpy misjudgment; ref: AtmosCoder sign-convention carry-over; GZ-26 (universal FAIL recipe on this data) | 2026-10-18: gold re-derived with reference_temperature_K=298.15 as the question text pins; prior gold values were at the fit default mean-T reference (300.65 K).",
+    "vision_chart": null
+  },
+  "H-05": {
+    "id": "H-05",
+    "fields": {
+      "beta_mean": {
+        "type": "number",
+        "value": -1.3557535021485896,
+        "rel_tol": 0.1
+      },
+      "beta_std": {
+        "type": "number",
+        "value": 0.6829149049746315,
+        "rel_tol": 0.3
+      },
+      "x1_at_alpha2_0p60": {
+        "type": "number",
+        "value": 0.7108235558754264,
+        "rel_tol": 0.04
+      },
+      "f1": {
+        "type": "number",
+        "value": 0.8928182943508919,
+        "rel_tol": 0.06
+      },
+      "f2": {
+        "type": "number",
+        "value": 0.5040792682480982,
+        "rel_tol": 0.06
+      },
+      "gexc_kJ_per_mol": {
+        "type": "number",
+        "value": -0.6908352003208204,
+        "rel_tol": 0.12
+      }
+    },
+    "family": "F1 arithmetic chain",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "rubingh_beta_regression",
+      "solve_rubingh_x",
+      "activity_coefficients",
+      "excess_free_energy"
+    ],
+    "mcp_version_b_guidance": "pooled beta first, then single-point evaluations at alpha2=0.60; watch alpha2 vs alpha1 indexing",
+    "expected_failure_mechanism": "component-index swap, confusing per-point and pooled beta, f1/f2 swap",
+    "reference": [
+      "procedural-execution 2605.00817",
+      "GZ-02 corrected-gold precedent"
+    ],
+    "reference_note": "source: REAL Vautier-Giongo et al. 2005 JCIS 282 149 DHPC-DTAB binary system (same real series family as GZ-02); axis: arithmetic-execution (pooled regression + single-point evaluations); Version A: rubingh_beta_regression + solve_rubingh_x + activity_coefficients + excess_free_energy; Version B: pooled beta first, then evaluate at alpha2=0.60; mind alpha2 vs alpha1 indexing; expected failure: indexing the wrong component, confusing per-point and pooled beta, f1/f2 swap; ref: procedural-execution 2605.00817; GZ-02 corrected-gold precedent",
+    "vision_chart": null
+  },
+  "H-06": {
+    "id": "H-06",
+    "fields": {
+      "selected_model": {
+        "type": "exact",
+        "value": "eommm_asymmetric_margules"
+      },
+      "selected_bic": {
+        "type": "number",
+        "value": -49.898065077230406,
+        "rel_tol": 0.05
+      },
+      "rubingh_beta_mean": {
+        "type": "number",
+        "value": -1.826712598300161,
+        "rel_tol": 0.1
+      },
+      "interaction_character": {
+        "type": "keywords_any",
+        "value": [
+          "synerg"
+        ]
+      },
+      "w12": {
+        "type": "number",
+        "value": -3.4000000000000066,
+        "rel_tol": 0.15
+      },
+      "w21": {
+        "type": "number",
+        "value": -0.8999999999999984,
+        "rel_tol": 0.25
+      }
+    },
+    "_construction": "[3.3750538936460455, 2.5587671020559437, 2.2482109004411193, 2.069423448919062, 1.985326703486169, 1.906504404640686]",
+    "family": "F2 selection race",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "select_mixture_model"
+    ],
+    "mcp_version_b_guidance": "report the SELECTED model's own BIC and params; the Rubingh candidate is a separate row",
+    "expected_failure_mechanism": "parameter-attribution error after a BIC race (citing Rubingh beta as the winner's); hand-BIC drift",
+    "reference": [
+      "AtmosCoder wrong-formula-same-task",
+      "GZ-02/25 mixture-model family"
+    ],
+    "reference_note": "source: constructed demonstration series (forward-generated from asymmetric Margules truth W12=-3.5, W21=-0.9, 0.5% jitter, seed 7); axis: reasoning-decision (model-selection race) + arithmetic (BIC, parameter attribution); Version A: select_mixture_model (returns selected_model, per-candidate BIC/params); Version B: report the SELECTED model's own parameters -- do not attribute Rubingh's beta to the winner; expected failure: parameter-attribution error after a BIC race; hand-BIC arithmetic drift; ref: AtmosCoder 2608.18726 wrong-formula-same-task; GZ-02/25 EOMMM context",
+    "vision_chart": null
+  },
+  "H-07": {
+    "id": "H-07",
+    "fields": {
+      "selected_model": {
+        "type": "exact",
+        "value": "langmuir"
+      },
+      "delta_bic": {
+        "type": "number",
+        "value": -2.03407907524182,
+        "rel_tol": 0.12
+      },
+      "frumkin_a": {
+        "type": "number",
+        "value": 0.019293447713037447,
+        "rel_tol": 0.5
+      },
+      "physically_meaningful_interaction": {
+        "type": "exact",
+        "value": false
+      },
+      "raw_rss_frumkin_lower_than_langmuir": {
+        "type": "exact",
+        "value": true
+      }
+    },
+    "_construction": "[62.68566265213234, 58.033039730689296, 54.935365360336775, 51.10735151758341, 48.38427877281797, 46.22559954724788, 44.523711258191796, 43.219004347982334]",
+    "family": "F2 selection race",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "select_isotherm_model"
+    ],
+    "mcp_version_b_guidance": "BIC decides; raw RSS favours the nested model -- report BOTH facts without rationalizing",
+    "expected_failure_mechanism": "statistic-shopping: choosing whichever metric supports the preferred model; fabricated justification",
+    "reference": [
+      "Zvi Mowshowitz Opus-4.8 review (rationalizing around explicit constraints)",
+      "MatSciBench 2510.12171"
+    ],
+    "reference_note": "source: constructed demonstration isotherm (forward-generated Langmuir truth with 18% noise, seed 11); axis: reasoning-decision (BIC and raw-RSS disagree -- report both, pick by BIC); Version A: select_isotherm_model (selected_model, delta_bic, frumkin_a, warnings); Version B: BIC is the decision rule; raw RSS will favour the nested extra-parameter model -- report that fact honestly too; expected failure: rationalizing the choice around whichever statistic favours the preferred model; fabricated justification (Zvi Mowshowitz Opus-4.8 review: rationalizing around explicit constraints); ref: MatSciBench 2510.12171 false critiques/self-correction failure",
+    "vision_chart": null
+  },
+  "H-08": {
+    "id": "H-08",
+    "fields": {
+      "cmc_conductivity_mM": {
+        "type": "number",
+        "value": 5.750000000000001,
+        "rel_tol": 0.03
+      },
+      "cmc_tensiometry_mM": {
+        "type": "number",
+        "value": 5.744562646538029,
+        "rel_tol": 0.04
+      },
+      "agree_within_2pct": {
+        "type": "exact",
+        "value": true
+      },
+      "beta": {
+        "type": "number",
+        "value": 0.6562499999999998,
+        "rel_tol": 0.03
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.562968865098554,
+        "rel_tol": 0.06
+      }
+    },
+    "family": "F2 selection race",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "cmc_from_conductivity_curve",
+      "cmc_from_surface_tension_curve",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "compute both breaks and their relative difference BEFORE judging the 2% agreement",
+    "expected_failure_mechanism": "declaring agreement/disagreement without the arithmetic; sqrt-bracket read errors",
+    "reference": [
+      "procedural-execution 2605.00817 under-execution",
+      "HLE 46.2% universal-fail precedent (llm-stats 2026-02)"
+    ],
+    "reference_note": "source: constructed demonstration pair (conductivity true break 5.75 mM / tension on exact line 34.8-7*ln(c/5.75), both built to agree at 5.75); axis: arithmetic-execution (two-method race with numeric agreement threshold); Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_free_energy_micellization; Version B: compute both breaks, then the relative difference, THEN judge -- agreement is a number, not a vibe; expected failure: declaring agreement/disagreement without computing against the 2% threshold; geometric-mean bracket read errors; ref: procedural-execution 2605.00817 (under-execution); llm-stats HLE 46.2% universal-fail precedent",
+    "vision_chart": null
+  },
+  "H-09": {
+    "id": "H-09",
+    "fields": {
+      "k": {
+        "type": "number",
+        "value": 0.16000000000000006,
+        "rel_tol": 0.03
+      },
+      "cc": {
+        "type": "number",
+        "value": -1.3999999999999995,
+        "rel_tol": 0.05
+      },
+      "fit_r2": {
+        "type": "number",
+        "value": 1.0,
+        "rel_tol": 0.0001
+      },
+      "s_star_EACN16_dT10_pct": {
+        "type": "number",
+        "value": 57.97431107895932,
+        "rel_tol": 0.03
+      },
+      "hld_at_S3": {
+        "type": "number",
+        "value": -2.9613877113318905,
+        "rel_tol": 0.03
+      },
+      "winsor_type": {
+        "type": "exact",
+        "value": "I"
+      },
+      "s_star_achievable_in_water": {
+        "type": "exact",
+        "value": false
+      }
+    },
+    "_construction": "[14.585093295880785, 20.085536923187668, 27.660350558516747, 38.09183672539902]",
+    "family": "F2 selection race",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "fit_k_and_cc_from_salinity_scan",
+      "optimal_salinity_ionic",
+      "hld_ionic"
+    ],
+    "mcp_version_b_guidance": "HLD = lnS - k*EACN - alpha*dT + Cc; Winsor mapping is by HLD SIGN (I<0, II>0) -- do not invert",
+    "expected_failure_mechanism": "inverted Winsor mapping; forgetting the alpha*dT term; ignoring the ~26 wt% NaCl ceiling",
+    "reference": [
+      "AtmosCoder sign-convention carry-over",
+      "hld.py source docstring"
+    ],
+    "reference_note": "source: constructed demonstration HLD salinity scan (forward-generated truth k=0.16, Cc=-1.4, alpha_dT=0.01 K^-1); axis: arithmetic-execution + reasoning (ln-linearize, round-trip S*, Winsor sign mapping, achievability); Version A: fit_k_and_cc_from_salinity_scan + optimal_salinity_ionic + hld_ionic; Version B: HLD = lnS - k*EACN - alpha*dT + Cc; S* solves HLD=0; the Winsor mapping is by SIGN of HLD -- do not invert it; expected failure: inverted Winsor mapping (HLD<0 is Winsor I, direct/O-in-W), forgetting the alpha*dT term, ignoring the NaCl solubility ceiling (~26 wt%) when judging achievability; ref: AtmosCoder 2608.18726 sign-convention carry-over after direction change; hld.py source docstring",
+    "vision_chart": null
+  },
+  "H-10": {
+    "id": "H-10",
+    "fields": {
+      "x1_rodenas_at_alpha1_0p55": {
+        "type": "number",
+        "value": 0.6836192656084674,
+        "rel_tol": 0.04
+      },
+      "x1_rubingh_at_alpha1_0p55": {
+        "type": "number",
+        "value": 0.723127452911286,
+        "rel_tol": 0.04
+      },
+      "f1_rodenas": {
+        "type": "number",
+        "value": 0.92783913722818,
+        "rel_tol": 0.06
+      },
+      "f2_rodenas": {
+        "type": "number",
+        "value": 0.35788651279161166,
+        "rel_tol": 0.06
+      },
+      "mean_abs_x1_difference": {
+        "type": "number",
+        "value": 0.04573477923739253,
+        "rel_tol": 0.2
+      },
+      "estimators_agree_within_0p05": {
+        "type": "exact",
+        "value": true
+      },
+      "model_independent_method": {
+        "type": "exact",
+        "value": "Rodenas"
+      }
+    },
+    "_construction": "[4.687912473236189, 3.522530424509481, 3.027270837358925, 2.7678052782315157, 2.5746117696988158, 2.4768134764588954]",
+    "family": "F2 selection race",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "rodenas_x1_series",
+      "solve_rubingh_x",
+      "rodenas_activity_coefficients"
+    ],
+    "mcp_version_b_guidance": "Rodenas needs a local slope (fit neighbors); Rubingh a per-point implicit root; compare on the MEAN abs difference",
+    "expected_failure_mechanism": "hand numerical differentiation of a noisy series; per-point transcendental solves; judging agreement from one point instead of the mean",
+    "reference": [
+      "procedural-execution 2605.00817",
+      "GZ-02 model-independence axis, made numeric"
+    ],
+    "reference_note": "source: constructed demonstration series (forward-generated from asymmetric-Margules truth W12=-3.0, W21=-1.2, 1% jitter, seed 13); axis: arithmetic-execution (local numerical differentiation + implicit roots) + reasoning (which estimator is model-independent); Version A: rodenas_x1_series + solve_rubingh_x + rodenas_activity_coefficients; Version B: Rodenas needs the local slope of ln(CMC) vs alpha (fit neighboring points); Rubingh needs a per-point implicit root -- compute both before judging agreement from the MEAN absolute difference; expected failure: hand numerical differentiation of a noisy series, per-point transcendental solves, declaring disagreement from one point instead of the mean; ref: procedural-execution 2605.00817; Rodenas-vs-Rubingh model-independence (GZ-02 axis, now numeric)",
+    "vision_chart": null
+  },
+  "H-11": {
+    "id": "H-11",
+    "fields": {
+      "n_points_without_solution": {
+        "type": "number",
+        "value": 2,
+        "rel_tol": 0.0
+      },
+      "alpha1_no_root_1": {
+        "type": "number",
+        "value": 0.7,
+        "rel_tol": 0.02
+      },
+      "alpha1_no_root_2": {
+        "type": "number",
+        "value": 0.85,
+        "rel_tol": 0.02
+      },
+      "beta_mean": {
+        "type": "number",
+        "value": -0.04478506183152057,
+        "rel_tol": 0.5
+      },
+      "beta_std": {
+        "type": "number",
+        "value": 1.8326207206410465,
+        "rel_tol": 0.35
+      },
+      "n_points_used": {
+        "type": "number",
+        "value": 3,
+        "rel_tol": 0.0
+      }
+    },
+    "_construction": "[(0.7, 16.0, None), (0.85, 13.0, None)]",
+    "family": "F3 regime/infeasibility",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "solve_rubingh_x",
+      "rubingh_beta_regression"
+    ],
+    "mcp_version_b_guidance": "scan EVERY point for a root first; the regression uses only feasible points (n=3) and sample std",
+    "expected_failure_mechanism": "tool returning null -> crash-handled by fabricating roots, silently averaging, or wrong subset",
+    "reference": [
+      "GZ infeasibility-detection recipe (universal FAIL)",
+      "AtmosCoder trap-task family"
+    ],
+    "reference_note": "source: constructed demonstration series engineered so two points have NO Rubingh root (mix CMC above what the model allows); axis: reasoning-decision (infeasibility detection) + arithmetic (subset regression); Version A: solve_rubingh_x (returns null on no-root) + rubingh_beta_regression on the feasible subset; Version B: scan EVERY point for a root first -- the regression must skip infeasible points, not crash or fabricate; expected failure: tool crash handled by silently averaging, inventing roots, or wrong subset; ref: GZ infeasibility-detection recipe (universal FAIL); AtmosCoder trap-task family",
+    "vision_chart": null
+  },
+  "H-12": {
+    "id": "H-12",
+    "fields": {
+      "selected_model": {
+        "type": "exact",
+        "value": "frumkin"
+      },
+      "frumkin_a": {
+        "type": "number",
+        "value": 2.599996752466044,
+        "rel_tol": 0.05
+      },
+      "condensation_regime_flagged": {
+        "type": "exact",
+        "value": true
+      },
+      "a_trustworthy_downstream_unexamined": {
+        "type": "exact",
+        "value": false
+      }
+    },
+    "_construction": "[61.81445541079724, 57.08006030070685, 53.48331838680577, 49.88071001701556, 46.27519951050047, 43.36317920477401, 41.01082802426278]",
+    "family": "F3 regime/infeasibility",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "select_isotherm_model"
+    ],
+    "mcp_version_b_guidance": "a >= 2 is the 2D-condensation regime; the flag and the downstream-trust judgment are separate answers",
+    "expected_failure_mechanism": "hand nonlinear-fit precision failing on a; ignoring the condensation warning",
+    "reference": [
+      "Frumkin condensation criterion (standard)",
+      "GZ isotherm-selection recipes"
+    ],
+    "reference_note": "source: constructed demonstration isotherm (forward-generated Frumkin truth K=2.5e5, a=2.6, Gamma_max=2.1e-6, seed none); axis: reasoning-decision (thermodynamic-regularity flag) + arithmetic (nonlinear fit); Version A: select_isotherm_model (selected_model, frumkin_a, warnings mentioning condensation); Version B: a >= 2 is the 2D-condensation regime -- the flag and the trust judgment are separate asks; expected failure: hand-fit precision failing on a; ignoring the condensation warning and trusting downstream quantities; ref: Frumkin condensation criterion (standard); GZ isotherm-selection recipes",
+    "vision_chart": null
+  },
+  "H-13": {
+    "id": "H-13",
+    "fields": {
+      "cpp": {
+        "type": "number",
+        "value": 0.4199040767386091,
+        "rel_tol": 0.02
+      },
+      "morphology": {
+        "type": "exact",
+        "value": "cylindrical/rodlike micelle"
+      },
+      "axial_ratio": {
+        "type": "null"
+      },
+      "conflict_detected": {
+        "type": "exact",
+        "value": true
+      }
+    },
+    "family": "F3 regime/infeasibility",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "critical_packing_parameter",
+      "classify_aggregate_morphology",
+      "estimate_axial_ratio_from_cpp_geometry"
+    ],
+    "mcp_version_b_guidance": "an axial ratio below 1 means the inputs disagree -- report null + conflict, never force a number",
+    "expected_failure_mechanism": "fabricating an axial ratio instead of detecting the geometric inconsistency",
+    "reference": [
+      "Zvi Opus-4.8 fabrication mode (fabricating missing inputs)",
+      "GZ refusal-trap recipe"
+    ],
+    "reference_note": "source: real geometric inconsistency (C12 chain: tanford v=350.2 A^3, lc=16.68 A with Amin=50 A^2 puts CPP in the rod regime, yet Nagg=20 implies a core semi-axis smaller than the pinned minor axis -- the toolkit raises); axis: reasoning-decision (infeasibility detection under a rod-regime CPP); Version A: critical_packing_parameter + classify_aggregate_morphology + estimate_axial_ratio_from_cpp_geometry (raises -> report null); Version B: an axial ratio that would come out below 1 means the inputs disagree -- report null + conflict instead of forcing a number; expected failure: fabricated axial ratio (Zvi review: fabricating missing inputs rather than flagging discrepancies); ref: GZ refusal-trap recipe; MatSciBench 2510.12171 false self-correction",
+    "vision_chart": null
+  },
+  "H-14": {
+    "id": "H-14",
+    "fields": {
+      "charge_type": {
+        "type": "exact",
+        "value": "cationic"
+      },
+      "structural_family": {
+        "type": "exact",
+        "value": "gemini"
+      },
+      "davies_hlb": {
+        "type": "null"
+      },
+      "valid_method": {
+        "type": "exact",
+        "value": "Griffin"
+      },
+      "hlb": {
+        "type": "number",
+        "value": 6.22,
+        "rel_tol": 0.005
+      }
+    },
+    "family": "F3 regime/infeasibility",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "classify_surfactant_charge_type",
+      "classify_surfactant_structural_family",
+      "hlb_davies (raises)"
+    ],
+    "mcp_version_b_guidance": "Davies group numbers do not exist for a doubled quaternary headgroup -> null; take the 12-4-12 table row",
+    "expected_failure_mechanism": "fabricating a Davies number after the tool errors; adjacent-row lookup error (6.37 bait)",
+    "reference": [
+      "Zvi Opus-4.8 fabricated verification",
+      "GZ-03 genuine-refusal precedent (universal FAIL)"
+    ],
+    "reference_note": "source: real 12-4-12 gemini structure (Azum et al. 2022 G6/12-4-12 family) + supplied Liao et al. 2023 Griffin reference table (12-4-12 = 6.22; the adjacent 12-3-12 row = 6.37 is the bait); axis: reasoning-decision (method validity + table-row selection) with a genuine null; Version A: classify_surfactant_charge_type + classify_surfactant_structural_family + hlb_davies (raises for gemini) + table lookup; Version B: Davies group numbers do not exist for a doubled quaternary headgroup -- null is the correct answer; pick the 12-4-12 row; expected failure: computing a plausible-but-fabricated Davies HLB after the tool errors; adjacent-row lookup error (6.37); ref: Zvi Opus-4.8 fabricated-verification; GZ-03 genuine-refusal precedent (universal FAIL)",
+    "vision_chart": null
+  },
+  "H-15": {
+    "id": "H-15",
+    "fields": {
+      "micelle_mw": {
+        "type": "number",
+        "value": 399.99999999999994,
+        "rel_tol": 0.02
+      },
+      "aggregation_number": {
+        "type": "number",
+        "value": 0.6399999999999999,
+        "rel_tol": 0.03
+      },
+      "physically_valid": {
+        "type": "exact",
+        "value": false
+      },
+      "why": {
+        "type": "keywords_any",
+        "value": [
+          "smaller",
+          "impossible",
+          "invalid",
+          "cannot be",
+          "less than one",
+          "less than 1",
+          "inconsistent",
+          "non-physical",
+          "unphysical"
+        ]
+      }
+    },
+    "_construction": "[1.1383385668830945e-07, 2.2752219230702694e-07, 3.4106528572118526e-07, 4.5446341508374547e-07, 5.677168578378687e-07, 6.808258907191783e-07]",
+    "family": "F3 regime/infeasibility",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "aggregation_number_from_sls_debye_plot"
+    ],
+    "mcp_version_b_guidance": "Nagg < 1 is the detection signal: refuse the physical interpretation and say why",
+    "expected_failure_mechanism": "validity blindness (reporting 0.64 as a measurement); blanket refusal of the arithmetic",
+    "reference": [
+      "GZ refusal/validity recipes",
+      "llm-stats HLE fabricated-confidence"
+    ],
+    "reference_note": "source: constructed demonstration dataset engineered to be physically impossible (forward-generated from Mw=400 g/mol with M0=625); axis: reasoning-decision (infeasibility detection) + arithmetic; Version A: aggregation_number_from_sls_debye_plot (returns Mw=400, Nagg=0.64 -- the numbers ARE the detection signal); Version B: Nagg < 1 means fewer than one molecule per 'micelle' -- refuse the physical interpretation, say why; expected failure: reporting Nagg=0.64 as a measurement (validity blindness); refusing the arithmetic entirely; ref: GZ refusal/validity recipes; llm-stats HLE fabricated-confidence",
+    "vision_chart": null
+  },
+  "H-16": {
+    "id": "H-16",
+    "fields": {
+      "cmc_mM": {
+        "type": "number",
+        "value": 4.200000000000001,
+        "rel_tol": 0.03
+      },
+      "beta": {
+        "type": "number",
+        "value": 0.72,
+        "rel_tol": 0.03
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.10962450899553,
+        "rel_tol": 0.05
+      },
+      "delta_s_mic_J_per_mol_K": {
+        "type": "null"
+      },
+      "missing_for_delta_s": {
+        "type": "keywords_any",
+        "value": [
+          "temperature",
+          "enthalpy",
+          "van't hoff",
+          "vant hoff",
+          "multiple",
+          "series",
+          "2nd",
+          "second"
+        ]
+      }
+    },
+    "family": "F4 refusal",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "cmc_from_conductivity_curve",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "dS needs dH (van't Hoff) or a temperature series; one temperature cannot give it -> null + name the input",
+    "expected_failure_mechanism": "fabricating dS from a single-temperature dataset; wrong counterion factor",
+    "reference": [
+      "Zvi Opus-4.8 fabrication mode",
+      "GZ refusal-under-partial-answerability (universal FAIL)"
+    ],
+    "reference_note": "source: constructed demonstration conductivity dataset (forward-generated, true break 4.20 mM, beta 0.72); axis: reasoning-decision (genuine null for dS) + arithmetic (break + factor chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; dS has no single-temperature route -> null; Version B: dS = (dH-dG)/T needs dH (van't Hoff) or a temperature series -- one T cannot supply it; expected failure: fabricating dS from a single-temperature dataset (Zvi Opus-4.8: fabricating missing inputs rather than flagging the gap); wrong counterion factor; ref: GZ refusal-under-partial-answerability (universal FAIL) + MedMCP-Calc calc-avoidance",
+    "vision_chart": null
+  },
+  "H-17": {
+    "id": "H-17",
+    "fields": {
+      "solubility_estimate_M": {
+        "type": "number",
+        "value": 0.0007603761741598127,
+        "rel_tol": 0.15
+      },
+      "solubility_source": {
+        "type": "keywords_any",
+        "value": [
+          "esol",
+          "estimate",
+          "qspr"
+        ]
+      },
+      "msr": {
+        "type": "number",
+        "value": 0.2085463100985781,
+        "rel_tol": 0.08
+      }
+    },
+    "family": "F4 refusal",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "estimate_intrinsic_water_solubility_qspr",
+      "molar_solubilization_ratio"
+    ],
+    "mcp_version_b_guidance": "label the solubility an ESTIMATE from the structure; never substitute a recalled literature value",
+    "expected_failure_mechanism": "recall substitution for the QSPR estimate; refusal to estimate at all; MSR unit slips",
+    "reference": [
+      "Zvi Opus-4.8 fabrication mode",
+      "QSPR domain-shift caveat (ESOL +/-0.6-0.7 log)"
+    ],
+    "reference_note": "source: real naphthalene structure; total solubilized / Ct / CMC given as constructed scenario inputs; axis: reasoning-decision (estimate-vs-measure honesty) + arithmetic (QSPR -> MSR chain); Version A: estimate_intrinsic_water_solubility_qspr + molar_solubilization_ratio; Version B: label the solubility as an ESTIMATE from the structure; never substitute a recalled literature value; expected failure: recall substitution for the QSPR estimate (Zvi: fabricated inputs), refusal to estimate at all, MSR unit slips; ref: Zvi Opus-4.8 fabrication mode; QSPR domain-shift caveat (ESOL +/- 0.6-0.7 log)",
+    "vision_chart": null
+  },
+  "H-18": {
+    "id": "H-18",
+    "fields": {
+      "charge_type_at_ph": {
+        "type": "exact",
+        "value": "still_ambiguous"
+      },
+      "fraction_protonated_at_low_pka": {
+        "type": "number",
+        "value": 0.3868631798468573,
+        "rel_tol": 0.05
+      },
+      "fraction_protonated_at_high_pka": {
+        "type": "number",
+        "value": 0.6131368201531436,
+        "rel_tol": 0.05
+      },
+      "confidence": {
+        "type": "exact",
+        "value": "low"
+      }
+    },
+    "family": "F4 refusal",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "classify_surfactant_charge_type_at_ph"
+    ],
+    "mcp_version_b_guidance": "pH inside the pKaH range -> genuinely mixed population: report still_ambiguous + range + low confidence",
+    "expected_failure_mechanism": "overconfident single charge pick when the population straddles 50/50",
+    "reference": [
+      "Zvi Opus-4.8 overconfident interpretation",
+      "decrypt review: confident tone != accuracy"
+    ],
+    "reference_note": "source: real dodecylamine structure; toolkit's literature pKaH range for primary amines (10.4-10.8) disclosed here as the supplied range; pH 10.6 sits between the bounds; axis: reasoning-decision (overconfidence trap -- honest answer is ambiguity) + arithmetic (Henderson-Hasselbalch at both bounds); Version A: classify_surfactant_charge_type_at_ph (returns still_ambiguous + fraction range + confidence 'low'); Version B: pH inside the pKa range -> genuinely mixed population; do not force a single charge label; expected failure: confident single pick ('anionic'/'cationic') when the population straddles 50/50 (Zvi Opus-4.8: overconfident narrow interpretation; decrypt review: confident tone != accuracy); ref: GZ-56/57 acid-base ambiguity family",
+    "vision_chart": null
+  },
+  "H-19": {
+    "id": "H-19",
+    "fields": {
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 7.422476380435842e-06,
+        "rel_tol": 0.05
+      },
+      "a_min_nm2": {
+        "type": "number",
+        "value": 0.22371766268609417,
+        "rel_tol": 0.05
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -28.50377465528527,
+        "rel_tol": 0.05
+      },
+      "delta_s_mic_J_per_mol_K": {
+        "type": "null"
+      },
+      "missing_for_delta_s": {
+        "type": "keywords_any",
+        "value": [
+          "enthalpy",
+          "temperature",
+          "van't hoff",
+          "vant hoff",
+          "series",
+          "heat"
+        ]
+      }
+    },
+    "family": "F4 refusal",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "gibbs_gamma_max",
+      "gibbs_a_min",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "'excess inert electrolyte' fixes n=1; dS needs a T-series -> null",
+    "expected_failure_mechanism": "defaulting to n=2 despite the stated electrolyte condition; fabricating dS",
+    "reference": [
+      "AtmosCoder canonical-method reuse",
+      "GZ refusal recipe"
+    ],
+    "reference_note": "source: constructed demonstration inputs (slope -18.4 mN/m per ln C, excess electrolyte, alpha=0.30, CMC 8.0 mM); axis: arithmetic-execution (Gibbs chain) + reasoning-decision (genuine dS null); Version A: gibbs_gamma_max (with ionic_excess_electrolyte -> n=1) + gibbs_a_min + gibbs_free_energy_micellization; Version B: excess inert electrolyte fixes n=1; dS needs a temperature series -> null; expected failure: defaulting to n=2 despite the stated electrolyte condition (canonical-method reuse), fabricating dS; ref: AtmosCoder 2608.18726 trap failure; GZ refusal recipe",
+    "vision_chart": null
+  },
+  "H-20": {
+    "id": "H-20",
+    "fields": {
+      "dn_dc_for_this_compound": {
+        "type": "null"
+      },
+      "sls_aggregation_number": {
+        "type": "null"
+      },
+      "what_is_missing": {
+        "type": "keywords_any",
+        "value": [
+          "dn/dc",
+          "dn dc",
+          "refractive index increment",
+          "refractometer",
+          "measure",
+          "cite",
+          "cited",
+          "specific to"
+        ]
+      }
+    },
+    "family": "F4 refusal",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "(no Debye Nagg without compound-specific dn/dc -- honest nulls)"
+    ],
+    "mcp_version_b_guidance": "the SDS dn/dc belongs to SDS; using it for AOT fabricates an input -> both numeric fields null + name the gap",
+    "expected_failure_mechanism": "using the supplied SDS value as AOT's (fabricated input); refusing the whole question instead of answering the answerable parts",
+    "reference": [
+      "Zvi Opus-4.8 fabrication mode",
+      "GZ refusal recipe"
+    ],
+    "reference_note": "source: real AOT structure; SLS data constructed forward; dn/dc genuinely absent from the supplied material (SDS dn/dc = 0.110 is supplied ONLY as a different compound's value -- bait); axis: reasoning-decision (genuine double-null + missing-input identification); Version A: no toolkit route exists without a compound-specific dn/dc -> honest nulls (the Debye relation has two unknowns); Version B: the SDS value belongs to SDS -- using it for AOT fabricates an input; expected failure: using the SDS dn/dc to produce a confident wrong Nagg (fabricated-input trap), or refusing the whole question instead of answering the answerable parts; ref: Zvi Opus-4.8 fabrication mode; GZ refusal recipe",
+    "vision_chart": null
+  },
+  "H-21": {
+    "id": "H-21",
+    "fields": {
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 3.065805461484369e-06,
+        "rel_tol": 0.05
+      },
+      "a_min_from_slope_A2": {
+        "type": "number",
+        "value": 54.16322359768595,
+        "rel_tol": 0.05
+      },
+      "discrepancy_vs_literature_pct": {
+        "type": "number",
+        "value": 21.170522589901445,
+        "rel_tol": 0.1
+      }
+    },
+    "family": "F5 distractors",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "gibbs_gamma_max",
+      "gibbs_a_min"
+    ],
+    "mcp_version_b_guidance": "'no added electrolyte' means n=2 for 1:1 ionic; nm^2 -> A^2 is x100; compute the discrepancy as a number",
+    "expected_failure_mechanism": "n=1 default; A^2/nm^2 slip (100x); asserting 'good agreement' without arithmetic",
+    "reference": [
+      "GZ-59 literature-comparison recipe",
+      "AtmosCoder wrong-reference-frame trap"
+    ],
+    "reference_note": "source: constructed demonstration inputs (slope -15.2 mN/m per ln C, no added salt, literature A_min = 44.70 A^2); axis: arithmetic-execution (Gibbs chain + nm^2->A^2) + reasoning (quantify, do not wave at, the disagreement); Version A: gibbs_gamma_max (ionic_no_added_salt -> n=2) + gibbs_a_min; Version B: no added electrolyte means n=2 for a 1:1 ionic surfactant; convert nm^2 to A^2 (x100) before comparing; expected failure: n=1 default, A^2/nm^2 unit slip (100x), asserting 'good agreement' without computing the discrepancy; ref: GZ-59 literature-comparison recipe; AtmosCoder wrong-reference-frame trap",
+    "vision_chart": null
+  },
+  "H-22": {
+    "id": "H-22",
+    "fields": {
+      "clint_cmc_mM": {
+        "type": "number",
+        "value": 4.7272727272727275,
+        "rel_tol": 0.02
+      },
+      "deviation_from_measured_pct": {
+        "type": "number",
+        "value": 16.722783389450065,
+        "rel_tol": 0.1
+      },
+      "x1_rubingh": {
+        "type": "number",
+        "value": 0.7203241281585192,
+        "rel_tol": 0.04
+      },
+      "beta_rubingh": {
+        "type": "number",
+        "value": -0.8308586884784351,
+        "rel_tol": 0.08
+      }
+    },
+    "family": "F5 distractors",
+    "failure_axis": "reasoning-decision",
+    "mcp_version_a_tools": [
+      "clint_ideal_cmc",
+      "solve_rubingh_x",
+      "rubingh_beta"
+    ],
+    "mcp_version_b_guidance": "only alpha1, CMC1, CMC2 and measured mix CMC enter the calculation; distractors are context",
+    "expected_failure_mechanism": "pulling EC50/HLB/viscosity into the formula; wrong sign of the deviation",
+    "reference": [
+      "MedMCP-Calc fuzzy-query tool selection",
+      "GZ distractor recipe"
+    ],
+    "reference_note": "source: constructed demonstration inputs with distractor fields (temperatures, EC50, HLB, viscosity are irrelevant); axis: reasoning-decision (input selection among distractors) + arithmetic (Clint + Rubingh chain); Version A: clint_ideal_cmc + solve_rubingh_x + rubingh_beta; Version B: only alpha1, CMC1, CMC2 and the measured mix CMC feed the calculation; expected failure: pulling distractor values into the formula, wrong sign of the deviation; ref: fuzzy-query/calculator-selection (MedMCP-Calc 2601.23049); GZ distractor-recipe",
+    "vision_chart": null
+  },
+  "H-23": {
+    "id": "H-23",
+    "fields": {
+      "delta_h_endpoint_kJ_per_mol": {
+        "type": "number",
+        "value": -3.0847457234638647,
+        "rel_tol": 0.05
+      },
+      "agrees_with_cited_value": {
+        "type": "exact",
+        "value": false
+      },
+      "reported_value_source": {
+        "type": "keywords_any",
+        "value": [
+          "own",
+          "computed",
+          "calculation",
+          "first principles",
+          "from the data",
+          "not the cited",
+          "data give",
+          "endpoint",
+          "derived",
+          "recomputed",
+          "calculated"
+        ]
+      }
+    },
+    "family": "F5 distractors",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "vant_hoff_enthalpy"
+    ],
+    "mcp_version_b_guidance": "degC -> K first; report YOUR endpoint value; compare honestly against the draft's -6.2",
+    "expected_failure_mechanism": "adopting -6.2 because it is stated (authority bias); degC-as-K; 1/T orientation sign slip",
+    "reference": [
+      "Zvi Opus-4.8 rationalization",
+      "GZ-51 sign-flip fragility",
+      "AtmosCoder reference-frame trap"
+    ],
+    "reference_note": "source: same REAL Fu et al. 2019 [C12mpy][Br] CMC-vs-T table as GZ-26/28/50/51 (temps given here in degC); the '-6.2 kJ/mol' figure is a DRAFT-WRITEUP value carried in the dataset metadata (scenario artifact, not attributed to a paper); axis: arithmetic-execution (endpoint van't Hoff with degC->K) + reasoning-decision (conflict detection vs authority bias); Version A: vant_hoff_enthalpy; Version B: convert degC to K; the endpoint value from YOUR data is what you report; compare it honestly against the draft's -6.2; expected failure: adopting -6.2 because it is stated (authority bias), degC used as K, 1/T orientation sign slip; ref: Zvi Opus-4.8 rationalization; GZ-51 sign-flip fragility; AtmosCoder reference-frame trap",
+    "vision_chart": null
+  },
+  "H-24": {
+    "id": "H-24",
+    "fields": {
+      "rh_nm": {
+        "type": "number",
+        "value": 2.229912976162908,
+        "rel_tol": 0.03
+      },
+      "aggregation_number": {
+        "type": "number",
+        "value": 69.27897877824252,
+        "rel_tol": 0.05
+      },
+      "bias_direction": {
+        "type": "keywords_any",
+        "value": [
+          "over",
+          "high",
+          "larger",
+          "too large",
+          "upper",
+          "overestim"
+        ]
+      }
+    },
+    "family": "F5 distractors",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "aggregation_number_from_dls"
+    ],
+    "mcp_version_b_guidance": "hydrodynamic radius includes hydration -> volume and Nagg biased HIGH",
+    "expected_failure_mechanism": "cube/V-chain arithmetic drift; claiming no bias or the wrong direction",
+    "reference": [
+      "DLS hydration bias (textbook)",
+      "GZ-40 Nagg cross-method context"
+    ],
+    "reference_note": "source: constructed demonstration inputs (DLS D=1.1e-6 cm^2/s etc); bias direction is the documented hydration-shell systematic of DLS-derived Nagg; axis: arithmetic-execution (Stokes-Einstein -> rho*NA*V chain) + reasoning (bias direction); Version A: aggregation_number_from_dls (returns Rh and Nagg + bias disclosure); Version B: hydrodynamic radius includes the hydration shell -> volume and Nagg biased high; expected failure: arithmetic drift in the cube/V chain; claiming no bias or the wrong direction; ref: DLS hydration bias (textbook); GZ-40-type Nagg cross-method context",
+    "vision_chart": null
+  },
+  "H-25": {
+    "id": "H-25",
+    "fields": {
+      "ionic_strength_mM": {
+        "type": "number",
+        "value": 105.0,
+        "rel_tol": 0.01
+      },
+      "debye_length_nm": {
+        "type": "number",
+        "value": 0.9382011310383265,
+        "rel_tol": 0.03
+      },
+      "kappa_a": {
+        "type": "number",
+        "value": 2.6646738287697422,
+        "rel_tol": 0.05
+      },
+      "henry_f": {
+        "type": "number",
+        "value": 1.0908396000113956,
+        "rel_tol": 0.04
+      },
+      "treatment": {
+        "type": "keywords_any",
+        "value": [
+          "ohshima",
+          "swan",
+          "qin",
+          "kappa",
+          "intermediate",
+          "accurate",
+          "neither limit",
+          "obrien",
+          "o'brien"
+        ]
+      }
+    },
+    "family": "F5 distractors",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "ionic_strength",
+      "debye_length",
+      "henry_function"
+    ],
+    "mcp_version_b_guidance": "kappa*a = a/lambda_D with both in nm; kappa*a ~ 2.7 selects an intermediate-kappa theory, not a limit",
+    "expected_failure_mechanism": "Huckel or Smoluchowski limit applied outside its range; nm-vs-m mix making kappa*a ~ 0",
+    "reference": [
+      "AtmosCoder canonical-method reuse when conditions invalidate it",
+      "MedMCP fuzzy queries"
+    ],
+    "reference_note": "source: constructed demonstration salt mixture (Na+ 60 mM, Ca2+ 15 mM, Cl- 90 mM); axis: arithmetic-execution (I = 1/2 sum c z^2, Debye length, kappa*a, Henry function -- 8+ ops) + regime reasoning; Version A: ionic_strength + debye_length (returns nm) + henry_function; Version B: kappa*a = a/lambda_D with BOTH in nm; kappa*a ~ 2.7 is NEITHER limiting regime -> intermediate-kappa theory; expected failure: Huckel (kappa*a<<1) or Smoluchowski (kappa*a>>1) limit applied outside its range, nm-vs-m unit mix making kappa*a ~ 0 (unit/reference-frame trap); ref: AtmosCoder 2608.18726 canonical-method reuse when task conditions invalidate it; MedMCP fuzzy tool selection",
+    "vision_chart": null
+  },
+  "H-26": {
+    "id": "H-26",
+    "fields": {
+      "n_ethylene_oxide_units": {
+        "type": "exact",
+        "value": 12,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "total_carbons": {
+        "type": "exact",
+        "value": 43,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "molecular_weight": {
+        "type": "number",
+        "value": 813.164,
+        "rel_tol": 0.003,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      },
+      "hlb_griffin": {
+        "type": "number",
+        "value": 13.4202448707,
+        "rel_tol": 0.01,
+        "remediation_note": "gold value corrected 2026-10-18 (builder call fix: pinned ref-T / printed SMILES); see CHANGELOG"
+      }
+    },
+    "family": "F6 counting",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "(RDKit-backed property extraction)"
+    ],
+    "mcp_version_b_guidance": "count the repeats straight off the SMILES; apply the DISCLOSED Mh convention",
+    "expected_failure_mechanism": "off-by-one EO (11 vs 12); atom-count drift; wrong HLB convention",
+    "reference": [
+      "procedural counting burden (2605.00817)",
+      "GZ-13 HLB convention"
+    ],
+    "reference_note": "source: constructed demonstration structure (C18-(OCH2CH2)12-OH; C42H86O13 verified with RDKit); HLB convention matches GZ-13 (Mh = nEO*44.053 + 17.008, disclosed below); axis: arithmetic-execution (SMILES counting + MW + HLB) with an off-by-one EO trap; Version A: toolkit/RDKit property extraction; Version B: count the repeats straight off the SMILES; apply the DISCLOSED Mh convention; expected failure: off-by-one EO (11 vs 12), atom-count drift, applying the Davies rather than the disclosed Griffin convention; ref: counting-steps error (procedural-execution 2605.00817); GZ-13 HLB convention",
+    "vision_chart": null
+  },
+  "H-27": {
+    "id": "H-27",
+    "fields": {
+      "total_carbons": {
+        "type": "exact",
+        "value": 20
+      },
+      "tail_carbons_each": {
+        "type": "exact",
+        "value": 8
+      },
+      "tail_carbons_total": {
+        "type": "exact",
+        "value": 16
+      },
+      "backbone_carbons": {
+        "type": "exact",
+        "value": 4
+      },
+      "tails_branched": {
+        "type": "exact",
+        "value": true
+      },
+      "molecular_weight": {
+        "type": "number",
+        "value": 444.56600000000026,
+        "rel_tol": 0.003
+      },
+      "n_ester_groups": {
+        "type": "exact",
+        "value": 2
+      },
+      "n_sulfonate_groups": {
+        "type": "exact",
+        "value": 1
+      }
+    },
+    "family": "F6 counting",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "(RDKit-backed property extraction)"
+    ],
+    "mcp_version_b_guidance": "decompose: two 2-ethylhexyl tails (8 C each) + succinate backbone 4 C; MW includes Na+",
+    "expected_failure_mechanism": "2-ethylhexyl counted as 6; backbone/tail boundary confusion; MW with vs without Na",
+    "reference": [
+      "procedural counting burden (2605.00817)",
+      "GZ-01 AOT provenance"
+    ],
+    "reference_note": "source: real AOT structure (same SMILES as GZ-01); structural audit with a branched-tail miscount trap; axis: arithmetic-execution (systematic atom/group counting on a branched SMILES); Version A: RDKit-backed toolkit property extraction; Version B: decompose: two 2-ethylhexyl tails (8 C each), succinate backbone 4 C; MW includes Na+; expected failure: 2-ethylhexyl counted as 6; backbone/tail boundary confusion; MW with vs without Na+; ref: counting burden (2605.00817); GZ-01 AOT provenance",
+    "vision_chart": null
+  },
+  "H-28": {
+    "id": "H-28",
+    "fields": {
+      "charge_type": {
+        "type": "exact",
+        "value": "anionic"
+      },
+      "structural_family": {
+        "type": "exact",
+        "value": "glycolipid_biosurfactant"
+      },
+      "n_sugar_rings": {
+        "type": "exact",
+        "value": 2
+      },
+      "molecular_weight": {
+        "type": "number",
+        "value": 706.8230000000003,
+        "rel_tol": 0.003
+      },
+      "n_ester_groups": {
+        "type": "exact",
+        "value": 2
+      },
+      "n_carboxylic_acid_groups": {
+        "type": "exact",
+        "value": 1
+      }
+    },
+    "family": "F6 counting",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "classify_surfactant_charge_type",
+      "classify_surfactant_structural_family",
+      "(RDKit)"
+    ],
+    "mcp_version_b_guidance": "sugars -> glycolipid family; acetate esters and the single carboxylic acid are counted separately",
+    "expected_failure_mechanism": "ring miscount; ester/acid confusion; ignoring the charge classifier's caveat",
+    "reference": [
+      "GZ-35 sophorolipid family precedent",
+      "counting burden (2605.00817)"
+    ],
+    "reference_note": "source: sophorolipid-like constructed structure (two acetylated pyranose rings + hydroxy-fatty-acid tail with terminal COOH; RDKit formula C34H58O15); axis: arithmetic-execution (functional-group/ring counting on a stereochemically explicit SMILES) + structural classification; Version A: classify_surfactant_charge_type + classify_surfactant_structural_family + RDKit; Version B: sugars -> glycolipid family; count acetate esters vs the single carboxylic acid separately; expected failure: ring miscount, ester/acid confusion, charge label from the COOH ignoring the classifier's caveat; ref: GZ-35 sophorolipid family precedent; counting burden (2605.00817)",
+    "vision_chart": null
+  },
+  "H-29": {
+    "id": "H-29",
+    "fields": {
+      "n_propylene_oxide_units": {
+        "type": "exact",
+        "value": 5
+      },
+      "n_ethylene_oxide_units": {
+        "type": "exact",
+        "value": 8
+      },
+      "molecular_weight": {
+        "type": "number",
+        "value": 829.1629999999996,
+        "rel_tol": 0.003
+      },
+      "hlb_griffin": {
+        "type": "number",
+        "value": 15.916122644160435,
+        "rel_tol": 0.01
+      }
+    },
+    "family": "F6 counting",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "(RDKit-backed property extraction)"
+    ],
+    "mcp_version_b_guidance": "methyl branches mark PO units; disclose-and-apply Mh = M - 169.31",
+    "expected_failure_mechanism": "PO/EO confusion; off-by-one repeat; wrong HLB convention",
+    "reference": [
+      "counting burden (2605.00817)",
+      "GZ-13 HLB convention family"
+    ],
+    "reference_note": "source: constructed demonstration structure (C12 tail + 5 PO + 8 EO + OH; C43H88O14 verified with RDKit); axis: arithmetic-execution (PO-vs-EO counting from methyl branches + MW + HLB with disclosed tail convention); Version A: toolkit/RDKit property extraction; Version B: methyl branches mark PO units; disclose-and-apply Mh = M - 169.31; expected failure: PO/EO confusion, off-by-one repeat, wrong HLB convention; ref: counting burden (2605.00817); GZ-13 HLB convention family",
+    "vision_chart": null
+  },
+  "H-30": {
+    "id": "H-30",
+    "fields": {
+      "charge_type": {
+        "type": "exact",
+        "value": "cationic"
+      },
+      "structural_family": {
+        "type": "exact",
+        "value": "monomeric"
+      },
+      "tail_carbons": {
+        "type": "exact",
+        "value": 12
+      },
+      "cpp": {
+        "type": "number",
+        "value": 0.35215034949564666,
+        "rel_tol": 0.01
+      },
+      "morphology": {
+        "type": "exact",
+        "value": "cylindrical/rodlike micelle"
+      },
+      "axial_ratio": {
+        "type": "number",
+        "value": 1.0809127606844267,
+        "rel_tol": 0.02
+      },
+      "rh_naive_nm": {
+        "type": "number",
+        "value": 2.7560722177294372,
+        "rel_tol": 0.03
+      },
+      "rh_perrin_corrected_nm": {
+        "type": "number",
+        "value": 2.754586197097811,
+        "rel_tol": 0.03
+      }
+    },
+    "family": "F6 counting",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "classify_surfactant_charge_type",
+      "classify_surfactant_structural_family",
+      "critical_packing_parameter",
+      "classify_aggregate_morphology",
+      "estimate_axial_ratio_from_cpp_geometry",
+      "hydrodynamic_radius_stokes_einstein",
+      "hydrodynamic_radius_perrin_corrected"
+    ],
+    "mcp_version_b_guidance": "run the chain in order; the Perrin correction uses the axial ratio YOU computed",
+    "expected_failure_mechanism": "cascade drift (one early error propagates through 7 fields); DLS-unit slips",
+    "reference": [
+      "procedural-execution 2605.00817 (accuracy falls with every step)"
+    ],
+    "reference_note": "source: real DTAB structure (GZ-17 family); full-property stack on one system; axis: arithmetic-execution (multi-stage chain: CPP -> morphology -> axial -> Rh -> Perrin; one early error cascades) ; Version A: classify_charge/family + critical_packing_parameter + classify_aggregate_morphology + estimate_axial_ratio_from_cpp_geometry + hydrodynamic_radius_stokes_einstein + hydrodynamic_radius_perrin_corrected; Version B: run the chain in order; the Perrin correction uses the axial ratio YOU computed; expected failure: cascade drift (AtmosCoder silent wrong-execution), DLS-unit slips; ref: procedural-execution 2605.00817 under-execution over 5-9 steps",
+    "vision_chart": null
+  },
+  "H-31": {
+    "id": "H-31",
+    "fields": {
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 8.058851335201267e-07,
+        "rel_tol": 0.05
+      },
+      "a_min_nm2": {
+        "type": "number",
+        "value": 2.0605158205618834,
+        "rel_tol": 0.05
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -29.430755483126614,
+        "rel_tol": 0.05
+      }
+    },
+    "family": "F7 units",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "gibbs_gamma_max",
+      "gibbs_a_min",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "d(gamma)/d(lnC) = d(gamma)/d(log10C) / ln(10); X needs mol/L, not mM",
+    "expected_failure_mechanism": "multiplying by 2.3026 instead of dividing (5.3x); mM-as-M in X (1000x)",
+    "reference": [
+      "AtmosCoder wrong-formula-same-task",
+      "procedural unit traps (2605.00817)"
+    ],
+    "reference_note": "source: constructed demonstration inputs (slope -9.2 mN/m PER DECADE, CMC 6.0 mM stated in mM, alpha=0.30); axis: arithmetic-execution (per-decade -> per-ln conversion, mM -> M, Gibbs chain); Version A: gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: d(gamma)/d(ln C) = d(gamma)/d(log10 C) / ln(10); X needs mol/L not mM; expected failure: multiplying by 2.3026 instead of dividing (direction error, 5.3x), mM-as-M in X (1000x); ref: AtmosCoder wrong-formula-same-task; procedural unit traps (2605.00817)",
+    "vision_chart": null
+  },
+  "H-32": {
+    "id": "H-32",
+    "fields": {
+      "rh_naive_nm": {
+        "type": "number",
+        "value": 3.270539031705599,
+        "rel_tol": 0.03
+      },
+      "rh_perrin_corrected_nm": {
+        "type": "number",
+        "value": 3.2655340025233217,
+        "rel_tol": 0.03
+      }
+    },
+    "family": "F7 units",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "hydrodynamic_radius_stokes_einstein",
+      "hydrodynamic_radius_perrin_corrected"
+    ],
+    "mcp_version_b_guidance": "toolkit cgs units: m^2/s -> cm^2/s (x1e4), Pa*s -> mPa*s (x1000); pure-SI hand work also lands on nm",
+    "expected_failure_mechanism": "SI->cgs factor slips (1e8/1e4); exponent-heavy arithmetic drift",
+    "reference": [
+      "procedural-execution 2605.00817",
+      "GZ-68 Perrin precedent (correction genuinely small)"
+    ],
+    "reference_note": "source: constructed demonstration inputs (SI units throughout: D in m^2/s, eta in Pa*s); axis: arithmetic-execution (Stokes-Einstein + Perrin, exponent-heavy arithmetic in SI); Version A: hydrodynamic_radius_stokes_einstein (cgs: D in cm^2/s, eta in mPa*s) + hydrodynamic_radius_perrin_corrected; Version B: if using the toolkit, convert m^2/s -> cm^2/s (x1e4) and Pa*s -> mPa*s (x1000) first; pure-SI hand work also lands on the same nm; expected failure: SI->cgs factor slips (1e8 off), exponent arithmetic drift; ref: procedural-execution 2605.00817 mult/div sensitivity; GZ-68 Perrin precedent (correction is genuinely small)",
+    "vision_chart": null
+  },
+  "H-33": {
+    "id": "H-33",
+    "fields": {
+      "capillary_number": {
+        "type": "number",
+        "value": 3.9687500000000006e-07,
+        "rel_tol": 0.08
+      },
+      "exceeds_threshold": {
+        "type": "exact",
+        "value": false
+      },
+      "velocity_needed_ft_per_day": {
+        "type": "number",
+        "value": 75.59055118110237,
+        "rel_tol": 0.1
+      }
+    },
+    "family": "F7 units",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "capillary_number"
+    ],
+    "mcp_version_b_guidance": "convert cP, ft/day, mN/m into one unit system FIRST, then form Ca, then compare to 1e-4",
+    "expected_failure_mechanism": "unit-system mixing (ft vs m, cP vs Pa*s); inverted threshold conclusion",
+    "reference": [
+      "AtmosCoder wrong-reference-frame trap",
+      "procedural unit traps (2605.00817)"
+    ],
+    "reference_note": "source: constructed demonstration EOR inputs (three unit systems: cP, ft/day, mN/m); axis: arithmetic-execution (3-unit-system conversion into one dimensionless group) + threshold judgment; Version A: capillary_number; Version B: convert FIRST (cP->Pa*s, ft/day->m/s, mN/m->N/m), THEN form Ca, THEN compare; expected failure: mixing unit systems (ft vs m, cP vs Pa*s), inverted threshold conclusion; ref: AtmosCoder wrong-reference-frame trap; procedural unit traps (2605.00817)",
+    "vision_chart": null
+  },
+  "H-34": {
+    "id": "H-34",
+    "fields": {
+      "x1_mole_fraction": {
+        "type": "number",
+        "value": 0.6650683249600138,
+        "rel_tol": 0.01
+      },
+      "clint_cmc_mM": {
+        "type": "number",
+        "value": 9.842646300624963,
+        "rel_tol": 0.03
+      },
+      "deviation_from_measured_pct": {
+        "type": "number",
+        "value": 21.514151859567455,
+        "rel_tol": 0.1
+      },
+      "x1_rubingh": {
+        "type": "number",
+        "value": 0.70842363708548,
+        "rel_tol": 0.04
+      },
+      "beta_rubingh": {
+        "type": "number",
+        "value": -1.0297255481326197,
+        "rel_tol": 0.1
+      }
+    },
+    "family": "F7 units",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "clint_ideal_cmc",
+      "solve_rubingh_x",
+      "rubingh_beta"
+    ],
+    "mcp_version_b_guidance": "x1 from MOLE fraction (molar masses given), not weight fraction; then Clint; then Rubingh",
+    "expected_failure_mechanism": "wt% used directly as mole fraction; Clint formula inverted",
+    "reference": [
+      "procedural-execution 2605.00817 (each added step lowers accuracy)",
+      "GZ mixture-analysis recipes"
+    ],
+    "reference_note": "source: constructed demonstration blend (SDS 65 wt% / DTAB 35 wt% with real molar masses 288.38 / 308.34); axis: arithmetic-execution (wt% -> mole fraction -> Clint -> Rubingh, 10+ sequential ops); Version A: clint_ideal_cmc + solve_rubingh_x + rubingh_beta (after converting to mole fraction yourself); Version B: x1 must come from mole FRACTION, not weight fraction; expected failure: using wt% directly as mole fraction (canonical error), Clint formula inverted; ref: procedural-execution 2605.00817 (every added step lowers accuracy); GZ mixture-analysis recipes",
+    "vision_chart": null
+  },
+  "H-35": {
+    "id": "H-35",
+    "fields": {
+      "debye_length_nm": {
+        "type": "number",
+        "value": 1.8963742082527808,
+        "rel_tol": 0.03
+      },
+      "kappa_a": {
+        "type": "number",
+        "value": 1.3183052106068074,
+        "rel_tol": 0.05
+      },
+      "zeta_mV": {
+        "type": "number",
+        "value": 34.62863278369817,
+        "rel_tol": 0.04
+      }
+    },
+    "family": "F7 units",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "debye_length",
+      "zeta_potential_henry"
+    ],
+    "mcp_version_b_guidance": "mobility 2.7e-8 m^2/(V*s) = 2.7 um*cm/(V*s) for the toolkit; pure-SI Smoluchowski zeta = mu*eta/eps also works",
+    "expected_failure_mechanism": "mobility conversion off by 1e8; zeta reported in V instead of mV; kappa*a nm/m mix",
+    "reference": [
+      "procedural unit traps (2605.00817)",
+      "GZ unit-axis family"
+    ],
+    "reference_note": "source: constructed demonstration electrokinetics inputs (SI mobility 2.7e-8 m^2/(V*s)); axis: arithmetic-execution (Debye + kappa*a + Smoluchowski zeta with SI conversions); Version A: debye_length (nm) + zeta_potential_henry (mobility in um*cm/(V*s)); Version B: if using the toolkit, mobility 2.7e-8 m^2/(V*s) = 2.7 um*cm/(V*s); pure-SI Smoluchowski zeta = mu*eta/eps also lands on the same mV; expected failure: mobility conversion off by 1e8/1e4, zeta in wrong unit (V vs mV), kappa*a nm/m mix; ref: procedural unit traps (2605.00817); GZ unit-axis family",
+    "vision_chart": null
+  },
+  "H-36": {
+    "id": "H-36",
+    "fields": {
+      "arrhenius_slope": {
+        "type": "number",
+        "value": -0.30086384025132706,
+        "rel_tol": 0.1
+      },
+      "delta_h_kJ_per_mol": {
+        "type": "number",
+        "value": -2.5015211528775825,
+        "rel_tol": 0.15
+      },
+      "process": {
+        "type": "exact",
+        "value": "exothermic"
+      },
+      "single_straight_line_adequate": {
+        "type": "exact",
+        "value": false
+      }
+    },
+    "_construction": "(-0.30086384025132706, 0.5155876836214814, -2.5015211528775825)",
+    "family": "F8 vision",
+    "failure_axis": "vision + arithmetic",
+    "mcp_version_a_tools": [
+      "(chart reading is model-side; sign/unit conversion follows the documented van't Hoff relation)"
+    ],
+    "mcp_version_b_guidance": "x is 1000/T, y is ln(CMC in mol/L); d(lnX) = (dH/R) d(1/T) -- mind the 1000 factor",
+    "expected_failure_mechanism": "literature sign carry-over dH = -R*slope (flips sign AND process word); 1000-factor slip; declaring one line adequate despite the visible dip",
+    "reference": [
+      "AtmosCoder sign-convention carry-over",
+      "GZ-36 vision recipe family",
+      "toolkit vant_hoff sign-bug history"
+    ],
+    "reference_note": "source: chart built from the REAL Fu et al. 2019 [C12mpy][Br] CMC-vs-T table (H-36_chart.png), least-squares line drawn on it; axis: vision + arithmetic (read fit slope from chart, convert per-1000/T to dH with the TOOLKIT sign convention); Version A: no chart-reading tool exists (model must read), but the sign/unit conversion follows the documented van't Hoff convention d(lnX) = (dH/R) d(1/T) -- the toolkit docstring records EXACTLY this sign bug being caught in an unaugmented Claude run; Version B: x-axis is 1000/T, y is ln(CMC in mol/L); dH = R * slope * 1000 (with the x1000/1000 cancellation in kJ); expected failure: literature sign carry-over dH = -R*slope (flips sign and process), x-axis 1000 factor, declaring a single line adequate despite the visible dip (AtmosCoder sign/reference-frame traps); ref: AtmosCoder 2608.18726 sign-convention carry-over; GZ-36 vision recipe family",
+    "vision_chart": "H-36_chart.png"
+  },
+  "H-37": {
+    "id": "H-37",
+    "fields": {
+      "gamma_A": {
+        "type": "number",
+        "value": 60.17565814802871,
+        "rel_tol": 0.04
+      },
+      "gamma_B": {
+        "type": "number",
+        "value": 70.4626386796694,
+        "rel_tol": 0.04
+      },
+      "delta_gamma_A_minus_B": {
+        "type": "number",
+        "value": -10.286980531640687,
+        "rel_tol": 0.08
+      },
+      "larger_K_curve": {
+        "type": "exact",
+        "value": "A"
+      }
+    },
+    "_construction": "(60.17565814802871, 70.4626386796694)",
+    "family": "F8 vision",
+    "failure_axis": "vision",
+    "mcp_version_a_tools": [
+      "szyszkowski_surface_tension (downstream verification)"
+    ],
+    "mcp_version_b_guidance": "read BOTH y-values at c=3e-5 off the log-x chart; lower gamma at equal c => larger K",
+    "expected_failure_mechanism": "legend/curve swap; log-x decade misreading",
+    "reference": [
+      "GZ-40 legend-tracking (universal FAIL)",
+      "GZ-36/37 vision family"
+    ],
+    "reference_note": "source: chart built from the disclosed Szyszkowski/Langmuir construction (gamma = gamma0 - R*T*Gamma_max*ln(1+K*c), nonionic, gamma0=71.9, Gamma_max=2.21e-6, curve A K=2.5e5 /M, curve B K=1.0e4 /M); axis: vision (two-curve read at one concentration) + reasoning (which curve has larger K); Version A: szyszkowski_surface_tension for downstream checks; Version B: read BOTH y-values at c = 3e-5 M off the log-x chart; lower gamma at equal c => more adsorption => larger K; expected failure: legend/curve swap (GZ-40 recipe), log-x decade misreading; ref: GZ-40 legend-tracking (universal FAIL recipe); GZ-36/37 vision family",
+    "vision_chart": "H-37_chart.png"
+  },
+  "H-38": {
+    "id": "H-38",
+    "fields": {
+      "cmc_in_chart_units": {
+        "type": "number",
+        "value": 5750.000000000001,
+        "rel_tol": 0.04
+      },
+      "cmc_in_molar": {
+        "type": "number",
+        "value": 0.005750000000000001,
+        "rel_tol": 0.05
+      },
+      "beta_from_chart": {
+        "type": "number",
+        "value": 0.6562499999999998,
+        "rel_tol": 0.08
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.562968865098554,
+        "rel_tol": 0.07
+      }
+    },
+    "_construction": "CmcFromConductivityResult(cmc_mM=5.750000000000001, slope_below_cmc=0.6399999999999999, slope_above_cmc=0.22000000000000006, counterion_binding_degree=0.6562499999999998, r_squared_below_cmc=1.0, r_squared_above_cmc=1.0, n_points_below_cmc=6, n_points_above_cmc=6, method='two-segment linear regression, linear-concentration break-point (min total RSS)')",
+    "family": "F8 vision",
+    "failure_axis": "vision + arithmetic",
+    "mcp_version_a_tools": [
+      "cmc_from_conductivity_curve",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "5750 uM = 5.75e-3 M; extract both segment slopes in the same units (ratio is unit-invariant)",
+    "expected_failure_mechanism": "silently relabeling the axis to mM; uM->M factor errors propagating into dG",
+    "reference": [
+      "GZ-38 axis-faithfulness recipe (universal FAIL), extended with a conversion+dG chain"
+    ],
+    "reference_note": "source: chart built from the constructed conductivity series (true break 5.75 mM) plotted in micromolar (x values = mM*1000, axis correctly labeled 'Concentration (uM)'); axis: vision (break read + segment-slope extraction) + arithmetic (uM -> M, dG chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization (on values read off the chart); Version B: 5750 uM = 5.75e-3 M; extract BOTH slopes in the same units (the ratio is unit-invariant); expected failure: silently relabeling the axis to mM (reporting 5.75 or 5750 mM), uM->M factor errors propagating into dG (unit-faithfulness trap: GZ-38 graded the raw read; this one adds the downstream conversion chain); ref: GZ-38 axis-faithfulness recipe (universal FAIL) extended with a conversion+dG chain",
+    "vision_chart": "H-38_chart.png"
+  },
+  "H-39": {
+    "id": "H-39",
+    "fields": {
+      "outlier_alpha2": {
+        "type": "number",
+        "value": 0.6,
+        "rel_tol": 0.02
+      },
+      "beta_mean_excluding_outlier": {
+        "type": "number",
+        "value": -1.1879695992309924,
+        "rel_tol": 0.1
+      },
+      "beta_std_excluding_outlier": {
+        "type": "number",
+        "value": 0.6649877960566865,
+        "rel_tol": 0.35
+      },
+      "n_points_used": {
+        "type": "number",
+        "value": 4,
+        "rel_tol": 0.0
+      }
+    },
+    "_construction": "[10.8, 6.2, 4.8, 6.75, 2.4]",
+    "family": "F8 vision",
+    "failure_axis": "vision + arithmetic",
+    "mcp_version_a_tools": [
+      "rubingh_beta_regression"
+    ],
+    "mcp_version_b_guidance": "the spike at alpha2=0.60 is the transcription error -- exclude it, then refit on 4 points",
+    "expected_failure_mechanism": "laundering the outlier into the regression; failing to identify the corrupted composition",
+    "reference": [
+      "outlier-forensics family",
+      "MatSciBench 2510.12171 self-correction pitfalls"
+    ],
+    "reference_note": "source: chart built from the REAL DHPC-DTAB series (H-05 data) with the alpha2=0.60 point corrupted x2.5 (constructed corruption); axis: vision (outlier detection) + arithmetic (refit on 4 clean points); Version A: rubingh_beta_regression on the clean subset; Version B: the spike at alpha2=0.60 is the transcription error -- exclude it, report which point, then refit; expected failure: laundering the outlier into the regression (fitting all 5), failing to identify the corrupted composition; ref: outlier-forensics family; MatSciBench 2510.12171 self-correction pitfalls",
+    "vision_chart": "H-39_chart.png"
+  },
+  "H-40": {
+    "id": "H-40",
+    "fields": {
+      "mean_including_all": {
+        "type": "number",
+        "value": 59.0,
+        "rel_tol": 0.05
+      },
+      "mean_excluding_inconsistent": {
+        "type": "number",
+        "value": 55.5,
+        "rel_tol": 0.05
+      },
+      "geometric_reference": {
+        "type": "number",
+        "value": 55.508642493968146,
+        "rel_tol": 0.02
+      },
+      "all_three_include_reference": {
+        "type": "exact",
+        "value": false
+      },
+      "excluded": {
+        "type": "keywords_all",
+        "value": [
+          "sls",
+          "dls"
+        ]
+      }
+    },
+    "_construction": "([57.5, 64.0, 55.5], [1.5, 3.0, 2.0], 55.508642493968146, ['SLS', 'DLS'])",
+    "family": "F8 vision",
+    "failure_axis": "vision + arithmetic",
+    "mcp_version_a_tools": [
+      "aggregation_number_spherical (reference)"
+    ],
+    "mcp_version_b_guidance": "apply the STATED error-bar exclusion rule mechanically, then average",
+    "expected_failure_mechanism": "subjective exclusion instead of the rule; wrong mean after exclusion",
+    "reference": [
+      "GZ error-bar/vision family",
+      "procedural under-checking (2605.00817)"
+    ],
+    "reference_note": "source: chart constructed for this question (three literature-style Nagg estimates with error bars + dashed geometric reference at 55.51 from tanford v/lc sphere volume); axis: vision (error-bar logic) + arithmetic (means under an exclusion rule); Version A: aggregation_number_spherical for the reference; Version B: apply the STATED rule mechanically: exclude any technique whose error bar does not span the reference; then average; expected failure: subjective exclusion ('64 looks off') instead of the rule, wrong mean after exclusion; ref: GZ error-bar/vision family; procedural-execution (under-checking each interval)",
+    "vision_chart": "H-40_chart.png"
+  },
+  "H-41": {
+    "id": "H-41",
+    "fields": {
+      "alpha1_of_corrupted_point": {
+        "type": "number",
+        "value": 0.8061036397249173,
+        "rel_tol": 0.02
+      },
+      "beta_mean_clean": {
+        "type": "number",
+        "value": -3.200000000000036,
+        "rel_tol": 0.06
+      },
+      "pointwise_beta_at_corrupted_point": {
+        "type": "null"
+      },
+      "n_points_used_clean": {
+        "type": "number",
+        "value": 4,
+        "rel_tol": 0.0
+      }
+    },
+    "_construction": "([(0.030458887949611872, 2.5409850402269147), (0.15018001269214107, 1.8088852724330464), (0.46153846153846156, 1.46031913338097), (0.8061036397249173, 4.086394593978199), (0.9589931057673537, 2.201942951672709)], [-3.2000000000000037, -3.2000000000000615, -3.200000000000077, None, -3.2000000000000024], 3.0, 3.5)",
+    "family": "F9 forensics",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "solve_rubingh_x",
+      "rubingh_beta_regression"
+    ],
+    "mcp_version_b_guidance": "mixed CMC above BOTH pure CMCs is unreachable -> pointwise beta is NULL for that row; fit the 4 clean rows",
+    "expected_failure_mechanism": "forcing a root; fabricating a pointwise beta instead of null",
+    "reference": [
+      "Zvi Opus-4.8 fabricating missing inputs",
+      "GZ corrupted-data forensics family"
+    ],
+    "reference_note": "source: constructed demonstration table (RST truth beta=-3.2, cmc 3.0/3.5, one row's CMC corrupted x2.5); axis: reasoning-decision (forensics: detect the impossible row) + arithmetic (clean regression); Version A: solve_rubingh_x (returns null for the corrupted row -- mix exceeds BOTH pure CMCs) + rubingh_beta_regression on 4 clean rows; Version B: a mixed CMC above both pure CMCs is physically unreachable -- report null for that row's pointwise beta, not a number; expected failure: forcing a root/averaging the corrupted point, fabricating a pointwise beta instead of null (Zvi Opus-4.8 fabricating missing inputs); ref: GZ corrupted-data forensics family",
+    "vision_chart": null
+  },
+  "H-42": {
+    "id": "H-42",
+    "fields": {
+      "corrupted_temperature_K": {
+        "type": "number",
+        "value": 308.15,
+        "rel_tol": 0.001
+      },
+      "delta_H_all_points": {
+        "type": "number",
+        "value": 14.290057957920272,
+        "rel_tol": 0.1
+      },
+      "delta_H_cleaned": {
+        "type": "number",
+        "value": -4.204496357780203,
+        "rel_tol": 0.1
+      },
+      "n_points_flagged": {
+        "type": "exact",
+        "value": 1
+      }
+    },
+    "_construction": "([9.93, 9.82, 9.76, 9.74, 9.77, 1.002, 10.54, 11.47], 5, 0.9986889860114034, 14.290057957920272, -4.204496357780203)",
+    "family": "F9 forensics",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "vant_hoff_multi_point_fit"
+    ],
+    "mcp_version_b_guidance": "degC->K; run the 8-exclusion LOO protocol honestly; report BOTH the as-given and the cleaned fit",
+    "expected_failure_mechanism": "silent cleaning then double-reporting (fabricated verification); degC-as-K; under-executing the 8-fit protocol",
+    "reference": [
+      "Zvi Opus-4.8 fabricated verification",
+      "procedural look-back cost (2605.00817)",
+      "GZ-26 data family"
+    ],
+    "reference_note": "source: REAL Fu et al. 2019 [C12mpy][Br] CMC-vs-T table with ONE constructed corruption (the 35 degC CMC divided by 10, i.e. 10.02 -> 1.002 mM); temps given in degC; axis: reasoning-decision (leave-one-out outlier forensics) + arithmetic (two full multi-point fits, 8 LOO regressions); Version A: vant_hoff_multi_point_fit (run once per LOO exclusion + twice for the reported fits); Version B: convert degC->K; run the LOO protocol honestly; report BOTH the as-given fit and the cleaned fit -- do not silently clean and then double-report; expected failure: silent cleaning (fabricated verification), degC-as-K, under-executing the 8-fit protocol; ref: Zvi Opus-4.8 fabricated verification; procedural-execution look-back cost (2605.00817); GZ-26 data family",
+    "vision_chart": null
+  },
+  "H-43": {
+    "id": "H-43",
+    "fields": {
+      "hld_if_cc_neg0p92": {
+        "type": "number",
+        "value": -0.9105620875658998,
+        "rel_tol": 0.02
+      },
+      "winsor_if_cc_neg0p92": {
+        "type": "exact",
+        "value": "I"
+      },
+      "hld_if_cc_pos2p4": {
+        "type": "number",
+        "value": 2.4094379124341003,
+        "rel_tol": 0.02
+      },
+      "winsor_if_cc_pos2p4": {
+        "type": "exact",
+        "value": "II"
+      },
+      "source_number": {
+        "type": "number",
+        "value": 2,
+        "rel_tol": 0.1
+      }
+    },
+    "family": "F9 forensics",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "hld_ionic"
+    ],
+    "mcp_version_b_guidance": "primary direct measurement outranks a secondary review; HLD sign -> Winsor mapping as stated",
+    "expected_failure_mechanism": "inverted Winsor mapping; trusting the review because it is a review; averaging the two Cc values",
+    "reference": [
+      "GZ literature-conflict recipe",
+      "hld.py documented AOT Cc conflict"
+    ],
+    "reference_note": "source: REAL documented literature conflict (this project's hld.py): Hellweg et al. 2023 REVIEW states Cc(AOT) = -0.92 (likely conflating AOT with SDHS), while the directly-read primary paper (Leng & Acosta 2023) reports Cc ~ 2.4 (cc_this_work 2.4, cc_literature 2.5); system: AOT/n-decane(EACN=10)/brine S=5%, k=0.16; axis: reasoning-decision (which source to trust) + arithmetic (HLD twice + Winsor mapping); Version A: hld_ionic for both Cc values; Version B: primary direct measurement outranks a secondary review; HLD sign -> Winsor mapping by the disclosed rule; expected failure: inverted Winsor mapping, trusting the review because it is a review (authority bias), ad hoc averaging of the two Cc values; ref: GZ literature-conflict recipe (HLD version of the C16E10/CMC conflict); hld.py source comments",
+    "vision_chart": null
+  },
+  "H-44": {
+    "id": "H-44",
+    "fields": {
+      "nagg_sls": {
+        "type": "number",
+        "value": 54.48530842576377,
+        "rel_tol": 0.02
+      },
+      "nagg_geometric": {
+        "type": "number",
+        "value": 55.508642493968146,
+        "rel_tol": 0.02
+      },
+      "methods_consistent_within_literature_range": {
+        "type": "exact",
+        "value": true
+      },
+      "most_reliable": {
+        "type": "exact",
+        "value": "SLS"
+      }
+    },
+    "family": "F9 forensics",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "aggregation_number_spherical",
+      "(arithmetic)"
+    ],
+    "mcp_version_b_guidance": "SLS measures molar mass directly; the geometric number assumes sphere+tanford",
+    "expected_failure_mechanism": "calling the model-dependent geometric estimate 'most reliable'; (4/3)pi*lc^3/v drift",
+    "reference": [
+      "cross-method agreement family (GZ-40-type)",
+      "MedMCP tool selection"
+    ],
+    "reference_note": "source: constructed demonstration cross-method numbers (SLS Mw=16800 with M0=308.34; geometric estimate from tanford v=350.2/lc=16.68 sphere volume; literature range 50-60 supplied); axis: arithmetic-execution (two routes to Nagg) + reasoning (which estimate is most defensible); Version A: arithmetic + aggregation_number_spherical; Version B: SLS measures molar mass directly; the geometric number assumes sphere+tanford; expected failure: calling the model-dependent geometric estimate 'most reliable'; hand-arithmetic drift in (4/3)pi*lc^3/v; ref: cross-method agreement family (GZ-40-type); MedMCP tool-selection",
+    "vision_chart": null
+  },
+  "H-45": {
+    "id": "H-45",
+    "fields": {
+      "c20_recomputed_mM": {
+        "type": "number",
+        "value": 0.3152359256184292,
+        "rel_tol": 0.1
+      },
+      "pc20_recomputed": {
+        "type": "number",
+        "value": 3.5013642943272885,
+        "rel_tol": 0.04
+      },
+      "draft_values_match_data": {
+        "type": "exact",
+        "value": false
+      },
+      "which_draft_values_wrong": {
+        "type": "keywords_any",
+        "value": [
+          "both",
+          "neither"
+        ]
+      }
+    },
+    "family": "F9 forensics",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "cmc_from_surface_tension_curve (returns c20_mM and pC20)"
+    ],
+    "mcp_version_b_guidance": "recompute from the DATA; an internally consistent draft pair can still both be wrong",
+    "expected_failure_mechanism": "validating the draft by checking c20<->pC20 consistency only, then confirming it",
+    "reference": [
+      "Zvi Opus-4.8 fabricated verification / rationalization",
+      "GZ claimed-vs-computed conflict recipe"
+    ],
+    "reference_note": "source: constructed demonstration 3-regime curve (same real-pattern data as H-03) + a DRAFT pair of c20/pC20 values that is internally consistent (0.10 mM <-> pC20 4.0) but both wrong for this data; axis: reasoning-decision (consistency-vs-correctness trap) + arithmetic (recompute c20, log conversion); Version A: cmc_from_surface_tension_curve (returns c20_mM and pC20 directly); Version B: recompute from the data; an internally consistent pair can still both be wrong -- verification against the DATA, not against itself; expected failure: validating the draft by checking c20<->pC20 consistency only and confirming it (Zvi Opus-4.8 fabricated verification / rationalization); ref: GZ claimed-vs-computed conflict recipe",
+    "vision_chart": null
+  },
+  "H-46": {
+    "id": "H-46",
+    "fields": {
+      "charge_type": {
+        "type": "exact",
+        "value": "anionic"
+      },
+      "cmc_mM": {
+        "type": "number",
+        "value": 5.477225575051662,
+        "rel_tol": 0.05
+      },
+      "isotherm_model": {
+        "type": "exact",
+        "value": "frumkin"
+      },
+      "condensation_caveat_flagged": {
+        "type": "exact",
+        "value": true
+      },
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 1.5117195185142548e-06,
+        "rel_tol": 0.06
+      },
+      "a_min_nm2": {
+        "type": "number",
+        "value": 1.0984438891189645,
+        "rel_tol": 0.06
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -29.953153909017875,
+        "rel_tol": 0.06
+      }
+    },
+    "_construction": "{'gaps': [\"isotherm fit note: |a|=3.724 >= 2 -- this is the real Frumkin 2D-condensation regime (a genuine physical phase-transition-like effect, see frumkin_theta's docstring), not a fitting artifact, but theta(C) may be multi-valued near the transition; inspect the fitted curve's residuals near the steepest region before trusting downstream thermodynamic quantities derived from this a.\"], 'warnings': [\"|a|=3.724 >= 2 -- this is the real Frumkin 2D-condensation regime (a genuine physical phase-transition-like effect, see frumkin_theta's docstring), not a fitting artifact, but theta(C) may be ",
+    "family": "F10 synthesis",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "derive_all_properties_from_smiles_and_curve"
+    ],
+    "mcp_version_b_guidance": "one orchestrator call returns the whole panel INCLUDING its condensation warning -- report the caveat",
+    "expected_failure_mechanism": "field drift across a 7-field panel; ignoring the orchestrator's own caveat",
+    "reference": [
+      "GZ-01 orchestrate pattern with caveat field",
+      "MatSciBench false-critique/self-correction failure"
+    ],
+    "reference_note": "source: constructed demonstration curve (branched C8-sodium-sulfate structure; decline slope -7.5 mN/m per ln(C), break 6.0 mM as constructed -- the toolkit's own min-RSS split reports what it reports); electrolyte condition no_added_salt, counterion dissociation alpha = 0.31; axis: reasoning-decision (full-orchestration synthesis, 7 fields, watch the caveat) + arithmetic (each downstream value); Version A: derive_all_properties_from_smiles_and_curve returns the whole panel including the Frumkin condensation warning in its gaps; Version B: run the cascade in order; the condensation caveat on the selected isotherm must be reported, not smoothed over; expected failure: field drift across a 7-field panel, ignoring the orchestrator's own caveat (MatSciBench false-critique/self-correction failure); ref: GZ-01 orchestrate pattern, now with the caveat field",
+    "vision_chart": null
+  },
+  "H-47": {
+    "id": "H-47",
+    "fields": {
+      "gamma_max_mol_per_m2": {
+        "type": "number",
+        "value": 1.4145800566306375e-06,
+        "rel_tol": 0.06
+      },
+      "a_min_nm2": {
+        "type": "number",
+        "value": 1.1738742246437819,
+        "rel_tol": 0.06
+      },
+      "delta_g_mic_kJ_per_mol": {
+        "type": "number",
+        "value": -30.562968865098554,
+        "rel_tol": 0.06
+      },
+      "delta_s_mic_J_per_mol_K": {
+        "type": "null"
+      },
+      "missing_for_delta_s": {
+        "type": "keywords_any",
+        "value": [
+          "temperature",
+          "enthalpy",
+          "van't hoff",
+          "vant hoff",
+          "series",
+          "heat",
+          "multiple",
+          "2nd",
+          "second"
+        ]
+      }
+    },
+    "family": "F10 synthesis",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "cmc_from_conductivity_curve",
+      "cmc_from_surface_tension_curve",
+      "gibbs_gamma_max",
+      "gibbs_a_min",
+      "gibbs_free_energy_micellization"
+    ],
+    "mcp_version_b_guidance": "Gamma/A_min from the TENSION slope (n=2); dG from the CONDUCTIVITY CMC with (2-beta); dS is null",
+    "expected_failure_mechanism": "cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS",
+    "reference": [
+      "GZ refusal + multi-method fusion recipes",
+      "MedMCP-Calc"
+    ],
+    "reference_note": "source: constructed demonstration pair (same conductivity + tension data as H-02/H-08, fused into a property cascade); axis: reasoning-decision (fusion cascade + genuine dS null) with cross-method factor discipline; Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: Gamma/A_min come from the TENSION slope (n=2, no added salt); dG comes from the CONDUCTIVITY CMC with (2-beta); do not cross the two prefactors; dS is null without a temperature series; expected failure: cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS; ref: GZ refusal + multi-method fusion recipes; MedMCP calc accuracy",
+    "vision_chart": null
+  },
+  "H-48": {
+    "id": "H-48",
+    "fields": {
+      "hld_value": {
+        "type": "number",
+        "value": -1.0205620875658996,
+        "rel_tol": 0.02
+      },
+      "winsor_type": {
+        "type": "exact",
+        "value": "I"
+      },
+      "cpp": {
+        "type": "number",
+        "value": 0.46969136100515557,
+        "rel_tol": 0.01
+      },
+      "cpp_morphology": {
+        "type": "exact",
+        "value": "cylindrical/rodlike micelle"
+      },
+      "frameworks_consistent": {
+        "type": "exact",
+        "value": true
+      }
+    },
+    "family": "F10 synthesis",
+    "failure_axis": "reasoning-decision + arithmetic",
+    "mcp_version_a_tools": [
+      "hld_ionic",
+      "critical_packing_parameter",
+      "classify_aggregate_morphology"
+    ],
+    "mcp_version_b_guidance": "apply each framework's own rule, then judge consistency -- compute before agreeing",
+    "expected_failure_mechanism": "HLD sign carry-over; CPP morphology errors; asserting consistency without either calculation",
+    "reference": [
+      "AtmosCoder reference-frame trap",
+      "GZ-64+ HLD family"
+    ],
+    "reference_note": "source: real SDS structure + real Cc = -2.63 (hld.py, Leng & Acosta-based reference constant) + real A_min 44.70 A^2; axis: reasoning-decision (two frameworks cross-checked) + arithmetic (HLD + CPP); Version A: hld_ionic + critical_packing_parameter + classify_aggregate_morphology; Version B: apply each framework's own sign/classification rule, then judge consistency; expected failure: HLD sign carry-over from the opposite convention, CPP morphology table errors, asserting consistency without doing either calculation; ref: cross-framework coherence (AtmosCoder reference-frame trap); GZ-64+ HLD family",
+    "vision_chart": null
+  },
+  "H-49": {
+    "id": "H-49",
+    "fields": {
+      "delta_g_from_cmc_kJ_per_mol": {
+        "type": "number",
+        "value": -27.889847201171435,
+        "rel_tol": 0.03
+      },
+      "delta_s_J_per_mol_K": {
+        "type": "number",
+        "value": 76.77292370005513,
+        "rel_tol": 0.03
+      },
+      "delta_g_recomputed_kJ_per_mol": {
+        "type": "number",
+        "value": -27.88984720117144,
+        "rel_tol": 0.03
+      },
+      "self_consistent": {
+        "type": "exact",
+        "value": true
+      }
+    },
+    "family": "F10 synthesis",
+    "failure_axis": "arithmetic-execution",
+    "mcp_version_a_tools": [
+      "gibbs_free_energy_micellization",
+      "entropy_micellization"
+    ],
+    "mcp_version_b_guidance": "factor (1+alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle",
+    "expected_failure_mechanism": "counterion factor forgotten or 2-beta used with alpha; triangle not closing -- report honestly",
+    "reference": [
+      "GZ thermodynamic-consistency recipes (GZ-28 family)",
+      "procedural-execution"
+    ],
+    "reference_note": "source: constructed demonstration thermodynamic triangle (cmc 8.0 mM, alpha=0.272, dH=-5.0 kJ/mol stated inputs); axis: arithmetic-execution (triangle closure: dG->dS->dG) ; Version A: gibbs_free_energy_micellization + entropy_micellization; Version B: factor (1+alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle; expected failure: counterion factor forgotten (or 2-beta used with alpha), triangle not closing -- report the mismatch honestly; ref: GZ thermodynamic-consistency recipes (GZ-28 family); procedural-execution",
+    "vision_chart": null
+  },
+  "H-50": {
+    "id": "H-50",
+    "fields": {
+      "charge_type": {
+        "type": "exact",
+        "value": "anionic"
+      },
+      "n_carbons": {
+        "type": "exact",
+        "value": 12
+      },
+      "cpp": {
+        "type": "number",
+        "value": 0.46969136100515557,
+        "rel_tol": 0.01
+      },
+      "morphology": {
+        "type": "exact",
+        "value": "cylindrical/rodlike micelle"
+      },
+      "axial_ratio": {
+        "type": "number",
+        "value": 1.134958398718648,
+        "rel_tol": 0.02
+      },
+      "rh_naive_nm": {
+        "type": "number",
+        "value": 2.6375314771819345,
+        "rel_tol": 0.03
+      },
+      "rh_perrin_nm": {
+        "type": "number",
+        "value": 2.6337638015050033,
+        "rel_tol": 0.03
+      },
+      "delta_g_mic": {
+        "type": "null"
+      },
+      "missing_for_delta_g": {
+        "type": "keywords_any",
+        "value": [
+          "alpha",
+          "dissociation",
+          "binding",
+          "counterion",
+          "measured"
+        ]
+      }
+    },
+    "family": "F10 synthesis",
+    "failure_axis": "arithmetic-execution + reasoning",
+    "mcp_version_a_tools": [
+      "classify_surfactant_charge_type",
+      "critical_packing_parameter",
+      "classify_aggregate_morphology",
+      "estimate_axial_ratio_from_cpp_geometry",
+      "hydrodynamic_radius_stokes_einstein",
+      "hydrodynamic_radius_perrin_corrected"
+    ],
+    "mcp_version_b_guidance": "the dG field is a GENUINE null under A and B -- no counterion info exists in the prompt; report null + name the gap",
+    "expected_failure_mechanism": "fabricating alpha/beta from literature memory to fill dG; cascade drift across the other 8 fields",
+    "reference": [
+      "GZ fabricated-input recipe (universal FAIL)",
+      "Zvi Opus-4.8 fabrication mode"
+    ],
+    "reference_note": "source: real SDS structure; 9-field capstone (GZ-16-family); dG is a GENUINE null -- no counterion binding/dissociation information appears anywhere in the prompt; axis: mixed -- multi-stage arithmetic chain + the fabricated-input trap on the null field; Version A: classify_charge + cpp/morphology/axial tools + hydrodynamic_radius tools; dG still null under A (the input does not exist -- tools refuse to invent it); Version B: resist filling the last field -- null + name the missing measurement; expected failure: fabricating alpha/beta from literature memory to fill dG (Zvi Opus-4.8 fabrication mode; decrypt review: flat-out confident numbers without basis), cascade drift in the chain; ref: GZ fabricated-input recipe (universal FAIL); Zvi fabrication mode",
+    "vision_chart": null
+  },
+  "_meta": {
+    "set": "HARD50 (Paper 3 hard-50)",
+    "gold_method": "every numeric gold computed by calling surfactantkit; hand-derivation never used",
+    "n_questions": 50,
+    "families": "F1 arithmetic chain (1-5) | F2 selection race (6-10) | F3 regime/infeasibility (11-15) | F4 refusal (16-20) | F5 distractors (21-25) | F6 counting (26-30) | F7 units (31-35) | F8 vision (36-40) | F9 forensics (41-45) | F10 synthesis (46-50)",
+    "condition_design": "every question is engineered to fail unaugmented LLMs; Version A (tools) rescues the arithmetic-execution component, Version B (guidance) rescues the reasoning-decision component",
+    "grading": "numeric fields: relative tolerance per field (see fields[*].rel_tol); exact fields: case-insensitive token match (34% of gold tokens, GZ rule); keywords_any/all: substring match on the listed tokens; null: model must emit JSON null. Winsor 'I'/'II'/'III' and single-letter answers are matched exactly (case-insensitive)."
+  }
+}

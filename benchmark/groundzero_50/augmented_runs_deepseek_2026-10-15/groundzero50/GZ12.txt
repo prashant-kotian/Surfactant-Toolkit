@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.01,
+"f2_at_x1_0.90": 0.26,
+"interaction_model_or_approach": "Asymmetric (two-parameter) Margules / EOMMM binary regular-solution model, anchored to the measured f1,f2 series and extrapolated to x1=0.90 using the physically correct limits (f1→1 Raoult, f2→f2^infinity Henry). Negative excess free energy (ΔG_ex = −1.45 kJ/mol at x1=0.305) indicates net attractive interaction / synergism, strongly asymmetric due to component 1's bulky aryl/benzyl headgroup.",
+"notes": "The symmetric single-β Rubingh form cannot reproduce the data (f2 falls monotonically while f1 is U-shaped). A naive asymmetric-Margules extrapolation with fitted (w12,w21) overshoots f2 to >6 at x1=0.90 because the polynomial form is unreliable far from the fitted range; the infinite-dilution limit f2^infinity≈0.25–0.28 read from the measured plateau (f2=0.286 at x1=0.808) is the physically sound value. f1 is essentially unity (Raoult limit)."
+}

@@ -1,0 +1,41 @@
+To find the required statistical values for the Debye screening length over the specified Monte Carlo draws without executing code, we must mathematically derive the expected sample moments and percentiles based on the given parameters. 
+
+**1. Constants and Base Formula**
+First, we evaluate the constant portion of the Debye screening length formula:
+- $\epsilon = \epsilon_r \epsilon_0 = 78.4 \times 8.8541878128 \times 10^{-12} = 6.94168 \times 10^{-10}$ F/m
+- $k_B T_{mean} = 1.380649 \times 10^{-23} \times 298.15 = 4.1164 \times 10^{-21}$ J
+- $2 N_A e^2 = 2 \times 6.02214076 \times 10^{23} \times (1.602176634 \times 10^{-19})^2 = 3.09172 \times 10^{-14}$ C²/mol
+
+This simplifies the equation to:
+$$ \lambda_D \approx 9.614 \times 10^{-9} \times \frac{1}{\sqrt{I_{SI}}} \text{ meters} = \frac{9.614}{\sqrt{I_{SI}}} \text{ nm} $$
+Where $I_{SI} \sim \text{Normal}(\mu=15, \sigma=4)$. (The variance contribution from $T$ is negligible, roughly 5 orders of magnitude smaller than the variance from $I_{SI}$, so the transformation is dominated by $I_{SI}$).
+
+**2. Calculating the Moments (Mean and Standard Deviation)**
+Because $\lambda_D$ is proportional to $1/\sqrt{I_{SI}}$, we are evaluating the moments of a convex function. We can use a Taylor series expansion or Gauss-Hermite quadrature to approximate the expected values $E[I_{SI}^{-0.5}]$ and $E[I_{SI}^{-1}]$.
+
+Using the expansion around $\mu = 15$ with $\sigma = 4$:
+$E[I_{SI}^{-0.5}] \approx \mu^{-0.5} + \frac{3}{8}\mu^{-2.5}\sigma^2 + \frac{105}{128}\mu^{-4.5}\sigma^4 + \dots \approx 0.2668$
+$E[I_{SI}^{-1}] \approx \mu^{-1} + \mu^{-3}\sigma^2 + 3\mu^{-5}\sigma^4 + \dots \approx 0.0732$
+
+Applying these expectations:
+- **Mean:** $\bar{\lambda}_D = 9.614 \times 0.2668 \approx 2.565 \text{ nm}$
+- **Variance:** $\text{Var}(\lambda_D) = 9.614^2 \times \text{Var}(I_{SI}^{-0.5}) = 92.429 \times (0.0732 - 0.2668^2) \approx 0.1866 \text{ nm}^2$
+- **Standard Deviation:** $s = \sqrt{0.1866} \approx 0.432 \text{ nm}$
+
+*(Note: In a true 10000-draw sample, these expected sample moments approximate the true Monte Carlo results up to tiny standard errors $\mathcal{O}(1/\sqrt{N})$.)*
+
+**3. Calculating the Percentiles**
+Since the transformation is monotonically decreasing and $T$'s variance is negligible, the 2.5th and 97.5th percentiles of $\lambda_D$ map exactly in reverse to the 97.5th and 2.5th percentiles of $I_{SI}$.
+The z-score for a 95% interval is $z \approx \pm1.96$:
+- $I_{high} = 15 + 1.96(4) = 22.84 \implies \lambda_{low} = \frac{9.614}{\sqrt{22.84}} \approx 2.012 \text{ nm}$
+- $I_{low} = 15 - 1.96(4) = 7.16 \implies \lambda_{high} = \frac{9.614}{\sqrt{7.16}} \approx 3.593 \text{ nm}$
+
+**4. Skewness**
+We evaluate the median using the median of the inputs (which remains invariant under the monotonic transformation):
+- Median $\lambda_D = \frac{9.614}{\sqrt{15}} \approx 2.482 \text{ nm}$
+
+Calculating the skew:
+$\text{Skew} = \frac{\text{Mean} - \text{Median}}{\text{SD}} = \frac{2.565 - 2.482}{0.432} \approx +0.192$
+Since $0.192 > 0.05$, the distribution is solidly **right-skewed**, exactly as expected from mapping a symmetric domain through a convex inverse-square-root function.
+
+FINAL_JSON: {"output_mean": 2.565, "output_sd": 0.432, "ci_low": 2.012, "ci_high": 3.593, "skew_label": "right-skewed"}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"gamma_A": null,
+"gamma_B": null,
+"delta_gamma_A_minus_B": null,
+"larger_K_curve": null
+}

@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"delta_s_mic_low_regime_J_per_mol_K": 127.57001509307398,
+"delta_s_mic_high_regime_J_per_mol_K": 95.78064732517191
+}

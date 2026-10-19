@@ -1,0 +1,54 @@
+H–(CH₂)₈–COOH, with the double bond in the trans (E) configuration (indicated by /C=C/).
+Total aglycone: a C₁₉ hydroxy fatty acid with one trans double bond and a terminal carboxylic acid written in its protonated form (C(=O)O, not C(=O)[O⁻]).
+Headgroup (hydrophilic portion):
+Two six-membered rings are present, closed by ring-closure labels 1 and 2:
+Ring 1: O[C@H]1…[C@H](O1)… → 5 carbons + 1 ring oxygen = pyranose
+Ring 2: O[C@H]2…[C@H](O2)… → 5 carbons + 1 ring oxygen = pyranose
+Each ring carries:
+Multiple free –OH groups
+A –CH₂–O–C(=O)–CH₃ substituent (acetylated primary alcohol, i.e., a 6-O-acetate typical of a hexose)
+Stereochemical designators (@/@@) at every ring carbon, consistent with a defined sugar configuration
+The two rings are joined by an inter-sugar glycosidic oxygen (…O)O[C@H]2…), and ring 1 is attached to the aglycone through an O-glycosidic bond from the secondary –OH of the fatty acid.
+Charge Type
+No atom in the SMILES carries a formal charge. The carboxylic acid is written as C(=O)O (protonated), there are no quaternary ammonium, sulfate, phosphate, or sulfonate groups, and no [O-], [N+], etc. appear. The molecule is nonionic (neutral) as drawn. (At pH > ~5 the –COOH would deprotonate, but the structure as encoded bears no charge.)
+Confidence: High – the absence of any charged atom is unambiguous.
+Structural Family
+This is a glycolipid biosurfactant, specifically a glycosylated hydroxy fatty acid:
+A long-chain hydroxy fatty acid aglycone (with a trans double bond and a free –COOH) is O-glycosidically linked to a disaccharide headgroup.
+Both sugar units are pyranose rings bearing acetylated C-6 hydroxymethyl groups.
+The overall architecture (hydroxy-fatty-acid + acetylated disaccharide + free carboxyl) is characteristic of microbial glycolipid biosurfactants (e.g., sophorolipid-type or related structures in the acidic/open form).
+Number of Sugar Rings
+Two distinct pyranose rings (ring closures 1 and 2) → 2 sugar rings.
+Valid HLB Estimation Method
+Because the molecule is nonionic and possesses a clearly identifiable hydrophilic portion (the disaccharide headgroup with its hydroxyls) and a hydrophobic portion (the C₁₉ fatty acid chain), the Griffin method is applicable:
+HLB
+=
+20
+×
+𝑀
+hydrophilic
+𝑀
+total
+HLB=20×
+M
+total
+	​
+
+M
+hydrophilic
+	​
+
+	​
+
+Davies' group-contribution method could in principle also be attempted, but it was parameterised mainly for simpler ionic/nonionic surfactants and the multiple ester/acetal environments here make reliable group assignments uncertain. Griffin's mass-ratio approach is the standard and most defensible choice for a nonionic glycolipid of this type.
+FINAL_JSON:
+{
+"charge_type": "nonionic",
+"charge_confidence": "high",
+"structural_family": "glycolipid (glycosylated hydroxy fatty acid / biosurfactant glycolipid with an acetylated disaccharide headgroup and a free carboxylic acid on the aglycone)",
+"n_sugar_rings": 2,
+"valid_hlb_method": "Griffin"
+}
+MCP
+Auto
+AI-generated content may not be accurate.

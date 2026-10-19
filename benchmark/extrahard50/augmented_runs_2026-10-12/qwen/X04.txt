@@ -1,0 +1,29 @@
+The authoritative Monte-Carlo chain ran with the exact stated inputs (I = 0.015 ± 0.004, T = 298.15 ± 0.2, both normal), seed = 11, n = 10000, `n_failed = 0`, converged.
+
+**Verification of the formula:** the deterministic Debye length at the nominal inputs is **2.4822 nm**, and the MC median (2.4722 nm) sits right there — as expected, since λ_D is a monotone transform of I and the input on I is symmetric, so the median tracks the point estimate while the *mean* does not.
+
+**Results (nm):**
+
+| # | quantity | value |
+|---|---|---|
+| 1 | `output_mean` | 2.55855248098239 |
+| 2 | `output_sd` (ddof=1) | 0.42687810446597774 |
+| 3 | `ci_low` (2.5th pct) | 2.0108421728056567 |
+| 4 | `ci_high` (97.5th pct) | 3.5846464274086625 |
+| — | median (for step 3) | 2.4721545374541707 |
+
+**Step 3 — skew:**
+
+skew = (mean − median)/sd = (2.55855248 − 2.47215454)/0.42687810 = **+0.2024**
+
+0.2024 > +0.05 → **right-skewed**. This is exactly the convexity effect flagged in the question: λ_D ∝ 1/√I is convex for I > 0, so the upper tail of I (low λ_D) is compressed while the lower tail of I (high λ_D) is stretched, pulling the mean ~0.086 nm above the median.
+
+Two corroborating signs of that asymmetry:
+- mean ± 1.96·sd would give [1.72, 3.40], whereas the true percentile interval is [2.01, 3.58] — the whole interval is displaced *upward* relative to the mean, which a symmetric output could not do.
+- the interval half-width (0.787 nm) is not centered on the mean, and the lower bound stays well clear of zero because λ_D diverges only as I → 0 (never reached here: 0.015/0.004 ≈ 3.75σ to zero, hence `n_failed = 0`).
+
+A first-order/linearized error bar would have missed all of this — it would have quoted a symmetric ±0.43 nm about 2.482 nm.
+
+**Disclosure:** the mean, sd, and percentiles come directly from the seeded MC tool. The `skew_label` is not a tool output; I computed it arithmetically from the tool's own reported mean/median/sd using the question's stated definition and thresholds. I cannot independently inspect the tool's internal draw order from `default_rng(11)` (I-then-T per sample index), so the numbers are reproducible under that procedure as implemented here, not re-derived by hand.
+
+FINAL_JSON: {"output_mean": 2.55855248098239, "output_sd": 0.42687810446597774, "ci_low": 2.0108421728056567, "ci_high": 3.5846464274086625, "skew_label": "right-skewed"}

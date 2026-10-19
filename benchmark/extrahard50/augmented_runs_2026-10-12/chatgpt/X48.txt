@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 1m 15s
+ChatGPT said:
+k: 0.018865559305818146
+cc: -1.0514862259806415
+S_star_E16_dT10: 4.277356484110553 percent
+achievable: false
+hld_S9_E10: 0.957082758297396
+winsor: "Winsor II"
+
+FINAL_JSON: {"k": 0.018865559305818146, "cc": -1.0514862259806415, "S_star_E16_dT10": 4.277356484110553, "achievable": false, "hld_S9_E10": 0.957082758297396, "winsor": "Winsor II"}

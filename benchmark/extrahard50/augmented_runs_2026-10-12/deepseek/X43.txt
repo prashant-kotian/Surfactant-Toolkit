@@ -1,0 +1,1 @@
+FINAL_JSON: {"gamma_correct": 1.129507275283715e-06, "ratio_draft_over_correct": 2.0, "a_min": 1.470144640508619, "draft_ok": false, "n_used": 2}

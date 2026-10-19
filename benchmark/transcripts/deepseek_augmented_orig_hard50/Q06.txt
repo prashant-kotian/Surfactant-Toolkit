@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"deltaG_ex_kJ_per_mol": 1.7805
+}

@@ -1,0 +1,140 @@
+alysis
+
+Surfactant micelle analysis
+
+Gemini surfactant HLB calculation
+
+C12 surfactant packing parameter
+
+Surfactant isotherm model fitting
+
+Rubingh analysis CMC mixture
+
+Mixed-CMC micellar composition analysis
+
+Surfactant HLD phase behavior fitting
+
+Surfactant CMC analysis
+
+C
+Chem-Mantra
+·
+Pro
+
+
+Surfactant structural audit
+
+
+Share
+
+Use the up and down arrow keys to move between messages.
+
+You said: [Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Report a structural audit: total carbon atoms; carbon atoms in EACH alkyl tail; total carbon atoms in the two tails; carbon atoms in the polar backbone between the two ester oxygens (the succinate unit, counting its two carbonyl carbons); whether the tails are branched (true/false); the molar mass including the sodium counterion (g/mol); the number of ester groups; and the number of sulfonate groups.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "total_carbons": <number>,
+  "tail_carbons_each": <number>,
+  "tail_carbons_total": <number>,
+  "backbone_carbons": <number>,
+  "tails_branched": <true or false>,
+  "molecular_weight": <number>,
+  "n_ester_groups": <number>,
+  "n_sulfonate_groups": <number>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+1 minute ago
+
+
+
+Claude responded: I'll use the surfactant-computation MCP tool for this.
+Recounting each atom to confirm the molecular formula.
+
+Recounting each atom to confirm the molecular formula.
+
+I’ll use the surfactant-computation MCP tool for this. Let me load the relevant tool schemas first.
+
+Used surfactant-computation
+
+Used surfactant-computation
+Structural Audit
+
+Parsing the SMILES connectivity and confirming totals against the RDKit descriptor panel from the MCP tool:
+
+Carbon skeleton — 20 carbons total. The panel reports fraction Csp³ = 0.90, i.e. 18 sp³ + 2 sp² carbons; the two sp² carbons are exactly the two ester carbonyls, which is consistent with a 20-carbon count.
+
+Partitioning the graph:
+
+Tail 1 — CCCCC(CC)C–O…: a 2-ethylhexyl group (hexyl main chain + ethyl branch) = 8 carbons
+Tail 2 — …O–CC(CC)CCCC: also 2-ethylhexyl = 8 carbons
+Two tails combined — 16 carbons
+Polar backbone — the succinate unit C(=O)–CH₂–CH(SO₃⁻)–C(=O) lying between the two ester oxygens, counting both carbonyl carbons = 4 carbons (2 carbonyls + CH₂ + CH)
+
+Check: 8 + 8 + 4 = 20 ✓
+
+Branching — each tail is a 2-ethylhexyl group (an ethyl substituent at the 2-position of a hexyl chain), so the tails are branched (true).
+
+Functional groups
+
+Ester groups: 2 — one –C(=O)O– on each side of the succinate
+Sulfonate groups: 1 — the single S(=O)(=O)[O⁻] on the backbone methine; classifier confirms exactly one strong ionic headgroup, monomeric
+
+Molar mass — formula C₂₀H₃₇NaO₇S; the descriptor panel returns 444.566 g/mol (average molar mass, sodium counterion included).
+
+This is the connectivity of a sodium bis(2-ethylhexyl) sulfosuccinate.
+
+FINAL_JSON:
+{
+“total_carbons”: 20,
+“tail_carbons_each”: 8,
+“tail_carbons_total”: 16,
+“backbone_carbons”: 4,
+“tails_branched”: true,
+“molecular_weight”: 444.566,
+“n_ester_groups”: 2,
+“n_sulfonate_groups”: 1
+}
+
+
+
+
+
+
+1 minute ago
+
+
+You’ve used 90% of your session limit
+Get more usage
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

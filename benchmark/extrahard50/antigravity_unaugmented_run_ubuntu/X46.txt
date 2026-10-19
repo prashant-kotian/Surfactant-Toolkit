@@ -1,0 +1,38 @@
+To determine the properties of the surfactant, we follow the calculations step-by-step:
+
+1. **Molecular Weight (mw)**
+The SMILES string is `CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]`.
+- Formula: 19 Carbon atoms (16 in the tail, 3 on the nitrogen), 42 Hydrogen atoms (33 on the tail + 9 on the methyl groups), 1 Nitrogen, and 1 Bromine. -> C19H42NBr
+- Mass = (19 × 12.011) + (42 × 1.008) + 14.007 + 79.904 = 228.209 + 42.336 + 14.007 + 79.904 = 364.456 g/mol.
+- Rounded to 3 significant figures: **364**
+
+2. **Charge**
+The quaternary ammonium headgroup has a positive charge (`[N+]`), accompanied by a bromide counterion, making it **cationic**.
+
+3. **Number of Carbons (n_carbons)**
+The molecule possesses 16 carbons in the alkyl chain and 3 from the N-methyl groups, giving a total of **19**.
+
+4. **Critical Packing Parameter (CPP)**
+- CPP = v / (a0 × lc) 
+- CPP = 485.0 / (48.0 × 16.7) = 485.0 / 801.6 ≈ **0.60504**
+
+5. **Morphology**
+Since the CPP is between 1/2 and 1 (0.5 < 0.60504 ≤ 1), the structure strongly favors forming a **vesicle/bilayer**.
+
+6. **Cylinder Aspect Ratio (p)**
+- Cylinder radius (r) = 2v / a0 = (2 × 485.0) / 48.0 = 20.2083 Å
+- Cylinder length (L) = Nagg × v / (π × r²) = (78 × 485.0) / (π × (20.2083)²) ≈ 37830 / 1282.952 ≈ 29.4867 Å
+- Aspect ratio (p) = L / (2r) = 29.4867 / (2 × 20.2083) ≈ **0.72956**
+
+7. **Hydrodynamic Radius (R_nm)**
+- Diffusion coefficient (D) = 5.8 × 10⁻⁷ cm²/s = 5.8 × 10⁻¹¹ m²/s
+- Viscosity (η) = 0.89 mPa·s = 0.89 × 10⁻³ Pa·s
+- R = (k × T) / (6 × π × η × D) 
+- R = (1.380649 × 10⁻²³ J/K × 298.15 K) / (6 × π × 0.89 × 10⁻³ × 5.8 × 10⁻¹¹)
+- R = 4.1164 × 10⁻²¹ / 9.7288 × 10⁻¹³ ≈ 4.2311 × 10⁻⁹ m = **4.2311 nm**
+
+8. **Perrin Corrected Radius (R_perrin_nm)**
+- Since p ≤ 1.0 (0.72956 ≤ 1.0), the Perrin friction factor (F) is exactly 1.000.
+- R_perrin = R / F = 4.2311 / 1.000 = **4.2311 nm**
+
+FINAL_JSON: {"mw": 364, "charge": "cationic", "n_carbons": 19, "cpp": 0.60504, "morphology": "vesicle/bilayer", "p": 0.72956, "R_nm": 4.2311, "R_perrin_nm": 4.2311}

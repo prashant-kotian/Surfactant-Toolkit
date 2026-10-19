@@ -1,0 +1,1493 @@
+{
+ "H-01": {
+  "verdict": "PASS",
+  "fields": {
+   "optical_constant_K": {
+    "ok": true,
+    "gold": 1.3239475741382987e-07,
+    "got": 1.324e-07
+   },
+   "micelle_mw": {
+    "ok": true,
+    "gold": 35887.99999999999,
+    "got": 35887.99
+   },
+   "aggregation_number": {
+    "ok": true,
+    "gold": 79.99999999999999,
+    "got": 80.0
+   },
+   "delta_g_mass_action_kJ_per_mol": {
+    "ok": true,
+    "gold": -33.683664539463535,
+    "got": -33.68
+   }
+  }
+ },
+ "H-02": {
+  "verdict": "PASS",
+  "fields": {
+   "cmc_mM": {
+    "ok": true,
+    "gold": 5.750000000000001,
+    "got": 5.75
+   },
+   "beta": {
+    "ok": true,
+    "gold": 0.6562499999999998,
+    "got": 0.65625
+   },
+   "alpha": {
+    "ok": true,
+    "gold": 0.3437500000000002,
+    "got": 0.34375
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -30.562968865098554,
+    "got": -30.56
+   }
+  }
+ },
+ "H-03": {
+  "verdict": "PASS",
+  "fields": {
+   "cmc_mM": {
+    "ok": true,
+    "gold": 4.242640687119285,
+    "got": 4.24
+   },
+   "three_segment_selected": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "n_baseline_points": {
+    "ok": true,
+    "gold": 3,
+    "got": 3
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 1.6939510915193143e-06,
+    "got": 1.694e-06
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "gold": 0.9802756853413634,
+    "got": 0.98
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -30.7825178518657,
+    "got": -30.78
+   }
+  }
+ },
+ "H-04": {
+  "verdict": "PASS",
+  "fields": {
+   "delta_H_kJ_per_mol": {
+    "ok": true,
+    "gold": -2.8464007822,
+    "got": -2.85
+   },
+   "delta_S_J_per_mol_K": {
+    "ok": true,
+    "gold": 115.1227961277,
+    "got": 115.12
+   },
+   "delta_Cp_J_per_mol_K": {
+    "ok": true,
+    "gold": -814.735553559,
+    "got": -814.74
+   },
+   "delta_G_298_kJ_per_mol": {
+    "ok": true,
+    "gold": -37.1702624477,
+    "got": -37.17
+   },
+   "driver": {
+    "ok": true,
+    "gold": "entropy_driven",
+    "got": "entropy-driven"
+   }
+  }
+ },
+ "H-05": {
+  "verdict": "PASS",
+  "fields": {
+   "beta_mean": {
+    "ok": true,
+    "gold": -1.3557535021485896,
+    "got": -1.3557535021485894
+   },
+   "beta_std": {
+    "ok": true,
+    "gold": 0.6829149049746315,
+    "got": 0.7635221505747285
+   },
+   "x1_at_alpha2_0p60": {
+    "ok": true,
+    "gold": 0.7108235558754264,
+    "got": 0.7108235558754264
+   },
+   "f1": {
+    "ok": true,
+    "gold": 0.8928182943508919,
+    "got": 0.8928182943508919
+   },
+   "f2": {
+    "ok": true,
+    "gold": 0.5040792682480982,
+    "got": 0.5040792682480983
+   },
+   "gexc_kJ_per_mol": {
+    "ok": true,
+    "gold": -0.6908352003208204,
+    "got": -0.6908352003208202
+   }
+  }
+ },
+ "H-06": {
+  "verdict": "FAIL",
+  "fields": {
+   "selected_model": {
+    "ok": false,
+    "gold": "eommm_asymmetric_margules",
+    "got": "rubingh_regular_solution"
+   },
+   "selected_bic": {
+    "ok": false,
+    "gold": -49.898065077230406,
+    "got": -27.982532417493196
+   },
+   "rubingh_beta_mean": {
+    "ok": true,
+    "gold": -1.826712598300161,
+    "got": -1.8267269315332537
+   },
+   "interaction_character": {
+    "ok": true,
+    "gold": [
+     "synerg"
+    ],
+    "got": "synergistic"
+   },
+   "w12": {
+    "ok": false,
+    "gold": -3.4000000000000066,
+    "got": -4.0000000000000036
+   },
+   "w21": {
+    "ok": false,
+    "gold": -0.8999999999999984,
+    "got": -1.1999999999999984
+   }
+  }
+ },
+ "H-07": {
+  "verdict": "PASS",
+  "fields": {
+   "selected_model": {
+    "ok": true,
+    "gold": "langmuir",
+    "got": "langmuir"
+   },
+   "delta_bic": {
+    "ok": true,
+    "gold": -2.03407907524182,
+    "got": -2.0158873958054784
+   },
+   "frumkin_a": {
+    "ok": true,
+    "gold": 0.019293447713037447,
+    "got": 0.02350255107959274
+   },
+   "physically_meaningful_interaction": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "raw_rss_frumkin_lower_than_langmuir": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   }
+  }
+ },
+ "H-08": {
+  "verdict": "PASS",
+  "fields": {
+   "cmc_conductivity_mM": {
+    "ok": true,
+    "gold": 5.750000000000001,
+    "got": 5.75
+   },
+   "cmc_tensiometry_mM": {
+    "ok": true,
+    "gold": 5.744562646538029,
+    "got": 5.744562646538029
+   },
+   "agree_within_2pct": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "beta": {
+    "ok": true,
+    "gold": 0.6562499999999998,
+    "got": 0.65625
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -30.562968865098554,
+    "got": -30.56296886509855
+   }
+  }
+ },
+ "H-09": {
+  "verdict": "PASS",
+  "fields": {
+   "k": {
+    "ok": true,
+    "gold": 0.16000000000000006,
+    "got": 0.16
+   },
+   "cc": {
+    "ok": true,
+    "gold": -1.3999999999999995,
+    "got": -1.4
+   },
+   "fit_r2": {
+    "ok": true,
+    "gold": 1.0,
+    "got": 0.9999999986
+   },
+   "s_star_EACN16_dT10_pct": {
+    "ok": true,
+    "gold": 57.97431107895932,
+    "got": 57.974
+   },
+   "hld_at_S3": {
+    "ok": true,
+    "gold": -2.9613877113318905,
+    "got": -2.961
+   },
+   "winsor_type": {
+    "ok": true,
+    "gold": "I",
+    "got": "I"
+   },
+   "s_star_achievable_in_water": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   }
+  }
+ },
+ "H-10": {
+  "verdict": "PASS",
+  "fields": {
+   "x1_rodenas_at_alpha1_0p55": {
+    "ok": true,
+    "gold": 0.6836192656084674,
+    "got": 0.6836309845032733
+   },
+   "x1_rubingh_at_alpha1_0p55": {
+    "ok": true,
+    "gold": 0.723127452911286,
+    "got": 0.7231269477727108
+   },
+   "f1_rodenas": {
+    "ok": true,
+    "gold": 0.92783913722818,
+    "got": 0.9278214627162834
+   },
+   "f2_rodenas": {
+    "ok": true,
+    "gold": 0.35788651279161166,
+    "got": 0.35789908705314827
+   },
+   "mean_abs_x1_difference": {
+    "ok": true,
+    "gold": 0.04573477923739253,
+    "got": 0.04573204619331275
+   },
+   "estimators_agree_within_0p05": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "model_independent_method": {
+    "ok": true,
+    "gold": "Rodenas",
+    "got": "Rodenas"
+   }
+  }
+ },
+ "H-11": {
+  "verdict": "PASS",
+  "fields": {
+   "n_points_without_solution": {
+    "ok": true,
+    "gold": 2,
+    "got": 2
+   },
+   "alpha1_no_root_1": {
+    "ok": true,
+    "gold": 0.7,
+    "got": 0.7
+   },
+   "alpha1_no_root_2": {
+    "ok": true,
+    "gold": 0.85,
+    "got": 0.85
+   },
+   "beta_mean": {
+    "ok": true,
+    "gold": -0.04478506183152057,
+    "got": -0.0448
+   },
+   "beta_std": {
+    "ok": true,
+    "gold": 1.8326207206410465,
+    "got": 2.2445
+   },
+   "n_points_used": {
+    "ok": true,
+    "gold": 3,
+    "got": 3
+   }
+  }
+ },
+ "H-12": {
+  "verdict": "PASS",
+  "fields": {
+   "selected_model": {
+    "ok": true,
+    "gold": "frumkin",
+    "got": "frumkin"
+   },
+   "frumkin_a": {
+    "ok": true,
+    "gold": 2.599996752466044,
+    "got": 2.5333077215068407
+   },
+   "condensation_regime_flagged": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "a_trustworthy_downstream_unexamined": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   }
+  }
+ },
+ "H-13": {
+  "verdict": "PASS",
+  "fields": {
+   "cpp": {
+    "ok": true,
+    "gold": 0.4199040767386091,
+    "got": 0.4199040767386091
+   },
+   "morphology": {
+    "ok": true,
+    "gold": "cylindrical/rodlike micelle",
+    "got": "cylindrical/rodlike micelle"
+   },
+   "axial_ratio": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "conflict_detected": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   }
+  }
+ },
+ "H-14": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "gold": "cationic",
+    "got": "cationic"
+   },
+   "structural_family": {
+    "ok": true,
+    "gold": "gemini",
+    "got": "gemini (dimeric) bis-quaternary ammonium surfactant; two C12 tails + dimethyl-quat heads joined by a 4-carbon spacer, 2 Br- counterions (12-4-12, 2Br-)"
+   },
+   "davies_hlb": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "valid_method": {
+    "ok": true,
+    "gold": "Griffin",
+    "got": "Griffin"
+   },
+   "hlb": {
+    "ok": true,
+    "gold": 6.22,
+    "got": 6.22
+   }
+  }
+ },
+ "H-15": {
+  "verdict": "PASS",
+  "fields": {
+   "micelle_mw": {
+    "ok": true,
+    "gold": 399.99999999999994,
+    "got": 399.9893308756428
+   },
+   "aggregation_number": {
+    "ok": true,
+    "gold": 0.6399999999999999,
+    "got": 0.6399829294010285
+   },
+   "physically_valid": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "why": {
+    "ok": true,
+    "gold": [
+     "smaller",
+     "impossible",
+     "invalid",
+     "cannot be",
+     "less than one",
+     "less than 1",
+     "inconsistent",
+     "non-physical",
+     "unphysical"
+    ],
+    "got": "The aggregation number is less than one (~0.64), which is impossible because a micelle must contain at least one monomer; equivalently the micelle mass (~400 g/mol) is below the monomer mass (625 g/mol), so the data do not describe a real micelle."
+   }
+  }
+ },
+ "H-16": {
+  "verdict": "PASS",
+  "fields": {
+   "cmc_mM": {
+    "ok": true,
+    "gold": 4.200000000000001,
+    "got": 4.199
+   },
+   "beta": {
+    "ok": true,
+    "gold": 0.72,
+    "got": 0.72
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -30.10962450899553,
+    "got": -30.11
+   },
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "missing_for_delta_s": {
+    "ok": true,
+    "gold": [
+     "temperature",
+     "enthalpy",
+     "van't hoff",
+     "vant hoff",
+     "multiple",
+     "series",
+     "2nd",
+     "second"
+    ],
+    "got": "The enthalpy of micellization (\u0394H_mic). It requires either CMC measured at multiple temperatures around 298.15 K (van't Hoff slope of ln X_cmc vs 1/T) or a direct calorimetric \u0394H_mic from ITC; a single-temperature conductivity isotherm cannot yield it."
+   }
+  }
+ },
+ "H-17": {
+  "verdict": "PASS",
+  "fields": {
+   "solubility_estimate_M": {
+    "ok": true,
+    "gold": 0.0007603761741598127,
+    "got": 0.0007603761741598127
+   },
+   "solubility_source": {
+    "ok": true,
+    "gold": [
+     "esol",
+     "estimate",
+     "qspr"
+    ],
+    "got": "QSPR estimate (ESOL / Delaney 2004, RDKit-refit coefficients per Walters) \u2014 an estimate, not a measurement; ~0.6-1 log-unit typical error"
+   },
+   "msr": {
+    "ok": true,
+    "gold": 0.2085463100985781,
+    "got": 0.2085463100985781
+   }
+  }
+ },
+ "H-18": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type_at_ph": {
+    "ok": true,
+    "gold": "still_ambiguous",
+    "got": "mixed/ambiguous \u2014 coexisting protonated ammonium (R-NH3+) and neutral amine (R-NH2); no single charge state resolvable"
+   },
+   "fraction_protonated_at_low_pka": {
+    "ok": true,
+    "gold": 0.3868631798468573,
+    "got": 0.387
+   },
+   "fraction_protonated_at_high_pka": {
+    "ok": true,
+    "gold": 0.6131368201531436,
+    "got": 0.613
+   },
+   "confidence": {
+    "ok": true,
+    "gold": "low",
+    "got": "low"
+   }
+  }
+ },
+ "H-19": {
+  "verdict": "PASS",
+  "fields": {
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 7.422476380435842e-06,
+    "got": 7.42e-06
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "gold": 0.22371766268609417,
+    "got": 0.224
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -28.50377465528527,
+    "got": -28.5
+   },
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "missing_for_delta_s": {
+    "ok": true,
+    "gold": [
+     "enthalpy",
+     "temperature",
+     "van't hoff",
+     "vant hoff",
+     "series",
+     "heat"
+    ],
+    "got": "Enthalpy of micellization (delta_H_mic) \u2014 not available from single-temperature data; need calorimetric delta_H, or CMC measured at multiple temperatures for a van't Hoff estimate of delta_H, to compute delta_S = (delta_H - delta_G)/T."
+   }
+  }
+ },
+ "H-20": {
+  "verdict": "PASS",
+  "fields": {
+   "dn_dc_for_this_compound": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "sls_aggregation_number": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "what_is_missing": {
+    "ok": true,
+    "gold": [
+     "dn/dc",
+     "dn dc",
+     "refractive index increment",
+     "refractometer",
+     "measure",
+     "cite",
+     "cited",
+     "specific to"
+    ],
+    "got": "A measured specific refractive-index increment (dn/dc) for AOT itself at 632.8 nm, in the same solvent/ionic strength and temperature as the scattering run, obtained by differential refractometry as the slope of n vs. c on an AOT dilution series above the CMC. The SDS value (0.110 mL/g) is a different compound's and cannot be substituted; without a valid AOT dn/dc, K and therefore M_micelle/Nagg are undetermined. (Secondary: subtract a system-specific CMC so concentrations are micellized, c - CMC.)"
+   }
+  }
+ },
+ "H-21": {
+  "verdict": "PASS",
+  "fields": {
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 3.065805461484369e-06,
+    "got": 3.065805461484369e-06
+   },
+   "a_min_from_slope_A2": {
+    "ok": true,
+    "gold": 54.16322359768595,
+    "got": 54.16322359768595
+   },
+   "discrepancy_vs_literature_pct": {
+    "ok": true,
+    "gold": 21.170522589901445,
+    "got": 21.17
+   }
+  }
+ },
+ "H-22": {
+  "verdict": "PASS",
+  "fields": {
+   "clint_cmc_mM": {
+    "ok": true,
+    "gold": 4.7272727272727275,
+    "got": 4.7273
+   },
+   "deviation_from_measured_pct": {
+    "ok": true,
+    "gold": 16.722783389450065,
+    "got": 16.72
+   },
+   "x1_rubingh": {
+    "ok": true,
+    "gold": 0.7203241281585192,
+    "got": 0.7203
+   },
+   "beta_rubingh": {
+    "ok": true,
+    "gold": -0.8308586884784351,
+    "got": -0.8309
+   }
+  }
+ },
+ "H-23": {
+  "verdict": "PASS",
+  "fields": {
+   "delta_h_endpoint_kJ_per_mol": {
+    "ok": true,
+    "gold": -3.0847457234638647,
+    "got": -3.08
+   },
+   "agrees_with_cited_value": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "reported_value_source": {
+    "ok": true,
+    "gold": [
+     "own",
+     "computed",
+     "calculation",
+     "first principles",
+     "from the data",
+     "not the cited",
+     "data give",
+     "endpoint",
+     "derived",
+     "recomputed",
+     "calculated"
+    ],
+    "got": "Computed by me from the van't Hoff equation applied to the first and last rows of the provided CMC-vs-temperature data (via the surfactant-computation tool); not taken from the dataset's stated -6.2 kJ/mol metadata value."
+   }
+  }
+ },
+ "H-24": {
+  "verdict": "PASS",
+  "fields": {
+   "rh_nm": {
+    "ok": true,
+    "gold": 2.229912976162908,
+    "got": 2.23
+   },
+   "aggregation_number": {
+    "ok": true,
+    "gold": 69.27897877824252,
+    "got": 69
+   },
+   "bias_direction": {
+    "ok": true,
+    "gold": [
+     "over",
+     "high",
+     "larger",
+     "too large",
+     "upper",
+     "overestim"
+    ],
+    "got": "overestimate"
+   }
+  }
+ },
+ "H-25": {
+  "verdict": "PASS",
+  "fields": {
+   "ionic_strength_mM": {
+    "ok": true,
+    "gold": 105.0,
+    "got": 105.0
+   },
+   "debye_length_nm": {
+    "ok": true,
+    "gold": 0.9382011310383265,
+    "got": 0.9382
+   },
+   "kappa_a": {
+    "ok": true,
+    "gold": 2.6646738287697422,
+    "got": 2.6647
+   },
+   "henry_f": {
+    "ok": true,
+    "gold": 1.0908396000113956,
+    "got": 1.0908
+   },
+   "treatment": {
+    "ok": true,
+    "gold": [
+     "ohshima",
+     "swan",
+     "qin",
+     "kappa",
+     "intermediate",
+     "accurate",
+     "neither limit",
+     "obrien",
+     "o'brien"
+    ],
+    "got": "Swan & Furst full-range approximation to Henry's function (exact-Henry, intermediate kappa*a regime)"
+   }
+  }
+ },
+ "H-26": {
+  "verdict": "PASS",
+  "fields": {
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "gold": 12,
+    "got": 12
+   },
+   "total_carbons": {
+    "ok": true,
+    "gold": 43,
+    "got": 43
+   },
+   "molecular_weight": {
+    "ok": true,
+    "gold": 813.164,
+    "got": 813.164
+   },
+   "hlb_griffin": {
+    "ok": true,
+    "gold": 13.4202448707,
+    "got": 13.42
+   }
+  }
+ },
+ "H-27": {
+  "verdict": "PASS",
+  "fields": {
+   "total_carbons": {
+    "ok": true,
+    "gold": 20,
+    "got": 20
+   },
+   "tail_carbons_each": {
+    "ok": true,
+    "gold": 8,
+    "got": 8
+   },
+   "tail_carbons_total": {
+    "ok": true,
+    "gold": 16,
+    "got": 16
+   },
+   "backbone_carbons": {
+    "ok": true,
+    "gold": 4,
+    "got": 4
+   },
+   "tails_branched": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "molecular_weight": {
+    "ok": true,
+    "gold": 444.56600000000026,
+    "got": 444.566
+   },
+   "n_ester_groups": {
+    "ok": true,
+    "gold": 2,
+    "got": 2
+   },
+   "n_sulfonate_groups": {
+    "ok": true,
+    "gold": 1,
+    "got": 1
+   }
+  }
+ },
+ "H-28": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "gold": "anionic",
+    "got": "anionic"
+   },
+   "structural_family": {
+    "ok": true,
+    "gold": "glycolipid_biosurfactant",
+    "got": "glycolipid biosurfactant"
+   },
+   "n_sugar_rings": {
+    "ok": true,
+    "gold": 2,
+    "got": 2
+   },
+   "molecular_weight": {
+    "ok": true,
+    "gold": 706.8230000000003,
+    "got": 706.82
+   },
+   "n_ester_groups": {
+    "ok": true,
+    "gold": 2,
+    "got": 2
+   },
+   "n_carboxylic_acid_groups": {
+    "ok": true,
+    "gold": 1,
+    "got": 1
+   }
+  }
+ },
+ "H-29": {
+  "verdict": "PASS",
+  "fields": {
+   "n_propylene_oxide_units": {
+    "ok": true,
+    "gold": 5,
+    "got": 5
+   },
+   "n_ethylene_oxide_units": {
+    "ok": true,
+    "gold": 8,
+    "got": 8
+   },
+   "molecular_weight": {
+    "ok": true,
+    "gold": 829.1629999999996,
+    "got": 829.163
+   },
+   "hlb_griffin": {
+    "ok": true,
+    "gold": 15.916122644160435,
+    "got": 15.92
+   }
+  }
+ },
+ "H-30": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "gold": "cationic",
+    "got": "cationic"
+   },
+   "structural_family": {
+    "ok": true,
+    "gold": "monomeric",
+    "got": "monomeric"
+   },
+   "tail_carbons": {
+    "ok": true,
+    "gold": 12,
+    "got": 12
+   },
+   "cpp": {
+    "ok": true,
+    "gold": 0.35215034949564666,
+    "got": 0.35215034949564666
+   },
+   "morphology": {
+    "ok": true,
+    "gold": "cylindrical/rodlike micelle",
+    "got": "cylindrical/rodlike micelle"
+   },
+   "axial_ratio": {
+    "ok": true,
+    "gold": 1.0809127606844267,
+    "got": 1.0809127606844267
+   },
+   "rh_naive_nm": {
+    "ok": true,
+    "gold": 2.7560722177294372,
+    "got": 2.7560722177294372
+   },
+   "rh_perrin_corrected_nm": {
+    "ok": true,
+    "gold": 2.754586197097811,
+    "got": 2.754586197097811
+   }
+  }
+ },
+ "H-31": {
+  "verdict": "PASS",
+  "fields": {
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 8.058851335201267e-07,
+    "got": 8.06e-07
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "gold": 2.0605158205618834,
+    "got": 2.06
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -29.430755483126614,
+    "got": -29.4
+   }
+  }
+ },
+ "H-32": {
+  "verdict": "PASS",
+  "fields": {
+   "rh_naive_nm": {
+    "ok": true,
+    "gold": 3.270539031705599,
+    "got": 3.270539031705599
+   },
+   "rh_perrin_corrected_nm": {
+    "ok": true,
+    "gold": 3.2655340025233217,
+    "got": 3.2655340025233226
+   }
+  }
+ },
+ "H-33": {
+  "verdict": "PASS",
+  "fields": {
+   "capillary_number": {
+    "ok": true,
+    "gold": 3.9687500000000006e-07,
+    "got": 3.9687499999999996e-07
+   },
+   "exceeds_threshold": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "velocity_needed_ft_per_day": {
+    "ok": true,
+    "gold": 75.59055118110237,
+    "got": 75.59055118110236
+   }
+  }
+ },
+ "H-34": {
+  "verdict": "PASS",
+  "fields": {
+   "x1_mole_fraction": {
+    "ok": true,
+    "gold": 0.6650683249600138,
+    "got": 0.6651
+   },
+   "clint_cmc_mM": {
+    "ok": true,
+    "gold": 9.842646300624963,
+    "got": 9.843
+   },
+   "deviation_from_measured_pct": {
+    "ok": true,
+    "gold": 21.514151859567455,
+    "got": 21.52
+   },
+   "x1_rubingh": {
+    "ok": true,
+    "gold": 0.70842363708548,
+    "got": 0.7084
+   },
+   "beta_rubingh": {
+    "ok": true,
+    "gold": -1.0297255481326197,
+    "got": -1.03
+   }
+  }
+ },
+ "H-35": {
+  "verdict": "PASS",
+  "fields": {
+   "debye_length_nm": {
+    "ok": true,
+    "gold": 1.8963742082527808,
+    "got": 1.8964
+   },
+   "kappa_a": {
+    "ok": true,
+    "gold": 1.3183052106068074,
+    "got": 1.3183
+   },
+   "zeta_mV": {
+    "ok": true,
+    "gold": 34.62863278369817,
+    "got": 34.63
+   }
+  }
+ },
+ "H-36": {
+  "verdict": "FAIL",
+  "fields": {
+   "arrhenius_slope": {
+    "ok": false,
+    "gold": -0.30086384025132706,
+    "got": "__MISSING__"
+   },
+   "delta_h_kJ_per_mol": {
+    "ok": false,
+    "gold": -2.5015211528775825,
+    "got": "__MISSING__"
+   },
+   "process": {
+    "ok": false,
+    "gold": "exothermic",
+    "got": "__MISSING__"
+   },
+   "single_straight_line_adequate": {
+    "ok": false,
+    "gold": false,
+    "got": "__MISSING__"
+   }
+  }
+ },
+ "H-37": {
+  "verdict": "NO_JSON",
+  "fields": {}
+ },
+ "H-38": {
+  "verdict": "FAIL",
+  "fields": {
+   "cmc_in_chart_units": {
+    "ok": false,
+    "gold": 5750.000000000001,
+    "got": "__MISSING__"
+   },
+   "cmc_in_molar": {
+    "ok": false,
+    "gold": 0.005750000000000001,
+    "got": "__MISSING__"
+   },
+   "beta_from_chart": {
+    "ok": false,
+    "gold": 0.6562499999999998,
+    "got": "__MISSING__"
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": false,
+    "gold": -30.562968865098554,
+    "got": "__MISSING__"
+   }
+  }
+ },
+ "H-39": {
+  "verdict": "PASS",
+  "fields": {
+   "outlier_alpha2": {
+    "ok": true,
+    "gold": 0.6,
+    "got": 0.6
+   },
+   "beta_mean_excluding_outlier": {
+    "ok": true,
+    "gold": -1.1879695992309924,
+    "got": -1.188
+   },
+   "beta_std_excluding_outlier": {
+    "ok": true,
+    "gold": 0.6649877960566865,
+    "got": 0.768
+   },
+   "n_points_used": {
+    "ok": true,
+    "gold": 4,
+    "got": 4
+   }
+  }
+ },
+ "H-40": {
+  "verdict": "PASS",
+  "fields": {
+   "mean_including_all": {
+    "ok": true,
+    "gold": 59.0,
+    "got": 59.0
+   },
+   "mean_excluding_inconsistent": {
+    "ok": true,
+    "gold": 55.5,
+    "got": 55.5
+   },
+   "geometric_reference": {
+    "ok": true,
+    "gold": 55.508642493968146,
+    "got": 55.5
+   },
+   "all_three_include_reference": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "excluded": {
+    "ok": true,
+    "gold": [
+     "sls",
+     "dls"
+    ],
+    "got": "SLS, DLS"
+   }
+  }
+ },
+ "H-41": {
+  "verdict": "PASS",
+  "fields": {
+   "alpha1_of_corrupted_point": {
+    "ok": true,
+    "gold": 0.8061036397249173,
+    "got": 0.8061
+   },
+   "beta_mean_clean": {
+    "ok": true,
+    "gold": -3.200000000000036,
+    "got": -3.1997457869764085
+   },
+   "pointwise_beta_at_corrupted_point": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "n_points_used_clean": {
+    "ok": true,
+    "gold": 4,
+    "got": 4
+   }
+  }
+ },
+ "H-42": {
+  "verdict": "PASS",
+  "fields": {
+   "corrupted_temperature_K": {
+    "ok": true,
+    "gold": 308.15,
+    "got": 308.15
+   },
+   "delta_H_all_points": {
+    "ok": true,
+    "gold": 14.290057957920272,
+    "got": 14.29
+   },
+   "delta_H_cleaned": {
+    "ok": true,
+    "gold": -4.204496357780203,
+    "got": -4.2
+   },
+   "n_points_flagged": {
+    "ok": true,
+    "gold": 1,
+    "got": 1
+   }
+  }
+ },
+ "H-43": {
+  "verdict": "PASS",
+  "fields": {
+   "hld_if_cc_neg0p92": {
+    "ok": true,
+    "gold": -0.9105620875658998,
+    "got": -0.91
+   },
+   "winsor_if_cc_neg0p92": {
+    "ok": true,
+    "gold": "I",
+    "got": "I"
+   },
+   "hld_if_cc_pos2p4": {
+    "ok": true,
+    "gold": 2.4094379124341003,
+    "got": 2.41
+   },
+   "winsor_if_cc_pos2p4": {
+    "ok": true,
+    "gold": "II",
+    "got": "II"
+   },
+   "source_number": {
+    "ok": true,
+    "gold": 2,
+    "got": 2
+   }
+  }
+ },
+ "H-44": {
+  "verdict": "PASS",
+  "fields": {
+   "nagg_sls": {
+    "ok": true,
+    "gold": 54.48530842576377,
+    "got": 54.49
+   },
+   "nagg_geometric": {
+    "ok": true,
+    "gold": 55.508642493968146,
+    "got": 55.51
+   },
+   "methods_consistent_within_literature_range": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "most_reliable": {
+    "ok": true,
+    "gold": "SLS",
+    "got": "SLS"
+   }
+  }
+ },
+ "H-45": {
+  "verdict": "FAIL",
+  "fields": {
+   "c20_recomputed_mM": {
+    "ok": false,
+    "gold": 0.3152359256184292,
+    "got": 0.35
+   },
+   "pc20_recomputed": {
+    "ok": true,
+    "gold": 3.5013642943272885,
+    "got": 3.45
+   },
+   "draft_values_match_data": {
+    "ok": true,
+    "gold": false,
+    "got": false
+   },
+   "which_draft_values_wrong": {
+    "ok": true,
+    "gold": [
+     "both",
+     "neither"
+    ],
+    "got": "both"
+   }
+  }
+ },
+ "H-46": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "gold": "anionic",
+    "got": "anionic"
+   },
+   "cmc_mM": {
+    "ok": true,
+    "gold": 5.477225575051662,
+    "got": 5.48
+   },
+   "isotherm_model": {
+    "ok": true,
+    "gold": "frumkin",
+    "got": "frumkin"
+   },
+   "condensation_caveat_flagged": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   },
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 1.5117195185142548e-06,
+    "got": 1.512e-06
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "gold": 1.0984438891189645,
+    "got": 1.098
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -29.953153909017875,
+    "got": -29.95
+   }
+  }
+ },
+ "H-47": {
+  "verdict": "PASS",
+  "fields": {
+   "gamma_max_mol_per_m2": {
+    "ok": true,
+    "gold": 1.4145800566306375e-06,
+    "got": 1.4145800566306375e-06
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "gold": 1.1738742246437819,
+    "got": 1.1738742246437819
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "gold": -30.562968865098554,
+    "got": -30.56296886509855
+   },
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "missing_for_delta_s": {
+    "ok": true,
+    "gold": [
+     "temperature",
+     "enthalpy",
+     "van't hoff",
+     "vant hoff",
+     "series",
+     "heat",
+     "multiple",
+     "2nd",
+     "second"
+    ],
+    "got": "No enthalpy of micellization is available: both datasets are at a single temperature (298.15 K), so there is no CMC(T) dependence for a van't Hoff dH_mic and no calorimetric dH_mic is given. dS_mic = (dH_mic - dG_mic)/T is therefore undetermined. Need CMC at >=2 temperatures (van't Hoff) or a measured calorimetric dH_mic."
+   }
+  }
+ },
+ "H-48": {
+  "verdict": "PASS",
+  "fields": {
+   "hld_value": {
+    "ok": true,
+    "gold": -1.0205620875658996,
+    "got": -1.0206
+   },
+   "winsor_type": {
+    "ok": true,
+    "gold": "I",
+    "got": "I"
+   },
+   "cpp": {
+    "ok": true,
+    "gold": 0.46969136100515557,
+    "got": 0.4697
+   },
+   "cpp_morphology": {
+    "ok": true,
+    "gold": "cylindrical/rodlike micelle",
+    "got": "cylindrical/rodlike micelle"
+   },
+   "frameworks_consistent": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   }
+  }
+ },
+ "H-49": {
+  "verdict": "PASS",
+  "fields": {
+   "delta_g_from_cmc_kJ_per_mol": {
+    "ok": true,
+    "gold": -27.889847201171435,
+    "got": -27.89
+   },
+   "delta_s_J_per_mol_K": {
+    "ok": true,
+    "gold": 76.77292370005513,
+    "got": 76.77
+   },
+   "delta_g_recomputed_kJ_per_mol": {
+    "ok": true,
+    "gold": -27.88984720117144,
+    "got": -27.89
+   },
+   "self_consistent": {
+    "ok": true,
+    "gold": true,
+    "got": true
+   }
+  }
+ },
+ "H-50": {
+  "verdict": "PASS",
+  "fields": {
+   "charge_type": {
+    "ok": true,
+    "gold": "anionic",
+    "got": "anionic"
+   },
+   "n_carbons": {
+    "ok": true,
+    "gold": 12,
+    "got": 12
+   },
+   "cpp": {
+    "ok": true,
+    "gold": 0.46969136100515557,
+    "got": 0.47
+   },
+   "morphology": {
+    "ok": true,
+    "gold": "cylindrical/rodlike micelle",
+    "got": "cylindrical/rodlike micelle"
+   },
+   "axial_ratio": {
+    "ok": true,
+    "gold": 1.134958398718648,
+    "got": 1.135
+   },
+   "rh_naive_nm": {
+    "ok": true,
+    "gold": 2.6375314771819345,
+    "got": 2.638
+   },
+   "rh_perrin_nm": {
+    "ok": true,
+    "gold": 2.6337638015050033,
+    "got": 2.634
+   },
+   "delta_g_mic": {
+    "ok": true,
+    "gold": null,
+    "got": null
+   },
+   "missing_for_delta_g": {
+    "ok": true,
+    "gold": [
+     "alpha",
+     "dissociation",
+     "binding",
+     "counterion",
+     "measured"
+    ],
+    "got": "CMC (as mole fraction X_cmc) and the counterion binding degree \u03b2 (equivalently degree of dissociation \u03b1) for the (1+\u03b2) prefactor \u2014 neither is provided in the prompt"
+   }
+  }
+ }
+}

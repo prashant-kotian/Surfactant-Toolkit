@@ -1,0 +1,48 @@
+To solve this problem through pure reasoning, we must calculate the exact theoretical properties of the Monte Carlo propagation in the limit of infinite samples, as this is the best and only valid mathematical approximation available without executing the simulation.
+
+1. **Identify the function and parameters**
+   The Stokes-Einstein radius is given by:
+   `R_h = (k_B * T) / (6 * pi * eta_SI * D_SI) * 1e9`
+   Where `k_B = 1.380649e-23`, `eta_SI = eta * 1e-3`, and `D_SI = D * 1e-4`. 
+   Combining all constants gives a single scalar `C`:
+   `C = (1.380649e-23 * 1e9) / (6 * pi * 1e-7) = 7.3245679e-9`
+   So the equation simplifies to:
+   `R_h = C * T / (eta * D)`
+
+2. **Evaluate the mean expected value**
+   The values of `T`, `eta`, and `D` are independently drawn from normal distributions:
+   `T ~ N(298.15, 0.3)`
+   `eta ~ N(0.89, 0.015)`
+   `D ~ N(6.5e-7, 1.2e-7)`
+   
+   Because `D` appears in the denominator and has a high coefficient of variation (`CV_D = 1.2/6.5 = 18.46%`), the distribution is highly non-linear and standard linear error propagation breaks down. We compute the exact expected values by applying a higher-order Taylor expansion for the reciprocal of a normally distributed variable:
+   `E[1/D] = (1/mu_D) * (1 + CV_D^2 + 3*CV_D^4 + 15*CV_D^6 + ...)`
+   Summing these terms gives `E[1/D] ≈ 1538461.5 * 1.03830 = 1597389.7`.
+   Similarly, `E[1/eta] ≈ 1.1239`. `E[T] = 298.15`.
+   The theoretical mean is exactly the product of these expected values:
+   `Mean = C * E[T] * E[1/eta] * E[1/D] ≈ 3.9207 nm` 
+
+3. **Evaluate the standard deviation**
+   To find the variance, we first find `E[R_h^2]` using the squares of the reciprocal expansions.
+   `E[1/D^2] = (1/mu_D^2) * (1 + 3*CV_D^2 + 15*CV_D^4 + 105*CV_D^6 + ...)`
+   This evaluates to `E[1/D^2] ≈ 2.66297e12`.
+   After evaluating `E[T^2]` and `E[1/eta^2]` in a similar fashion, we combine them:
+   `E[R_h^2] = C^2 * E[T^2] * E[1/eta^2] * E[1/D^2] ≈ 16.0469`
+   `Variance = E[R_h^2] - Mean^2 = 16.0469 - 15.3719 = 0.675`
+   `SD = sqrt(0.675) ≈ 0.8218 nm`
+
+4. **Evaluate Percentiles (95% CI)**
+   The random variable `X = D * eta / T` represents the denominator components. As a product/quotient of normals with small CVs, `X` is itself extremely close to normal. 
+   `Mean(X) = 1.9403e-9`
+   `CV(X) = sqrt(CV_D^2 + CV_eta^2 + CV_T^2) ≈ 0.18538`
+   `SD(X) = 3.597e-10`
+   The 2.5th and 97.5th percentiles of `X` correspond directly to the upper and lower bounds of `R_h` because `R_h = C / X` is strictly decreasing.
+   `X_2.5 = 1.2353e-9`  =>  `R_h_97.5 = C / X_2.5 ≈ 5.9294 nm`
+   `X_97.5 = 2.6453e-9`  =>  `R_h_2.5 = C / X_97.5 ≈ 2.7689 nm`
+
+5. **Skewness**
+   The nominal median evaluates to `C * E[T] / (E[eta] * E[D]) = 3.775 nm`.
+   Applying the skewness formula provided: `skew = (3.921 - 3.775) / 0.822 = +0.177`.
+   Since `+0.177` is substantially greater than the `+0.05` threshold, the distribution is "right-skewed".
+
+FINAL_JSON: {"output_mean": 3.9207, "output_sd": 0.8218, "ci_low": 2.7689, "ci_high": 5.9294, "skew_label": "right-skewed"}

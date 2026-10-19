@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"delta_H_kJ_per_mol": -2.846400782241967,
+"delta_S_J_per_mol_K": 115.12279612768563,
+"delta_Cp_J_per_mol_K": -814.7355535590141,
+"delta_G_298_kJ_per_mol": -37.1309632972165,
+"driver": "entropy-driven"
+}

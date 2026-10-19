@@ -1,0 +1,13 @@
+…
+Show more
+Worked for 1m
+Analyzed
+ChatGPT said:
+cmc_cond: 4.5743624160 mM
+beta: 0.6551540732
+deltaG: -31.3503765929 kJ/mol
+cmc_tens: 4.4090815370 mM
+rel_diff_pct: 3.6796774125%
+agree_3pct: false
+
+FINAL_JSON: {"cmc_cond": 4.574362416009867, "beta": 0.6551540731892789, "deltaG": -31.350376592851443, "cmc_tens": 4.409081537009721, "rel_diff_pct": 3.6796774124603067, "agree_3pct": false}

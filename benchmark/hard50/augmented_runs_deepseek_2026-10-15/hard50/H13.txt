@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"cpp": 0.4199,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": null,
+"conflict_detected": true
+}

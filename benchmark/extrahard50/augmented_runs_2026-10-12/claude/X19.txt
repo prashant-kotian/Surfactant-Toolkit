@@ -1,0 +1,29 @@
+I'll compute the plain value from the pinned formula and run the relaxation-corrected determination with the computation tool.
+
+**Step 1 — unit conversion**
+mobility_SI = 4.10 × 1e-8 = **4.10e-8 m²/(V·s)**
+
+**Step 2 — plain Smoluchowski (pinned Henry form, f = 1.5)**
+With f = 1.5 the prefactor 3/(2f) = 1, so ζ = η·μ / (ε_r·ε₀):
+- η·μ = 0.89e-3 × 4.10e-8 = 3.649e-11
+- ε_r·ε₀ = 78.4 × 8.8541878128e-12 = 6.94168e-10 F/m
+- ζ = 0.0525665 V = **52.567 mV**. The computation tool gives the same value.
+
+**Step 3 — relaxation-corrected (κa = 14.5, z = 1, m = 0.15, T = 298.15 K)**
+This value is solved numerically on the same mobility, using the Ohshima–Healy–White 1983 relaxation model. That model is the sourced form of the relaxation correction to Henry, and it is valid for κa ≥ 10.
+ζ_corr = **69.455 mV**
+
+At |ζ| above about 50 mV, counterion relaxation makes the mobility grow less than linearly with ζ. A given mobility therefore needs a larger ζ than the linear Henry equation predicts.
+
+**Step 4 — shift**
+(69.455 − 52.567) / 52.567 × 100 = **32.13 %**
+
+**Step 5** — The **corrected** determination is larger in magnitude.
+
+1. mu_SI: 4.10e-8 m²/(V·s)
+2. zeta_plain_mV: 52.567 mV
+3. zeta_corr_mV: 69.455 mV
+4. shift_pct: 32.13 %
+5. larger: corrected
+
+FINAL_JSON: {"mu_SI": 4.1e-8, "zeta_plain_mV": 52.567, "zeta_corr_mV": 69.455, "shift_pct": 32.13, "larger": "corrected"}

@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 52s
+ChatGPT said:
+beta_mean: -1.59
+sign: negative
+claim_agrees: false
+synergy: synergistic
+x1_a050: 0.74312
+
+FINAL_JSON: {"beta_mean": -1.59, "sign": "negative", "claim_agrees": false, "synergy": "synergistic", "x1_a050": 0.74312}

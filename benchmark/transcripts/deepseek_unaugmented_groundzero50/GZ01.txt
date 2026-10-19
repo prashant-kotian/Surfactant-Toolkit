@@ -1,0 +1,62 @@
+y) does not determine. We can give the value only under a stated convention. The CMC itself is well-defined. I'll report ΔG using the common convention ΔG°_mic = RT ln(CMC) (mole-fraction based, treating the surfactant as the micelle-forming unit, counterion binding not resolved) — and flag the uncertainty.
+
+Let me compute.
+
+import numpy as np
+R=8.314; T=298.15
+cmc_mM = 3.31  # from fit, will refine
+# mole fraction: CMC in mM / (55.5 mol/L *1000 mM/mol) approx, in water
+x_cmc = (cmc_mM*1e-3)/55.5
+dG1 = R*T*np.log(x_cmc)/1000  # kJ/mol, beta=0
+dG2 = 2*R*T*np.log(x_cmc)/1000 # beta=1
+print("x_cmc",x_cmc,"dG (n=1)",round(dG1,2),"dG (n=2)",round(dG2,2))
+
+x_CMC ≈ 5.96×10⁻⁵
+ΔG (n=1) ≈ −24.3 kJ/mol
+ΔG (n=2, full counterion binding) ≈ −48.6 kJ/mol
+
+The n=1 value (~−24 kJ/mol) is the physically standard "per surfactant ion" micellization free energy when counterion binding is not separately resolved; the true value lies between, and cannot be uniquely fixed from surface-tension data alone. I'll report the n=1 convention as the number, with this caveat.
+
+5. Refined numbers
+
+Fitting the pre-CMC line (points 1–6) precisely:
+
+slope = −13.0 mN/m/decade (so −5.65 mN/m per ln)
+intercept at log C = 0: 49.1 mN/m (γ at 1 mM extrapolated)
+plateau = 27.77 mN/m
+log₁₀ CMC = (27.77 − 49.1)/(−13.0) ≈ 1.64...
+
+wait — recompute: intersection where m·logC + b = plateau → logC = (plateau − b)/m = (27.77 − 49.1)/(−13.0) = 1.64. That gives CMC = 10^1.64 = 43 mM — that's wrong; the intercept b is the value at logC=0, and the line should pass through the data. Let me recheck: at C=1.58 mM (log=0.2), γ=29.4. The line at logC=0.2 gives 49.1 + (−13)(0.2)=46.5 ≠ 29.4. So my b is off — the polyfit intercept is not 49.1. The slope −13 is right but intercept must satisfy 29.4 = m·0.2 + b → b = 29.4 + 13·0.2 = 32.0. Then logC_cmc = (27.77−32.0)/(−13.0) = 0.325 → CMC = 2.11 mM.
+
+So CMC ≈ 2.1 mM. Let me nail it with the code output.
+
+AI wants to run Python code
+
+This will execute in a safe sandbox.
+
+▶ Run Code
+✕ Reject
+Show Code ▾
+Summary of findings
+Identity: sodium di(2-ethylhexyl) sulfosuccinate (AOT-type), double-chain anionic surfactant.
+Charge type: anionic (sulfonate, Na⁺ counterion).
+CMC ≈ 2.1 mM (sharp break in γ vs log C; plateau ≈ 27.8 mN/m). Given data spacing, uncertainty ~±15%.
+Pre-CMC adsorption: Gibbs adsorption isotherm. Slope ≈ −13 mN/m/decade → surface excess Γ_max ≈ 2.3×10⁻⁶ mol/m², a_min ≈ 0.73 nm² (n=1 convention; ≈1.46 nm² if n=2). Langmuir/Szyszkowski saturation describes the branch well.
+ΔG°_mic: model-dependent for ionic surfactants. Under ΔG = RT ln(x_CMC) → ≈ −24 kJ/mol; with full counterion binding (2RT ln x) → ≈ −49 kJ/mol. Not uniquely determinable from γ–C data alone.
+
+FINAL_JSON:
+{
+"charge_type": "anionic",
+"cmc_mM": 2.1,
+"isotherm_model": "Gibbs adsorption isotherm (Langmuir/Szyszkowski saturation)",
+"gamma_max_mol_per_m2": 2.3e-06,
+"a_min_nm2": 0.73,
+"delta_g_mic_kJ_per_mol": -24.3
+}
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

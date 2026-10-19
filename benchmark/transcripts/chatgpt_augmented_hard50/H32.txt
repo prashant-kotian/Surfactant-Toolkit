@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"rh_naive_nm": 3.270539031705599,
+"rh_perrin_corrected_nm": 3.2655340025233226
+}

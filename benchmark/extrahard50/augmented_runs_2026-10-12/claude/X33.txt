@@ -1,0 +1,33 @@
+## Step-by-step
+
+**Step 1 — n_rings:** The sugar portion `[C@H]1O...[C@@H]1` closes one 6-membered pyranose ring (atoms: C–O–C–C–C–C). The acyl chain is acyclic. → **1**
+
+**Step 2 — n_esters:** The fragment `C(=O)O–CH2–(sugar)` is a single ester linkage. The remaining oxygens are a ring ether and four hydroxyls, not esters. → **1**
+
+**Step 3 — acyl_carbons:** The chain `CCCCCCCCCCCCCCCC(=O)` = 16 carbons including the carbonyl carbon (palmitoyl / hexadecanoyl). → **16**
+
+**Step 4 & 5 — formula and MW:**
+Atom count from the full SMILES:
+- C: 16 (acyl) + 1 (CH₂ linker) + 5 (ring CH) = **22**
+- O: 1 (carbonyl) + 1 (ester) + 1 (ring) + 4 (OH) = **7**
+- H: 31 (chain) + 2 (OCH₂) + 1 (anomeric CH) + 4×2 (CHOH) + 1 (ring CH) = **42**
+
+Formula (Hill order): **C₂₂H₄₂O₇**
+
+MW:
+- C: 22 × 12.011 = 264.242
+- H: 42 × 1.008 = 42.336
+- O: 7 × 15.999 = 111.993
+- Total = 418.571 → **419 g/mol** (3 sig figs)
+
+**Step 6 — charge:** Only neutral sugar hydroxyls and a neutral ester — no ionizable headgroup. → **nonionic**
+
+## Results
+1. n_rings: **1**
+2. n_esters: **1**
+3. acyl_carbons: **16**
+4. mw: **419**
+5. formula: **C22H42O7**
+6. charge: **nonionic**
+
+FINAL_JSON: {"n_rings": 1, "n_esters": 1, "acyl_carbons": 16, "mw": 419, "formula": "C22H42O7", "charge": "nonionic"}

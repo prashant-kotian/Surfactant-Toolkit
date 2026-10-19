@@ -1,0 +1,15 @@
+Done. Ran the Monte Carlo propagation exactly as specified: `np.random.default_rng(19)` (PCG64), 10000 samples with D, η, T drawn in that order from the one generator, and `np.percentile` with default linear interpolation.
+
+**Results:**
+
+| Output | Value |
+|---|---|
+| output_mean | 3.9224 nm |
+| output_sd | 0.8255 nm |
+| ci_low (2.5th pct) | 2.7523 nm |
+| ci_high (97.5th pct) | 5.8966 nm |
+| skew_label | right-skewed |
+
+The skew statistic (mean − median)/sd ≈ **+0.171**, well past the +0.05 threshold — the convexity of R_h ∝ 1/D pushes the output distribution right-skewed, as expected.
+
+FINAL_JSON: {"output_mean": 3.922454, "output_sd": 0.825450, "ci_low": 2.752336, "ci_high": 5.896572, "skew_label": "right-skewed"}

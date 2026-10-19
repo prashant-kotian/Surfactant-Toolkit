@@ -1,0 +1,29 @@
+## Result — Question X-06
+
+**Method used:** 4-parameter sigmoid `value(x) = lo + (hi − lo)·0.5·(1 + tanh((x − x0)/w))` with `x = log10(c / mM)`, fitted by nonlinear least squares, followed by a residual bootstrap (1000 resamples, `np.random.default_rng(14)` PCG64, percentile interval with NumPy default linear interpolation).
+
+**Point fit:**
+- x0 = 0.6652319 (log10 units) → **CMC = 10^x0 = 4.62628 mM**
+- width w = 0.22650, plateaus ≈ 68.402 (low-c) and 31.569 (high-c)
+- R² = 0.99735, converged, 0 failed bootstrap refits (n_boot used = 1000)
+
+**Bootstrap 95% percentile interval:**
+- log10 CMC: [0.6479272, 0.6845470]
+- **CMC_low = 4.44557 mM**, **CMC_high = 4.83668 mM**
+
+**Interval width:**
+- ci_width_pct = 100 × (4.83668 − 4.44557) / 4.62628 = **8.454 %**
+- 8.454 > 6.0 → **ci_wide = true**
+
+The wider concentration span (0.6 → 11 mM, ~1.26 decades) gives a well-determined midpoint (R² ≈ 0.9974), yet the bootstrap interval is still comfortably wider than the 6 % threshold, so this curve is classified as a "wide-interval" case.
+
+Caveat carried from the procedure: this percentile interval reflects only sampling uncertainty of the fitted sigmoid midpoint (assuming independent, homoscedastic residuals); it does not include model-form error, so a true two-line break-point CMC could differ slightly.
+
+**Required outputs, in order:**
+1. cmc_point = 4.626279842 mM
+2. cmc_ci_low = 4.445566916 mM
+3. cmc_ci_high = 4.836676186 mM
+4. ci_width_pct = 8.454
+5. ci_wide = true
+
+FINAL_JSON: {"cmc_point": 4.626279842182405, "cmc_ci_low": 4.445566916490006, "cmc_ci_high": 4.8366761860735625, "ci_width_pct": 8.4540772, "ci_wide": true}

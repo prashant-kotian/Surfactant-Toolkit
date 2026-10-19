@@ -1,0 +1,130 @@
+ and micellization analysis
+
+Surfactant micelle analysis
+
+Gemini surfactant HLB calculation
+
+C12 surfactant packing parameter
+
+Surfactant isotherm model fitting
+
+Rubingh analysis CMC mixture
+
+Mixed-CMC micellar composition analysis
+
+Surfactant HLD phase behavior fitting
+
+Surfactant CMC analysis
+
+Surface-tension isotherm model comparison
+
+Mixed-micelle model fitting
+
+DHPC/DTAB mixed CMC analysis
+
+Van't Hoff analysis surfactant micellization
+
+Surfactant micellization free energy
+
+Binary surfactant micelle analysis
+
+Binary mixed micelle analysis
+
+Surfactant surface tension prediction
+
+Surfactant optimum salinity calculation
+
+C
+Chem-Mantra
+·
+Pro
+
+
+Dodecylamine charge state calculation
+
+
+Share
+
+Use the up and down arrow keys to move between messages.
+
+You said: [Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCCCCCCCCCN   (dodecylamine)
+
+Solution pH = 10.6. The reported pKaH range for a primary alkylamine of this class is 10.4-10.8 (supplied). Henderson-Hasselbalch: fraction protonated = 1/(1 + 10^(pH - pKaH)).
+
+Report: the charge type at this pH (report it honestly -- if the protonated/deprotonated population is genuinely mixed, say so rather than forcing a pick); the fraction protonated at the LOW end of the pKaH range; the fraction protonated at the HIGH end; and your confidence in any single charge label (answer exactly "low", "moderate", or "high").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph": "<string>",
+  "fraction_protonated_at_low_pka": <number>,
+  "fraction_protonated_at_high_pka": <number>,
+  "confidence": "low" or "moderate" or "high"
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: Dodecylamine (a primary alkylamine) sits right in the transition region at pH 10.6, where the solution pH is essentially on top of the pKaH range.
+Used surfactant-computation
+
+Used surfactant-computation
+
+Dodecylamine (a primary alkylamine) sits right in the transition region at pH 10.6, where the solution pH is essentially on top of the pKaH range.
+
+Charge type at pH 10.6: genuinely mixed / ambiguous. The protonated (cationic) and neutral populations both occupy a substantial share, and the exact split flips depending on where in the 10.4–10.8 range the true pKaH falls. There is no honest single charge label here — it’s a coexisting mixture of the protonated ammonium (R-NH₃⁺) and neutral amine (R-NH₂) forms.
+
+Fraction protonated across the supplied pKaH range (Henderson-Hasselbalch, fraction = 1/(1 + 10^(pH − pKaH))):
+
+At the low end (pKaH = 10.4): 0.387 → minority protonated (neutral form dominates slightly)
+At the high end (pKaH = 10.8): 0.613 → majority protonated (cationic form dominates slightly)
+
+The range straddles 0.5, which is exactly why no single charge state can be assigned: a 0.4-unit uncertainty in pKaH moves the species from mostly-neutral to mostly-charged.
+
+Confidence in any single charge label: low.
+
+FINAL_JSON:
+{
+“charge_type_at_ph”: “mixed/ambiguous — coexisting protonated ammonium (R-NH3+) and neutral amine (R-NH2); no single charge state resolvable”,
+“fraction_protonated_at_low_pka”: 0.387,
+“fraction_protonated_at_high_pka”: 0.613,
+“confidence”: “low”
+}
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"ionic_strength_mM": 105,
+"debye_length_nm": 0.9382,
+"kappa_a": 2.665,
+"henry_f": 1.083,
+"treatment": "Henry function, intermediate regime (O'Brien–White numerical / full electrokinetic theory)"
+}

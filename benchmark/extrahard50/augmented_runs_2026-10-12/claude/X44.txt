@@ -1,0 +1,24 @@
+Here are the results.
+
+**1. Fitted parameters (OLS of ln(S*) on EACN)**
+- k = **0.022682**
+- Cc = **−0.922132** (intercept = −Cc, so Cc = −intercept)
+
+The fit is essentially exact (R² ≈ 1.0000), which is why the fitted Cc lands almost dead-on candidate A.
+
+**2. Matching candidate**
+- |−0.9221 − (−0.92)| = 0.0021
+- |−0.9221 − (+2.4)| = 3.322
+
+Candidate A wins decisively: **"−0.92"** (the 2015 review value).
+
+**3. S* at EACN = 16** (ln S = k·16 − Cc)
+- ln S* = 0.022682·16 − (−0.922132) = 1.2851 → S* = **3.6148 %**
+
+**4. HLD at S = 3%, EACN = 12, dT = 0**
+- HLD = ln(3) − 0.022682·12 + (−0.922132) = 1.0986 − 0.2722 − 0.9221 = **−0.0957**
+
+**5. Winsor type**
+- −0.0957 falls in [−0.3, 0.3] → **"Winsor III"**
+
+FINAL_JSON: {"k": 0.022682, "cc": -0.922132, "matching_candidate": "-0.92", "S_star_E16": 3.6148, "hld_S3_E12": -0.0957, "winsor": "Winsor III"}

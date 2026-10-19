@@ -1,0 +1,11 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"n_carbons": 12,
+"cpp": 0.46969136100515557,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.134958398718648,
+"rh_naive_nm": 2.6375314771819345,
+"rh_perrin_nm": 2.6337638015050033,
+"delta_g_mic": null,
+"missing_for_delta_g": "CMC in mol/L and the system-specific counterion binding degree beta (or equivalently counterion dissociation alpha) needed to determine the ionic counterion factor"
+}

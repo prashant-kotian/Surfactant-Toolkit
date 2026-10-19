@@ -1,0 +1,84 @@
+The van’t Hoff approach needs CMC at multiple temperatures to get ΔH_mic, and from there ΔS = (ΔH − ΔG)/T. I only have one temperature, so ΔS genuinely cannot be determined. Let me confirm the entropy tool requires what I think it does.
+
+Loaded
+surfactant-computation
+Loaded surfactant-computation
+
+Confirmed. Entropy requires ΔH as a mandatory input, and ΔH (via van’t Hoff) requires CMC measured at multiple temperatures. We have a single temperature only, so ΔS cannot honestly be determined. I won’t fabricate it.
+
+Here is the full analysis.
+
+Surfactant identification
+
+The SMILES CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+] is sodium dodecyl sulfate (SDS) — a C₁₂ alkyl chain terminating in a sulfate ester head group with a sodium counterion.
+
+Charge type
+
+Anionic (high confidence). The surface-active ion carries the negative charge on the sulfate group, balanced by a dissociable Na⁺ counterion. This classification directly determines the Gibbs prefactor used below.
+
+Critical micelle concentration
+
+CMC ≈ 9.18 mM at 296.15 K.
+
+This comes from a three-segment linear regression on the surface-tension curve (baseline → steep decline → plateau), with the break selected by BIC. The surface tension falls from ~70 mN/m to a plateau near 37 mN/m, and the break-point sits cleanly at 9.18 mM, with γ at the CMC ≈ 37.0 mN/m. This is a textbook-consistent value for SDS near room temperature.
+
+Pre-CMC adsorption behavior
+
+Below the CMC, monomers adsorb at the air–water interface, which is what drives the surface tension down. The appropriate quantities come from the Gibbs adsorption isotherm applied to the premicellar slope of γ vs ln C:
+
+Premicellar slope (dγ/d ln C): −16.88 mN·m⁻¹
+Maximum surface excess, Γ_max: 3.43 × 10⁻⁶ mol·m⁻² — using the ionic, no-added-salt prefactor (n = 2), which is the correct choice here because SDS is a 1:1 ionic surfactant and no swamping electrolyte was present. Using n = 1 would overestimate Γ_max by a factor of 2; this is the single most common error in SDS analysis, so the system type matters.
+Minimum area per molecule, A_min: 0.485 nm².
+
+An A_min of ~0.48 nm² indicates a fairly loosely packed monolayer, consistent with the electrostatic head-group repulsion you expect among charged sulfate groups with no salt to screen them — reasonable for SDS.
+
+One caveat worth flagging: the dataset provides only two genuinely pre-CMC points, so a formal Langmuir-vs-Frumkin isotherm model selection was not attempted (that needs ≥4 points). Γ_max and A_min above are read directly from the premicellar slope and don’t depend on that model fit, but the slope itself rests on few points, so treat these two numbers as sound in form but modest in precision.
+
+Free energy of micellization
+
+ΔG_mic ≈ −27.3 kJ·mol⁻¹.
+
+Using ΔG_mic = (1 + α)·R·T·ln(X_cmc) with the independently measured α = 0.272 (so the counterion factor is 1.272), T = 296.15 K, and X_cmc expressed as a mole fraction (CMC / 55.5 mol·L⁻¹ for the water reference). The large negative value reflects strongly favorable, spontaneous micelle formation — again typical for SDS.
+
+Entropy of micellization
+
+Cannot be determined from what’s given. ΔS_mic = (ΔH_mic − ΔG_mic)/T, and ΔH_mic requires either calorimetry or a van’t Hoff fit of CMC across several temperatures. Only a single temperature (296.15 K) was provided, so ΔH is inaccessible and ΔS with it. Reporting a number here would mean inventing the temperature dependence, so I’m leaving it null rather than guessing.
+
+FINAL_JSON:
+{
+“charge_type”: “anionic”,
+“cmc_mM”: 9.18,
+“gamma_max_mol_per_m2”: 3.4268e-6,
+“a_min_nm2”: 0.4846,
+“delta_g_mic_kJ_per_mol”: -27.27,
+“delta_s_mic_J_per_mol_K”: null
+}
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

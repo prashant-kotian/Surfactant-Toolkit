@@ -1,0 +1,12 @@
+Based on the HLD framework calculations and the provided measurements, here are the step-by-step results:
+
+1. **Fit parameters**: Using the optimal salinity series data, the linear regression of `ln(S*)` on `EACN` yields the characteristic curvature (Cc) and slope (k).
+2. **Optimal Salinity Extrapolation**: At `EACN = 16` and `dT = +10 K`, the computed optimal salinity is approximately `4.277%`.
+3. **Feasibility**: Since `4.277%` is greater than the strict formulation salt ceiling of `4.0%`, this specific salinity requirement is not achievable.
+4. **HLD Calculation**: At `S = 9%`, `EACN = 10`, and `dT = 0`, plugging the fitted parameters into the HLD equation yields an HLD of approximately `+0.957`.
+5. **Phase Type**: Because the HLD (+0.957) is strictly greater than the upper boundary of +0.3, the system forms a Winsor II phase behavior (water-in-oil microemulsion).
+
+FINAL_JSON: {"k": 0.018865559305818146, "cc": -1.0514862259806415, "S_star_E16_dT10": 4.277356484110553, "achievable": false, "hld_S9_E10": 0.9570827582973964, "winsor": "Winsor II"}
+lue of ~0.957 is greater than +0.3, the system is classified as **"Winsor II"**.
+
+FINAL_JSON: {"k": 0.018865559305818146, "cc": -1.0514862259806415, "S_star_E16_dT10": 4.277356484110553, "achievable": false, "hld_S9_E10": 0.9570827582973964, "winsor": "Winsor II"}

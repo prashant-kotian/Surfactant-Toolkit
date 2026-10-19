@@ -1,0 +1,37 @@
+Working through the SMILES `CCCCCCCC/C=C/CCCCCCCC(=O)OC` (methyl oleate).
+
+**Structure expanded:**
+CH₃–(CH₂)₇–CH=CH–(CH₂)₇–C(=O)–O–CH₃
+
+**Atom counts:**
+- Carbons: 8 + 2 (double bond) + 8 (incl. carbonyl) + 1 (O–CH₃) = **19**
+- Hydrogens: 36
+- Oxygens: 2
+
+**1. Molecular weight**
+- C: 19 × 12.011 = 228.209
+- H: 36 × 1.008 = 36.288
+- O: 2 × 15.999 = 31.998
+- Total = 296.495 → **296 g/mol** (3 s.f.)
+
+**2. Formula (Hill notation):** C19H36O2
+
+**3–5. Carbon counting** (carbonyl C18 counts as nothing):
+
+| Type | Carbons | Count |
+|------|---------|-------|
+| CH₃ | terminal C1 + ester O–CH₃ (both have exactly 3 H, saturated) | **2** |
+| CH₂ | C2–C8 (7) + C11–C17 (7) | **14** |
+| vinyl_CH | C9, C10 (1 H each, C=C) | **2** |
+| carbonyl | C18 (not counted) | 0 |
+
+Check: 2 + 14 + 2 + 1 (uncounted carbonyl) = 19 total carbons ✓
+
+**6. Davies HLB**
+- Hydrophilic: one ester_free = 2.4
+- Lipophilic: all counted carbons at 0.475 each → (14 + 2 + 2) = 18 × 0.475 = 8.55
+- HLB = 7 + 2.4 − 8.55 = **0.85**
+
+**7. Charge:** ester, no ionizable group → **nonionic**
+
+FINAL_JSON: {"mw": 296, "formula": "C19H36O2", "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2, "hlb": 0.85, "charge": "nonionic"}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"delta_g_mic_at_283.15K": -35.184,
+"delta_g_mic_at_318.15K": -38.873,
+"trend": "Monotonically more negative with increasing temperature (from -35.18 to -38.87 kJ/mol); no minimum is reproduced.",
+"reasoning": "ΔG_mic = 1.732·R·T·ln(X_cmc). X_cmc changes only ~15% across 283-318 K while T rises ~12%, so the RT prefactor dominates and the product decreases steadily. The CMC data are U-shaped (min at 298 K) because the U-shape is carried by the temperature derivative d(lnX_cmc)/dT (enthalpy-entropy compensation), not by the magnitude of ΔG_mic. A monotonic ΔG_mic is therefore fully consistent with a U-shaped CMC; the fixed α=0.268 approximation is the main caveat."
+}

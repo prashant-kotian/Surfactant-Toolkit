@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 7.422476380435842e-6,
+"a_min_nm2": 0.22371766268609417,
+"delta_g_mic_kJ_per_mol": -28.50377465528527,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Delta H_mic (or equivalent temperature-dependent CMC/thermodynamic data needed to determine it)"
+}

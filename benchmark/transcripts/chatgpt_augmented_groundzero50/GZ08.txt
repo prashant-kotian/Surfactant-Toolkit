@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "nonionic",
+"isotherm_model": "Frumkin",
+"K": 5173351.244855226,
+"gamma_max_mol_per_m2": 1.9358172896274364e-6
+}

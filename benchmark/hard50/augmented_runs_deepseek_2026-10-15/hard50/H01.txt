@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"optical_constant_K": 1.325e-7,
+"micelle_mw": 35888.0,
+"aggregation_number": 80.0,
+"delta_g_mass_action_kJ_per_mol": -33.68
+}

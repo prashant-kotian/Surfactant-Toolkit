@@ -1,0 +1,48 @@
+To solve for the Monte Carlo error propagation parameters analytically, we must estimate the moments of the distribution of $\Delta G_{mic}$ using Taylor series expansions. The non-linear transformations applied to the random variables generate shifts in the expected values (means), non-linear variances, and non-zero skewness that a linear approximation misses. 
+
+Given:
+*   $X \sim \mathcal{N}(0.0085, 0.0006^2)$
+*   $n \sim \mathcal{N}(45, 4^2)$
+*   $T \sim \mathcal{N}(303.15, 0.3^2)$
+*   $\Delta G_{mic} = \frac{RT}{1000} \left[ \left(1 + \frac{1}{n}\right)\ln(X) - \frac{\ln(n)}{n} \right]$
+
+**1. Estimating the Mean**
+Since $X$, $n$, and $T$ are independent, the expected value $E[\Delta G_{mic}]$ is the product of their individual expected functional forms.
+For $X$: Using the second-order Taylor expansion around $\mu_X$, $E[\ln(X)] \approx \ln(\mu_X) - \frac{\sigma_X^2}{2\mu_X^2}$.
+$E[\ln(X)] \approx -4.76769 - \frac{0.0006^2}{2(0.0085^2)} = -4.76769 - 0.00249 = -4.77018$
+
+For $n$: Similarly, $E[1/n] \approx \frac{1}{\mu_n} + \frac{\sigma_n^2}{\mu_n^3} = \frac{1}{45} + \frac{16}{91125} = 0.02240$
+$E[\frac{\ln(n)}{n}] \approx \frac{\ln(45)}{45} + \frac{\sigma_n^2}{2} \left( \frac{2\ln(45) - 3}{45^3} \right) = 0.08459 + 8(0.00005) = 0.08500$
+
+Now, combine the internal bracket term:
+$E[\text{Bracket}] \approx (1 + 0.02240)(-4.77018) - 0.08500 = -4.96202$
+
+Finally, incorporating $T$ and the ideal gas constant multiplier ($R/1000 \approx 0.0083145$):
+$E[\Delta G_{mic}] \approx (0.0083145)(303.15)(-4.96202) = -12.507 \text{ kJ/mol}$
+
+**2. Estimating the Standard Deviation**
+Applying the variance of products and combinations for independent variables:
+$Var(\text{Bracket}) \approx \left(\frac{\partial}{\partial X}\right)^2 \sigma_X^2 + \left(\frac{\partial}{\partial n}\right)^2 \sigma_n^2$ evaluated at means.
+$\frac{\partial}{\partial X} \approx \frac{1 + 1/45}{0.0085} = 120.26$ 
+$\frac{\partial}{\partial n} \approx \frac{-\ln(0.0085) - 1 + \ln(45)}{45^2} = 0.00374$
+$Var(\text{Bracket}) \approx (120.26)^2(3.6 \times 10^{-7}) + (0.00374)^2(16) \approx 0.00521 + 0.00022 = 0.00543$
+
+Integrating $T$'s variance via $Var(A \cdot B) \approx \mu_A^2\sigma_B^2 + \mu_B^2\sigma_A^2$:
+$Var(T \cdot \text{Bracket}) \approx (303.15)^2(0.00543) + (-4.962)^2(0.09) \approx 499.02 + 2.22 = 501.24$
+$Var(\Delta G_{mic}) = (0.0083145)^2(501.24) = 0.03465$
+$SD \approx \sqrt{0.03465} = 0.186 \text{ kJ/mol}$
+
+**3. Skewness and Confidence Interval**
+The logarithm of a normally distributed variable with a high coefficient of variation (like $X$) induces a prominent tail to the left because values closer to $0$ asymptote to $-\infty$. Specifically, the 3rd central moment yields an expected skewness index (Pearson's coefficient of skewness) of $\gamma_1 \approx -3(\sigma_X/\mu_X) \approx -0.21$. 
+Because the coefficient on $\ln(X)$ in the main formula is positive, the left-skewness propagates directly to $\Delta G_{mic}$. We can evaluate this skewness under the prompt's rules: $\text{skew} = (\text{Mean} - \text{Median}) / SD$. The median is roughly the function evaluated at the original medians (means) of the normal variables ($\approx -12.497$). 
+$\text{skew} = (-12.507 - (-12.497)) / 0.186 \approx -0.054$. Since this is below $-0.05$, the label is strictly "left-skewed".
+
+For the 95% Confidence Interval (2.5th and 97.5th percentiles), we use the Cornish-Fisher expansion to adjust the normal $Z$-scores (-1.96, +1.96) for this skewness $\gamma_1 = -0.21$:
+$Z_{0.025} \approx -1.96 + \frac{(-1.96)^2 - 1}{6}(-0.21) \approx -2.06$
+$Z_{0.975} \approx 1.96 + \frac{(1.96)^2 - 1}{6}(-0.21) \approx 1.86$
+
+Mapping these modified Z-scores back to $\Delta G_{mic}$ values:
+Lower Bound (2.5th): $-12.507 + (-2.06)(0.186) \approx -12.890$
+Upper Bound (97.5th): $-12.507 + (1.86)(0.186) \approx -12.161$
+
+FINAL_JSON: {"output_mean": -12.507, "output_sd": 0.186, "ci_low": -12.890, "ci_high": -12.161, "skew_label": "left-skewed"}

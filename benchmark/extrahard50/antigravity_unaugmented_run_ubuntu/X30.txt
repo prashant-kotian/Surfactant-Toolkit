@@ -1,0 +1,28 @@
+To find the scale-corrupted row, we analyze the leave-one-out RSS for the 2-segment break model with \(x = \log_{10}(c)\). 
+
+**1. Leave-one-out RSS detection:**
+When we fit the raw 9 points, the extreme outlier is row 4, where $\gamma = 0.046$ mN/m (which is clearly 46.0 mN/m recorded in N/m by mistake). 
+For the RAW 9 points, the minimal RSS occurs when the left segment is points 1-4 and the right segment is points 5-9. The total RSS is approximately 1757.52.
+When we drop row 4 ($c = 1.50$ mM), we are left with 8 clean points:
+Left segment candidate (points 1, 2, 3, 5, 6): $c \in \{0.20, 0.50, 0.90, 2.40, 3.60\}$. A linear fit gives a remarkably low $\text{RSS}_L \approx 0.53$.
+Right segment candidate (points 7, 8, 9): $c \in \{5.20, 7.20, 10.00\}$. A plateau fit gives $\text{RSS}_R \approx 0.17$.
+The total RSS without row 4 is $\sim 0.70$. Since $0.70$ is far less than half of $1757.52$, row 4 is definitively flagged as corrupt.
+
+**2. BIC values:**
+Using the formula $\text{BIC} = n\ln(\text{RSS}/n) + 5\ln(n)$:
+*   **Before (raw 9 points):** $\text{RSS} = 1757.522$, $n = 9$.
+    $\text{BIC}_{\text{before}} = 9\ln(1757.522 / 9) + 5\ln(9) \approx 47.470 + 10.986 = 58.456$
+*   **After (clean 8 points):** $\text{RSS} = 0.6992$, $n = 8$.
+    $\text{BIC}_{\text{after}} = 8\ln(0.6992 / 8) + 5\ln(8) \approx -19.498 + 10.397 = -9.101$
+*   $\Delta\text{BIC} = -9.101 - 58.456 = -67.557$
+
+**3. CMC calculation:**
+On the 8 clean points, the break happens between the left segment's last point ($c = 3.60$) and the right segment's first point ($c = 5.20$).
+*   $x_{\text{last\_decl}} = \log_{10}(3.60)$
+*   $x_{\text{first\_plateau}} = \log_{10}(5.20)$
+*   $\text{CMC} = 10^{( \log_{10}(3.60) + \log_{10}(5.20) ) / 2} = \sqrt{3.60 \times 5.20} = \sqrt{18.72} \approx 4.327\text{ mM}$
+
+**4. Points Used & Detection:**
+We excluded the corrupted row and used the remaining 8 points. The corrupt point was successfully detected.
+
+FINAL_JSON: {"flagged_c": 1.50, "delta_bic": -67.557, "cmc_mM": 4.327, "n_used": 8, "corrupt_detected": true}

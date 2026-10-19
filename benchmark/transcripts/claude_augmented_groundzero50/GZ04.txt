@@ -1,0 +1,50 @@
+1 sugar ring, 0 strong ionic headgroups) combined with two long hydrocarbon tails (2 long-chain matches), joined through glycosidic + ester linkages rather than a conventional single-headgroup architecture. The 6-deoxy methyl + three ring hydroxyls specifically point to a rhamnose/fucose-class sugar, and the ester-linked β-hydroxy-acid dimer with a distal free carboxyl is the rhamnolipid motif. Confidence: high.
+
+HLB by Davies’ method
+
+Not genuinely computable for this structure — reported as null.
+
+You asked for Davies “if it can genuinely be computed,” and for this family it can’t. Davies’ group-additive scheme is structurally invalid for glycolipids for two independent reasons:
+
+The sugar ring doesn’t behave additively. Davies group numbers were parameterized for free lipophilic tails and simple headgroups; a pyranose ring’s packing geometry and its cluster of ring hydroxyls/ethers aren’t captured by summing free-tail and free-OH increments. (There’s also a real bookkeeping ambiguity — whether the sugar hydroxyls take the “free -OH” value of 1.9 or the “ring -OH” value of 0.5 — that alone swings the mechanical result by several units.)
+The headgroup is ionic. For a carboxylate, hydrophilicity is dominated by charge, not by additive group mass/contribution, which neither Davies nor Griffin’s mass-ratio form handles cleanly for an ionic head.
+
+I can crank a number out mechanically — summing the ~24 hydrocarbon carbons (×0.475) against the COOH, ester, two ethers, and three hydroxyls lands somewhere in roughly the 4–9 range depending entirely on those arbitrary choices — but that number would be an artifact of the bookkeeping, not a meaningful HLB, so I’m declining to report one. Griffin’s mass-ratio method is the better-justified method name for glycolipids, but even its numeric value isn’t trustworthy here because the molecule is anionic. If you need a usable amphiphilicity descriptor for this compound, an HLD-framework / characteristic-curvature or EACN approach is far better suited to an ionic biosurfactant than any HLB number.
+
+FINAL_JSON:
+{
+“charge_type”: “anionic”,
+“charge_confidence”: “High for the anionic (carboxylate) class assignment — a single free carboxylic acid is the only ionizable group, with no sulfate/sulfonate/phosphate/quaternary/amine present. Overall moderate because the realized charge is genuinely pH-dependent (pKa ~4.5): anionic above ~pH 6, protonated/nonionic below the pKa, and no solution pH was given.”,
+“structural_family”: “Glycolipid biosurfactant, rhamnolipid-type: a 6-deoxyhexose (rhamnose/fucose-class) pyranose headgroup glycosidically linked to an ester-joined dimer of two ~C10 3-hydroxy fatty-acid tails, terminating in a free carboxyl. Supported by 1 sugar ring + 2 long hydrocarbon chains and 0 strong ionic headgroups.”,
+“hlb”: null,
+“notes”: “HLB by Davies is reported null because Davies’ group-additive method is structurally invalid for glycolipids: the pyranose ring does not pack or contribute additively like a free lipophilic tail, the sugar-hydroxyl group-number choice (free-OH 1.9 vs ring-OH 0.5) is ambiguous and swings the result several units, and the carboxylate headgroup’s hydrophilicity is charge-dominated rather than additive. A mechanical computation is possible (lands roughly HLB 4-9 depending on arbitrary group choices) but is not a genuine/meaningful value. Griffin’s mass-ratio method is the better-justified method name for this family, but its numeric HLB is also unreliable for a strongly ionic (anionic) structure. For an ionic biosurfactant, an HLD characteristic-curvature or EACN descriptor is more appropriate than HLB.”
+}
+
+
+Create a doc
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

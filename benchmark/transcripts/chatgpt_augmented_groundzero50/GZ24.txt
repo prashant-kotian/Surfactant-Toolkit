@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"x1_rubingh": 0.5032784796461098,
+"beta_rubingh": -4.23633113340202,
+"interaction_character": "strong synergistic/favorable nonideal mixing",
+"maeda_deltag_kJ_per_mol": null,
+"reasoning": "Rubingh analysis of the supplied 50:50 mixture gives x1 = 0.50328 and beta = -4.23633; the negative beta and mixed CMC of 4.07 mM versus the 11.7351 mM Clint ideal prediction indicate strong favorable interaction. Both supplied structures are anionic sodium salts (component 1 carboxylate, component 2 sulfate ester), whereas the Maeda expression is specifically an ionic/nonionic mixed-micelle model. Applying it to an anionic/anionic pair would therefore be outside its physical domain, so no Maeda deltaG is reported."
+}

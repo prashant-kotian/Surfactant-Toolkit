@@ -1,0 +1,17 @@
+To compute the CMC following the authoritative pinned protocol, we determine the RSS-minimizing split for the given dataset. 
+
+Using the `surfactantkit` MCP tool `cmc_from_surface_tension_curve` (which performs this two-segment linear regression break-point detection), we find the optimal split occurs between 3.80 mM (the 6th point, last point of the declining baseline) and 5.20 mM (the 7th point, first point of the post-micellar plateau).
+
+The protocol specifies the formula:
+`CMC = 10^((x_last_decl + x_first_plateau)/2)`
+Where `x = log10(c)`.
+This simplifies to `CMC = sqrt(c_last_decl * c_first_plateau)`.
+
+Calculations:
+1. **CMC** = `sqrt(3.80 * 5.20)` = `sqrt(19.76)` ≈ **4.445222 mM**
+2. **rel_diff_L1**: |4.10 - 4.445222| / 4.445222 * 100 ≈ **7.766%**
+3. **rel_diff_L2**: |6.90 - 4.445222| / 4.445222 * 100 ≈ **55.223%**
+4. **Closer Source**: **L1** is closer (7.77% vs 55.22%).
+5. **Agrees within 15%?**: **true** (L1 is within 15%).
+
+FINAL_JSON: {"cmc_mM": 4.445222154178574, "rel_diff_L1": 7.766139478, "rel_diff_L2": 55.222839017, "closer": "L1", "either_agrees_15pct": true}

@@ -1,0 +1,11 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"n_carbons": 12,
+"cpp": 0.4697,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.135,
+"rh_naive_nm": 2.6375,
+"rh_perrin_nm": 2.6338,
+"delta_g_mic": null,
+"missing_for_delta_g": "CMC of this surfactant at 298.15 K (M or mole fraction) and the counterion dissociation factor beta (from conductivity slope ratio or equivalent ion-binding measurement); beta cannot be derived from A_min, N_agg, D, eta, T, v, or lc alone"
+}

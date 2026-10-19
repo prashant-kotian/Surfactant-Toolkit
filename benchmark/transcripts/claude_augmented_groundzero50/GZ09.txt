@@ -1,0 +1,144 @@
+ze
+
+More
+Pinned
+
+
+Drag to pin
+Recents
+
+
+
+Liquid-solid wetting analysis
+
+Surfactant adsorption analysis
+
+Surfactant nanoparticle hydrodynamic radius
+
+Surfactant micelle electrostatic screening
+
+Surfactant micellization thermodynamics
+
+Surfactant structure analysis
+
+Surface tension isotherm analysis
+
+Surfactant CMC and micellization analysis
+
+Surfactant micelle light-scattering analysis
+
+Surfactant structure analysis
+
+Binary surfactant system analysis
+
+Surfactant CMC and adsorption analysis
+
+Molecular synthesis problem
+
+Organic synthesis intermediates registration
+
+Gillespie kinetic CMC calculation
+
+Metropolis Monte Carlo cluster simulation
+
+Gillespie kinetic Monte Carlo micellization
+
+Metropolis Monte Carlo cluster simulation
+
+Gillespie kinetic Monte Carlo micellization
+
+Three-way mixture-model race
+
+C
+Chem-Mantra
+·
+Pro
+
+
+Liquid-solid wetting analysis
+
+
+Share
+
+Use the up and down arrow keys to move between messages.
+
+You said: [Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real liquid-solid (glass) system has a measured liquid surface tension (gamma_LV) of 25.777 mN/m and a measured contact angle (theta) of 24.370 degrees.
+
+Compound SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Use the Young-Dupre relations: work of adhesion W_A (mJ/m^2) = gamma_LV * (1 + cos(theta)); spreading coefficient S (mJ/m^2) = gamma_LV * (cos(theta) - 1).
+
+Analyze this system and report the work of adhesion, the spreading coefficient, and whether this liquid spontaneously wets this solid.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "work_of_adhesion_mJ_per_m2": <number>,
+  "spreading_coefficient_mJ_per_m2": <number>,
+  "spontaneous_wetting": <true|false>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: Analysis
+Used surfactant-computation
+
+Used surfactant-computation
+Analysis
+
+The system: The compound is sodium bis(2-ethylhexyl) sulfosuccinate — docusate sodium, commonly known as AOT (Aerosol OT). It’s a classic double-tailed anionic surfactant, so the liquid here is an aqueous AOT solution whose surface tension has been driven down to 25.777 mN/m, placed on glass.
+
+Young–Dupré results (from γ_LV = 25.777 mN/m, θ = 24.370°, cos θ ≈ 0.91089):
+
+Work of adhesion: W_A = γ_LV(1 + cos θ) ≈ 49.26 mJ/m²
+Spreading coefficient: S = γ_LV(cos θ − 1) ≈ −2.30 mJ/m²
+
+Does it spontaneously wet? No — not in the thermodynamic sense of complete spreading. Spontaneous (complete) wetting requires S ≥ 0, i.e. a contact angle of 0°. Here θ ≈ 24.4° gives S < 0, so the liquid forms a finite droplet rather than spreading into a film.
+
+That said, this is still a strongly wetting-favorable case in the practical sense: the contact angle is well below 90° and the work of adhesion (≈49 mJ/m²) is nearly double the liquid’s own surface tension, meaning the liquid adheres to the glass more strongly than it coheres to itself. It’s “partial wetting” that strongly favors contact — just short of the S ≥ 0 threshold for spontaneous film spreading, which is the criterion the final flag below reports.
+
+FINAL_JSON:
+{
+“work_of_adhesion_mJ_per_m2”: 49.25726509668378,
+“spreading_coefficient_mJ_per_m2”: -2.2967349033162257,
+“spontaneous_wetting”: false
+}
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

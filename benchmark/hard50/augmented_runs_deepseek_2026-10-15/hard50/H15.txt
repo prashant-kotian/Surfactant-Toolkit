@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"micelle_mw": 400.0,
+"aggregation_number": 0.64,
+"physically_valid": false,
+"why": "The fitted micelle molar mass (400 g/mol) is smaller than the monomer mass (625 g/mol), giving Nagg = 0.64 < 1, which is impossible since a micelle must contain at least one intact molecule."
+}

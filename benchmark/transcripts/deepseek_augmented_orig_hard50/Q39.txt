@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"K": 0.6410,
+"r_squared": 0.861
+}

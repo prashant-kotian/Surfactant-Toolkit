@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "cationic (dicationic quaternary ammonium)",
+"structural_family": "dimeric/gemini cationic surfactant with two C12 tails, two quaternary ammonium headgroups, and a four-carbon spacer",
+"davies_hlb": null,
+"valid_method": "Griffin",
+"hlb": 6.22
+}

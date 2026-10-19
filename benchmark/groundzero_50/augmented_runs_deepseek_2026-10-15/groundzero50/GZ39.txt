@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "Above approximately 1–2 mM; clearly evident from ~2 mM to 10 mM, where measured surface tension plateaus at ~27–28 mN/m while the fitted pre-CMC isotherm continues to decrease (reaching ~17 mN/m at 10 mM). Agreement is good from 10⁻² to ~1 mM.",
+"deviation_reason": "A pre-CMC adsorption isotherm assumes surface excess keeps growing with bulk concentration. Above the CMC, excess surfactant forms micelles so the free monomer concentration (and hence the adsorption driving force) becomes constant, and the monolayer is already saturated at Γ∞. The Gibbs/Szyszkowski relation therefore predicts dγ/dlnC → 0 (a plateau), which the pre-CMC model cannot reproduce — it keeps extrapolating a linear decline in γ, under-predicting the measured plateau by ~10 mN/m."
+}

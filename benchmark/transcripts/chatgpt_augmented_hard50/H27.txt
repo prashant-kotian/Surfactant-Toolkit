@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"total_carbons": 20,
+"tail_carbons_each": 8,
+"tail_carbons_total": 16,
+"backbone_carbons": 4,
+"tails_branched": true,
+"molecular_weight": 444.566,
+"n_ester_groups": 2,
+"n_sulfonate_groups": 1
+}

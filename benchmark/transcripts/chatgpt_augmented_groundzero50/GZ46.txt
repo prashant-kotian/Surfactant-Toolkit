@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"s_star_toluene_pct": 13.873769902129904,
+"s_star_hexadecane_pct": 179.4685529318323,
+"hexadecane_physically_achievable": false,
+"reasoning": "Using S* = exp(k*EACN - Cc) with k = 0.16 and Cc = -2.63 gives 13.87 g NaCl equivalent/100 mL for toluene and 179.47 g/100 mL for hexadecane. The toluene value is within practical aqueous-brine concentrations, whereas the hexadecane value is far above the solubility limit of NaCl in water and therefore cannot be realized in practice."
+}

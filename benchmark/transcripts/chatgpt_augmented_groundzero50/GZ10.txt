@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.46969136100515557,
+"predicted_morphology": "cylindrical/rodlike micelle",
+"assumptions_or_limitations": "Assumes a saturated, unbranched 12-carbon hydrophobic tail and direct applicability of Tanford's empirical relations; uses the supplied independently measured Amin = 44.70 A^2. CPP is a geometric heuristic and does not explicitly include concentration, temperature, ionic strength, counterion binding, headgroup hydration/electrostatics, chain disorder, or finite-curvature effects."
+}

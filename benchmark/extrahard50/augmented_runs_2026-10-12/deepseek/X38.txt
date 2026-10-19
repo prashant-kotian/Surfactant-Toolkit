@@ -1,0 +1,1 @@
+FINAL_JSON: {"a0_at_cpp_1_3": 87.13, "a0_at_cpp_1_2": 58.08, "cpp_at_a0_64": 0.4538, "morph_at_64": "cylindrical/rodlike micelle", "morph_at_95": "spherical micelle"}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type_at_ph": "mixed/ambiguous — neutral R-NH2 and cationic R-NH3+ present in comparable amounts near the pKaH midpoint",
+"fraction_protonated_at_low_pka": 0.387,
+"fraction_protonated_at_high_pka": 0.613,
+"confidence": "low"
+}

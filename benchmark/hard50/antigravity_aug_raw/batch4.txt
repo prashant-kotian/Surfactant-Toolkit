@@ -1,0 +1,312 @@
+### H31
+
+For a 1:1 ionic surfactant in water with NO added electrolyte at $T = 298.15\text{ K}$, the Gibbs adsorption isotherm requires prefactor $n = 2$ because both the surfactant ion and the counterion must adsorb or contribute to the chemical potential ($\mathrm{d}\mu = 2RT\,\mathrm{d}\ln C$):
+$$\Gamma_{\max} = -\frac{1}{2RT}\frac{\mathrm{d}\gamma}{\mathrm{d}\ln C}$$
+
+The measured slope is given per $\log_{10}$ decade:
+$$\frac{\mathrm{d}\gamma}{\mathrm{d}\log_{10} C} = -9.2\text{ mN/m per decade}$$
+Converting to the natural logarithm:
+$$\frac{\mathrm{d}\gamma}{\mathrm{d}\ln C} = \frac{-9.2}{\ln 10} = \frac{-9.2}{2.302585092994046} = -3.9955092770284534\text{ mN/m} = -3.9955092770284534 \times 10^{-3}\text{ N/m}$$
+
+1. Surface excess $\Gamma_{\max}$:
+$$\Gamma_{\max} = -\frac{-3.9955092770284534 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 8.058851335201267 \times 10^{-7}\text{ mol/m}^2$$
+
+2. Minimum area per molecule $A_{\min}$:
+Using $N_A = 6.02214076 \times 10^{23}\text{ mol}^{-1}$:
+$$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 8.058851335201267 \times 10^{-7}} = 2.0605158205618834 \times 10^{-18}\text{ m}^2 = 2.0605158205618834\text{ nm}^2$$
+
+3. Gibbs free energy of micellization $\Delta G_{\mathrm{mic}}$:
+Given $\mathrm{CMC} = 6.0\text{ mM} = 0.006\text{ mol/L}$, mole fraction $X = \mathrm{CMC}(\text{mol/L}) / 55.5 = 0.006 / 55.5 = 1.0810810810810811 \times 10^{-4}$.
+$$\Delta G_{\mathrm{mic}} = (1 + \alpha) R T \ln(X) = (1 + 0.30) \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.006}{55.5}\right)$$
+$$\Delta G_{\mathrm{mic}} = 1.30 \times 2478.9569795567 \times (-9.132379340916295) = -29430.755483126613\text{ J/mol} = -29.430755483126614\text{ kJ/mol}$$
+
+=== H31 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 8.058851335201267e-07,
+  "a_min_nm2": 2.0605158205618834,
+  "delta_g_mic_kJ_per_mol": -29.430755483126614
+}
+END OF QUESTION
+
+
+### H32
+
+For a spherical particle in solution at $T = 298.15\text{ K}$, translational diffusion coefficient $D = 7.5 \times 10^{-11}\text{ m}^2/\text{s}$ and solvent viscosity $\eta = 0.8903 \times 10^{-3}\text{ Pa}\cdot\text{s}$.
+Using Boltzmann constant $k_B = 1.380649 \times 10^{-23}\text{ J/K}$:
+
+1. Stokes-Einstein hydrodynamic radius $R_h$:
+$$R_h = \frac{k_B T}{6\pi \eta D} = \frac{1.380649 \times 10^{-23} \times 298.15}{6\pi \times 0.8903 \times 10^{-3} \times 7.5 \times 10^{-11}} = 3.270539031705599 \times 10^{-9}\text{ m} = 3.270539031705599\text{ nm}$$
+
+2. Perrin friction correction for a prolate ellipsoid with axial ratio $p = a/b = 1.14$:
+The Perrin shape factor $F_P$ for a prolate ellipsoid ($p > 1$) is:
+$$F_P = \frac{\sqrt{p^2 - 1}}{p^{2/3} \ln\left(p + \sqrt{p^2 - 1}\right)}$$
+For $p = 1.14$:
+$$\sqrt{1.14^2 - 1} = \sqrt{0.2996} = 0.547357$$
+$$F_P = \frac{0.547357}{(1.14)^{2/3} \ln(1.14 + 0.547357)} = \frac{0.547357}{1.091522 \times 0.523164} = 1.0015326832237572$$
+The true equivalent hydrodynamic radius with the Perrin correction is:
+$$R_{h,\mathrm{Perrin}} = \frac{R_h}{F_P} = \frac{3.270539031705599}{1.0015326832237572} = 3.265534002523322\text{ nm}$$
+
+=== H32 ===
+FINAL_JSON:
+{
+  "rh_naive_nm": 3.270539031705599,
+  "rh_perrin_corrected_nm": 3.265534002523322
+}
+END OF QUESTION
+
+
+### H33
+
+Under waterflooding conditions:
+- Displacing-fluid viscosity $\mu = 12.0\text{ cP} = 12.0 \times 10^{-3}\text{ Pa}\cdot\text{s} = 0.012\text{ Pa}\cdot\text{s}$
+- Interfacial tension $\gamma = 32.0\text{ mN/m} = 0.032\text{ N/m}$
+- Darcy velocity $v = 0.30\text{ ft/day}$:
+  Converting to SI units ($1\text{ ft} = 0.3048\text{ m}$, $1\text{ day} = 86400\text{ s}$):
+  $$v = 0.30 \times \frac{0.3048}{86400} = 1.0583333333333334 \times 10^{-6}\text{ m/s}$$
+
+1. Capillary number $\mathrm{Ca}$:
+$$\mathrm{Ca} = \frac{\mu v}{\gamma} = \frac{0.012 \times 1.0583333333333334 \times 10^{-6}}{0.032} = 3.96875 \times 10^{-7}$$
+
+2. Comparison against threshold $\mathrm{Ca}^* = 1 \times 10^{-4}$:
+$$3.96875 \times 10^{-7} < 1 \times 10^{-4}$$
+Thus, $\mathrm{Ca}$ does not exceed the threshold (`false`).
+
+3. Velocity needed to reach exactly $\mathrm{Ca} = 1 \times 10^{-4}$:
+$$v_{\mathrm{req}} = \frac{\mathrm{Ca}^* \gamma}{\mu} = \frac{10^{-4} \times 0.032}{0.012} = 2.666666666666667 \times 10^{-4}\text{ m/s}$$
+Converting to $\text{ft/day}$:
+$$v_{\mathrm{req}} = 2.666666666666667 \times 10^{-4} \times \frac{86400}{0.3048} = 75.59055118110237\text{ ft/day}$$
+
+=== H33 ===
+FINAL_JSON:
+{
+  "capillary_number": 3.96875e-07,
+  "exceeds_threshold": false,
+  "velocity_needed_ft_per_day": 75.59055118110237
+}
+END OF QUESTION
+
+
+### H34
+
+For the surfactant blend of SDS ($M_1 = 288.38\text{ g/mol}$) and DTAB ($M_2 = 308.34\text{ g/mol}$) containing $65.0\text{ wt\%}$ SDS and $35.0\text{ wt\%}$ DTAB:
+
+1. Bulk mole fraction $x_1$ from weight composition (basis: 100 g):
+$$n_1 = \frac{65.0}{288.38} = 0.22540051321173453\text{ mol}$$
+$$n_2 = \frac{35.0}{308.34} = 0.11351105922034118\text{ mol}$$
+$$x_1 = \frac{n_1}{n_1 + n_2} = \frac{0.22540051321173453}{0.22540051321173453 + 0.11351105922034118} = 0.6650683249600138$$
+
+2. Clint ideal mixed CMC ($C_1 = 8.3\text{ mM}$, $C_2 = 15.6\text{ mM}$):
+$$\frac{1}{C_{\mathrm{mix}}^{\mathrm{ideal}}} = \frac{x_1}{C_1} + \frac{1 - x_1}{C_2} = \frac{0.6650683249600138}{8.3} + \frac{0.3349316750399862}{15.6} = 0.10159871146607212\text{ mM}^{-1}$$
+$$C_{\mathrm{mix}}^{\mathrm{ideal}} = \frac{1}{0.10159871146607212} = 9.842646300624963\text{ mM}$$
+
+3. Percent deviation of measured value ($8.10\text{ mM}$) from Clint:
+$$\text{Deviation} = \frac{C_{\mathrm{ideal}} - C_{\mathrm{meas}}}{C_{\mathrm{meas}}} \times 100\% = \frac{9.842646300624963 - 8.10}{8.10} \times 100\% = 21.514151859567455\%$$
+
+4. Rubingh regular solution theory solve ($x_1^{\mathrm{mic}}$ and $\beta$):
+Solving $\frac{(x_1)^2 \ln(C_{\mathrm{mix}} x_1 / (C_1 \alpha_1))}{(1 - x_1)^2 \ln(C_{\mathrm{mix}} (1 - x_1) / (C_2 (1 - \alpha_1)))} = 1$ numerically yields:
+$$x_1^{\mathrm{mic}} = 0.70842363708548$$
+$$\beta = \frac{\ln(C_{\mathrm{mix}} \alpha_1 / (C_1 x_1))}{(1 - x_1)^2} = -1.029725548132617$$
+
+=== H34 ===
+FINAL_JSON:
+{
+  "x1_mole_fraction": 0.6650683249600138,
+  "clint_cmc_mM": 9.842646300624963,
+  "deviation_from_measured_pct": 21.514151859567455,
+  "x1_rubingh": 0.70842363708548,
+  "beta_rubingh": -1.029725548132617
+}
+END OF QUESTION
+
+
+### H35
+
+Electrokinetic measurement at $T = 298.15\text{ K}$:
+- Ionic strength $I = 0.0257\text{ M}$
+- Solvent relative permittivity $\epsilon_r = 78.4$, $\epsilon_0 = 8.8541878128 \times 10^{-12}\text{ F/m}$, $\epsilon = \epsilon_0 \epsilon_r = 6.9416832452352 \times 10^{-10}\text{ F/m}$
+- Solvent viscosity $\eta = 0.8903\text{ mPa}\cdot\text{s} = 0.8903 \times 10^{-3}\text{ Pa}\cdot\text{s}$
+- Electrophoretic mobility $\mu_e = 2.7 \times 10^{-8}\text{ m}^2/(\text{V}\cdot\text{s})$
+- Particle radius $a = 2.5\text{ nm}$
+
+1. Debye length $\lambda_D$:
+Using $\lambda_D = \sqrt{\frac{\epsilon k_B T}{2 N_A e^2 I}}$ (or $\lambda_D = 0.304 / \sqrt{I\text{ in mol/L}}\text{ nm}$):
+$$\lambda_D = \frac{0.304}{\sqrt{0.0257}} = 1.8963742082527808\text{ nm}$$
+
+2. Dimensionless product $\kappa a$:
+$$\kappa a = \frac{a}{\lambda_D} = \frac{2.5}{1.8963742082527808} = 1.3183052106068074$$
+
+3. Zeta potential $\zeta$ from Smoluchowski relation:
+$$\zeta = \frac{\mu_e \eta}{\epsilon_0 \epsilon_r} = \frac{2.7 \times 10^{-8} \times 0.8903 \times 10^{-3}}{8.8541878128 \times 10^{-12} \times 78.4} = 0.03462863278369817\text{ V} = 34.62863278369817\text{ mV}$$
+
+=== H35 ===
+FINAL_JSON:
+{
+  "debye_length_nm": 1.8963742082527808,
+  "kappa_a": 1.3183052106068074,
+  "zeta_mV": 34.62863278369817
+}
+END OF QUESTION
+
+
+### H36
+
+From chart `H-36_chart.png`:
+The chart plots $y = \ln(\mathrm{CMC}\text{ [mol L}^{-1}\text{]})$ versus $x = 1000/T\text{ [K}^{-1}\text{]}$ for $[\mathrm{C}_{12}\mathrm{mpy}][\mathrm{Br}]$.
+The least-squares best-fit line drawn across the 8 data points:
+- Slope with respect to $1000/T$:
+  $$\text{slope} = -0.30086384025132706\text{ K}$$
+
+- Conversion to micellization enthalpy $\Delta H_{\mathrm{mic}}$:
+  Using the relation $\mathrm{d}(\ln X) = \frac{\Delta H}{R}\,\mathrm{d}(1/T)$:
+  Since $x = 1000/T$, $\mathrm{d}(1/T) = 10^{-3}\,\mathrm{d}(1000/T)$.
+  $$\Delta H_{\mathrm{mic}} = R \times \left(\frac{\mathrm{d}\ln X}{\mathrm{d}(1000/T)}\right) \times 1000 = 8.314462618 \times (-0.30086384025132706) = -2.5015211528775825\text{ kJ/mol}$$
+  (The $\times 1000$ from the $1000/T$ axis and the $\div 1000$ from $\text{J}\to\text{kJ}$ cancel exactly).
+
+- Process:
+  Since $\Delta H_{\mathrm{mic}} < 0$, the micellization process is **exothermic**.
+
+- Adequacy of single straight line:
+  The 8 scatter points exhibit a pronounced parabolic/U-shaped curvature (minimum around $1000/T \approx 3.35\text{ K}^{-1}$, corresponding to $T \approx 298.15\text{ K}$, due to a large non-zero heat capacity of micellization $\Delta C_{p,\mathrm{mic}}$). A single straight line fails to capture this temperature dependence, so `single_straight_line_adequate` is **false**.
+
+=== H36 ===
+FINAL_JSON:
+{
+  "arrhenius_slope": -0.30086384025132706,
+  "delta_h_kJ_per_mol": -2.5015211528775825,
+  "process": "exothermic",
+  "single_straight_line_adequate": false
+}
+END OF QUESTION
+
+
+### H37
+
+From chart `H-37_chart.png`:
+Both nonionic surfactant solutions A and B follow the Szyszkowski adsorption equation:
+$$\gamma = \gamma_0 - R T \Gamma_{\max} \ln(1 + K c)$$
+with $\gamma_0 = 71.9\text{ mN/m}$, $\Gamma_{\max} = 2.21 \times 10^{-6}\text{ mol/m}^2$, $T = 298.15\text{ K}$.
+
+At concentration $c = 3.0 \times 10^{-5}\text{ mol/L}$:
+1. Curve A ($K = 2.5 \times 10^5\text{ M}^{-1}$):
+   $$\gamma_A = 71.9 - (8.314462618 \times 298.15 \times 2.21 \times 10^{-6} \times 10^3) \ln(1 + 2.5 \times 10^5 \times 3.0 \times 10^{-5}) = 60.17565814802871\text{ mN/m}$$
+2. Curve B ($K = 1.0 \times 10^4\text{ M}^{-1}$):
+   $$\gamma_B = 71.9 - (8.314462618 \times 298.15 \times 2.21 \times 10^{-6} \times 10^3) \ln(1 + 1.0 \times 10^4 \times 3.0 \times 10^{-5}) = 70.4626386796694\text{ mN/m}$$
+3. Difference $\Delta \gamma = \gamma_A - \gamma_B$:
+   $$\Delta \gamma = 60.17565814802871 - 70.4626386796694 = -10.286980531640687\text{ mN/m}$$
+4. Adsorption constant comparison:
+   Curve A produces a larger surface tension reduction at the same concentration, indicating stronger surface activity and a larger adsorption constant $K$ ($K_A > K_B$): **A**.
+
+=== H37 ===
+FINAL_JSON:
+{
+  "gamma_A": 60.17565814802871,
+  "gamma_B": 70.4626386796694,
+  "delta_gamma_A_minus_B": -10.286980531640687,
+  "larger_K_curve": "A"
+}
+END OF QUESTION
+
+
+### H38
+
+From chart `H-38_chart.png`:
+Electrical conductivity (mS/cm) versus concentration with the x-axis labeled in micromolar: "Concentration ($\mu$M)".
+1. Break concentration in chart units:
+   The intersection of the two linear segments occurs at $5750.0\text{ }\mu\text{M}$.
+2. In molarity:
+   $$\mathrm{CMC} = 5750.0 \times 10^{-6}\text{ mol/L} = 0.00575\text{ mol/L}$$
+3. Counterion binding degree $\beta$:
+   Slope of premicellar segment: $S_1 = 0.64\text{ mS/cm per mM}$
+   Slope of postmicellar segment: $S_2 = 0.22\text{ mS/cm per mM}$
+   $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.22}{0.64} = 1 - 0.34375 = 0.65625$$
+4. Gibbs free energy of micellization $\Delta G_{\mathrm{mic}}$:
+   $$\Delta G_{\mathrm{mic}} = (2 - \beta) R T \ln(X)$$
+   $$X = \frac{\mathrm{CMC}}{55.5} = \frac{0.00575}{55.5} = 1.036036036 \times 10^{-4}$$
+   $$\Delta G_{\mathrm{mic}} = (2 - 0.65625) \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00575}{55.5}\right) = 1.34375 \times 2478.9569795567 \times (-9.174980608779633)$$
+   $$\Delta G_{\mathrm{mic}} = -30562.968865098555\text{ J/mol} = -30.562968865098554\text{ kJ/mol}$$
+
+=== H38 ===
+FINAL_JSON:
+{
+  "cmc_in_chart_units": 5750.0,
+  "cmc_in_molar": 0.00575,
+  "beta_from_chart": 0.65625,
+  "delta_g_mic_kJ_per_mol": -30.562968865098554
+}
+END OF QUESTION
+
+
+### H39
+
+From chart `H-39_chart.png`:
+The DHPC/DTAB system has pure CMCs of $C_1 = 1.8\text{ mM}$ (DHPC) and $C_2 = 15.6\text{ mM}$ (DTAB).
+The plotted data points are:
+- $\alpha_2 = 0.95, \mathrm{CMC}_{\mathrm{mix}} = 10.8\text{ mM}$
+- $\alpha_2 = 0.90, \mathrm{CMC}_{\mathrm{mix}} = 6.2\text{ mM}$
+- $\alpha_2 = 0.80, \mathrm{CMC}_{\mathrm{mix}} = 4.8\text{ mM}$
+- $\alpha_2 = 0.60, \mathrm{CMC}_{\mathrm{mix}} = 6.75\text{ mM}$
+- $\alpha_2 = 0.50, \mathrm{CMC}_{\mathrm{mix}} = 2.4\text{ mM}$
+
+1. Outlier identification:
+   The point at $\alpha_2 = 0.60$ with $\mathrm{CMC}_{\mathrm{mix}} = 6.75\text{ mM}$ is an obvious transcription spike, being significantly higher than the surrounding values at $\alpha_2 = 0.80$ ($4.8\text{ mM}$) and $\alpha_2 = 0.50$ ($2.4\text{ mM}$).
+   Thus, `outlier_alpha2` = $0.60$.
+
+2. Rubingh regression excluding the outlier:
+   Using the remaining 4 clean points with $\alpha_1 = 1 - \alpha_2$:
+   - $\alpha_1 = 0.05, \mathrm{CMC}_{\mathrm{mix}} = 10.8\text{ mM}$
+   - $\alpha_1 = 0.10, \mathrm{CMC}_{\mathrm{mix}} = 6.2\text{ mM}$
+   - $\alpha_1 = 0.20, \mathrm{CMC}_{\mathrm{mix}} = 4.8\text{ mM}$
+   - $\alpha_1 = 0.50, \mathrm{CMC}_{\mathrm{mix}} = 2.4\text{ mM}$
+   
+   Solving Rubingh's equation across the 4 clean points yields pointwise $\beta$ values of $[-0.198398, -1.414803, -1.096452, -2.042225]$:
+   - Mean $\beta$: $-1.1879695992309924$
+   - Sample standard deviation ($n-1 = 3$): $0.6649877960566865$
+   - Number of points used: $4$
+
+=== H39 ===
+FINAL_JSON:
+{
+  "outlier_alpha2": 0.6,
+  "beta_mean_excluding_outlier": -1.1879695992309924,
+  "beta_std_excluding_outlier": 0.6649877960566865,
+  "n_points_used": 4
+}
+END OF QUESTION
+
+
+### H40
+
+From chart `H-40_chart.png`:
+Aggregation number $N_{\mathrm{agg}}$ measured by three techniques with 1-sigma error bars:
+- SLS: $57.5 \pm 1.5 \implies [56.0, 59.0]$
+- DLS: $64.0 \pm 3.0 \implies [61.0, 67.0]$
+- FQ: $55.5 \pm 2.0 \implies [53.5, 57.5]$
+- Geometric reference: $55.51$ (dashed line at $55.5086$)
+
+1. Overall mean across all three techniques:
+   $$\text{Mean} = \frac{57.5 + 64.0 + 55.5}{3} = \frac{177.0}{3} = 59.0$$
+
+2. Consistency evaluation against reference ($55.51$):
+   - SLS interval $[56.0, 59.0]$: does not contain $55.51$ ($55.51 < 56.0$) $\implies$ inconsistent, excluded.
+   - DLS interval $[61.0, 67.0]$: does not contain $55.51$ ($55.51 < 61.0$) $\implies$ inconsistent, excluded.
+   - FQ interval $[53.5, 57.5]$: contains $55.51$ ($53.5 \le 55.51 \le 57.5$) $\implies$ consistent, retained.
+   Therefore, not all three include the reference (`all_three_include_reference`: `false`).
+   Excluded techniques: `SLS, DLS`.
+
+3. Mean excluding inconsistent technique(s):
+   Only FQ is retained, so the mean is $55.5$.
+
+4. Geometric reference:
+   $$N_{\mathrm{agg}}^{\mathrm{geom}} = \frac{\frac{4}{3}\pi l_c^3}{v} = \frac{\frac{4}{3}\pi (16.68)^3}{350.2} = 55.50864249396815$$
+
+=== H40 ===
+FINAL_JSON:
+{
+  "mean_including_all": 59.0,
+  "mean_excluding_inconsistent": 55.5,
+  "geometric_reference": 55.50864249396815,
+  "all_three_include_reference": false,
+  "excluded": "SLS, DLS"
+}
+END OF QUESTION

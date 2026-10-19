@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"debye_length_nm": 1.8964,
+"kappa_a": 1.3183,
+"zeta_mV": 34.63
+}

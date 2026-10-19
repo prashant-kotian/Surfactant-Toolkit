@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"zeta_potential_mV": 40.386
+}

@@ -1,0 +1,88 @@
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+This surfactant's real characteristic curvature is Cc = -2.63, and its real HLD-NAC salinity-sensitivity constant is k = 0.16.
+
+The optimum (Winsor III, balanced) salinity S* for a given oil, in an HLD-NAC framework, is given by S* = exp(k*EACN - Cc), where EACN is the oil's equivalent alkane carbon number and S* is expressed as an equivalent NaCl percentage (g per 100 mL).
+
+Using this real relation, predict the optimum salinity for two real oils: toluene (EACN = 0) and hexadecane (EACN = 16). Assess whether each predicted value is physically achievable in practice.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "s_star_toluene_pct": <number>,
+  "s_star_hexadecane_pct": <number>,
+  "hexadecane_physically_achievable": <true|false>,
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: The tool matches the formula in the question (with ΔT = 0, the temperature term drops out).
+Loaded surfactant-computation
+
+Loaded surfactant-computation
+
+The tool matches the formula in the question (with ΔT = 0, the temperature term drops out). Let me run both oils.
+
+Used surfactant-computation
+
+Used surfactant-computation
+
+Both values confirmed via the tool. Here’s the assessment from first principles.
+
+The surfactant is sodium dodecyl sulfate (SDS) — a dodecyl (C₁₂) sulfate head with a Na⁺ counterion. Its strongly negative Cc (−2.63) marks it as quite hydrophilic, which is the key to interpreting the results.
+
+Predicted optimum salinities (S* = exp(k·EACN − Cc), ΔT = 0):
+
+Oil	EACN	Exponent (k·EACN − Cc)	S* (g NaCl eq / 100 mL)
+Toluene	0	0 + 2.63 = 2.63	13.87%
+Hexadecane	16	2.56 + 2.63 = 5.19	179.47%
+
+Physical achievability: The ceiling here is the solubility of NaCl in water, which saturates at roughly 26 g/100 mL (~26% w/v) at room temperature. You cannot make a brine more concentrated than that.
+
+Toluene (13.87%) sits comfortably below saturation — about half the maximum. This is readily achievable in practice; a ~14% NaCl brine is an ordinary working concentration.
+Hexadecane (179.47%) is roughly 7× the saturation limit. It is physically impossible to prepare such a brine — the salt would precipitate long before you got there. So SDS alone cannot reach the Winsor III balanced state with hexadecane by salinity tuning.
+
+This is chemically sensible rather than a quirk of the numbers: SDS is a hydrophilic ionic surfactant, and balancing it against a very lipophilic oil (long n-alkane) would require screening the sulfate headgroup charge far more than attainable salinity allows. In real EOR/formulation practice you’d reach for a more lipophilic (less negative Cc) surfactant, or add a lipophilic co-surfactant/co-solvent, rather than pushing salinity.
+
+FINAL_JSON:
+{
+“s_star_toluene_pct”: 13.87,
+“s_star_hexadecane_pct”: 179.47,
+“hexadecane_physically_achievable”: false,
+“reasoning”: “Using S* = exp(kEACN - Cc) with k=0.16 and Cc=-2.63 for sodium dodecyl sulfate (SDS): toluene (EACN=0) gives S = exp(2.63) = 13.87% NaCl eq, and hexadecane (EACN=16) gives S* = exp(5.19) = 179.47% NaCl eq. NaCl saturates in water at ~26% w/v (~26 g/100 mL) at room temperature, so no higher brine concentration is attainable. Toluene’s 13.87% is well below this limit and physically achievable. Hexadecane’s 179.47% is ~7x the solubility ceiling and cannot be prepared, so SDS alone cannot reach the Winsor III optimum with hexadecane via salinity; this reflects SDS being a hydrophilic surfactant too far mismatched from a long-alkane oil, which would instead require a more lipophilic surfactant or a co-surfactant/co-solvent.”
+}
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

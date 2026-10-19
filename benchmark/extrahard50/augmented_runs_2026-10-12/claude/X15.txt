@@ -1,0 +1,13 @@
+I'll run the margin search and both x1 methods with the surfactant tools, then check the numbers myself.
+
+The margin search converged at about 1.3%, so it does not fit within 1%. Rodenas and Rubingh give x1 ≈ 0.803 and 0.787, which agree within 0.03.
+
+1. **margin = 0.013.** The minimal feasible margin was 0.01314, with total infeasibility 0.0009998 there. The fit at that margin has W12 = −1.40, W21 = −1.50 and R² = 0.9996. The tool says its search runs on a grid, so the second figure could move slightly with a finer grid.
+2. **feasible_within_1pct = false**, because 0.013 > 0.01.
+3. **x1_rodenas = 0.8031.** The slope d ln(CMC_mix)/dα1 = (ln 1.25 − ln 2.03)/0.40 = −1.2122. That gives x1 = 0.25 × 1.2122 + 0.50 = 0.8031, which matches the tool's value at α1 = 0.50.
+4. **x1_rubingh = 0.7865.** This is the only root in (0, 1), confirmed by a dense root scan, and it corresponds to β = −1.394 (synergistic).
+5. **agree_003 = true**, since the difference is |0.8031 − 0.7865| = 0.0166 ≤ 0.03.
+
+I also checked feasibility with my own optimizer, using a simpler log-residual objective rather than the tool's infeasibility measure. The residual falls sharply between 0.01 and 0.013 margin, which is consistent with the reported boundary, but those numbers aren't on the same scale as the tool's.
+
+FINAL_JSON: {"margin": 0.013, "feasible_within_1pct": false, "x1_rodenas": 0.8031, "x1_rubingh": 0.7865, "agree_003": true}

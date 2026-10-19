@@ -1,0 +1,17 @@
+I'll run this with the EOMMM global-fit tool, using the pinned protocol.
+
+The fit is fully feasible at the 0.10 margin, landing on W12 = 3.50 and W21 = 1.50.
+
+1. **W12:** 3.50
+2. **W21:** 1.50
+3. **r_squared:** 0.99353 (in ln(CMC_mix) space)
+4. **x1_first_point:** 0.82926 (at α1 = 0.15)
+5. **feasible:** true. The total infeasibility was about 1.8×10⁻¹³, well below 1e-6.
+
+Run settings: the question didn't give dissociation numbers, so I used the tool defaults, r1 = r2 = 2, which treat both surfactants as fully dissociated 1:1 ionics. If either one is nonionic, set it to 1.0, and W12 and W21 will change.
+
+At this margin the fitted CMC for the first point is 6.67 mM against 7.37 mM measured. That is just inside the ±10% band.
+
+A margin as wide as 0.10 doesn't guarantee a unique (W12, W21). Re-running at tighter margins would show whether this optimum holds.
+
+FINAL_JSON: {"W12": 3.5, "W21": 1.5, "r_squared": 0.9935320744566886, "x1_first_point": 0.829258785663235, "feasible": true}

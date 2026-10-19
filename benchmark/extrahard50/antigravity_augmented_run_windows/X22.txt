@@ -1,0 +1,12 @@
+To find the asymmetric-Margules interaction parameters and the corresponding micellar mole fraction using the EOMMM global fit, I ran the `eommm_global_fit` tool from the `surfactantkit` MCP server with the provided experimental data and the default dissociation numbers (since none were specified). 
+
+Here are the results of the 2D grid search at a margin of 0.10:
+
+1. **W12**: 0.90
+2. **W21**: 1.60
+3. **r_squared**: 0.9984240805557485
+4. **x1_third_point** (at $\alpha_1 = 0.25$): 0.8108824340338063
+5. **feasible**: true (total_infeasibility was approximately $6.38 \times 10^{-14}$, which is well under $10^{-6}$)
+
+FINAL_JSON: {"W12": 0.8999999999999999, "W21": 1.6000000000000003, "r_squared": 0.9984240805557485, "x1_third_point": 0.8108824340338063, "feasible": true}
+0000000003, "r_squared": 0.9984240805557485, "x1_third_point": 0.8108824340338063, "feasible": true}

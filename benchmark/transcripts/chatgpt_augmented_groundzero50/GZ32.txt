@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"total_carbons": 20,
+"tail_carbons_total": 16,
+"tails_branched": true,
+"tail_description": "Two 8-carbon branched tails; each is a 2-ethylhexyl-type group with a six-carbon main chain from the ester oxygen and an ethyl branch at carbon 2.",
+"backbone_carbons": 4
+}

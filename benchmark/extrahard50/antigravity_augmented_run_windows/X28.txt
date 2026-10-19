@@ -1,0 +1,33 @@
+Based on the pinned protocol, here is the step-by-step resolution of the conflicting duplicate concentrations and the subsequent calculations:
+
+### Step 1: Exclusion of the Duplicate Point
+The two measurements at $c = 1.60\text{ mM}$ are $45.9\text{ mN/m}$ (Row 4) and $38.7\text{ mN/m}$ (Row 5). 
+Both have $\log_{10}(c) = 0.20412$. The 4 nearest other points in $\log_{10}(c)$ (excluding duplicates) correspond to $c = 0.60$, $1.00$, $2.40$, and $3.50\text{ mM}$. 
+Fitting an OLS regression through these 4 neighboring points ($\gamma$ vs $\log_{10} c$) yields a line that predicts a surface tension of approximately $55.86\text{ mN/m}$ at $c=1.60\text{ mM}$. 
+
+Computing the residuals for both duplicates:
+- Row 4 ($45.9\text{ mN/m}$): $|45.9 - 55.859| \approx 9.96$
+- Row 5 ($38.7\text{ mN/m}$): $|38.7 - 55.859| \approx 17.16$
+
+The duplicate with the **larger residual** is Row 5 ($38.7\text{ mN/m}$). Therefore, it is excluded.
+
+### Step 2: Break Rule for the CMC
+Applying the minimum Total Residual Sum of Squares (RSS) break rule on the 9 remaining points to split them into two OLS lines in $\log_{10}(c)$ (with at least 3 points per side).
+The RSS-minimizing boundary cleanly splits the dataset into a 5-point declining segment (premicellar: $0.30 \text{ to } 2.40 \text{ mM}$) and a 4-point plateau segment (postmicellar: $3.50 \text{ to } 9.50 \text{ mM}$).
+- Last declining point: $c = 2.40\text{ mM}$ ($\log_{10} c = 0.38021$)
+- First plateau point: $c = 3.50\text{ mM}$ ($\log_{10} c = 0.54407$)
+
+$CMC = 10^{(0.38021 + 0.54407)/2} = 2.898275349237888\text{ mM}$
+
+### Step 3: Gibbs Surface Excess Calculation
+The winning premicellar OLS fit uses the first 5 points and yields a slope of $-21.54541\text{ mN/m per }\log_{10}(c)$.
+Converted to per-$\ln(c)$: $-21.54541 / \ln(10) = -9.357053014618117\text{ mN/m per }\ln(c)$.
+
+Using the explicit pinned formula for a 1:1 ionic surfactant without added salt ($n=2$):
+$\Gamma_{max} = \frac{-(-9.357053014618117) \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.8873104683058866 \times 10^{-6}\text{ mol/m}^2$
+
+### Step 4: Metadata
+- Final points used: $9$
+- Conflict detected: `true` (The dual values at 1.60 mM triggered the exclusion branch).
+
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.898275349237888, "gamma_max": 1.8873104683058866e-06, "n_used": 9, "conflict_detected": true}

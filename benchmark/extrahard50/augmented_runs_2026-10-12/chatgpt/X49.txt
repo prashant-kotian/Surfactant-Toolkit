@@ -1,0 +1,10 @@
+…
+Show more
+Worked for 1m 15s
+ChatGPT said:
+cmc_point: 1.6112125327 mM
+dG_point: −26.5845163434 kJ/mol
+dG_ci_low: −26.6167983304 kJ/mol
+dG_ci_high: −26.5497650882 kJ/mol
+
+FINAL_JSON: {"cmc_point": 1.6112125326645657, "dG_point": -26.58451634344713, "dG_ci_low": -26.61679833038376, "dG_ci_high": -26.549765088226437}

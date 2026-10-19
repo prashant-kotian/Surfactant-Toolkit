@@ -1,0 +1,384 @@
+se:
+
+Identify: C12 sulfate sodium salt, anionic.
+
+CMC: break in γ vs ln c. Use local linear pre-CMC segment (3.246 and 6.492 mM) and mean plateau (37.38 mN/m). Intersection gives 8.99 mM. X_cmc=1.62e-4.
+
+Adsorption: slope = -16.9 mN/m per ln c. Gibbs for 1:1 ionic no added salt: Γ_max = -(1/(2RT)) dγ/dln c =3.43e-6 mol/m2. a_min=1/(N_A Γ)=0.485 nm². This is saturated monolayer pre-CMC. Mention if n=1 would double area, but no added salt so n=2.
+
+Thermodynamics: ΔG =1.272 RT ln X = -27.3 kJ/mol. ΔS cannot be determined from one temperature; no ΔH or dΔG/dT. So null.
+
+Final JSON.
+
+Need maybe mention "CMC is operationally from intersection; uncertainty ~0.5 mM." Good.
+
+Need no images. Fine.
+
+Double-check if "delta_g_mic = (1+alpha) R T ln(X_cmc)" sometimes for ionic surfactant with alpha degree of dissociation: ΔG = (1+α) RT ln X. Yes.
+
+Could entropy be approximated if assume ΔH=0? No. Don't. Null.
+
+Need final answer with exact JSON. Use numbers. Ensure JSON valid. Use null. Good.
+
+Need maybe mention "pre-CMC adsorption behavior: γ decreases with log c; maximum surface excess..." Good.
+
+Let's final.
+
+The structure is a sodium 
+𝐶
+12
+C
+12
+	​
+
+ alkyl sulfate: a negatively charged sulfate headgroup with a sodium counterion, so it is an anionic surfactant.
+
+From the 
+𝛾
+γ vs 
+ln
+⁡
+𝑐
+lnc data, the pre-CMC branch is essentially linear just before the plateau. Using the local segment between 3.2462 and 6.4923 mM and the mean plateau tension of the last three points 
+(
+𝛾
+p
+l
+a
+t
+e
+a
+u
+≈
+37.38
+ 
+m
+N
+ 
+m
+−
+1
+)
+(γ
+plateau
+	​
+
+≈37.38 mNm
+−1
+), the intersection gives
+
+𝑐
+C
+M
+C
+≈
+8.99
+ 
+m
+M
+c
+CMC
+	​
+
+≈8.99 mM
+
+and therefore
+
+𝑋
+C
+M
+C
+=
+0.00899
+0.00899
++
+55.5
+≈
+1.62
+×
+10
+−
+4
+.
+X
+CMC
+	​
+
+=
+0.00899+55.5
+0.00899
+	​
+
+≈1.62×10
+−4
+.
+
+For the pre-CMC adsorption, the local slope is
+
+𝑑
+𝛾
+𝑑
+ln
+⁡
+𝑐
+≈
+−
+16.9
+ 
+m
+N
+ 
+m
+−
+1
+.
+dlnc
+dγ
+	​
+
+≈−16.9 mNm
+−1
+.
+
+For a 1:1 ionic surfactant with no swamping electrolyte, the Gibbs adsorption equation has prefactor 
+2
+𝑅
+𝑇
+2RT:
+
+Γ
+max
+⁡
+=
+−
+1
+2
+𝑅
+𝑇
+𝑑
+𝛾
+𝑑
+ln
+⁡
+𝑐
+≈
+3.43
+×
+10
+−
+6
+ 
+m
+o
+l
+ 
+m
+−
+2
+.
+Γ
+max
+	​
+
+=−
+2RT
+1
+	​
+
+dlnc
+dγ
+	​
+
+≈3.43×10
+−6
+ molm
+−2
+.
+
+Thus
+
+𝑎
+min
+⁡
+=
+1
+𝑁
+𝐴
+Γ
+max
+⁡
+≈
+4.85
+×
+10
+−
+19
+ 
+m
+2
+≈
+0.485
+ 
+n
+m
+2
+.
+a
+min
+	​
+
+=
+N
+A
+	​
+
+Γ
+max
+	​
+
+1
+	​
+
+≈4.85×10
+−19
+ m
+2
+≈0.485 nm
+2
+.
+
+The micellization free energy is
+
+Δ
+𝐺
+m
+i
+c
+=
+(
+1
++
+𝛼
+)
+𝑅
+𝑇
+ln
+⁡
+𝑋
+C
+M
+C
+,
+ΔG
+mic
+	​
+
+=(1+α)RTlnX
+CMC
+	​
+
+,
+
+with 
+𝛼
+=
+0.272
+α=0.272, 
+𝑇
+=
+296.15
+ 
+K
+T=296.15 K, and 
+𝑋
+C
+M
+C
+=
+1.62
+×
+10
+−
+4
+X
+CMC
+	​
+
+=1.62×10
+−4
+:
+
+Δ
+𝐺
+m
+i
+c
+≈
+−
+27.3
+ 
+k
+J
+ 
+m
+o
+l
+−
+1
+.
+ΔG
+mic
+	​
+
+≈−27.3 kJmol
+−1
+.
+
+The entropy of micellization cannot be genuinely determined from a single temperature; that requires either 
+Δ
+𝐻
+m
+i
+c
+ΔH
+mic
+	​
+
+ or the temperature derivative of 
+Δ
+𝐺
+m
+i
+c
+ΔG
+mic
+	​
+
+. Therefore 
+Δ
+𝑆
+m
+i
+c
+ΔS
+mic
+	​
+
+ is left null.
+
+FINAL_JSON:
+{
+"charge_type": "anionic",
+"cmc_mM": 8.99,
+"gamma_max_mol_per_m2": 3.43e-6,
+"a_min_nm2": 0.485,
+"delta_g_mic_kJ_per_mol": -27.34,
+"delta_s_mic_J_per_mol_K": null
+}
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

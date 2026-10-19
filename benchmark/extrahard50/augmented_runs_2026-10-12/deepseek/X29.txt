@@ -1,0 +1,1 @@
+FINAL_JSON: {"sign_flipped_run": "run2", "corrected_value": -29.88992746311924, "base10_run": "run3", "ratio_run3_run1": 0.43429448190325143}

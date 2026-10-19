@@ -1,0 +1,49 @@
+To solve this problem, we need to apply Ordinary Least Squares (OLS) to the given optimal salinity ($S^*$) vs. Equivalent Alkane Carbon Number (EACN) data, according to the provided theoretical relationship:
+$\ln(S^*) = k \cdot \text{EACN} - Cc$
+
+**Step 1: OLS Fit for $k$ and $Cc$**
+First, we find the natural logarithm of the optimal salinity ($\ln(S^*)$) for each data point:
+*   $y_1 = \ln(2.8838) \approx 1.05911$ (at $x_1 = 6$)
+*   $y_2 = \ln(3.1469) \approx 1.14642$ (at $x_2 = 10$)
+*   $y_3 = \ln(3.4628) \approx 1.24208$ (at $x_3 = 14$)
+*   $y_4 = \ln(3.7797) \approx 1.32965$ (at $x_4 = 18$)
+
+We have $n = 4$ data points. We calculate the means:
+*   $\bar{x} = (6 + 10 + 14 + 18) / 4 = 12$
+*   $\bar{y} = (1.05911 + 1.14642 + 1.24208 + 1.32965) / 4 \approx 1.194315$
+
+Now, we calculate the slope ($k$) and the intercept ($-Cc$):
+$k = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2}$
+
+Differences from the mean for $x$: $[-6, -2, 2, 6]$
+Differences from the mean for $y$: $[-0.135205, -0.047895, 0.047765, 0.135335]$
+
+Sum of products of differences = $(-6 \cdot -0.135205) + (-2 \cdot -0.047895) + (2 \cdot 0.047765) + (6 \cdot 0.135335) \approx 1.81456$
+Sum of squared $x$ differences = $36 + 4 + 4 + 36 = 80$
+
+$k = \frac{1.81456}{80} \approx 0.02268$
+
+The intercept $C$ is found using $C = \bar{y} - k \cdot \bar{x}$:
+$C = 1.194315 - (0.022682 \cdot 12) = 1.194315 - 0.272184 \approx 0.92213$
+Since the equation dictates that the intercept is $-Cc$, we have:
+$-Cc = 0.92213 \implies Cc = -0.9221$
+
+**Step 2: Candidate Matching**
+Comparing our fitted $Cc$ ($-0.9221$) to the two literature candidates, it is extremely close to Candidate A.
+Matching candidate = "-0.92"
+
+**Step 3: Calculating $S^*$ at $\text{EACN} = 16$**
+Using our fitted parameters, we predict $\ln(S^*)$ at $\text{EACN} = 16$:
+$\ln(S^*) = 0.02268 \cdot 16 - (-0.9221) = 0.36288 + 0.9221 = 1.28498$
+$S^* = e^{1.28498} \approx 3.615\%$
+
+**Step 4: HLD Calculation**
+For the formulation with $S = 3\%$, $\text{EACN} = 12$, and $dT = 0$:
+$\text{HLD} = \ln(S) - k \cdot \text{EACN} + Cc$
+$\text{HLD} = \ln(3) - (0.02268 \cdot 12) + (-0.9221)$
+$\text{HLD} = 1.0986 - 0.27216 - 0.9221 = -0.09566 \approx -0.0957$
+
+**Step 5: Phase Type Analysis**
+The resulting HLD is approximately $-0.0957$. Because this falls solidly within the inclusive bracket of $[-0.3, 0.3]$, the microemulsion phase behavior demonstrates a Winsor III system.
+
+FINAL_JSON: {"k": 0.02268, "cc": -0.9221, "matching_candidate": "-0.92", "S_star_E16": 3.615, "hld_S3_E12": -0.0957, "winsor": "Winsor III"}

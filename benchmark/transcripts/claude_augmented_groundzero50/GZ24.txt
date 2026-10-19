@@ -1,0 +1,58 @@
+
+
+Solving Rubingh’s equation for this point:
+
+Quantity	Value
+Micellar mole fraction of cholate, X₁	0.503
+Interaction parameter, β	−4.24
+Activity coefficients (f₁, f₂)	0.35, 0.34
+
+The micelle is essentially equimolar (X₁ ≈ 0.50). β is clearly negative → synergistic / net attractive mixing. Rosen’s criterion for genuine mixed-micelle synergism is satisfied: β < 0 and |β| = 4.24 ≫ |ln(CMC₁/CMC₂)| = 0.04, consistent with the mixed CMC lying below both pure values. Activity coefficients well under unity (≈ 0.34–0.35) confirm strong negative deviation.
+
+Physically this is notable: two like-charged (both anionic) surfactants would normally mix near-ideally or mildly antagonistically because of head-group electrostatic repulsion. The pronounced synergy here is consistent with cholate being a rigid, facially amphiphilic steroid with a low, diffuse surface-charge density — intercalating it among the SDS tails dilutes the sulfate head-group charge and relieves packing strain, making the mixed aggregate more favorable than either pure one.
+
+Is the Maeda free-energy expression appropriate here? No.
+
+The expression ΔG_M = RT(B₀ + B₁X₁ + B₂X₁²), with B₀ = ln(X_cmc2), B₂ = −β, and B₁ = ln(X_cmc1/X_cmc2) − B₂, is Maeda’s model, and it is derived specifically for an ionic + nonionic binary pair. Its whole structure assigns the electrostatic / counterion free-energy contribution to a single ionic component mixing with a neutral partner: B₁ carries that one-sided head-group electrostatic term, and B₀ anchors the free energy to one ionic reference CMC.
+
+In this system both components are ionic (carboxylate + sulfate, each with Na⁺ counterions). The single-ionic-component assumption is violated — the model has no term for the second charged head group’s electrostatics or for the counterion entropy of a two-ionic mixture. You can push the numbers through the algebra mechanically, but the resulting ΔG would not correspond to the physics of this ionic/ionic pair, so I am not reporting it as a valid value.
+
+Appropriate alternatives for an ionic/ionic mixture would be the Rubingh/regular-solution ΔG of mixing (which I’ve used above for X₁ and β) or an electrostatics-aware treatment (e.g. a PB/molecular-thermodynamic model) rather than the Maeda ionic–nonionic form.
+
+FINAL_JSON:
+{
+“x1_rubingh”: 0.5033,
+“beta_rubingh”: -4.236,
+“interaction_character”: “synergistic (net attractive; strong negative deviation from ideality, genuine mixed-micelle synergism with mixed CMC below both pure CMCs; activity coefficients ~0.34)”,
+“maeda_deltag_kJ_per_mol”: null,
+“reasoning”: “Both components are anionic: component 1 is a carboxylate bile salt (sodium cholate) and component 2 is a sulfate ester (SDS), confirmed by charge-type classification. The Maeda expression (B0=ln Xcmc2, B2=-beta, B1=ln(Xcmc1/Xcmc2)-B2) is derived for a binary ionic+nonionic mixture, assigning the electrostatic/counterion free-energy contribution to a single ionic component paired with a neutral one. With two ionic components that core assumption is violated, so the Maeda ionic-nonionic free energy is not an appropriate choice and its value is reported as null rather than computed into a physically meaningless number. The Rubingh regular-solution analysis at alpha1=0.5 (CMC1=11.50, CMC2=11.98, CMC_mix=4.07 mM) gives X1=0.503 and beta=-4.24; Rosen’s synergism criteria (beta<0, |beta|>|ln(CMC1/CMC2)|=0.04) are met and activity coefficients (~0.35, 0.34) are well below 1, indicating real, moderately strong synergistic (attractive) interaction, plausibly from the facially amphiphilic steroid diluting SDS head-group charge and easing chain packing.”
+}
+
+
+Create a doc
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

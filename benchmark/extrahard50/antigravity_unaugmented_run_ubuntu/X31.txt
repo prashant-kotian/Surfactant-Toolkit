@@ -1,0 +1,41 @@
+To determine the requested properties of the surfactant candidate (methyl oleate/elaidate), we can break down its molecular structure step by step based on the provided SMILES string: `CCCCCCCC/C=C/CCCCCCCC(=O)OC`.
+
+**1. Molecular Formula and Structure Analysis**
+*   **Left Alkyl Chain (`CCCCCCCC`):** This is an 8-carbon saturated chain ending in a methyl group. It consists of 1 `CH3` and 7 `CH2` groups.
+*   **Double Bond (`/C=C/`):** This represents 2 `vinyl_CH` groups. 
+*   **Right Alkyl Chain and Carbonyl (`CCCCCCCC(=O)`):** This chain bridges the double bond and the ester linkage. It consists of 7 `CH2` groups and 1 carbonyl carbon (`C=O`). The carbonyl carbon has no hydrogens attached and is not counted towards the lipophilic groups.
+*   **Ester and Methoxy Group (`OC`):** The oxygen links to a single methyl carbon (`CH3`).
+
+Tallying the atoms:
+*   Carbons (C): 8 + 2 + 8 + 1 = 19
+*   Hydrogens (H): (1 × 3) + (7 × 2) + (2 × 1) + (7 × 2) + 0 + (1 × 3) = 3 + 14 + 2 + 14 + 0 + 3 = 36
+*   Oxygens (O): 2 (one carbonyl, one ether-like oxygen in the ester linkage)
+
+Molecular Formula: **C19H36O2**
+
+**2. Molecular Weight (MW)**
+Using the specified average masses:
+*   C: 19 × 12.011 = 228.209 g/mol
+*   H: 36 × 1.008 = 36.288 g/mol
+*   O: 2 × 15.999 = 31.998 g/mol
+*   Total MW = 228.209 + 36.288 + 31.998 = 296.495 g/mol
+*   Rounding to 3 significant figures, we get **296** g/mol.
+
+**3. Carbon Counting**
+Based on our breakdown above:
+*   `n_CH2`: 7 (left side) + 7 (right side) = **14**
+*   `n_CH3`: 1 (left tail) + 1 (methoxy) = **2**
+*   `n_vinyl_CH`: 2 (from the double bond) = **2**
+*   (Carbonyl C = 1, not counted per instructions)
+Total counted lipophilic carbons = 14 + 2 + 2 = 18
+
+**4. Davies HLB Calculation**
+The Davies HLB formula is: `HLB = 7 + sum(hydrophilic) - sum(lipophilic)`
+*   Hydrophilic group: 1 `ester_free` = **2.4**
+*   Lipophilic groups: 18 total (CH2, CH3, vinyl_CH) × 0.475 = **8.55**
+*   HLB = 7 + 2.4 - 8.55 = 9.4 - 8.55 = **0.85**
+
+**5. Charge Type**
+The molecule contains an ester linkage with no ionizable groups, making it **nonionic**.
+
+FINAL_JSON: {"mw": 296, "formula": "C19H36O2", "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2, "hlb": 0.85, "charge": "nonionic"}

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"hld_if_cc_neg0p92": -0.9105620876,
+"winsor_if_cc_neg0p92": "I",
+"hld_if_cc_pos2p4": 2.4094379124,
+"winsor_if_cc_pos2p4": "II",
+"source_number": 2
+}

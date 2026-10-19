@@ -1,0 +1,13 @@
+…
+Show more
+Worked for 24s
+ChatGPT said:
+free_monomer_fraction: 0.0076635881312635094
+mean_cluster_size: 5.5349315517128455
+largest_cluster: 14
+exact_max_deviation: 0.014445179692999272
+convergence: converged
+
+The split-half L1 difference was 0.0573133, below the estimated noise floor of 0.0709913, supporting the converged classification.
+
+FINAL_JSON: {"free_monomer_fraction": 0.0076635881312635094, "mean_cluster_size": 5.5349315517128455, "largest_cluster": 14, "exact_max_deviation": 0.014445179692999272, "convergence": "converged"}

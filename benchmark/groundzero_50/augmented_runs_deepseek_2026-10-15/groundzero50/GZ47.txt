@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"gamma_at_5e-6": 51.16,
+"gamma_at_5e-5": 38.66,
+"gamma_at_2e-4": null,
+"why_2e-4_null": "The concentration 2e-4 mol/L exceeds the CMC (~1e-4 mol/L). Above the CMC the monomer concentration is buffered at ~CMC, so the surface tension plateaus at γ_CMC instead of following the Szyszkowski isotherm. The equation was fitted below the CMC, so its extrapolation to 31.07 mN/m is not physically valid; the correct physical value is the plateau γ_CMC, which is not predicted by this equation."
+}

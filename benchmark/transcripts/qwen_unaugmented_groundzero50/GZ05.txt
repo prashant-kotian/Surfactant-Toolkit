@@ -1,0 +1,441 @@
+
+a
++
+	​
+
+a
+−
+	​
+
+∝X
+CMC
+2
+	​
+
+.
+Applying the Gibbs–Helmholtz / van't Hoff relation:
+Δ
+𝐻
+mic
+∘
+=
+2
+𝑅
+  
+𝑑
+ln
+⁡
+(
+CMC
+)
+𝑑
+(
+1
+/
+𝑇
+)
+ΔH
+mic
+∘
+	​
+
+=2R
+d(1/T)
+dln(CMC)
+	​
+
+(The constant unit-conversion factor from mM to mole fraction drops out of the derivative.)
+Computing 1/T and ln(CMC)
+T (°C)
+	
+T (K)
+	
+1/T (K⁻¹)
+	
+CMC (mM)
+	
+ln(CMC)
+
+
+30.0
+	
+303.15
+	
+3.29870×10⁻³
+	
+0.592
+	
+−0.52425
+
+
+50.0
+	
+323.15
+	
+3.09453×10⁻³
+	
+0.805
+	
+−0.21691
+
+
+70.0
+	
+343.15
+	
+2.91419×10⁻³
+	
+1.11
+	
++0.10436
+Van't Hoff Slopes and Enthalpies
+Full range (30 → 70 °C):
+slope
+=
+0.10436
+−
+(
+−
+0.52425
+)
+2.91419
+×
+10
+−
+3
+−
+3.29870
+×
+10
+−
+3
+=
+0.62861
+−
+3.8451
+×
+10
+−
+4
+=
+−
+1634.9
+  
+K
+slope=
+2.91419×10
+−3
+−3.29870×10
+−3
+0.10436−(−0.52425)
+	​
+
+=
+−3.8451×10
+−4
+0.62861
+	​
+
+=−1634.9K
+Δ
+𝐻
+∘
+=
+2
+(
+8.314
+)
+(
+−
+1634.9
+)
+=
+−
+27
+ 
+185
+  
+J/mol
+≈
+−
+27.2
+  
+kJ/mol
+ΔH
+∘
+=2(8.314)(−1634.9)=−27185J/mol≈−27.2kJ/mol
+Sub-interval 30 → 50 °C:
+slope
+1
+=
+0.30734
+−
+2.0416
+×
+10
+−
+4
+=
+−
+1505.4
+  
+K
+slope
+1
+	​
+
+=
+−2.0416×10
+−4
+0.30734
+	​
+
+=−1505.4K
+
+Δ
+𝐻
+1
+=
+2
+(
+8.314
+)
+(
+−
+1505.4
+)
+=
+−
+25
+ 
+030
+  
+J/mol
+≈
+−
+25.0
+  
+kJ/mol
+ΔH
+1
+	​
+
+=2(8.314)(−1505.4)=−25030J/mol≈−25.0kJ/mol
+Sub-interval 50 → 70 °C:
+slope
+2
+=
+0.32127
+−
+1.8036
+×
+10
+−
+4
+=
+−
+1781.3
+  
+K
+slope
+2
+	​
+
+=
+−1.8036×10
+−4
+0.32127
+	​
+
+=−1781.3K
+
+Δ
+𝐻
+2
+=
+2
+(
+8.314
+)
+(
+−
+1781.3
+)
+=
+−
+29
+ 
+620
+  
+J/mol
+≈
+−
+29.6
+  
+kJ/mol
+ΔH
+2
+	​
+
+=2(8.314)(−1781.3)=−29620J/mol≈−29.6kJ/mol
+Self-Consistency Check
+The two sub-interval enthalpies (−25.0 and −29.6 kJ/mol) differ by ≈ 4.6 kJ/mol (~17% of their mean). The endpoint value (−27.2) is their Δ(1/T)-weighted average, as expected algebraically. The ~17% spread indicates a mild temperature dependence of ΔH (non-zero ΔC_p for micellization), so the three values do not agree within a narrow tolerance. → Not fully self-consistent.
+Free Energy and Entropy of Micellization
+These can be determined from the given data. At the midpoint T = 323.15 K (50 °C):
+𝑋
+CMC
+=
+0.805
+×
+10
+−
+3
+54.84
+=
+1.468
+×
+10
+−
+5
+X
+CMC
+	​
+
+=
+54.84
+0.805×10
+−3
+	​
+
+=1.468×10
+−5
+(using ρ_water(50 °C) = 0.9880 g cm⁻³ → 54.84 mol L⁻¹)
+Δ
+𝐺
+mic
+∘
+=
+2
+(
+8.314
+)
+(
+323.15
+)
+ln
+⁡
+(
+1.468
+×
+10
+−
+5
+)
+ΔG
+mic
+∘
+	​
+
+=2(8.314)(323.15)ln(1.468×10
+−5
+)
+
+=
+5373.5
+×
+(
+−
+11.129
+)
+=
+−
+59
+ 
+800
+  
+J/mol
+≈
+−
+59.8
+  
+kJ/mol
+=5373.5×(−11.129)=−59800J/mol≈−59.8kJ/mol
+Δ
+𝑆
+mic
+∘
+=
+Δ
+𝐻
+∘
+−
+Δ
+𝐺
+∘
+𝑇
+=
+−
+27
+ 
+185
+−
+(
+−
+59
+ 
+800
+)
+323.15
+=
+32
+ 
+615
+323.15
+≈
+100.9
+  
+J mol
+−
+1
+K
+−
+1
+ΔS
+mic
+∘
+	​
+
+=
+T
+ΔH
+∘
+−ΔG
+∘
+	​
+
+=
+323.15
+−27185−(−59800)
+	​
+
+=
+323.15
+32615
+	​
+
+≈100.9J mol
+−1
+K
+−1
+The positive ΔS reflects the dominant hydrophobic dehydration of the C₁₆ chain, while the negative ΔH (exothermic micellization) is consistent with the CMC increasing with temperature.
+FINAL_JSON:
+{
+"delta_h_endpoint_kJ_per_mol": -27.2,
+"sub_intervals": [{"t_lo_C": 30.0, "t_hi_C": 50.0, "delta_h_kJ_per_mol": -25.0}, {"t_lo_C": 50.0, "t_hi_C": 70.0, "delta_h_kJ_per_mol": -29.6}],
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": -59.8,
+"delta_s_mic_J_per_mol_K": 100.9
+}
+MCP
+Auto
+AI-generated content may not be accurate.

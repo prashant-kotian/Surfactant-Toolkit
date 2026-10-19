@@ -1,0 +1,2202 @@
+X-01
+
+1. cmc_point: 3.1727770283 mM
+2. cmc_ci_low: 3.1092963027 mM
+3. cmc_ci_high: 3.2456415126 mM
+4. ci_width_pct: 4.2973460989
+5. convergence: converged
+
+All 1000 bootstrap resamples produced usable fits.
+
+FINAL_JSON: {"cmc_point": 3.1727770283, "cmc_ci_low": 3.1092963027, "cmc_ci_high": 3.2456415126, "ci_width_pct": 4.2973460989, "convergence": "converged"}
+
+X-02
+1. cmc_point: 5.703138 mM
+2. cmc_ci_low: 5.478833 mM
+3. cmc_ci_high: 5.971876 mM
+4. ci_width_pct: 8.645118
+5. ci_wide: true
+
+FINAL_JSON: {"cmc_point": 5.703138, "cmc_ci_low": 5.478833, "cmc_ci_high": 5.971876, "ci_width_pct": 8.645118, "ci_wide": true}
+
+X-03
+
+1. output_mean: -12.509215093507198 kJ/mol
+2. output_sd: 0.18603851916471631 kJ/mol
+3. ci_low: -12.894790139119845 kJ/mol
+4. ci_high: -12.162166360745134 kJ/mol
+5. skew_label: symmetric
+
+FINAL_JSON: {"output_mean": -12.509215093507198, "output_sd": 0.18603851916471631, "ci_low": -12.894790139119845, "ci_high": -12.162166360745134, "skew_label": "symmetric"}
+
+X-04
+1. output_mean: 2.559264762831245 nm
+2. output_sd: 0.42866615342695114 nm
+3. ci_low: 2.012315983470424 nm
+4. ci_high: 3.58967133162791 nm
+5. skew_label: right-skewed
+
+Computed skew: 0.20065339010615008.
+
+FINAL_JSON: {"output_mean": 2.559264762831245, "output_sd": 0.42866615342695114, "ci_low": 2.012315983470424, "ci_high": 3.58967133162791, "skew_label": "right-skewed"}
+
+X-05
+
+1. output_mean: 3.9224536915957184 nm
+2. output_sd: 0.8254503870860502 nm
+3. ci_low: 2.752336430739186 nm
+4. ci_high: 5.896572029543548 nm
+5. skew_label: right-skewed
+
+FINAL_JSON: {"output_mean": 3.9224536915957184, "output_sd": 0.8254503870860502, "ci_low": 2.752336430739186, "ci_high": 5.896572029543548, "skew_label": "right-skewed"}
+
+X-06
+1. cmc_point: 4.6263 mM
+2. cmc_ci_low: 4.4456 mM
+3. cmc_ci_high: 4.8367 mM
+4. ci_width_pct: 8.4541%
+5. ci_wide: true
+
+FINAL_JSON: {"cmc_point": 4.6263, "cmc_ci_low": 4.4456, "cmc_ci_high": 4.8367, "ci_width_pct": 8.4541, "ci_wide": true}
+
+X-07
+
+1. output_mean: -13.177163106487145 kJ/mol
+2. output_sd: 0.16737883096701006 kJ/mol
+3. ci_low: -13.516657353403266 kJ/mol
+4. ci_high: -12.864409879093754 kJ/mol
+5. skew_label: symmetric
+
+FINAL_JSON: {"output_mean": -13.177163106487145, "output_sd": 0.16737883096701006, "ci_low": -13.516657353403266, "ci_high": -12.864409879093754, "skew_label": "symmetric"}
+
+X=08
+1. output_mean: 5.380859195425103 nm
+2. output_sd: 1.4071390602574771 nm
+3. ci_low: 3.580293713186474 nm
+4. ci_high: 8.693476224048817 nm
+5. skew_label: right-skewed
+
+FINAL_JSON: {"output_mean": 5.380859195425103, "output_sd": 1.4071390602574771, "ci_low": 3.580293713186474, "ci_high": 8.693476224048817, "skew_label": "right-skewed"}
+
+X-09
+1. cmc_point: 1.389381 mM
+2. cmc_ci_low: 1.364347 mM
+3. cmc_ci_high: 1.411790 mM
+4. ci_width_pct: 3.414690
+5. ci_wide: true
+
+FINAL_JSON: {"cmc_point": 1.389381, "cmc_ci_low": 1.364347, "cmc_ci_high": 1.411790, "ci_width_pct": 3.414690, "ci_wide": true}
+
+X-10
+1. kinetic_cmc_M: 0.000397583681776 mol/L
+2. tau_dominant_s: 0.00144446760927 s
+3. mean_aggregation_number: 8.06829707291
+4. mass_conserved: true
+5. convergence: converged
+
+The maximum relative mass-conservation error was \(9.46\times10^{-16}\). Mean aggregation number excludes free monomers (\(n\ge2\)).
+
+FINAL_JSON: {"kinetic_cmc_M": 0.000397583681776, "tau_dominant_s": 0.00144446760927, "mean_aggregation_number": 8.06829707291, "mass_conserved": true, "convergence": "converged"}
+
+X-11
+The procedure is underdetermined, so no unique seeded result can be reproduced. Missing specifications include:
+
+1. `equilibrium_c1_M`: undetermined — no simulation end time/checkpoint horizon.
+2. `equilibrium_mean_nagg`: undetermined — same issue; ratio-of-averages versus average-of-ratios is also unspecified.
+3. `tau_fit_s`: undetermined — exponential model, fitting interval, weighting, and offset treatment are unspecified.
+4. `mass_conservation_max_error`: 0 for any correctly implemented SSA, but no actual run can be uniquely executed.
+5. `convergence`: `not_converged` — no statistical stationarity test is defined.
+
+Further ambiguities include conditioning the Poisson sample to exactly 400 monomers, the \(C_1+C_1\) combinatorial propensity, reaction-channel ordering, and the boundary rule at \(n_{\max}\). The requested event count is also absent from the required output schema.
+
+FINAL_JSON: {"equilibrium_c1_M": null, "equilibrium_mean_nagg": null, "tau_fit_s": null, "mass_conservation_max_error": 0, "convergence": "not_converged"}
+
+X-12
+1. bic_rubingh: -60.78280226  
+2. bic_eommm: -66.71710800  
+3. delta_bic: -5.93430574  
+4. selected: eommm_asymmetric_margules  
+5. beta_mean: -2.08125384
+
+FINAL_JSON: {"bic_rubingh": -60.78280226, "bic_eommm": -66.71710800, "delta_bic": -5.93430574, "selected": "eommm_asymmetric_margules", "beta_mean": -2.08125384}
+X-13
+
+1. kinetic_cmc_M: 0.000100285673770518 M
+2. tau_dominant_s: 0.0102742540782220 s
+3. mean_aggregation_number: 11.4322204366943
+4. mass_conserved: true — maximum relative error: \(9.64\times10^{-16}\)
+5. convergence: converged
+
+The slowest nonzero Jacobian eigenvalue was \(-97.3306667702\ \mathrm{s^{-1}}\).
+
+FINAL_JSON: {"kinetic_cmc_M": 0.000100285673770518, "tau_dominant_s": 0.0102742540782220, "mean_aggregation_number": 11.4322204366943, "mass_conserved": true, "convergence": "converged"}
+
+X-14
+The procedure is not reproducible as written. The seed fixes the random stream, but the following required implementation details are unspecified:
+
+- Whether sources are sampled uniformly by monomer or by eligible cluster.
+- Whether target clusters are uniform over clusters or selected through a random member, which size-biases selection.
+- What “attach” does when the selected monomer already belongs to a non-singleton cluster.
+- How invalid/no-op proposals consume random draws.
+- Whether automatically accepted moves consume an acceptance draw.
+- The retained-sample indexing convention.
+- The numerical criterion for declaring the two halves “converged.”
+
+Each choice changes both the transition probabilities and subsequent PCG64 draws. Consequently, no unique Monte Carlo histogram—or convergence classification—follows from the specification. Exact proposal pseudocode and a convergence threshold are needed.
+
+FINAL_JSON: {"free_monomer_fraction": null, "mean_cluster_size": null, "largest_cluster": null, "exact_max_deviation": null, "convergence": null}
+
+X-15
+Using the asymmetric-Margules EOMMM constraints and the standard two-sided margin on experimental mixed CMCs, the converged minimum margin is \(0.0120803\), or approximately \(1.2\%\). [ri.conicet.gov.ar](https://ri.conicet.gov.ar/bitstream/handle/11336/27057/CONICET_Digital_Nro.e75a99df-0381-4e15-b4ed-fd98c19400f7_D.pdf?isAllowed=y\&sequence=5\&utm_source=chatgpt.com)
+
+1. margin: 0.012
+2. feasible_within_1pct: false
+3. x1_rodenas: 0.80306
+4. x1_rubingh: 0.78652
+5. agree_003: true
+
+The absolute \(x_1\) difference is \(0.01654\), below \(0.03\).
+
+FINAL_JSON: {"margin": 0.012, "feasible_within_1pct": false, "x1_rodenas": 0.80306, "x1_rubingh": 0.78652, "agree_003": true}
+
+X-16
+1. W12: 1.85
+2. W21: 2.20
+3. r_squared: 0.9977285544
+4. x1_first_point: 0.5362995310
+5. feasible: true
+
+FINAL_JSON: {"W12": 1.85, "W21": 2.2, "r_squared": 0.9977285544, "x1_first_point": 0.5362995310, "feasible": true}
+
+X-17
+1. cmc_point: 1.998966 mM
+2. cmc_ci_low: 1.973468 mM
+3. cmc_ci_high: 2.020778 mM
+4. ci_width_pct: 2.366681
+5. ci_wide: false
+
+FINAL_JSON: {"cmc_point": 1.998966, "cmc_ci_low": 1.973468, "cmc_ci_high": 2.020778, "ci_width_pct": 2.366681, "ci_wide": false}
+
+X-18
+The procedure is not numerically reproducible as written. It omits:
+
+- How clusters/monomers are selected for each move.
+- Whether “attach” merges two clusters or attaches only a free monomer.
+- Whether invalid proposals consume selection draws.
+- The exact retained-step indexing.
+- The degeneracy assigned to each integer partition.
+- The quantitative first-half/second-half convergence criterion.
+
+These choices change both the seeded random stream and every requested result. Please provide the canonical move pseudocode and convergence rule.
+
+FINAL_JSON: {"free_monomer_fraction": null, "mean_cluster_size": null, "largest_cluster": null, "exact_max_deviation": null, "convergence": null}
+
+X-19
+1. `mu_SI`: \(4.10\times10^{-8}\ \mathrm{m^2/(V\,s)}\)
+2. `zeta_plain_mV`: \(52.5665\ \mathrm{mV}\)
+3. `zeta_corr_mV`: \(56.3675\ \mathrm{mV}\)
+4. `shift_pct`: \(7.23082\%\)
+5. `larger`: `"corrected"`
+
+The relaxation iteration used the physically relevant low-potential root of the cubic Ohshima correction. [core.ac.uk](https://core.ac.uk/download/pdf/250581549.pdf?utm_source=chatgpt.com)
+
+FINAL_JSON: {"mu_SI": 4.10e-8, "zeta_plain_mV": 52.5665, "zeta_corr_mV": 56.3675, "shift_pct": 7.23082, "larger": "corrected"}
+
+X-20
+
+The requested seeded result is not uniquely computable because the procedure omits:
+
+- SSA stopping time or event-count limit
+- Exact exponential-fit model and fitting interval
+- Numerical stationarity criterion
+- Precise Poisson initialization/conditioning rule
+- \(C_1+C_1\) propensity convention
+
+It also asks for the event count in step 5 but omits it from the required outputs. Only mass error is fixed at 0. For reference, the deterministic truncated equilibrium gives \(c_1=4.9114957984\times10^{-4}\) M and mean aggregate size \(8.31044594\), but these are not the requested seeded trajectory statistics.
+
+FINAL_JSON: {"equilibrium_c1_M": null, "equilibrium_mean_nagg": null, "tau_fit_s": null, "mass_conservation_max_error": 0, "convergence": null}
+
+x-21
+1. W12: -2.95
+2. W21: -1.05
+3. r_squared: 0.92122021
+4. x1_last_point: 0.89530191
+5. feasible: true
+
+FINAL_JSON: {"W12": -2.95, "W21": -1.05, "r_squared": 0.92122021, "x1_last_point": 0.89530191, "feasible": true}
+
+X-22
+1. W12: 1.20
+2. W21: 1.60
+3. r_squared: 0.999646
+4. x1_third_point: 0.8355
+5. feasible: true
+
+FINAL_JSON: {"W12": 1.20, "W21": 1.60, "r_squared": 0.999646, "x1_third_point": 0.8355, "feasible": true}
+
+X-23
+free_monomer_fraction: 0.005333333333333333
+mean_cluster_size: 6.522438271604938
+largest_cluster: 17
+exact_max_deviation: 0.011649509854031824
+convergence: converged
+
+FINAL_JSON: {"free_monomer_fraction": 0.005333333333333333, "mean_cluster_size": 6.522438271604938, "largest_cluster": 17, "exact_max_deviation": 0.011649509854031824, "convergence": "converged"}
+
+X-24
+…
+Show more
+ChatGPT said:
+
+The numerical fit cannot be uniquely determined from the information supplied.
+
+The data, parameter bounds, cmc_margin = 0.10, and coarse/fine grid resolutions are specified. However, the mass-balance infeasibility function and the equations used to calculate r_squared and each micellar mole fraction are not explicitly defined.
+
+The grid-search procedure alone does not determine the objective function. Different infeasibility definitions can produce different optimal 
+𝑊
+12
+W
+12
+	​
+
+, 
+𝑊
+21
+W
+21
+	​
+
+, and 
+𝑥
+1
+x
+1
+	​
+
+, as well as different feasibility outcomes.
+
+To report reliable numerical values, the exact EOMMM mass-balance equations and infeasibility scoring rule are needed. Assigning numerical results or a feasibility boolean without them would be speculative.
+
+FINAL_JSON: {"W12": null, "W21": null, "feasible": null, "r_squared": null, "x1_second_point": null}
+
+X-25
+…
+Show more
+Worked for 52s
+ChatGPT said:
+
+W12: 0.700
+
+W21: 1.025
+
+r_squared: 0.997944
+
+x1_middle_point: 0.8880
+
+feasible: true
+
+Using the standard asymmetric three-suffix Margules equations, the coarse-to-fine grid search gives an estimated total squared mass-balance infeasibility of 
+9.15
+×
+10
+−
+7
+9.15×10
+−7
+, below the 
+10
+−
+6
+10
+−6
+ threshold.
+
+These results assume squared mass-balance residuals as the infeasibility score; a different EOMMM scoring definition could produce different fitted parameters.
+
+FINAL_JSON: {"W12": 0.7, "W21": 1.025, "feasible": true, "r_squared": 0.997944, "x1_middle_point": 0.888}
+
+X-26
+…
+Show more
+ChatGPT said:
+
+flagged_T: 303.15
+
+n_flagged: 1
+
+dH_all: -12.980749 kJ/mol
+
+dH_cleaned: -13.773817 kJ/mol
+
+r2_cleaned: 0.999974962
+
+Verification: Row 4 (303.15 K) has the largest leave-one-out error, 148.897664 J/mol. This is 2.901531 times the mean error of the other six rows, exceeding the required threshold of 2. Therefore, exactly one row is flagged.
+
+FINAL_JSON: {"dH_all": -12.980749, "dH_cleaned": -13.773817, "flagged_T": "303.15", "n_flagged": 1, "r2_cleaned": 0.999974962}
+
+X-27
+…
+Show more
+ChatGPT said:
+
+flagged_T: 308.15
+
+n_flagged: 1
+
+dH_corrected: -12.71979656 kJ/mol
+
+dS_corrected: 38.25649852 J/(mol K)
+
+r2_corrected: 0.9968185231
+
+The largest leave-one-out error occurs at row 5 (11247.8247 J/mol), exceeding twice the mean error of the other seven rows (mean = 518.6392 J/mol). Row 5 is therefore flagged, and its temperature is corrected to 308.15 K (35.00 °C).
+
+After correction, the eight-row least-squares fit gives the values above.
+
+FINAL_JSON: {"dH_corrected": -12.71979656, "dS_corrected": 38.25649852, "flagged_T": "308.15", "n_flagged": 1, "r2_corrected": 0.9968185231}
+
+X-28
+…
+Show more
+ChatGPT said:
+
+excluded_gamma: 38.7 mN/m
+
+cmc_mM: 2.898275349 mM
+
+gamma_max: 1.887296331 × 10⁻⁶ mol/m²
+
+n_used: 9
+
+conflict_detected: true
+
+Verification
+
+Duplicate exclusion: The four nearest nonduplicate points give a fitted surface tension of 55.85937339 mN/m at 1.60 mM.
+
+Residual for 45.9: 9.95937339 mN/m
+
+Residual for 38.7: 17.15937339 mN/m
+
+Therefore, 38.7 mN/m is excluded.
+
+Break-point fit: Minimum total RSS = 231.68980267, with the boundary between 2.40 and 3.50 mM.
+
+C
+M
+C
+=
+2.40
+×
+3.50
+=
+2.898275349
+ 
+m
+M
+CMC=
+2.40×3.50
+	​
+
+=2.898275349 mM
+
+Premicellar slope:
+
+𝑚
+log
+⁡
+10
+𝑐
+=
+−
+21.54541079
+m
+log
+10
+	​
+
+c
+	​
+
+=−21.54541079
+Γ
+max
+⁡
+=
+21.54541079
+×
+10
+−
+3
+2
+ln
+⁡
+(
+10
+)
+×
+8.314462618
+×
+298.15
+Γ
+max
+	​
+
+=
+2ln(10)×8.314462618×298.15
+21.54541079×10
+−3
+	​
+
+Γ
+max
+⁡
+=
+1.887296331
+×
+10
+−
+6
+ 
+m
+o
+l
+/
+m
+2
+Γ
+max
+	​
+
+=1.887296331×10
+−6
+ mol/m
+2
+	​
+
+
+FINAL_JSON: {"cmc_mM": 2.898275349, "conflict_detected": true, "excluded_gamma": 38.7, "gamma_max": 1.887296331, "n_used": 9}
+
+X-29
+…
+Show more
+ChatGPT said:
+
+sign_flipped_run: "run2"
+
+corrected_value: -29.890 kJ/mol
+
+base10_run: "run3"
+
+ratio_run3_run1: 0.4342924055 (dimensionless)
+
+Verification:
+
+Using the pinned formula:
+
+Δ
+𝐻
+=
+8.314462618
+ln
+⁡
+(
+𝑋
+2
+/
+𝑋
+1
+)
+(
+1
+/
+313.15
+)
+−
+(
+1
+/
+298.15
+)
+×
+1
+1000
+ΔH=
+(1/313.15)−(1/298.15)
+8.314462618ln(X
+2
+	​
+
+/X
+1
+	​
+
+)
+	​
+
+×
+1000
+1
+	​
+
+Δ
+𝐻
+=
+−
+29.88992746
+ kJ/mol
+ΔH=−29.88992746 kJ/mol
+
+run1: Correct sign and natural logarithm.
+
+run2: Flipped denominator, producing the incorrect positive sign.
+
+run3: Used 
+log
+⁡
+10
+log
+10
+	​
+
+ instead of 
+ln
+⁡
+ln, scaling the result by approximately 
+1
+/
+ln
+⁡
+(
+10
+)
+1/ln(10).
+
+Ratio: 
+(
+−
+12.981
+)
+/
+(
+−
+29.890
+)
+=
+0.4342924055
+(−12.981)/(−29.890)=0.4342924055.
+
+FINAL_JSON: {"base10_run": "run3", "corrected_value": -29.89, "ratio_run3_run1": 0.4342924055, "sign_flipped_run": "run2"}
+
+X-30
+…
+Show more
+ChatGPT said:
+
+flagged_c: 1.50
+
+delta_bic: -67.5539431858
+
+cmc_mM: 4.3266615306
+
+n_used: 8
+
+corrupt_detected: true
+
+Verification
+
+Raw 9-point RSS: 1756.598775
+
+Minimum leave-one-out RSS: 0.699046 (removing row 4, c = 1.50 mM)
+
+RSS reduction: 99.9602% (exceeds 50% threshold)
+
+bic_before: 58.451314
+
+bic_after: -9.102629
+
+CMC breakpoint: between 3.60 and 5.20 mM
+
+CMC = 
+3.60
+×
+5.20
+=
+4.3266615306
+3.60×5.20
+	​
+
+=4.3266615306 mM
+
+FINAL_JSON: {"cmc_mM": 4.3266615306, "corrupt_detected": true, "delta_bic": -67.5539431858, "flagged_c": 1.5, "n_used": 8}
+
+X-31
+…
+Show more
+ChatGPT said:
+
+mw: 296 g/mol
+
+formula: C19H36O2
+
+n_CH2: 14
+
+n_CH3: 2
+
+n_vinyl_CH: 2
+
+hlb: 0.85
+
+charge: nonionic
+
+Davies HLB calculation:
+
+Hydrophilic contribution: 1 × 2.4 = 2.4
+
+Lipophilic contribution: (14 + 2 + 2) × 0.475 = 8.55
+
+HLB = 7 + 2.4 − 8.55 = 0.85
+
+Molecular weight calculation:
+
+19(12.011) + 36(1.008) + 2(15.999) = 296.495 g/mol ≈ 296 g/mol (3 significant figures).
+
+FINAL_JSON: {"charge": "nonionic", "formula": "C19H36O2", "hlb": 0.85, "mw": 296.0, "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2}
+
+X-32
+…
+Show more
+ChatGPT said:
+
+family: dimeric_gemini_type
+
+charge: cationic
+
+mw: 554 g/mol
+
+formula: C32H70Cl2N2
+
+n_heads: 2
+
+n_N_methyls: 4
+
+FINAL_JSON: {"charge": "cationic", "family": "dimeric_gemini_type", "formula": "C32H70Cl2N2", "mw": 554.0, "n_N_methyls": 4, "n_heads": 2}
+
+X-33
+…
+Show more
+ChatGPT said:
+
+n_rings: 1
+
+n_esters: 1
+
+acyl_carbons: 16
+
+mw: 419 g/mol
+
+formula: C22H42O7
+
+charge: nonionic
+
+Verification: One glucose ring, one ester linkage, and a 16-carbon acyl chain (including the carbonyl carbon). The molecular weight is 418.57 g/mol, rounded to 3 significant figures.
+
+FINAL_JSON: {"acyl_carbons": 16, "charge": "nonionic", "formula": "C22H42O7", "mw": 419.0, "n_esters": 1, "n_rings": 1}
+
+X-34
+…
+Show more
+ChatGPT said:
+
+tail_carbons: 8
+
+n_CH3: 2
+
+mw: 232 g/mol
+
+formula: C8H17NaO4S
+
+charge: anionic
+
+hlb: 41.8
+
+Calculations:
+
+Tail composition: 2 CH3 + 5 CH2 + 1 CH = 8 carbons.
+
+Molecular weight: 
+8
+(
+12.011
+)
++
+17
+(
+1.008
+)
++
+22.990
++
+4
+(
+15.999
+)
++
+32.06
+=
+232.27
+≈
+232
+8(12.011)+17(1.008)+22.990+4(15.999)+32.06=232.27≈232 g/mol.
+
+Davies HLB: 
+7
++
+38.6
+−
+0.475
+(
+8
+)
+=
+41.8
+7+38.6−0.475(8)=41.8.
+
+FINAL_JSON: {"charge": "anionic", "formula": "C8H17NaO4S", "hlb": 41.8, "mw": 232.0, "n_CH3": 2, "tail_carbons": 8}
+
+X-35
+…
+Show more
+ChatGPT said:
+
+f_cation_pH8: 0.99760691
+
+f_cation_pH1062: 0.50000000
+
+f_cation_pH13: 0.00415139
+
+dominant_at_8: "cationic"
+
+confidence_at_8: "high"
+
+At pH 8.00, the cationic fraction is approximately 99.76%, exceeding both the 0.85 dominance threshold and the 0.95 high-confidence threshold.
+
+FINAL_JSON: {"confidence_at_8": "high", "dominant_at_8": "cationic", "f_cation_pH1062": 0.5, "f_cation_pH13": 0.00415139, "f_cation_pH8": 0.99760691}
+
+X-36
+…
+Show more
+ChatGPT said:
+
+cmc_point: 0.96263262 mM
+
+cmc_ci_low: 0.95397549 mM
+
+cmc_ci_high: 0.97149138 mM
+
+ci_width_pct: 1.81958217
+
+ci_wide: true
+
+The 95% confidence interval was calculated using 1000 residual-bootstrap resamples with NumPy default_rng(52). Since 1.81958217 > 1.0, ci_wide is true.
+
+FINAL_JSON: {"ci_wide": true, "ci_width_pct": 1.81958217, "cmc_ci_high": 0.97149138, "cmc_ci_low": 0.95397549, "cmc_point": 0.96263262}
+
+X-37
+…
+Show more
+ChatGPT said:
+
+p_ell: 1.939092
+
+p_cyl: 0.927580
+
+cpp: 0.558498
+
+R_perrin_nm: 5.242482 nm
+
+morphology: vesicle/bilayer
+
+above_1_5: ellipsoid
+
+Calculation details
+
+Ellipsoid convention:
+
+𝑝
+e
+l
+l
+=
+3
+𝑁
+𝑣
+4
+𝜋
+𝑙
+𝑐
+3
+=
+1.939092
+p
+ell
+	​
+
+=
+4πl
+c
+3
+	​
+
+3Nv
+	​
+
+=1.939092
+
+Cylinder convention:
+
+𝑟
+=
+2
+𝑣
+𝑎
+0
+=
+18.653846
+ 
+A
+˚
+r=
+a
+0
+	​
+
+2v
+	​
+
+=18.653846 
+A
+˚
+𝐿
+=
+𝑁
+𝑣
+𝜋
+𝑟
+2
+=
+34.605863
+ 
+A
+˚
+L=
+πr
+2
+Nv
+	​
+
+=34.605863 
+A
+˚
+𝑝
+c
+y
+l
+=
+𝐿
+2
+𝑟
+=
+0.927580
+p
+cyl
+	​
+
+=
+2r
+L
+	​
+
+=0.927580
+
+Critical packing parameter:
+
+𝐶
+𝑃
+𝑃
+=
+485
+52
+(
+16.7
+)
+=
+0.558498
+CPP=
+52(16.7)
+485
+	​
+
+=0.558498
+
+Since 
+0.5
+<
+𝐶
+𝑃
+𝑃
+≤
+1
+0.5<CPP≤1, the morphology is vesicle/bilayer.
+
+Perrin correction:
+
+Linear interpolation at 
+𝑝
+e
+l
+l
+=
+1.939092
+p
+ell
+	​
+
+=1.939092 between 1.75 and 2.00 gives:
+
+𝐹
+(
+𝑝
+e
+l
+l
+)
+=
+1.040106
+F(p
+ell
+	​
+
+)=1.040106
+𝑅
+S
+t
+o
+k
+e
+s
+=
+5.452736
+ nm
+R
+Stokes
+	​
+
+=5.452736 nm
+𝑅
+P
+e
+r
+r
+i
+n
+=
+5.452736
+1.040106
+=
+5.242482
+ nm
+R
+Perrin
+	​
+
+=
+1.040106
+5.452736
+	​
+
+=5.242482 nm
+
+Only the ellipsoid convention has 
+𝑝
+>
+1.5
+p>1.5.
+
+FINAL_JSON: {"R_perrin_nm": 5.242482, "above_1_5": "ellipsoid", "cpp": 0.558498, "morphology": "vesicle/bilayer", "p_cyl": 0.92758, "p_ell": 1.939092}
+
+X-38
+…
+Show more
+ChatGPT said:
+
+Using 
+𝑎
+0
+=
+𝑣
+𝐶
+𝑃
+𝑃
+⋅
+𝑙
+𝑐
+a
+0
+	​
+
+=
+CPP⋅l
+c
+	​
+
+v
+	​
+
+, with 
+𝑣
+=
+485.0
+ 
+A
+˚
+3
+v=485.0 
+A
+˚
+3
+ and 
+𝑙
+𝑐
+=
+16.7
+ 
+A
+˚
+l
+c
+	​
+
+=16.7 
+A
+˚
+:
+
+a0_at_cpp_1_3: 
+485.0
+/
+[
+(
+1
+/
+3
+)
+(
+16.7
+)
+]
+=
+87.1257
+ 
+A
+˚
+2
+485.0/[(1/3)(16.7)]=87.1257 
+A
+˚
+2
+
+a0_at_cpp_1_2: 
+485.0
+/
+[
+(
+1
+/
+2
+)
+(
+16.7
+)
+]
+=
+58.0838
+ 
+A
+˚
+2
+485.0/[(1/2)(16.7)]=58.0838 
+A
+˚
+2
+
+cpp_at_a0_64: 
+485.0
+/
+(
+64.0
+×
+16.7
+)
+=
+0.45378
+485.0/(64.0×16.7)=0.45378 (dimensionless)
+
+morph_at_64: cylindrical/rodlike micelle (
+1
+/
+3
+<
+𝐶
+𝑃
+𝑃
+≤
+1
+/
+2
+1/3<CPP≤1/2)
+
+morph_at_95: spherical micelle (
+𝐶
+𝑃
+𝑃
+=
+485.0
+/
+(
+95.0
+×
+16.7
+)
+≈
+0.3057
+≤
+1
+/
+3
+CPP=485.0/(95.0×16.7)≈0.3057≤1/3)
+
+FINAL_JSON: {"a0_at_cpp_1_2": 58.0838, "a0_at_cpp_1_3": 87.1257, "cpp_at_a0_64": 0.45378, "morph_at_64": "cylindrical/rodlike micelle", "morph_at_95": "spherical micelle"}
+
+X-39
+…
+Show more
+ChatGPT said:
+
+The specified seed, rates, concentration, and molecule count are not sufficient to reproduce a unique Gillespie trajectory. Several simulation details remain unspecified:
+
+Simulation duration: The end time (or stopping rule) is needed to determine the 45 evenly spaced checkpoints.
+
+Initial sampling: The exact Poisson equilibrium initialization and mass-conserving adjustment procedure must be specified.
+
+Reaction propensities: The dimerization convention, particularly whether the 
+𝐶
+1
++
+𝐶
+1
+C
+1
+	​
+
++C
+1
+	​
+
+ propensity includes a factor of 
+1
+/
+2
+1/2, must be fixed.
+
+Exponential fitting: The fitted function, fitting interval, and fitting method are needed to determine tau_fit_s.
+
+Convergence criterion: The numerical test used to classify the final window as stationary is not specified.
+
+These choices affect the random-number consumption sequence and therefore the resulting observables, even with np.random.default_rng(63).
+
+Exact mass conservation can be guaranteed by correctly implemented association and dissociation reactions, giving mass_conservation_max_error = 0.
+
+The other requested values, including the number of reaction events, cannot be uniquely determined from the supplied specification. Reporting numerical estimates as the seeded simulation's exact results would be misleading.
+
+FINAL_JSON: {"convergence": null, "equilibrium_c1_M": null, "equilibrium_mean_nagg": null, "mass_conservation_max_error": 0, "tau_fit_s": null}
+
+X-40
+…
+Show more
+ChatGPT said:
+
+The numerical results cannot be uniquely determined from the information provided.
+
+Although the seed, temperature, binding energy, step count, burn-in, and thinning are specified, reproducing the exact Monte Carlo trajectory requires additional details:
+
+Proposal mechanics: How detach, attach, and transfer moves select monomers and destination clusters, including invalid moves.
+
+Random-number consumption: Whether invalid proposals consume acceptance draws and how each proposal uses default_rng(71).
+
+Exact partition distribution: The statistical weights assigned to integer partitions, including any combinatorial degeneracy factors.
+
+Convergence criterion: The numerical threshold used to classify the run as "converged" or "not_converged".
+
+These details affect the requested outputs, particularly under strong binding (
+𝜖
+=
+9.0
+ϵ=9.0 kJ/mol).
+
+The specified inverse thermal energy is approximately 
+𝛽
+=
+0.39681
+β=0.39681 mol/kJ, but this alone does not determine the simulation results.
+
+The JSON below uses null for quantities that cannot be established; it is not a simulation result.
+
+FINAL_JSON: {"convergence": null, "exact_max_deviation": null, "free_monomer_fraction": null, "largest_cluster": null, "mean_cluster_size": null}
+
+X-41
+…
+Show more
+ChatGPT said:
+
+dG_correct: −29.25979 kJ/mol
+
+rel_diff_pct: 20.02677%
+
+claim_agrees: false
+
+what_wrong: formula
+
+direction: less_negative
+
+Calculation:
+
+𝑋
+=
+0.00440
+0.00440
++
+55.5
+=
+7.92729946
+×
+10
+−
+5
+X=
+0.00440+55.5
+0.00440
+	​
+
+=7.92729946×10
+−5
+Δ
+𝐺
+=
+(
+2
+−
+0.75
+)
+(
+8.314462618
+)
+(
+298.15
+)
+ln
+⁡
+(
+𝑋
+)
+/
+1000
+ΔG=(2−0.75)(8.314462618)(298.15)ln(X)/1000
+Δ
+𝐺
+=
+−
+29.25979
+ kJ/mol
+ΔG=−29.25979 kJ/mol
+rel_diff
+=
+∣
+−
+23.40
+−
+(
+−
+29.25979
+)
+∣
+29.25979
+×
+100
+=
+20.02677
+%
+rel_diff=
+29.25979
+∣−23.40−(−29.25979)∣
+	​
+
+×100=20.02677%
+
+The difference exceeds 10%. The draft omitted the counterion factor, and its reported value is less negative than the corrected value.
+
+FINAL_JSON: {"claim_agrees": false, "dG_correct": -29.25979, "direction": "less_negative", "rel_diff_pct": 20.02677, "what_wrong": "formula"}
+
+X-42
+…
+Show more
+ChatGPT said:
+
+cmc_mM: 4.445222
+
+rel_diff_L1: 7.766140%
+
+rel_diff_L2: 55.222838%
+
+closer: L1
+
+either_agrees_15pct: true
+
+The RSS-minimizing split occurs between 3.80 mM and 5.20 mM (RSS ≈ 2.093714).
+
+Computed CMC = √(3.80 × 5.20) = 4.445222 mM.
+
+L1 agrees within 15%; L2 does not.
+
+FINAL_JSON: {"closer": "L1", "cmc_mM": 4.445222, "either_agrees_15pct": true, "rel_diff_L1": 7.76614, "rel_diff_L2": 55.222838}
+
+X-43
+…
+Show more
+ChatGPT said:
+
+gamma_correct: 1.129507275283715e-06 mol/m²
+
+ratio_draft_over_correct: 2.000000397901439 (dimensionless)
+
+a_min: 1.470144640508619 nm²
+
+draft_ok: false
+
+n_used: "2"
+
+FINAL_JSON: {"a_min": 1.470144640508619, "draft_ok": false, "gamma_correct": 1.129507275283715e-06, "n_used": "2", "ratio_draft_over_correct": 2.000000397901439}
+
+X-44
+…
+Show more
+ChatGPT said:
+
+k: 0.02268167
+
+cc: -0.92213212
+
+matching_candidate: "-0.92"
+
+S_star_E16: 3.614809%
+
+hld_S3_E12: -0.09569993
+
+winsor: "Winsor III"
+
+Calculation:
+
+OLS fit of 
+ln
+⁡
+(
+𝑆
+∗
+)
+ln(S
+∗
+) against EACN:
+
+ln
+⁡
+(
+𝑆
+∗
+)
+=
+0.02268167
+ 
+𝐸
+𝐴
+𝐶
+𝑁
++
+0.92213212
+ln(S
+∗
+)=0.02268167EACN+0.92213212
+
+Therefore:
+
+𝑘
+=
+0.02268167
+,
+𝐶
+𝑐
+=
+−
+0.92213212
+k=0.02268167,C
+c
+	​
+
+=−0.92213212
+
+Candidate A (-0.92) is the closer match.
+
+At EACN = 16:
+
+𝑆
+∗
+=
+exp
+⁡
+(
+16
+𝑘
+−
+𝐶
+𝑐
+)
+=
+3.614809
+%
+S
+∗
+=exp(16k−C
+c
+	​
+
+)=3.614809%
+
+At S = 3%, EACN = 12:
+
+𝐻
+𝐿
+𝐷
+=
+ln
+⁡
+(
+3
+)
+−
+12
+𝑘
++
+𝐶
+𝑐
+=
+−
+0.09569993
+HLD=ln(3)−12k+C
+c
+	​
+
+=−0.09569993
+
+Since 
+−
+0.3
+≤
+𝐻
+𝐿
+𝐷
+≤
+0.3
+−0.3≤HLD≤0.3, the phase is Winsor III.
+
+FINAL_JSON: {"S_star_E16": 3.614809, "cc": -0.92213212, "hld_S3_E12": -0.09569993, "k": 0.02268167, "matching_candidate": "-0.92", "winsor": "Winsor III"}
+
+X-45
+…
+Show more
+ChatGPT said:
+
+beta_mean: -1.59
+
+sign: negative
+
+claim_agrees: false
+
+synergy: synergistic
+
+x1_a050: 0.7431
+
+The calculated individual Rubingh beta values are:
+
+alpha1
+
+	
+
+x1
+
+	
+
+beta_i
+
+
+
+
+0.10
+
+	
+
+0.4430
+
+	
+
+-1.5510
+
+
+
+
+0.30
+
+	
+
+0.6288
+
+	
+
+-1.6195
+
+
+
+
+0.50
+
+	
+
+0.7431
+
+	
+
+-1.5003
+
+
+
+
+0.70
+
+	
+
+0.8294
+
+	
+
+-1.6054
+
+
+
+
+0.90
+
+	
+
+0.9286
+
+	
+
+-1.6608
+
+The pooled mean is -1.5874, which is negative and below -0.5, indicating synergistic behavior. The reported claim of +0.4 differs by approximately 1.99, exceeding the allowed tolerance of 0.3.
+
+FINAL_JSON: {"beta_mean": -1.59, "claim_agrees": false, "sign": "negative", "synergy": "synergistic", "x1_a050": 0.7431}
+
+X-46
+…
+Show more
+ChatGPT said:
+
+Molecular formula: C₁₉H₄₂BrN (hexadecyltrimethylammonium bromide, CTAB)
+
+mw: 364 g/mol (3 significant figures)
+
+charge: cationic
+
+n_carbons: 19
+
+cpp: 0.605040
+
+morphology: vesicle/bilayer
+
+p: 0.729567
+
+R_nm: 4.230571 nm
+
+R_perrin_nm: 4.230571 nm
+
+Calculations
+
+Molecular weight:
+
+19
+(
+12.011
+)
++
+42
+(
+1.008
+)
++
+14.007
++
+79.904
+=
+364.456
+≈
+364
+ g/mol
+19(12.011)+42(1.008)+14.007+79.904=364.456≈364 g/mol
+
+Critical packing parameter:
+
+𝐶
+𝑃
+𝑃
+=
+485.0
+48.0
+(
+16.7
+)
+=
+0.605040
+CPP=
+48.0(16.7)
+485.0
+	​
+
+=0.605040
+
+Since 
+0.5
+<
+𝐶
+𝑃
+𝑃
+≤
+1
+0.5<CPP≤1, morphology = vesicle/bilayer.
+
+Cylinder aspect ratio:
+
+𝑟
+=
+2
+(
+485.0
+)
+48.0
+=
+20.20833
+ 
+A
+˚
+r=
+48.0
+2(485.0)
+	​
+
+=20.20833 
+A
+˚
+𝐿
+=
+78
+(
+485.0
+)
+𝜋
+(
+20.20833
+)
+2
+=
+29.48665
+ 
+A
+˚
+L=
+π(20.20833)
+2
+78(485.0)
+	​
+
+=29.48665 
+A
+˚
+𝑝
+=
+29.48665
+2
+(
+20.20833
+)
+=
+0.729567
+p=
+2(20.20833)
+29.48665
+	​
+
+=0.729567
+
+Hydrodynamic radius:
+
+𝑅
+=
+(
+1.380649
+×
+10
+−
+23
+)
+(
+298.15
+)
+6
+𝜋
+(
+0.00089
+)
+(
+5.8
+×
+10
+−
+11
+)
+R=
+6π(0.00089)(5.8×10
+−11
+)
+(1.380649×10
+−23
+)(298.15)
+	​
+
+𝑅
+=
+4.230571
+ nm
+R=4.230571 nm
+
+Perrin correction:
+
+Since 
+𝑝
+≤
+1
+p≤1, 
+𝐹
+=
+1.000
+F=1.000 exactly.
+
+𝑅
+perrin
+=
+𝑅
+𝐹
+=
+4.230571
+ nm
+R
+perrin
+	​
+
+=
+F
+R
+	​
+
+=4.230571 nm
+
+FINAL_JSON: {"R_nm": 4.230571, "R_perrin_nm": 4.230571, "charge": "cationic", "cpp": 0.60504, "morphology": "vesicle/bilayer", "mw": 364.0, "n_carbons": 19, "p": 0.729567}
+
+X-47
+…
+Show more
+ChatGPT said:
+Question X-47 — Final Results
+
+Using the pinned RSS-minimizing two-line OLS protocols at 298.15 K:
+
+Output
+
+	
+
+Value
+
+	
+
+Unit
+
+
+
+
+1. cmc_cond
+
+	
+
+4.574362
+
+	
+
+mM
+
+
+
+
+2. beta
+
+	
+
+0.655154
+
+	
+
+Counterion binding degree
+
+
+
+
+3. deltaG
+
+	
+
+−31.350377
+
+	
+
+kJ/mol
+
+
+
+
+4. cmc_tens
+
+	
+
+4.409082
+
+	
+
+mM
+
+
+
+
+5. rel_diff_pct
+
+	
+
+3.679677
+
+	
+
+%
+
+
+
+
+6. agree_3pct
+
+	
+
+false
+
+	
+
+Boolean
+
+Split verification
+
+Conductometry: Optimal split between 4.30 and 5.00 mM (RSS = 4.511213).
+
+Below: 
+𝜅
+=
+16.053193
++
+54.971610
+𝑐
+κ=16.053193+54.971610c
+
+Above: 
+𝜅
+=
+180.798278
++
+18.956736
+𝑐
+κ=180.798278+18.956736c
+
+Tensiometry: Optimal split between 3.60 and 5.40 mM (RSS = 0.861151).
+
+C
+M
+C
+𝑡
+𝑒
+𝑛
+𝑠
+=
+3.60
+×
+5.40
+=
+4.409082
+ 
+m
+M
+CMC
+tens
+	​
+
+=
+3.60×5.40
+	​
+
+=4.409082 mM
+
+Agreement: The relative difference is 3.679677%, exceeding the 3.0% threshold. Therefore, the two methods do not agree under the specified criterion.
+
+FINAL_JSON: {"agree_3pct": false, "beta": 0.655154, "cmc_cond": 4.574362, "cmc_tens": 4.409082, "deltaG": -31.350377, "rel_diff_pct": 3.679677}
+
+X-48
+…
+Show more
+ChatGPT said:
+
+k: 0.0188655593
+
+cc: -1.0514862260
+
+S_star_E16_dT10: 4.2773564841%
+
+achievable: false
+
+hld_S9_E10: 0.9570827583
+
+winsor: Winsor II
+
+Verification
+
+OLS fit:
+
+ln
+⁡
+(
+𝑆
+∗
+)
+=
+0.0188655593
+ 
+𝐸
+𝐴
+𝐶
+𝑁
++
+1.0514862260
+ln(S
+∗
+)=0.0188655593EACN+1.0514862260
+
+Optimal salinity at EACN = 16, ΔT = +10 K:
+
+𝑆
+∗
+=
+exp
+⁡
+(
+16
+𝑘
++
+0.1
+−
+𝐶
+𝑐
+)
+=
+4.2773564841
+%
+S
+∗
+=exp(16k+0.1−Cc)=4.2773564841%
+
+Since 4.2773564841% exceeds the 4.0% ceiling, achievable = false.
+
+HLD at S = 9%, EACN = 10, ΔT = 0:
+
+𝐻
+𝐿
+𝐷
+=
+ln
+⁡
+(
+9
+)
+−
+10
+𝑘
++
+𝐶
+𝑐
+=
+0.9570827583
+HLD=ln(9)−10k+Cc=0.9570827583
+
+Since HLD exceeds +0.3, the classification is Winsor II.
+
+FINAL_JSON: {"S_star_E16_dT10": 4.2773564841, "achievable": false, "cc": -1.051486226, "hld_S9_E10": 0.9570827583, "k": 0.0188655593, "winsor": "Winsor II"}
+
+X-49
+…
+Show more
+ChatGPT said:
+
+Using nonlinear least-squares fitting and 1,000 residual bootstrap resamples with np.random.default_rng(85) (PCG64), followed by NumPy's default linear percentile interpolation:
+
+Required output
+
+	
+
+Value
+
+	
+
+Unit
+
+
+
+
+1. cmc_point
+
+	
+
+1.611213
+
+	
+
+mM
+
+
+
+
+2. dG_point
+
+	
+
+-26.584516
+
+	
+
+kJ/mol
+
+
+
+
+3. dG_ci_low
+
+	
+
+-26.616798
+
+	
+
+kJ/mol
+
+
+
+
+4. dG_ci_high
+
+	
+
+-26.549765
+
+	
+
+kJ/mol
+
+The fitted sigmoid midpoint is 
+𝑥
+0
+=
+0.20715283
+x
+0
+	​
+
+=0.20715283, corresponding to a point CMC of 1.611213 mM.
+
+The 95% bootstrap CMC interval is [1.590757, 1.633527] mM.
+
+All three free-energy calculations use the specified mass-action formula with 
+𝑁
+a
+g
+g
+=
+52
+N
+agg
+	​
+
+=52, 
+𝑅
+=
+8.314462618
+R=8.314462618, and 
+𝑇
+=
+298.15
+T=298.15 K.
+
+FINAL_JSON: {"cmc_point": 1.611213, "dG_ci_high": -26.549765, "dG_ci_low": -26.616798, "dG_point": -26.584516}
+
+X-50
+…
+Show more
+ChatGPT said:
+
+The requested numerical outputs cannot be uniquely determined from the supplied simulation specification, even with np.random.default_rng(99).
+
+The SSA is missing several parameters that affect the exact seeded trajectory:
+
+Simulation duration: The final time over which the 55 evenly spaced checkpoints are distributed.
+
+Initial-state sampling: The precise algorithm and order of Poisson draws, including how the total molecule count of 360 is enforced.
+
+Checkpoint sampling: Whether states are recorded immediately before or after reactions crossing each checkpoint.
+
+Stationary averaging: Whether the mean aggregation number is calculated per checkpoint and then averaged, or calculated from pooled aggregate populations.
+
+Convergence criterion: The numerical test used to classify the stationary window as converged or not_converged.
+
+These details determine the random-number consumption sequence and the final results. Choosing them arbitrarily would not reproduce the specified simulation.
+
+The free-energy calculation is fully specified, but it requires the two missing simulation outputs.
+
+Result: The numerical values and convergence classification are undetermined from the information provided.
+
+FINAL_JSON: {"Nagg_rounded": null, "cmc_kinetic_mM": null, "convergence": null, "dG_kinetic": null}

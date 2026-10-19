@@ -1,0 +1,15 @@
+The connected surfactant-computation tool ran this Gillespie simulation (seed 63, 320 molecules, n_max = 22, 45 checkpoints). Its results:
+
+1. **equilibrium_c1_M:** 8.4375 × 10⁻⁴ M (8.4375e-4 M)
+2. **equilibrium_mean_nagg:** 5.4938
+3. **tau_fit_s:** 0.05137 s
+4. **mass_conservation_max_error:** 0
+5. **convergence:** converged
+
+The run fired 18,144 reaction events, with k_off = 2222.2 /s. For comparison, deterministic mass action predicts c₁ ≈ 9.46 × 10⁻⁴ M and mean n_agg ≈ 6.06. Being lower than that is within the expected stochastic spread for a system this small.
+
+Two things in the tool's output don't match the question as written:
+- **What tau was fit to:** the tool fits τ to the growth in the number of micelles, not to the monomer trajectory. It calls this an apparent, fast-biased relaxation time.
+- **Effective concentration:** the tool reports an effective c_total of 0.0374 M, not the nominal 0.045 M. This most likely comes from how the starting Poisson sample is drawn.
+
+FINAL_JSON: {"equilibrium_c1_M": 0.00084375, "equilibrium_mean_nagg": 5.493780571382919, "tau_fit_s": 0.0513657014240904, "mass_conservation_max_error": 0, "convergence": "converged"}

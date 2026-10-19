@@ -1,0 +1,323 @@
+Wide negative -5.34. High negative -14.85. Need self_consistent false.
+
+Need maybe mention α constant and X includes water exact. Good.
+
+Let's craft final with formulas and calculations. Need maybe show sample calculations? Desired oververbosity 5. Include clear derivation. Should not be too long. Mention ΔG at 298.15 = -37.13. Need final block exactly.
+
+Potential issue: The user's wording: "report the enthalpy of micellization using the widest available span ... (b) enthalpy using only interval ... (c) enthalpy ..." We should present sign convention. "Micellization enthalpy" sign as ΔH_mic. Good.
+
+Need mention "van't Hoff (Gibbs-Helmholtz) relationship" maybe:
+ΔH_mic = - (2-α)R [T1T2/(T2-T1)] ln(X_CMC,2/X_CMC,1)
+for T2>T1. This is two-point. Good.
+
+Let's answer.
+
+Need maybe include computed X values? For ΔG at 298, X=1.7546e-4. lnX=-8.648. ΔG=(1.732)(8.3144626)(298.15)(-8.64807)=-37.13 kJ/mol. Good.
+
+Need note that α=0.268 -> 2-α=1.732.
+
+Let's ensure final block exactly:
+FINAL_JSON:
+{
+"delta_h_wide_kJ_per_mol": -5.34,
+"delta_h_low_regime_kJ_per_mol": 1.57,
+"delta_h_high_regime_kJ_per_mol": -14.85,
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": -37.13
+}
+END OF QUESTION? They said End your response with block exactly this form. Do not include END OF QUESTION after? They show END OF QUESTION as delimiter. I should end with JSON block, no "END OF QUESTION". The block includes only JSON. Good.
+
+Need maybe final block exactly no markdown fence? They specified block exactly. I can include plain text. Ensure no trailing commentary. Good.
+
+Let's final.
+
+Using the two-point Gibbs–Helmholtz form with 
+𝛼
+=
+0.268
+α=0.268, so 
+2
+−
+𝛼
+=
+1.732
+2−α=1.732:
+
+Δ
+𝐻
+m
+i
+c
+=
+−
+(
+2
+−
+𝛼
+)
+𝑅
+ 
+𝑇
+1
+𝑇
+2
+𝑇
+2
+−
+𝑇
+1
+ln
+⁡
+ ⁣
+(
+𝑋
+C
+M
+C
+,
+2
+𝑋
+C
+M
+C
+,
+1
+)
+ΔH
+mic
+	​
+
+=−(2−α)R
+T
+2
+	​
+
+−T
+1
+	​
+
+T
+1
+	​
+
+T
+2
+	​
+
+	​
+
+ln(
+X
+CMC,1
+	​
+
+X
+CMC,2
+	​
+
+	​
+
+)
+
+where 
+𝑋
+C
+M
+C
+=
+𝐶
+C
+M
+C
+/
+(
+55.5
++
+𝐶
+C
+M
+C
+)
+X
+CMC
+	​
+
+=C
+CMC
+	​
+
+/(55.5+C
+CMC
+	​
+
+) with 
+𝐶
+C
+M
+C
+C
+CMC
+	​
+
+ in mol/L.
+
+Interval ↕▾	
+Δ
+𝐻
+m
+i
+c
+ΔH
+mic
+	​
+
+ ↕▾
+−283.15–318.15 K	
+−
+5.34
+ 
+k
+J
+ 
+m
+o
+l
+−
+1
+−5.34 kJmol
+−1
+
+283.15–298.15 K	
++
+1.57
+ 
+k
+J
+ 
+m
+o
+l
+−
+1
++1.57 kJmol
+−1
+
+303.15–318.15 K	
+−
+14.85
+ 
+k
+J
+ 
+m
+o
+l
+−
+1
+−14.85 kJmol
+−1
+
+
+⚙
+
+The three values do not agree: the low-temperature interval gives a small positive enthalpy, while the high-temperature interval gives a much larger negative enthalpy. Thus a single constant 
+Δ
+𝐻
+m
+i
+c
+ΔH
+mic
+	​
+
+ is not self-consistent over the full range.
+
+At 298.15 K, with CMC 
+=
+9.74
+=9.74 mM:
+
+𝑋
+C
+M
+C
+=
+1.7546
+×
+10
+−
+4
+,
+ln
+⁡
+𝑋
+C
+M
+C
+=
+−
+8.6481
+X
+CMC
+	​
+
+=1.7546×10
+−4
+,lnX
+CMC
+	​
+
+=−8.6481
+Δ
+𝐺
+m
+i
+c
+=
+(
+1.732
+)
+(
+8.3144626
+)
+(
+298.15
+)
+(
+−
+8.6481
+)
+=
+−
+37.13
+ 
+k
+J
+ 
+m
+o
+l
+−
+1
+ΔG
+mic
+	​
+
+=(1.732)(8.3144626)(298.15)(−8.6481)=−37.13 kJmol
+−1
+
+FINAL_JSON:
+{
+"delta_h_wide_kJ_per_mol": -5.34,
+"delta_h_low_regime_kJ_per_mol": 1.57,
+"delta_h_high_regime_kJ_per_mol": -14.85,
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": -37.13
+}
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

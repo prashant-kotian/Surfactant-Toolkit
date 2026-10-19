@@ -1,0 +1,11 @@
+Results from the connected Monte Carlo tool (seed 71, 65,000 steps, 3,582 kept samples, βε ≈ 3.571):
+
+1. **free_monomer_fraction**: 0.006027
+2. **mean_cluster_size** (monomer-weighted): 5.9368
+3. **largest_cluster**: 15
+4. **exact_max_deviation**: 0.010694
+5. **convergence**: converged. The split-half L1 distance is 0.0681, which is below the noise floor of 0.0805.
+
+The mass peaks at cluster sizes 5–7. The returned histogram lists sizes only up to 13, which suggests clusters of size 14–15 showed up so rarely that their fractions were dropped from the output. The largest-cluster value of 15 is the tool's direct observation from the kept samples.
+
+FINAL_JSON: {"free_monomer_fraction": 0.006027397260273973, "mean_cluster_size": 5.93683686176837, "largest_cluster": 15, "exact_max_deviation": 0.010694313527763677, "convergence": "converged"}

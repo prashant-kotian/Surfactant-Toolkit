@@ -1,0 +1,29 @@
+Working through the SMILES: `CCCCCCCCCCCC[N+](C)(C)CCCC[N+](C)(C)CCCCCCCCCCCC.[Cl-].[Cl-]`
+
+**Atom counts**
+
+Carbons:
+- Two C12 dodecyl tails: 12 + 12 = 24
+- Four N-methyls: 4
+- C4 spacer: 4
+- Total C = **32**
+
+Nitrogens: 2 quaternary `[N+]`, each bonded to 4 carbons (tail + 2 methyls + spacer).
+Chlorines: 2 counterions.
+
+Hydrogens:
+- Each tail CH₃–(CH₂)₁₁–: 25 H × 2 = 50
+- Four N-CH₃: 6 × 2 = 12
+- Spacer –(CH₂)₄–: 8
+- Total H = **70**
+
+**Results**
+
+1. **family:** `dimeric_gemini_type` — exactly two quaternary-ammonium matches
+2. **charge:** `cationic` — two quaternary ammonium headgroups (net +2, chloride counterions)
+3. **mw:** C 32×12.011 = 384.352; H 70×1.008 = 70.56; Cl 2×35.45 = 70.90; N 2×14.007 = 28.014 → 553.826 → **554 g/mol**
+4. **formula:** `C32H70Cl2N2` (Hill order: C, H, Cl, N)
+5. **n_heads:** `2`
+6. **n_N_methyls:** `4` (two methyls on each of the two nitrogens)
+
+FINAL_JSON: {"family": "dimeric_gemini_type", "charge": "cationic", "mw": 554, "formula": "C32H70Cl2N2", "n_heads": 2, "n_N_methyls": 4}

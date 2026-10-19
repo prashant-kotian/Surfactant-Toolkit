@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 1m 39s
+Analyzed
+ChatGPT said:
+excluded_gamma: 38.7 mN/m
+cmc_mM: 2.898275349237888
+gamma_max: 1.8872963312904608e-6 mol/m²
+n_used: 9
+conflict_detected: true
+
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.898275349237888, "gamma_max": 1.8872963312904608e-6, "n_used": 9, "conflict_detected": true}

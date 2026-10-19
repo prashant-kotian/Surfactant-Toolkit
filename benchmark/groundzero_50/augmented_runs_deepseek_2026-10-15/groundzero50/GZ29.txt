@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"selected_model": "langmuir (BIC-selected over Frumkin)",
+"frumkin_a": 0.00020717158722358727,
+"physically_meaningful_interaction": false,
+"reasoning": "The tool selected langmuir by BIC (ΔBIC = -0.405, Langmuir BIC = -144.099 vs Frumkin BIC = -143.694) with Langmuir K = 8.772e6 M^-1. Both models fit with R^2 ≈ 0.999999999, so the extra Frumkin parameter buys no improvement and is penalised. The fitted Frumkin a = 2.07e-4 is effectively zero (~0.0002 kT), far below the |a| ≳ 1 kT threshold for meaningful non-ideal lateral interactions. This is consistent with the molecule's structure: a C12 tail with a bulky, heavily hydrated octa(ethylene glycol) headgroup produces a crowded monolayer with strong steric/EO screening that suppresses cooperative tail-tail interactions. Ideal Langmuirian adsorption is the correct physical description."
+}

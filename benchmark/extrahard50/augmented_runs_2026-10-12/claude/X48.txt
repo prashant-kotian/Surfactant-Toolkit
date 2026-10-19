@@ -1,0 +1,46 @@
+## Step 1 — OLS fit of ln(S\*) on EACN
+
+Computing ln(S\*) for each point:
+
+| EACN | S\* (%) | ln(S\*) |
+|------|---------|---------|
+| 6 | 3.1978 | 1.162463 |
+| 9 | 3.3944 | 1.222127 |
+| 12 | 3.6068 | 1.282821 |
+| 15 | 3.7844 | 1.330887 |
+
+With x̄ = 10.5, ȳ = 1.2495746, Sₓₓ = 45, Sₓᵧ = 0.8489503:
+
+- **k** = Sₓᵧ / Sₓₓ = 0.8489503 / 45 = **0.0188656**
+- intercept = ȳ − k·x̄ = 1.0514862, and intercept = −Cc → **Cc = −1.0514862**
+
+## Step 2 — S\* at EACN = 16, dT = +10 K
+
+ln(S\*) = k·16 + α·10 − Cc = 0.3018490 + 0.1 + 1.0514862 = 1.4533352
+
+S\* = e^1.4533352 = **4.2774 %**
+
+## Step 3 — Salt ceiling (4.0 %)
+
+4.2774 > 4.0 → **not achievable → false**
+
+## Step 4 — HLD of S = 9 % at EACN = 10, dT = 0
+
+HLD = ln(9) − k·10 − α·0 + Cc
+= 2.1972246 − 0.1886556 + 0 + (−1.0514862) = **0.9571**
+
+## Step 5 — Classification
+
+HLD = 0.9571 > +0.3 → **Winsor II**
+
+---
+
+**Required outputs**
+1. k: 0.0188656
+2. cc: −1.0514862
+3. S_star_E16_dT10: 4.2774 %
+4. achievable: false
+5. hld_S9_E10: 0.9571
+6. winsor: Winsor II
+
+FINAL_JSON: {"k": 0.0188656, "cc": -1.0514862, "S_star_E16_dT10": 4.2774, "achievable": false, "hld_S9_E10": 0.9571, "winsor": "Winsor II"}

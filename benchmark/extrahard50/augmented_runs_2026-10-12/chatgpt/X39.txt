@@ -1,0 +1,13 @@
+…
+Show more
+Worked for 1m 45s
+ChatGPT said:
+equilibrium_c1_M: 0.0008437500000000001 mol/L
+equilibrium_mean_nagg: 5.493780571382919
+tau_fit_s: 0.0513657014240904 s
+mass_conservation_max_error: 0
+convergence: "converged"
+
+Reaction events fired: 18144
+
+FINAL_JSON: {"equilibrium_c1_M": 0.0008437500000000001, "equilibrium_mean_nagg": 5.493780571382919, "tau_fit_s": 0.0513657014240904, "mass_conservation_max_error": 0, "convergence": "converged"}

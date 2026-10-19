@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"mean_including_all": 59.0,
+"mean_excluding_inconsistent": 55.5,
+"geometric_reference": 55.5,
+"all_three_include_reference": false,
+"excluded": "SLS, DLS"
+}

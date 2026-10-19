@@ -1,0 +1,14 @@
+Done. The EOMMM global fit converged cleanly at cmc_margin = 0.10 (ionic defaults, r1 = r2 = 2).
+
+| Output | Value |
+|---|---|
+| **W12** | 0.90 |
+| **W21** | 1.60 |
+| **r_squared** (ln CMC_mix space) | 0.99842 |
+| **x1 at α₁ = 0.25** | 0.81088 |
+| **total_infeasibility** | 6.38 × 10⁻¹⁴ |
+| **feasible** (< 1e-6) | true |
+
+The infeasibility score bottoms out at machine zero (≈6.4e-14), so the mass-balance constraints are satisfied essentially exactly at the fitted pair — the fit is well-determined at this margin.
+
+FINAL_JSON: {"W12": 0.9, "W21": 1.6, "r_squared": 0.9984240805557485, "x1_third_point": 0.8108824340338063, "feasible": true}

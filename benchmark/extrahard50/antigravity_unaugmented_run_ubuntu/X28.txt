@@ -1,0 +1,47 @@
+To resolve the duplicate-concentration conflict and extract the surface chemical properties, we proceed step by step according to the protocol.
+
+**Step 1: Resolve the duplicate at c = 1.60 mM**
+We have two measurements at $c = 1.60$ mM: $\gamma = 45.9$ and $\gamma = 38.7$ mN/m. The logarithm of the duplicate concentration is $\log_{10}(1.60) \approx 0.20412$.
+We find the 4 nearest points in $\log_{10}(c)$ excluding the duplicates themselves:
+1. $c = 2.40$ ($\log_{10} c \approx 0.38021$, distance $\approx 0.176$) $\rightarrow \gamma = 61.9$
+2. $c = 1.00$ ($\log_{10} c = 0.00000$, distance $\approx 0.204$) $\rightarrow \gamma = 66.8$
+3. $c = 3.50$ ($\log_{10} c \approx 0.54407$, distance $\approx 0.340$) $\rightarrow \gamma = 29.7$
+4. $c = 0.60$ ($\log_{10} c \approx -0.22185$, distance $\approx 0.426$) $\rightarrow \gamma = 70.0$
+
+Fitting an ordinary least squares (OLS) line to these 4 non-duplicate neighboring points ($x = \log_{10} c$, $y = \gamma$), we get:
+*   Slope ($m$) $\approx -43.512$
+*   Intercept ($b$) $\approx 64.741$
+
+Evaluating this local fit at $x = 0.20412$ gives a predicted baseline value of:
+$\gamma_{\text{fit}} \approx 64.741 - 43.512(0.20412) \approx 55.859 \text{ mN/m}$
+
+Now, we compute the absolute residuals for the two duplicates:
+*   For $\gamma = 45.9$: $|45.9 - 55.859| \approx 9.959$
+*   For $\gamma = 38.7$: $|38.7 - 55.859| \approx 17.159$
+
+The measurement with the larger residual ($\gamma = 38.7$) is excluded as the casualty. This leaves us with a refined dataset of 9 points.
+
+**Step 2: Determine the CMC by RSS-minimizing split**
+We now test all valid breakpoint boundary splits ($\ge 3$ points per side) on the 9 remaining points to find the two OLS segments (premicellar decline and post-micellar plateau) that minimize the total Residual Sum of Squares (RSS).
+*   **Split 3 | 6**: RSS $\approx 0.08 + 449.7 = 449.78$
+*   **Split 4 | 5**: RSS $\approx 120.63 + 391.84 = 512.47$
+*   **Split 5 | 4**: RSS $\approx 231.56 + 0.12 = 231.68$
+*   **Split 6 | 3**: RSS $\approx 480.37 + 0.06 = 480.43$
+
+The minimum RSS occurs at the boundary separating the first 5 points (declining regime) and the last 4 points (plateau regime).
+The last declining point is $c = 2.40$ and the first plateau point is $c = 3.50$.
+Following the required CMC midpoint formula:
+$\text{CMC} = 10^{(\log_{10}(2.40) + \log_{10}(3.50))/2} = \sqrt{2.40 \times 3.50} = \sqrt{8.4} \approx 2.898275 \text{ mM}$
+
+**Step 3: Calculate Surface Excess ($\Gamma_{\text{max}}$)**
+The winning declining segment (points 1 to 5) has the following OLS slope against $\log_{10}(c)$:
+$m_{\log_{10}} \approx -21.54541$ 
+
+Converting this slope to a natural logarithm base ($\ln c$):
+$m_{\ln} = \frac{-21.54541}{\ln(10)} \approx -9.35705 \text{ mN/m}$
+
+For a 1:1 cationic surfactant with no added salt ($n = 2$), using the Gibbs isotherm equation:
+$\Gamma = \frac{-m_{\ln} \times 10^{-3}}{2 R T}$
+$\Gamma = \frac{-(-9.35705) \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = \frac{0.00935705}{4958.74235} \approx 1.886981 \times 10^{-6} \text{ mol/m}^2$
+
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.898275, "gamma_max": 1.886981e-6, "n_used": 9, "conflict_detected": true}

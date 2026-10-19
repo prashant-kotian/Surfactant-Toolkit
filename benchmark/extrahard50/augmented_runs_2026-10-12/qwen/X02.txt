@@ -1,0 +1,27 @@
+## Result
+
+I ran the pinned procedure on x = log₁₀(c/mM) with the 4-parameter tanh sigmoid, seed = 3 (NumPy `default_rng(3)`, PCG64), 1000 residual-bootstrap refits, and the **5th/95th percentiles** (the 90% interval the procedure specifies — I confirmed this by also running the 2.5/97.5% variant, which is *not* the requested interval and is reported below only as a check).
+
+**Point fit (step 1):** converged, R² = 0.99557, all 1000 bootstrap refits succeeded (n_failed = 0).
+- x₀ = 0.7561139 → **CMC = 10^x₀ = 5.7031 mM**
+- lo = 0.39098, hi = 2.00315, w = 0.235773 — the fit correctly captures the rising plateau (hi > lo), so the "curve rises instead of falls" direction is handled by the model itself, with no sign flipping needed.
+
+**Bootstrap percentiles (steps 3–4), 90% interval:**
+- log₁₀ 5th pct = 0.7386881 → **cmc_ci_low = 5.4788 mM**
+- log₁₀ 95th pct = 0.7761108 → **cmc_ci_high = 5.9719 mM**
+
+**Step 5:** ci_width_pct = 100 × (5.9718764 − 5.4788334) / 5.7031378 = **8.645 %**
+
+Since 8.645 > 5.0 → **ci_wide = true**. The interval is fairly tight in absolute terms (~±0.25 mM around 5.70 mM) but exceeds the 5% relative-width threshold, which is expected with only 11 points and residuals of order ±0.06 near the steep part of the transition.
+
+*(For reference only — the 95% / 2.5th–97.5th percentile variant of the same seed and resamples would give 5.4417–6.0211 mM, width 10.16%; not used, since the procedure pins a 90% interval.)*
+
+**Caveat carried from the tool:** a percentile bootstrap quantifies sampling uncertainty of the fitted sigmoid midpoint only; it excludes model-form error (a two-line break-point CMC could differ from the tanh midpoint) and assumes independent, homoscedastic residuals.
+
+1. cmc_point: 5.7031 mM
+2. cmc_ci_low: 5.4788 mM
+3. cmc_ci_high: 5.9719 mM
+4. ci_width_pct: 8.645
+5. ci_wide: true
+
+FINAL_JSON: {"cmc_point": 5.703137825858703, "cmc_ci_low": 5.4788333788514985, "cmc_ci_high": 5.9718764183005755, "ci_width_pct": 8.645094051768487, "ci_wide": true}

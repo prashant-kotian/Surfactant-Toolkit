@@ -1,0 +1,27 @@
+Both runs are bit-identical, so the seeded procedure is deterministic and reproducible.
+
+## Result
+
+**Authoritative Monte Carlo propagation** (`propagate_uncertainty_chain`, chain `hydrodynamic_radius`, 10000 samples, seed 19, 95% CI):
+
+| # | Output | Value |
+|---|---|---|
+| 1 | `output_mean` | **3.9180368710274043 nm** |
+| 2 | `output_sd` (ddof=1) | **0.8228883131088521 nm** |
+| 3 | `ci_low` (2.5th pct) | **2.7797746405348045 nm** |
+| 4 | `ci_high` (97.5th pct) | **5.899481483434835 nm** |
+| 5 | `skew_label` | **right-skewed** |
+
+**Skew computation (step 3):**
+- median returned by the same run = 3.7658078629759775 nm
+- skew = (mean − median) / sd = (3.9180368710274043 − 3.7658078629759775) / 0.8228883131088521 = **0.184992…**
+- 0.185 > +0.05 → **"right-skewed"**
+
+**Consistency checks:**
+- Determinism: two independent calls at seed 19 returned identical values to full printed precision (16 significant digits) — no RNG-stream ambiguity.
+- Physics check: the deterministic nominal point (`hydrodynamic_radius` at D=6.5e-7, η=0.89, T=298.15) gives 3.7749709160684883 nm, which sits essentially on the sampled **median** (3.76581 nm), not on the sampled **mean** (3.91804 nm). This is exactly the convexity signature the question predicts.
+- Skew direction is confirmed independently by the interval asymmetry: median→ci_high = +2.134 nm vs. ci_low→median = −0.986 nm. The heavy upper tail comes from the 1/D factor — with σ_D/D ≈ 18.5%, low-D draws inflate R_h without bound while high-D draws can only shrink it toward zero.
+
+**Why the linearized answer fails here:** a first-order (delta-method) error bar would give ≈3.775 ± 0.68 nm and a symmetric interval centred on the nominal value, missing both the mean/median split (~0.15 nm, ~4%) and the entire upper tail (97.5th percentile is 2.13 nm above the median vs. 0.99 nm below). The convexity term is second-order in σ_D/D and only appears in an actual 10000-draw simulation. Note the mean is *not* the best central estimate for this observable — the median (or the nominal point value) is, since the mean is pulled upward by the tail.
+
+FINAL_JSON: {"output_mean": 3.9180368710274043, "output_sd": 0.8228883131088521, "ci_low": 2.7797746405348045, "ci_high": 5.899481483434835, "skew_label": "right-skewed"}

@@ -1,0 +1,79 @@
+ed values):
+
+-CH3 / -CH2- (each carbon): −0.475 per CH2/CH3
+
+Count carbons in lipophilic portion:
+
+Octyl chain: 8 C
+
+Heptyl chain: 7 C
+
+Malonyl CH2: 1 C (but adjacent to COOH — still aliphatic CH2)
+
+Sugar methyl: 1 C
+
+Ring carbons (5 C) — these are part of the polar sugar, but Davies counts all CH/CH2/CH3 as −0.475 each; the ring CH's contribute too.
+
+Ester carbonyl C: 1 C (counts as CH-less carbon, often −0.475 as well)
+
+Acid carbonyl C: 1 C
+
+Let me count total carbons from SMILES:
+CCCCCCCC = 8; CC(=O)O = 2 (CH2 + COOH carbon); OC(=O) = 1 (ester carbonyl); CC = 2; CCCCCCC = 7; ring = 6 C (5 ring carbons + 1 methyl).
+Total ≈ 26 carbons.
+
+Davies' −0.475 per carbon (for CH2/CH3/CH) → roughly −0.475 × 26 ≈ −12.35.
+(Some carbons are quaternary/carbonyl and Davies technically assigns −0.475 to CH2/CH3 and ~ −0.475 to CH as well; carbonyl carbons are often counted with the polar group, so I'll refine:)
+
+Refined count of "aliphatic CHx" carbons (excluding the 2 carbonyl carbons and the 5 ring carbons which are attached to O):
+
+C8 chain: 8
+
+heptyl: 7
+
+CH2 next to COOH: 1
+
+CH2 next to ester: 1 (the CC before CH(O))
+
+sugar CH3: 1
+
+ring CH carbons: 5 (these bear OH/O — Davies counts CH as −0.475 regardless)
+
+Total CHx ≈ 23 → −0.475 × 23 ≈ −10.9
+
+Carbonyl carbons (2): typically folded into polar group values, so not double-counted.
+
+Davies HLB
+
+HLB = 7 + 10.6 − 10.9 ≈ 6.7
+
+So HLB ≈ 6.5–7 (a W/O-to-intermediate emulsifier; borderline).
+
+Caveat: Davies' method has no clean tabulation for acetal/glycosidic oxygens and for branched polyols; the ester assignment is ambiguous (some tables use −0.7 for the lipophilic ester part). If ester is taken as −0.7 instead of +0.9, HLB drops to ≈ 5.1. So the honest range is ≈ 5–7, best estimate ~6.5.
+
+Given the ambiguity, I can compute it genuinely but with a stated uncertainty band — it is computable, but the acetal-O and ester treatments introduce ±1–1.5 units.
+
+6. Summary
+
+Charge: neutral as drawn; monoprotic carboxylic acid → anionic (−1) at physiological pH; no cationic or zwitterionic groups.
+
+Family: acidic glycolipid / rhamnolipid-like deoxysugar glycoside of a branched diester-diacid (biosurfactant).
+
+HLB (Davies): ≈ 6.5 (range ~5–7 depending on ester/acetal handling).
+
+FINAL_JSON:
+{
+"charge_type": "anionic (monoprotic carboxylic acid; neutral when protonated, net -1 at physiological pH)",
+"charge_confidence": "high (~95%) — single unambiguous COOH, no basic/quaternary/zwitterionic groups present",
+"structural_family": "acidic glycolipid / rhamnolipid-like biosurfactant: 6-deoxyhexose (rhamnose-type) glycoside of a branched aliphatic diester-diacid with C8 and C7 alkyl tails",
+"hlb": 6.5,
+"notes": "Davies group-contribution: hydrophilic (COOH 2.1 + 4xOH 7.6 + ester 0.9) minus lipophilic (~23 CHx x 0.475 ~ 10.9) + 7 => ~6.5; genuinely computable but acetal-O and ester assignments are ambiguous, giving a plausible range of ~5-7."
+}
+END OF QUESTION
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.4697,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.135
+}

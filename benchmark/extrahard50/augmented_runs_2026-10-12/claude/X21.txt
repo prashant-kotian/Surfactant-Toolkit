@@ -1,0 +1,13 @@
+I'll run the EOMMM global fit on this series with the pinned protocol.
+
+The global fit converged to a fully feasible solution (with the tool's default 1:1 ionic dissociation numbers, r1 = r2 = 2, since the question didn't specify them).
+
+1. **W12** = −2.00
+2. **W21** = −1.50
+3. **r_squared** = 0.9674 (in ln(CMC_mix) space)
+4. **x1_last_point** = 0.8867 (at α1 = 0.90)
+5. **feasible** = true (total_infeasibility ≈ 3.1 × 10⁻¹⁴)
+
+One caveat: at a 10% margin the tool notes that uniqueness of (W12, W21) isn't guaranteed. A wider band admits more of the parameter plane. Rerunning at a tighter margin would confirm whether this optimum is stable.
+
+FINAL_JSON: {"W12": -2.0, "W21": -1.5, "r_squared": 0.9674, "x1_last_point": 0.8867, "feasible": true}

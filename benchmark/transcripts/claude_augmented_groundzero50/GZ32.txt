@@ -1,0 +1,127 @@
+face tension analysis
+
+Surfactant lateral interaction analysis
+
+Nonionic surfactant analysis
+
+C
+Chem-Mantra
+·
+Pro
+
+
+Surfactant structure analysis
+
+
+Share
+
+Use the up and down arrow keys to move between messages.
+
+You said: [Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Analyze this structure's hydrophobic tails carefully. Report the total number of carbons in the molecule, the total number of carbons across both hydrophobic tails combined, whether the tails are straight-chain or branched (describe the branching if present), and the number of carbons in the remaining (non-tail) backbone/headgroup portion of the molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "total_carbons": <integer>,
+  "tail_carbons_total": <integer>,
+  "tails_branched": <true|false>,
+  "tail_description": "<string>",
+  "backbone_carbons": <integer>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+1 minute ago
+
+
+
+Claude responded: I'll verify the atom count with the descriptor tool, then give you the structural breakdown.
+Deciding whether to verify the carbon count with a tool.
+
+Deciding whether to verify the carbon count with a tool.
+
+I’ll verify the atom count with the descriptor tool, then give you the structural breakdown. Let me load that tool.
+
+Used surfactant-computation: Rdkit descriptor panel
+
+Used surfactant-computation: Rdkit descriptor panel
+
+The descriptor panel confirms the composition: MW 444.57 and fraction_csp3 = 0.90 are consistent with 20 carbons, 18 sp³ + 2 sp² (the two ester carbonyls), i.e. formula C₂₀H₃₇NaO₇S. The tail/backbone decomposition below is from parsing the connectivity directly.
+
+Structural analysis
+
+Walking the SMILES CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]:
+
+The central backbone is a sulfosuccinate core — a 4-carbon succinic-acid skeleton:
+
+two ester carbonyl carbons, C(=O) at each end
+a CH₂ and a CH, the CH carrying the –SO₃⁻ sulfonate group (with Na⁺ counterion)
+
+So the headgroup/backbone portion = 4 carbons.
+
+The two hydrophobic tails are the two ester alcohol chains, one on each carbonyl:
+
+Chain 1: OCC(CC)CCCC → O–CH₂–CH(CH₂CH₃)–CH₂CH₂CH₂CH₃
+Chain 2 (written first): CCCCC(CC)CO → same group, O–CH₂–CH(CH₂CH₃)–CH₂CH₂CH₂CH₃
+
+Each tail is a 2-ethylhexyl group: 8 carbons = a 6-carbon (hexyl) main chain with an ethyl branch at the 2-position (the carbon adjacent to the one bearing the ester oxygen). Both tails are therefore branched, not straight-chain.
+
+Per-tail carbons: 8 each → 16 across both tails.
+
+Check: 16 (tails) + 4 (backbone) = 20 total ✓
+
+Portion	Carbons
+Tail 1 (2-ethylhexyl)	8
+Tail 2 (2-ethylhexyl)	8
+Succinate/sulfonate backbone	4
+Total	20
+
+This is the classic twin-tailed anionic sulfosuccinate architecture — two bulky branched C8 tails giving it a large hydrophobic cross-section relative to the small anionic head.
+
+FINAL_JSON:
+{
+“total_carbons”: 20,
+“tail_carbons_total”: 16,
+“tails_branched”: true,
+“tail_description”: “Two identical 2-ethylhexyl tails (8 carbons each): a hexyl main chain with an ethyl branch at the 2-position, each attached via an ester linkage to the succinate backbone.”,
+“backbone_carbons”: 4
+}
+
+
+Create a spreadsheet
+
+
+
+
+
+1 minute ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

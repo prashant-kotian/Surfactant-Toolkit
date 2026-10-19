@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"s_star_toluene_pct": 13.87,
+"s_star_hexadecane_pct": 179.47,
+"hexadecane_physically_achievable": false,
+"reasoning": "Using S* = exp(kEACN - Cc) with k = 0.16 and Cc = -2.63: for toluene (EACN = 0), S = exp(2.63) = 13.87 g NaCl/100 mL, which is physically achievable (well below the ~26 g/100 mL NaCl solubility limit and within normal salinity-scan range). For hexadecane (EACN = 16), S* = exp(0.1616 + 2.63) = exp(5.19) = 179.47 g NaCl/100 mL, which is NOT achievable — it is roughly 7 times the saturation solubility of NaCl in water (~26 g/100 mL at 25 C), so the brine would be saturated long before the optimum and the system cannot reach Winsor III. The negative Cc = -2.63 of this sulfate surfactant makes it too hydrophilic to balance a long-chain C16 alkane; reaching S would require a more lipophilic surfactant (higher Cc), a co-surfactant, a more effective electrolyte, or a higher temperature."
+}

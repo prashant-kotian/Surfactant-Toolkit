@@ -1,0 +1,1 @@
+FINAL_JSON: {"cmc_point": 3.17277720537522, "cmc_ci_low": 3.1092964280512, "cmc_ci_high": 3.2456417783742193, "ci_width_pct": 4.2970, "convergence": "converged"}

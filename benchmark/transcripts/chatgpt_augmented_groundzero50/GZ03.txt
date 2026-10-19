@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "dimeric/gemini-type quaternary-ammonium surfactant",
+"hlb": null,
+"notes": "The organic ion is a permanent +2 dication with two quaternary-ammonium headgroups, two C16 tails, and a six-carbon spacer; two bromides are counterions. Davies group-additive HLB is structurally invalid for this gemini architecture, so no genuine numerical Davies HLB is reported."
+}

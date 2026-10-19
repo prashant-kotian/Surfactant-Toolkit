@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"gamma_lowest_conc_mN_per_m": null,
+"gamma_plateau_mN_per_m": null,
+"estimated_cmc_mM": null
+}

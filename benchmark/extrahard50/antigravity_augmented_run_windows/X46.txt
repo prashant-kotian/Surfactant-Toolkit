@@ -1,0 +1,18 @@
+To determine the required properties for the given surfactant (hexadecyltrimethylammonium bromide), here is the step-by-step breakdown using the requested exact calculations and tools:
+
+1. **MW**: The SMILES `CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]` contains 19 carbons (16 in the tail + 3 methyls), 42 hydrogens, 1 nitrogen, and 1 bromide counterion. 
+   Calculation: `19(12.011) + 42(1.008) + 14.007 + 79.904` = 364.456 g/mol. Rounding to 3 significant figures gives **364**.
+2. **Charge**: The headgroup is a quaternary ammonium cation with a bromide anion, meaning it is a **cationic** surfactant. 
+3. **n_carbons**: Summing the 16 carbons from the tail and the 3 from the methyl groups on the nitrogen yields **19**.
+4. **CPP**: $CPP = v / (a_0 \cdot l_c) = 485.0 / (48.0 \cdot 16.7)$ = **0.6050399201596807**
+5. **Morphology**: Since the CPP falls in the range $1/2 < CPP \le 1$, the predicted structure is **vesicle/bilayer**. 
+6. **p (cylinder aspect ratio)**: 
+   - $r = 2v / a_0 = 2(485.0) / 48.0 = 20.208333$ Å
+   - $L = N_{agg} \cdot v / (\pi r^2) = 78(485.0) / (\pi \cdot 20.208333^2) = 29.486665$ Å
+   - $p = L / 2r = 29.486665 / 40.416666$ = **0.7295666014470287**
+7. **R_nm (Hydrodynamic Radius)**: Using the Stokes-Einstein equation $R = kT / (6\pi\eta D)$ at $298.15$ K with $D = 5.8 \times 10^{-11}$ m²/s and $\eta = 0.89 \times 10^{-3}$ Pa·s:
+   - $R = (1.380649 \times 10^{-23} \cdot 298.15) / (6\pi \cdot 0.89 \times 10^{-3} \cdot 5.8 \times 10^{-11}) = 4.230570854214686$ nm.
+8. **R_perrin_nm**: Because $p \le 1.0$ (it is $0.729567$), the Perrin shape factor $F$ is exactly $1.000$ (no correction applied). The Perrin-corrected radius remains **4.230570854214686** nm.
+
+FINAL_JSON: {"mw": 364, "charge": "cationic", "n_carbons": 19, "cpp": 0.6050399201596807, "morphology": "vesicle/bilayer", "p": 0.7295666014470287, "R_nm": 4.230570854214686, "R_perrin_nm": 4.230570854214686}
+04226174, "R_nm": 4.230570854214686, "R_perrin_nm": 4.230570854214686}

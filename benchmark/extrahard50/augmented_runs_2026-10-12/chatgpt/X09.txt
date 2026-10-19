@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 37s
+Analyzed
+ChatGPT said:
+cmc_point: 1.3893807376561107 mM
+cmc_ci_low: 1.3643471343218236 mM
+cmc_ci_high: 1.4117902402895397 mM
+ci_width_pct: 3.4146943801562064
+ci_wide: true
+
+FINAL_JSON: {"cmc_point": 1.3893807376561107, "cmc_ci_low": 1.3643471343218236, "cmc_ci_high": 1.4117902402895397, "ci_width_pct": 3.4146943801562064, "ci_wide": true}

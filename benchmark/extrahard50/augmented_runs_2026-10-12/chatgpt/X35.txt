@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 29s
+ChatGPT said:
+f_cation_pH8: 0.9976069077095452
+f_cation_pH1062: 0.5
+f_cation_pH13: 0.004151387969270387
+dominant_at_8: cationic
+confidence_at_8: high
+
+FINAL_JSON: {"f_cation_pH8": 0.9976069077095452, "f_cation_pH1062": 0.5, "f_cation_pH13": 0.004151387969270387, "dominant_at_8": "cationic", "confidence_at_8": "high"}

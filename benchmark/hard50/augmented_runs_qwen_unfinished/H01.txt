@@ -1,0 +1,28 @@
+Manual cross-check of the thermodynamics:
+
+- X = 8.7×10⁻⁵ / 55.5 = 1.56757×10⁻⁶ → ln X = −13.36599
+- (1 + 1/80)·ln X = 1.0125 × (−13.36599) = −13.53306
+- (1/80)·ln 80 = 0.054775 → bracket = −13.58784
+- RT = 8.314462618 × 298.15 = 2478.97 J/mol
+- ΔG = 2478.97 × (−13.58784) = −33 676 J/mol = **−33.68 kJ/mol**
+
+**Summary of the full chain (all first-principles, no literature inputs used)**
+
+| Quantity | Value |
+|---|---|
+| Optical constant K = 4π²n²(dn/dc)²/(N_Aλ⁴) | 1.3239×10⁻⁷ mol·mL²·g⁻²·cm⁻¹ |
+| Intercept 1/M_w of Kc/ΔR vs c | 2.78646×10⁻⁵ g/(mol·mL) |
+| Slope 2A₂ → A₂ | 7.9997×10⁻⁴ → 4.000×10⁻⁴ mol·mL/g² (matches the stated value, validating the fit) |
+| Micelle M_w | 35 888 g/mol |
+| Aggregation number n = M_w/M₀ | 80.0 |
+| ΔG_mic (mass-action) | −33.68 kJ/mol |
+
+Two consistency checks worth noting: (i) the recovered A₂ equals the given 4.0×10⁻⁴ to five significant figures, and (ii) back-propagating 1/M_w = 2.78646×10⁻⁵ with that A₂ reproduces every measured ΔR exactly (e.g. 8.9867×10⁻⁶ at c = 0.002 g/mL), so the dataset is internally self-consistent with a monodisperse, non-interacting-particle Debye model and the extrapolation to c = 0 is unambiguous. The mass-action value is slightly less negative than the pseudo-phase convention would give, by design, because of the +(1/n)ln n micelle-translational-entropy term; with n = 80 that correction is small (−0.14 kJ/mol).
+
+FINAL_JSON:
+{
+  "optical_constant_K": 1.3239e-07,
+  "micelle_mw": 35888.0,
+  "aggregation_number": 80.0,
+  "delta_g_mass_action_kJ_per_mol": -33.68
+}

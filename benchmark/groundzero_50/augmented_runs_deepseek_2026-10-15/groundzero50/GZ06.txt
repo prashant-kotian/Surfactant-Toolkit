@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"debye_length_nm": 0.9614,
+"kappa_a": 2.74,
+"henry_function_value": 0.6607,
+"method_used": "O'Brien-White integral quadrature, relaxation channel off (Henry-limit backbone); OHW83 closed form not applicable at kappa_a < 10"
+}

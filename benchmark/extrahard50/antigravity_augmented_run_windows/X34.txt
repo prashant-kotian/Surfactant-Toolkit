@@ -1,0 +1,19 @@
+To find the requested properties for sodium 2-ethylhexyl sulfate based on its SMILES `CCCCC(CC)COS(=O)(=O)[O-].[Na+]`, we analyze its structure step-by-step:
+
+1. **tail_carbons**: The hydrophobic tail is the 2-ethylhexyl group, which consists of a 6-carbon main chain (from the attachment point to the end) and a 2-carbon ethyl branch. The total carbon count in this alkyl tail is **8**.
+2. **n_CH3**: There are two terminal methyl groups in the tail: one at the end of the main hexyl chain and one at the end of the ethyl branch. So, there are **2** methyl groups.
+3. **mw**: The molecular formula for the complete sodium salt is C8H17NaO4S. 
+   - C: 8 × 12.011 = 96.088
+   - H: 17 × 1.008 = 17.136
+   - Na: 1 × 22.990 = 22.990
+   - O: 4 × 15.999 = 63.996
+   - S: 1 × 32.060 = 32.060
+   - Total = 232.270 g/mol. Rounded to 3 significant figures, this is **232**.
+4. **formula**: Following the Hill system (C, H, then alphabetical), the formula is **C8H17NaO4S**.
+5. **charge**: The surfactant molecule dissociates into a negatively charged sulfate surfactant ion and a sodium counterion, so it is **anionic**.
+6. **hlb**: Using the Davies method with the pinned rules:
+   - Total tail CH count = 8 (all carbons are in CH3, CH2, or CH groups).
+   - HLB = 7 + 38.6 (for SO4Na) - 0.475 × 8 
+   - HLB = 45.6 - 3.8 = **41.8**
+
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}

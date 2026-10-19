@@ -1,0 +1,9 @@
+The EOMMM global fit has been successfully computed using the given mixture series data and a `cmc_margin` of 0.10.
+
+1. **W12:** 0.4
+2. **W21:** 0.8000000000000006
+3. **r_squared:** 0.9839135971801352
+4. **x1_middle_point (at α1 = 0.55):** 0.861256575229002
+5. **feasible:** true (total_infeasibility is ~3.36e-14, which is less than 1e-6)
+
+FINAL_JSON: {"W12": 0.4, "W21": 0.8000000000000006, "r_squared": 0.9839135971801352, "x1_middle_point": 0.861256575229002, "feasible": true}

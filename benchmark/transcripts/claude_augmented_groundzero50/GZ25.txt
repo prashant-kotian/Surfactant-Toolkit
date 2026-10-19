@@ -1,0 +1,53 @@
+ructure on the table.
+An asymmetric two-parameter (EOMMM / Margules) model wins on BIC. Fit with the physically correct dissociation numbers — r₁ = 1 for the zwitterion (no dissociable counterion) and r₂ = 2 for ionic DTAB — it returns a single, non-degenerate, fully feasible optimum at W₁₂ ≈ −1.8, W₂₁ ≈ −4.3 (r² = 0.98), and these hold steady down to the minimal feasible margin (they are not pinned at a search bound). Note that running EOMMM at its default r₁ = r₂ = 2 would mis-model the zwitterion and shift the parameters; the r₁ = 1 fit is the defensible one.
+
+Character of the interaction. Net attractive but moderate and asymmetric. A β of ≈ −1.4 is far from the strongly synergistic catanionic regime (β ≈ −10 to −20); the cationic trimethylammonium of DTAB is drawn to the anionic phosphate of the PC, but the PC’s own choline cation partly screens that attraction, leaving only modest net stabilization. The two Margules parameters being unequal (both negative, W₂₁ more so) says inserting a DTAB molecule into a PC-rich micelle is more favorable than the reverse — consistent with the bulky dipolar PC headgroup accommodating the small cationic co-surfactant more readily than vice versa.
+
+Independent check of the composition trend. Rubingh and EOMMM both put the micelle strongly enriched in component 1 (x₁ rising from ≈ 0.33 to ≈ 0.70 as α₁ goes 0.05 → 0.50), i.e. the low-CMC PC dominates the aggregate even when the bulk is 95% DTAB. The Rodenas method tests this without assuming any activity-coefficient model — it takes x₁ straight from the local slope of the raw ln(CMC_mix) vs α₁ curve via Gibbs–Duhem. It returns x₁ = 0.71, 0.84, 0.63, 0.82, 0.65 across the series: scattered (5-point numerical differentiation is noisy, and the method’s own caveat flags sparse-data instability), but every value is physically valid and every one lies well above the bulk α₁. The slope dln(CMC)/dα₁ is steeply negative in the DTAB-rich corner — the model-free fingerprint of PC preferentially partitioning into the micelle and pulling the CMC down. So the independent check supports the same conclusion in sign and direction (synergism + strong component-1 enrichment), even if it’s too noisy on five points to pin exact compositions.
+
+FINAL_JSON:
+{
+“component1_charge_type”: “zwitterionic”,
+“selected_mixture_model”: “EOMMM asymmetric (two-parameter) Margules, BIC-selected over Rubingh regular-solution theory and Clint ideal; Rubingh beta reported as the single-parameter reference”,
+“model_parameters”: {
+“clint_ideal_baseline”: “measured mixed CMC below ideal at all 5 compositions (negative deviation = synergism)”,
+“rubingh_beta”: -1.36,
+“rubingh_beta_std”: 0.68,
+“rubingh_beta_note”: “per-point beta drifts -0.2 (DTAB-rich) to -2.0 (equimolar), indicating asymmetry”,
+“eommm_W12”: -1.8,
+“eommm_W21”: -4.2,
+“eommm_r1”: 1,
+“eommm_r2”: 2,
+“eommm_r_squared”: 0.98,
+“eommm_notes”: “single non-degenerate feasible optimum, stable to minimal feasible margin (~0.089); r1=1 used because component 1 is zwitterionic”
+},
+“interaction_character”: “moderate net synergism (attractive), composition-asymmetric; weak relative to catanionic systems, driven by cationic-headgroup/phosphate attraction partially screened by the PC’s own choline cation”,
+“independent_check_note”: “Rodenas Gibbs-Duhem composition (no activity-coefficient model) gives x1 = 0.71/0.84/0.63/0.82/0.65 for alpha1 = 0.05-0.50 -- all physically valid and all well above bulk alpha1, with steeply negative dln(CMC)/dalpha1; noisy on 5 points but confirms the Rubingh/EOMMM trend of strong component-1 (zwitterionic PC) enrichment and synergism independently of the fitted model.”
+}
+
+
+
+
+
+
+4 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

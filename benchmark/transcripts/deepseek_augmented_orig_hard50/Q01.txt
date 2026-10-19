@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"cmc_ideal_mM": 2.6829
+}

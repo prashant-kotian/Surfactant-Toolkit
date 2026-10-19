@@ -1,0 +1,50 @@
+uccinate head with two branched 2-ethylhexyl (C8) tails. Let me load and call the matching reference tool.
+
+Used surfactant-computation
+
+Used surfactant-computation
+
+This resolves cleanly, and the two sources turn out to be a textbook case of a specific error.
+
+The compound. The SMILES is sodium bis(2-ethylhexyl) sulfosuccinate — AOT (Aerosol OT / docusate sodium). Structurally it’s a single small anionic sulfonate head carrying two branched 2-ethylhexyl (C8) tails. This twin-tailed, bulky-lipophile / compact-head geometry gives it a critical packing parameter well above 1, and it is the canonical surfactant for reverse micelles and water-in-oil microemulsions — it forms W/O systems spontaneously, without a cosurfactant. That behavior is about as well-established as surfactant phenomenology gets.
+
+What the sign of Cc has to be. In the HLD framework, negative Cc means a hydrophilic surfactant that prefers normal (water-continuous, O/W) curvature; positive Cc means a lipophilic surfactant preferring reverse (oil-continuous, W/O) curvature. AOT’s entire reputation is as a reverse-curvature, W/O-forming amphiphile. So its Cc must be positive. Source 2’s range of 2.4–3.5 is exactly what you’d expect for a strongly lipophilic twin-tailed amphiphile; the reference value for this exact compound is +2.4 to +3.5 (primary measurement) against a literature value of ~+2.5.
+
+Why −0.92 is wrong — and where it came from. A value of −0.92 would make AOT mildly hydrophilic and O/W-preferring, which directly contradicts its real chemistry. The giveaway: −0.92 is the well-documented Cc of sodium dihexyl sulfosuccinate (SDHS/AMA) — AOT’s shorter-tailed (C6) cousin. With shorter tails, SDHS genuinely is mildly hydrophilic (negative Cc ≈ −0.9 to −1.1). So the review article almost certainly conflated the dioctyl (AOT) and dihexyl (SDHS) sulfosuccinates — two compounds with nearly identical names and head chemistry differing only in tail length. That is a classic citation/attribution slip, and it’s exactly the kind of error that propagates in a review tabulating many surfactants far more easily than in a primary paper that measured this one compound’s own interfacial behavior.
+
+Source credibility compounds the chemistry. Independently of the chemistry, a primary study directly measuring the target compound outranks a secondary compilation for that compound’s value. Here both lines of evidence point the same way.
+
+So Source 2 (2.4–3.5) is correct; Source 1’s −0.92 is a misattributed SDHS value.
+
+FINAL_JSON:
+{
+“more_likely_correct”: “Source 2 (Cc in the range 2.4 to 3.5)”,
+“reasoning”: “The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), the archetypal twin-tailed, small-head anionic surfactant that forms reverse micelles and water-in-oil microemulsions. In HLD, reverse/W/O-preferring (lipophilic) surfactants have POSITIVE characteristic curvature, so AOT’s Cc must be positive — consistent with Source 2’s 2.4-3.5 (primary-source value ~+2.4 to +3.5, literature ~+2.5). Source 1’s -0.92 would imply a mildly hydrophilic, O/W-preferring surfactant, which flatly contradicts AOT’s well-known reverse-curvature behavior. Moreover, -0.92 is the documented Cc of sodium dihexyl sulfosuccinate (SDHS), AOT’s shorter-tailed cousin, which genuinely is mildly hydrophilic; the review almost certainly conflated the dihexyl (SDHS) and dioctyl (AOT) sulfosuccinates — a citation slip that a multi-surfactant review is far more prone to than a primary paper measuring this exact compound. Both the compound’s real chemistry and the relative reliability of a direct primary measurement versus a secondary compilation point to Source 2.”
+}
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

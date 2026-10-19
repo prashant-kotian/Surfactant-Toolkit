@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"work_of_adhesion_mJ_per_m2": 49.25726509668378,
+"spreading_coefficient_mJ_per_m2": -2.2967349033162257,
+"spontaneous_wetting": false
+}

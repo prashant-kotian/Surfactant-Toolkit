@@ -1,0 +1,105 @@
+Molecular Properties
+Gemini Surfactant Molecular Classification
+Methyl Oleate HLB Calculation
+Surface Tension Scale Corruption
+Van't Hoff Sign Audit
+Surfactant CMC Analysis
+Mixed-Unit Temperature CMC Fit
+Corrupt Row Forensics
+EOMMM Binary Mixture Fit
+EOMMM Global Fit Mixture Series
+Metropolis Monte Carlo Cluster Simulation
+Metropolis Monte Carlo Cluster Simulation
+Previous 30 days
+New chat
+New chat
+New chat
+New chat
+Gemini Surfactant Adsorption Kinetics
+Gemini Surfactant CMC
+Gemini Surfactant Adsorption Kinetics
+Micellization Enthalpy Calculation
+Surfactant CMC Estimate
+Estimating Surfactant CMC
+Prashant Kotian
+Free
+Upgrade
+Qwen3.8-Max
+
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Analyze this structure's hydrophobic tails carefully. Report the total number of carbons in the molecule, the total number of carbons across both hydrophobic tails combined, whether the tails are straight-chain or branched (describe the branching if present), and the number of carbons in the remaining (non-tail) backbone/headgroup portion of the molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "total_carbons": <integer>,
+  "tail_carbons_total": <integer>,
+  "tails_branched": <true|false>,
+  "tail_description": "<string>",
+  "backbone_carbons": <integer>
+}
+END OF QUESTION
+
+
+Thinking completed
+Structural Analysis of CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+Parsing the SMILES
+I'll trace through the SMILES atom by atom:
+Left side: CCCCC(CC)COC(=O)–
+C1–C2–C3–C4–C5 with an ethyl branch (C6–C7) on C5, then continuing to C8, then O, then C9(=O)
+Central backbone: –CC( … )S(=O)(=O)[O⁻]
+C10–C11, where C11 also bears the sulfonate group
+Right branch (off C11): C(=O)OCC(CC)CCCC
+C12(=O)–O–C13–C14 with ethyl branch (C15–C16), then C17–C18–C19–C20
+Identifying the Tails
+Left tail (C1–C8, 8 carbons):
+CH₃–CH₂–CH₂–CH₂–CH(CH₂CH₃)–CH₂–O–
+This is a 2-ethylhexyl group: a 6-carbon chain with an ethyl branch at the 2-position (from the ester oxygen).
+Right tail (C13–C20, 8 carbons):
+–O–CH₂–CH(CH₂CH₃)–CH₂–CH₂–CH₂–CH₃
+Also a 2-ethylhexyl group: identical branching pattern.
+Both tails are branched (ethyl substituent at C-2 of the hexyl chain).
+Backbone / Headgroup Carbons
+The non-tail portion is the sulfosuccinate core:
+–C(=O)–CH₂–CH(SO₃⁻)–C(=O)–
+This contains C9, C10, C11, C12 = 4 carbons.
+Verification
+Portion
+	
+Carbons
+
+
+Left 2-ethylhexyl tail
+	
+8
+
+
+Right 2-ethylhexyl tail
+	
+8
+
+
+Succinate + sulfonate backbone
+	
+4
+
+
+Total
+	
+20
+This is sodium bis(2-ethylhexyl) sulfosuccinate (AOT / Aerosol OT).
+FINAL_JSON:
+{
+"total_carbons": 20,
+"tail_carbons_total": 16,
+"tails_branched": true,
+"tail_description": "Two identical 2-ethylhexyl groups (8 carbons each): a 6-carbon main chain bearing an ethyl branch at the 2-position relative to the ester oxygen",
+"backbone_carbons": 4
+}
+MCP
+Auto
+AI-generated content may not be accurate.

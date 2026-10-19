@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 43s
+ChatGPT said:
+family: dimeric_gemini_type
+charge: cationic
+mw: 554 g/mol
+formula: C32H70Cl2N2
+n_heads: 2
+n_N_methyls: 4
+
+FINAL_JSON: {"family": "dimeric_gemini_type", "charge": "cationic", "mw": 554, "formula": "C32H70Cl2N2", "n_heads": 2, "n_N_methyls": 4}

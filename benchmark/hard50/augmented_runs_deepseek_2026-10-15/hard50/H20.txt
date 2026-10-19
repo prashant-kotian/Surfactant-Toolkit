@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The specific refractive-index increment dn/dc of AOT in the relevant solvent at 632.8 nm. The provided table contains only SDS's value (0.110 mL/g), which is a different compound and cannot be substituted. Obtain it by differential refractometry: measure n vs AOT concentration at 632.8 nm in the same solvent/temperature as the SLS data and take the slope (or use an in-line RI detector); a group-contribution estimate may only be a rough stand-in and should be validated. With a correct dn/dc, form K and the Debye plot to get M_micelle and N_agg = M_micelle/332.43."
+}

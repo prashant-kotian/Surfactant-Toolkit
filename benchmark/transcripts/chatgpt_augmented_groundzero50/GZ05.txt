@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"delta_h_endpoint_kJ_per_mol": -13.592197635471393,
+"sub_intervals": [{"t_lo_C": 30.0, "t_hi_C": 50.0, "delta_h_kJ_per_mol": -12.51622692462097}, {"t_lo_C": 50.0, "t_hi_C": 70.0, "delta_h_kJ_per_mol": -14.810140401192402}],
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": null,
+"delta_s_mic_J_per_mol_K": null
+}

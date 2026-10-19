@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"true_classification": "cationic bolaform surfactant (bis-quaternary-ammonium bolaamphiphile), not a true gemini surfactant",
+"reasoning": "The organic species is a +2 dication with two permanent quaternary ammonium groups balanced by two bromide counterions. The two ammonium headgroups sit at opposite ends of a single C16 polymethylene hydrophobic segment: (CH3)3N+-(CH2)16-N+(CH3)3. There are no separate long alkyl tails beyond the headgroups, only methyl substituents. A true gemini requires tail-head-spacer-head-tail connectivity, whereas this molecule has head-long-hydrophobe-head connectivity, which is bolaform architecture."
+}

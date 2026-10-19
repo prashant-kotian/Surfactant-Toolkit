@@ -1,0 +1,46 @@
+You will be given 1 challenge question about a chemistry/surfactant-science
+software toolkit. Answer it as precisely as you can, following its own
+instructions exactly (which inputs to use, what field and rounding to
+report).
+
+You have access to a connected MCP tool server named "surfactant-computation"
+-- use it directly for this calculation rather than hand-deriving results,
+wherever a relevant tool exists.
+
+Immediately before the question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using the question's own ID exactly as shown) so the answer can be told
+apart afterward.
+
+---
+
+=== GZ02 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Analyze this binary surfactant system and report component 1's charge type, the interaction behavior between the two surfactants in their mixed micelles (with whatever model and parameters you find best explain this data), whether the system is synergistic or antagonistic, and whether an independent check of the micellar composition trend -- one that doesn't rely on your chosen model's own assumptions -- supports the same conclusion.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "component1_charge_type": "<string>",
+  "selected_mixture_model": "<string>",
+  "model_parameters": {},
+  "synergy_classification": "<string>",
+  "independent_check_note": "<string>"
+}
+END OF QUESTION

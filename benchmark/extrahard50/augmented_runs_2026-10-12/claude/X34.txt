@@ -1,0 +1,41 @@
+## Working
+
+**Parse the tail** (2-ethylhexyl group, `CCCCC(CC)C`–O–sulfate):
+
+| Carbon | Type |
+|--------|------|
+| O–CH₂ (C1) | CH₂ |
+| CH branch point (C2) | CH |
+| C3, C4, C5 | CH₂ ×3 |
+| C6 (chain end) | CH₃ |
+| ethyl CH₂ | CH₂ |
+| ethyl CH₃ | CH₃ |
+
+- **tail_carbons** = all 8 carbons of the branched C8 group → **8**
+- **n_CH3** = chain-terminal + ethyl-terminal → **2**
+- **tail CH count** (CH₃+CH₂+CH) = 2 + 5 + 1 = **8** (every carbon)
+
+**Formula:** C₈H₁₇ alkyl + –O–SO₃ + Na → **C₈H₁₇NaO₄S** (Hill: C, H, then Na, O, S)
+
+**MW:**
+- C: 8 × 12.011 = 96.088
+- H: 17 × 1.008 = 17.136
+- Na: 22.990
+- O: 4 × 15.999 = 63.996
+- S: 32.06
+- Total = 232.27 → **232 g/mol** (3 s.f.)
+
+**Charge:** sulfate ester salt → **anionic**
+
+**Davies HLB** = 7 + 38.6(1 SO₄Na group) − 0.475 × 8 = 7 + 38.6 − 3.8 = **41.8**
+
+## Results
+
+1. **tail_carbons:** 8
+2. **n_CH3:** 2
+3. **mw:** 232 g/mol
+4. **formula:** C8H17NaO4S
+5. **charge:** anionic
+6. **hlb:** 41.8
+
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}

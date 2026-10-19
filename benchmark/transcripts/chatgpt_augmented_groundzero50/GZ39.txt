@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "Approximately 10^-3 to 10^-2 M, around and above the CMC/plateau onset at the high-concentration end of the plot",
+"deviation_reason": "Near the CMC the interface is close to saturated and added surfactant increasingly forms bulk micelles, so monomer concentration and surface tension no longer follow the pre-CMC adsorption-isotherm assumptions; the measured surface tension therefore levels off while the extrapolated pre-CMC fit continues to change."
+}

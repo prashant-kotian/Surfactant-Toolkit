@@ -1,0 +1,21 @@
+ld not be the workhorse for reverse micelles. That is flatly contradicted by decades of phase-behavior literature (AOT/water/alkane microemulsion existence, percolation studies, protein encapsulation). A direct measurement of "this compound's own interfacial behavior" yielding a strongly positive Cc is hard to reconcile with the compound's defining behavior — unless the measurement was done under conditions (high salinity, specific oil, added electrolyte, temperature) that flipped the curvature, or the "characteristic curvature" scale/normalization used differs from the review's convention. A Cc of +2.4 to +3.5 for AOT is almost certainly a convention/scale mismatch, a measurement in a curvature-flipped system, or a misassignment — not AOT's intrinsic preference.
+
+Source 1 (Cc = −0.92): This is the right sign (negative = reverse/oil-continuous preference), and it is a relative, comparative value on a standardized Cc scale (the Acosta/Netzer-type scale where Cc is calibrated against reference surfactants). A moderate negative value (−0.92) is entirely consistent with AOT: strongly reverse-curvature-preferring, but not absurdly so — it still forms microemulsions across a range of conditions and can be salted/temperature-tuned. Review articles that tabulate Cc on a common scale are specifically designed to make cross-surfactant comparison meaningful, and they correctly place AOT on the negative side alongside other w/o-favoring surfactants.
+
+Verdict
+
+The sign is the decisive discriminator. AOT's entire well-documented identity is "the reverse-micelle surfactant." A Cc that is positive and large (+2.4 to +3.5) contradicts that identity; a modest negative Cc (−0.92) matches it. Source 1's value is the more defensible one — it is consistent with AOT's real, textbook-established behavior and is expressed on a standardized comparative scale. Source 2's range, if taken at face value as AOT's intrinsic Cc, is inconsistent with the compound's own well-established oil-continuous preference.
+
+FINAL_JSON:
+{
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), the canonical reverse-micelle / w/o microemulsion surfactant. Its two bulky branched 2-ethylhexyl tails and small sulfosuccinate headgroup give a large packing parameter, producing a well-documented preference for reverse (oil-continuous) curvature, i.e., negative Cc. Source 1's -0.92 has the correct sign and is a standardized, comparative Cc value consistent with AOT's established behavior. Source 2's +2.4 to +3.5 implies strong normal (o/w) curvature preference, which directly contradicts AOT's defining role in forming reverse micelles and w/o microemulsions without cosurfactant; such a positive value is most plausibly a scale/convention mismatch or a curvature-flipped measurement condition rather than AOT's intrinsic characteristic curvature."
+}
+END OF QUESTION
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

@@ -1,0 +1,23 @@
+## Verification
+
+**Formula match confirmed.** The library's `gibbs_dg_from_cmc` chain (`_chain_gibbs_dg_from_cmc`) takes exactly the three pinned inputs — `cmc_mole_fraction`, `aggregation_number`, `temperature_K` — and evaluates the nonionic mass-action form `R*T/1000*[(1+1/n)*ln X − (1/n)*ln n]`. (Note: `mass_action_free_energy_of_micellization` is *not* the right tool here — it re-interprets its `cmc_M` argument as a molarity and converts to a mole fraction internally, giving −22.85 kJ/mol, which does not match the pinned formula. I used it only to rule it out.)
+
+**Deterministic center check:** plugging the nominal values (X = 0.0085, n = 45, T = 303.15 K) gives −12.4974 kJ/mol, whereas the Monte Carlo mean is −12.5085 kJ/mol — the ~0.011 kJ/mol Jensen-type offset is exactly the nonlinear-in-X-and-n signature the question warns a first-order Taylor expansion would miss.
+
+**Reproducibility:** two independent calls at seed = 7 returned bit-identical statistics (mean, sd, median, both percentiles), confirming the pinned generator stream. A control call at seed = 12345 gave nearby but distinctly different values (mean −12.5069, sd 0.18982), confirming the reported numbers are seed-specific rather than generic. Run reported `converged: true`, `n_samples_used: 10000`, `n_failed: 0`.
+
+## Results
+
+| # | Quantity | Value |
+|---|---|---|
+| 1 | output_mean | −12.508535 kJ/mol |
+| 2 | output_sd (ddof=1) | 0.184583 kJ/mol |
+| 3 | ci_low (2.5th pct) | −12.877637 kJ/mol |
+| 4 | ci_high (97.5th pct) | −12.161769 kJ/mol |
+| 5 | skew_label | **symmetric** |
+
+**Skew determination:** the tool also returned the median (−12.504689 kJ/mol), so
+skew = (mean − median)/sd = (−12.508535 − (−12.504689))/0.184583 = **−0.0208**.
+Since −0.05 ≤ −0.0208 ≤ +0.05, the label is "symmetric" (the mean sits marginally *below* the median — a faint leftward lean — but well inside the tolerance band).
+
+FINAL_JSON: {"output_mean": -12.508534840934505, "output_sd": 0.18458250834953427, "ci_low": -12.877637318848512, "ci_high": -12.161768924123988, "skew_label": "symmetric"}

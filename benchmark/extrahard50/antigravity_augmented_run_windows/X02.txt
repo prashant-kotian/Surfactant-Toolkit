@@ -1,0 +1,15 @@
+Based on the provided data and using the `bootstrap_cmc` tool from the `surfactantkit` MCP server to compute the exact sigmoidal fit and bootstrap statistics (seed=3, n_boot=1000, ci=0.9), we obtain the following results:
+
+1. **cmc_point:** 5.703137825413387
+2. **cmc_ci_low:** 5.478833380002887
+3. **cmc_ci_high:** 5.971876414913788
+4. **ci_width_pct:** 8.645118556839958
+5. **ci_wide:** true
+
+FINAL_JSON: {"cmc_point": 5.703137825413387, "cmc_ci_low": 5.478833380002887, "cmc_ci_high": 5.971876414913788, "ci_width_pct": 8.645118556839958, "ci_wide": true}
+entile (cmc_ci_high):** 5.972 mM
+- **CI Width (% of point):** ~8.645%
+
+Because the width of the confidence interval is ~8.65%, which is greater than 5.0%, the interval is considered wide.
+
+FINAL_JSON: {"cmc_point": 5.703137825413387, "cmc_ci_low": 5.478833380002887, "cmc_ci_high": 5.971876414913788, "ci_width_pct": 8.645118776615965, "ci_wide": true}

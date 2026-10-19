@@ -1,0 +1,164 @@
+
+Residual Bootstrap CMC Estimate
+Cloud Point HLD Calculation
+HLB Davies Calculation
+Ideal Mixed CMC Calculation
+Surfactant Tension Isotherm Analysis
+Debye Plot Micellization Thermodynamics
+HLD Mega-Chain Analysis
+Surfactant CMC Dual-Method Analysis
+Surfactant Panel SMILES Analysis
+Rubingh Beta Pooled Calculation
+AOT HLD Curvature Fit
+Surfactant Gamma Prefactor Correction
+Surfactant CMC Break Analysis
+Surfactant CMC Recomputation
+DLS Micelle Synthesis Calculation
+Svedberg Chain Sedimentation Analysis
+CPP Transition Algebra Problem
+Prashant Kotian
+Free
+Upgrade
+Qwen3.8-Max
+
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real liquid-solid (glass) system has a measured liquid surface tension (gamma_LV) of 25.777 mN/m and a measured contact angle (theta) of 24.370 degrees.
+
+Compound SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Use the Young-Dupre relations: work of adhesion W_A (mJ/m^2) = gamma_LV * (1 + cos(theta)); spreading coefficient S (mJ/m^2) = gamma_LV * (cos(theta) - 1).
+
+Analyze this system and report the work of adhesion, the spreading coefficient, and whether this liquid spontaneously wets this solid.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "work_of_adhesion_mJ_per_m2": <number>,
+  "spreading_coefficient_mJ_per_m2": <number>,
+  "spontaneous_wetting": <true|false>
+}
+END OF QUESTION
+
+
+Thinking completed
+Work of Adhesion and Spreading Coefficient Calculation
+Given Information
+Liquid surface tension: γ_LV = 25.777 mN/m (= mJ/m²)
+Contact angle: θ = 24.370°
+Compound: an anionic sulfonate surfactant ester (sodium salt) on glass
+Step 1: Compute cos(θ)
+θ = 24.370° = 0.42534 rad
+Using the expansion around 24°:
+cos(24°) = 0.913545, sin(24°) = 0.406737
+Δ = 0.370° = 0.006458 rad
+cos(24.370°) = cos(24°)cos(Δ) − sin(24°)sin(Δ)
+= 0.913545 × 0.999979 − 0.406737 × 0.006458
+= 0.913526 − 0.002627
+= 0.91090
+Step 2: Work of Adhesion (Young–Dupré)
+𝑊
+𝐴
+=
+𝛾
+𝐿
+𝑉
+(
+1
++
+cos
+⁡
+𝜃
+)
+=
+25.777
+×
+(
+1
++
+0.91090
+)
+W
+A
+	​
+
+=γ
+LV
+	​
+
+(1+cosθ)=25.777×(1+0.91090)
+
+𝑊
+𝐴
+=
+25.777
+×
+1.91090
+=
+49.257
+ mJ/m
+2
+W
+A
+	​
+
+=25.777×1.91090=49.257 mJ/m
+2
+Step 3: Spreading Coefficient
+𝑆
+=
+𝛾
+𝐿
+𝑉
+(
+cos
+⁡
+𝜃
+−
+1
+)
+=
+25.777
+×
+(
+0.91090
+−
+1
+)
+S=γ
+LV
+	​
+
+(cosθ−1)=25.777×(0.91090−1)
+
+𝑆
+=
+25.777
+×
+(
+−
+0.08910
+)
+=
+−
+2.297
+ mJ/m
+2
+S=25.777×(−0.08910)=−2.297 mJ/m
+2
+Step 4: Spontaneous Wetting Criterion
+Spontaneous wetting (complete spreading) requires S ≥ 0. Here:
+S = −2.297 mJ/m² < 0
+The negative spreading coefficient means the liquid forms a finite contact angle (24.37°) and does not spontaneously spread over the glass surface. Although the contact angle is relatively small (indicating good partial wetting), true spontaneous wetting requires θ = 0° (S ≥ 0).
+Consistency Check
+W_A + |S| = 49.257 + 2.297 = 51.554 = 2 × 25.777 ✓
+FINAL_JSON:
+{
+"work_of_adhesion_mJ_per_m2": 49.257,
+"spreading_coefficient_mJ_per_m2": -2.297,
+"spontaneous_wetting": false
+}
+MCP
+Auto
+AI-generated content may not be accurate.

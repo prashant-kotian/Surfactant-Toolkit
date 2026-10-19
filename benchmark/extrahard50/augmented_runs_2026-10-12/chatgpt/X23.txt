@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 27s
+ChatGPT said:
+free_monomer_fraction: 0.003742821985233798
+mean_cluster_size: 6.629963084495487
+largest_cluster: 17
+exact_max_deviation: 0.014229165754572864
+convergence: "converged"
+
+FINAL_JSON: {"free_monomer_fraction": 0.003742821985233798, "mean_cluster_size": 6.629963084495487, "largest_cluster": 17, "exact_max_deviation": 0.014229165754572864, "convergence": "converged"}

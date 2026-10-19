@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"cmc_mM": 0.601,
+"counterion_binding_degree": 0.4314
+}

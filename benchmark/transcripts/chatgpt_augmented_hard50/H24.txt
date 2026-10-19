@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"rh_nm": 2.2299,
+"aggregation_number": 69,
+"bias_direction": "overestimate"
+}

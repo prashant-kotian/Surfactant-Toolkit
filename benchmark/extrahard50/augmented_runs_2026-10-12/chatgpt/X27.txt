@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 2m 3s
+ChatGPT said:
+flagged_T: 308.15
+n_flagged: 1
+dH_corrected: -12.719796562204314 kJ/mol
+dS_corrected: 38.256498531934184 J/(mol K)
+r2_corrected: 0.9968185231101583
+
+FINAL_JSON: {"flagged_T": 308.15, "n_flagged": 1, "dH_corrected": -12.719796562204314, "dS_corrected": 38.256498531934184, "r2_corrected": 0.9968185231101583}

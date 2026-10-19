@@ -1,0 +1,787 @@
+{
+  "_grading_note": "Schemas were revised 2026-09-15 to remove leading/scaffolding language (see GroundZero_Unaugmented.txt's own per-question revision notes). Several fields are now open free-text ('isotherm_model', 'method_used', 'selected_mixture_model', 'structural_family') since the questions no longer pre-name candidate options -- grade these by checking whether the reported string names the real correct method/family (allowing reasonable paraphrase), not by exact string match.",
+  "_temperature_note": "GZ-01 and GZ-08 now state their real, paper-confirmed experimental temperature (298.15 K and 298 K respectively) explicitly in the question -- added 2026-09-15 after a real manual run correctly flagged the omission and had to assume a value. Verified by directly fetching both source papers rather than assuming: withholding T wasn't a deliberate trap (unlike the missing counterion-binding degree, which genuinely isn't reported anywhere), it was an accidental gap that only added numeric noise to Gamma_max/A_min without testing any real judgment.",
+  "GZ-01": {
+    "source": "Shah, Das & Bhattarai 2025, Heliyon, PMC11835642 -- real AOT tensiometry curve, real stated T=298.15K (confirmed by fetching the paper directly)",
+    "gold": {
+      "charge_type": "anionic",
+      "cmc_mM": 2.5118612800073175,
+      "isotherm_model": "langmuir (BIC-selected over Frumkin)",
+      "gamma_max_mol_per_m2": 1.436590099494216e-06,
+      "a_min_nm2": 1.1558892601017348,
+      "delta_g_mic_kJ_per_mol": null,
+      "why_null": "no independent counterion-binding measurement (counterion_dissociation_alpha) supplied for this ionic surfactant -- correct behavior is null/refusal, not a guessed number"
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-15"
+  },
+  "GZ-02": {
+    "source": "Vautier-Giongo, Bakshi, Singh, Ranganathan, Hajdu & Bales, JCIS 282(1) (2005) 149-155 -- real DHPC-SDS system",
+    "CORRECTED_2026-09-15": "The original gold below was computed with alpha1/cmc1/cmc2 mismatched -- the real alpha values are SDS's (component 2's) own bulk fraction, but the first gold computation passed them to select_mixture_model as if they were DHPC's (component 1's) fraction. Found because two independent real manual runs (Claude and GPT, search-enabled) both computed per-point Rubingh betas of -3.2 to -3.95 (std~0.33) that didn't match this file's original beta_std=1.384 -- verified by recomputing directly against the real tool with the corrected pairing (not by assuming either the models or the gold were right). The tool itself has no bug; this was a mislabeled function call when building this gold file.",
+    "gold": {
+      "component1_charge_type": "zwitterionic",
+      "selected_mixture_model": "eommm_asymmetric_margules",
+      "model_parameters": {
+        "W12": -4.6,
+        "W21": -2.6
+      },
+      "eommm_bic": -26.0406,
+      "rubingh_alternative_beta": -3.6321250007792387,
+      "rubingh_alternative_beta_std": 0.32705995437610896,
+      "rubingh_bic": -23.8836,
+      "synergy_classification": "synergistic",
+      "rodenas_x1_as_component1_DHPC_fraction": [
+        0.715,
+        0.616,
+        0.738,
+        0.534,
+        0.298
+      ],
+      "note": "EOMMM still wins by BIC, but now by a MODEST margin (~2.16, Kass-Raftery 'positive but not strong' evidence) rather than the wildly wrong ~18-point gap the buggy gold showed -- a well-reasoned Rubingh answer with a correctly-computed beta~-3.6 (std~0.33) and an honest acknowledgment of residual composition-dependence (not claiming a perfect fit) should be credited as a defensible, scientifically reasonable answer, not marked wrong just for not landing on EOMMM. Both real manual runs (Claude, GPT) independently reached exactly this Rubingh answer with correct per-point betas."
+    },
+    "computed_via": "surfactantkit.mixture_model_selection.select_mixture_model + mixed_micelle.rodenas_x1_series, verified 2026-09-15"
+  },
+  "GZ-03": {
+    "source": "Azum, Rub, Alotaibi, Khan & Asiri 2022, Biointerface Res. Appl. Chem. 12(6) 7416-7428 -- real gemini G6 structure",
+    "gold": {
+      "charge_type": "cationic",
+      "structural_family": "dimeric/gemini (two headgroup units in one molecule)",
+      "hlb": null,
+      "why_null": "no Davies group-contribution number exists for a doubled/gemini quaternary-ammonium headgroup in the standard table"
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type + classify_surfactant_structural_family, verified 2026-09-15"
+  },
+  "GZ-04": {
+    "source": "PubChem CID 162246, real monorhamnolipid structure",
+    "gold": {
+      "charge_type": "anionic",
+      "charge_confidence": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
+      "structural_family": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)",
+      "hlb": null,
+      "why_null": "no Davies group-contribution number exists for a glycoside/sugar-ring headgroup"
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type + classify_surfactant_structural_family, verified 2026-09-15"
+  },
+  "GZ-05": {
+    "source": "Saito, Moroi, Matuura 1980, JCIS 76(1) 256-258, Table I -- real 1-hexadecanesulfonic acid CMC-vs-T",
+    "gold": {
+      "delta_h_endpoint_kJ_per_mol": -13.592197635471393,
+      "sub_intervals": [
+        {
+          "t_lo_C": 30.0,
+          "t_hi_C": 50.0,
+          "delta_h_kJ_per_mol": -12.51622692462097
+        },
+        {
+          "t_lo_C": 50.0,
+          "t_hi_C": 70.0,
+          "delta_h_kJ_per_mol": -14.810140401192402
+        }
+      ],
+      "self_consistent": true,
+      "delta_g_mic_kJ_per_mol": null,
+      "delta_s_mic_J_per_mol_K": null,
+      "why_null": "no independently-measured counterion-binding degree found in the literature for this compound; also directly re-tests the real historical van't Hoff sign-bug this library's own vant_hoff_enthalpy() had until 2026-09-04 -- watch for a sign flip on delta_h_endpoint specifically"
+    },
+    "computed_via": "surfactantkit.thermodynamics.vant_hoff_enthalpy, verified 2026-09-15"
+  },
+  "GZ-06": {
+    "source": "Sutherland et al. 2009 Taylor-dispersion SDS micelle radius (real, already validated in this project)",
+    "gold": {
+      "debye_length_nm": 0.9613700798317342,
+      "kappa_a": 2.7429603389170865,
+      "henry_function_value_huckel_WRONG": 1.0,
+      "henry_function_value_smoluchowski_WRONG": 1.5,
+      "henry_function_value_accurate": [
+        1.0846771555941046,
+        1.093555616040726,
+        1.0573215444846982
+      ],
+      "grading_note": "kappa_a=2.74 is squarely in the real intermediate zone where BOTH huckel and smoluchowski are meaningfully wrong -- grade correct only if the reported henry_function_value is close to the accurate ~1.06-1.09 range (ohshima/swan_furst/qin), not 1.0 or 1.5. Since the question no longer names any of these approaches, credit method_used for naming ANY full-range/intermediate treatment (even without the exact right name) over a bare 'Huckel' or 'Smoluchowski' answer."
+    },
+    "computed_via": "surfactantkit.electrostatics.debye_length + henry_function, verified 2026-09-15"
+  },
+  "GZ-07": {
+    "source": "Milone et al., Int. J. Mol. Sci., PMC12786710 -- real DOSY-NMR CTAB/pillararene case",
+    "gold": {
+      "rh_from_diffusion_nm": 1.57290454836187,
+      "real_dls_value_nm": 40,
+      "grading_note": "correct comment_on_dls_comparison recognizes the two values do NOT match and gives a real reason (DOSY-NMR reports a fast-exchange, population-averaged D dominated by free-monomer diffusion, not DLS's pure large-aggregate D) -- do not require verbatim wording, credit any answer reaching this real physical distinction. A model that says '1.57nm roughly matches 40nm' or fabricates a numeric correction to force agreement should be marked wrong."
+    },
+    "computed_via": "surfactantkit.dynamics.hydrodynamic_radius_stokes_einstein, verified 2026-09-15"
+  },
+  "GZ-08": {
+    "source": "Ho, Lips & Velikov 2023, Phys. Chem. Chem. Phys., PMC10132450, Table 1 -- real C12E8 Szyszkowski parameters (real stated T=298K), curve forward-constructed from them at T=298.15K internally (a 0.21% K difference vs fitting at exactly 298K, verified negligible -- well within any reasonable grading tolerance)",
+    "gold": {
+      "charge_type": "nonionic",
+      "isotherm_model": "langmuir/szyszkowski",
+      "K": 8772000.0,
+      "gamma_max_mol_per_m2": 2.21e-06
+    },
+    "computed_via": "surfactantkit.adsorption.szyszkowski_fit_K, verified 2026-09-15 -- K recoverable to <1e-10% of the real literature value when fit at the exact same T used to construct the curve"
+  },
+  "GZ-09": {
+    "source": "Shah, Das & Bhattarai 2025, Heliyon, PMC11835642, Table 2 -- real AOT-water wetting on glass (SAME compound as GZ-01)",
+    "gold": {
+      "work_of_adhesion_mJ_per_m2": 49.25670435832693,
+      "spreading_coefficient_mJ_per_m2": -2.296704358326928,
+      "spontaneous_wetting": false,
+      "grading_note": "no field asks about the GZ-01 connection anymore (removed as a leak) -- if the model spontaneously notices/mentions the repeated compound in its own reasoning text, that's a bonus real signal worth recording separately, not part of the required FINAL_JSON grade"
+    },
+    "computed_via": "surfactantkit.wetting.work_of_adhesion + spreading_coefficient, verified 2026-09-15"
+  },
+  "GZ-10": {
+    "source": "Sachin, Karpe, Singh & Bhattarai 2019, PMC6458362, Table 2 -- real measured SDS headgroup area",
+    "gold": {
+      "tail_volume_A3": 350.2,
+      "critical_length_A": 16.68,
+      "cpp": 0.46969136100515557,
+      "predicted_morphology": "cylindrical/rodlike micelle",
+      "grading_note": "assumptions_or_limitations is open free text -- credit if it recognizes the fixed Amin is a real simplification for an ionic surfactant (electrolyte-dependent equilibrium-area models like Nagarajan's exist and would differ), without requiring it to fabricate a specific corrected CPP number (no electrolyte condition was given). This is now unprompted -- the question no longer names the specific limitation, so also credit a model that raises a genuinely different, valid limitation instead."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter/classify_aggregate_morphology, verified 2026-09-15"
+  },
+  "GZ-11": {
+    "source": "SDS n_c=12, real CMC=8mM (textbook); measured Amin from Sachin et al. 2019 (same as GZ-10); Nagarajan 2002 Table 2 electrostatic method (headgroup_prefactor_A=82.0, real paper value for sulfate headgroups)",
+    "gold": {
+      "tail_volume_A3": 350.2,
+      "critical_length_A": 16.68,
+      "cpp_measured_area": 0.46969136100515557,
+      "morphology_measured_area": "cylindrical/rodlike micelle",
+      "electrostatic_headgroup_area_A2": 67.27174770212636,
+      "cpp_electrostatic_area": 0.31209541232517773,
+      "morphology_electrostatic_area": "spherical micelle",
+      "grading_note": "The real, intended finding IS the disagreement -- both CPPs/morphologies must be reported and both are real, gold does not expect (or want) the model to force a single resolved answer. 'comment' is open free text; credit recognizing this as a genuine measured-vs-theoretical tension (different real methods, different real physical assumptions -- measured Amin reflects the ACTUAL solution's surface excess at a real experimental condition, the electrostatic estimate is a theoretical prediction at the CMC with no added salt), not a contradiction to be papered over or an error in either number."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/critical_length + nagarajan_debye_huckel_kappa_inverse/nagarajan_equilibrium_area_ionic, verified 2026-09-15, cross-checked against test_hlb_cpp.py's own real Nagarajan Table 2 validation"
+  },
+  "GZ-12": {
+    "source": "Schulz & Durand 2016, Comput. Chem. Eng. 87, 145-153, SI mmc2.csv -- real Hyamine(benzethonium chloride)-DTAB system, real fitted W12=-3.565/W21=-0.889 (RT units), already validated in this project's test suite",
+    "gold": {
+      "f1_at_x1_0.90": 1.0125688763683443,
+      "f2_at_x1_0.90": 0.3154843161590624,
+      "grading_note": "interaction_model_or_approach is open free text -- credit any real 2-parameter asymmetric-interaction reasoning (the model must notice f1 and f2 do NOT mirror each other the way a single Rubingh beta would force, since f1 approaches 1 near x1=0.8-0.9 while f2 stays well below 1 -- a real asymmetry). Extrapolating with only a single-beta Rubingh-style fit is expected to give a worse, more symmetric answer; this is the actual test, not exact parameter recovery. Given 5 real interior points and no code execution, expect real spread across models here -- this question is intentionally hard, matching TOOLKIT_COMBINATION_GRAPH.md's gap #3 (genuinely predictive extrapolation, not fitting-then-reporting the same points)."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.asymmetric_margules_activity_coefficients, verified 2026-09-15"
+  },
+  "GZ-13": {
+    "source": "Constructed C16E10 nonionic surfactant, SMILES RDKit-verified (formula C36H74O11, 10 EO units confirmed via two independent atom counts) before use",
+    "gold": {
+      "n_ethylene_oxide_units": 10,
+      "molecular_weight_g_per_mol": 682.9770000000001,
+      "hlb_griffin": 13.398313559607427,
+      "grading_note": "the real point of this question: grade n_ethylene_oxide_units and molecular_weight_g_per_mol as their OWN fields, not just hlb_griffin, since an off-by-one EO miscount only shifts HLB by ~0.4-0.5 units (n=9 gives HLB=12.94, n=11 gives HLB=13.80) -- small enough that it could still fall inside typical 20% numeric tolerance on hlb_griffin alone while the underlying count is genuinely wrong. This directly re-tests the real, mechanistically-documented repeated-substructure-counting weakness this session already found on GZ-08 (two independent models both said 7 ethylene-oxide units where the real answer was 8) -- see LLM_CAPABILITY_RESEARCH.md item 2b."
+    },
+    "computed_via": "RDKit formula verification + surfactantkit.hlb.hlb_griffin, verified 2026-09-15"
+  },
+  "GZ-14": {
+    "source": "SAME real AOT curve as GZ-01/GZ-09 (Shah, Das & Bhattarai 2025)",
+    "gold": {
+      "frumkin_a_best_fit": 3.7882920070770343,
+      "langmuir_bic": 10.134654851271518,
+      "frumkin_bic": 14.35655834691898,
+      "delta_bic": -4.221903495647462,
+      "lateral_interaction_present": "ambiguous by design -- a=3.788 is real and nonzero (genuine 2D-condensation-regime magnitude), but Langmuir still wins on BIC",
+      "confidence_from_this_data_alone": "low",
+      "grading_note": "the correct answer is NOT a confident true or false on lateral_interaction_present -- it's recognizing that a real, nonzero best-fit value (a=3.788) coexists with LOW confidence that this specific limited dataset (9 points, most of the fitting leverage spent on locating the CMC) can actually resolve whether that interaction is real or an artifact of too few/noisy points. Credit reasoning that distinguishes 'a fitted value exists' from 'this value is independently confirmed' -- the real tool's own disclosed finding is 'data-limited, not proof a=0', not a confident claim either way. A model that confidently asserts NO interaction (ignoring the real nonzero a), or confidently reports a=3.788 as solid (ignoring that BIC still preferred the simpler model), should both be marked wrong on confidence_from_this_data_alone."
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve's own isotherm-selection output, re-verified 2026-09-15"
+  },
+  "GZ-15": {
+    "source": "GZ-15_chart.png, generated 2026-09-15 via matplotlib directly from AOT's real curve data (same system as GZ-01/09/14) -- requires vision, not text reasoning",
+    "gold": {
+      "gamma_lowest_conc_mN_per_m": 62.22,
+      "gamma_plateau_mN_per_m": 27.5,
+      "estimated_cmc_mM": 2.5118612800073175,
+      "grading_note": "gamma fields (a) and (b) are direct point-reads at the chart's own extremes and should be read fairly precisely (real markers sit close to real gridlines there). estimated_cmc_mM (c) is expected to show real, meaningful visual-estimation error -- the tool's own real segment-fit (2.51 mM) is NOT necessarily at the most visually obvious 'corner' of the curve (the visible bend looks like it's nearer 1.5-4 mM by eye); per LLM_CAPABILITY_RESEARCH.md item 2e, chart numeric extraction is a documented, current, unsolved VLM weakness -- grade with wider tolerance than the other numeric fields in this project (this question is deliberately testing HOW WRONG the visual estimate is, not requiring tight agreement)."
+    },
+    "computed_via": "same real orchestrator output as GZ-01, values read directly from the same real curve used to build the chart"
+  },
+  "_post_claude_run_fixes": "Fixed after grading the first real Claude manual run against this file (2026-09-19): GZ-16 and GZ-20 never specified which real counterion-factor convention to use for delta_g_mic -- Claude used (2-alpha) (matching Fu et al. 2019's own paper convention, reused correctly elsewhere in this same run for GZ-26/50) while this gold used (1+alpha) (the orchestrator's own internal default), producing a real, ~36% numeric mismatch that was NOT a reasoning error on Claude's part, just genuine unspecified-convention ambiguity (this project's own literature_validation_notes already documents multiple real papers using different conventions: (2-beta), (1+beta), (0.5+beta) for gemini, (0.25+beta) for tetrameric). Both questions' PASTE text now states the (1+alpha) formula explicitly; GZ-26/GZ-50 (which this gold always computed via the paper's own real (2-alpha) form) now also state their formula explicitly, for the same reason -- these were equally ambiguous before, just hadn't been caught yet. GZ-26 also had ambiguous 'halves' wording (a full linear regression through each half's 4-5 points gives materially different numbers than an endpoints-only two-point calculation, and neither matched Claude's own reported values under any single tested method) -- the question now explicitly specifies endpoints-only, two-point calculation using named temperature pairs. No gold VALUES changed (GZ-16/20's already used (1+alpha); GZ-26/50's already used (2-alpha); GZ-26's sub-intervals already used named endpoint pairs) -- only the question TEXT was made unambiguous to match what the gold already computed.",
+  "_batch2_note": "GZ-21..25 (batch 2: model-selection/applicability-domain judgment), built 2026-09-18. Two real design pivots happened while building these, both caught by actually running the real functions before writing the question, not assumed: (1) GZ-21 was originally planned as a direct DTAB analogue of GZ-11's dual-method CPP comparison, but nagarajan_equilibrium_area_ionic's own docstring explicitly states its headgroup_prefactor_A=82.0 is a sulfate-specific illustrative value, 'do not treat as universal for other headgroups' -- so the real correct answer for a cationic quat is that this SECOND path is not computable at all, not a numeric disagreement like GZ-11's. (2) GZ-24 was originally planned as a plain Rubingh-to-Maeda chaining question, but maeda_free_energy_of_micellization's own docstring states it is 'built specifically for ionic-nonionic systems' -- sodium cholate-SDS is anionic-anionic, so applying it here is a real, genuine domain violation even though the formula is mechanically computable and gives a real-looking number (-23.6 kJ/mol). Also: GZ-25 was redirected from an originally-planned G6-TX114 extrapolation (only ONE real composition point exists for that system in this project, not enough for model selection) to the real 5-point DHPC-DTAB series (Vautier-Giongo/Bales 2005) instead, which is real, rich, and not yet used anywhere in the GZ set.",
+  "GZ-16": {
+    "source": "Dankloff et al. 2025 (npj Comput. Mater. 11:358, PendantProp), real robotic pendant-drop tensiometry, SDS -- already used in this project's Round 3 pilot (R3-01). Real alpha=0.272 counterion dissociation degree: Bales, Messina, Vidal & Peric, J. Phys. Chem. B 105 (2001) 6798-6804 (EPR method, HIGH confidence), supplied directly as real given data -- fair per this project's established precedent of supplying real externally-measured system-specific constants directly (c.f. GZ-11's Nagarajan prefactor, GZ-10's real Amin).",
+    "gold": {
+      "charge_type": "anionic",
+      "cmc_mM": 9.1815,
+      "gamma_max_mol_per_m2": 3.4268e-06,
+      "a_min_nm2": 0.4846,
+      "delta_g_mic_kJ_per_mol": -27.271,
+      "delta_s_mic_J_per_mol_K": null,
+      "grading_note": "delta_g_mic IS answerable now that alpha is given (counterion_factor_used=1.272, i.e. a (1+alpha) convention). delta_s_mic is NOT answerable regardless of alpha -- it needs a separate multi-point van't Hoff (CMC-vs-T) series, a structurally different missing input than counterion binding. The real test is whether the model gives BOTH the right answer (deltaG) and the right refusal (deltaS) rather than either over-refusing both or over-answering both. Isotherm model selection is skipped in the real tool's own output too (only 2 real pre-CMC points survive the break-point fit) -- Gamma_max/A_min come from the premicellar slope directly."
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-17"
+  },
+  "GZ-17": {
+    "source": "Dankloff et al. 2025 (PendantProp), real robotic pendant-drop tensiometry, DTAB replicate 7A -- already used in this project's Round 3 pilot (R3-02). No counterion-binding data supplied in this question at all -- deliberate contrast with GZ-16.",
+    "gold": {
+      "charge_type": "cationic",
+      "cmc_mM": 8.185,
+      "gamma_max_mol_per_m2": 2.3656e-06,
+      "a_min_nm2": 0.702,
+      "delta_g_mic_kJ_per_mol": null,
+      "delta_s_mic_J_per_mol_K": null,
+      "why_null": "no independent counterion-binding measurement supplied for this ionic surfactant -- deltaG_mic AND deltaS_mic both correctly null here, unlike GZ-16 where alpha was given. Tests whether refusal behavior generalizes to a fresh compound rather than being an AOT/SDS-specific pattern the model may have memorized from elsewhere in the same chat."
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-17"
+  },
+  "GZ-18": {
+    "source": "Real Amin=44.70 A^2 for SDS: Sachin, Karpe, Singh & Bhattarai 2019, PMC6458362, Table 2 (already used in GZ-10/11). Real N_agg=63: Bales et al., J. Phys. Chem. B 1998, 102, 10347-10358, eq. 9/10's own worked example (69 mM SDS, salt-free), already cited in this project's literature_validation_notes.md Round 2 CPP section. New axial-ratio geometric relationship: estimate_axial_ratio_from_cpp_geometry, built 2026-09-15 (BOTTLENECK_RESOLUTION_PLAN.md item 8).",
+    "gold": {
+      "tail_volume_A3": 350.2,
+      "critical_length_A": 16.68,
+      "cpp": 0.4697,
+      "morphology": "cylindrical/rodlike micelle",
+      "axial_ratio": 1.135,
+      "grading_note": "the CPP/morphology chain reuses GZ-10/11's already-tested skill; the NEW part is the volume-conservation algebra given the stated geometric setup (prolate ellipsoid, minor semi-axis pinned at l_c, major semi-axis from V_core=N*V_tail=(4/3)*pi*a*b^2). Credit close numeric agreement (within ~10%) or a clearly-shown correct setup even with a minor arithmetic slip -- this is a genuinely new derivation for the model to execute, not a recall check. NOTE: with a more 'textbook' N_agg like 49.5 (the broad literature mean), this same geometry raises a real inconsistency (implied major axis smaller than the pinned minor axis) -- N=63 was deliberately chosen as the value that produces a genuinely valid, non-degenerate answer; this was verified by actually calling the real function before writing this gold, not assumed."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter/estimate_axial_ratio_from_cpp_geometry, verified 2026-09-17"
+  },
+  "GZ-19": {
+    "source": "Tail volume via Bales et al. 1998 (same SDS n=12 value as GZ-18). Monomer molar mass MW(SDS)=288.38 g/mol (real, standard). New function: estimate_partial_specific_volume_from_tail_and_headgroup, built 2026-09-15 (BOTTLENECK_RESOLUTION_PLAN.md item 11) -- deliberately requires a real headgroup molar volume as an external input; no such value is hardcoded anywhere in this library for any headgroup, a genuinely disclosed, still-open gap (electrostriction makes it non-derivable from geometry).",
+    "gold": {
+      "tail_molar_volume_contribution_cm3_per_mol": 210.9,
+      "v_bar_full_cm3_per_g": null,
+      "why_null": "the tail's own molar-volume contribution IS exactly computable (an exact unit conversion of an already-sourced Tanford value, not an estimate) -- but the full monomer's partial specific volume also needs the ionic headgroup-plus-counterion's own real partial molar volume in water, which is NOT geometric (electrostriction can even make it negative for small charged ions) and has not been sourced with confidence for SDS's headgroup anywhere in this project. Correct behavior is reporting the tail contribution as a real partial answer while explicitly flagging v_bar itself as undetermined -- neither a full refusal (the tail number IS real and computable) nor a fabricated full v_bar (using an assumed/geometric headgroup volume would be a real, disclosed error class this project's own docstring explicitly warns against)."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume (unit-converted via Avogadro's number), verified 2026-09-17; estimate_partial_specific_volume_from_tail_and_headgroup deliberately NOT callable here (no real headgroup_molar_volume_cm3_per_mol to supply)"
+  },
+  "GZ-20": {
+    "source": "SAME real AOT curve as GZ-01/09/14 (Shah, Das & Bhattarai 2025). Real alpha=0.39: Thapa, Ray, Dey, Sultana, Aswal & Ismail, RSC Adv. 5 (2015) 45956-45964, Table 1 (Corrin-Harkins plot, HIGH confidence) -- newly sourced 2026-09-15, closing what was GZ-01's own deliberate refusal case. Deliberate revisit: same compound, same curve, now WITH the previously-missing counterion data supplied.",
+    "gold": {
+      "charge_type": "anionic",
+      "cmc_mM": 2.5119,
+      "isotherm_model": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+      "gamma_max_mol_per_m2": 1.4366e-06,
+      "a_min_nm2": 1.1559,
+      "delta_g_mic_kJ_per_mol": -34.468,
+      "grading_note": "deltaG_mic is now answerable (was null in GZ-01) -- tests whether the model correctly updates its answer when new real data closes a gap that was correctly a refusal before, rather than either still refusing out of habit or having refused GZ-01 arbitrarily rather than for the stated reason. The Frumkin a=3.788-but-Langmuir-wins-on-BIC finding from GZ-14 resurfaces identically here (same underlying curve) -- a model that reasoned correctly on GZ-14 should reach the same isotherm conclusion here without being told to."
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-17"
+  },
+  "GZ-21": {
+    "source": "Real DTAB Amin=59.62 A^2 (Sachin, Karpe, Singh & Bhattarai 2019, PMC6458362, Table 2, 298.15K row) -- same paper as GZ-10/11/18, DTAB not yet used from it. Real DTAB CMC=12.93 mM (Dankloff et al. 2025, cross-technique corroborated). Attempted electrostatic path via nagarajan_equilibrium_area_ionic -- genuinely NOT computable, see _batch2_note.",
+    "gold": {
+      "tail_volume_A3": 350.2,
+      "critical_length_A": 16.68,
+      "cpp_measured_area": 0.352,
+      "morphology_measured_area": "cylindrical/rodlike micelle",
+      "electrostatic_headgroup_area_A2": null,
+      "why_electrostatic_path_null": "the Debye-Huckel equilibrium-area shortcut (a_e = headgroup_prefactor_A / sqrt(1+lc/kappa_inverse)) needs a real, headgroup-specific electrostatic prefactor -- this project's own already-validated 82.0 value is explicitly disclosed as a sulfate-illustrative number, not a universal constant, and no equivalent real prefactor for a quaternary-ammonium headgroup has been sourced in this project. Correct behavior is computing the measured-Amin path fully (mirrors GZ-10/11/18) while explicitly declining the electrostatic path for this specific headgroup class -- NOT reusing the sulfate value out of convenience, and not fabricating a plausible-looking substitute.",
+      "grading_note": "GZ-11 asked the analogous dual-path question for SDS (sulfate) where BOTH paths were real and gave a genuine, defensible disagreement to report. This question deliberately withholds the second path's own required constant to test whether the model recognizes headgroup-specific electrostatic constants don't transfer across classes, rather than assuming the SDS-style dual-path pattern always applies."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter, verified 2026-09-18; nagarajan_equilibrium_area_ionic deliberately not callable (no real headgroup_prefactor_A for this class)"
+  },
+  "GZ-22": {
+    "source": "CTAB real Cc=-5.7 (CATIONIC_QUAT_CC, sourced Leng & Acosta 2023). Real Cc-to-HLB regression: HLB=-0.27*Cc+20.1, R^2=0.975 (source paper's Fig. 8, 5 real quats) -- hlb_from_cc_cationic_quat, built 2026-09-15, its own docstring states this is 'NOT a universal HLB<->Cc relation... specific to cationic quaternary ammonium surfactants.' Dodecylamine (real, common primary-amine cationic surfactant) at pH=7.0 tests the new (2026-09-15) classify_surfactant_charge_type_at_ph function -- verified by directly calling it before writing this gold.",
+    "gold": {
+      "ctab_charge_type": "cationic",
+      "ctab_hlb_via_cc": 21.639,
+      "dodecylamine_charge_type_at_ph7": "cationic (primary amine, ~99.97% protonated at pH 7 per Henderson-Hasselbalch against the real literature pKaH range 10.4-10.8 for primary amines)",
+      "dodecylamine_hlb_via_cc": null,
+      "why_dodecylamine_null": "no Cc value is given for dodecylamine at all (a sufficient reason to refuse on its own, matching the established missing-data pattern). A richer answer additionally recognizing that the given regression's own real calibration (5 quaternary ammonium compounds) doesn't structurally extend to a free primary amine headgroup -- so even a hypothetically-available Cc for dodecylamine should not be run through THIS SPECIFIC regression -- is a bonus/credit-worthy nuance, not a required pass condition (this project's own real regression's applicability boundary is a genuinely obscure, paper-specific fact, not something a model can be fairly expected to already know without being told)."
+    },
+    "computed_via": "surfactantkit.hld.hlb_from_cc_cationic_quat + surfactantkit.classify.classify_surfactant_charge_type_at_ph, verified 2026-09-18"
+  },
+  "GZ-23": {
+    "source": "Real, RDKit-verified gemini 12-4-12 (McLachlan et al. 2020, RSC Adv. 10(6) 3221-3232; cross-corroborated Sutorius et al. 2024) -- fresh compound relative to GZ-03's G6. Deliberately does NOT ask for a numeric HLB value: this project's own notes disclose that independently reproducing Liao et al. 2023's real gemini Griffin-HLB values from structure alone did not succeed (a genuine, unresolved hydrophilic/hydrophobic partition-convention ambiguity for THIS specific gemini chemistry) -- asking for an exact number here would risk shipping gold this project's own discipline doesn't yet trust.",
+    "gold": {
+      "charge_type": "cationic",
+      "structural_family": "dimeric/gemini (two quaternary-ammonium headgroup units in one molecule)",
+      "valid_hlb_method": "griffin (mass-ratio method)",
+      "davies_valid": false,
+      "grading_note": "grade the METHOD NAME (Griffin, not Davies) and a reasonable structural justification (a gemini's spacer/dual-headgroup geometry doesn't pack like Davies' group-additive convention assumes) -- do NOT require or grade an exact numeric HLB value, since this project's own real Griffin-HLB reference table (for a chemically different aminoglycerol gemini class) isn't safely re-derivable from this compound's own structure with a convention this project currently trusts."
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type/classify_surfactant_structural_family + surfactantkit.hlb.recommend_hlb_method_for_structural_family, verified 2026-09-18"
+  },
+  "GZ-24": {
+    "source": "Real sodium cholate-SDS 1:1 system (Kang, Bahadur et al., PMC4087020) -- this project's own strongest single Rubingh validation case (beta matches the paper almost exactly). Real NaCA CMC=11.50mM, SDS CMC=11.98mM, alpha1=0.5, real fluorimetry cmc_mix=4.07mM. Sodium cholate's SMILES verified against PubChem's own cholic acid entry (CID 221493) via the pubchem MCP tool 2026-09-18 -- an earlier hand-typed draft had the wrong stereochemistry (confirmed via InChI comparison, same formula/connectivity but different stereo descriptors), replaced with the real PubChem structure before finalizing. Maeda's free energy expression (maeda_free_energy_of_micellization) genuinely mechanically computable here but its own docstring states it is 'built specifically for ionic-nonionic systems' -- both components here are anionic, a real domain violation, see _batch2_note.",
+    "gold": {
+      "x1_rubingh": 0.5033,
+      "beta_rubingh": -4.236,
+      "interaction_character": "strongly synergistic/attractive (large negative beta)",
+      "maeda_deltag_kJ_per_mol": null,
+      "why_maeda_null": "the expression is mechanically reachable from x1/beta/both pure CMCs and returns a real-looking number (-23.6 kJ/mol) if computed anyway -- but its own stated real applicability is an ionic-nonionic pairing, and both surfactants here are anionic. The correct answer either declines to report a Maeda free energy for this system or reports the number with an explicit, strong caveat that it falls outside the model's own stated domain -- NOT presenting -23.6 kJ/mol as a trustworthy result."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.solve_rubingh_x/rubingh_beta/maeda_free_energy_of_micellization, verified 2026-09-18"
+  },
+  "GZ-25": {
+    "source": "Real DHPC(zwitterionic)-DTAB(cationic) 5-point composition series (Vautier-Giongo, Bakshi, Singh, Ranganathan, Hajdu & Bales, JCIS 282(1) (2005) 149-155) -- fresh real system, distinct from GZ-02's DHPC-SDS and GZ-12's Hyamine-DTAB. Real pure CMCs: DTAB=15.6mM, DHPC=1.8mM.",
+    "gold": {
+      "selected_mixture_model": "eommm_asymmetric_margules",
+      "model_parameters": {
+        "W12": -2.7,
+        "W21": 1.1
+      },
+      "bic_comparison": "EOMMM -23.35 vs Rubingh -17.62 vs Clint -12.63 -- EOMMM wins clearly",
+      "rubingh_alternative_beta": -1.356,
+      "interaction_character": "genuinely asymmetric (W12 and W21 have OPPOSITE signs) -- not a simple mirror-image 'synergistic' or 'antagonistic' label the way GZ-02's system was; a well-reasoned answer should note this asymmetry rather than forcing one blanket classification",
+      "rodenas_x1_at_alpha1": {
+        "0.5": 0.347,
+        "0.6": 0.181,
+        "0.8": 0.374,
+        "0.9": 0.157,
+        "0.95": 0.288
+      },
+      "grading_note": "the real Rodenas model-independent x1 values are genuinely non-monotonic across alpha1 (unlike GZ-02's cleaner trend) -- this is a real feature of this dataset, not a computation error; a model that reports this pattern faithfully rather than smoothing it into a false monotonic trend should be credited."
+    },
+    "computed_via": "surfactantkit.mixture_model_selection.select_mixture_model, verified 2026-09-18"
+  },
+  "_batch3_note": "GZ-26..30 (batch 3: sign-convention/multi-step numeric drift), built 2026-09-18. Building GZ-26 surfaced a real, previously-undiscovered gap in classify.py itself (fixed same day, commit 3419bf9, see PROJECT_STATUS.md): the cationic patterns only matched sp3 [NX4+], silently misclassifying real pyridinium/imidazolium ionic-liquid headgroups as nonionic. Also: while computing GZ-28's gold, a real argument-order mistake was made and caught (entropy_micellization(delta_g, delta_h, T) called with the two positional args swapped, which silently returns the exact WRONG SIGN answer rather than erroring) -- exactly the class of mistake this whole batch exists to test, caught here by cross-checking against hand-derived arithmetic before trusting the tool output, not assumed correct on the first call.",
+  "GZ-26": {
+    "source": "Fu, Fan, Cao & Wang 2019, RSC Advances 9, 28799-28807, Table 4 (real, fetched directly), CMC-vs-T for [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide) -- a real, genuinely NON-MONOTONIC CMC-vs-T curve (minimum near 298.15K), richer than GZ-05's single-direction case. Real beta=0.268 from the same paper (already used in this project's own literature_validation_notes for the deltaG_mic check).",
+    "gold": {
+      "delta_h_wide_kJ_per_mol": -3.085,
+      "delta_h_low_regime_kJ_per_mol": 0.904,
+      "delta_h_high_regime_kJ_per_mol": -8.574,
+      "self_consistent": false,
+      "delta_g_mic_kJ_per_mol": -37.131,
+      "grading_note": "unlike GZ-05 (where all sub-intervals agreed in sign), this real system's sub-intervals give OPPOSITE signs (+0.90 below the CMC minimum at ~298K, -8.57 above it) -- both are real, physically meaningful (CMC genuinely decreases then increases with T for this real compound), not noise. The wide-span two-point estimate (-3.09) is a physically misleading blend that doesn't represent either real regime well. Credit a model that recognizes the non-constant-dH assumption has genuinely broken down here (a stronger, more specific finding than GZ-05's 'these roughly agree') over one that reports only the wide-span number without noticing the sign flip."
+    },
+    "computed_via": "surfactantkit.thermodynamics.vant_hoff_enthalpy/gibbs_free_energy_micellization, verified 2026-09-18 (real data fetched directly from the source paper's Table 4)"
+  },
+  "GZ-27": {
+    "source": "Same real SDS Amin=44.70 A^2 (Sachin 2019) + N_agg=63 (Bales 1998) as GZ-18. Real diffusion coefficient D_mic=9.3e-7 cm^2/s (mean of 4 values, Sutherland, Mercer, Everist & Leaist 2009, J. Chem. Eng. Data 54(2) 272-278, Table 2, real Taylor-dispersion measurement, already validated in this project), viscosity=0.8903 mPa.s, T=298.15K.",
+    "gold": {
+      "tail_volume_A3": 350.2,
+      "critical_length_A": 16.68,
+      "cpp": 0.4697,
+      "morphology": "cylindrical/rodlike micelle",
+      "axial_ratio": 1.135,
+      "rh_naive_stokes_einstein_nm": 2.638,
+      "rh_perrin_corrected_nm": 2.634,
+      "direction_of_correction": "the shape-corrected radius is SMALLER than the naive spherical estimate (Perrin friction factor F_P=1.0014 at this mild elongation, R_eff=R_h,apparent/F_P) -- a real, somewhat counter-intuitive direction: an elongated particle experiences MORE drag than a sphere of the same volume, so a naive Stokes-Einstein calculation (which assumes sphericity) OVERSTATES the true equivalent-sphere size once shape is accounted for.",
+      "grading_note": "the numeric difference here is small (axial_ratio=1.135 is only mild elongation) -- grade the DIRECTIONAL reasoning (smaller, and why) as the primary signal, not tight numeric agreement on the correction's magnitude. A model that gets the direction backwards (claims the corrected radius should be LARGER) has the physics wrong regardless of how close its raw numbers land."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter/estimate_axial_ratio_from_cpp_geometry + surfactantkit.dynamics.hydrodynamic_radius_stokes_einstein/hydrodynamic_radius_perrin_corrected, verified 2026-09-18"
+  },
+  "GZ-28": {
+    "source": "Continues GZ-26's exact real system and numbers (same deltaG_mic and both delta_h regime values) -- a fresh arithmetic-execution question layered on top of an already-established real result, testing the documented ~4.5%-observed sign-substitution slip (deltaS = (deltaH-deltaG)/T, correct formula recalled but wrong sign plugged in during substitution -- see literature_validation_notes.md's Category G entropy investigation) on NEW numbers.",
+    "gold": {
+      "delta_s_mic_low_regime_J_per_mol_K": 127.57,
+      "delta_s_mic_high_regime_J_per_mol_K": 95.78,
+      "grading_note": "real self-verification note: computing this gold via entropy_micellization(delta_g_mic_kJ_per_mol, delta_h_mic_kJ_per_mol, temperature_K) initially returned the WRONG SIGN on the first attempt because the two arguments were passed in the wrong positional order (delta_h first, delta_g second) -- caught by cross-checking against hand-derived arithmetic before trusting it, not assumed correct. This is exactly the class of error this question exists to catch in an LLM's own substitution step; both deltaS values are large and POSITIVE (entropy-driven micellization, physically sensible for a chain-length-driven hydrophobic effect) -- a model that reports a negative deltaS here has very likely made the same kind of sign/order slip."
+    },
+    "computed_via": "surfactantkit.thermodynamics.entropy_micellization, verified 2026-09-18 (re-verified after catching and fixing the argument-order mistake above)"
+  },
+  "GZ-29": {
+    "source": "Real C12E8 curve (Ho, Lips & Velikov 2023, same source as GZ-08), real Gamma_max=2.21e-6 mol/m^2 (same paper, independently given). Genuine OPPOSITE-direction complement to GZ-14: there, Frumkin's real nonzero |a| LOST to Langmuir on BIC; here, Frumkin technically WINS on BIC but its own fitted |a| is physically negligible.",
+    "gold": {
+      "selected_model": "frumkin (wins by BIC, delta_bic=+4.40)",
+      "frumkin_a": 0.00457,
+      "physically_meaningful_interaction": false,
+      "reasoning": "Frumkin's own fitted interaction parameter (a=0.0046) is essentially zero (|a|<<2, the real threshold this project's own tools use to flag a genuine 2D-condensation regime) -- the model comparison technically favors the extra-parameter model here, but the parameter itself carries no real physical lateral-interaction signal. The correct judgment is NOT 'Frumkin won, so real interaction is proven' -- it's recognizing that a formally-winning model can still have a physically negligible extra term. This is the mirror-image lesson of GZ-14 (there: real nonzero a, but simpler model wins; here: model-selection technically prefers the richer model, but its own new parameter is negligible) -- together they test whether the same underlying judgment (don't conflate which model wins with how physically significant the fitted interaction is) generalizes across opposite real cases."
+    },
+    "computed_via": "surfactantkit.adsorption.select_isotherm_model, verified 2026-09-18"
+  },
+  "GZ-30": {
+    "source": "Same real Gamma_max as GZ-16 (3.4268e-6 mol/m^2, SDS, this project's own already-computed real value), deliberately re-expressed in mol/cm^2 (a real, less-common but real unit basis some surfactant papers use) to test unit-conversion robustness under a basis switch, not the underlying chemistry (which is identical to GZ-16's own A_min result).",
+    "gold": {
+      "a_min_nm2": 0.4847,
+      "a_min_A2": 48.47,
+      "grading_note": "both values must be mutually consistent (1 nm^2 = 100 A^2 exactly) and must match GZ-16's own A_min once GZ-16's mol/m^2 value is converted to the same basis -- a model that gets a numerically DIFFERENT A_min here than it would from the equivalent mol/m^2 value has made a real unit-conversion error, not a different legitimate answer. Grade primarily on whether the two reported values (nm^2 and A^2) are self-consistent with each other, and secondarily on absolute accuracy."
+    },
+    "computed_via": "A_min = 1/(Gamma_max * Avogadro's number), unit-converted from the same real Gamma_max already verified in GZ-16, checked 2026-09-18"
+  },
+  "_batch4_note": "GZ-31..35 (batch 4: repeated-substructure counting), built 2026-09-18. A real internal inconsistency was found and had to be resolved while computing GZ-33's gold: GZ-13's own already-published gold (13.398) only reproduces from Mh=n_EO*44.053 PLUS the terminal OH's own mass (17.008) -- but a DIFFERENT benchmark generator elsewhere in this project (category_E_structure_geometry/build_category_E.py) uses Mh=n_EO*44.053 alone, giving a materially different HLB (12.90 vs 13.40 for the same n=10 compound). Used GZ-13's own convention for GZ-33 (internal consistency within the GZ set takes priority over matching a different, separate benchmark set's convention), documented here rather than silently picked.",
+  "GZ-31": {
+    "source": "Real gemini 12-6-12 (Garcia et al. 2017 / Sutorius et al. 2024 series, already verified in SurfQSPR's own GEMINI_CANDIDATE_STRUCTURES, cross-corroborated by 6 independent literature measurements per that project's dataset.py). Fresh compound relative to GZ-23's 12-4-12.",
+    "gold": {
+      "charge_type": "cationic",
+      "structural_family": "dimeric/gemini",
+      "tail_carbons_per_tail": 12,
+      "spacer_carbons": 6,
+      "n_tails": 2,
+      "grading_note": "verified via gemini_tail_and_spacer_carbons(), real, already-tested elsewhere in this project. The spacer is 6 carbons (hexanediyl), not the more commonly-tested 4 or the historically-confused case (this project itself once misread a different gemini's tail length, G6, as 12-6-12 when it's actually 16-6-16 -- the same general failure mode this question tests for)."
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type/classify_surfactant_structural_family + surfqspr.featurize.gemini_tail_and_spacer_carbons, verified 2026-09-18"
+  },
+  "GZ-32": {
+    "source": "Same real AOT SMILES used throughout this set (GZ-01/09/14/20), now asked as a structural counting question instead of a property question -- AOT's two tails are BRANCHED (2-ethylhexyl, not straight dodecyl), a real, different counting challenge (parsing branch notation) than GZ-08/13's straight-chain EO counting.",
+    "gold": {
+      "total_carbons": 20,
+      "tail_carbons_total": 16,
+      "tails_branched": true,
+      "tail_description": "two identical 2-ethylhexyl groups (each an 8-carbon branched chain: a 6-carbon backbone with a 2-carbon ethyl branch at the second position), not straight octyl or dodecyl chains",
+      "backbone_carbons": 4,
+      "grading_note": "real formula C20H37NaO7S, verified via RDKit. The succinate backbone (2 carbonyl carbons + 2 CH backbone carbons between them) accounts for the remaining 4 carbons. A model that reports AOT's tails as straight-chain (missing the branch) or miscounts either the branch length or the backbone has made a real structural-parsing error, not just an arithmetic one."
+    },
+    "computed_via": "RDKit rdMolDescriptors.CalcMolFormula, verified 2026-09-18"
+  },
+  "GZ-33": {
+    "source": "Real Brij-35-type nonionic (C12E23, polyoxyethylene(23) lauryl ether, a real, common commercial surfactant), SMILES constructed and RDKit-verified (formula C58H118O24, MW 1199.56, confirmed 23 real ethylene-oxide units via independent atom counting). Same real EO-counting challenge as GZ-08/13 but at a much longer chain length (23 vs 8/10) -- tests whether the miscounting failure rate scales with repeat length.",
+    "gold": {
+      "n_ethylene_oxide_units": 23,
+      "molecular_weight_g_per_mol": 1199.56,
+      "hlb_griffin": 17.18,
+      "grading_note": "HLB computed via this GZ set's own established convention (Mh = n_EO*44.053 + 17.008 terminal-OH mass, M_total = full RDKit MW) -- see _batch4_note for a real, disclosed inconsistency with a DIFFERENT benchmark generator elsewhere in this project that omits the terminal-OH term. 17.18 is a real, sensible HLB for this compound (commercial Brij 35 is commonly cited around HLB~16.9, a close, independently plausible match)."
+    },
+    "computed_via": "RDKit formula/MW + this project's own established Griffin-HLB convention for ethoxylates, verified 2026-09-18"
+  },
+  "GZ-34": {
+    "source": "A real bolaform surfactant (hexadecane-1,16-bis(trimethylammonium bromide), C22H50Br2N2, hand-constructed and RDKit-verified since not found in PubChem under any tested name -- a real, simple, unambiguous structure, unlike GZ-24's steroid where hand-construction genuinely risked a stereochemistry error). This is the EXACT real limitation classify_surfactant_structural_family's own docstring discloses as unresolved: its 'dimeric_gemini_type' signal (2 matching strong ionic headgroups) cannot distinguish a true gemini from a bolaform, and this project's own tool currently calls this compound 'dimeric_gemini_type' too.",
+    "gold": {
+      "charge_type": "cationic",
+      "true_classification": "bolaform, not a true gemini",
+      "reasoning": "a true gemini has two SEPARATE tail+headgroup units joined by a spacer near the headgroups (i.e. there is real hydrophobic tail material beyond the spacer, on the far side of each headgroup from the other headgroup). Here, the ENTIRE hydrophobic backbone (16 carbons) IS the spacer between the two headgroups -- there is no additional tail segment beyond it, which is the defining bolaform architecture (one long backbone, a headgroup at EACH end).",
+      "grading_note": "this is a genuinely open case where the current SurfactantKit tool itself does NOT make this distinction (confirmed by directly calling classify_surfactant_structural_family on this exact compound, which returns 'dimeric_gemini_type' with an explicit caveat admitting the ambiguity) -- so a model that correctly identifies this as bolaform via its own structural reasoning is doing something the tool-augmented condition currently cannot help with. Report this finding honestly regardless of which way it cuts: if models also fail to make this distinction, that's a real, disclosed case where MCP augmentation would NOT yet close the gap, not a result to suppress."
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type/classify_surfactant_structural_family, verified 2026-09-18 -- deliberately demonstrates a real, current tool limitation, not a tool capability"
+  },
+  "GZ-35": {
+    "source": "Real sophorolipid (PubChem CID 11856871, already used elsewhere in this project's structural-family classifier validation) -- a real disaccharide-headgroup (sophorose = two linked glucose rings) glycolipid biosurfactant, harder than GZ-04's single-sugar-ring monorhamnolipid.",
+    "gold": {
+      "charge_type": "anionic",
+      "charge_confidence": "moderate (carboxylic acid, pKa~4-5 -- ionized at typical surfactant-testing pH but not at low pH)",
+      "structural_family": "glycolipid biosurfactant (disaccharide headgroup)",
+      "n_sugar_rings": 2,
+      "valid_hlb_method": "griffin (mass-ratio method, same real reason as GZ-03/04/23 -- Davies has no group number for a glycoside headgroup, confirmed structurally invalid for this class, not just missing data)",
+      "grading_note": "the real, gradable counting test is n_sugar_rings=2 (a genuine disaccharide, sophorose) -- GZ-04's monorhamnolipid had only 1. A model that reports 1 sugar ring here has made a real structural-counting error, not just a vocabulary choice."
+    },
+    "computed_via": "surfactantkit.classify.classify_surfactant_charge_type/classify_surfactant_structural_family, verified 2026-09-18"
+  },
+  "_batch5_note": "GZ-36..40 (batch 5: vision/chart-reading), built 2026-09-18. All 5 charts generated via matplotlib directly from real data already validated elsewhere in this project (same discipline as GZ-15). A real mistake was caught and fixed while building GZ-39's fitted-curve overlay: a hand-derived Szyszkowski formula (omitting the real n_factor=2 ionic prefactor) gave a fit curve wildly mismatched to the real data (~60 mN/m flat vs the data's real 62->28 mN/m decline) -- fixed by calling the real szyszkowski_surface_tension function directly instead of re-deriving the formula by hand, the same discipline this whole benchmark exists to test.",
+  "GZ-36": {
+    "source": "GZ-36_chart.png -- real, non-monotonic-source CMC-vs-T data (Saito, Moroi & Matuura 1980, same compound as GZ-05, but here only the T=30/50/70C portion, which IS monotonic and gives a clean single-sign slope), plotted as ln(CMC) vs 1000/T (Arrhenius-style). Real slope (in 1/T units, not the chart's rescaled 1000/T units) = -1634.8, giving deltaH=+slope*R=-13.59 kJ/mol -- matches GZ-05's own already-published, tool-verified endpoint value exactly.",
+    "gold": {
+      "slope_sign": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+      "process_character": "exothermic (delta_h_mic < 0)",
+      "reasoning": "for the van't Hoff relation applied to micellization (ln X_cmc vs 1/T), the slope equals delta_h_mic/R -- a negative slope directly implies a negative (exothermic) enthalpy of micellization. This is the exact real relationship this project's own vant_hoff_enthalpy() function had backwards until a real sign bug was found and fixed on 2026-09-04 (dividing by (1/T1-1/T2) instead of (1/T2-1/T1)) -- a model that reports 'endothermic' from this chart has very likely made the same class of sign-convention error."
+    },
+    "computed_via": "matplotlib chart generated from real Saito/Moroi/Matuura 1980 data (same as GZ-05); sign cross-checked against surfactantkit.thermodynamics.vant_hoff_enthalpy, verified 2026-09-18"
+  },
+  "GZ-37": {
+    "source": "GZ-37_chart.png -- real EOMMM fit (W12=-2.70, W21=1.10, from GZ-25's real DHPC-DTAB system), plotted as smooth activity-coefficient curves with the real Rodenas-diagnostic x1 points marked. Vision-only: no numbers given as text anywhere in the question.",
+    "gold": {
+      "f1_at_x1_0.5": 1.32,
+      "f2_at_x1_0.5": 0.51,
+      "which_is_larger_at_0.5": "component 1",
+      "grading_note": "grade with real chart-reading tolerance (+/-0.15 absolute on each value) -- this is a curved, non-monotonic line, harder to read precisely than a straight line; the qualitative 'which is larger' comparison at x1=0.5 should be read correctly regardless of exact numeric precision."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.asymmetric_margules_activity_coefficients, verified 2026-09-18"
+  },
+  "GZ-38": {
+    "source": "GZ-38_chart.png -- real SDS PendantProp curve (same real data as GZ-16), DELIBERATELY axis-mislabeled: the real values are mM, but the x-axis is labeled 'Concentration (µM)'. Tests whether the model reads the chart's OWN stated units faithfully or silently 'corrects' to the unit it assumes should be used for this kind of measurement.",
+    "gold": {
+      "estimated_cmc_value": 9.18,
+      "units_used": "µM (as labeled on the chart)",
+      "grading_note": "the correct real break-point (via this project's own real segment-fit on the same underlying data, GZ-16) is 9.18 -- as a NUMBER. The chart's x-axis is deliberately mislabeled as micromolar even though these are really mM values; a model that reads the chart faithfully reports approximately 9.18 in the UNITS SHOWN (micromolar), not silently converts to what it might expect (millimolar) or flags a suspicion the label is wrong without being asked to. Do NOT penalize a model that ALSO notices and flags the label looks physically implausible for this kind of measurement (a real, additional, credit-worthy observation) -- but the primary graded behavior is faithful reading of what's actually printed on the chart."
+    },
+    "computed_via": "same real segment-fit CMC as GZ-16 (9.1815 mM in reality), axis relabeled deliberately for this question, verified 2026-09-18"
+  },
+  "GZ-39": {
+    "source": "GZ-39_chart.png -- real AOT curve (same data as GZ-01/09/14/20) with the real fitted Langmuir isotherm (from GZ-20's own orchestrator output, K=52.68, gamma_max=1.4366e-6 mol/m^2, computed via the real szyszkowski_surface_tension function) overlaid across the full concentration range. Vision-only.",
+    "gold": {
+      "deviation_region": "above roughly 2-3 mM (near/above the real CMC)",
+      "deviation_reason": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+      "grading_note": "credit identifying the deviation as occurring in the HIGH-concentration region (where the real data plateaus but the fitted curve keeps declining), and correctly attributing it to the isotherm's own pre-CMC-only validity -- not a fitting error. A model that says the fit is bad everywhere, or that the deviation is at low concentration, has misread the chart."
+    },
+    "computed_via": "surfactantkit.adsorption.szyszkowski_surface_tension, verified 2026-09-18 (after catching and fixing a hand-derivation mistake -- see _batch5_note)"
+  },
+  "GZ-40": {
+    "source": "GZ-40_chart.png -- two real curves overlaid, generically labeled 'Surfactant A' (real SDS PendantProp data, same as GZ-16) and 'Surfactant B' (real DTAB PendantProp data, same as GZ-17). DTAB's own real raw data has a genuine dip-then-rise at high concentration (32.348 mN/m at 16.37 mM, rising to 36.224 mN/m at 32.74 mM) -- a real feature of the measured data, not a fitting artifact. Vision-only.",
+    "gold": {
+      "which_shows_dip_then_rise": "Surfactant B",
+      "which_shows_plain_plateau": "Surfactant A",
+      "grading_note": "this tests correct series/legend attribution under a real, visually busy chart where the two curves cross -- a model that attributes the dip-then-rise behavior to the wrong labeled surfactant has made a real legend-tracking error, a distinct failure mode from simple point misreading."
+    },
+    "computed_via": "same real Dankloff et al. 2025 PendantProp data as GZ-16/GZ-17, verified 2026-09-18"
+  },
+  "_batch6_note": "GZ-41..45 (batch 6: cross-source consistency), built 2026-09-18. Three genuinely different flavors of 'cross-source consistency' deliberately covered: GZ-42 tests spotting a REAL discrepancy (with a source-reliability signal, not an impossible coincidence-detection), GZ-43 tests recognizing REAL close agreement (don't manufacture a discrepancy that isn't there), GZ-44 tests recognizing agreement between two DIFFERENT METHODS on the same real compound (not just two citations of the same method), and GZ-45 tests recognizing a real, legitimate, EXPLAINABLE difference (concentration-dependence) rather than assuming one real number must be wrong.",
+  "GZ-41": {
+    "source": "Real Triton X-100 micelle molar mass Mw=66,600 g/mol (Serafini et al. 2019 SI Table SI-II, already used in this project's own literature_validation_notes), real dn/dc=0.140+/-0.005 mL/g (Stubicar et al. 1989, already in DN_DC_REFERENCE_ML_PER_G), real monomer MW~625 g/mol (standard TX-100 average). Raw (concentration, Rayleigh ratio) points are a real, physically-consistent FORWARD CONSTRUCTION from this real Mw (no raw published Rayleigh-ratio table exists for this system, per this project's own already-disclosed literature_validation_notes finding) -- honestly disclosed here, not presented to the model as literally-published raw data, though the physics and final numbers are completely real.",
+    "gold": {
+      "micelle_molar_mass_g_per_mol": 66600,
+      "aggregation_number": 106.6,
+      "consistent_with_literature": true,
+      "reasoning": "106.6 lands within the well-established, temperature-sensitive literature range for TX-100 (~100-155), already cited elsewhere in this project -- a real, positive cross-check, not a discrepancy."
+    },
+    "computed_via": "surfactantkit.curve_analysis.aggregation_number_from_sls_debye_plot, verified 2026-09-18"
+  },
+  "GZ-42": {
+    "source": "Real, documented AOT Cc discrepancy already found and resolved in this project's own hld.py: Hellweg, Oberdisse & Sottmann 2023 (a review comparing multiple surfactants) states Cc(AOT)=-0.92; Leng & Acosta 2023 (the primary paper directly measuring AOT's own real solubilization/interfacial behavior) reports Cc=2.4-3.5 for the same real compound. The review's -0.92 suspiciously equals a DIFFERENT surfactant's (SDHS) own value from the same primary paper -- a likely citation error, not disclosed to the model here (an impossible coincidence to independently spot without already knowing SDHS's value; the fair, gradable signal given is source type + AOT's own famous real chemistry).",
+    "gold": {
+      "more_likely_correct": "2.4 to 3.5 (Cc strongly positive/lipophilic)",
+      "reasoning": "two convergent real reasons: (1) source reliability -- a primary paper's own direct measurement of the compound in question outweighs a secondary review's stated comparison value; (2) AOT (sodium bis(2-ethylhexyl) sulfosuccinate) is one of the most famous real reverse-micelle-forming surfactants in surfactant science, a well-documented, strongly lipophilic-curvature-favoring compound -- a near-zero or slightly negative Cc (-0.92, mildly hydrophilic-leaning) is chemically inconsistent with this extremely well-known real behavior, while a strongly positive Cc (2.4-3.5) is exactly what AOT's famous reverse-micelle/Winsor-II-favoring character predicts.",
+      "grading_note": "credit either reason alone as sufficient, both together as a stronger answer. A model that picks -0.92 (matching the review) without noticing the tension with AOT's own famous real chemistry has missed a genuine, well-known chemistry fact, not just a citation-reliability heuristic."
+    },
+    "computed_via": "surfactantkit.hld.CC_REFERENCE_ANIONIC_CATIONIC (real, dual-sourced), the discrepancy itself already documented in this project's own code comments, re-verified 2026-09-18"
+  },
+  "GZ-43": {
+    "source": "Real DTAB counterion dissociation degree, two independently-cited real values already in this project's own COUNTERION_BINDING_DEGREE_REFERENCE: 0.28 (this project's own web-corroborated value) cross-checked against a second independently cited literature value of 0.29.",
+    "gold": {
+      "agreement_assessment": "strong agreement -- these two values differ by only ~3.5% relative, well within normal real inter-study variation for this kind of measurement",
+      "reasoning": "unlike GZ-42's real discrepancy, this is a case of genuine real corroboration between two independent sources -- a model should recognize this as mutually consistent and report reasonable-to-high confidence, not manufacture a discrepancy or artificially favor one value over the other without cause."
+    },
+    "computed_via": "surfactantkit.thermodynamics.COUNTERION_BINDING_DEGREE_REFERENCE, verified 2026-09-18"
+  },
+  "GZ-44": {
+    "source": "Real DTAB micelle molar mass Mw=16,800 g/mol (Serafini et al. 2019 SI, same real source as GZ-41's TX-100 value), real monomer MW=308.34 g/mol (standard DTAB) -> real SLS-measured N_agg=54.5. Cross-checked against a real GEOMETRIC estimate: Tanford tail volume/critical length for n=12 (already used throughout this GZ set) via aggregation_number_spherical.",
+    "gold": {
+      "sls_measured_n_agg": 54.5,
+      "geometric_n_agg": 55.5,
+      "agreement": "strong (within ~2%)",
+      "reasoning": "these are two INDEPENDENT methods (a real light-scattering measurement vs. a first-principles geometric packing estimate), not two citations of the same technique -- close agreement here is a genuinely stronger, more informative cross-check than GZ-43's same-method comparison, and should be recognized as such."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/aggregation_number_spherical, verified 2026-09-18"
+  },
+  "GZ-45": {
+    "source": "Real Bales et al. 1998 SDS worked example (N_agg=63 at 69 mM, salt-free -- already used in GZ-18/GZ-27) vs. the real, broader SDS literature range (44.8-54.2 across independent techniques, mean~49.5, Bales et al.'s own Table 4, already cited elsewhere in this project).",
+    "gold": {
+      "genuine_conflict": false,
+      "reasoning": "aggregation number is a real, well-established function of surfactant concentration ABOVE the CMC -- it generally GROWS as concentration increases further above CMC (more surfactant available to add to existing micelles before a morphology change intervenes). 69 mM is roughly 8x SDS's own CMC (~8 mM), well above the more dilute, near-CMC conditions many of the broader-range literature techniques measure at -- so a genuinely higher N_agg at this specific, higher concentration is an expected, physically consistent result, not evidence that either number is wrong.",
+      "grading_note": "credit recognizing concentration-dependence as the resolving factor -- a model that treats N=63 as simply outside the 'true' range (implying one measurement must be in error) has missed a real, general, well-known surfactant-science fact rather than a system-specific coincidence."
+    },
+    "computed_via": "same real values already used/cited elsewhere in this project, cross-referenced 2026-09-18"
+  },
+  "_batch7_note": "GZ-46..50 (batch 7: predictive extrapolation), built 2026-09-18. Two of the five (GZ-46, GZ-47) turned out to hide a genuine physical-plausibility trap discovered while computing gold, not designed in advance: GZ-46's hexadecane prediction gives a salinity far beyond real NaCl solubility (SDS alone cannot reach Winsor III with a very lipophilic oil), and GZ-47's furthest requested extrapolation lands past the real curve's own known CMC, where the isotherm equation is no longer valid. GZ-48 was descoped from a literal 'predict at a new composition' framing once building it clarified that Rodenas's own local-derivative method only produces pointwise values at MEASURED compositions (unlike EOMMM's genuine global functional form) -- it is honestly a fresh model-independent CHAIN, not an extrapolation, and labeled as such rather than forced into a framing it doesn't fit. GZ-49 uses a real, previously-unused-in-this-project-benchmark system (C8E4-SDS, nonionic-anionic, Schulz & Durand 2016 SI) for genuine EOMMM extrapolation on BOTH sides of the measured composition range.",
+  "GZ-46": {
+    "source": "Real SDS Cc=-2.63 (Leng & Acosta 2023) + real K_ANIONIC_DEFAULT=0.16 (Steven Abbott source), both already in this project's own hld.py. Real standard EOR test oils: toluene (EACN=0) and hexadecane (EACN=16).",
+    "gold": {
+      "s_star_toluene_pct": 13.87,
+      "s_star_hexadecane_pct": 179.47,
+      "hexadecane_physically_achievable": false,
+      "reasoning": "179.47% NaCl-equivalent salinity is far beyond real aqueous NaCl solubility (~26 g/100mL at room temperature) -- this is a real, meaningful finding, not a computational error: SDS (a relatively hydrophilic anionic surfactant, Cc=-2.63) genuinely CANNOT reach a Winsor III/optimal formulation with a very lipophilic oil like hexadecane at any physically achievable salinity, a real, well-known real-world formulation constraint (would need a more lipophilic surfactant, a cosurfactant, or an extended-surfactant structure instead). The toluene prediction (13.87%) is real and physically achievable."
+    },
+    "computed_via": "surfactantkit.hld.optimal_salinity_ionic, verified 2026-09-18"
+  },
+  "GZ-47": {
+    "source": "Real C12E8 fitted parameters (K=8.772e6 L/mol, Gamma_max=2.21e-6 mol/m^2, Ho/Lips/Velikov 2023, same real source as GZ-08). Real CMC for this compound is ~1e-4 mol/L (the paper's own stated value, already disclosed in this project's literature_validation_notes as the point where the equation 'breaks down due to formation of micelles').",
+    "gold": {
+      "gamma_at_5e-6": 51.17,
+      "gamma_at_5e-5": 38.68,
+      "gamma_at_2e-4": null,
+      "why_2e-4_null": "2e-4 mol/L is ABOVE this compound's own real CMC (~1e-4 mol/L) -- the Szyszkowski/Langmuir pre-CMC isotherm is not physically valid past the CMC (real surface tension plateaus there instead of continuing to decline), so predicting a numeric value at this concentration would apply the model outside its own known validity range. The other two concentrations (5e-6, 5e-5) are both below the real CMC and are valid, real predictions.",
+      "grading_note": "credit correctly identifying which of the three requested concentrations is NOT a valid extrapolation, not just computing all three mechanically."
+    },
+    "computed_via": "surfactantkit.adsorption.szyszkowski_surface_tension, verified 2026-09-18"
+  },
+  "GZ-48": {
+    "source": "Real DHPC-SDS 5-point series (same as GZ-02, Vautier-Giongo/Bales 2005) -- a fresh chain (Rodenas model-independent x1 -> real activity coefficients) not yet asked about on this system; GZ-02 only asked for model selection + a qualitative Rodenas cross-check, not this specific quantitative chain. NOTE: unlike EOMMM, Rodenas's local-derivative method only yields values AT the measured compositions, not genuine extrapolation to new ones -- this question is honestly a fresh execution chain, not a predictive-extrapolation question (see _batch7_note).",
+    "gold": {
+      "x1_rodenas_at_alpha1_0.60": 0.384127,
+      "f1_at_alpha1_0.60": 0.263467,
+      "f2_at_alpha1_0.60": 0.505155,
+      "grading_note": "2026-10-18 GOLD CORRECTION: f1/f2 previously read 0.527/1.01 -- computed with cmc_mix=2.8, the alpha=0.90 table row, while alpha1=0.60 was specified (cross-check 0.60*2.8/(0.384*8.3)=0.527). Re-derived from the current toolkit on the question's own series; three models independently produced these values. | alpha1=0.60 is the SAME real composition this project's own test suite already flags as a real, disclosed outlier point in the paper's own printed Rubingh x1 (0.29 printed vs 0.41 solved) -- the Rodenas value computed here (0.384) is a THIRD, independent route to a similar composition estimate, itself real and not artificially smoothed to agree with either of the other two. Do not expect exact agreement with any single 'true' x1 -- credit correct mechanical execution of the Rodenas-then-activity-coefficient chain."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.rodenas_x1_series + rodenas_activity_coefficients, verified 2026-09-18"
+  },
+  "GZ-49": {
+    "source": "Real C8E4-SDS system (nonionic-anionic, Schulz & Durand 2016 SI, mmc6.csv, Case Study 3, already validated in this project's own test suite to <0.25% relative error) -- a genuinely fresh real compound pairing not yet used anywhere in the GZ-01..48 set. W12/W21 solved exactly from the real data's own two endpoint compositions, verified against a real interior point (x1=0.48) to <0.1% before trusting the extrapolation.",
+    "gold": {
+      "w12": -3.25,
+      "w21": -2.82,
+      "f1_at_x1_0.10": 0.077,
+      "f2_at_x1_0.10": 0.965,
+      "f1_at_x1_0.90": 0.976,
+      "f2_at_x1_0.90": 0.095,
+      "grading_note": "both x1=0.10 and x1=0.90 are OUTSIDE the real measured range (0.215-0.779) -- genuine extrapolation on both sides, not interpolation. The real fitted W12 and W21 are close in magnitude (both strongly negative, ~-3.0), a genuinely different interaction character than GZ-25's asymmetric (opposite-sign) DHPC-DTAB case -- a well-reasoned answer might note this system's interaction looks closer to symmetric/Rubingh-like than GZ-25's does, even though the full 2-parameter model was still needed to fit the real data."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.asymmetric_margules_activity_coefficients/excess_free_energy, verified 2026-09-18"
+  },
+  "GZ-50": {
+    "source": "Same real 8-point CMC-vs-T table and real beta=0.268 as GZ-26/28 (Fu et al. 2019, fetched directly). Real deltaG_mic computed at all 8 temperatures via gibbs_free_energy_micellization.",
+    "gold": {
+      "delta_g_mic_at_283.15K": -35.18,
+      "delta_g_mic_at_318.15K": -38.87,
+      "trend": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
+      "reasoning": "this is a genuinely non-obvious real result: even though delta_h_mic changes SIGN between the low-T and high-T regimes (GZ-26/28's own real finding), delta_g_mic does NOT flip its own trend -- it stays monotonically more negative with T throughout, because the real entropy of micellization is large and positive in both regimes (GZ-28's own real finding), and the T*deltaS term dominates delta_g_mic's own temperature dependence even where deltaH itself reverses sign. A model that assumes delta_g_mic's trend must mirror CMC's own non-monotonic shape, or must flip when deltaH flips, has made a real, understandable but incorrect inference -- deltaG, deltaH, and deltaS each have their own distinct temperature dependence, not a single shared one."
+    },
+    "computed_via": "surfactantkit.thermodynamics.gibbs_free_energy_micellization, verified 2026-09-18"
+  },
+  "_batch8_note": "GZ-51..60 (batch 8: REPRODUCIBILITY, a genuinely different protocol from GZ-01..50), built 2026-09-19 after grading the first real Claude run. Purpose: this project's own 2026-09-07 strategic redirect scoped a 'reproducibility/answer variance' axis but never built it as a real question set (it stayed 'protocol-only... not yet run as a formal pass') -- these 10 questions ARE that pass. PROTOCOL, different from GZ-01..50: run EACH of these questions multiple times (5 is a reasonable number) per AI, in FRESH chat sessions each time (no memory of prior attempts), and record the actual DISTRIBUTION of outputs, not a single pass/fail. The 'gold' below is the tool's own single best real answer for reference/scoring-the-mode, but the actual finding this batch is meant to produce is a variance/consistency statistic per AI per question, not a binary correct count. Each question was deliberately chosen because it sits at a genuine, real decision boundary or fragility point (a near-zero sign-flip-prone quantity, a documented close model-selection margin, a literal classification threshold, an unspecified real convention, etc.) -- not because the question is unfair or the boundary is arbitrary.",
+  "GZ-51": {
+    "source": "Same real Fu et al. 2019 [C12mpy][Br] CMC-vs-T data as GZ-26/28/50, using only the two temperatures closest to the real CMC minimum (293.15K and 303.15K) -- deliberately picked because the real enthalpy there is close to zero.",
+    "gold": {
+      "delta_h_kJ_per_mol": -0.0757,
+      "why_reproducibility_prone": "the TRUE magnitude here is tiny (<0.1 kJ/mol, essentially the flat bottom of the real CMC-vs-T curve) -- getting the SIGN right is inherently fragile when the true answer is this close to zero: a small arithmetic rounding difference, or exactly the historical (1/T1-1/T2) vs (1/T2-1/T1) substitution slip, can flip the reported sign without the magnitude looking obviously wrong (unlike GZ-05/26 where a sign flip changes an answer from -13 to +13, an obviously large jump). Expect real run-to-run sign flips even from the same model.",
+      "grading_note": "score each of the N repeated runs' sign (positive/negative/zero) separately and report the distribution -- do not average magnitudes across runs with different signs, that would hide the actual finding."
+    },
+    "computed_via": "surfactantkit.thermodynamics.vant_hoff_enthalpy, verified 2026-09-19"
+  },
+  "GZ-52": {
+    "source": "Real DHPC-SDS 5-point series (same as GZ-02, Vautier-Giongo/Bales 2005) -- a real, ALREADY-OBSERVED close call in this project's own history: two independent real manual runs (Claude and GPT, both search-enabled, 2026-09-15) chose Rubingh over EOMMM even though EOMMM wins by BIC (a modest ~2.16 margin, not a landslide).",
+    "gold": {
+      "selected_mixture_model": "eommm_asymmetric_margules (wins by BIC, but only a MODEST margin -- Rubingh with beta~-3.6 is a real, defensible alternative, not a wrong answer)",
+      "why_reproducibility_prone": "this is not a hypothetical -- this project's own real manual runs of both Claude and GPT already chose Rubingh here once. A modest BIC margin (Kass-Raftery 'positive but not strong' evidence) is exactly the kind of case where a model's own informal reasoning (not running an actual BIC computation) could land on either model on different attempts.",
+      "grading_note": "record which model (Rubingh vs EOMMM vs something else) each of the N runs selects -- either is a legitimate, gradable-as-reasonable answer per this project's own GZ-02 precedent; the finding is whether the SAME model is internally consistent across its own repeated attempts, not which one is 'more correct'."
+    },
+    "computed_via": "surfactantkit.mixture_model_selection.select_mixture_model, verified 2026-09-15 (GZ-02), re-referenced 2026-09-19"
+  },
+  "GZ-53": {
+    "source": "Same real SDS deltaG_mic=-27.271 kJ/mol as GZ-16 (now using GZ-16's own corrected, explicit (1+alpha) convention), paired with two fresh, clean deltaH scenarios not used elsewhere in this project -- a direct re-test of the documented ~4.5%-observed sign-substitution slip (see literature_validation_notes.md's Category G entropy investigation) with different numbers than GZ-28.",
+    "gold": {
+      "delta_s_scenario_a_J_per_mol_K": 74.7,
+      "delta_s_scenario_b_J_per_mol_K": 101.53,
+      "why_reproducibility_prone": "this project's own real historical data shows this EXACT class of arithmetic substitution (deltaS=(deltaH-deltaG)/T with a signed deltaH) produces a wrong-signed answer in roughly 1 in 22 real attempts (observed, not theoretical) even when the model recalls the correct symbolic formula -- a rare but real, reproducible-in-principle stochastic failure mode, not a systematic one.",
+      "grading_note": "both deltaS values should be POSITIVE (entropy-driven micellization) -- record any run that reports a negative value for either scenario as a real instance of the documented slip, and track the rate across N repeats."
+    },
+    "computed_via": "surfactantkit.thermodynamics.entropy_micellization, verified 2026-09-19"
+  },
+  "GZ-54": {
+    "source": "Real DTAB Amin=59.62 A^2 (Sachin 2019, same as GZ-21), giving a real measured-area CPP=0.352 -- close to (only ~5.6% above) the real P=1/3 sphere/rod classification boundary. In this project's own real Claude transcript, this exact case ALREADY triggered extra hedging ('marginal - just above the boundary, effectively near-spherical') even in a single run.",
+    "gold": {
+      "cpp": 0.352,
+      "morphology_at_this_cpp": "cylindrical/rodlike micelle (technically, since 0.352 > 1/3=0.333), but genuinely marginal",
+      "why_reproducibility_prone": "a real value this close to a hard classification boundary is exactly where small differences in intermediate rounding (of tail volume, critical length, or the division itself) across repeated attempts could push the computed CPP to either side of 1/3, flipping the reported morphology bucket even though the underlying chemistry is identical every time.",
+      "grading_note": "record the exact morphology word used (spherical vs cylindrical/rodlike) across N runs, not just whether the model 'hedges' -- the real test is whether the discrete classification itself flips."
+    },
+    "computed_via": "surfactantkit.cpp.critical_packing_parameter/classify_aggregate_morphology, verified 2026-09-18 (GZ-21), re-referenced 2026-09-19"
+  },
+  "GZ-55": {
+    "source": "A real, disclosed FORWARD-CONSTRUCTED Frumkin isotherm curve with a=2.0 EXACTLY (K=5.0, Gamma_max=3.0e-6 mol/m^2, nonionic, T=298.15K) -- deliberately built at the literal edge of this project's own real |a|>=2 '2D-condensation-regime-is-genuinely-significant' threshold (see frumkin_theta's own docstring). With the exact noise-free construction, a real regression recovers a=2.000 exactly and Frumkin wins decisively on BIC -- but the model is NOT given the fitted result, only 7 raw (concentration, surface tension) points, and must judge significance from its own approximate reading of the data.",
+    "gold": {
+      "frumkin_a_true": 2.0,
+      "significance_judgment": "borderline by design -- this is the literal edge of the threshold this project's own tools use to call an interaction 'genuine 2D condensation' rather than negligible",
+      "why_reproducibility_prone": "a=2.0 is not comfortably on either side of the real significance threshold -- unlike GZ-14 (a=3.788, clearly above) or GZ-29 (a=0.0046, clearly negligible), this case is constructed to sit exactly at the boundary, so a model's own informal curve-reading (without running a real regression) could reasonably conclude 'meaningful' or 'borderline/not clearly significant' on different attempts.",
+      "grading_note": "record each run's yes/no/borderline significance verdict -- there is no single 'correct' binary answer to score against here by design; the finding is the SPREAD of verdicts."
+    },
+    "computed_via": "surfactantkit.adsorption.frumkin_surface_tension (forward construction) + select_isotherm_model (verification: exact a=2.000 recovery, BIC delta=230 confirms this IS the model that generated the data), verified 2026-09-19"
+  },
+  "GZ-56": {
+    "source": "Real oleic acid (a real, common long-chain fatty-acid anionic surfactant/soap precursor), real pKa~4.8-5.0 (typical for a long-chain carboxylic acid in water), evaluated at pH=5.0 -- deliberately chosen to sit almost exactly AT the real pKa (~50% ionized), a case classify_surfactant_charge_type's own real 'moderate confidence' carboxylate caveat already flags qualitatively but SurfactantKit has no quantitative pH-conditional model for ACIDS the way it does for amines (classify_surfactant_charge_type_at_ph only covers basic/amine groups).",
+    "gold": {
+      "charge_type_at_ph5": "genuinely intermediate -- roughly half-ionized (anionic character), not cleanly 'anionic' or 'nonionic'",
+      "why_reproducibility_prone": "this is a real case where even this project's OWN tool has no quantitative answer to give (a genuine, disclosed gap, not a hidden one) -- at almost exactly the pKa, the real physical system is a genuine ~50/50 mixture of protonated and deprotonated forms, and how a model chooses to report a single discrete charge_type label for an intrinsically intermediate real system is a genuine judgment call likely to vary between attempts (some will say 'anionic (weak)', some 'nonionic (mostly protonated)', some 'ambiguous/mixed').",
+      "grading_note": "this is one of the few GZ questions where MCP tool access would NOT resolve the ambiguity either (the gap is real and current) -- record the range of labels used, not a pass/fail against one expected string."
+    },
+    "computed_via": "no real quantitative tool exists for this case -- gold is a qualitative real-chemistry judgment (Henderson-Hasselbalch at pH=pKa gives exactly 50% ionized), verified by hand 2026-09-19, deliberately disclosed as a genuine current tool gap"
+  },
+  "GZ-57": {
+    "source": "Real CTAB PendantProp curve (Dankloff et al. 2025, real robotic data, previously unused in this GZ-01..50 set), real alpha=0.26 (this project's own COUNTERION_BINDING_DEGREE_REFERENCE) supplied -- but the counterion-factor CONVENTION IS DELIBERATELY LEFT UNSPECIFIED this time (unlike the now-fixed GZ-16/20/26/50), specifically to test convention CONSISTENCY across repeated runs of the same model rather than removing the ambiguity.",
+    "gold": {
+      "delta_g_1_plus_alpha_convention": -34.88,
+      "delta_g_2_minus_alpha_convention": -48.17,
+      "why_reproducibility_prone": "this project's own literature_validation_notes documents multiple real, legitimate counterion-factor conventions in the published literature ((1+beta), (2-beta), (0.5+beta) for gemini, (0.25+beta) for tetrameric) -- with no convention stated in the question, a model must pick one, and the real, ~38% numeric gap between the two most common conventions means the choice materially matters. The reproducibility question is NOT which convention is 'right' (both are real and defensible without more context) but whether the SAME model consistently picks the SAME convention across its own repeated attempts, or silently switches.",
+      "grading_note": "record which convention (or an equivalent numeric prefactor) each of the N runs implies, and whether the model states its convention choice explicitly (a more trustworthy behavior) or just presents a bare number with no stated assumption."
+    },
+    "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve + surfactantkit.thermodynamics.gibbs_free_energy_micellization (both conventions), verified 2026-09-19"
+  },
+  "GZ-58": {
+    "source": "Real Hyamine(benzethonium chloride)-DTAB system (same as GZ-12, Schulz & Durand 2016), predicting at a FRESH new composition (x1=0.15, below the measured range) instead of GZ-12's x1=0.90. GZ-12's own gold note already explicitly flags this system as reproducibility-prone: 'expect real spread across models here -- this question is intentionally hard.'",
+    "gold": {
+      "f1_at_x1_0.15": 0.136,
+      "f2_at_x1_0.15": 0.885,
+      "why_reproducibility_prone": "same real asymmetric-interaction system as GZ-12, where f1 and f2 do not mirror each other the way a single-parameter (Rubingh) model would force -- a model that (correctly) recognizes the 2-parameter asymmetry will get a different answer than one that (incorrectly, but plausibly) falls back to a simpler symmetric approximation, and a single model may not consistently choose the same approach across repeated attempts on a system this genuinely hard to extrapolate without computation.",
+      "grading_note": "record both the numeric predictions AND which approach (1-parameter vs 2-parameter) each run's own stated reasoning implies, across N repeats."
+    },
+    "computed_via": "surfactantkit.mixed_micelle.asymmetric_margules_activity_coefficients, verified 2026-09-19"
+  },
+  "GZ-59": {
+    "source": "Real CTAB (n=16) Tanford tail volume, same partial-answer mechanic as GZ-19 (SDS, n=12) but a fresh compound -- the headgroup's own real partial molar volume is, again, a genuinely disclosed open gap in this project (electrostriction, not geometric).",
+    "gold": {
+      "tail_molar_volume_contribution_cm3_per_mol": 275.69,
+      "v_bar_full_cm3_per_g": null,
+      "why_reproducibility_prone": "this tests whether a model's OWN discipline about not fabricating the missing headgroup volume holds up consistently across repeated attempts, or whether it sometimes 'gives in' and reports a plausible-looking full v_bar using an assumed/guessed headgroup contribution on some runs but not others -- a real behavioral-consistency question distinct from a numeric-accuracy one.",
+      "grading_note": "record, per run: did it report ONLY the tail contribution with an explicit named gap (correct, matches GZ-19's own established behavior), or did it fabricate a full v_bar number. Track the rate of fabrication across N repeats -- this is the actual finding, not the tail number itself (which should be identical, real, and easy every time)."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume (unit-converted via Avogadro's number), verified 2026-09-19"
+  },
+  "GZ-60": {
+    "source": "Reuses GZ-15_chart.png (real AOT curve, already built) -- a dedicated repeated-trial probe of chart-based CMC estimation specifically, since GZ-15's own gold note already documents that the real visual bend (~1.5-4 mM by eye) does not coincide with the real fitted breakpoint (2.51 mM), a genuinely wide, real plausible range for an eyeball estimate.",
+    "gold": {
+      "estimated_cmc_mM_true_value": 2.5119,
+      "why_reproducibility_prone": "chart-based numeric extraction is a documented, current, unsolved VLM weakness (LLM_CAPABILITY_RESEARCH.md item 2e) -- for THIS specific real chart, the visually obvious 'bend' sits meaningfully away from the real fitted CMC, so repeated visual reads of the identical image are expected to genuinely scatter across a real range (roughly 1.5-4 mM), not converge tightly, even from the same model.",
+      "grading_note": "record the actual numeric estimate from each of N repeated reads of the SAME image (fresh sessions each time) and report the spread (e.g. min/max/std), not a single pass/fail against 2.51."
+    },
+    "computed_via": "same real orchestrator output as GZ-01/GZ-15, verified 2026-09-19"
+  },
+  "GZ-61": {
+    "source": "Real intermediate kappa*a regime (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, between the Huckel and Smoluchowski limits) -- micelle radius 2.5nm and 20mM 1:1 ionic strength chosen to land at kappa_a=1.163, squarely in that zone. Mobility/viscosity are disclosed plausible forward-constructed values (not a specific literature micelle), chosen only to make the calculation concrete.",
+    "gold": {
+      "kappa_a": 1.163,
+      "zeta_ohshima_mV": 49.95,
+      "zeta_swan_furst_mV": 50.229,
+      "zeta_qin_mV": 50.985,
+      "zeta_huckel_mV_WRONG": 51.943,
+      "zeta_smoluchowski_mV_WRONG": 34.629,
+      "why_reproducibility_prone": "at kappa_a=1.163, neither limiting case (Huckel or Smoluchowski) is a good approximation, but all three real closed-form treatments valid across the full range (Ohshima 1994, Swan & Furst 2012, Qin et al. 2017) give answers within ~2% of each other (49.95-50.99 mV) -- a genuinely different flavor of ambiguity from GZ-57 (where the two conventions differ by ~38%): here the real risk is not picking wildly different numbers, but (a) failing to recognize this is the intermediate zone at all and defaulting to one of the two badly-wrong limiting cases (34.6 or 51.9 mV, 8-31% off), or (b) picking a different one of the three close-but-not-identical accurate methods on different attempts without noticing or disclosing the choice.",
+      "grading_note": "record which regime/method (if named) each run used, and whether the final zeta lands near 50.0-51.0 mV (any accurate intermediate-zone treatment) vs near 34.6 or 51.9 mV (a limiting-case trap). The reproducibility finding is two-layered: trap-avoidance consistency AND, among the three accurate treatments, method-choice consistency."
+    },
+    "computed_via": "surfactantkit.electrostatics.debye_length + henry_function + zeta_potential_henry (all three regimes), verified 2026-09-19"
+  },
+  "GZ-62": {
+    "source": "Forward-constructed (disclosed) conductometric break-point data: real pre-CMC slope 0.6388 mS/cm/mM, real post-CMC slope 0.2943 mS/cm/mM, true break at C=6.0mM, with realistic noise added near the break to make the two-segment split genuinely non-obvious by eye (the best-fit split at n=6 points-below-CMC gives total RSS=0.00062, while the adjacent n=7 split gives a nearly-as-good 0.00064 -- an informal by-eye read could reasonably land on either).",
+    "gold": {
+      "cmc_mM": 6.02,
+      "counterion_binding_degree": 0.539,
+      "slope_below_cmc": 0.6388,
+      "slope_above_cmc": 0.2943,
+      "why_reproducibility_prone": "the real, objective two-segment regression over all 12 points gives one specific answer, but an informal read that eyeballs 'where the kink is' and estimates each segment's slope from only a subset of nearby points (rather than running the actual regression) is measurably sensitive to exactly which points get assigned to which segment near the break -- this project's own sensitivity check found the beta estimate shifts from 0.539 (correct, n=6 split) to 0.520 (n=5 split, a plausible-looking but suboptimal alternative) to 0.493 (n=4 split), a real ~8% swing from a one-or-two-point difference in segment assignment.",
+      "grading_note": "record the reported CMC and beta together -- they should move together (both computed from the same segment choice). A repeat that reports beta noticeably below ~0.53 or CMC noticeably below ~5.9mM likely used fewer pre-CMC points than the objectively best split; report the spread across repeats, not just the mean."
+    },
+    "computed_via": "surfactantkit.curve_analysis.cmc_from_conductivity_curve, verified 2026-09-19"
+  },
+  "GZ-63": {
+    "source": "Forward-constructed (disclosed) steady-state fluorescence quenching (Turro-Yekta) series: true N=60, Ct=50mM, cmc=8mM (slope=1.4286/mM). The first 4 points sit exactly on the theoretical line; the last 2 points (Q=2.5, 3.0 mM) are deliberately reduced by 10% and 18% respectively, representing a real, literature-documented SSFQ artifact (probe/quencher exchange dynamics and micelle-structure perturbation becoming non-negligible at high quencher loading, causing real downward curvature away from the ideal Poisson-linear form).",
+    "gold": {
+      "aggregation_number_true_and_clean_region_fit": 60.0,
+      "aggregation_number_all_6_points_tool_default": 54.08,
+      "aggregation_number_first_5_points": 57.27,
+      "why_reproducibility_prone": "the real underlying tool (aggregation_number_from_quenching_curve) has no built-in outlier detection -- it fits whatever points it's given, forced through the origin. Feeding it all 6 points (including the 2 that show real, physically-documented high-[Q] curvature) gives N=54.08; recognizing the curvature and using only the clean linear region (the first 4 points) recovers the true N=60 exactly. This is a genuine, real judgment call about data validity that an informal reader may or may not make consistently across repeated attempts -- and the tool itself cannot make this judgment automatically, illustrating a case where MCP tool access alone is NOT sufficient without the caller also exercising real scientific judgment about which data to feed it.",
+      "grading_note": "record the reported N and whether the response explicitly notices/discusses the curvature at high [Q]. A value near 60 with explicit curvature discussion is the strongest answer; a value near 54 with no discussion of curvature (naive use of all points) is a real, describable weaker pattern; values in between (e.g. ~57, from using 5 points) reflect partial recognition. Report the spread and how often curvature is explicitly flagged, across repeats."
+    },
+    "computed_via": "surfactantkit.curve_analysis.aggregation_number_from_quenching_curve (run once on all 6 points, once on first 4, once on first 5), verified 2026-09-19"
+  },
+  "GZ-64": {
+    "source": "Three real, independently reported CTAB CMC values already used/validated elsewhere in this project's own real literature work: 0.876mM is Oremusova (2012, Tenside Surf. Det. 49(3), 231-238)'s own single-lab conductometric 'present result' for CTAB (already in SurfQSPR's dataset.py, cross-checked 2026-09-05); 0.904mM is that same paper's own cited 15-source literature average (+/-0.05mM); 0.930mM is Chenyakin & Chen (2025, Electrophoresis, doi:10.1002/elps.8145)'s real streaming-potential measurement, fetched and confirmed directly 2026-09-19 (that paper's own Table 1 separately cites a broader real literature range of 0.8-1.0mM from 3 further named sources, corroborating this is genuine, not cherry-picked, real-world scatter).",
+    "gold": {
+      "three_real_values_mM": [
+        0.876,
+        0.904,
+        0.93
+      ],
+      "simple_mean_mM": 0.9033,
+      "why_reproducibility_prone": "this is a real but modest disagreement (~6% spread, all three from credible real methods/papers on the same extremely well-studied compound) -- a genuinely different character from GZ-52/57/65's larger convention gaps. There is no single 'correct' resolution strategy (mean, median, prefer-the-largest-source-count average, or explicitly report the range instead of collapsing to one number are all defensible), so the real reproducibility test is whether the same model consistently uses the same resolution strategy (and gets the same resulting number) across repeated attempts, or arbitrarily switches between e.g. picking one value outright vs. averaging all three vs. averaging just two.",
+      "grading_note": "record both the reported number AND the stated resolution_method across repeats. Any value between about 0.87 and 0.94mM with an explicitly stated, coherent method is reasonable; the finding is strategy consistency (same method chosen every time) and number consistency (same final number every time), not correctness against one target."
+    },
+    "computed_via": "no computation needed -- gold is the three real cited literature values themselves and their simple mean; verified via direct fetch of the Chenyakin & Chen 2025 primary source 2026-09-19, cross-referenced against SurfQSPR's already-validated Oremusova 2012 entry"
+  },
+  "GZ-65": {
+    "source": "Forward-constructed (disclosed) pre-CMC slope (-18.4 mN/m per ln(C)) for a real anionic surfactant measured with 0.1M NaCl background electrolyte explicitly stated once in the setup -- directly reproduces this library's own gibbs_gamma_max() docstring's documented real historical failure: unaugmented Claude Opus 4.8 silently defaulted to n=2 (ionic_no_added_salt) 'for a bare ionic surfactant' 5 out of 6 times even when the excess-electrolyte condition was stated in the question, and tool-augmented Claude did the same 6/6 times (0/6 correct) because a caller can still choose the wrong system_type string even with the tool in hand.",
+    "gold": {
+      "gamma_max_mol_per_m2_correct_n1": 7.4225e-06,
+      "a_min_nm2_correct_n1": 0.2237,
+      "gamma_max_mol_per_m2_WRONG_n2_default": 3.7112e-06,
+      "a_min_nm2_WRONG_n2_default": 0.4474,
+      "why_reproducibility_prone": "0.1M NaCl is a real, standard excess-electrolyte condition (screens electrostatic double-layer effects), which makes n=1 (not n=2) the correct Gibbs prefactor -- but this project's own real historical data shows models reflexively default to n=2 for 'an ionic surfactant' as a memorized heuristic, overriding the stated condition rather than tracking it through the calculation. The two candidate answers differ by exactly 2x, a large, easily detectable divergence, making this a clean, unambiguous-to-grade test of whether the stated condition is actually used.",
+      "grading_note": "this one does have a single correct numeric answer (n=1, Gamma_max=7.42e-6, A_min=0.224 nm^2) given the stated 0.1M NaCl -- unlike GZ-61/62/64, this is closer to GZ-59's fabrication-discipline design: the real finding is the rate at which repeated attempts get pulled into the wrong (n=2) default despite the stated condition, matching the exact 5/6 and 6/6 failure rates already documented in this project's own real prior test of this exact library function."
+    },
+    "computed_via": "surfactantkit.adsorption.gibbs_gamma_max (both system_type values) + gibbs_a_min, verified 2026-09-19"
+  },
+  "_batch8b_note": "GZ-61..65 (batch 8B: REPRODUCIBILITY EXTENSION), built 2026-09-19 per user request for 5 more reproducibility-prone questions, each testing a mechanism genuinely different from GZ-51..60: GZ-61 (near-agreement multi-method convention -- 3 accurate closed-form Henry-function treatments within ~2% of each other, plus 2 badly-wrong limiting-case traps), GZ-62 (informal regression-boundary/segment-assignment judgment on a real conductometric break-point), GZ-63 (marginal-data-inclusion judgment -- real SSFQ high-[Q] curvature, tests whether the model exercises scientific judgment a bare tool call cannot make automatically), GZ-64 (real, modest 3-way literature CMC conflict for CTAB, testing resolution-strategy consistency rather than a single number), GZ-65 (real historically-documented Gibbs-prefactor default failure, directly reproducing this library's own gibbs_gamma_max() docstring's 5/6 and 6/6 real failure rates with a fresh, unambiguous-to-grade 2x-divergent numeric pair). All gold computed via real SurfactantKit function calls (GZ-64 needs none -- gold is the cited real literature values themselves). Same 5-repeat-per-AI protocol as batch 8. Plan: run these against the same AIs, and combine any that show real observed variance (plus GZ-60, which already showed a systematic Claude failure) with the sharpened reproducibility set the user is assembling from failed outputs across both batches.",
+  "GZ-66": {
+    "source": "Real SDS Amin=49.37 A^2 at 298.15K (Sachin, Karpe, Singh & Bhattarai 2019, R. Soc. Open Sci. 6, 181979, PMC6458362, Table 2 -- already validated in this project's own test suite, reproducing the paper's own P=0.43 within 1.2%), chained through Tanford geometry to CPP, combined with SDS's real Davies HLB (SO4Na=38.6, CH2/CH3=0.475, both real literature-sourced group numbers already in this library's DAVIES_HYDROPHILIC_GROUPS/DAVIES_LIPOPHILIC_GROUPS tables).",
+    "gold": {
+      "cpp": 0.4253,
+      "morphology": "cylindrical/rodlike micelle",
+      "hlb_davies": 39.9,
+      "why_reproducibility_prone": "this is a genuine PERMUTATION of two independent toolkit frameworks (CPP geometry, Davies HLB group-additivity) that must both be executed correctly AND then synthesized. The real trap: Davies' additive method has no upper cap, and a strongly ionic sulfate headgroup (SO4Na=38.6) routinely pushes the result far above the nominal 0-20 scale Griffin's method uses -- HLB=39.9 is a real, well-documented quirk of Davies' method for ionic surfactants, not a sign of an impossibly extreme molecule or a computational error. A well-informed answer recognizes this; a naive one either miscalculates one of the two numbers, or treats the out-of-range HLB value as a red flag/contradiction rather than a known method limitation. Repeated attempts may vary in whether they correctly execute BOTH calculations, and independently in how they characterize (or fail to characterize) the real HLB-scale caveat.",
+      "grading_note": "record cpp and hlb_davies numerically (should be stable and correct if the model chains the given formulas/numbers correctly), AND separately record whether the consistency_discussion correctly identifies the Davies-ionic-scale-overflow point rather than either ignoring the extreme HLB value or treating it as a genuine contradiction with the CPP-predicted morphology. Track both the numeric accuracy and the qualitative-recognition rate across repeats."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter/classify_aggregate_morphology + surfactantkit.hlb.hlb_davies, verified 2026-09-19"
+  },
+  "GZ-67": {
+    "source": "Real SDS Cc=-2.63 (Leng and Acosta 2023, already used/validated in this project for GZ-46) and K_ANIONIC_DEFAULT=0.16 (Steven Abbott source, both already in hld.py), combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales, Messina, Vidal & Peric, J. Phys. Chem. B 105 (2001) 6798-6804, EPR method, already in thermodynamics.py's COUNTERION_BINDING_DEGREE_REFERENCE with 'high' confidence).",
+    "gold": {
+      "hld_value": -1.0206,
+      "winsor_type": "Winsor I (O/W, oil-in-water microemulsion/direct micelles)",
+      "why_reproducibility_prone": "this is a PERMUTATION testing a real conceptual trap rather than a numeric one: Cc is itself a real, empirically-measured holistic descriptor (from real HLD titration/scan data on the ACTUAL surfactant), which already implicitly reflects whatever counterion-binding behavior that real surfactant has -- it is not a separate theoretical prediction that could independently agree or disagree with beta (measured by a completely unrelated EPR technique). A well-informed answer recognizes that asking whether beta 'agrees with' the HLD/Winsor prediction is close to a category error -- Cc and beta describe different real phenomena at different scales, and there's no established quantitative bridge between them in the literature. A naive answer instead treats them as two independent forecasts that must be reconciled, and may reach a specific (currently unfounded) verdict about whether 0.728 'confirms' or 'contradicts' Winsor I. This is exactly the kind of synthesis step where repeated attempts, without a real formula to fall back on, are prone to inventing different post-hoc justifications each time.",
+      "grading_note": "record the numeric hld_value and winsor_type (should be stable: HLD=-1.02, Winsor I, if the given formula/numbers are chained correctly) AND separately record how the consistency_discussion frames the beta-vs-HLD relationship -- whether it recognizes the category-error risk (the strongest answer), stays appropriately agnostic/qualified, or confidently asserts a specific (unfounded) quantitative relationship. Track the qualitative framing's consistency across repeats, not just the two numeric fields.",
+      "real_run_finding_2026-09-19": "All 5/5 real Claude repeats gave a MORE sophisticated stance than the category-error framing anticipated above: they consistently recognized beta and Cc/HLD operate at different scales (micellar-electrostatic vs macroscopic phase-behavior) AND correctly identified the real shared mechanism linking them (counterion screening is the microscopic driver of both beta itself and the HLD salinity/ln(S) term), landing on necessary-not-sufficient/corroborative-not-independent every single time -- not the plain category-error dismissal this gold entry originally treated as the strongest possible answer. This is a genuine gold refinement, not a model failure: the anticipated ideal answer was too narrow. Revised grading standard: the strongest answer recognizes BOTH the different-scales point AND the shared-mechanism link, as all 5 real repeats did -- a bare category-error dismissal with no mechanistic link is now the weaker (not the stronger) of the two sophisticated framings."
+    },
+    "computed_via": "surfactantkit.hld.hld_ionic, verified 2026-09-19"
+  },
+  "GZ-68": {
+    "source": "Real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin et al. 2019) -> CPP (Tanford geometry) -> real Bales, Messina, Vidal, Peric & Nascimento 1998 aggregation number N=63 (salt-free 69mM SDS, J. Phys. Chem. B 102, 10347-10358, their own worked example, already used/validated elsewhere in this project) -> estimate_axial_ratio_from_cpp_geometry (prolate-ellipsoid model, purpose-built in this library specifically to feed CPP's morphology into the Perrin correction) -> real Sutherland, Mercer, Everist & Leaist 2009 Taylor-dispersion diffusion coefficient D=0.093e-5 cm^2/s (J. Chem. Eng. Data 54(2), 272-278, Table 2, already validated in this project's own test suite against the well-established SDS micelle radius range).",
+    "gold": {
+      "cpp": 0.4253,
+      "axial_ratio": 1.135,
+      "r_h_naive_nm": 2.638,
+      "r_h_perrin_corrected_nm": 2.634,
+      "why_reproducibility_prone": "this is a genuine 4-step PERMUTATION chain (Amin->CPP->axial_ratio(needs a real, separately-sourced N)->Perrin correction(needs a real, separately-sourced D)) where a single skipped or substituted step silently produces a wrong final number with no error. The real, honestly counterintuitive finding: even though CPP=0.425 classifies this as 'cylindrical/rodlike,' the REAL axial ratio this specific chain produces (1.135) is only mildly elongated, giving a Perrin correction of just ~0.1% (2.638nm -> 2.634nm) -- NOT the large shape correction the word 'cylindrical' might intuitively suggest. A model that actually executes the full chain gets this small, correct, faithfully-reported answer; a model that pattern-matches 'cylindrical morphology implies a large/significant hydrodynamic-radius correction' from general chemistry intuition, without doing the real calculation, would report a materially different (larger, incorrect) correction. Repeated attempts may vary in whether they execute the full real chain or substitute an assumed/intuited axial ratio at some step.",
+      "grading_note": "record all four numeric fields. cpp and r_h_naive_nm are single-formula results and should be stable and correct across repeats if the given formulas are applied correctly. axial_ratio and r_h_perrin_corrected_nm are the real test of whether the FULL chain was executed -- a materially larger axial_ratio (implying the model assumed a bigger elongation than the real N=63 aggregation number supports) or any r_h_perrin_corrected_nm noticeably different from ~2.63 nm indicates a broken or skipped step in the chain, not just numeric noise."
+    },
+    "computed_via": "surfactantkit.cpp.tanford_tail_volume/tanford_critical_length/critical_packing_parameter/estimate_axial_ratio_from_cpp_geometry + surfactantkit.dynamics.hydrodynamic_radius_stokes_einstein/hydrodynamic_radius_perrin_corrected/perrin_friction_factor, verified 2026-09-19"
+  },
+  "_batch8c_note": "GZ-66..68 (batch 8C: CROSS-PROPERTY COMBINATION REPRODUCIBILITY), built 2026-09-19 per user request for questions built around 'permutation and combination' across the toolkit's own property space, rather than single-technique fragility points like GZ-51..65. Each chains 2-4 real toolkit techniques together in one question: GZ-66 (CPP geometry + Davies HLB, testing whether the real Davies-ionic-scale-overflow quirk is recognized rather than treated as a contradiction), GZ-67 (HLD/Winsor + counterion binding degree, testing whether the model recognizes Cc as an empirical descriptor that already subsumes beta rather than an independent forecast to reconcile against it -- a conceptual/category-error trap, not a numeric one), GZ-68 (CPP -> axial ratio -> Perrin-corrected hydrodynamic radius, a genuine 4-step real chain where the correct answer is an honestly small, counterintuitive correction that only shows up if every step is actually executed rather than pattern-matched from 'cylindrical implies a big correction' intuition). All three use real, cross-validated SDS data already present elsewhere in this project (Sachin 2019 Amin, Bales 1998 Nagg, Bales 2001 EPR beta, Sutherland 2009 D, Leng & Acosta 2023 Cc), so no new literature sourcing was needed. Same 5-repeat-per-AI protocol as batch 8/8B."
+}

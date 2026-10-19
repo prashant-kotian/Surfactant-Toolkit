@@ -1,0 +1,1 @@
+FINAL_JSON: {"W12": 0.9, "W21": 1.6, "r_squared": 0.9984240805557485, "x1_third_point": 0.8108824340338063, "feasible": true}

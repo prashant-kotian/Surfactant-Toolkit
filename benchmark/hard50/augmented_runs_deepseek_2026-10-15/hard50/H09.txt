@@ -1,0 +1,9 @@
+FINAL_JSON: {
+"k": 0.16,
+"cc": -1.4,
+"fit_r2": 0.9999999986,
+"s_star_EACN16_dT10_pct": 58.04,
+"hld_at_S3": -2.96,
+"winsor_type": "I",
+"s_star_achievable_in_water": false
+}

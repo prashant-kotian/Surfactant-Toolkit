@@ -1,0 +1,37 @@
+To determine the Critical Micelle Concentration (CMC) based on the authoritative protocol, we follow these steps:
+
+1. **Calculate $x = \log_{10}(c)$ for all points:**
+   $x_1 = \log_{10}(0.30) \approx -0.523$
+   $x_2 = \log_{10}(0.60) \approx -0.222$
+   $x_3 = \log_{10}(1.00) = 0.000$
+   $x_4 = \log_{10}(1.70) \approx 0.230$
+   $x_5 = \log_{10}(2.60) \approx 0.415$
+   $x_6 = \log_{10}(3.80) \approx 0.580$
+   $x_7 = \log_{10}(5.20) \approx 0.716$
+   $x_8 = \log_{10}(7.00) \approx 0.845$
+   $x_9 = \log_{10}(9.20) \approx 0.964$
+   $x_{10} = \log_{10}(12.00) \approx 1.079$
+
+2. **Find the RSS-minimizing split of two OLS lines:**
+   Looking at the data, the surface tension ($\gamma$) drops steadily from $68.5$ mN/m down to $53.7$ mN/m at $c = 3.80$ mM. Then, there is a massive drop between $c=3.80$ and $c=5.20$, settling into a plateau at $\sim31$ mN/m. 
+   - If we split at index 6 (Set 1: points 1-6; Set 2: points 7-10), Set 1 represents the linearly declining pre-CMC line and Set 2 represents the almost flat post-CMC line. The Residual Sum of Squares (RSS) for both combined is minimal ($\sim 2.1$). 
+   - Any other split (e.g., splitting at index 5 or 7) forces the massive jump in surface tension into one of the regression lines, drastically inflating the RSS to over $150$.
+   Therefore, the optimal split ends the declining line at point 6 ($c = 3.80$ mM) and starts the plateau line at point 7 ($c = 5.20$ mM).
+
+3. **Compute the CMC:**
+   The pinned protocol defines: 
+   $\text{CMC} = 10^{(x_{\text{last\_decl}} + x_{\text{first\_plateau}})/2}$
+   $x_{\text{last\_decl}} = \log_{10}(3.80)$
+   $x_{\text{first\_plateau}} = \log_{10}(5.20)$
+   $\text{CMC} = 10^{(\log_{10}(3.80) + \log_{10}(5.20))/2} = 10^{\log_{10}(3.80 \times 5.20)/2} = \sqrt{3.80 \times 5.20} = \sqrt{19.76} \approx 4.4452 \text{ mM}$
+
+4. **Calculate relative differences:**
+   - For L1 (4.10 mM):
+     $\text{rel\_diff\_L1} = \frac{|4.10 - 4.4452|}{4.4452} \times 100 \approx \frac{0.3452}{4.4452} \times 100 \approx 7.766\%$
+   - For L2 (6.90 mM):
+     $\text{rel\_diff\_L2} = \frac{|6.90 - 4.4452|}{4.4452} \times 100 \approx \frac{2.4548}{4.4452} \times 100 \approx 55.223\%$
+
+5. **Assess the sources:**
+   Source L1 is significantly closer to our computed value. Since $7.766\% \le 15\%$, at least one source (L1) agrees within a 15% margin.
+
+FINAL_JSON: {"cmc_mM": 4.4452, "rel_diff_L1": 7.7661, "rel_diff_L2": 55.2228, "closer": "L1", "either_agrees_15pct": true}

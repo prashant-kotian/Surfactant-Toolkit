@@ -1,0 +1,23 @@
+Working through the pinned formula f_cation(pH) = 1 / (1 + 10^(pH − 10.62)):
+
+**1. pH 8.00:** exponent = 8.00 − 10.62 = −2.62; 10^(−2.62) ≈ 0.0023988
+f_cation = 1 / 1.0023988 ≈ **0.99761**
+
+**2. pH 10.62:** exponent = 0; 10^0 = 1
+f_cation = 1 / 2 = **0.50000**
+
+**3. pH 13.00:** exponent = 13.00 − 10.62 = 2.38; 10^2.38 ≈ 239.88
+f_cation = 1 / 240.88 ≈ **0.0041513**
+
+**4. Dominant at pH 8.00:** f_cation ≈ 0.9976 > 0.85 → **"cationic"**
+
+**5. Confidence at pH 8.00:** dominant fraction ≈ 0.9976 exceeds 0.95 → **"high"**
+
+Required outputs:
+1. f_cation_pH8: 0.99761
+2. f_cation_pH1062: 0.50000
+3. f_cation_pH13: 0.0041513
+4. dominant_at_8: cationic
+5. confidence_at_8: high
+
+FINAL_JSON: {"f_cation_pH8": 0.99761, "f_cation_pH1062": 0.5, "f_cation_pH13": 0.0041513, "dominant_at_8": "cationic", "confidence_at_8": "high"}

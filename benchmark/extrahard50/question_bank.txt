@@ -1,0 +1,2383 @@
+============================================================================
+EXTRA50 - Question Bank (unaugmented LLM evaluation)
+============================================================================
+
+----------------------------------------------------------------------------
+## X-01 | family G1 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-01 — Residual-bootstrap CMC: point estimate and 95% interval
+
+A dye-probe transition curve for an ionic surfactant (property value vs.
+concentration; higher concentration -> lower plateau):
+
+    c (mM)     value
+     0.50       67.10
+     0.80       67.41
+     1.20       69.17
+     1.80       66.26
+     2.40       61.72
+     3.00       51.27
+     3.60       41.77
+     4.80       33.51
+     6.00       30.20
+     7.50       29.02
+
+Pinned procedure (authoritative -- every step is exact, nothing is left
+to convention):
+
+1. Let x = log10(c in mM). Fit the 4-parameter sigmoidal transition
+       value(x) = lo + (hi - lo) * 0.5 * (1 + tanh((x - x0) / w))
+   to the 10 points above by nonlinear least squares (there is no closed
+   form for this fit; it requires an iterative solver). CMC = 10^x0.
+2. Compute the fit's own residuals r_i = value_i - fitted_i at each of
+   the 10 points.
+3. Using a pseudo-random generator seeded EXACTLY with seed = 0, i.e. NumPy's default_rng(0) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   1000 bootstrap resamples: for each of the 1000 repeats, resample the
+   10 residuals WITH replacement (some residuals may appear more than
+   once in a repeat, others not at all), add the resampled residuals
+   back onto the original fitted curve, and refit the same 4-parameter
+   sigmoid to that resampled curve to get a bootstrap x0_b.
+4. From the 1000 bootstrap x0_b values (the full discard rule: a refit is discarded if and only if its least-squares call
+   raises/fails or its fitted transition width w lies outside the open interval (1e-4, 10*(xmax-xmin))
+   on the log10 axis; every other refit is kept), take the 2.5th and 97.5th
+   percentiles and convert back via 10^(...) to get the 95% confidence
+   interval on the CMC.
+5. ci_width_pct = 100 * (CMC_high - CMC_low) / CMC_point.
+
+This is a literal simulation procedure, not a formula you can evaluate
+by hand: steps 3-4 require actually constructing a pseudo-random
+generator from the stated seed and running 1000 real nonlinear refits,
+not estimating a plausible-looking interval. Report whether all 1000
+resamples converged to a usable fit, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM (step 1)
+2. cmc_ci_low: 2.5th-percentile bootstrap CMC in mM (step 4)
+3. cmc_ci_high: 97.5th-percentile bootstrap CMC in mM (step 4)
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point (step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-02 | family G1 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-02 — Residual-bootstrap CMC on a rising (conductivity-like) curve
+
+A molar-conductivity-like property for an ionic surfactant (property
+value vs. concentration; higher concentration -> HIGHER plateau, the
+opposite direction from a tension/dye-probe curve):
+
+    c (mM)     value
+     1.00       0.413
+     1.60       0.372
+     2.40       0.483
+     3.20       0.508
+     4.00       0.817
+     5.00       0.946
+     6.20       1.334
+     7.60       1.596
+     9.50       1.775
+    12.00       1.938
+    15.00       1.936
+
+Pinned procedure (authoritative -- identical algorithm to a standard
+dye-probe fit; the only difference is this curve rises, not falls):
+
+1. Let x = log10(c in mM). Fit the 4-parameter sigmoidal transition
+       value(x) = lo + (hi - lo) * 0.5 * (1 + tanh((x - x0) / w))
+   to the 11 points above by nonlinear least squares (no closed form;
+   an iterative solver is required). CMC = 10^x0.
+2. Compute the fit's own residuals at each of the 11 points.
+3. Using a pseudo-random generator seeded EXACTLY with seed = 3, i.e. NumPy's default_rng(3) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   1000 bootstrap resamples of the 11 residuals WITH replacement, add
+   each resample back onto the fitted curve, and refit to get a
+   bootstrap x0_b each time.
+4. From the 1000 bootstrap x0_b values, take the 5th and 95th
+   percentiles (this is a 90% interval, not 95%) and convert via
+   10^(...) to get the CMC confidence interval.
+5. ci_width_pct = 100 * (CMC_high - CMC_low) / CMC_point.
+
+As in any such bootstrap, steps 3-4 require actually running 1000 real
+refits from the stated seed -- there is no shortcut formula for a
+percentile bootstrap interval. Report whether ci_width_pct exceeds 5.0
+(a plain true/false on the number you computed in step 5).
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM (step 1)
+2. cmc_ci_low: 5th-percentile bootstrap CMC in mM (step 4)
+3. cmc_ci_high: 95th-percentile bootstrap CMC in mM (step 4)
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point (step 5)
+5. ci_wide: true if ci_width_pct > 5.0, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "ci_wide": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-03 | family G1 | arith 4 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-03 — Monte Carlo error propagation through the mass-action free energy
+
+A researcher's three measured inputs, each with a stated 1-sigma
+uncertainty, feed the NONIONIC mass-action free-energy-of-micellization
+formula:
+
+    cmc_mole_fraction = 0.0085, sigma = 0.0006 (normal)
+    aggregation_number = 45,    sigma = 4       (normal)
+    temperature_K       = 303.15, sigma = 0.3   (normal)
+
+    deltaG_mic (kJ/mol) = R*T/1000 * [(1 + 1/n)*ln(X) - (1/n)*ln(n)]
+    R = 8.314462618 J/(mol K), X = cmc_mole_fraction, n = aggregation_number
+
+Pinned Monte Carlo procedure (authoritative; this is a real propagation,
+not a linearized/first-order error bar):
+
+1. Using a pseudo-random generator seeded EXACTLY with seed = 7, i.e. NumPy's default_rng(7) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   10000 independent samples. In each sample, draw X ~ Normal(0.0085,
+   0.0006), n ~ Normal(45, 4), T ~ Normal(303.15, 0.3) (all three drawn
+   independently, same sample index), then evaluate deltaG_mic with the
+   formula above using that sample's (X, n, T).
+2. Over the 10000 deltaG_mic values collected this way, report the
+   mean, the sample standard deviation (ddof=1), and the 2.5th/97.5th
+   percentile values (a 95% interval).
+3. Let skew = (mean - median) / sd for those 10000 values. Call the
+   result "right-skewed" when skew exceeds +0.05, "left-skewed" when it
+   is below -0.05, and "symmetric" for anything in between.
+
+A linearized (first-order Taylor) error propagation does NOT reproduce
+this distribution's mean, sd, or interval exactly -- only an actual
+10000-draw simulation from the stated seed does, since the formula is
+nonlinear in X and n.
+
+Required outputs (report every item, in this order):
+1. output_mean: mean of the 10000 deltaG_mic samples, kJ/mol
+2. output_sd: sample standard deviation (ddof=1), kJ/mol
+3. ci_low: 2.5th percentile, kJ/mol
+4. ci_high: 97.5th percentile, kJ/mol
+5. skew_label: one of ["left-skewed", "symmetric", "right-skewed"] (step 3)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"output_mean": <value>, "output_sd": <value>, "ci_low": <value>, "ci_high": <value>, "skew_label": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-04 | family G1 | arith 4 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-04 — Monte Carlo error propagation through the Debye screening length
+
+Two measured inputs, each with a stated 1-sigma uncertainty, feed the
+Debye screening-length formula:
+
+    ionic_strength_M = 0.015, sigma = 0.004  (normal)
+    temperature_K    = 298.15, sigma = 0.2   (normal)
+
+    lambda_D (nm) = sqrt(eps_r*eps0*k_B*T / (2*N_A*I_SI*e^2)) * 1e9,
+        I_SI = ionic_strength_M * 1000   (mol/L -> mol/m^3)
+    eps_r = 78.4 (water, 25C), eps0 = 8.8541878128e-12 F/m,
+    k_B = 1.380649e-23 J/K, N_A = 6.02214076e23 /mol,
+    e = 1.602176634e-19 C
+
+Run this as a real Monte Carlo propagation (authoritative; do not
+substitute a linearized/first-order error bar):
+
+1. Using a pseudo-random generator seeded EXACTLY with seed = 11, i.e. NumPy's default_rng(11) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   10000 independent samples. In each sample, draw I ~ Normal(0.015,
+   0.004) and T ~ Normal(298.15, 0.2) (independently, same sample
+   index), then evaluate lambda_D with the formula above using that
+   sample's (I, T).
+2. From the 10000 lambda_D values this produces, give the mean, the
+   sample standard deviation (ddof=1), and the values at the 2.5th and
+   97.5th percentiles (together, a 95% interval).
+3. Define skew = (mean - median) / sd across those same 10000 values,
+   and label the distribution "right-skewed" for skew above +0.05,
+   "left-skewed" for skew below -0.05, "symmetric" otherwise.
+
+lambda_D is proportional to 1/sqrt(I) -- a CONVEX function of I for
+I > 0 -- so a symmetric input distribution on I does NOT propagate to
+a symmetric output distribution; only an actual 10000-draw simulation
+from the stated seed reproduces the true (skewed) distribution.
+
+Required outputs (report every item, in this order):
+1. output_mean: mean of the 10000 lambda_D samples, nm
+2. output_sd: sample standard deviation (ddof=1), nm
+3. ci_low: 2.5th percentile, nm
+4. ci_high: 97.5th percentile, nm
+5. skew_label: one of ["left-skewed", "symmetric", "right-skewed"] (step 3)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"output_mean": <value>, "output_sd": <value>, "ci_low": <value>, "ci_high": <value>, "skew_label": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-05 | family G1 | arith 4 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-05 — Monte Carlo error propagation through the Stokes-Einstein radius
+
+Three measured inputs, each with a stated 1-sigma uncertainty, feed the
+Stokes-Einstein hydrodynamic-radius formula:
+
+    diffusion_coefficient_cm2_per_s = 6.5e-7, sigma = 1.2e-7  (normal)
+    viscosity_mPas                  = 0.89,   sigma = 0.015   (normal)
+    temperature_K                   = 298.15, sigma = 0.3     (normal)
+
+    R_h (nm) = k_B*T / (6*pi*eta_SI*D_SI) * 1e9, k_B = 1.380649e-23 J/K,
+    where D_SI is diffusion_coefficient_cm2_per_s rescaled from cm^2/s
+    to m^2/s (x1e-4) and eta_SI is viscosity_mPas rescaled from mPa.s
+    to Pa.s (x1e-3)
+
+Treat this as a genuine Monte Carlo propagation (authoritative; a
+linearized/first-order error bar is not an acceptable substitute):
+
+1. Using a pseudo-random generator seeded EXACTLY with seed = 19, i.e. NumPy's default_rng(19) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   10000 independent samples. In each sample, draw D ~ Normal(6.5e-7,
+   1.2e-7), eta ~ Normal(0.89, 0.015), T ~ Normal(298.15, 0.3)
+   (independently, same sample index), then evaluate R_h with the
+   formula above using that sample's (D, eta, T).
+2. Across the 10000 resulting R_h values, state the mean, the sample
+   standard deviation (ddof=1), and the 2.5th- and 97.5th-percentile
+   values (a 95% interval).
+3. With skew = (mean - median) / sd computed over those 10000 values,
+   name the distribution "right-skewed" once skew passes +0.05,
+   "left-skewed" once it passes -0.05, and "symmetric" in between.
+
+R_h is proportional to 1/D -- a CONVEX function of D for D > 0 -- so a
+symmetric input distribution on D does NOT propagate to a symmetric
+output distribution; only an actual 10000-draw simulation from the
+stated seed reproduces the true (skewed) distribution.
+
+Required outputs (report every item, in this order):
+1. output_mean: mean of the 10000 R_h samples, nm
+2. output_sd: sample standard deviation (ddof=1), nm
+3. ci_low: 2.5th percentile, nm
+4. ci_high: 97.5th percentile, nm
+5. skew_label: one of ["left-skewed", "symmetric", "right-skewed"] (step 3)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"output_mean": <value>, "output_sd": <value>, "ci_low": <value>, "ci_high": <value>, "skew_label": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-06 | family G2 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-06 — A fourth residual-bootstrap CMC, a broader concentration span
+
+A dye-probe transition curve spanning a wider concentration range than
+the other bootstrap questions here (higher concentration -> lower
+plateau, as always for this probe type):
+
+    c (mM)     value
+     0.60       68.59
+     1.00       67.44
+     1.50       69.45
+     2.20       65.22
+     3.00       62.69
+     4.00       55.21
+     5.20       46.00
+     6.80       37.87
+     8.80       35.02
+    11.00       32.66
+
+The fitting rule is unchanged from any other bootstrap question in this
+set, restated for self-containment: fit the 4-parameter sigmoid
+value(x) = lo + (hi - lo)*0.5*(1 + tanh((x - x0)/w)) with x = log10(c
+in mM) by nonlinear least squares (iterative; no closed form), giving
+CMC = 10^x0. Take that fit's residuals, then with a generator seeded
+EXACTLY at seed = 14, using NumPy's default_rng(seed) PCG64 bit generator as the single generator consumed in a fixed order (the order the reference implementation draws its resample indices), and percentiles computed with np.percentile's default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw 1000 bootstrap resamples of the residuals
+WITH replacement, add each resample back onto the fit, and refit to
+collect 1000 bootstrap x0_b values; the 2.5th/97.5th percentiles of
+those (converted via 10^(...)) give the 95% CMC interval, and
+ci_width_pct = 100*(CMC_high - CMC_low)/CMC_point.
+
+None of this is computable from the formula alone -- the specific 1000
+resamples depend on the stated seed, and only running them reproduces
+the interval. Report whether ci_width_pct exceeds 6.0 (true/false).
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM
+2. cmc_ci_low: 2.5th-percentile bootstrap CMC in mM
+3. cmc_ci_high: 97.5th-percentile bootstrap CMC in mM
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point
+5. ci_wide: true if ci_width_pct > 6.0, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "ci_wide": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-07 | family G2 | arith 4 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-07 — A second Monte Carlo propagation through the mass-action free energy
+
+A different nonionic system's measured inputs, each with a stated
+1-sigma uncertainty, feed the same mass-action free-energy formula used
+elsewhere in this set:
+
+    cmc_mole_fraction = 0.0062, sigma = 0.0004 (normal)
+    aggregation_number = 38,    sigma = 3       (normal)
+    temperature_K       = 298.15, sigma = 0.25  (normal)
+
+    deltaG_mic [kJ/mol] = (R*T / 1000) * ((1 + 1/n)*ln(X) - (1/n)*ln(n)),
+    using R = 8.314462618 J/(mol K); X stands for cmc_mole_fraction and n
+    for aggregation_number in that expression.
+
+With a pseudo-random generator seeded EXACTLY at seed = 33, i.e. NumPy's default_rng(33) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw 10000
+independent samples -- X ~ Normal(0.0062, 0.0004), n ~ Normal(38, 3),
+T ~ Normal(298.15, 0.25), same sample index across all three -- and
+evaluate deltaG_mic at each sample. From the resulting 10000 values,
+state the mean, the sample standard deviation (ddof=1), and the
+2.5th/97.5th percentiles (a 95% interval). Taking skew = (mean -
+median)/sd over those 10000 values, call the distribution
+"right-skewed" above skew = +0.05, "left-skewed" below -0.05, and
+"symmetric" otherwise.
+
+A first-order (linearized) error bar does not reproduce this
+distribution's true mean/sd/interval -- the formula is nonlinear in X
+and n, so only the actual 10000-draw simulation from seed 33 gets it
+right.
+
+Required outputs (report every item, in this order):
+1. output_mean: mean of the 10000 deltaG_mic samples, kJ/mol
+2. output_sd: sample standard deviation (ddof=1), kJ/mol
+3. ci_low: 2.5th percentile, kJ/mol
+4. ci_high: 97.5th percentile, kJ/mol
+5. skew_label: one of ["left-skewed", "symmetric", "right-skewed"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"output_mean": <value>, "output_sd": <value>, "ci_low": <value>, "ci_high": <value>, "skew_label": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-08 | family G2 | arith 4 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-08 — A second Monte Carlo propagation through the Stokes-Einstein radius
+
+A more viscous solvent and a smaller, noisier diffusion coefficient
+than any other hydrodynamic-radius question here, each input carrying
+a stated 1-sigma uncertainty:
+
+    diffusion_coefficient_cm2_per_s = 4.2e-7, sigma = 0.9e-7  (normal)
+    viscosity_mPas                  = 1.02,   sigma = 0.02    (normal)
+    temperature_K                   = 298.15, sigma = 0.25    (normal)
+
+    R_h (nm) = k_B*T / (6*pi*eta_SI*D_SI) * 1e9,
+        D_SI = diffusion_coefficient_cm2_per_s * 1e-4   (cm^2/s -> m^2/s)
+        eta_SI = viscosity_mPas * 1e-3                   (mPa.s -> Pa.s)
+    k_B = 1.380649e-23 J/K
+
+With a pseudo-random generator seeded EXACTLY at seed = 41, i.e. NumPy's default_rng(41) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw 10000
+independent samples -- D ~ Normal(4.2e-7, 0.9e-7), eta ~ Normal(1.02,
+0.02), T ~ Normal(298.15, 0.25), same sample index for all three -- and
+evaluate R_h at each. Across those 10000 values, give the mean, sample
+standard deviation (ddof=1), and the 2.5th/97.5th percentiles. With
+skew = (mean - median)/sd over the same 10000 values, call the result
+"right-skewed" above skew = +0.05, "left-skewed" below -0.05, else
+"symmetric".
+
+R_h is proportional to 1/D, a convex relationship for D > 0, so this
+distribution is NOT symmetric even though both D and eta are drawn
+from symmetric normals -- a linearized error bar misses this, and only
+the real 10000-draw simulation from seed 41 captures it.
+
+Required outputs (report every item, in this order):
+1. output_mean: mean of the 10000 R_h samples, nm
+2. output_sd: sample standard deviation (ddof=1), nm
+3. ci_low: 2.5th percentile, nm
+4. ci_high: 97.5th percentile, nm
+5. skew_label: one of ["left-skewed", "symmetric", "right-skewed"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"output_mean": <value>, "output_sd": <value>, "ci_low": <value>, "ci_high": <value>, "skew_label": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-09 | family G2 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-09 — A fifth residual-bootstrap CMC, the tightest concentration spacing here
+
+A dye-probe transition curve with closely-spaced low concentrations,
+same probe direction as every other such question (higher
+concentration -> lower plateau):
+
+    c (mM)     value
+     0.25       70.58
+     0.40       71.35
+     0.60       69.73
+     0.85       68.26
+     1.10       65.27
+     1.40       49.50
+     1.80       35.67
+     2.30       30.19
+     3.00       30.60
+     4.00       31.11
+
+The algorithm is the one used throughout this set: fit the
+4-parameter sigmoid value(x) = lo + (hi - lo)*0.5*(1 + tanh((x -
+x0)/w)) with x = log10(c in mM) by nonlinear least squares, giving
+CMC = 10^x0. Take the residuals of that fit; with a generator seeded
+EXACTLY at seed = 27, using NumPy's default_rng(seed) PCG64 bit generator as the single generator consumed in a fixed order (the order the reference implementation draws its resample indices), and percentiles computed with np.percentile's default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, resample those residuals WITH replacement 1000
+times, add each resample back onto the fit, and refit each time to
+build 1000 bootstrap x0_b values. Their 2.5th/97.5th percentiles,
+converted via 10^(...), give the 95% CMC interval, and
+ci_width_pct = 100*(CMC_high - CMC_low)/CMC_point.
+
+Nothing here reduces to a formula you can evaluate directly -- the
+1000 specific resamples are fixed by seed 27, and only actually running
+them reproduces the interval. Report whether ci_width_pct exceeds 2.0
+(true/false).
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM
+2. cmc_ci_low: 2.5th-percentile bootstrap CMC in mM
+3. cmc_ci_high: 97.5th-percentile bootstrap CMC in mM
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point
+5. ci_wide: true if ci_width_pct > 2.0, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "ci_wide": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-10 | family G2 | arith 3 | reason 2
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-10 — A second stiff master-equation relaxation, K decreasing this time
+
+A micellar system at c_total = 0.022 M undergoes a temperature jump
+where K governing every C_n + C_1 <-> C_{n+1} step (n = 1..26) DROPS
+from K_initial = 6000 /M to K_final = 2200 /M at t = 0 (the opposite
+direction from any other relaxation question here), with k_on =
+4.0e7 /M/s fixed (k_off = k_on/K, detailed balance).
+
+The method is identical to any other relaxation-ODE question in this
+set: build the 26-state master equation using K_final and k_on for
+every rate, initialize at the EXACT equilibrium under K_initial (via
+closed-form bisection on the single-K mass-action equilibrium), then
+integrate forward with a stiff solver (this mixes a fast monomer
+timescale with slow reorganization -- a naive fixed-step integrator
+will not converge; a BDF-type method with the analytic Jacobian is
+required) until the new equilibrium under K_final is reached.
+
+The new equilibrium's monomer concentration is the new kinetic CMC
+(kinetic_cmc_M); its mean aggregation number is
+mean_aggregation_number. Linearizing around that new equilibrium and
+taking the Jacobian's eigenvalues gives the relaxation spectrum; the
+slowest nonzero mode's time constant is tau_dominant_s. A correct
+stiff solve keeps the integrator's own max relative mass-conservation
+error below 1e-8 throughout.
+
+tau_dominant_s in particular has no closed form here -- it comes from
+an eigenvalue decomposition of a 26x26 Jacobian evaluated at a
+numerically-integrated equilibrium. Report whether the integration
+converged, choosing from ["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. kinetic_cmc_M: new equilibrium monomer concentration, mol/L
+2. tau_dominant_s: slowest relaxation time constant, s
+3. mean_aggregation_number: new equilibrium mean Nagg
+4. mass_conserved: true if the max relative mass-conservation error is below 1e-8, else false
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"kinetic_cmc_M": <value>, "tau_dominant_s": <value>, "mean_aggregation_number": <value>, "mass_conserved": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-11 | family G3 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-11 — Gillespie kinetic Monte Carlo of stepwise micellization
+
+A well-mixed micellization system is modeled at the molecular level:
+stepwise addition/loss of single monomers, C_n + C_1 <-> C_{n+1}, fired
+by the direct Gillespie stochastic simulation algorithm (SSA):
+
+    c_total = 0.012 M
+    equilibrium constant K = 4200 /M (same K governs every n)
+    on-rate k_on = 8.0e6 /M/s;  off-rate k_off = k_on / K (detailed balance)
+    max aggregate size tracked n_max = 25
+    molecule count in the simulated volume = 400
+    starts from a Poisson sample at equilibrium under K, then relaxes
+
+Pinned procedure (authoritative -- this is a real stochastic simulation,
+not a formula):
+
+1. Using a pseudo-random generator seeded EXACTLY with seed = 31, i.e. NumPy's default_rng(31) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure,
+   construct the Poisson-equilibrium initial state under K at
+   c_total = 0.012 M for 400 molecules in a volume sized so the expected
+   molecule count equals 400.
+2. Run the direct SSA: at each step, compute all C_n+C_1 forward
+   (association) and C_{n+1} backward (dissociation) propensities,
+   draw an exponential waiting time and a reaction channel from those
+   propensities (both draws from the SAME seeded generator, consumed in
+   sequence), fire the chosen reaction, update state, repeat.
+3. Sample the running state at 60 evenly-spaced checkpoints in time.
+   Take the FINAL 20% of checkpoints as the stationary window and
+   average the monomer concentration over it (equilibrium_c1_M) and the
+   mean aggregation number over aggregates with n >= 2
+   (equilibrium_mean_nagg).
+4. Fit a single exponential decay to the monomer trajectory to get a
+   relaxation time tau_fit_s.
+5. Exact integer mass conservation: sum(n * count_n) over all n must be
+   EXACTLY invariant across every step (SSA conserves molecule count by
+   construction) -- report the number of simulated reaction events
+   fired and the max observed deviation from exact conservation
+   (should be exactly 0 for a correct run).
+
+There is no closed-form shortcut for steps 1-4: the exact sequence of
+reaction events depends on the specific pseudo-random draws from the
+stated seed, and only running the actual SSA reproduces the stated
+quantities to the required precision. Report whether the final window
+was judged statistically stationary, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. equilibrium_c1_M: stationary-window mean monomer concentration, mol/L
+2. equilibrium_mean_nagg: stationary-window mean aggregation number (n>=2)
+3. tau_fit_s: exponential relaxation time fit to the monomer trajectory, s
+4. mass_conservation_max_error: max deviation from exact mass conservation (integer, step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"equilibrium_c1_M": <value>, "equilibrium_mean_nagg": <value>, "tau_fit_s": <value>, "mass_conservation_max_error": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-12 | family G3 | arith 4 | reason 1
+META levers=L3,L6,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-12 — Three-way mixture-model race (Clint / Rubingh / EOMMM)
+
+Mixed-micelle CMC series for a binary pair with pure-component CMCs
+CMC1 = 1.05 mM, CMC2 = 8.60 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.10      2.96
+    0.30      1.77
+    0.50      1.37
+    0.70      1.17
+    0.90      1.07
+
+Pinned model-selection protocol (authoritative):
+
+- Candidate models and their parameter counts:
+      clint_ideal                k = 0
+      rubingh_regular_solution   k = 1   (the beta parameter)
+      eommm_asymmetric_margules  k = 2   (W12, W21)
+- For EACH candidate: fit it to the 5 points (least squares of residuals
+  in LN of CMC_mix), get RSS in that ln space, then
+      BIC = n * ln(RSS/n) + k * ln(n),  n = 5
+- Select the lowest BIC among the three.
+- Independently of the race, report the pointwise-averaged Rubingh beta
+  for the series:
+
+      x1 solved from:  x1^2 * ln(alpha1*CMCmix/(x1*CMC1))
+                     - (1-x1)^2 * ln((1-alpha1)*CMCmix/((1-x1)*CMC2)) = 0
+      beta_i = ln(alpha1*CMCmix/(x1*CMC1)) / (1-x1)^2
+      beta_mean = mean of beta_i over the points that solve
+
+Report BIC of rubingh and of eommm, delta = BIC_eommm - BIC_rubingh,
+the selected model id (choose from ["clint_ideal",
+"rubingh_regular_solution", "eommm_asymmetric_margules"]), and
+beta_mean.
+
+Required outputs (report every item, in this order):
+1. bic_rubingh: BIC of rubingh_regular_solution
+2. bic_eommm: BIC of eommm_asymmetric_margules
+3. delta_bic: BIC_eommm - BIC_rubingh
+4. selected: one of ["clint_ideal", "rubingh_regular_solution", "eommm_asymmetric_margules"]
+5. beta_mean: pointwise-averaged Rubingh beta (dimensionless)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"bic_rubingh": <value>, "bic_eommm": <value>, "delta_bic": <value>, "selected": <value>, "beta_mean": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-13 | family G3 | arith 3 | reason 2
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-13 — Stiff master-equation relaxation after a temperature jump
+
+A micellar system at total concentration c_total = 0.018 M undergoes a
+sudden temperature (T-)jump: the equilibrium constant K governing EVERY
+stepwise association C_n + C_1 <-> C_{n+1} (n = 1..28) switches from
+K_initial = 2500 /M to K_final = 9500 /M at t = 0, with on-rate
+k_on = 3.0e7 /M/s (off-rate k_off = k_on/K, detailed balance) held fixed
+throughout.
+
+Pinned procedure (authoritative -- a real stiff ODE integration, not a
+formula):
+
+1. Build the 28-state master equation dy/dt = A(y)*y for the aggregate
+   concentrations y_1..y_28 (y_n = concentration of n-mers), using
+   K_final and k_on for every forward/backward rate.
+2. Set the initial condition y(0) to the EXACT equilibrium distribution
+   under K_initial at c_total = 0.018 M (found by closed-form bisection
+   on the single-K mass-action equilibrium).
+3. Integrate the stiff ODE system forward in time (this system mixes a
+   fast monomer-association timescale with a slow micelle-reorganization
+   timescale -- a stiff BDF-type integrator with the analytic Jacobian
+   is required; a naive fixed-step integrator will not converge) until
+   it reaches the NEW equilibrium under K_final.
+4. The new equilibrium's monomer concentration IS the new kinetic CMC
+   (kinetic_cmc_M). Its mean aggregation number is
+   mean_aggregation_number.
+5. Linearize the ODE system around the new equilibrium and take the
+   Jacobian's eigenvalues; the slowest nonzero mode's time constant is
+   tau_dominant_s -- the experimentally measurable relaxation time of
+   the jump.
+6. Total mass sum(n*y_n) must be conserved exactly by the true ODE
+   solution; a correct stiff solve keeps the integrator's own max
+   relative mass-conservation error below 1e-8 throughout.
+
+There is no closed-form shortcut for steps 1-5: tau_dominant_s comes
+from an eigenvalue decomposition of a 28x28 Jacobian evaluated at a
+numerically-integrated equilibrium, not from any single formula.
+Report whether the integration was judged converged, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. kinetic_cmc_M: new equilibrium monomer concentration, mol/L (step 4)
+2. tau_dominant_s: slowest relaxation time constant, s (step 5)
+3. mean_aggregation_number: new equilibrium mean Nagg (step 4)
+4. mass_conserved: true if the max relative mass-conservation error is below 1e-8, else false (step 6)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"kinetic_cmc_M": <value>, "tau_dominant_s": <value>, "mean_aggregation_number": <value>, "mass_conserved": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-14 | family G3 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-14 — Canonical Metropolis Monte Carlo of an associating cluster system
+
+35 labeled monomers sit in a box; a cluster of size n has energy
+E(n) = -epsilon*(n-1) (one bond per additional monomer):
+
+    n_monomers = 35
+    temperature_K = 298.15
+    epsilon = 7.0 kJ/mol  (per-bond binding energy)
+    n_steps = 80000 Metropolis moves
+    burn-in fraction = 0.1 (default), thinning = 10 (default)
+
+Pinned procedure (authoritative -- a real canonical Monte Carlo
+simulation, not a formula):
+
+1. Using a pseudo-random generator seeded EXACTLY with seed = 44, i.e. NumPy's default_rng(44) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, start
+   from all 35 monomers free (each its own cluster of size 1).
+2. Repeat 80000 times: propose one of three moves chosen uniformly at
+   random -- detach a random monomer to become free, attach a random
+   free-or-clustered monomer to a random other cluster, or transfer a
+   random monomer directly between two clusters -- then accept or
+   reject the move with the Metropolis criterion on the bond-energy
+   change beta*dE, beta = 1/(R*T/1000) in units consistent with
+   epsilon in kJ/mol (each accept/reject draw also consumes the SAME
+   seeded generator, in sequence with the move proposals).
+3. Discard the first 10% of steps as burn-in, then keep every 10th
+   remaining step. From the retained samples, build the histogram of
+   the fraction of monomers residing in clusters of each size n.
+4. From that histogram, report: the fraction of monomers that are free
+   monomers (n=1), the monomer-weighted mean cluster size
+   (sum of n * (fraction of monomers in size-n clusters)), and the
+   largest cluster size observed anywhere in the retained samples.
+5. Since n_monomers = 35 <= 45, the EXACT Boltzmann histogram over all
+   integer partitions of 35 is also computable in closed form; report
+   the maximum absolute deviation between your Monte Carlo histogram
+   and this exact solution (a genuine verification step, not a free
+   parameter).
+
+There is no shortcut for steps 2-4: the specific sequence of accepted
+and rejected moves depends on the exact pseudo-random draws from the
+stated seed, and only running the actual 80000-step chain reproduces
+these statistics. Report whether the first and second half of the
+chain agreed well enough to call the run converged, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. free_monomer_fraction: fraction of monomers in size-1 clusters (step 4)
+2. mean_cluster_size: monomer-weighted mean cluster size (step 4)
+3. largest_cluster: largest cluster size observed in the retained samples (step 4, integer)
+4. exact_max_deviation: max abs deviation from the exact partition solution (step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"free_monomer_fraction": <value>, "mean_cluster_size": <value>, "largest_cluster": <value>, "exact_max_deviation": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-15 | family G3 | arith 3 | reason 2
+META levers=L3,L6,L12  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-15 — EOMMM feasibility margin + x1 method race
+
+Binary mixture series, CMC1 = 1.05 mM, CMC2 = 8.60 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.10      3.47
+    0.30      2.03
+    0.50      1.55
+    0.70      1.25
+    0.90      1.10
+
+Pinned instructions (authoritative):
+
+1. Fit the asymmetric-Margules EOMMM model (two interaction parameters
+   W12, W21) by least squares, allowing BOTH CMCs to relax by a common
+   multiplicative margin; find the SMALLEST margin (as a fraction of the
+   CMC values, e.g. 0.06 = 6%) for which a fully feasible fit exists
+   (total infeasibility <= 0.001). Report that minimal margin.
+   (This is a search — report the converged value to ~2 significant
+   figures; the intended answer is a small nonzero number.)
+2. feasible_within_1pct = (margin <= 0.01), true/false.
+3. Rodenas micellar mole fraction from the local slope of ln(CMC_mix)
+   vs alpha1 at alpha1 = 0.50, using the central finite difference
+   over the points alpha1 = 0.30, 0.50, 0.70:
+
+       x1_Rod = -(1 - alpha1)*alpha1 * dln(CMCmix)/d(alpha1) + alpha1
+
+4. Rubingh x1 at alpha1 = 0.50: solve
+       x1^2*ln(alpha1*CMCmix/(x1*CMC1)) - (1-x1)^2*
+       ln((1-alpha1)*CMCmix/((1-x1)*CMC2)) = 0
+   for x1 in (0, 1).
+5. agree = |x1_Rod - x1_Rub| <= 0.03, true/false.
+
+Required outputs (report every item, in this order):
+1. margin: minimal feasible CMC margin (fraction, step 1)
+2. feasible_within_1pct: true/false (step 2)
+3. x1_rodenas: Rodenas x1 at alpha1 = 0.50 (step 3)
+4. x1_rubingh: Rubingh x1 at alpha1 = 0.50 (step 4)
+5. agree_003: true/false (step 5)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"margin": <value>, "feasible_within_1pct": <value>, "x1_rodenas": <value>, "x1_rubingh": <value>, "agree_003": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-16 | family G4 | arith 4 | reason 1
+META levers=L12,L6  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-16 — EOMMM asymmetric-Margules global fit: W12/W21 by 2D grid search
+
+A binary surfactant pair has pure-component CMCs CMC1 = 1.20 mM,
+CMC2 = 7.40 mM, and the mixed-micelle series below:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.15     7.37
+    0.35     3.36
+    0.55     2.16
+    0.75     1.61
+    0.95     1.25
+
+Pinned model-selection protocol (authoritative). Unlike an ordinary
+regression, EOMMM does not minimize a least-squares residual against
+CMC_mix at all: at a fixed cmc_margin = 0.10 band around each point's
+own experimental CMC_mix, it scores every candidate (W12, W21) by how
+badly that pair -- together with each point's own micellar mole
+fraction x1 -- violates the underlying mass-balance constraints there
+(its "infeasibility"), and reports whichever candidate drives that
+score closest to zero. That minimum has no closed form and is not
+gradient-friendly everywhere, so it is located by a 2D search: first a
+coarse 61x61 pass over (W12, W21) in [-30, 30]^2, then a fine 41x41
+pass confined to the best coarse cell's neighborhood.
+
+Report W12, W21, the fit's r_squared (RSS in ln(CMC_mix) space against
+the fitted cmc_var values versus the data), and the micellar mole
+fraction x1 at the FIRST point (alpha1 = 0.15). Finally, report whether
+the fit's total_infeasibility fell below 1e-6 (fully feasible at the
+stated margin), choosing true or false.
+
+Required outputs (report every item, in this order):
+1. W12: fitted asymmetric-Margules interaction parameter
+2. W21: fitted asymmetric-Margules interaction parameter
+3. r_squared: fit quality in ln(CMC_mix) space
+4. x1_first_point: micellar mole fraction x1 at alpha1 = 0.15
+5. feasible: true if total_infeasibility < 1e-6, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"W12": <value>, "W21": <value>, "r_squared": <value>, "x1_first_point": <value>, "feasible": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-17 | family G4 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-17 — A third residual-bootstrap CMC, tighter noise and a different seed
+
+A dye-probe transition curve for a different ionic surfactant (same
+direction as a standard tension/dye-probe curve: higher concentration
+-> lower plateau):
+
+    c (mM)     value
+     0.35       70.76
+     0.55       71.27
+     0.85       69.83
+     1.20       70.02
+     1.60       63.69
+     2.00       52.22
+     2.50       40.63
+     3.20       35.53
+     4.00       34.30
+     5.20       33.44
+
+Pinned procedure (authoritative; the algorithm matches every other
+residual-bootstrap CMC question in this set, only the data/seed move):
+
+1. Let x = log10(c in mM). Fit the 4-parameter sigmoidal transition
+       value(x) = lo + (hi - lo) * 0.5 * (1 + tanh((x - x0) / w))
+   to the 10 points above by nonlinear least squares (iterative solver
+   required; no closed form). CMC = 10^x0.
+2. Take this fit's own residuals at the 10 points.
+3. With a pseudo-random generator seeded EXACTLY with seed = 6, i.e. NumPy's default_rng(6) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, draw
+   1000 bootstrap resamples of the residuals WITH replacement, add each
+   resample back onto the fitted curve, and refit to get a bootstrap
+   x0_b each time.
+4. From the 1000 bootstrap x0_b values, take the 2.5th and 97.5th
+   percentiles and convert via 10^(...) for the 95% CMC interval.
+5. ci_width_pct = 100 * (CMC_high - CMC_low) / CMC_point.
+
+As always, steps 3-4 require actually running 1000 real nonlinear
+refits from the stated seed -- there is no formula shortcut for a
+percentile bootstrap interval. Report whether ci_width_pct exceeds 3.0
+(true/false on the number from step 5).
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM (step 1)
+2. cmc_ci_low: 2.5th-percentile bootstrap CMC in mM (step 4)
+3. cmc_ci_high: 97.5th-percentile bootstrap CMC in mM (step 4)
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point (step 5)
+5. ci_wide: true if ci_width_pct > 3.0, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "ci_wide": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-18 | family G4 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-18 — A second canonical Metropolis Monte Carlo cluster simulation
+
+28 labeled monomers, a different temperature and bond strength from
+any other Monte Carlo question in this set:
+
+    n_monomers = 28
+    temperature_K = 308.15
+    epsilon = 6.2 kJ/mol  (per-bond binding energy)
+    n_steps = 70000 Metropolis moves
+    burn-in fraction = 0.1 (default), thinning = 10 (default)
+
+Pinned procedure (authoritative; this matches the canonical-MC
+algorithm used throughout this set -- only the physical inputs move):
+
+1. With a pseudo-random generator seeded EXACTLY with seed = 55, i.e. NumPy's default_rng(55) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, start
+   from all 28 monomers free.
+2. Repeat 70000 times: propose a detach, attach, or transfer move
+   (uniformly at random among the three), accept or reject by the
+   Metropolis criterion on beta*dE with beta = 1/(R*T/1000) and
+   dE = -epsilon*(bonds after - bonds before) (both the move choice and
+   the accept/reject draw consume the SAME seeded generator, in
+   sequence).
+3. Discard the first 10% as burn-in, keep every 10th remaining sample,
+   and build the monomer-fraction-by-cluster-size histogram.
+4. Report the free-monomer fraction, the monomer-weighted mean cluster
+   size, and the largest cluster size observed in the retained samples.
+5. n_monomers = 28 <= 45, so the exact Boltzmann histogram over integer
+   partitions is also available; report the max absolute deviation
+   between the Monte Carlo histogram and this exact solution.
+
+The specific sequence of accepted/rejected moves depends on the exact
+pseudo-random draws from seed 55 -- there is no analytic shortcut for
+steps 2-4. Report whether this run's first and second half agreed well
+enough to call it converged, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. free_monomer_fraction: fraction of monomers in size-1 clusters (step 4)
+2. mean_cluster_size: monomer-weighted mean cluster size (step 4)
+3. largest_cluster: largest cluster size observed in the retained samples (step 4, integer)
+4. exact_max_deviation: max abs deviation from the exact partition solution (step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"free_monomer_fraction": <value>, "mean_cluster_size": <value>, "largest_cluster": <value>, "exact_max_deviation": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-19 | family G4 | arith 4 | reason 1
+META levers=L8,L1,L12  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-19 — Zeta potential: unit chain + relaxation correction
+
+Electrophoretic mobility of a colloidal dispersion (unit as commonly
+reported):
+
+    mu = 4.10 (um*cm)/(V*s),   viscosity = 0.89 mPa*s
+
+Pinned formulas (authoritative):
+
+    mobility_SI = mu * 1e-8                      [m^2/(V s)]
+    eta_SI = viscosity * 1e-3                    [Pa s]
+    Henry:  zeta = 3 * eta_SI * mobility_SI /
+                   (2 * eps_r * eps0 * f)
+    with eps_r = 78.4, eps0 = 8.8541878128e-12 F/m,
+    and for the smoluchowski regime f = 1.5; report zeta in mV.
+
+    Then a relaxation-corrected determination on the SAME mobility with
+    kappa*a = 14.5, z = 1, m = 0.15, T = 298.15 K, using the iterative
+    Henry-equation correction (report its zeta in mV).
+
+1. mobility_SI in m^2/(V s).
+2. zeta_plain in mV (smoluchowski, formula above).
+3. zeta_corr in mV (relaxation-corrected value).
+4. shift = |zeta_corr - zeta_plain| / |zeta_plain| * 100 (percent).
+5. Which determination is larger in magnitude? ["plain", "corrected"].
+
+Required outputs (report every item, in this order):
+1. mu_SI: m^2/(V s) (step 1)
+2. zeta_plain_mV: mV (step 2)
+3. zeta_corr_mV: mV (step 3)
+4. shift_pct: percent (step 4)
+5. larger: one of ["plain", "corrected"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"mu_SI": <value>, "zeta_plain_mV": <value>, "zeta_corr_mV": <value>, "shift_pct": <value>, "larger": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-20 | family G4 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-20 — A second Gillespie kinetic Monte Carlo of stepwise micellization
+
+A different micellization system, different K/concentration/molecule
+count/seed from any other kinetic Monte Carlo question in this set:
+
+    c_total = 0.030 M
+    equilibrium constant K = 1800 /M (same K governs every n)
+    on-rate k_on = 5.0e6 /M/s;  off-rate k_off = k_on / K
+    max aggregate size tracked n_max = 25
+    molecule count in the simulated volume = 350
+    (initial state: a Poisson sample consistent with equilibrium under K)
+
+Pinned procedure (authoritative; the SSA mechanics are unchanged from
+every other kinetic Monte Carlo question here -- only the physical
+inputs are new):
+
+1. With a pseudo-random generator seeded EXACTLY with seed = 78, i.e. NumPy's default_rng(78) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure,
+   construct the Poisson-equilibrium initial state under K at
+   c_total = 0.030 M for 350 molecules in a volume sized so the
+   expected molecule count equals 350.
+2. Run the direct SSA: compute every C_n+C_1/C_{n+1} propensity, draw
+   an exponential waiting time and a reaction channel from those
+   propensities (both from the SAME seeded generator, in sequence),
+   fire the reaction, update state, repeat.
+3. Sample the running state at 50 evenly-spaced checkpoints. Take the
+   final 20% as the stationary window; average the monomer
+   concentration (equilibrium_c1_M) and the mean aggregation number
+   over n >= 2 (equilibrium_mean_nagg) over that window.
+4. Fit a single exponential decay to the monomer trajectory for
+   tau_fit_s.
+5. Report the number of reaction events fired and the max deviation
+   from exact mass conservation (sum n*count_n invariant by
+   construction -- should be exactly 0 for a correct run).
+
+As in any Gillespie SSA, the exact event sequence depends on the
+specific pseudo-random draws from seed 78 -- only running the real
+simulation reproduces equilibrium_c1_M/tau_fit_s to the required
+precision. Report whether the final window was judged stationary,
+choosing from ["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. equilibrium_c1_M: stationary-window mean monomer concentration, mol/L
+2. equilibrium_mean_nagg: stationary-window mean aggregation number (n>=2)
+3. tau_fit_s: exponential relaxation time fit to the monomer trajectory, s
+4. mass_conservation_max_error: max deviation from exact mass conservation (integer, step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"equilibrium_c1_M": <value>, "equilibrium_mean_nagg": <value>, "tau_fit_s": <value>, "mass_conservation_max_error": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-21 | family G5 | arith 4 | reason 1
+META levers=L12,L6  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-21 — EOMMM global fit on a five-point mixture series
+
+Binary mixture series, CMC1 = 2.10 mM, CMC2 = 6.40 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.10      3.58
+    0.30      2.47
+    0.50      2.10
+    0.70      1.96
+    0.90      1.97
+
+Pinned model-selection protocol (authoritative):
+
+- EOMMM fits the two independent asymmetric-Margules interaction
+  parameters W12, W21 SIMULTANEOUSLY across the whole series, together
+  with each point's own micellar mole fraction x1, by minimizing a
+  mass-balance INFEASIBILITY measure (not a least-squares residual) at
+  a fixed margin around each point's experimental CMC_mix.
+- The real procedure: a coarse 61x61 grid search over (W12, W21) in
+  [-30, 30]^2 to find the best cell, then a 41x41 fine grid search in a
+  small window around it -- not a local gradient descent and not a
+  single closed-form solve.
+- cmc_margin = 0.10 (10% band around each point's CMC_mix counts as
+  mass-balance-consistent).
+
+Report W12, W21, the fit's r_squared (RSS in ln(CMC_mix) space), the
+micellar mole fraction x1 at the LAST point (alpha1 = 0.90), and
+whether total_infeasibility fell below 1e-6.
+
+Required outputs (report every item, in this order):
+1. W12: fitted asymmetric-Margules interaction parameter
+2. W21: fitted asymmetric-Margules interaction parameter
+3. r_squared: fit quality in ln(CMC_mix) space
+4. x1_last_point: micellar mole fraction x1 at alpha1 = 0.90
+5. feasible: true if total_infeasibility < 1e-6, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"W12": <value>, "W21": <value>, "r_squared": <value>, "x1_last_point": <value>, "feasible": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-22 | family G5 | arith 4 | reason 1
+META levers=L12,L6  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-22 — EOMMM global fit on a seven-point mixture series
+
+Binary mixture series, CMC1 = 1.60 mM, CMC2 = 9.20 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.05      8.89
+    0.15      7.67
+    0.25      5.58
+    0.50      3.14
+    0.75      2.08
+    0.85      1.84
+    0.95      1.67
+
+The fitting rule (authoritative, same EOMMM procedure used throughout
+this set): W12 and W21 are not found by a least-squares residual on
+CMC_mix directly. Instead, at a fixed cmc_margin = 0.10 around each
+point's own experimental CMC_mix, every (W12, W21) pair is scored by
+how badly it violates the mass-balance constraints at that margin (its
+total "infeasibility"); the fit is whichever (W12, W21) pair, together
+with each point's own micellar mole fraction x1, drives that
+infeasibility score to its minimum. Finding that minimum needs a 2D
+search -- first coarse (61x61 over [-30,30]^2), then a fine 41x41
+re-search inside the best coarse cell -- since the objective has no
+closed-form minimizer and is not gradient-friendly everywhere.
+
+Give W12, W21, r_squared, the micellar mole fraction x1 at the third
+point (alpha1 = 0.25), and whether total_infeasibility came in under
+1e-6.
+
+Required outputs (report every item, in this order):
+1. W12: fitted asymmetric-Margules interaction parameter
+2. W21: fitted asymmetric-Margules interaction parameter
+3. r_squared: fit quality in ln(CMC_mix) space
+4. x1_third_point: micellar mole fraction x1 at alpha1 = 0.25
+5. feasible: true if total_infeasibility < 1e-6, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"W12": <value>, "W21": <value>, "r_squared": <value>, "x1_third_point": <value>, "feasible": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-23 | family G5 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-23 — A third canonical Metropolis Monte Carlo cluster simulation
+
+40 labeled monomers, a lower temperature and stronger binding energy
+than any other Monte Carlo cluster question in this set:
+
+    n_monomers = 40
+    temperature_K = 293.15
+    epsilon = 8.5 kJ/mol  (per-bond binding energy)
+    n_steps = 90000 Metropolis moves
+    burn-in fraction = 0.1 (default), thinning = 10 (default)
+
+Pinned procedure (authoritative; the canonical-MC mechanics match every
+other cluster-simulation question here -- this question only changes
+the physical inputs):
+
+1. With a pseudo-random generator seeded EXACTLY with seed = 23, i.e. NumPy's default_rng(23) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, start
+   from all 40 monomers free.
+2. Repeat 90000 times: propose a detach, attach, or transfer move
+   (uniformly among the three), accept or reject by the Metropolis
+   criterion on beta*dE with beta = 1/(R*T/1000) and
+   dE = -epsilon*(bonds after - bonds before) (move choice and
+   accept/reject both consume the SAME seeded generator, in sequence).
+3. Discard the first 10% as burn-in, keep every 10th remaining sample,
+   and build the monomer-fraction-by-cluster-size histogram.
+4. From that histogram, report the free-monomer fraction, the
+   monomer-weighted mean cluster size, and the single largest cluster
+   size seen anywhere in the retained samples.
+5. n_monomers = 40 <= 45, so the exact Boltzmann histogram over integer
+   partitions of 40 is also available; report the max absolute
+   deviation between the Monte Carlo histogram and that exact
+   solution.
+
+The retained-sample histogram depends on the exact sequence of
+pseudo-random accept/reject draws from seed 23 -- there is no formula
+that reproduces it directly except via the (separately verified) exact
+partition cross-check in step 5. Report whether the run converged,
+choosing from ["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. free_monomer_fraction: fraction of monomers in size-1 clusters (step 4)
+2. mean_cluster_size: monomer-weighted mean cluster size (step 4)
+3. largest_cluster: largest cluster size observed in the retained samples (step 4, integer)
+4. exact_max_deviation: max abs deviation from the exact partition solution (step 5)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"free_monomer_fraction": <value>, "mean_cluster_size": <value>, "largest_cluster": <value>, "exact_max_deviation": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-24 | family G5 | arith 4 | reason 1
+META levers=L12,L6  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-24 — EOMMM global fit on a four-point mixture series
+
+Binary mixture series, CMC1 = 0.85 mM, CMC2 = 7.30 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.20      2.25
+    0.50      1.33
+    0.80      0.98
+    0.95      0.89
+
+Fitting rule (authoritative, unchanged mechanism from every other
+EOMMM question here, only the series differs): rather than minimizing
+a least-squares residual on CMC_mix, the real objective is a
+mass-balance infeasibility score, evaluated at cmc_margin = 0.10 around
+each point's experimental CMC_mix; W12, W21, and every point's own
+micellar mole fraction x1 are the choice that makes this infeasibility
+smallest. No closed form exists for that minimum, so it is located by
+a coarse 61x61 grid over (W12, W21) in [-30,30]^2 followed by a fine
+41x41 grid confined to the best coarse cell's neighborhood.
+
+State W12, W21, r_squared, the micellar mole fraction x1 at the second
+point (alpha1 = 0.50), and whether total_infeasibility landed below
+1e-6.
+
+Required outputs (report every item, in this order):
+1. W12: fitted asymmetric-Margules interaction parameter
+2. W21: fitted asymmetric-Margules interaction parameter
+3. r_squared: fit quality in ln(CMC_mix) space
+4. x1_second_point: micellar mole fraction x1 at alpha1 = 0.50
+5. feasible: true if total_infeasibility < 1e-6, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"W12": <value>, "W21": <value>, "r_squared": <value>, "x1_second_point": <value>, "feasible": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-25 | family G5 | arith 4 | reason 1
+META levers=L12,L6  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-25 — A fifth EOMMM global fit, closing out the mixture-series block
+
+Binary mixture series, CMC1 = 1.80 mM, CMC2 = 5.60 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.15      5.19
+    0.35      3.96
+    0.55      2.89
+    0.75      2.30
+    0.90      1.96
+
+As with every other EOMMM question in this set, the fit is NOT a
+least-squares regression against CMC_mix. At a fixed cmc_margin = 0.10
+band around each point's own experimental CMC_mix, every candidate
+(W12, W21) is scored by its total mass-balance infeasibility there;
+the reported fit -- W12, W21, and each point's own micellar mole
+fraction x1 -- is the candidate that minimizes that score. There is no
+closed form for this minimum: it is found with a coarse 61x61 grid
+over (W12, W21) in [-30,30]^2, refined by a fine 41x41 grid inside the
+best coarse cell.
+
+Provide W12, W21, r_squared, the micellar mole fraction x1 at the
+middle point (alpha1 = 0.55), and whether total_infeasibility ended up
+below 1e-6.
+
+Required outputs (report every item, in this order):
+1. W12: fitted asymmetric-Margules interaction parameter
+2. W21: fitted asymmetric-Margules interaction parameter
+3. r_squared: fit quality in ln(CMC_mix) space
+4. x1_middle_point: micellar mole fraction x1 at alpha1 = 0.55
+5. feasible: true if total_infeasibility < 1e-6, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"W12": <value>, "W21": <value>, "r_squared": <value>, "x1_middle_point": <value>, "feasible": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-26 | family G6 | arith 4 | reason 1
+META levers=L7,L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-26 — Corrupt-row forensics with pinned Tr and leave-one-out rule
+
+CMC vs temperature, NONIONIC surfactant (cf = 1):
+
+    row   T (K)     CMC (mM)
+    -----------------------
+     1   288.15     1.5427
+     2   293.15     1.6938
+     3   298.15     1.8568
+     4   303.15     1.9229
+     5   308.15     2.2383
+     6   313.15     2.4608
+     7   318.15     2.6942
+
+One row's CMC was corrupted in transcription (7% low). Pinned detection
+protocol (authoritative):
+
+1. Convert each row to X = (CMC/1000)/((CMC/1000) + 55.5) and
+   dG_i = R*T_i*ln(X_i),  R = 8.314462618 J/(mol K).
+2. For EACH row i: fit the 3-parameter Kantonen model on the OTHER six
+   rows only (dG = dH - T*dS + dCp*[(T-298.15) - T*ln(T/298.15)],
+   least squares, reference temperature 298.15 K), then predict dG at
+   T_i. Leave-one-out error_i = |dG_i - predicted_i|.
+3. Flag the row with the LARGEST leave-one-out error; it is corrupt iff
+   its error > 2 x (mean error of the other six rows). Report the
+   flagged row's T as printed, and how many rows you flag.
+4. Fit the 3-parameter model (reference 298.15 K) to ALL seven rows ->
+   dH_all; then to the six clean rows (excluding the flagged row) ->
+   dH_cleaned. Report both in kJ/mol at 298.15 K.
+5. Report the r^2 of the cleaned six-row fit.
+
+Required outputs (report every item, in this order):
+1. flagged_T: the flagged row's T exactly as printed (e.g. 300.00)
+2. n_flagged: number of corrupt rows (integer)
+3. dH_all: kJ/mol from all 7 rows (step 4)
+4. dH_cleaned: kJ/mol from the 6 clean rows (step 4)
+5. r2_cleaned: r^2 of the cleaned fit (step 5)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"flagged_T": <value>, "n_flagged": <value>, "dH_all": <value>, "dH_cleaned": <value>, "r2_cleaned": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-27 | family G6 | arith 4 | reason 1
+META levers=L7,L8,L12  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-27 — Mixed-unit temperature column: detect, correct, refit
+
+CMC vs temperature for a nonionic surfactant. The temperature column is
+labeled T (deg C) — EXCEPT that one row was recorded in kelvin by
+mistake (the transcription error you must find):
+
+    row   T (deg C)    CMC (mM)
+    --------------------------
+     1     15.00     2.7989
+     2     20.00     3.0180
+     3     25.00     3.2339
+     4     30.00     3.5653
+     5    308.15     3.9049
+     6     40.00     4.1781
+     7     45.00     4.5961
+     8     50.00     4.9040
+
+Pinned protocol (authoritative):
+
+1. Naive pass: convert EVERY printed T via K = T + 273.15, compute
+   dG_i = R*K_i*ln(X_i) with X = (CMC/1000)/((CMC/1000)+55.5),
+   R = 8.314462618.
+2. For EACH row i: fit dG = dH - T*dS (2 parameters, least squares) on
+   the OTHER seven rows (naive K values), predict dG at K_i, and take
+   the leave-one-out error_i = |dG_i - predicted_i|. Flag the row with
+   the LARGEST error; it is corrupt iff its error > 2 x (mean error of
+   the other seven rows). Report the flagged row's T exactly as printed,
+   and the count of flagged rows.
+3. Correction: the flagged row's printed value IS its kelvin
+   temperature (use it directly, no +273.15); all other rows get
+   +273.15. Refit dG = dH - T*dS on all EIGHT corrected rows.
+4. Report dH (kJ/mol), dS (J/(mol K)), and r^2 of the corrected fit.
+
+Required outputs (report every item, in this order):
+1. flagged_T: flagged row's T exactly as printed (step 2)
+2. n_flagged: count of flagged rows (integer)
+3. dH_corrected: kJ/mol (step 4)
+4. dS_corrected: J/(mol K) (step 4)
+5. r2_corrected: r^2 of the corrected fit (step 4)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"flagged_T": <value>, "n_flagged": <value>, "dH_corrected": <value>, "dS_corrected": <value>, "r2_corrected": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-28 | family G6 | arith 4 | reason 1
+META levers=L7,L11,L2  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-28 — Duplicate-concentration conflict: exclusion rule + refit
+
+Surface-tension isotherm of a 1:1 CATIONIC surfactant, no added salt
+(n = 2), T = 298.15 K. Two measurements exist at c = 1.60 mM (they
+disagree — one is a transcription casualty):
+
+    row   c (mM)    gamma (mN/m)
+    --------------------------
+     1    0.30     73.5
+     2    0.60     70.0
+     3    1.00     66.8
+     4    1.60     45.9
+     5    1.60     38.7   <-- duplicate c with the row above
+     6    2.40     61.9
+     7    3.50     29.7
+     8    5.00     30.2
+     9    7.00     30.6
+    10    9.50     30.4
+
+Pinned protocol (authoritative):
+
+1. For EACH of the two duplicate rows: fit an OLS line (gamma vs
+   log10(c)) through its 4 nearest other points in log10(c) (excluding
+   both duplicates), and compute |observed - fitted| for that duplicate.
+   Exclude the duplicate with the LARGER residual. Report the excluded
+   gamma value.
+2. On the remaining 9 points run the standard break rule: split at the
+   RSS-minimizing boundary (>= 3 points per side) of two OLS lines in
+   log10(c); CMC = 10^((x_last_decl + x_first_plateau)/2).
+3. Premicellar slope of the winning declining segment -> convert to
+   per-ln via /ln(10); Gamma = -slope_ln*1e-3/(2*R*298.15),
+   R = 8.314462618; report mol/m^2.
+4. Report how many points you used (integer), and confirm the conflict
+   was detected (true/false).
+
+Required outputs (report every item, in this order):
+1. excluded_gamma: the gamma value you excluded (mN/m)
+2. cmc_mM: CMC in mM (step 2)
+3. gamma_max: mol/m^2 (step 3)
+4. n_used: number of points used (integer)
+5. conflict_detected: true/false (step 4)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"excluded_gamma": <value>, "cmc_mM": <value>, "gamma_max": <value>, "n_used": <value>, "conflict_detected": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-29 | family G6 | arith 2 | reason 2
+META levers=L7,L11,L5  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-29 — Sign-audit: three runs, one flipped denominator, one base-10
+
+Two-point van't Hoff analysis, T1 = 298.15 K / X1 = 9.908928e-05,
+T2 = 313.15 K / X2 = 1.765454e-04 (mole fractions of the CMC).
+
+Three different runs of the SAME dataset produced:
+
+    run1:  deltaH = -29.890 kJ/mol
+    run2:  deltaH = 29.890 kJ/mol
+    run3:  deltaH = -12.981 kJ/mol
+
+Pinned ground-truth formula (authoritative):
+
+    deltaH = R * (lnX2 - lnX1) / (1/T2 - 1/T1) / 1000,
+    R = 8.314462618 J/(mol K)
+
+1. Which run used the FLIPPED denominator (1/T1 - 1/T2 instead of
+   1/T2 - 1/T1)? Choose from ["run1", "run2", "run3"].
+2. Report the corrected value of that run (the number it SHOULD have
+   been under the pinned formula), in kJ/mol.
+3. Which run used base-10 logarithms (log10 instead of ln) for the
+   concentration term? Choose from ["run1", "run2", "run3"].
+4. Report run3/run1 as a ratio (dimensionless).
+
+Required outputs (report every item, in this order):
+1. sign_flipped_run: one of ["run1", "run2", "run3"]
+2. corrected_value: kJ/mol (step 2)
+3. base10_run: one of ["run1", "run2", "run3"]
+4. ratio_run3_run1: dimensionless (step 4)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"sign_flipped_run": <value>, "corrected_value": <value>, "base10_run": <value>, "ratio_run3_run1": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-30 | family G6 | arith 4 | reason 1
+META levers=L7,L2,L12  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-30 — Scale-corruption row (N/m vs mN/m) detection and refit
+
+Surface-tension isotherm. One row's tension was recorded in N/m
+instead of mN/m (factor 1000) — find it:
+
+    row   c (mM)    gamma (column says mN/m)
+    ---------------------------------------
+     1    0.20   76.600
+     2    0.50   70.600
+     3    0.90   66.800
+     4    1.50    0.046
+     5    2.40   61.500
+     6    3.60   59.400
+     7    5.20   32.000
+     8    7.20   31.500
+     9   10.00   32.000
+
+Pinned protocol (authoritative):
+
+1. Leave-one-out RSS detection: for EACH row i, remove it, then fit
+   the RSS-minimizing 2-segment break (x = log10(c), >= 3 points/side,
+   two OLS lines) to the remaining EIGHT points and record the total
+   RSS. Flag the row whose removal gives the SMALLEST total RSS — but
+   only if removing it cuts the raw nine-point RSS by more than half
+   (otherwise there is no corrupt row). Report the flagged row's c
+   exactly as printed.
+2. BIC values: BIC = n*ln(RSS/n) + 5*ln(n) for the 2-segment fit —
+   compute it on the RAW 9 points (bic_before) and on the 8 clean
+   points after excluding the flagged row (bic_after).
+   Report delta = bic_after - bic_before.
+3. On the clean 8 points run the same break rule; report CMC (mM):
+   10^((x_last_decl + x_first_plateau)/2).
+4. Report points used (integer) and whether a corrupt row was
+   detected (true/false).
+
+Required outputs (report every item, in this order):
+1. flagged_c: flagged row's c exactly as printed (step 1)
+2. delta_bic: bic_after - bic_before (step 2)
+3. cmc_mM: CMC in mM (step 3)
+4. n_used: points used (integer)
+5. corrupt_detected: true/false (step 4)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"flagged_c": <value>, "delta_bic": <value>, "cmc_mM": <value>, "n_used": <value>, "corrupt_detected": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-31 | family G7 | arith 5 | reason 2
+META levers=L9,L8,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-31 — Ester surfactant: formula, counts, Davies HLB from SMILES
+
+A surfactant candidate (methyl oleate) is specified as SMILES:
+
+    CCCCCCCC/C=C/CCCCCCCC(=O)OC
+
+Pinned counting and HLB rules (authoritative):
+
+- Molecular weight from the SMILES (average masses: C 12.011,
+  H 1.008, O 15.999), report g/mol to 3 significant figures.
+- Molecular formula: list C first, then H, then any other elements in
+  alphabetical order, standard hill-notation subscripts as digits.
+- Carbon counting rules (carbonyl carbon counts as NOTHING):
+    CH3     = carbon with exactly 3 hydrogens (saturated)
+    CH2     = carbon with exactly 2 hydrogens (saturated)
+    vinyl_CH = carbon with exactly 1 hydrogen that is C=C bonded
+              (non-carbonyl double bond)
+- Davies HLB = 7 + sum(hydrophilic numbers) - sum(lipophilic numbers),
+  with this table (inlined so nothing is looked up):
+
+    hydrophilic: SO4Na 38.6, COOK 21.1, COONa 19.1, N_tertiary_amine 9.4, \
+N_quat_trimethyl 22.0, N_quat_dimethyl_dialkyl 22.5, ester_sorbitan_ring 6.8, \
+esser_free 2.4, COOH 2.1, OH_free 1.9, O_ether 1.3, OH_sorbitan_ring 0.5; \
+lipophilic (each): CH2 0.475, CH3 0.475, CH 0.475, vinyl_CH 0.475
+
+  For this molecule: one ester_free; the lipophilic sum runs over every
+  counted CH2/CH3/vinyl_CH.
+- Charge type from ["nonionic", "anionic", "cationic", "zwitterionic"]:
+  an ester with no ionizable group is nonionic.
+
+Report MW, formula, CH2 count, CH3 count, vinyl_CH count, HLB, charge.
+
+Required outputs (report every item, in this order):
+1. mw: molecular weight in g/mol (3 significant figures)
+2. formula: molecular formula string
+3. n_CH2: integer count of CH2 carbons
+4. n_CH3: integer count of CH3 carbons
+5. n_vinyl_CH: integer count of vinyl_CH carbons
+6. hlb: Davies HLB
+7. charge: one of ["nonionic", "anionic", "cationic", "zwitterionic"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"mw": <value>, "formula": <value>, "n_CH2": <value>, "n_CH3": <value>, "n_vinyl_CH": <value>, "hlb": <value>, "charge": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-32 | family G7 | arith 3 | reason 3
+META levers=L9,L11,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-32 — Gemini dimer: family signal, charge, counts
+
+A bis-quaternary-ammonium gemini surfactant (12-4-12 style, with the
+two N-methyl pairs) is specified as SMILES:
+
+    CCCCCCCCCCCC[N+](C)(C)CCCC[N+](C)(C)CCCCCCCCCCCC.[Cl-].[Cl-]
+
+Pinned classification rules (authoritative):
+
+- Family labels: a molecule whose SMILES contains EXACTLY TWO matches
+  of the same strong ionic headgroup pattern (here: quaternary
+  ammonium, [N+] bonded to four carbons) is labeled
+  "dimeric_gemini_type"; exactly one match -> "monomeric"; three or
+  more -> "monomeric" (low confidence). Choose the family from
+  ["dimeric_gemini_type", "monomeric", "glycolipid_biosurfactant"].
+- Charge: quaternary ammonium is a strong cationic headgroup; choose
+  from ["nonionic", "anionic", "cationic", "zwitterionic"].
+- MW: average masses C 12.011, H 1.008, N 14.007, Cl 35.45
+  (both chloride counterions included), 3 significant figures.
+- Formula: hill order (C, H, Cl, N).
+- n_heads = number of nitrogen atoms bonded to four carbons (integer).
+- n_N_methyls = number of methyl carbons directly bonded to a nitrogen
+  (integer).
+
+Report family, charge, MW, formula, n_heads, n_N_methyls.
+
+Required outputs (report every item, in this order):
+1. family: one of ["dimeric_gemini_type", "monomeric", "glycolipid_biosurfactant"]
+2. charge: one of ["nonionic", "anionic", "cationic", "zwitterionic"]
+3. mw: molecular weight in g/mol (3 significant figures)
+4. formula: molecular formula string
+5. n_heads: integer count of quaternary N atoms
+6. n_N_methyls: integer count of N-bonded methyls
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"family": <value>, "charge": <value>, "mw": <value>, "formula": <value>, "n_heads": <value>, "n_N_methyls": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-33 | family G7 | arith 4 | reason 2
+META levers=L9,L8,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-33 — Sugar ester: rings, ester, acyl chain, charge
+
+A sugar-ester (fatty-acid glucose ester) is specified as SMILES:
+
+    CCCCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O
+
+Pinned counting rules (authoritative):
+
+- n_rings = number of rings in the smallest set of smallest rings
+  (SSSR) sense (integer).
+- n_esters = number of -C(=O)O- ester groups (integer).
+- acyl_carbons = carbons in the acyl chain bonded to the ester
+  carbonyl, INCLUDING the carbonyl carbon itself (integer).
+- MW: average masses C 12.011, H 1.008, O 15.999, 3 sig figs;
+  formula in hill order.
+- Charge from ["nonionic", "anionic", "cationic", "zwitterionic"]:
+  sugar hydroxyls and an ester carry no ionizable headgroup.
+
+Report n_rings, n_esters, acyl_carbons, MW, formula, charge.
+
+Required outputs (report every item, in this order):
+1. n_rings: integer (step 1)
+2. n_esters: integer (step 2)
+3. acyl_carbons: integer (step 3)
+4. mw: g/mol, 3 significant figures
+5. formula: molecular formula string
+6. charge: one of ["nonionic", "anionic", "cationic", "zwitterionic"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"n_rings": <value>, "n_esters": <value>, "acyl_carbons": <value>, "mw": <value>, "formula": <value>, "charge": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-34 | family G7 | arith 4 | reason 2
+META levers=L9,L1,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-34 — Branched sulfate ester: total tail, formula, Davies HLB
+
+Sodium 2-ethylhexyl sulfate is specified as SMILES (sodium salt):
+
+    CCCCC(CC)COS(=O)(=O)[O-].[Na+]
+
+Pinned rules (authoritative):
+
+- tail_carbons = ALL carbons of the alkyl group attached to the
+  sulfate oxygen (the branched C8 group), i.e. every carbon except
+  none — the whole organic tail, integer.
+- n_CH3 = methyl carbons in that tail (integer).
+- MW: average masses C 12.011, H 1.008, Na 22.990, O 15.999,
+  S 32.06 — 3 significant figures; formula includes Na, hill order
+  (C, H, then alphabetical: Na, O, S).
+- Charge from ["nonionic", "anionic", "cationic", "zwitterionic"].
+- Davies HLB = 7 + 38.6 (SO4Na) - 0.475 * (total tail CH count),
+  where the tail CH count = CH3 + CH2 + CH carbons in the tail
+  (vinyl none here): count them.
+
+Report tail_carbons, n_CH3, MW, formula, charge, hlb.
+
+Required outputs (report every item, in this order):
+1. tail_carbons: integer
+2. n_CH3: integer
+3. mw: g/mol, 3 significant figures
+4. formula: molecular formula string
+5. charge: one of ["nonionic", "anionic", "cationic", "zwitterionic"]
+6. hlb: Davies HLB from the pinned formula
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"tail_carbons": <value>, "n_CH3": <value>, "mw": <value>, "formula": <value>, "charge": <value>, "hlb": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-35 | family G7 | arith 3 | reason 2
+META levers=L11,L1,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-35 — Speciation at three pH values with pinned vocabularies
+
+Decylamine (a primary alkylamine) is specified as SMILES:
+
+    CCCCCCCCCCN
+
+Its conjugate-acid constant is given: pKaH = 10.62 (for
+R-NH3+ <-> R-NH2 + H+).
+
+Pinned formulas and vocabularies (authoritative):
+
+    f_cation(pH) = 1 / (1 + 10^(pH - pKaH))     [protonated, +1 form]
+    f_neutral(pH) = 1 - f_cation(pH)
+
+1. f_cation at pH = 8.00.
+2. f_cation at pH = 10.62.
+3. f_cation at pH = 13.00.
+4. Dominant species at pH 8.00 from ["cationic", "neutral", "mixed"],
+   using the pinned rule: f_cation > 0.85 -> "cationic";
+   f_cation < 0.15 -> "neutral"; otherwise -> "mixed".
+5. Confidence at pH 8.00 from ["low", "moderate", "high"] using the
+   pinned rule: high iff the dominant fraction exceeds 0.95;
+   moderate if it exceeds 0.85; otherwise low.
+
+Required outputs (report every item, in this order):
+1. f_cation_pH8: fraction at pH 8.00
+2. f_cation_pH1062: fraction at pH 10.62
+3. f_cation_pH13: fraction at pH 13.00
+4. dominant_at_8: one of ["cationic", "neutral", "mixed"]
+5. confidence_at_8: one of ["low", "moderate", "high"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"f_cation_pH8": <value>, "f_cation_pH1062": <value>, "f_cation_pH13": <value>, "dominant_at_8": <value>, "confidence_at_8": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-36 | family G8 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-36 — A sixth residual-bootstrap CMC, the lowest concentration range here
+
+A dye-probe transition curve at the lowest concentrations in this
+question set, same probe direction as always (higher concentration ->
+lower plateau):
+
+    c (mM)     value
+     0.20       69.11
+     0.32       69.06
+     0.45       70.52
+     0.60       69.67
+     0.78       64.22
+     0.95       50.47
+     1.15       36.25
+     1.40       30.57
+     1.75       28.96
+     2.30       29.28
+
+The algorithm matches every other bootstrap-CMC question: with x =
+log10(c in mM), fit the 4-parameter sigmoid lo + (hi-lo)*0.5*(1 +
+tanh((x-x0)/w)) by nonlinear least squares (iterative; no closed
+form), giving CMC = 10^x0. Using that fit's residuals and a generator
+seeded EXACTLY at seed = 52 (i.e. NumPy's default_rng(52) Generator (PCG64); every draw this procedure
+consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's
+np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure), draw 1000 bootstrap resamples WITH replacement, add each
+back onto the fit, refit to collect 1000 bootstrap x0_b values, and
+take the 2.5th/97.5th percentiles (converted via 10^(...)) for the 95%
+CMC interval; ci_width_pct = 100*(CMC_high - CMC_low)/CMC_point.
+
+As always, the specific 1000 resamples are fixed by seed 52 and cannot
+be reconstructed from the formula alone. Report whether ci_width_pct
+exceeds 1.0 (true/false).
+
+Required outputs (report every item, in this order):
+1. cmc_point: point CMC estimate in mM
+2. cmc_ci_low: 2.5th-percentile bootstrap CMC in mM
+3. cmc_ci_high: 97.5th-percentile bootstrap CMC in mM
+4. ci_width_pct: 100*(cmc_ci_high-cmc_ci_low)/cmc_point
+5. ci_wide: true if ci_width_pct > 1.0, else false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "cmc_ci_low": <value>, "cmc_ci_high": <value>, "ci_width_pct": <value>, "ci_wide": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-37 | family G8 | arith 4 | reason 2
+META levers=L5,L11,L12  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-37 — Dual-geometry report: ellipsoid AND cylinder, both forced
+
+Same class of data as other questions, different values — BOTH geometric
+conventions must be executed (neither may be assumed):
+
+    tail volume v = 485.0 A^3        optimal head area a0 = 52.0 A^2
+    tail length lc = 16.7 A          aggregation number N = 78
+    D = 4.5e-7 cm^2/s                viscosity = 0.89 mPa s, T = 298.15 K
+
+Pinned equations (authoritative):
+
+ELLIPOID convention (b pinned at lc):
+       V_mic = N * v
+       a = 3 * V_mic / (4 * pi * lc^2)
+       p_ell = a / lc
+CYLINDER convention:
+       r = 2v / a0;  L = N * v / (pi * r^2);  p_cyl = L / (2r)
+CPP = v / (a0 * lc), morphology thresholds:
+       <=1/3 "spherical micelle"; (1/3,1/2] "cylindrical/rodlike micelle";
+       (1/2,1] "vesicle/bilayer"; >1 "inverted structure"
+Perrin table (interpolate LINEARLY IN p; correct with
+R_perrin = R_stokes / F(p), R_stokes from
+R = k*T/(6*pi*eta*D) with k=1.380649e-23, eta in Pa s, D in m^2/s):
+
+    F(1.00) = 1.00000
+    F(1.25) = 1.00446
+    F(1.50) = 1.01483
+    F(1.75) = 1.02842
+    F(2.00) = 1.04387
+    F(2.50) = 1.07751
+
+Report p_ell, p_cyl, cpp, R_perrin (nm, using p_ell), morphology, and
+which convention has p > 1.5 from ["ellipsoid", "cylinder", "both",
+"neither"].
+
+Required outputs (report every item, in this order):
+1. p_ell: ellipsoid axial ratio a/b
+2. p_cyl: cylinder aspect ratio L/2r
+3. cpp: critical packing parameter
+4. R_perrin_nm: nm (from p_ell)
+5. morphology: one of ["spherical micelle", "cylindrical/rodlike micelle", "vesicle/bilayer", "inverted structure"]
+6. above_1_5: one of ["ellipsoid", "cylinder", "both", "neither"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"p_ell": <value>, "p_cyl": <value>, "cpp": <value>, "R_perrin_nm": <value>, "morphology": <value>, "above_1_5": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-38 | family G8 | arith 3 | reason 2
+META levers=L1,L11,L5  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-38 — CPP transition algebra: solve for the head area
+
+Tail volume v = 485.0 A^3 and tail length lc = 16.7 A for a surfactant
+(at its optimal packing conditions).
+
+Pinned equations (authoritative):
+
+    CPP = v / (a0 * lc)        i.e.  a0 = v / (CPP * lc)
+    Morphology thresholds:
+        cpp <= 1/3            -> "spherical micelle"
+        1/3 < cpp <= 1/2      -> "cylindrical/rodlike micelle"
+        1/2 < cpp <= 1        -> "vesicle/bilayer"
+        cpp > 1               -> "inverted structure"
+
+1. a0 at CPP = 1/3 exactly, in A^2.
+2. a0 at CPP = 1/2 exactly, in A^2.
+3. CPP when a0 = 64.0 A^2 (dimensionless).
+4. Morphology at a0 = 64.0 A^2 from the pinned thresholds.
+5. Morphology at a0 = 95.0 A^2 from the pinned thresholds.
+
+Required outputs (report every item, in this order):
+1. a0_at_cpp_1_3: A^2 (step 1)
+2. a0_at_cpp_1_2: A^2 (step 2)
+3. cpp_at_a0_64: dimensionless (step 3)
+4. morph_at_64: one of ["spherical micelle", "cylindrical/rodlike micelle", "vesicle/bilayer", "inverted structure"]
+5. morph_at_95: same four labels
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"a0_at_cpp_1_3": <value>, "a0_at_cpp_1_2": <value>, "cpp_at_a0_64": <value>, "morph_at_64": <value>, "morph_at_95": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-39 | family G8 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-39 — A third Gillespie kinetic Monte Carlo of stepwise micellization
+
+A weakly-associating system (low K, slow on-rate) compared to any other
+kinetic Monte Carlo question here:
+
+    c_total = 0.045 M
+    equilibrium constant K = 900 /M
+    on-rate k_on = 2.0e6 /M/s;  off-rate k_off = k_on / K
+    max aggregate size tracked n_max = 22
+    molecule count in the simulated volume = 320
+    starts from a Poisson sample consistent with equilibrium under K
+
+The SSA mechanics are the same as every other Gillespie question in
+this set: with a generator seeded EXACTLY at seed = 63, i.e. NumPy's default_rng(63) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, compute every
+C_n+C_1/C_{n+1} propensity, draw an exponential waiting time and a
+reaction channel from those propensities (both from the same seeded
+generator, in sequence), fire the reaction, update state, and repeat.
+Sample 45 evenly-spaced checkpoints; take the final 20% as the
+stationary window and average the monomer concentration
+(equilibrium_c1_M) and the mean aggregation number over n >= 2
+(equilibrium_mean_nagg) over it. Fit a single exponential decay to the
+monomer trajectory for tau_fit_s. Report the number of reaction events
+fired and the max deviation from exact mass conservation (should be
+exactly 0 for a correct run).
+
+The specific sequence of simulated events depends entirely on the
+pseudo-random draws from seed 63 -- weak association means many more
+dissociation events relative to association, which no closed-form
+estimate captures correctly. Report whether the final window was
+judged stationary, choosing from ["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. equilibrium_c1_M: stationary-window mean monomer concentration, mol/L
+2. equilibrium_mean_nagg: stationary-window mean aggregation number (n>=2)
+3. tau_fit_s: exponential relaxation time fit to the monomer trajectory, s
+4. mass_conservation_max_error: max deviation from exact mass conservation (integer)
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"equilibrium_c1_M": <value>, "equilibrium_mean_nagg": <value>, "tau_fit_s": <value>, "mass_conservation_max_error": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-40 | family G8 | arith 4 | reason 1
+META levers=L12,L8  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-40 — A fourth canonical Metropolis Monte Carlo cluster simulation
+
+22 labeled monomers at a warmer temperature with the strongest
+per-bond binding energy used anywhere in this question set:
+
+    n_monomers = 22
+    temperature_K = 303.15
+    epsilon = 9.0 kJ/mol  (per-bond binding energy)
+    n_steps = 65000 Metropolis moves
+    burn-in fraction = 0.1 (default), thinning = 10 (default)
+
+The canonical-MC mechanics are identical to every other cluster
+question here: with a generator seeded EXACTLY at seed = 71, i.e. NumPy's default_rng(71) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, start
+from all 22 monomers free, then repeat 65000 times a detach/attach/
+transfer proposal (chosen uniformly) accepted or rejected by the
+Metropolis criterion on beta*dE, beta = 1/(R*T/1000) and dE =
+-epsilon*(bonds after - bonds before) (both the move choice and the
+accept/reject draw consuming the SAME seeded generator, in sequence).
+Discard the first 10% as burn-in, keep every 10th remaining sample,
+and build the monomer-fraction-by-cluster-size histogram; from it,
+read off the free-monomer fraction, the monomer-weighted mean cluster
+size, and the single biggest cluster that appears anywhere in the
+kept samples. Since n_monomers = 22 <= 45, the exact Boltzmann
+histogram over integer partitions is also available -- report the max
+absolute deviation between your Monte Carlo histogram and that exact
+solution.
+
+Strong binding at this n_monomers pushes most of the probability mass
+onto a handful of large clusters; the exact sequence of accepted moves
+from seed 71 is the only thing that determines how much. Report
+whether this run converged, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. free_monomer_fraction: fraction of monomers in size-1 clusters
+2. mean_cluster_size: monomer-weighted mean cluster size
+3. largest_cluster: largest cluster size observed in the kept samples (integer)
+4. exact_max_deviation: max abs deviation from the exact partition solution
+5. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"free_monomer_fraction": <value>, "mean_cluster_size": <value>, "largest_cluster": <value>, "exact_max_deviation": <value>, "convergence": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-41 | family G9 | arith 2 | reason 3
+META levers=L10,L1,L5  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-41 — Recompute against a factor-omitting draft
+
+An earlier report on an IONIC 1:1 surfactant at T = 298.15 K states:
+
+    CMC = 4.40 mM,  beta = 0.75,
+    deltaG_mic = -23.40 kJ/mol  ("standard pseudo-phase value")
+
+Pinned instructions (authoritative):
+
+1. Recompute with the counterion factor the draft appears to have
+   omitted (both the value of beta and the formula are pinned):
+
+       X = (CMC/1000)/((CMC/1000) + 55.5)
+       deltaG = (2 - beta) * R * T * ln(X),
+       R = 8.314462618 J/(mol K), T = 298.15 K   [kJ/mol]
+
+2. rel_diff = |draft - yours| / |yours| * 100 (percent), where the
+   draft value is the stated -23.40 kJ/mol.
+3. The draft's implicit claim that the two values agree within 10%:
+   true/false (against your rel_diff).
+4. What is wrong with the draft, from ["formula", "data", "both",
+   "neither"]?
+5. Direction: is the draft magnitude SMALLER or LARGER than the
+   correct |deltaG|? From ["less_negative", "more_negative"] (answer
+   in terms of signed values: which is more negative).
+
+Required outputs (report every item, in this order):
+1. dG_correct: kJ/mol (step 1)
+2. rel_diff_pct: percent (step 2)
+3. claim_agrees: true/false (step 3)
+4. what_wrong: one of ["formula", "data", "both", "neither"]
+5. direction: one of ["less_negative", "more_negative"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"dG_correct": <value>, "rel_diff_pct": <value>, "claim_agrees": <value>, "what_wrong": <value>, "direction": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-42 | family G9 | arith 3 | reason 2
+META levers=L10,L2  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-42 — Computed break vs two literature values
+
+Surface tension isotherm of a surfactant whose literature CMC is
+disputed:
+
+    c (mM)    gamma (mN/m)
+      0.30     68.5
+      0.60     64.8
+      1.00     62.1
+      1.70     58.0
+      2.60     54.6
+      3.80     53.7
+      5.20     30.9
+      7.00     30.4
+      9.20     31.2
+     12.00     31.4
+
+Two published values (both asserted as "the" CMC for this surfactant):
+
+    L1 = 4.10 mM   (recent review)
+    L2 = 6.90 mM   (older catalog)
+
+Pinned protocol (authoritative): sort by c; x = log10(c); RSS-minimizing
+split (>= 3 points/side) of two OLS lines gamma vs x; CMC =
+10^((x_last_decl + x_first_plateau)/2).
+
+1. CMC from the data (mM).
+2. rel_diff_L1 = |L1 - CMC| / CMC * 100 (percent).
+3. rel_diff_L2 = |L2 - CMC| / CMC * 100 (percent).
+4. Closer source from ["L1", "L2"].
+5. Does EITHER source agree within 15% of your computed CMC?
+   (true/false)
+
+Required outputs (report every item, in this order):
+1. cmc_mM: computed CMC in mM
+2. rel_diff_L1: percent
+3. rel_diff_L2: percent
+4. closer: one of ["L1", "L2"]
+5. either_agrees_15pct: true/false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_mM": <value>, "rel_diff_L1": <value>, "rel_diff_L2": <value>, "closer": <value>, "either_agrees_15pct": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-43 | family G9 | arith 3 | reason 2
+META levers=L10,L1,L5  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-43 — Draft Gamma with the wrong prefactor n
+
+A 1:1 CATIONIC surfactant with NO added salt (n must be 2) at
+T = 298.15 K has a premicellar tension slope of
+
+    slope_ln = -5.60 mN/m per ln(c)   (already in natural-log units)
+
+A colleague computed the surface excess with n = 1 and reports
+Gamma = 2.259015e-06 mol/m^2.
+
+Pinned instructions (authoritative):
+
+1. Gamma_correct = -slope_ln*1e-3 / (2 * R * T),
+   R = 8.314462618, T = 298.15, in mol/m^2.
+2. ratio = Gamma_draft / Gamma_correct (dimensionless, using the
+   colleague's reported value).
+3. A_min = 1e18 / (6.02214076e23 * Gamma_correct), nm^2.
+4. The colleague's value is correct within 5%? (true/false)
+5. Report n you used from ["1", "2"].
+
+Required outputs (report every item, in this order):
+1. gamma_correct: mol/m^2 (step 1)
+2. ratio_draft_over_correct: dimensionless (step 2)
+3. a_min: nm^2 (step 3)
+4. draft_ok: true/false (step 4)
+5. n_used: one of ["1", "2"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"gamma_correct": <value>, "ratio_draft_over_correct": <value>, "a_min": <value>, "draft_ok": <value>, "n_used": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-44 | family G9 | arith 4 | reason 2
+META levers=L10,L12,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-44 — The documented AOT Cc conflict: fit, then adjudicate
+
+An ionic-surfactant salinity scan (optimal salinity vs oil EACN) gives:
+
+    EACN    S* (percent)
+    -------------------
+       6    2.8838
+      10    3.1469
+      14    3.4628
+      18    3.7797
+
+Two candidate characteristic curvatures are quoted in the literature
+for this surfactant (this is a REAL documented disagreement):
+
+    candidate A: Cc = -0.92   (recommended in the 2015 review)
+    candidate B: Cc = +2.4    (quoted from the 1997 primary paper)
+
+Pinned instructions (authoritative):
+
+    HLD = ln(S) - k*EACN - alpha*dT + Cc,   alpha = 0.01
+    Balance (HLD = 0, dT = 0):  ln(S*) = k*EACN - Cc
+
+1. Fit k and Cc by OLS of ln(S*) on EACN (slope = k,
+   intercept = -Cc). Report k and Cc.
+2. Which candidate matches your fitted Cc better (smaller absolute
+   difference)? From ["-0.92", "+2.4"].
+3. S* at EACN = 16 (dT = 0) from YOUR fitted k and Cc, in percent.
+4. HLD of the formulation S = 3% at EACN = 12 (dT = 0) from your
+   fitted values.
+5. Phase type from step 4 with: HLD < -0.3 -> "Winsor I";
+   -0.3 <= HLD <= 0.3 -> "Winsor III"; HLD > 0.3 -> "Winsor II".
+   From ["Winsor I", "Winsor II", "Winsor III"].
+
+Required outputs (report every item, in this order):
+1. k: fitted k
+2. cc: fitted Cc
+3. matching_candidate: one of ["-0.92", "+2.4"]
+4. S_star_E16: percent (step 3)
+5. hld_S3_E12: HLD value (step 4)
+6. winsor: one of ["Winsor I", "Winsor II", "Winsor III"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"k": <value>, "cc": <value>, "matching_candidate": <value>, "S_star_E16": <value>, "hld_S3_E12": <value>, "winsor": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-45 | family G9 | arith 2 | reason 3
+META levers=L10,L6,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-45 — Refuting a signed claim: recompute pooled beta
+
+Binary mixture series, CMC1 = 1.30 mM, CMC2 = 7.80 mM:
+
+    alpha1   CMC_mix (mM)
+    ---------------------
+    0.10      3.56
+    0.30      2.18
+    0.50      1.75
+    0.70      1.47
+    0.90      1.33
+
+A formulation report claims: "Rubingh beta = +0.4 for this system
+(slightly antagonistic)."
+
+Pinned instructions (authoritative):
+
+For each composition solve x1 in (0,1) from
+    x1^2*ln(alpha1*CMCmix/(x1*CMC1))
+      - (1-x1)^2*ln((1-alpha1)*CMCmix/((1-x1)*CMC2)) = 0
+then beta_i = ln(alpha1*CMCmix/(x1*CMC1)) / (1-x1)^2;
+beta_mean = mean over the five compositions.
+
+1. beta_mean (2 decimal places is fine).
+2. Its sign from ["positive", "negative"].
+3. The claim (+0.4) agrees within 0.3 of your beta_mean? (true/false)
+4. Synergy from ["synergistic", "antagonistic", "near-ideal"] with:
+   beta < -0.5 -> synergistic; beta > +0.5 -> antagonistic; else
+   near-ideal.
+5. x1 at alpha1 = 0.50.
+
+Required outputs (report every item, in this order):
+1. beta_mean: pooled Rubingh beta
+2. sign: one of ["positive", "negative"]
+3. claim_agrees: true/false (step 3)
+4. synergy: one of ["synergistic", "antagonistic", "near-ideal"]
+5. x1_a050: micellar mole fraction at alpha1 = 0.50
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"beta_mean": <value>, "sign": <value>, "claim_agrees": <value>, "synergy": <value>, "x1_a050": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-46 | family G10 | arith 6 | reason 2
+META levers=L12,L9,L5  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-46 — One SMILES through the whole panel
+
+A cationic surfactant (hexadecyltrimethylammonium bromide):
+
+    CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Pinned data and rules (authoritative):
+
+- MW: average masses C 12.011, H 1.008, N 14.007, Br 79.904
+  (counterion included), 3 significant figures.
+- Charge: choose one label from ["nonionic", "anionic", "cationic",
+  "zwitterionic"].
+- n_carbons = every carbon in the SMILES (both the C16 tail and the
+  three N-methyls), integer.
+- Packing data for THIS tail: v = 485.0 A^3, lc = 16.7 A, a0 = 48.0 A^2,
+  Nagg = 78.
+    CPP = v/(a0*lc). If CPP <= 1/3 label it "spherical micelle";
+    if 1/3 < CPP <= 1/2 label it "cylindrical/rodlike micelle";
+    if 1/2 < CPP <= 1 label it "vesicle/bilayer";
+    if CPP > 1 label it "inverted structure".
+- Cylinder: r = 2v/a0; L = Nagg*v/(pi r^2); p = L/2r.
+- D = 5.8e-7 cm^2/s, viscosity 0.89 mPa s, T = 298.15:
+    R = k*T/(6*pi*eta*D), k = 1.380649e-23, SI, report nm.
+    Perrin: if p <= 1.0, F = 1.000 exactly (no correction) and
+    R_perrin = R/F; (the F table is NOT needed when p <= 1).
+
+Report mw, formula, charge, n_carbons, cpp, morphology, p, R_nm,
+R_perrin_nm.
+
+Required outputs (report every item, in this order):
+1. mw: g/mol, 3 significant figures
+2. charge: one of ["nonionic", "anionic", "cationic", "zwitterionic"]
+3. n_carbons: integer
+4. cpp: critical packing parameter
+5. morphology: one of the four pinned labels
+6. p: cylinder aspect ratio
+7. R_nm: nm
+8. R_perrin_nm: nm
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"mw": <value>, "charge": <value>, "n_carbons": <value>, "cpp": <value>, "morphology": <value>, "p": <value>, "R_nm": <value>, "R_perrin_nm": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-47 | family G10 | arith 5 | reason 1
+META levers=L12,L2,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-47 — Dual-method mega-panel: CMC, beta, dG, comparison
+
+Same surfactant system, two independent raw datasets at 298.15 K.
+
+Conductometry:
+
+    c (mM)    kappa (uS/cm)
+      0.35      35.5
+      0.70      54.7
+      1.10      75.8
+      1.60     104.2
+      2.20     136.5
+      2.90     176.3
+      3.60     214.3
+      4.30     251.9
+      5.00     275.8
+      5.90     293.5
+      7.00     312.5
+      8.40     339.3
+     10.00     370.8
+     12.00     408.5
+
+Tensiometry:
+
+    c (mM)    gamma (mN/m)
+      0.25     70.0
+      0.50     65.9
+      0.85     62.8
+      1.35     60.4
+      2.05     57.4
+      2.95     56.5
+      3.60     54.9
+      5.40     30.7
+      7.40     30.5
+      9.80     30.8
+     12.50     30.2
+
+Pinned protocols (authoritative):
+
+CONDUCTIVITY: sort by c; RSS-minimizing split (>= 3/side) of two OLS
+lines kappa = a + b*c (LINEAR c); CMC_cond = (a2-a1)/(b1-b2);
+beta = 1 - b_above/b_below.
+TENSION: sort by c; x = log10(c); RSS-minimizing split (>= 3/side) of
+two OLS lines gamma vs x; CMC_tens = 10^((x_last_decl+x_first_plateau)/2).
+deltaG = (2 - beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),
+R = 8.314462618, T = 298.15 K, kJ/mol.
+rel_diff = |CMC_cond - CMC_tens| / ((CMC_cond + CMC_tens)/2) * 100.
+agree = true iff rel_diff <= 3.0.
+
+Report cmc_cond, beta, deltaG, cmc_tens, rel_diff_pct, agree.
+
+Required outputs (report every item, in this order):
+1. cmc_cond: mM
+2. beta: counterion binding degree
+3. deltaG: kJ/mol
+4. cmc_tens: mM
+5. rel_diff_pct: percent
+6. agree_3pct: true/false
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_cond": <value>, "beta": <value>, "deltaG": <value>, "cmc_tens": <value>, "rel_diff_pct": <value>, "agree_3pct": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-48 | family G10 | arith 4 | reason 2
+META levers=L12,L4,L11  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-48 — HLD mega-chain: fit, extrapolate, feasibility, phase type
+
+Salinity scan of an ionic surfactant (optimal salinity vs oil EACN):
+
+    EACN    S* (percent)
+    -------------------
+       6    3.1978
+       9    3.3944
+      12    3.6068
+      15    3.7844
+
+Pinned equations (authoritative):
+
+    HLD = ln(S) - k*EACN - alpha*dT + Cc,  alpha = 0.01 K^-1
+    Balance at dT = 0:  ln(S*) = k*EACN - Cc
+
+1. Fit k and Cc by OLS of ln(S*) on EACN (slope = k,
+   intercept = -Cc). Report both.
+2. Optimal salinity at EACN = 16 with dT = +10 K:
+   ln(S*) = k*16 + alpha*10 - Cc; report S* in percent.
+3. The formulation's salt ceiling is 4.0 percent (hard constraint).
+   Is the step-2 salinity achievable: true iff S* <= 4.0?
+4. HLD of S = 9% at EACN = 10, dT = 0 (your fitted values).
+5. Classify the step-4 HLD: call it "Winsor I" when HLD is below
+   -0.3, call it "Winsor II" when HLD exceeds +0.3, and otherwise
+   call it "Winsor III". Choose from ["Winsor I", "Winsor II",
+   "Winsor III"].
+
+Required outputs (report every item, in this order):
+1. k: fitted k
+2. cc: fitted Cc
+3. S_star_E16_dT10: percent (step 2)
+4. achievable: true/false (step 3)
+5. hld_S9_E10: HLD (step 4)
+6. winsor: one of ["Winsor I", "Winsor II", "Winsor III"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"k": <value>, "cc": <value>, "S_star_E16_dT10": <value>, "achievable": <value>, "hld_S9_E10": <value>, "winsor": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-49 | family G10 | arith 4 | reason 0
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-49 — Bootstrap CMC feeding a mass-action free-energy range
+
+A dye-probe transition curve (higher concentration -> lower plateau,
+as in every bootstrap question here) for a NONIONIC surfactant with
+aggregation number Nagg = 52 (given, not fitted):
+
+    c (mM)     value
+     0.30       69.70
+     0.50       71.10
+     0.70       70.73
+     0.95       68.58
+     1.20       65.21
+     1.50       55.56
+     1.90       40.77
+     2.40       33.72
+     3.10       31.96
+     4.00       30.89
+
+Step 1 -- genuine bootstrap, same algorithm used throughout this set:
+fit the 4-parameter sigmoid lo + (hi-lo)*0.5*(1 + tanh((x-x0)/w)),
+x = log10(c in mM), by nonlinear least squares, giving CMC = 10^x0.
+With a generator seeded EXACTLY at seed = 85, i.e. NumPy's default_rng(85) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure, resample that fit's
+residuals WITH replacement 1000 times, refit each time, and take the
+2.5th/97.5th percentiles of the 1000 resulting x0_b values (converted
+via 10^(...)) as the 95% CMC interval: cmc_point, cmc_ci_low,
+cmc_ci_high.
+
+Step 2 -- feed EACH of those three CMC values (point, low, high)
+through the mass-action free-energy formula with the GIVEN Nagg = 52:
+
+    X = (CMC/1000) / (CMC/1000 + 55.5)
+    dG (kJ/mol) = R*T/1000 * [(1 + 1/Nagg)*ln(X) - (1/Nagg)*ln(Nagg)]
+    R = 8.314462618 J/(mol K), T = 298.15 K
+
+Report dG at the point CMC, and at the low/high ends of the bootstrap
+interval. Step 2 is ordinary algebra once you have the three CMC
+values -- step 1 is not: cmc_ci_low/cmc_ci_high cannot be obtained
+without actually running the 1000 seeded resamples.
+
+Required outputs (report every item, in this order):
+1. cmc_point: bootstrap point CMC in mM (step 1)
+2. dG_point: mass-action dG at cmc_point, kJ/mol (step 2)
+3. dG_ci_low: mass-action dG at cmc_ci_low, kJ/mol (step 2)
+4. dG_ci_high: mass-action dG at cmc_ci_high, kJ/mol (step 2)
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_point": <value>, "dG_point": <value>, "dG_ci_low": <value>, "dG_ci_high": <value>}
+END OF QUESTION
+
+----------------------------------------------------------------------------
+## X-50 | family G10 | arith 3 | reason 1
+META levers=L12,L1  (tools/mechanism in x50_gold.json only -- never put tool names in a paste artifact)
+----------------------------------------------------------------------------
+Question X-50 — Gillespie kinetic CMC feeding a downstream mass-action free energy
+
+A stepwise-micellization system, same Gillespie-SSA mechanics as every
+other kinetic Monte Carlo question in this set:
+
+    c_total = 0.016 M
+    equilibrium constant K = 3300 /M
+    on-rate k_on = 1.5e7 /M/s;  off-rate k_off = k_on / K
+    max aggregate size tracked n_max = 24
+    molecule count in the simulated volume = 360
+    (initial state: Poisson-sampled consistent with equilibrium at K)
+
+Step 1 -- run the SSA: with a generator seeded EXACTLY at seed = 99, i.e. NumPy's default_rng(99) Generator (PCG64); every draw this procedure consumes comes from that one generator IN ORDER, and any percentile it asks for is NumPy's np.percentile with default linear interpolation -- Python's random.Random, legacy np.random.seed (MT19937) or torch streams do NOT reproduce this procedure,
+compute every C_n+C_1/C_{n+1} propensity, draw an exponential waiting
+time and reaction channel from those propensities (same seeded
+generator, in sequence), fire, update, and repeat. Sample 55
+evenly-spaced checkpoints; take the final 20% as the stationary
+window and average the monomer concentration (this IS the kinetic
+CMC, in mol/L -- convert to mM for step 2) and the mean aggregation
+number over n >= 2 (round it to the nearest integer for step 2).
+
+Step 2 -- feed that kinetic CMC (in mM) and the rounded mean
+aggregation number through the mass-action free-energy formula:
+
+    X = (CMC_kinetic_mM / 1000) / (CMC_kinetic_mM / 1000 + 55.5)
+    dG [kJ/mol] = (R*T / 1000) * ((1 + 1/Nagg)*ln(X) - (1/Nagg)*ln(Nagg))
+    using R = 8.314462618 J/(mol K), T = 298.15 K, and your rounded
+    step-1 aggregation number as Nagg
+
+Step 2 is ordinary algebra once step 1's two numbers are in hand --
+but those two numbers themselves come only from running the real
+simulation with seed 99, not from any formula. Finally, report whether
+the stationary window from step 1 was judged converged, choosing from
+["converged", "not_converged"].
+
+Required outputs (report every item, in this order):
+1. cmc_kinetic_mM: stationary-window monomer concentration converted to mM (step 1)
+2. Nagg_rounded: stationary-window mean aggregation number, rounded to the nearest integer (step 1)
+3. dG_kinetic: mass-action dG using cmc_kinetic_mM and Nagg_rounded, kJ/mol (step 2)
+4. convergence: one of ["converged", "not_converged"]
+
+End with exactly one line of this form (JSON, keys exactly as written):
+FINAL_JSON: {"cmc_kinetic_mM": <value>, "Nagg_rounded": <value>, "dG_kinetic": <value>, "convergence": <value>}
+END OF QUESTION

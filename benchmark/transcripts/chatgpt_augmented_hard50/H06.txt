@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"selected_model": "rubingh_regular_solution",
+"selected_bic": -27.982532417493196,
+"rubingh_beta_mean": -1.8267269315332537,
+"interaction_character": "synergistic",
+"w12": -4.0000000000000036,
+"w21": -1.1999999999999984
+}

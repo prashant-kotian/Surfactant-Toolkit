@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"tail_molar_volume_contribution_cm3_per_mol": 210.8954,
+"v_bar_full_cm3_per_g": null,
+"missing_information": "A real aqueous partial molar-volume contribution for the non-tail headgroup/counterion portion, or equivalently a directly measured/cited full partial specific volume for the surfactant under the relevant solution conditions, is required."
+}

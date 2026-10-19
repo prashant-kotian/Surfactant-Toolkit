@@ -1,0 +1,90 @@
+e –N⁺(CH₃)₃ with the –OSO₃⁻ headgroup, coupled with hydrophobic co-packing of the C₇ and C₁₂ tails.
+4. Independent, Model-Free Check of Micellar Composition
+A check that uses only the measured CMC_mix values and pure-component CMCs, with no assumed activity-coefficient model:
+From the two equilibrium conditions (valid regardless of model):
+x₁ f₁ = α₁ CMC_mix / CMC₁ ≡ A
+x₂ f₂ = α₂ CMC_mix / CMC₂ ≡ B
+Since activity coefficients satisfy f_i ≤ 1 only for ideal/repulsive mixing and f_i > 1 is unphysical in this context, and x₁ + x₂ = 1, we can bracket x₁:
+If f₁ ≤ 1 → x₁ ≥ A; if f₂ ≤ 1 → x₂ ≥ B → x₁ ≤ 1 − B.
+α₂
+	
+A = α₁·CMC/CMC₁
+	
+B = α₂·CMC/CMC₂
+	
+A + B
+	
+x₁ range [A, 1−B]
+
+
+0.95
+	
+0.100
+	
+0.412
+	
+0.512
+	
+[0.100, 0.588]
+
+
+0.90
+	
+0.156
+	
+0.304
+	
+0.459
+	
+[0.156, 0.696]
+
+
+0.80
+	
+0.200
+	
+0.173
+	
+0.373
+	
+[0.200, 0.827]
+
+
+0.60
+	
+0.311
+	
+0.101
+	
+0.412
+	
+[0.311, 0.899]
+
+
+0.20
+	
+0.578
+	
+0.031
+	
+0.609
+	
+[0.578, 0.969]
+The Rubingh x₁ values (0.37, 0.44, 0.51, 0.59, 0.74) all fall within these model-free bounds. More importantly, the trend is unambiguous: as the bulk fraction of SDS (α₂) decreases from 0.95 → 0.20, the micellar mole fraction of the phospholipid x₁ rises monotonically from ~0.37 to ~0.74. The component with the lower pure CMC (DHPC, 1.8 mM) is strongly enriched in the micelle relative to its bulk share, exactly as expected when attractive interactions help pull the higher-CMC component (SDS, 8.3 mM) into the micelle.
+Additionally, A + B < 1 at every composition, which is only possible when both f₁ and f₂ are < 1 (negative deviations from Raoult's law), independently confirming attractive interactions without invoking any specific functional form for the activity coefficients.
+5. Summary
+Component 1 is zwitterionic (phosphocholine).
+The regular-solution (Rubingh) model with a single interaction parameter β ≈ −3.6 reproduces all five mixed-CMC data points to within experimental scatter.
+β < 0 → attractive synergistic interaction in the mixed micelle (electrostatic choline–sulfate pairing + hydrophobic co-solubilisation).
+An independent, model-free bounding analysis of micellar composition from the raw CMC data confirms the same monotonic enrichment trend and negative deviations, supporting the synergy conclusion without relying on the regular-solution assumption.
+FINAL_JSON:
+{
+"component1_charge_type": "zwitterionic",
+"selected_mixture_model": "Regular Solution Theory (Rubingh)",
+"model_parameters": {"beta": -3.6},
+"synergy_classification": "synergistic",
+"independent_check_note": "Model-free check: A+B = alpha1CMC_mix/CMC1 + alpha2CMC_mix/CMC2 < 1 at every composition, proving both micellar activity coefficients are below unity (attractive interactions) without assuming any mixing model. The implied micellar mole fraction x1 of DHPC rises monotonically from ~0.37 to ~0.74 as bulk alpha2 drops from 0.95 to 0.20, consistent with the Rubingh-fitted trend and confirming synergistic co-incorporation."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

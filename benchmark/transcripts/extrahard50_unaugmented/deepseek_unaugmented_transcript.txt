@@ -1,0 +1,179 @@
+X-01
+
+FINAL_JSON: {"cmc_point": 3.1726, "cmc_ci_low": 3.108, "cmc_ci_high": 3.247, "ci_width_pct": 4.38, "convergence": "converged"}
+
+X-02
+FINAL_JSON: {"cmc_point": 5.689, "cmc_ci_low": 5.451, "cmc_ci_high": 5.936, "ci_width_pct": 8.53, "ci_wide": true}
+
+X-03
+FINAL_JSON: {"output_mean": -12.50703, "output_sd": 0.18746, "ci_low": -12.89265, "ci_high": -12.15781, "skew_label": "symmetric"}
+
+X-04
+FINAL_JSON: {"output_mean": 2.5622, "output_sd": 0.4250, "ci_low": 2.0116, "ci_high": 3.5928, "skew_label": "right-skewed"}
+
+X-05
+FINAL_JSON: {"output_mean": 3.920964, "output_sd": 0.828586, "ci_low": 2.76704, "ci_high": 5.92281, "skew_label": "right-skewed"}
+
+X-06
+FINAL_JSON: {"cmc_point": 4.6267, "cmc_ci_low": 4.4321, "cmc_ci_high": 4.8298, "ci_width_pct": 8.596, "ci_wide": true}
+
+X-07
+FINAL_JSON: {"output_mean": -13.1783, "output_sd": 0.1702, "ci_low": -13.5248, "ci_high": -12.8599, "skew_label": "symmetric"}
+
+X-08
+FINAL_JSON: {"output_mean": 5.375, "output_sd": 1.405, "ci_low": 3.582, "ci_high": 8.790, "skew_label": "right-skewed"}
+
+X-09
+FINAL_JSON: {"cmc_point": 1.3893, "cmc_ci_low": 1.3643, "cmc_ci_high": 1.4150, "ci_width_pct": 3.65, "ci_wide": true}
+
+X-10
+FINAL_JSON: {"kinetic_cmc_M": 0.000397584, "tau_dominant_s": 0.0029, "mean_aggregation_number": 7.15441, "mass_conserved": true, "convergence": "converged"}
+
+X-11
+FINAL_JSON: {"equilibrium_c1_M": 0.000209277, "equilibrium_mean_nagg": 8.1256, "tau_fit_s": 0.0358, "mass_conservation_max_error": 0, "convergence": "converged"}
+
+X-12
+
+FINAL_JSON: {"bic_rubingh": -60.43396, "bic_eommm": -66.61395, "delta_bic": -6.17999, "selected": "eommm_asymmetric_margules", "beta_mean": -2.08064}
+
+X-13
+1. kinetic_cmc_M: 1.002857e-4
+2. tau_dominant_s: 0.079
+3. mean_aggregation_number: 11.432
+4. mass_conserved: true
+5. convergence: converged
+
+FINAL_JSON: {"kinetic_cmc_M": 0.0001002857, "tau_dominant_s": 0.079, "mean_aggregation_number": 11.432, "mass_conserved": true, "convergence": "converged"}
+
+X-14
+
+FINAL_JSON: {"free_monomer_fraction": 0.637, "mean_cluster_size": 1.57, "largest_cluster": 8, "exact_max_deviation": 0.63, "convergence": "converged"}
+
+X-15
+
+1. margin: 0.012  
+2. feasible_within_1pct: false  
+3. x1_rodenas: 0.8031  
+4. x1_rubingh: 0.7865  
+5. agree_003: true  
+
+FINAL_JSON: {"margin": 0.012, "feasible_within_1pct": false, "x1_rodenas": 0.8031, "x1_rubingh": 0.7865, "agree_003": true}
+
+X-16
+FINAL_JSON: {"W12": 0.70, "W21": 5.00, "r_squared": 0.9943, "x1_first_point": 0.1825, "feasible": true}
+
+X-17
+FINAL_JSON: {"cmc_point": 1.99893, "cmc_ci_low": 1.97485, "cmc_ci_high": 2.02047, "ci_width_pct": 2.2822, "ci_wide": false}
+
+X-18
+1. free_monomer_fraction: 0.0139
+2. mean_cluster_size: 5.21
+3. largest_cluster: 16
+4. exact_max_deviation: 0.012
+5. convergence: converged
+
+FINAL_JSON: {"free_monomer_fraction": 0.0139, "mean_cluster_size": 5.21, "largest_cluster": 16, "exact_max_deviation": 0.012, "convergence": "converged"}
+
+X-19
+
+1. mu_SI: 4.10e-8 m^2/(V s)
+2. zeta_plain_mV: 52.5665 mV
+3. zeta_corr_mV: 71.6693 mV
+4. shift_pct: 36.3403 percent
+5. larger: corrected
+
+FINAL_JSON: {"mu_SI": 4.10e-8, "zeta_plain_mV": 52.5665, "zeta_corr_mV": 71.6693, "shift_pct": 36.3403, "larger": "corrected"}
+
+X-20
+
+FINAL_JSON: {"equilibrium_c1_M": 0.00049115, "equilibrium_mean_nagg": 8.31, "tau_fit_s": 0.000191, "mass_conservation_max_error": 0, "convergence": "converged"}
+
+x-21
+FINAL_JSON: {"W12": -1.723, "W21": -1.989, "r_squared": 0.9993, "x1_last_point": 0.8695, "feasible": true}
+
+X-22
+FINAL_JSON: {"W12": 1.0, "W21": 1.0, "r_squared": 0.9930, "x1_third_point": 0.7652, "feasible": true}
+
+X-23
+FINAL_JSON: {"free_monomer_fraction": 0.00424, "mean_cluster_size": 6.40, "largest_cluster": 17, "exact_max_deviation": 0.012, "convergence": "converged"}
+
+X-24
+FINAL_JSON: {"W12": -2.8939129958692004, "W21": 6.800020131805763, "r_squared": 0.9980934179045503, "x1_second_point": 0.3770133774671413, "feasible": false}
+
+X-25
+FINAL_JSON: {"W12": 1.0, "W21": 0.83, "r_squared": 0.9996, "x1_middle_point": 0.881, "feasible": false}
+
+X-26
+FINAL_JSON: {"flagged_T": 303.15, "n_flagged": 1, "dH_all": -17.05, "dH_cleaned": -16.20, "r2_cleaned": 0.9997}
+
+X-27
+FINAL_JSON: {"flagged_T": 308.15, "n_flagged": 1, "dH_corrected": -12.7197965, "dS_corrected": 38.2564987, "r2_corrected": 0.9968185}
+
+X-28
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.90, "gamma_max": 1.89e-6, "n_used": 9, "conflict_detected": true}
+
+X-29
+FINAL_JSON: {"sign_flipped_run": "run2", "corrected_value": -29.890, "base10_run": "run3", "ratio_run3_run1": 0.434294}
+
+X-30
+FINAL_JSON: {"flagged_c": 1.50, "delta_bic": -26.0, "cmc_mM": 4.33, "n_used": 8, "corrupt_detected": true}
+
+X-31
+FINAL_JSON: {"mw": 296, "formula": "C19H36O2", "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2, "hlb": 0.85, "charge": "nonionic"}
+
+X-32
+FINAL_JSON: {"family": "dimeric_gemini_type", "charge": "cationic", "mw": 554, "formula": "C32H70Cl2N2", "n_heads": 2, "n_N_methyls": 4}
+
+X-33
+FINAL_JSON: {"n_rings": 1, "n_esters": 1, "acyl_carbons": 16, "mw": 419, "formula": "C22H42O7", "charge": "nonionic"}
+
+X-34
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}
+
+X-35
+FINAL_JSON: {"f_cation_pH8": 0.997607, "f_cation_pH1062": 0.5, "f_cation_pH13": 0.004151, "dominant_at_8": "cationic", "confidence_at_8": "high"}
+
+X-36
+FINAL_JSON: {"cmc_point": 1.0008456173429174, "cmc_ci_low": 0.9753989343066145, "cmc_ci_high": 1.033329524625535, "ci_width_pct": 5.790565296336932, "ci_wide": true}
+
+X-37
+FINAL_JSON: {"p_ell": 1.93909157, "p_cyl": 0.92757984, "cpp": 0.55849839, "R_perrin_nm": 5.24248, "morphology": "vesicle/bilayer", "above_1_5": "ellipsoid"}
+
+X-38
+FINAL_JSON: {"a0_at_cpp_1_3": 87.13, "a0_at_cpp_1_2": 58.08, "cpp_at_a0_64": 0.4538, "morph_at_64": "cylindrical/rodlike micelle", "morph_at_95": "spherical micelle"}
+
+X-39
+FINAL_JSON: {"equilibrium_c1_M": 0.00096293, "equilibrium_mean_nagg": 7.403, "tau_fit_s": 0.003374, "mass_conservation_max_error": 0, "convergence": "converged"}
+
+X-40
+FINAL_JSON: {"free_monomer_fraction": 0.002273, "mean_cluster_size": 21.931818, "largest_cluster": 22, "exact_max_deviation": 0.001424, "convergence": "converged"}
+
+X-41
+FINAL_JSON: {"dG_correct": -29.26, "rel_diff_pct": 20.03, "claim_agrees": false, "what_wrong": "formula", "direction": "less_negative"}
+
+X-42
+FINAL_JSON: {"cmc_mM": 4.445, "rel_diff_L1": 7.76, "rel_diff_L2": 55.23, "closer": "L1", "either_agrees_15pct": true}
+
+X-43
+FINAL_JSON: {"gamma_correct": 1.129507275e-06, "ratio_draft_over_correct": 2.0000003979, "a_min": 1.47014464, "draft_ok": false, "n_used": "2"}
+
+X-44
+FINAL_JSON: {"k": 0.022675, "cc": -0.92222, "matching_candidate": "-0.92", "S_star_E16": 3.6145, "hld_S3_E12": -0.09572, "winsor": "Winsor III"}
+
+X-45
+FINAL_JSON: {"beta_mean": -1.59, "sign": "negative", "claim_agrees": false, "synergy": "synergistic", "x1_a050": 0.74312}
+
+X-46
+FINAL_JSON: {"mw": 364, "charge": "cationic", "n_carbons": 19, "cpp": 0.605, "morphology": "vesicle/bilayer", "p": 0.730, "R_nm": 4.23, "R_perrin_nm": 4.23}
+
+X-47
+FINAL_JSON: {"cmc_cond": 4.574362, "beta": 0.655154, "deltaG": -31.350377, "cmc_tens": 4.409082, "rel_diff_pct": 3.679677, "agree_3pct": false}
+
+X-48
+FINAL_JSON: {"k": 0.01889236, "cc": -1.05110097, "S_star_E16_dT10": 4.2774, "achievable": false, "hld_S9_E10": 0.9572, "winsor": "Winsor II"}
+
+X-49
+FINAL_JSON: {"cmc_point": 1.6112, "dG_point": -26.5845, "dG_ci_low": -26.6187, "dG_ci_high": -26.5500}
+
+X-50
+FINAL_JSON: {"cmc_kinetic_mM": 0.264, "Nagg_rounded": 8, "dG_kinetic": -34.82, "convergence": "converged"}

@@ -1,0 +1,11 @@
+I'll verify these computations precisely.
+
+Results computed with n = 2 (required for a 1:1 cationic surfactant with no added salt), per the pinned instructions.
+
+1. **gamma_correct**: 1.129507275e-06 mol/m²
+2. **ratio_draft_over_correct**: 2.000000398 (the colleague's n=1 value is exactly ~2× too large, as expected — they dropped the factor of 2)
+3. **a_min**: 1.470145 nm²
+4. **draft_ok**: false (the draft is ~100% off, far outside 5%)
+5. **n_used**: "2"
+
+FINAL_JSON: {"gamma_correct": 1.129507275e-06, "ratio_draft_over_correct": 2.000000398, "a_min": 1.470145, "draft_ok": false, "n_used": "2"}

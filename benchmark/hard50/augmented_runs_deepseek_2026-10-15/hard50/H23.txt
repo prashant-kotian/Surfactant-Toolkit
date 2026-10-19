@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"delta_h_endpoint_kJ_per_mol": -3.085,
+"agrees_with_cited_value": false,
+"reported_value_source": "computed here from the van't Hoff equation using the first and last CMC rows of the supplied dataset (283.15 K and 318.15 K), not taken from the stated metadata value"
+}

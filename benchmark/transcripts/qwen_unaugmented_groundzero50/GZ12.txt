@@ -1,0 +1,272 @@
+counterion).
+Component 2: Dodecyltrimethylammonium bromide (DTAB, C₁₂TAB) — a standard C12 cationic surfactant.
+Choosing the Interaction Model
+I first tested simple Regular Solution Theory (RST), which requires ln f₁ = βx₂² and ln f₂ = βx₁² with a single β. Computing β from each equation at each data point gave wildly inconsistent values (e.g., β ≈ −1.9 from f₁ vs. β ≈ −4.6 from f₂ at x₁ = 0.305), ruling out a one-parameter symmetric model.
+I therefore applied the two-parameter (three-suffix) Margules model:
+ln
+⁡
+𝑓
+1
+=
+𝑥
+2
+2
+ ⁣
+[
+𝐴
+12
++
+2
+(
+𝐴
+21
+−
+𝐴
+12
+)
+ 
+𝑥
+1
+]
+lnf
+1
+	​
+
+=x
+2
+2
+	​
+
+[A
+12
+	​
+
++2(A
+21
+	​
+
+−A
+12
+	​
+
+)x
+1
+	​
+
+]
+
+ln
+⁡
+𝑓
+2
+=
+𝑥
+1
+2
+ ⁣
+[
+𝐴
+21
++
+2
+(
+𝐴
+12
+−
+𝐴
+21
+)
+ 
+𝑥
+2
+]
+lnf
+2
+	​
+
+=x
+1
+2
+	​
+
+[A
+21
+	​
+
++2(A
+12
+	​
+
+−A
+21
+	​
+
+)x
+2
+	​
+
+]
+Regression from the Raw Data
+I computed y₁ = ln f₁/x₂² (should be linear in x₁) and y₂ = ln f₂/x₁² (should be linear in x₂), then performed least-squares linear fits:
+x₁
+	
+ln f₁/x₂²
+	
+ln f₂/x₁²
+
+
+0.305
+	
+−1.929
+	
+−4.631
+
+
+0.415
+	
+−1.350
+	
+−4.025
+
+
+0.483
+	
+−0.983
+	
+−3.657
+
+
+0.626
+	
+−0.218
+	
+−2.891
+
+
+0.808
+	
++0.749
+	
+−1.917
+Fit 1 (ln f₁/x₂² vs x₁): slope = 5.33, intercept = −3.56 → A₁₂ = −3.56, A₂₁ = −0.89
+Fit 2 (ln f₂/x₁² vs x₂): slope = −5.38, intercept = −0.88 → A₂₁ = −0.88, A₁₂ = −3.57
+Averaging: A₁₂ ≈ −3.565, A₂₁ ≈ −0.888
+The model reproduces all five data points to within ~1% (e.g., predicted f₁ = 1.029 vs. measured 1.028 at x₁ = 0.808).
+Physical Interpretation
+Both Margules parameters are negative, signifying strong attractive (synergistic) interactions in the mixed micelle. The bulky aromatic hydrophobe of component 1 packs favorably alongside the linear C₁₂ chain of DTAB, producing large negative deviations from ideality (f ≪ 1 over most of the composition range).
+Prediction at x₁ = 0.90 (x₂ = 0.10)
+ln
+⁡
+𝑓
+1
+=
+(
+0.10
+)
+2
+[
+−
+3.565
++
+2
+(
+2.678
+)
+(
+0.90
+)
+]
+=
+0.01
+×
+1.254
+=
+0.01254
+lnf
+1
+	​
+
+=(0.10)
+2
+[−3.565+2(2.678)(0.90)]=0.01×1.254=0.01254
+
+𝑓
+1
+=
+𝑒
+0.01254
+≈
+1.013
+f
+1
+	​
+
+=e
+0.01254
+≈1.013
+ln
+⁡
+𝑓
+2
+=
+(
+0.90
+)
+2
+[
+−
+0.888
++
+2
+(
+−
+2.678
+)
+(
+0.10
+)
+]
+=
+0.81
+×
+(
+−
+1.423
+)
+=
+−
+1.153
+lnf
+2
+	​
+
+=(0.90)
+2
+[−0.888+2(−2.678)(0.10)]=0.81×(−1.423)=−1.153
+
+𝑓
+2
+=
+𝑒
+−
+1.153
+≈
+0.316
+f
+2
+	​
+
+=e
+−1.153
+≈0.316
+At this composition, component 1 is nearly pure so f₁ ≈ 1 (slightly above unity due to the asymmetric Margules form), while the dilute component 2 still experiences strong attractive interactions, keeping f₂ well below 1.
+FINAL_JSON:
+{
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.316,
+"interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted by linear regression of ln(f1)/x2^2 vs x1 and ln(f2)/x1^2 vs x2; A12 = -3.565, A21 = -0.888",
+"notes": "Simple one-parameter RST was rejected (inconsistent beta). Both Margules parameters are negative, indicating strong attractive/synergistic interactions between the bulky aromatic cationic (component 1) and DTAB (component 2) in the mixed micelle. Model reproduces all five measured points to ~1%."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

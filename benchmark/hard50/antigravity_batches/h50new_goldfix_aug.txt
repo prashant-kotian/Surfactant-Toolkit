@@ -1,0 +1,95 @@
+You will be given 3 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+You have access to a connected MCP tool server named "surfactant-computation"
+-- use it directly for these calculations rather than hand-deriving results,
+wherever a relevant tool exists.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 3 questions in order, in a single
+response.
+
+---
+
+=== H04 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Real CMC-vs-temperature data for the cationic surfactant [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide); counterion binding degree beta = 0.268 (real value from the same study):
+
+  T (degC), CMC (mM)
+  10, 9.93
+  15, 9.82
+  20, 9.76
+  25, 9.74
+  30, 9.77
+  35, 10.02
+  40, 10.54
+  45, 11.47
+
+Perform a multi-point van't Hoff analysis of this data that allows a nonzero heat capacity change (i.e. curvature in the Arrhenius plot): compute dG_mic(T) at every row with dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5), then extract dH (kJ/mol), dS (J/(mol*K)), and dCp (J/(mol*K)) referenced to 298.15 K, plus dG_mic at 298.15 K (kJ/mol). Finally state whether micellization over this range is entropy-driven or enthalpy-driven (answer: exactly one of "entropy-driven" / "enthalpy-driven").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_H_kJ_per_mol": <number>,
+  "delta_S_J_per_mol_K": <number>,
+  "delta_Cp_J_per_mol_K": <number>,
+  "delta_G_298_kJ_per_mol": <number>,
+  "driver": "entropy-driven" or "enthalpy-driven"
+}
+END OF QUESTION
+
+=== H06 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration mixed-micelle series (component 1 pure CMC 1.8 mM, component 2 pure CMC 8.3 mM; bulk mole fraction of component 1):
+
+  alpha1, CMC_mix (mM)
+  0.10, 3.3751
+  0.25, 2.5588
+  0.40, 2.2482
+  0.55, 2.0694
+  0.70, 1.9853
+  0.85, 1.9065
+
+Fit candidate mixed-micelle models to this series and compare them by BIC. Report: the selected model identifier (name it exactly as the fitting routine does, e.g. its own model string), the selected model's BIC, the pooled Rubingh beta (from the Rubingh candidate, regardless of which model wins), whether the interaction is synergistic or antagonistic (answer containing "synerg" or "antagon"), and the two asymmetric-Margules parameters W12 and W21 of the EOMMM candidate (report them even if EOMMM is not the selected model).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_model": "<model identifier string>",
+  "selected_bic": <number>,
+  "rubingh_beta_mean": <number>,
+  "interaction_character": "<synergistic or antagonistic>",
+  "w12": <number>,
+  "w21": <number>
+}
+END OF QUESTION
+
+=== H26 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO
+(i.e. C18 alkyl chain + 12 oxyethylene units + terminal OH; count them off the string).
+
+Hydrophilic mass convention for this question (disclosed): Mh = nEO * 44.053 + 17.008 g/mol (oxyethylene units + terminal OH). Griffin HLB = 20 * Mh / M. Use atomic masses C 12.011, H 1.008, O 15.999 for the molar mass (or an equivalent structured-method computation).
+
+Report: the number of oxyethylene (EO) units; the total number of carbon atoms; the molar mass M (g/mol); and the Griffin HLB.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": <number>,
+  "total_carbons": <number>,
+  "molecular_weight": <number>,
+  "hlb_griffin": <number>
+}
+END OF QUESTION

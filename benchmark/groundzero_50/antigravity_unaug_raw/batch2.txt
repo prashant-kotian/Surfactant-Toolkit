@@ -1,0 +1,344 @@
+Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ11](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L20) through [GZ20](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L267)), worked through in order.
+
+---
+
+### Solution for Question GZ11
+
+#### 1. Geometric Dimensions from Tanford Relations
+For a saturated, unbranched alkyl chain with $n_c = 12$ carbons:
+- **Tail Volume ($V$):**
+  $$V = 27.4 + 26.9 \times n_c = 27.4 + 26.9 \times 12 = 350.2\text{ \AA}^3$$
+- **Critical Chain Length ($l_c$):**
+  $$l_c = 1.5 + 1.265 \times n_c = 1.5 + 1.265 \times 12 = 16.68\text{ \AA}$$
+
+#### 2. Approach A: Directly Measured Headgroup Area
+Given $a_{\text{meas}} = 44.70\text{ \AA}^2$:
+- **Critical Packing Parameter ($P_{\text{meas}}$):**
+  $$P_{\text{meas}} = \frac{V}{a_{\text{meas}} \times l_c} = \frac{350.2}{44.70 \times 16.68} = \frac{350.2}{745.596} \approx 0.46969$$
+- **Morphology Classification:**
+  Since $1/3 < P \le 1/2$, this corresponds to a **cylindrical/rodlike micelle**.
+
+#### 3. Approach B: Electrostatically-Derived Equilibrium Headgroup Area
+For an ionic surfactant in water with no added electrolyte, the ionic strength at the CMC is governed primarily by the singly dispersed surfactant ions: $I \approx \text{CMC} = 8\text{ mM} = 0.008\text{ M}$.
+- **Debye-Hückel Screening Length ($\kappa^{-1}$):**
+  Using the Debye-Hückel relation for water at 298.15 K ($\epsilon = 80.0$):
+  $$\kappa^{-1} = \left( \frac{8 \pi N_A e^2 (\text{CMC})}{1000 \, \epsilon k_B T} \right)^{-1/2} \approx 34.335\text{ \AA}$$
+- **Equilibrium Area per Headgroup ($a_e$):**
+  With the sulfate headgroup-specific electrostatic prefactor of $82.0\text{ \AA}$:
+  $$a_e = \frac{82.0}{\sqrt{1 + \frac{l_c}{\kappa^{-1}}}} = \frac{82.0}{\sqrt{1 + \frac{16.68}{34.335}}} = \frac{82.0}{\sqrt{1.4858}} \approx 67.272\text{ \AA}^2$$
+- **Critical Packing Parameter ($P_{\text{es}}$):**
+  $$P_{\text{es}} = \frac{V}{a_e \times l_c} = \frac{350.2}{67.272 \times 16.68} = \frac{350.2}{1122.09} \approx 0.31210$$
+- **Morphology Classification:**
+  Since $P \le 1/3$, this corresponds to a **spherical micelle**.
+
+#### 4. Physical Commentary
+The two approaches predict different aggregate morphologies: the planar surface tension measurement ($a = 44.70\text{ \AA}^2$) yields $P \approx 0.470$ (cylindrical/rodlike), whereas electrostatic double-layer theory at the CMC ($a_e \approx 67.27\text{ \AA}^2$) yields $P \approx 0.312$ (spherical). This reflects a genuine physical tension between different methods: measured $A_{\min}$ reflects dense packing at a flat air-water interface, whereas the electrostatic model accounts for strong unshielded electrostatic repulsion between sulfate headgroups at low ionic strength (8 mM salt-free) on a curved micellar surface, expanding the effective headgroup area and favoring spherical micelles near the CMC.
+
+=== GZ11 ===
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.46969,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 67.2717,
+  "cpp_electrostatic_area": 0.3121,
+  "morphology_electrostatic_area": "spherical micelle",
+  "comment": "Directly measured planar headgroup area gives cylindrical/rodlike morphology, while electrostatic double-layer theory at the CMC predicts an expanded effective headgroup area that stabilizes spherical micelles."
+}
+
+---
+
+### Solution for Question GZ12
+
+#### 1. Analysis of Binary Mixed Micelle Interaction
+The measured activity coefficients across the composition series are:
+- $x_1 = 0.305: f_1 = 0.394, f_2 = 0.650$
+- $x_1 = 0.415: f_1 = 0.630, f_2 = 0.500$
+- $x_1 = 0.483: f_1 = 0.769, f_2 = 0.426$
+- $x_1 = 0.626: f_1 = 0.970, f_2 = 0.322$
+- $x_1 = 0.808: f_1 = 1.028, f_2 = 0.286$
+
+Notice the pronounced asymmetry:
+- In symmetric Rubingh Regular Solution Theory (RST), $\ln f_1 = \beta (1-x_1)^2$ and $\ln f_2 = \beta x_1^2$. If $\beta < 0$, both $f_1$ and $f_2$ must remain strictly $< 1.0$ at all compositions.
+- In this system, however, as $x_1$ increases, $f_1$ approaches and exceeds unity ($1.028$ at $x_1 = 0.808$), while $f_2$ remains strongly suppressed ($0.286$).
+- This structural asymmetry arises from the difference between Component 1 (Hyamine / benzethonium chloride: bulky, aromatic, branched) and Component 2 (DTAB: compact linear alkyl chain).
+
+#### 2. Two-Parameter Asymmetric Margules Model (EOMMM)
+To accurately describe this system, a two-parameter Margules model is required:
+$$g^E / RT = x_1 x_2 (w_{12} x_2 + w_{21} x_1)$$
+$$\ln f_1 = x_2^2 [w_{12} + 2(w_{21} - w_{12}) x_1]$$
+$$\ln f_2 = x_1^2 [w_{21} + 2(w_{12} - w_{21}) x_2]$$
+With fitted parameters $w_{12} = -3.565$ and $w_{21} = -0.889$ (in $RT$ units):
+At $x_1 = 0.90$ ($x_2 = 0.10$):
+$$\ln f_1 = (0.10)^2 [-3.565 + 2(-0.889 - (-3.565))(0.90)] = 0.01 [-3.565 + 2(2.676)(0.90)] = 0.01 [1.2518] = 0.012518 \implies f_1 \approx 1.0126$$
+$$\ln f_2 = (0.90)^2 [-0.889 + 2(-3.565 - (-0.889))(0.10)] = 0.81 [-0.889 + 2(-2.676)(0.10)] = 0.81 [-1.4242] = -1.1536 \implies f_2 \approx 0.3155$$
+
+=== GZ12 ===
+FINAL_JSON:
+{
+  "f1_at_x1_0.90": 1.0126,
+  "f2_at_x1_0.90": 0.3155,
+  "interaction_model_or_approach": "two-parameter asymmetric Margules model (EOMMM)",
+  "notes": "Asymmetric interactions are evident because f1 approaches and exceeds unity at high x1 while f2 remains strongly suppressed (< 0.32), indicating non-ideal asymmetric mixing captured by w12 = -3.565 and w21 = -0.889."
+}
+
+---
+
+### Solution for Question GZ13
+
+#### 1. Structure Dissection
+SMILES: `CCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO`
+- **Hydrophobic Tail:** `CCCCCCCCCCCCCCCC` corresponds to a saturated unbranched hexadecyl (cetyl, $\text{C}_{16}\text{H}_{33}$) tail.
+- **Polyether Chain:**
+  Following the cetyl tail, the polyether segment contains repeating $-\text{CH}_2\text{CH}_2\text{O}-$ units terminating with a hydroxyl group $-\text{OH}$:
+  1. `OCCO`
+  2. `CCO`
+  3. `CCO`
+  4. `CCO`
+  5. `CCO`
+  6. `CCO`
+  7. `CCO`
+  8. `CCO`
+  9. `CCO`
+  10. `CCO`
+  Total count: $n_{\text{EO}} = 10$ repeat units.
+
+#### 2. Molecular Formula and Molecular Weight
+- Molecular formula: $\text{C}_{16}\text{H}_{33}\text{O}(\text{C}_2\text{H}_4\text{O})_9\text{C}_2\text{H}_4\text{OH} = \text{C}_{36}\text{H}_{74}\text{O}_{11}$
+- Total molecular weight:
+  $$\text{MW}_{\text{total}} = 36 \times 12.011 + 74 \times 1.008 + 11 \times 15.999 = 432.396 + 74.592 + 175.989 = 682.977\text{ g/mol}$$
+
+#### 3. Griffin HLB Calculation
+- Hydrophobic tail mass ($\text{C}_{16}\text{H}_{33}$):
+  $$\text{MW}_{\text{tail}} = 16 \times 12.011 + 33 \times 1.008 = 192.176 + 33.264 = 225.440\text{ g/mol}$$
+- Hydrophilic portion mass ($\text{MW}_{\text{total}} - \text{MW}_{\text{tail}}$):
+  $$\text{MW}_{\text{hydrophilic}} = 682.977 - 225.440 = 457.537\text{ g/mol}$$
+- Griffin HLB:
+  $$\text{HLB} = 20 \times \frac{\text{MW}_{\text{hydrophilic}}}{\text{MW}_{\text{total}}} = 20 \times \frac{457.537}{682.977} \approx 13.3983$$
+
+=== GZ13 ===
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": 10,
+  "molecular_weight_g_per_mol": 682.977,
+  "hlb_griffin": 13.3983
+}
+
+---
+
+### Solution for Question GZ14
+
+#### 1. Pre-CMC Adsorption Behavior
+The dataset provides 9 concentration-vs-surface-tension points for AOT at 298.15 K:
+- Between $0.01585\text{ mM}$ and $1.58489\text{ mM}$ (6 pre-CMC points spanning 2 decades in concentration), the surface tension decreases strictly linearly against $\log_{10} c$:
+  $$\frac{d\gamma}{d\log_{10} c} = -16.400\text{ mN/m per decade} \quad (R^2 = 1.000)$$
+- This indicates a saturated interfacial monolayer with constant surface excess $\Gamma_{\max}$.
+
+#### 2. Lateral Surfactant-Surfactant Interactions
+- Fitting the pre-CMC isotherm to the Frumkin model yields an unconstrained parameter $a \approx 3.79$, which falls in the attractive lateral interaction regime ($a \ge 2$, 2D condensation).
+- However, comparing the models via Bayesian Information Criterion (BIC):
+  The simpler Langmuir/Szyszkowski model ($a = 0$, independent adsorption with no lateral interaction) yields a lower BIC than the Frumkin model ($\Delta\text{BIC} \approx -12.09$ favoring Langmuir), because the pre-CMC data is virtually indistinguishable from a straight line and does not statistically justify the additional degree of freedom.
+
+#### 3. Confidence Assessment
+Because there are only 6 pre-CMC points and the curve is perfectly linear in the logarithmic regime, the data is statistically underdetermined with respect to lateral interactions. The numerical non-zero fit of $a \approx 3.79$ cannot be confirmed against the simpler $a = 0$ model. Therefore, confidence in asserting lateral interaction from this dataset alone is **low**.
+
+=== GZ14 ===
+FINAL_JSON:
+{
+  "lateral_interaction_present": false,
+  "confidence_from_this_data_alone": "low",
+  "reasoning": "The unconstrained Frumkin fit yields a nonzero parameter a ≈ 3.79, but Bayesian Information Criterion (BIC) strongly favors the simpler Langmuir model (a = 0) due to parameter penalization on the 6 pre-CMC points. With so few points along the linear pre-CMC regime, this dataset is insufficient to distinguish genuine lateral interaction from data limitation."
+}
+
+---
+
+### Solution for Question GZ15
+
+#### Direct Chart Reading from [GZ-15_chart.png](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-15_chart.png):
+1. **Surface Tension at Lowest Concentration Shown:**
+   - The leftmost data point sits at $c = 0.01585\text{ mM} \approx 0.016\text{ mM}$ (just past the $10^{-2}$ gridline).
+   - Its vertical position is directly read at $\gamma = 62.22\text{ mN/m}$.
+2. **Surface Tension in the Flat Plateau Region:**
+   - At high concentrations ($3.98\text{ mM}$ to $10.0\text{ mM}$), the curve levels off into a plateau.
+   - The minimum surface tension reached in this plateau is $\gamma = 27.5\text{ mN/m}$.
+3. **Critical Micelle Concentration (Break-point):**
+   - The intersection between the declining pre-plateau linear slope and the horizontal plateau region occurs at $c \approx 2.51\text{ mM}$.
+
+=== GZ15 ===
+FINAL_JSON:
+{
+  "gamma_lowest_conc_mN_per_m": 62.22,
+  "gamma_plateau_mN_per_m": 27.5,
+  "estimated_cmc_mM": 2.51
+}
+
+---
+
+### Solution for Question GZ16
+
+#### 1. Compound Classification
+SMILES: `CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]` (Sodium dodecyl sulfate, SDS)
+- The amphiphile carries a sulfate ester group ($-\text{OSO}_3^-$) balanced by a sodium cation ($\text{Na}^+$).
+- Charge type: **anionic** (1:1 ionic surfactant, $n = 2$ in the absence of added inert salt).
+
+#### 2. Curve Analysis and CMC Determination
+A three-segment linear regression (baseline + steep linear decline + plateau) identifies the transition breakpoint:
+- Premicellar slope: $\frac{d\gamma}{d\ln C} = -16.876\text{ mN/m}$ ($\frac{d\gamma}{d\log_{10} C} = -38.857\text{ mN/m per decade}$, $R^2 = 1.000$).
+- Postmicellar mean plateau: $37.38\text{ mN/m}$.
+- Critical micelle concentration: $\text{CMC} = 9.1815\text{ mM} = 0.0091815\text{ M}$.
+
+#### 3. Pre-CMC Adsorption Parameters
+Using the Gibbs adsorption isotherm with $n = 2$ at $T = 296.15\text{ K}$:
+$$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = \frac{16.8756 \times 10^{-3}\text{ N/m}}{2 \times 8.31446\text{ J/(mol}\cdot\text{K)} \times 296.15\text{ K}} \approx 3.4268 \times 10^{-6}\text{ mol/m}^2$$
+$$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214 \times 10^{23} \times 3.42675 \times 10^{-6}}\text{ m}^2 \approx 0.4846\text{ nm}^2$$
+
+#### 4. Thermodynamics of Micellization
+- With counterion dissociation degree $\alpha = 0.272$:
+  $$X_{\text{cmc}} = \frac{0.0091815}{55.5 + 0.0091815} \approx 1.65406 \times 10^{-4}$$
+  $$\ln X_{\text{cmc}} \approx -8.7071$$
+  $$\Delta G_{\text{mic}}^\circ = (1 + \alpha) R T \ln X_{\text{cmc}} = (1 + 0.272) \times 8.31446 \times 296.15 \times (-8.7071) \approx -27271\text{ J/mol} = -27.271\text{ kJ/mol}$$
+- **Entropy of Micellization ($\Delta S_{\text{mic}}^\circ$):**
+  Determining $\Delta S_{\text{mic}}^\circ = -\frac{\partial \Delta G_{\text{mic}}^\circ}{\partial T}$ requires temperature-dependent CMC data across multiple temperatures (van't Hoff analysis). Since measurements are provided at only a single temperature (296.15 K), $\Delta S_{\text{mic}}$ cannot genuinely be determined and must be reported as `null`.
+
+=== GZ16 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 9.1815,
+  "gamma_max_mol_per_m2": 3.4268e-06,
+  "a_min_nm2": 0.4846,
+  "delta_g_mic_kJ_per_mol": -27.271,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+---
+
+### Solution for Question GZ17
+
+#### 1. Compound Classification
+SMILES: `CCCCCCCCCCCC[N+](C)(C)C.[Br-]` (Dodecyltrimethylammonium bromide, DTAB)
+- The amphiphile carries a quaternary ammonium cation ($-\text{N}^+(\text{CH}_3)_3$) balanced by a bromide anion ($\text{Br}^-$).
+- Charge type: **cationic** (1:1 ionic surfactant, $n = 2$ in the absence of added inert salt).
+
+#### 2. Curve Analysis and CMC Determination
+A three-segment linear regression identifies the transition breakpoint:
+- Premicellar slope: $\frac{d\gamma}{d\ln C} = -11.6575\text{ mN/m}$ ($\frac{d\gamma}{d\log_{10} C} = -26.842\text{ mN/m per decade}$, $R^2 = 0.9998$).
+- Critical micelle concentration: $\text{CMC} = 8.185\text{ mM} = 0.008185\text{ M}$.
+
+#### 3. Pre-CMC Adsorption Parameters
+Using the Gibbs adsorption isotherm with $n = 2$ at $T = 296.35\text{ K}$:
+$$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = \frac{11.6575 \times 10^{-3}\text{ N/m}}{2 \times 8.31446\text{ J/(mol}\cdot\text{K)} \times 296.35\text{ K}} \approx 2.3656 \times 10^{-6}\text{ mol/m}^2$$
+$$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214 \times 10^{23} \times 2.36557 \times 10^{-6}}\text{ m}^2 \approx 0.7020\text{ nm}^2$$
+
+#### 4. Thermodynamics of Micellization
+- For an ionic surfactant, calculation of $\Delta G_{\text{mic}}^\circ$ requires an independent measurement of the counterion dissociation/binding degree $\alpha$ or $\beta$ (e.g. from conductivity slope ratio or potentiometry). Because no counterion-binding data is provided, $\Delta G_{\text{mic}}^\circ$ cannot genuinely be determined and must be reported as `null`.
+- Determining $\Delta S_{\text{mic}}^\circ$ requires a multi-temperature van't Hoff series. Because only single-temperature data is provided, $\Delta S_{\text{mic}}^\circ$ must also be reported as `null`.
+
+=== GZ17 ===
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "cmc_mM": 8.185,
+  "gamma_max_mol_per_m2": 2.3656e-06,
+  "a_min_nm2": 0.702,
+  "delta_g_mic_kJ_per_mol": null,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+---
+
+### Solution for Question GZ18
+
+#### 1. Critical Packing Parameter and Morphology
+For a saturated, unbranched alkyl chain with $n_c = 12$ carbons:
+- Tail volume:
+  $$V = 27.4 + 26.9 \times 12 = 350.2\text{ \AA}^3$$
+- Critical chain length:
+  $$l_c = 1.5 + 1.265 \times 12 = 16.68\text{ \AA}$$
+- Critical packing parameter with $a = 44.70\text{ \AA}^2$:
+  $$P = \frac{V}{a \times l_c} = \frac{350.2}{44.70 \times 16.68} \approx 0.4697$$
+- Since $1/3 < P \le 1/2$, the predicted morphology is **cylindrical/rodlike micelle**.
+
+#### 2. Prolate Ellipsoid Axial Ratio Calculation
+Because the predicted morphology is cylindrical/rodlike, the micelle core can be modeled as a prolate ellipsoid of revolution with volume conservation:
+- Minor semi-axis: $b = l_c = 16.68\text{ \AA}$.
+- Total core volume for aggregation number $N_{\text{agg}} = 63$:
+  $$V_{\text{core}} = N_{\text{agg}} \times V = 63 \times 350.2 = 22062.6\text{ \AA}^3$$
+- Prolate ellipsoid volume:
+  $$V_{\text{core}} = \frac{4}{3} \pi a b^2 \implies a = \frac{3 V_{\text{core}}}{4 \pi b^2}$$
+- Major semi-axis $a$:
+  $$a = \frac{3 \times 22062.6}{4 \pi \times (16.68)^2} = \frac{66187.8}{4 \pi \times 278.2224} = \frac{66187.8}{3496.25} \approx 18.931\text{ \AA}$$
+- Axial ratio ($a/b$):
+  $$\text{axial\_ratio} = \frac{a}{b} = \frac{18.931}{16.68} \approx 1.135$$
+
+=== GZ18 ===
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp": 0.4697,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 1.135
+}
+
+---
+
+### Solution for Question GZ19
+
+#### 1. Tail Molar Volume Contribution
+For a saturated, unbranched alkyl chain of $n_c = 12$ carbons:
+- Tail volume per molecule:
+  $$V = 27.4 + 26.9 \times 12 = 350.2\text{ \AA}^3/\text{molecule}$$
+- Converting to molar volume using Avogadro's number ($N_A = 6.02214 \times 10^{23}\text{ mol}^{-1}$):
+  $$V_{\text{tail, molar}} = 350.2\text{ \AA}^3/\text{molecule} \times 6.02214 \times 10^{23}\text{ molecules/mol} \times 10^{-24}\text{ cm}^3/\text{\AA}^3 \approx 210.895\text{ cm}^3/\text{mol} \approx 210.9\text{ cm}^3/\text{mol}$$
+
+#### 2. Full Partial Specific Volume ($\bar{v}$) and Missing Information
+- The monomer's partial specific volume is defined as:
+  $$\bar{v} = \frac{V_{\text{tail, molar}} + V_{\text{head, molar}}}{\text{MW}}$$
+  where $\text{MW} = 288.38\text{ g/mol}$.
+- While $V_{\text{tail, molar}}$ is directly computable from geometry, the ionic headgroup ($-\text{OSO}_3^-\text{Na}^+$) undergoes significant **electrostriction** in aqueous solution (solvent contraction and local hydration shell restructuring around charges), which measurably reduces the apparent molar volume and can even make counterion contributions negative.
+- Electrostriction prevents $V_{\text{head, molar}}$ from being derived geometrically. Without an independently measured or literature-sourced partial molar volume for the sulfate headgroup plus sodium counterion in water, the full $\bar{v}$ cannot be calculated and must be reported as `null`.
+
+=== GZ19 ===
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 210.9,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "Partial molar volume of the ionic sulfate headgroup and sodium counterion in water (cm^3/mol), which cannot be derived geometrically due to electrostriction."
+}
+
+---
+
+### Solution for Question GZ20
+
+#### 1. Compound Classification
+SMILES: `CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]` (AOT)
+- Contains a sulfonate group ($-\text{SO}_3^-$) and sodium counterion ($\text{Na}^+$).
+- Charge type: **anionic** (1:1 ionic surfactant, $n = 2$).
+
+#### 2. Curve Analysis and Pre-CMC Adsorption
+A two-segment linear regression locates the CMC breakpoint:
+- Premicellar slope: $\frac{d\gamma}{d\ln C} = -7.1225\text{ mN/m}$ ($\frac{d\gamma}{d\log_{10} C} = -16.400\text{ mN/m per decade}$, $R^2 = 1.000$).
+- Critical micelle concentration: $\text{CMC} = 2.5119\text{ mM} = 0.0025119\text{ M}$.
+- Saturated surface excess and minimum area per molecule ($T = 298.15\text{ K}$, $n = 2$):
+  $$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = \frac{7.1225 \times 10^{-3}}{2 \times 8.31446 \times 298.15} \approx 1.4366 \times 10^{-6}\text{ mol/m}^2$$
+  $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} \approx 1.1559\text{ nm}^2$$
+- Isotherm model: **Langmuir (BIC-selected over Frumkin)**.
+
+#### 3. Free Energy of Micellization
+With counterion dissociation degree $\alpha = 0.39$:
+$$X_{\text{cmc}} = \frac{0.0025119}{55.5 + 0.0025119} \approx 4.5257 \times 10^{-5}$$
+$$\ln X_{\text{cmc}} \approx -10.0033$$
+$$\Delta G_{\text{mic}}^\circ = (1 + \alpha) R T \ln X_{\text{cmc}} = (1 + 0.39) \times 8.31446 \times 298.15 \times (-10.0033) \approx -34468\text{ J/mol} = -34.468\text{ kJ/mol}$$
+
+=== GZ20 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.5119,
+  "isotherm_model": "langmuir (BIC-selected over Frumkin)",
+  "gamma_max_mol_per_m2": 1.4366e-06,
+  "a_min_nm2": 1.1559,
+  "delta_g_mic_kJ_per_mol": -34.468
+}

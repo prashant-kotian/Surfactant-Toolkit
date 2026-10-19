@@ -1,0 +1,17 @@
+The Monte Carlo error propagation has been computed exactly as requested using the `propagate_uncertainty_chain` tool via the MCP server.
+
+Based on the 10000 generated samples:
+1. **output_mean**: 2.55855248098239 nm
+2. **output_sd**: 0.42687810446597774 nm
+3. **ci_low** (2.5th percentile): 2.0108421728056567 nm
+4. **ci_high** (97.5th percentile): 3.5846464274086625 nm
+
+Calculating the skew as defined (`(mean - median) / sd`):
+Mean = 2.55855248098239
+Median = 2.4721545374541707
+SD = 0.42687810446597774
+Skew = (2.55855248098239 - 2.4721545374541707) / 0.42687810446597774 ≈ 0.2024
+
+Since the skew is approximately +0.2024, which is greater than +0.05, the distribution is right-skewed.
+
+FINAL_JSON: {"output_mean": 2.55855248098239, "output_sd": 0.42687810446597774, "ci_low": 2.0108421728056567, "ci_high": 3.5846464274086625, "skew_label": "right-skewed"}

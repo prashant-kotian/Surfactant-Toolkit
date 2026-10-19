@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "monomeric",
+"tail_carbons": 12,
+"cpp": 0.35215034949564666,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.0809127606844267,
+"rh_naive_nm": 2.7560722177294372,
+"rh_perrin_corrected_nm": 2.754586197097811
+}

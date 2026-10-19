@@ -1,0 +1,1 @@
+FINAL_JSON: {"excluded_gamma": 38.7, "cmc_mM": 2.898, "gamma_max": 1.887e-6, "n_used": 9, "conflict_detected": true}

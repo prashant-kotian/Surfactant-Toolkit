@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"n_propylene_oxide_units": 5,
+"n_ethylene_oxide_units": 8,
+"molecular_weight": 829.163,
+"hlb_griffin": 15.916122644160435
+}

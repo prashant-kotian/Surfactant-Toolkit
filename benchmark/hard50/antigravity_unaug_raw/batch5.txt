@@ -1,0 +1,374 @@
+### Question H41
+
+#### Principles and Calculations
+1. **System & Pure Component CMCs**:
+   - Component 1: $\text{CMC}_1 = 3.0\text{ mM}$
+   - Component 2: $\text{CMC}_2 = 3.5\text{ mM}$
+
+2. **Rubingh Regular Solution Theory**:
+   The micellar mole fraction $x_1$ satisfies the transcendental equation:
+   $$\frac{x_1^2 \ln\left(\frac{\alpha_1 \text{CMC}_{\text{mix}}}{x_1 \text{CMC}_1}\right)}{(1 - x_1)^2 \ln\left(\frac{(1 - \alpha_1)\text{CMC}_{\text{mix}}}{(1 - x_1)\text{CMC}_2}\right)} = 1$$
+   $$\implies x_1^2 \ln\left(\frac{\alpha_1 \text{CMC}_{\text{mix}}}{x_1 \text{CMC}_1}\right) - (1 - x_1)^2 \ln\left(\frac{(1 - \alpha_1)\text{CMC}_{\text{mix}}}{(1 - x_1)\text{CMC}_2}\right) = 0$$
+   Once $x_1$ is determined in $(0, 1)$, the interaction parameter $\beta$ is computed via:
+   $$\beta = \frac{\ln\left(\frac{\alpha_1 \text{CMC}_{\text{mix}}}{x_1 \text{CMC}_1}\right)}{(1 - x_1)^2}$$
+
+3. **Pointwise Evaluation**:
+   - Row 1: $\alpha_1 = 0.0305$, $\text{CMC}_{\text{mix}} = 2.541\text{ mM}$
+     $$x_1 = 0.20004,\quad \beta = -3.19849$$
+   - Row 2: $\alpha_1 = 0.1502$, $\text{CMC}_{\text{mix}} = 1.809\text{ mM}$
+     $$x_1 = 0.35000,\quad \beta = -3.19958$$
+   - Row 3: $\alpha_1 = 0.4615$, $\text{CMC}_{\text{mix}} = 1.460\text{ mM}$
+     $$x_1 = 0.49999,\quad \beta = -3.20090$$
+   - Row 4: $\alpha_1 = 0.8061$, $\text{CMC}_{\text{mix}} = 4.086\text{ mM}$
+     Here $\text{CMC}_{\text{mix}} = 4.086\text{ mM} > \max(\text{CMC}_1, \text{CMC}_2) = 3.5\text{ mM}$. A mixed CMC above both pure components is physically inconsistent with stable mixed micellization, and the Rubingh residual has no physical root in $(0, 1)$. Thus, pointwise $\beta$ has no physical solution (`null`).
+   - Row 5: $\alpha_1 = 0.9590$, $\text{CMC}_{\text{mix}} = 2.202\text{ mM}$
+     $$x_1 = 0.80001,\quad \beta = -3.20001$$
+
+4. **Pooled Mean of Clean Rows**:
+   $$\beta_{\text{mean, clean}} = \frac{-3.198489 - 3.199584 - 3.200898 - 3.200012}{4} = -3.199746$$
+   Number of clean points used: $n = 4$.
+
+=== H41 ===
+FINAL_JSON:
+{
+  "alpha1_of_corrupted_point": 0.8061,
+  "beta_mean_clean": -3.1997457869764085,
+  "pointwise_beta_at_corrupted_point": null,
+  "n_points_used_clean": 4
+}
+END OF QUESTION
+
+---
+
+### Question H42
+
+#### Principles and Calculations
+1. **Model & Formulation**:
+   The multi-point van 't Hoff fit allowing for heat capacity change $\Delta C_p$ expresses the Gibbs free energy as:
+   $$\Delta G(T_j) = \Delta H(T_r) - T_j \Delta S(T_r) + \Delta C_p \left[(T_j - T_r) - T_j \ln\left(\frac{T_j}{T_r}\right)\right]$$
+   where $\Delta G(T_j) = (2 - \beta) R T_j \ln X_{\text{CMC}}(T_j)$ with counterion factor $2 - 0.268 = 1.732$, and $X_{\text{CMC}} = \frac{\text{CMC}(\text{mol/L})}{\text{CMC}(\text{mol/L}) + 55.5}$.
+   For a chosen reference temperature $T_r$ (taken as the mean temperature of the dataset), the model is linear in the three unknowns $(\Delta H, \Delta S, \Delta C_p)$ and solved via least-squares regression.
+
+2. **Full Dataset Fit (All 8 Points)**:
+   - Temperatures: $10, 15, 20, 25, 30, 35, 40, 45\ ^\circ\text{C} \implies 283.15$ to $318.15\text{ K}$ ($T_r = 300.65\text{ K}$).
+   - At $35\ ^\circ\text{C}$, $\text{CMC} = 1.002\text{ mM}$ deviates by an order of magnitude from the smooth U-shaped curve (~$10\text{ mM}$).
+   - Full fit yields:
+     $$\Delta H_{\text{all}} = 14.29006\text{ kJ/mol},\quad r^2 = 0.34087$$
+
+3. **Leave-One-Out Regression Analysis**:
+   - Exclude $10\ ^\circ\text{C}$: $r^2 = 0.31847$
+   - Exclude $15\ ^\circ\text{C}$: $r^2 = 0.29408$
+   - Exclude $20\ ^\circ\text{C}$: $r^2 = 0.33394$
+   - Exclude $25\ ^\circ\text{C}$: $r^2 = 0.37568$
+   - Exclude $30\ ^\circ\text{C}$: $r^2 = 0.39746$
+   - Exclude $35\ ^\circ\text{C}$ ($308.15\text{ K}$): $r^2 = 0.998689$
+   - Exclude $40\ ^\circ\text{C}$: $r^2 = 0.38365$
+   - Exclude $45\ ^\circ\text{C}$: $r^2 = 0.39191$
+
+   Exclusion of $T = 35\ ^\circ\text{C}$ ($308.15\text{ K}$) drastically improves the correlation coefficient from $0.34$ to $0.9987$.
+
+4. **Clean Dataset Fit (7 Points)**:
+   Refitting without $308.15\text{ K}$ ($T_r = 299.579\text{ K}$):
+   $$\Delta H_{\text{cleaned}} = -4.20450\text{ kJ/mol}$$
+   Total points flagged as corrupted: 1.
+
+=== H42 ===
+FINAL_JSON:
+{
+  "corrupted_temperature_K": 308.15,
+  "delta_H_all_points": 14.290057957920272,
+  "delta_H_cleaned": -4.204496357780203,
+  "n_points_flagged": 1
+}
+END OF QUESTION
+
+---
+
+### Question H43
+
+#### Principles and Calculations
+1. **HLD Equation**:
+   $$\text{HLD} = \ln(S) - k \cdot \text{EACN} + C_c$$
+   Given $S = 5\text{ wt}\%$, $\text{EACN} = 10$, $k = 0.16$:
+   $$\ln(5) = 1.609438$$
+   $$k \cdot \text{EACN} = 0.16 \times 10 = 1.60$$
+   $$\ln(S) - k \cdot \text{EACN} = 1.609438 - 1.60 = 0.009438$$
+
+2. **Evaluation under Source 1 ($C_c = -0.92$)**:
+   $$\text{HLD} = 0.009438 - 0.92 = -0.91056 \approx -0.911$$
+   Since $\text{HLD} < -0.3$, it predicts **Winsor I** (direct O/W microemulsion).
+
+3. **Evaluation under Source 2 ($C_c = +2.4$)**:
+   $$\text{HLD} = 0.009438 + 2.4 = +2.40944 \approx +2.409$$
+   Since $\text{HLD} > +0.3$, it predicts **Winsor II** (reverse W/O microemulsion).
+
+4. **Source Selection**:
+   AOT is a branched double-tail surfactant well known for having strong lipophilic character and spontaneous negative curvature that readily forms reverse micelles and W/O microemulsions without co-surfactants, characteristic of a positive $C_c \approx +2.4$ to $+2.5$. The negative value $C_c = -0.92$ reported in secondary review literature arises from confusion with the shorter-chain SDHS. Therefore, Source 2 (primary measurement paper) is adopted as correct.
+
+=== H43 ===
+FINAL_JSON:
+{
+  "hld_if_cc_neg0p92": -0.911,
+  "winsor_if_cc_neg0p92": "I",
+  "hld_if_cc_pos2p4": 2.409,
+  "winsor_if_cc_pos2p4": "II",
+  "source_number": 2
+}
+END OF QUESTION
+
+---
+
+### Question H44
+
+#### Principles and Calculations
+1. **Static Light Scattering (SLS)**:
+   $$N_{\text{agg, SLS}} = \frac{M_w}{M_0} = \frac{16800\text{ g/mol}}{308.34\text{ g/mol}} = 54.485 \approx 54.49$$
+
+2. **Geometric Spherical Core Estimate**:
+   - Hydrocarbon tail volume: $v = 350.2\text{ \AA}^3$
+   - Fully extended tail length: $l_c = 16.68\text{ \AA}$
+   - Core volume of sphere of radius $l_c$:
+     $$V_{\text{core}} = \frac{4}{3} \pi l_c^3 = \frac{4}{3} \times 3.14159265 \times (16.68)^3 = 19439.888\text{ \AA}^3$$
+   - Aggregation number:
+     $$N_{\text{agg, geom}} = \frac{V_{\text{core}}}{v} = \frac{19439.888}{350.2} = 55.511 \approx 55.51$$
+
+3. **Consistency & Literature Range**:
+   - Both $54.49$ and $55.51$ fall comfortably inside the literature range $[50, 60]$.
+   - Relative difference:
+     $$\frac{|55.511 - 54.485|}{54.485} = 1.88\% < 5\%$$
+   - Both criteria are met: `true`.
+
+4. **Most Reliable Method**:
+   SLS provides a direct thermodynamic measurement of micellar molar mass without geometric shape assumptions. Thus, "SLS" is the most reliable estimate.
+
+=== H44 ===
+FINAL_JSON:
+{
+  "nagg_sls": 54.49,
+  "nagg_geometric": 55.51,
+  "methods_consistent_within_literature_range": true,
+  "most_reliable": "SLS"
+}
+END OF QUESTION
+
+---
+
+### Question H45
+
+#### Principles and Calculations
+1. **Baseline Surface Tension $\gamma_0$**:
+   The flat premicellar baseline region ($c \le 0.02\text{ mM}$) averages:
+   $$\gamma_0 = \frac{71.9 + 71.8 + 71.6}{3} = 71.77\text{ mN/m}$$
+   The target surface tension for $C_{20}$ is:
+   $$\gamma_{20} = \gamma_0 - 20 = 51.77\text{ mN/m}$$
+
+2. **Premicellar Decline Linear Fit**:
+   Fitting $\gamma$ vs $\log_{10}(c)$ across the linear decline regime ($0.05$ to $3.00\text{ mM}$):
+   $$\gamma = -19.3382 \log_{10}(c) + 42.0674$$
+   Setting $\gamma = 51.767$:
+   $$\log_{10}(C_{20}) = \frac{51.7667 - 42.0674}{-19.3382} = -0.5016$$
+   $$C_{20} = 10^{-0.5016}\text{ mM} = 0.315\text{ mM}$$
+
+3. **Calculation of $\text{p}C_{20}$**:
+   Converting $C_{20}$ to molarity ($\text{mol/L}$):
+   $$C_{20} = 0.3152 \times 10^{-3}\text{ M}$$
+   $$\text{p}C_{20} = -\log_{10}(C_{20}\text{ in mol/L}) = -\log_{10}(3.152 \times 10^{-4}) = 3.50$$
+
+4. **Comparison to Draft**:
+   The draft states $C_{20} = 0.10\text{ mM}$ and $\text{p}C_{20} = 4.0$. Both values differ significantly from the data-derived values ($0.315\text{ mM}$ and $3.50$). Thus, neither matches the data, making "both" values wrong.
+
+=== H45 ===
+FINAL_JSON:
+{
+  "c20_recomputed_mM": 0.315,
+  "pc20_recomputed": 3.5,
+  "draft_values_match_data": false,
+  "which_draft_values_wrong": "both"
+}
+END OF QUESTION
+
+---
+
+### Question H46
+
+#### Principles and Calculations
+1. **Surfactant Classification**:
+   SMILES: `CCCCC(CC)OS(=O)(=O)[O-].[Na+]` contains an alkyl sulfate ester headgroup with sodium counterion $\implies$ **anionic**.
+
+2. **CMC Determination**:
+   Segmented bilinear fit of the premicellar decline and post-micellar plateau yields:
+   $$\text{CMC} = 5.4772\text{ mM}$$
+
+3. **Adsorption Isotherm Selection by BIC**:
+   Comparing the 1-parameter Szyszkowski/Langmuir model against the 2-parameter Frumkin model over the pre-CMC data points:
+   The Frumkin model achieves a substantially lower BIC and is selected: `"frumkin"`.
+   Fitted lateral interaction parameter $a = 3.724$. Because $|a| \ge 2$, it enters the classic two-dimensional condensation regime (attractive lateral phase separation). The caveat is flagged: `true`.
+
+4. **Maximum Surface Excess $\Gamma_{\max}$ & Minimum Area $A_{\min}$**:
+   For a 1:1 ionic surfactant with no added electrolyte, the Gibbs prefactor is $n = 2$:
+   $$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln c}$$
+   Premicellar slope $\frac{d\gamma}{d\ln c} = -7.4914\text{ mN/m} = -7.4914 \times 10^{-3}\text{ N/m}$:
+   $$\Gamma_{\max} = \frac{7.4914 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.51172 \times 10^{-6}\text{ mol/m}^2$$
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 1.51172 \times 10^{-6}} = 1.09844 \times 10^{-18}\text{ m}^2 = 1.09844\text{ nm}^2$$
+
+5. **Standard Free Energy of Micellization $\Delta G^\circ_{\text{mic}}$**:
+   Using degree of dissociation $\alpha = 0.31$, counterion factor $= 1 + \alpha = 1.31$:
+   $$X = \frac{\text{CMC}(\text{mol/L})}{55.5} = \frac{5.4772 \times 10^{-3}}{55.5} = 9.86887 \times 10^{-5}$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \alpha) R T \ln X = 1.31 \times 8.314462618 \times 298.15 \times \ln(9.86887 \times 10^{-5}) \times 10^{-3} = -29.9532\text{ kJ/mol}$$
+
+=== H46 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 5.477225575051662,
+  "isotherm_model": "frumkin",
+  "condensation_caveat_flagged": true,
+  "gamma_max_mol_per_m2": 1.5117195185142552e-06,
+  "a_min_nm2": 1.0984438891189643,
+  "delta_g_mic_kJ_per_mol": -29.953153909017875
+}
+END OF QUESTION
+
+---
+
+### Question H47
+
+#### Principles and Calculations
+1. **Conductivity Data Analysis**:
+   - Linear fit below CMC ($c \le 5.0\text{ mM}$): $\kappa = 0.6400 \, c + 0.0500$ ($S_1 = 0.640\text{ mS/(cm}\cdot\text{mM)}$).
+   - Linear fit above CMC ($c \ge 6.5\text{ mM}$): $\kappa = 0.2200 \, c + 2.4650$ ($S_2 = 0.220\text{ mS/(cm}\cdot\text{mM)}$).
+   - Intersection:
+     $$\text{CMC}_{\text{cond}} = \frac{2.4650 - 0.0500}{0.6400 - 0.2200} = 5.750\text{ mM}$$
+   - Degree of counterion binding $\beta$:
+     $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.220}{0.640} = 0.65625$$
+
+2. **Surface Tension Data Analysis**:
+   - 1:1 ionic surfactant with no added salt $\implies$ Gibbs prefactor $n = 2$.
+   - Premicellar slope: $\frac{d\gamma}{d\ln c} = -7.01337\text{ mN/m}$.
+   $$\Gamma_{\max} = \frac{7.01337 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.41458 \times 10^{-6}\text{ mol/m}^2$$
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = 1.17387\text{ nm}^2$$
+
+3. **$\Delta G^\circ_{\text{mic}}$ from Conductivity**:
+   $$X_{\text{cond}} = \frac{5.750 \times 10^{-3}}{55.5} = 1.036036 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (2 - \beta) R T \ln X = (2 - 0.65625) \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) \times 10^{-3} = -30.563\text{ kJ/mol}$$
+
+4. **$\Delta S^\circ_{\text{mic}}$ Determination**:
+   Evaluating $\Delta S^\circ_{\text{mic}} = \frac{\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}}}{T}$ requires $\Delta H^\circ_{\text{mic}}$, which is only accessible calorimetrically (ITC) or via van 't Hoff temperature dependence ($\text{CMC}$ vs $T$). Because only $298.15\text{ K}$ data are given, $\Delta S^\circ_{\text{mic}}$ cannot be determined (`null`).
+
+=== H47 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 1.4145800566306375e-06,
+  "a_min_nm2": 1.1738742246437819,
+  "delta_g_mic_kJ_per_mol": -30.562968865098554,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Data at a second temperature (CMC vs T, for van't Hoff dlnCMC/d(1/T)) or a calorimetric enthalpy of micellization ΔH_mic; only 298.15 K data are available, so ΔH_mic and hence ΔS_mic cannot be determined."
+}
+END OF QUESTION
+
+---
+
+### Question H48
+
+#### Principles and Calculations
+1. **Hydrophilic-Lipophilic Difference (HLD)**:
+   $$\text{HLD} = \ln(S) - k \cdot \text{EACN} + C_c$$
+   Given $S = 5\text{ wt}\%$, $\text{EACN} = 0$, $k = 0.16$, $C_c = -2.63$:
+   $$\text{HLD} = \ln(5) - 0 - 2.63 = 1.609438 - 2.63 = -1.02056 \approx -1.0206$$
+   Since $\text{HLD} < -0.3$, it predicts **Winsor I** (direct O/W microemulsion).
+
+2. **Critical Packing Parameter (CPP)**:
+   $$\text{CPP} = \frac{v}{A_{\min} l_c} = \frac{350.2\text{ \AA}^3}{44.70\text{ \AA}^2 \times 16.68\text{ \AA}} = \frac{350.2}{745.596} = 0.46969 \approx 0.4697$$
+   For $\frac{1}{3} < \text{CPP} \le \frac{1}{2}$, Israelachvili geometry predicts: `"cylindrical/rodlike micelle"`.
+
+3. **Framework Consistency**:
+   - HLD $< -0.3$ predicts positive/normal spontaneous curvature (interface convex toward continuous water phase, favoring direct O/W aggregates).
+   - $\text{CPP} = 0.47 < 1$ also dictates normal spontaneous curvature (heads outward facing water, enclosing hydrocarbon tail core in cylindrical aggregates).
+   Both frameworks give a mutually consistent prediction of normal curvature: `true`.
+
+=== H48 ===
+FINAL_JSON:
+{
+  "hld_value": -1.0206,
+  "winsor_type": "I",
+  "cpp": 0.4697,
+  "cpp_morphology": "cylindrical/rodlike micelle",
+  "frameworks_consistent": true
+}
+END OF QUESTION
+
+---
+
+### Question H49
+
+#### Principles and Calculations
+1. **$\Delta G^\circ_{\text{mic}}$ from CMC**:
+   Given $\text{CMC} = 8.0\text{ mM} = 0.008\text{ mol/L}$, $T = 298.15\text{ K}$, $\alpha = 0.272$:
+   $$X = \frac{0.008}{55.5} = 1.441441 \times 10^{-4}$$
+   $$\ln X = -8.845112$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \alpha) R T \ln X = 1.272 \times 8.314462618 \times 298.15 \times (-8.845112) \times 10^{-3} = -27.88939\text{ kJ/mol} \approx -27.89\text{ kJ/mol}$$
+
+2. **$\Delta S^\circ_{\text{mic}}$ from Thermodynamic Triangle**:
+   With $\Delta H^\circ_{\text{mic}} = -5.0\text{ kJ/mol} = -5000\text{ J/mol}$:
+   $$\Delta S^\circ_{\text{mic}} = \frac{\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}}}{T} = \frac{-5.0 - (-27.88939)}{298.15} \times 1000 = \frac{22.88939 \times 1000}{298.15} = 76.7714\text{ J/(mol}\cdot\text{K)} \approx 76.77\text{ J/(mol}\cdot\text{K)}$$
+
+3. **Closure and Self-Consistency**:
+   $$\Delta G^\circ_{\text{recomputed}} = \Delta H^\circ - T \Delta S^\circ = -5.0 - (298.15 \times 0.0767714) = -27.88939\text{ kJ/mol} \approx -27.89\text{ kJ/mol}$$
+   The difference is identically 0.0%, well within the 2% tolerance: `true`.
+
+=== H49 ===
+FINAL_JSON:
+{
+  "delta_g_from_cmc_kJ_per_mol": -27.89,
+  "delta_s_J_per_mol_K": 76.77,
+  "delta_g_recomputed_kJ_per_mol": -27.89,
+  "self_consistent": true
+}
+END OF QUESTION
+
+---
+
+### Question H50
+
+#### Principles and Calculations
+1. **Surfactant Structure**:
+   SMILES: `CCCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]` has a linear 12-carbon tail ($n_C = 12$) and a sodium sulfate headgroup $\implies$ **anionic**, $n_{\text{carbons}} = 12$.
+
+2. **Packing Parameter & Morphology**:
+   $$\text{CPP} = \frac{v}{A_{\min} l_c} = \frac{350.2}{44.70 \times 16.68} = 0.4697$$
+   For $\frac{1}{3} < \text{CPP} \le \frac{1}{2}$, morphology is: `"cylindrical/rodlike micelle"`.
+
+3. **Axial Ratio from Prolate Ellipsoid Geometry**:
+   For a prolate ellipsoid with pinned minor semi-axis $b = l_c = 16.68\text{ \AA}$:
+   - Total core volume: $V_{\text{core}} = N_{\text{agg}} \times v = 63 \times 350.2 = 22062.6\text{ \AA}^3$
+   - Major semi-axis $a$:
+     $$a = \frac{3 V_{\text{core}}}{4 \pi b^2} = \frac{3 \times 22062.6}{4 \pi (16.68)^2} = 18.931\text{ \AA}$$
+   - Axial ratio:
+     $$p = \frac{a}{b} = \frac{18.931}{16.68} = 1.135$$
+
+4. **Hydrodynamic Radii**:
+   - Stokes-Einstein uncorrected ($D = 9.3 \times 10^{-7}\text{ cm}^2/\text{s} = 9.3 \times 10^{-11}\text{ m}^2/\text{s}$, $\eta = 0.8903\text{ mPa}\cdot\text{s} = 8.903 \times 10^{-4}\text{ Pa}\cdot\text{s}$):
+     $$R_{h, \text{naive}} = \frac{k_B T}{6 \pi \eta D} = \frac{1.380649 \times 10^{-23} \times 298.15}{6 \pi \times 8.903 \times 10^{-4} \times 9.3 \times 10^{-11}} = 2.63753 \times 10^{-9}\text{ m} = 2.6375\text{ nm}$$
+   - Perrin shape friction factor $F_P$ for prolate ellipsoid with $p = 1.135$:
+     $$\xi = \frac{\sqrt{p^2 - 1}}{p} = \frac{\sqrt{1.135^2 - 1}}{1.135} = 0.4735$$
+     $$S = \frac{2 \operatorname{arctanh}(\xi)}{\xi} = \frac{2 \times 0.5147}{0.4735} = 2.1741$$
+     $$F_P = \frac{2 p^{2/3}}{S} = \frac{2 \times 1.0877}{2.1741} = 1.00143$$
+     $$R_{h, \text{Perrin}} = \frac{R_{h, \text{naive}}}{F_P} = \frac{2.63753}{1.00143} = 2.6338\text{ nm}$$
+
+5. **$\Delta G^\circ_{\text{mic}}$**:
+   The prompt does not state the surfactant's CMC or degree of counterion binding/dissociation $\beta$. Neither can be derived solely from geometric and diffusion parameters ($A_{\min}, N_{\text{agg}}, D, \eta, v, l_c$). Hence $\Delta G^\circ_{\text{mic}}$ is `null`.
+
+=== H50 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "n_carbons": 12,
+  "cpp": 0.4697,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 1.135,
+  "rh_naive_nm": 2.6375,
+  "rh_perrin_nm": 2.6338,
+  "delta_g_mic": null,
+  "missing_for_delta_g": "CMC of this surfactant at 298.15 K (M or mole fraction) and the counterion dissociation factor beta (from conductivity slope ratio or equivalent ion-binding measurement); beta cannot be derived from A_min, N_agg, D, eta, T, v, or lc alone"
+}
+END OF QUESTION

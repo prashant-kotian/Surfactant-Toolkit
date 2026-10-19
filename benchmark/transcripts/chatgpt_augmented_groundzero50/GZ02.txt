@@ -1,0 +1,12 @@
+FINAL_JSON: {
+"component1_charge_type": "zwitterionic",
+"selected_mixture_model": "Rubingh regular-solution model (one-parameter, BIC-selected)",
+"model_parameters": {
+"beta": -3.6321250007792165,
+"beta_std": 0.327059954376168,
+"pointwise_beta_range": [-3.9461125517522793, -3.2238165253364106],
+"bic": -23.883593787397338
+},
+"synergy_classification": "synergistic; strong favorable/attractive nonideal mixed-micelle interactions",
+"independent_check_note": "Rodenas Gibbs-Duhem/local-slope compositions independently show strong component-1 enrichment at low/intermediate bulk alpha1, and Rodenas-derived activity coefficients for both components are below unity at all five compositions; despite some slope-induced non-monotonicity in the sparse-data x1 estimates, this independently supports favorable nonideal mixing and the same synergy conclusion."
+}

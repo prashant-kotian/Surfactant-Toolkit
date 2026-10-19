@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"solubility_estimate_M": 0.0007603761741598127,
+"solubility_source": "ESOL QSPR estimate (Delaney 2004, RDKit-refit coefficients) computed from the naphthalene SMILES; this is a structure-based estimate, not a measurement, with typical uncertainty of ~0.6-1 log unit",
+"msr": 0.2085
+}

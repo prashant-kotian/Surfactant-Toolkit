@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.4697,
+"predicted_morphology": "cylindrical/rodlike micelle",
+"assumptions_or_limitations": "Tanford relations assume a fully extended saturated unbranched chain at 25 C and neglect chain entropy and interpenetration; A_min=44.70 A^2 was treated as a fixed, ionic-strength-independent input though it varies with salt, temperature and Na+ binding; CPP is a mean-field geometric criterion giving preferred curvature, not a unique coexisting structure; only tail volume is counted, omitting headgroup and hydration volume; P=0.470 lies only ~6% below the vesicle boundary at 0.5, so modest salt-induced lowering of A_min could shift the system toward bilayer/vesicle behavior."
+}

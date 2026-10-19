@@ -1,0 +1,12 @@
+…
+Show more
+Worked for 36s
+ChatGPT said:
+tail_carbons: 8
+n_CH3: 2
+mw: 232 g/mol
+formula: C8H17NaO4S
+charge: anionic
+hlb: 41.8
+
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}

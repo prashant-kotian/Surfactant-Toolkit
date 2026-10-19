@@ -1,0 +1,14 @@
+…
+Show more
+Worked for 6m 58s
+Analyzed
+Analyzed
+Analyzed
+ChatGPT said:
+flagged_c: 1.50
+delta_bic: -67.55394318583589
+cmc_mM: 4.3266615305567875
+n_used: 8
+corrupt_detected: true
+
+FINAL_JSON: {"flagged_c": 1.50, "delta_bic": -67.55394318583589, "cmc_mM": 4.3266615305567875, "n_used": 8, "corrupt_detected": true}

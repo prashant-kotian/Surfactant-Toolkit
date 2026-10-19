@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"gamma_at_5e-6": 51.172772727420046,
+"gamma_at_5e-5": 38.67539172442614,
+"gamma_at_2e-4": null,
+"why_2e-4_null": "2e-4 mol/L is above the approximately 1e-4 mol/L CMC, so the premicellar Szyszkowski/Langmuir equation is not physically valid there; its mathematical extrapolation would be 31.093756032439636 mN/m."
+}

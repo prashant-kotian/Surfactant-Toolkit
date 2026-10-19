@@ -1,0 +1,23 @@
+{
+  "question_id": "GZ-09",
+  "model": "gemini-3.1-pro-preview",
+  "elapsed_s": 16.0,
+  "error": null,
+  "final_text": "To find the work of adhesion ($W_A$) and the spreading coefficient ($S$), we can use the Young-Dupré equations provided:\n\nGiven:\n* Liquid surface tension, $\\gamma_{LV} = 25.777 \\text{ mN/m}$ (which is equivalent to $\\text{mJ/m}^2$)\n* Contact angle, $\\theta = 24.370^\\circ$\n\nFirst, calculate the cosine of the contact angle:\n$\\cos(24.370^\\circ) \\approx 0.91089$\n\n**1. Work of Adhesion ($W_A$)**\nThe work of adhesion is the work required to separate the liquid and the solid, leaving two bare surfaces. \n$W_A = \\gamma_{LV} (1 + \\cos\\theta)$\n$W_A = 25.777 \\times (1 + 0.91089) = 25.777 \\times 1.91089 \\approx 49.257 \\text{ mJ/m}^2$\n\n**2. Spreading Coefficient ($S$)**\nThe spreading coefficient determines whether a liquid will spontaneously spread out to cover the solid as a thin film.\n$S = \\gamma_{LV} (\\cos\\theta - 1)$\n$S = 25.777 \\times (0.91089 - 1) = 25.777 \\times (-0.08911) \\approx -2.297 \\text{ mJ/m}^2$\n\n**3. Spontaneous Wetting**\nSpontaneous wetting (or complete spreading) of a solid by a liquid occurs only when the spreading coefficient is positive or zero ($S \\ge 0$), which translates to a contact angle of exactly $0^\\circ$. Because our spreading coefficient is negative (and $\\theta > 0^\\circ$), the liquid forms a droplet on the surface with a finite contact angle rather than spreading indefinitely. Thus, spontaneous wetting does not occur.\n\nFINAL_JSON:\n{\n  \"work_of_adhesion_mJ_per_m2\": 49.257,\n  \"spreading_coefficient_mJ_per_m2\": -2.297,\n  \"spontaneous_wetting\": false\n}",
+  "raw": {
+    "finish_reason": "STOP",
+    "usage": {
+      "promptTokenCount": 400,
+      "candidatesTokenCount": 521,
+      "totalTokenCount": 2208,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 400
+        }
+      ],
+      "thoughtsTokenCount": 1287,
+      "serviceTier": "standard"
+    }
+  }
+}

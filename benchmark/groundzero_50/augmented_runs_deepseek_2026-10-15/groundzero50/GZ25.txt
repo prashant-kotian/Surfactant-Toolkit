@@ -1,0 +1,16 @@
+FINAL_JSON: {
+"component1_charge_type": "zwitterionic (phosphatidylcholine lipid: formal -1 phosphate + formal +1 quaternary ammonium, net neutral)",
+"selected_mixture_model": "asymmetric Margules (EoMMM 2-parameter excess model)",
+"model_parameters": {
+"W12_kT": 0.80,
+"W21_kT": -2.50,
+"net_interaction_attractive": true,
+"rubingh_beta_for_reference": -1.36,
+"rubingh_beta_std": 0.68,
+"bic_asymmetric_margules": -22.68,
+"bic_rubingh": -17.62,
+"bic_ideal": -12.63
+},
+"interaction_character": "Attractive and synergistic, but asymmetric. The strongly negative W21 (-2.5 kT) dominates a weakly positive W12 (+0.8 kT), giving net attraction. Physically this is electrostatic ion-pairing/charge neutralization between the cationic DTAB headgroup and the anionic phosphate of the zwitterionic PC lipid, driving CMC_mix well below either pure CMC.",
+"independent_check_note": "Rodenas model-free micellar mole fractions (from local derivatives of ln CMC_mix) are all physically valid (in [0,1]) and show the micelle is enriched in the low-CMC zwitterion at every measured composition (x1 = 0.63-0.84 even at alpha1 = 0.05). This monotonic preferential partitioning of component 1 into the micelle independently corroborates the strongly attractive, asymmetric interaction inferred from the Margules fit, without using W12 or W21."
+}

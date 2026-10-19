@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "AOT's defining, textbook behavior is spontaneous formation of reverse micelles and water-in-oil microemulsions without co-surfactant, which requires a NEGATIVE (oil-continuous/reverse-curvature-favoring) Cc. Source 1 reports a negative value, consistent with this well-documented reality. Source 2's positive Cc (2.4-3.5) would imply AOT prefers normal water-continuous curvature, directly contradicting the entire microemulsion literature on AOT and likely reflecting a sign-convention error, a different parameter definition, or a reporting mistake. A primary source that contradicts overwhelming, replicated ground truth is less credible than a review whose sign matches reality; the magnitude of Source 1 may be modest, but it captures the essential physics correctly."
+}

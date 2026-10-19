@@ -1,0 +1,217 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+You have access to a connected MCP tool server named "surfactant-computation"
+-- use it directly for these calculations rather than hand-deriving results,
+wherever a relevant tool exists.
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== H31 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+A 1:1 ionic surfactant in water with NO added electrolyte at T = 298.15 K. Measured premicellar slope: d(gamma)/d(log10 C) = -9.2 mN/m per decade. CMC = 6.0 mM. Degree of counterion dissociation alpha = 0.30.
+
+Report: Gamma_max (mol/m^2); A_min (nm^2); and dG_mic (kJ/mol) using dG = (1 + alpha)*R*T*ln(X), X = CMC(mol/L)/55.5, R = 8.314462618 J/(mol*K). State the prefactor n you used for the Gibbs equation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H32 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+A micelle solution at T = 298.15 K: translational diffusion coefficient D = 7.5e-11 m^2/s, solvent viscosity eta = 0.8903e-3 Pa*s. The aggregate is modeled as a prolate ellipsoid with axial ratio 1.14.
+
+Report: the Stokes-Einstein hydrodynamic radius Rh (nm); and Rh with the Perrin friction correction for that axial ratio (nm).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "rh_naive_nm": <number>,
+  "rh_perrin_corrected_nm": <number>
+}
+END OF QUESTION
+
+
+=== H33 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Waterflooding conditions in a porous medium: displacing-fluid viscosity mu = 12.0 cP, interfacial tension gamma = 32.0 mN/m, Darcy velocity v = 0.30 ft/day. The viscous-fingering onset threshold is taken as Ca* = 1e-4 (Ca = mu*v/gamma).
+
+Report: the capillary number Ca under these conditions (dimensionless); whether Ca exceeds the 1e-4 threshold (true/false); and the velocity that would be needed to reach exactly Ca = 1e-4 (ft/day).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "capillary_number": <number>,
+  "exceeds_threshold": <true or false>,
+  "velocity_needed_ft_per_day": <number>
+}
+END OF QUESTION
+
+
+=== H34 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+A surfactant blend of SDS (molar mass 288.38 g/mol) and DTAB (molar mass 308.34 g/mol) containing 65.0 wt% SDS and 35.0 wt% DTAB. Pure CMCs: SDS 8.3 mM, DTAB 15.6 mM. The measured mixed CMC of the blend is 8.10 mM.
+
+Report: the mole fraction of SDS x1 (from the weight composition); the ideal (Clint) mixed CMC (mM); the percent deviation of the measured value from Clint, defined as (Clint - measured)/measured*100; the Rubingh micellar mole fraction x1 (distinct from the bulk value); and the Rubingh beta.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "x1_mole_fraction": <number>,
+  "clint_cmc_mM": <number>,
+  "deviation_from_measured_pct": <number>,
+  "x1_rubingh": <number>,
+  "beta_rubingh": <number>
+}
+END OF QUESTION
+
+
+=== H35 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Electrokinetic measurement at T = 298.15 K: ionic strength I = 0.0257 M, solvent relative permittivity 78.4, viscosity 0.8903 mPa*s, electrophoretic mobility mu_e = 2.7e-8 m^2/(V*s). Spherical particle radius a = 2.5 nm.
+
+Report: the Debye length (nm) -- lambda_D = 0.304/sqrt(I in mol/L) nm may be used; the dimensionless kappa*a = a/lambda_D; and the zeta potential in mV from the Smoluchowski relation zeta = mu_e*eta/eps (with consistent SI units; eps = eps0*eps_r, eps0 = 8.8541878128e-12 F/m).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "debye_length_nm": <number>,
+  "kappa_a": <number>,
+  "zeta_mV": <number>
+}
+END OF QUESTION
+
+
+=== H36 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+See chart H-36_chart.png: a scatter plot of ln(CMC in mol/L) versus 1000/T (T in K), with the least-squares best-fit line drawn through the eight points (no equation is shown). There is no numeric table -- read what you need from the chart.
+
+Using the DRAWN best-fit line: read its slope (y = ln(CMC [mol/L]), x = 1000/T [K^-1]); convert to dH_mic with the standard relation d(ln X) = (dH/R) d(1/T), R = 8.314462618 J/(mol*K) (mind the 1000 in the x-axis units); state the process (answer exactly "endothermic" or "exothermic"); and answer whether a SINGLE straight line adequately describes all eight points on this Arrhenius plot (true/false -- judge from the visible structure of the points).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "arrhenius_slope": <number>,
+  "delta_h_kJ_per_mol": <number>,
+  "process": "endothermic" or "exothermic",
+  "single_straight_line_adequate": <true or false>
+}
+END OF QUESTION
+
+
+=== H37 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+See chart H-37_chart.png: surface tension (mN/m) versus concentration (mol/L, logarithmic x-axis) for two nonionic surfactant solutions A and B at the same temperature, each following gamma = gamma0 - R*T*Gamma_max*ln(1 + K*c) with the SAME gamma0 = 71.9 mN/m and Gamma_max = 2.21e-6 mol/m^2 but different adsorption constants K.
+
+Report, by reading the chart at c = 3.0e-5 mol/L: gamma of curve A (mN/m); gamma of curve B (mN/m); delta_gamma = gamma_A - gamma_B (mN/m, signed); and which curve has the LARGER adsorption constant K (answer exactly "A" or "B").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_A": <number>,
+  "gamma_B": <number>,
+  "delta_gamma_A_minus_B": <number>,
+  "larger_K_curve": "A" or "B"
+}
+END OF QUESTION
+
+
+=== H38 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+See chart H-38_chart.png: electrical conductivity (mS/cm) versus concentration with x-axis labeled "Concentration (uM)" (values plotted as micromolar: 1000, 2000, ... -- read the chart faithfully in the units shown). Two linear segments meet at the CMC break.
+
+Report: the break concentration IN THE CHART'S OWN UNITS (number as plotted); the same CMC in mol/L; the counterion binding degree beta = 1 - slope2/slope1 extracted from the two segments (same units on both sides, so the ratio is unit-invariant); and dG_mic (kJ/mol) from dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5) at T = 298.15 K, R = 8.314462618 J/(mol*K).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_in_chart_units": <number>,
+  "cmc_in_molar": <number>,
+  "beta_from_chart": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H39 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+See chart H-39_chart.png: mixed CMC (mM) versus alpha2 (bulk mole fraction of component 2) for the DHPC/DTAB system (pure CMCs 1.8 and 15.6 mM), as plotted for a lab meeting. The plotted values are:
+
+  alpha2: 0.95, 0.90, 0.80, 0.60, 0.50
+  plotted CMC_mix (mM): 10.8, 6.2, 4.8, 6.75, 2.4
+
+One row contains a transcription error (visually obvious on the chart). Identify it, EXCLUDE it, and refit the Rubingh beta on the remaining points. Report: the alpha2 of the outlier; the Rubingh beta mean excluding it; the sample standard deviation of that fit (n-1); and the number of points used.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "outlier_alpha2": <number>,
+  "beta_mean_excluding_outlier": <number>,
+  "beta_std_excluding_outlier": <number>,
+  "n_points_used": <number>
+}
+END OF QUESTION
+
+
+=== H40 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+See chart H-40_chart.png: aggregation number Nagg of one surfactant measured three ways (with 1-sigma error bars), plus a dashed horizontal line showing an independent geometric reference (from chain-packing geometry) at 55.5.
+
+  Technique SLS: 57.5 +/- 1.5
+  Technique DLS: 64.0 +/- 3.0
+  Technique FQ (fluorescence quenching): 55.5 +/- 2.0
+
+Exclusion rule (apply it mechanically): a technique is INCONSISTENT with the reference if the dashed reference value does not lie inside its error bar.
+
+Report: the mean of all three values; the mean after excluding the inconsistent technique(s) (or all if none); the reference value as plotted (number); whether ALL three error bars include the reference (true/false); and which techniques you excluded (list their chart labels, e.g. one or more of SLS/DLS/FQ).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "mean_including_all": <number>,
+  "mean_excluding_inconsistent": <number>,
+  "geometric_reference": <number>,
+  "all_three_include_reference": <true or false>,
+  "excluded": "<chart labels of excluded techniques>"
+}
+END OF QUESTION

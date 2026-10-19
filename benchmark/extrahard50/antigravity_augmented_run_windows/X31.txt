@@ -1,0 +1,40 @@
+To determine the exact properties of the given surfactant candidate (methyl oleate) based on your provided authoritative rules:
+
+**1. SMILES Analysis & Counting:**
+The SMILES string is `CCCCCCCC/C=C/CCCCCCCC(=O)OC`.
+Breaking it down:
+- `CCCCCCCC`: 8 carbons (1 `CH3` and 7 `CH2`s)
+- `/C=C/`: 2 carbons (2 `vinyl_CH`s, as they are non-carbonyl double-bonded carbons with 1 H each)
+- `CCCCCCCC(=O)`: 8 carbons (7 `CH2`s and 1 carbonyl carbon which counts as NOTHING)
+- `OC`: 1 carbon (1 `CH3` attached to the ester oxygen)
+
+Summarizing the counts:
+- **n_CH3**: 1 + 1 = 2
+- **n_CH2**: 7 + 7 = 14
+- **n_vinyl_CH**: 2
+
+**2. Molecular Formula & Weight:**
+Total atoms:
+- Carbon (C): 2 (CH3) + 14 (CH2) + 2 (vinyl) + 1 (carbonyl) = 19
+- Hydrogen (H): (2 × 3) + (14 × 2) + (2 × 1) = 6 + 28 + 2 = 36
+- Oxygen (O): 2 (from the ester group)
+**Formula:** C19H36O2
+
+Calculating Molecular Weight using given average masses:
+- C: 19 × 12.011 = 228.209
+- H: 36 × 1.008 = 36.288
+- O: 2 × 15.999 = 31.998
+Sum = 296.495 g/mol
+Rounding to 3 significant figures: **296**
+
+**3. Davies HLB:**
+Using the formula: `HLB = 7 + sum(hydrophilic numbers) - sum(lipophilic numbers)`
+- Hydrophilic groups: 1 `ester_free` = 2.4
+- Lipophilic groups: runs over every counted `CH2`/`CH3`/`vinyl_CH`. Total count is 2 + 14 + 2 = 18.
+- Lipophilic sum = 18 × 0.475 = 8.55
+HLB = 7 + 2.4 - 8.55 = **0.85**
+
+**4. Charge:**
+An ester with no ionizable groups is **nonionic**.
+
+FINAL_JSON: {"mw": 296, "formula": "C19H36O2", "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2, "hlb": 0.85, "charge": "nonionic"}

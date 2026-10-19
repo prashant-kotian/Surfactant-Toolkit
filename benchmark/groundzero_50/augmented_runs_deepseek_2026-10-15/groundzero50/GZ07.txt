@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"rh_from_diffusion_nm": 1.57,
+"comment_on_dls_comparison": "The DOSY-NMR diffusion coefficient gives Rh ~1.57 nm, consistent with free surfactant monomer. The independently reported DLS Rh of ~40 nm is ~25x larger and cannot reflect the same species; it most plausibly arises from intensity-weighted detection of a larger, minority aggregate/scattering population in a heterogeneous sample. The two techniques are therefore sensitive to different diffusing species rather than disagreeing about a single particle size."
+}

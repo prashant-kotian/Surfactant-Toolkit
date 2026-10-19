@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"delta_g_mic_at_283.15K": -35.18413379795409,
+"delta_g_mic_at_318.15K": -38.87280551673217,
+"trend": "The free energy of micellization becomes monotonically more negative as temperature increases from 283.15 K to 318.15 K.",
+"reasoning": "The trend does not mirror the U-shaped CMC-temperature data. Although CMC decreases slightly and then rises, delta_g_mic contains an explicit T multiplier as well as ln(X_cmc). Because ln(X_cmc) is negative, increasing temperature drives delta_g_mic more negative; at high temperature the CMC increase makes ln(X_cmc) less negative, but this effect is too small to offset the increasing T factor."
+}

@@ -1,0 +1,2493 @@
+================================================================================
+REPRODUCIBILITY SET -- GZ-51 through GZ-68, each repeated 5x (fresh session each time)
+Run every entry below as its own independent, brand-new chat/session -- no memory
+of any prior attempt at the same question. The 5 repeats of the same question are
+deliberately spread through this file, not grouped, so the sequence itself carries
+no signal linking them.
+================================================================================
+
+
+GZ-51-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Fu et al. 2019 data, the two temperatures closest to the real CMC minimum -- the true enthalpy here is close to zero, making the SIGN genuinely fragile to compute reliably.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at two temperatures for this compound:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Compute the enthalpy of micellization between these two temperatures.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-51-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Fu et al. 2019 data, the two temperatures closest to the real CMC minimum -- the true enthalpy here is close to zero, making the SIGN genuinely fragile to compute reliably.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at two temperatures for this compound:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Compute the enthalpy of micellization between these two temperatures.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-51-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Fu et al. 2019 data, the two temperatures closest to the real CMC minimum -- the true enthalpy here is close to zero, making the SIGN genuinely fragile to compute reliably.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at two temperatures for this compound:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Compute the enthalpy of micellization between these two temperatures.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-51-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Fu et al. 2019 data, the two temperatures closest to the real CMC minimum -- the true enthalpy here is close to zero, making the SIGN genuinely fragile to compute reliably.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at two temperatures for this compound:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Compute the enthalpy of micellization between these two temperatures.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-51-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Fu et al. 2019 data, the two temperatures closest to the real CMC minimum -- the true enthalpy here is close to zero, making the SIGN genuinely fragile to compute reliably.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at two temperatures for this compound:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Compute the enthalpy of micellization between these two temperatures.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-52-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DHPC-SDS system, an ALREADY-OBSERVED close call in this project's own history (both real Claude and GPT manual runs previously chose Rubingh even though EOMMM wins by a modest BIC margin).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Which mixing model best describes this data?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-52-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DHPC-SDS system, an ALREADY-OBSERVED close call in this project's own history (both real Claude and GPT manual runs previously chose Rubingh even though EOMMM wins by a modest BIC margin).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Which mixing model best describes this data?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-52-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DHPC-SDS system, an ALREADY-OBSERVED close call in this project's own history (both real Claude and GPT manual runs previously chose Rubingh even though EOMMM wins by a modest BIC margin).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Which mixing model best describes this data?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-52-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DHPC-SDS system, an ALREADY-OBSERVED close call in this project's own history (both real Claude and GPT manual runs previously chose Rubingh even though EOMMM wins by a modest BIC margin).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Which mixing model best describes this data?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-52-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DHPC-SDS system, an ALREADY-OBSERVED close call in this project's own history (both real Claude and GPT manual runs previously chose Rubingh even though EOMMM wins by a modest BIC margin).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 8.3 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 3.6
+  0.90, 2.8
+  0.80, 1.8
+  0.60, 1.4
+  0.20, 1.3
+
+Which mixing model best describes this data?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-53-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Same real SDS deltaG as GZ-16, fresh deltaH scenarios -- re-tests the documented sign-substitution slip on entropy calculations with new numbers.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -27.271 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independent scenarios:
+  (a) deltaH = -5.0 kJ/mol
+  (b) deltaH = +3.0 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": <number>,
+  "delta_s_scenario_b_J_per_mol_K": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-53-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Same real SDS deltaG as GZ-16, fresh deltaH scenarios -- re-tests the documented sign-substitution slip on entropy calculations with new numbers.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -27.271 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independent scenarios:
+  (a) deltaH = -5.0 kJ/mol
+  (b) deltaH = +3.0 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": <number>,
+  "delta_s_scenario_b_J_per_mol_K": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-53-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Same real SDS deltaG as GZ-16, fresh deltaH scenarios -- re-tests the documented sign-substitution slip on entropy calculations with new numbers.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -27.271 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independent scenarios:
+  (a) deltaH = -5.0 kJ/mol
+  (b) deltaH = +3.0 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": <number>,
+  "delta_s_scenario_b_J_per_mol_K": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-53-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Same real SDS deltaG as GZ-16, fresh deltaH scenarios -- re-tests the documented sign-substitution slip on entropy calculations with new numbers.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -27.271 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independent scenarios:
+  (a) deltaH = -5.0 kJ/mol
+  (b) deltaH = +3.0 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": <number>,
+  "delta_s_scenario_b_J_per_mol_K": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-53-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Same real SDS deltaG as GZ-16, fresh deltaH scenarios -- re-tests the documented sign-substitution slip on entropy calculations with new numbers.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -27.271 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independent scenarios:
+  (a) deltaH = -5.0 kJ/mol
+  (b) deltaH = +3.0 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": <number>,
+  "delta_s_scenario_b_J_per_mol_K": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-54-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DTAB Amin (same as GZ-21), giving a CPP close to the real spherical/cylindrical classification boundary.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail. SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons: Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c; Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c; Critical packing parameter P = V / (a * l_c); Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Compute the critical packing parameter and report the predicted aggregate morphology.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-54-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DTAB Amin (same as GZ-21), giving a CPP close to the real spherical/cylindrical classification boundary.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail. SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons: Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c; Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c; Critical packing parameter P = V / (a * l_c); Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Compute the critical packing parameter and report the predicted aggregate morphology.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-54-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DTAB Amin (same as GZ-21), giving a CPP close to the real spherical/cylindrical classification boundary.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail. SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons: Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c; Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c; Critical packing parameter P = V / (a * l_c); Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Compute the critical packing parameter and report the predicted aggregate morphology.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-54-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DTAB Amin (same as GZ-21), giving a CPP close to the real spherical/cylindrical classification boundary.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail. SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons: Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c; Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c; Critical packing parameter P = V / (a * l_c); Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Compute the critical packing parameter and report the predicted aggregate morphology.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-54-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real DTAB Amin (same as GZ-21), giving a CPP close to the real spherical/cylindrical classification boundary.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail. SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons: Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c; Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c; Critical packing parameter P = V / (a * l_c); Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures.
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Compute the critical packing parameter and report the predicted aggregate morphology.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-55-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, disclosed forward-constructed curve with the Frumkin interaction parameter at a=2.0 exactly -- the literal edge of this project's own "genuine 2D-condensation" significance threshold.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the following concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.05, 66.813
+  0.10, 61.992
+  0.20, 56.986
+  0.40, 51.902
+  0.80, 46.782
+  1.30, 43.185
+  1.90, 40.369
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine whether there is a genuine, physically meaningful surfactant-surfactant lateral interaction at the interface (beyond simple independent adsorption).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "<yes|no|borderline>",
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-55-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, disclosed forward-constructed curve with the Frumkin interaction parameter at a=2.0 exactly -- the literal edge of this project's own "genuine 2D-condensation" significance threshold.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the following concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.05, 66.813
+  0.10, 61.992
+  0.20, 56.986
+  0.40, 51.902
+  0.80, 46.782
+  1.30, 43.185
+  1.90, 40.369
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine whether there is a genuine, physically meaningful surfactant-surfactant lateral interaction at the interface (beyond simple independent adsorption).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "<yes|no|borderline>",
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-55-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, disclosed forward-constructed curve with the Frumkin interaction parameter at a=2.0 exactly -- the literal edge of this project's own "genuine 2D-condensation" significance threshold.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the following concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.05, 66.813
+  0.10, 61.992
+  0.20, 56.986
+  0.40, 51.902
+  0.80, 46.782
+  1.30, 43.185
+  1.90, 40.369
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine whether there is a genuine, physically meaningful surfactant-surfactant lateral interaction at the interface (beyond simple independent adsorption).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "<yes|no|borderline>",
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-55-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, disclosed forward-constructed curve with the Frumkin interaction parameter at a=2.0 exactly -- the literal edge of this project's own "genuine 2D-condensation" significance threshold.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the following concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.05, 66.813
+  0.10, 61.992
+  0.20, 56.986
+  0.40, 51.902
+  0.80, 46.782
+  1.30, 43.185
+  1.90, 40.369
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine whether there is a genuine, physically meaningful surfactant-surfactant lateral interaction at the interface (beyond simple independent adsorption).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "<yes|no|borderline>",
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-55-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, disclosed forward-constructed curve with the Frumkin interaction parameter at a=2.0 exactly -- the literal edge of this project's own "genuine 2D-condensation" significance threshold.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the following concentration-vs-surface-tension data at 298.15 K (concentration in mM, surface tension in mN/m):
+  0.05, 66.813
+  0.10, 61.992
+  0.20, 56.986
+  0.40, 51.902
+  0.80, 46.782
+  1.30, 43.185
+  1.90, 40.369
+Pure-solvent surface tension: 72.0 mN/m.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine whether there is a genuine, physically meaningful surfactant-surfactant lateral interaction at the interface (beyond simple independent adsorption).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "<yes|no|borderline>",
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-56-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real oleic acid at pH almost exactly equal to its own real pKa -- a genuine ~50/50 ionization case this project's own tool has no quantitative model for either.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles.
+
+A real long-chain fatty-acid surfactant (oleic acid, a cis-9-octadecenoic acid) is in aqueous solution at pH 5.0. Its own real pKa in water is approximately 4.8-5.0.
+
+Report its charge type at this specific pH.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-56-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real oleic acid at pH almost exactly equal to its own real pKa -- a genuine ~50/50 ionization case this project's own tool has no quantitative model for either.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles.
+
+A real long-chain fatty-acid surfactant (oleic acid, a cis-9-octadecenoic acid) is in aqueous solution at pH 5.0. Its own real pKa in water is approximately 4.8-5.0.
+
+Report its charge type at this specific pH.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-56-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real oleic acid at pH almost exactly equal to its own real pKa -- a genuine ~50/50 ionization case this project's own tool has no quantitative model for either.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles.
+
+A real long-chain fatty-acid surfactant (oleic acid, a cis-9-octadecenoic acid) is in aqueous solution at pH 5.0. Its own real pKa in water is approximately 4.8-5.0.
+
+Report its charge type at this specific pH.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-56-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real oleic acid at pH almost exactly equal to its own real pKa -- a genuine ~50/50 ionization case this project's own tool has no quantitative model for either.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles.
+
+A real long-chain fatty-acid surfactant (oleic acid, a cis-9-octadecenoic acid) is in aqueous solution at pH 5.0. Its own real pKa in water is approximately 4.8-5.0.
+
+Report its charge type at this specific pH.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-56-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real oleic acid at pH almost exactly equal to its own real pKa -- a genuine ~50/50 ionization case this project's own tool has no quantitative model for either.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles.
+
+A real long-chain fatty-acid surfactant (oleic acid, a cis-9-octadecenoic acid) is in aqueous solution at pH 5.0. Its own real pKa in water is approximately 4.8-5.0.
+
+Report its charge type at this specific pH.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-57-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB curve, real alpha given, counterion-factor convention DELIBERATELY left unspecified -- tests convention consistency across repeated runs, not correctness.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real concentration-vs-surface-tension data at 296.85 K (concentration in mM, surface tension in mN/m):
+  0.0165, 71.60
+  0.0330, 71.56
+  0.0659, 70.38
+  0.1319, 64.78
+  0.2638, 57.34
+  0.5275, 46.13
+  1.055, 36.41
+  2.11, 32.37
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.26.
+
+Analyze this surfactant and report the critical micelle concentration, its pre-CMC adsorption behavior, and the free energy of micellization.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-57-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB curve, real alpha given, counterion-factor convention DELIBERATELY left unspecified -- tests convention consistency across repeated runs, not correctness.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real concentration-vs-surface-tension data at 296.85 K (concentration in mM, surface tension in mN/m):
+  0.0165, 71.60
+  0.0330, 71.56
+  0.0659, 70.38
+  0.1319, 64.78
+  0.2638, 57.34
+  0.5275, 46.13
+  1.055, 36.41
+  2.11, 32.37
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.26.
+
+Analyze this surfactant and report the critical micelle concentration, its pre-CMC adsorption behavior, and the free energy of micellization.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-57-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB curve, real alpha given, counterion-factor convention DELIBERATELY left unspecified -- tests convention consistency across repeated runs, not correctness.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real concentration-vs-surface-tension data at 296.85 K (concentration in mM, surface tension in mN/m):
+  0.0165, 71.60
+  0.0330, 71.56
+  0.0659, 70.38
+  0.1319, 64.78
+  0.2638, 57.34
+  0.5275, 46.13
+  1.055, 36.41
+  2.11, 32.37
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.26.
+
+Analyze this surfactant and report the critical micelle concentration, its pre-CMC adsorption behavior, and the free energy of micellization.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-57-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB curve, real alpha given, counterion-factor convention DELIBERATELY left unspecified -- tests convention consistency across repeated runs, not correctness.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real concentration-vs-surface-tension data at 296.85 K (concentration in mM, surface tension in mN/m):
+  0.0165, 71.60
+  0.0330, 71.56
+  0.0659, 70.38
+  0.1319, 64.78
+  0.2638, 57.34
+  0.5275, 46.13
+  1.055, 36.41
+  2.11, 32.37
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.26.
+
+Analyze this surfactant and report the critical micelle concentration, its pre-CMC adsorption behavior, and the free energy of micellization.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-57-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB curve, real alpha given, counterion-factor convention DELIBERATELY left unspecified -- tests convention consistency across repeated runs, not correctness.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real concentration-vs-surface-tension data at 296.85 K (concentration in mM, surface tension in mN/m):
+  0.0165, 71.60
+  0.0330, 71.56
+  0.0659, 70.38
+  0.1319, 64.78
+  0.2638, 57.34
+  0.5275, 46.13
+  1.055, 36.41
+  2.11, 32.37
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.26.
+
+Analyze this surfactant and report the critical micelle concentration, its pre-CMC adsorption behavior, and the free energy of micellization.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-58-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Hyamine-DTAB system (same as GZ-12), a fresh extrapolation point -- GZ-12's own gold already flags this system as reproducibility-prone.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real cationic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real measured activity coefficients of each component in the mixed micelle, at several real bulk compositions (x1 = micellar mole fraction of component 1; f1, f2 = activity coefficients of components 1 and 2 respectively):
+  x1=0.305, f1=0.394, f2=0.650
+  x1=0.415, f1=0.630, f2=0.500
+  x1=0.483, f1=0.769, f2=0.426
+  x1=0.626, f1=0.970, f2=0.322
+  x1=0.808, f1=1.028, f2=0.286
+
+Analyze the interaction between these two surfactants in their mixed micelle, and predict f1 and f2 at x1=0.15 (a composition not among those measured above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": <number>,
+  "f2_at_x1_0.15": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-58-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Hyamine-DTAB system (same as GZ-12), a fresh extrapolation point -- GZ-12's own gold already flags this system as reproducibility-prone.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real cationic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real measured activity coefficients of each component in the mixed micelle, at several real bulk compositions (x1 = micellar mole fraction of component 1; f1, f2 = activity coefficients of components 1 and 2 respectively):
+  x1=0.305, f1=0.394, f2=0.650
+  x1=0.415, f1=0.630, f2=0.500
+  x1=0.483, f1=0.769, f2=0.426
+  x1=0.626, f1=0.970, f2=0.322
+  x1=0.808, f1=1.028, f2=0.286
+
+Analyze the interaction between these two surfactants in their mixed micelle, and predict f1 and f2 at x1=0.15 (a composition not among those measured above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": <number>,
+  "f2_at_x1_0.15": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-58-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Hyamine-DTAB system (same as GZ-12), a fresh extrapolation point -- GZ-12's own gold already flags this system as reproducibility-prone.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real cationic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real measured activity coefficients of each component in the mixed micelle, at several real bulk compositions (x1 = micellar mole fraction of component 1; f1, f2 = activity coefficients of components 1 and 2 respectively):
+  x1=0.305, f1=0.394, f2=0.650
+  x1=0.415, f1=0.630, f2=0.500
+  x1=0.483, f1=0.769, f2=0.426
+  x1=0.626, f1=0.970, f2=0.322
+  x1=0.808, f1=1.028, f2=0.286
+
+Analyze the interaction between these two surfactants in their mixed micelle, and predict f1 and f2 at x1=0.15 (a composition not among those measured above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": <number>,
+  "f2_at_x1_0.15": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-58-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Hyamine-DTAB system (same as GZ-12), a fresh extrapolation point -- GZ-12's own gold already flags this system as reproducibility-prone.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real cationic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real measured activity coefficients of each component in the mixed micelle, at several real bulk compositions (x1 = micellar mole fraction of component 1; f1, f2 = activity coefficients of components 1 and 2 respectively):
+  x1=0.305, f1=0.394, f2=0.650
+  x1=0.415, f1=0.630, f2=0.500
+  x1=0.483, f1=0.769, f2=0.426
+  x1=0.626, f1=0.970, f2=0.322
+  x1=0.808, f1=1.028, f2=0.286
+
+Analyze the interaction between these two surfactants in their mixed micelle, and predict f1 and f2 at x1=0.15 (a composition not among those measured above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": <number>,
+  "f2_at_x1_0.15": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-58-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real Hyamine-DTAB system (same as GZ-12), a fresh extrapolation point -- GZ-12's own gold already flags this system as reproducibility-prone.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real cationic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Real measured activity coefficients of each component in the mixed micelle, at several real bulk compositions (x1 = micellar mole fraction of component 1; f1, f2 = activity coefficients of components 1 and 2 respectively):
+  x1=0.305, f1=0.394, f2=0.650
+  x1=0.415, f1=0.630, f2=0.500
+  x1=0.483, f1=0.769, f2=0.426
+  x1=0.626, f1=0.970, f2=0.322
+  x1=0.808, f1=1.028, f2=0.286
+
+Analyze the interaction between these two surfactants in their mixed micelle, and predict f1 and f2 at x1=0.15 (a composition not among those measured above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": <number>,
+  "f2_at_x1_0.15": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-59-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB (n=16), same partial-answer mechanic as GZ-19 -- tests whether the model's own discipline against fabricating the missing headgroup volume holds up consistently across repeated attempts.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 16 carbons in its hydrophobic tail and a real monomer molar mass of 364.45 g/mol.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relation for a saturated, unbranched alkyl chain of n_c carbons: tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c.
+
+Analyze this surfactant's partial specific volume in water (v_bar, cm^3/g). Report what you can genuinely determine, and state explicitly what real information (if any) would still be needed to complete the calculation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": <number or null>,
+  "v_bar_full_cm3_per_g": <number or null>,
+  "missing_information": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-59-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB (n=16), same partial-answer mechanic as GZ-19 -- tests whether the model's own discipline against fabricating the missing headgroup volume holds up consistently across repeated attempts.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 16 carbons in its hydrophobic tail and a real monomer molar mass of 364.45 g/mol.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relation for a saturated, unbranched alkyl chain of n_c carbons: tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c.
+
+Analyze this surfactant's partial specific volume in water (v_bar, cm^3/g). Report what you can genuinely determine, and state explicitly what real information (if any) would still be needed to complete the calculation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": <number or null>,
+  "v_bar_full_cm3_per_g": <number or null>,
+  "missing_information": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-59-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB (n=16), same partial-answer mechanic as GZ-19 -- tests whether the model's own discipline against fabricating the missing headgroup volume holds up consistently across repeated attempts.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 16 carbons in its hydrophobic tail and a real monomer molar mass of 364.45 g/mol.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relation for a saturated, unbranched alkyl chain of n_c carbons: tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c.
+
+Analyze this surfactant's partial specific volume in water (v_bar, cm^3/g). Report what you can genuinely determine, and state explicitly what real information (if any) would still be needed to complete the calculation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": <number or null>,
+  "v_bar_full_cm3_per_g": <number or null>,
+  "missing_information": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-59-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB (n=16), same partial-answer mechanic as GZ-19 -- tests whether the model's own discipline against fabricating the missing headgroup volume holds up consistently across repeated attempts.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 16 carbons in its hydrophobic tail and a real monomer molar mass of 364.45 g/mol.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relation for a saturated, unbranched alkyl chain of n_c carbons: tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c.
+
+Analyze this surfactant's partial specific volume in water (v_bar, cm^3/g). Report what you can genuinely determine, and state explicitly what real information (if any) would still be needed to complete the calculation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": <number or null>,
+  "v_bar_full_cm3_per_g": <number or null>,
+  "missing_information": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-59-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real CTAB (n=16), same partial-answer mechanic as GZ-19 -- tests whether the model's own discipline against fabricating the missing headgroup volume holds up consistently across repeated attempts.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 16 carbons in its hydrophobic tail and a real monomer molar mass of 364.45 g/mol.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relation for a saturated, unbranched alkyl chain of n_c carbons: tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c.
+
+Analyze this surfactant's partial specific volume in water (v_bar, cm^3/g). Report what you can genuinely determine, and state explicitly what real information (if any) would still be needed to complete the calculation.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": <number or null>,
+  "v_bar_full_cm3_per_g": <number or null>,
+  "missing_information": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-60-r1
+[reference only, do not paste -- REQUIRES the attached image: GZ-15_chart.png (reused). Same real chart as GZ-15, run again as a dedicated repeated-trial probe -- this project's own GZ-15 gold already documents the real visual bend sits away from the real fitted CMC, a genuinely wide plausible range for an eyeball read.]
+
+>>> PASTE BELOW >>>
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis).
+
+Read directly from the chart: your best estimate of the concentration (in mM) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8B -- REPRODUCIBILITY EXTENSION (GZ-61 through GZ-65)
+================================================================================
+SAME PROTOCOL AS BATCH 8: run EACH of these questions MULTIPLE TIMES (5 repeats
+is a reasonable number) per AI, in a FRESH chat/session each time. Each of
+these 5 was deliberately chosen to test a DIFFERENT real fragility mechanism
+than GZ-51..60 (a near-agreement multi-method convention, an informal
+regression-boundary judgment, a marginal-data-inclusion judgment, a real
+multi-source numeric conflict, and a real historically-observed prefactor
+default failure) -- see groundzero_gold.json's own "why_reproducibility_prone"
+field per question for the specific real mechanism being tested.
+================================================================================
+
+
+GZ-60-r2
+[reference only, do not paste -- REQUIRES the attached image: GZ-15_chart.png (reused). Same real chart as GZ-15, run again as a dedicated repeated-trial probe -- this project's own GZ-15 gold already documents the real visual bend sits away from the real fitted CMC, a genuinely wide plausible range for an eyeball read.]
+
+>>> PASTE BELOW >>>
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis).
+
+Read directly from the chart: your best estimate of the concentration (in mM) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8B -- REPRODUCIBILITY EXTENSION (GZ-61 through GZ-65)
+================================================================================
+SAME PROTOCOL AS BATCH 8: run EACH of these questions MULTIPLE TIMES (5 repeats
+is a reasonable number) per AI, in a FRESH chat/session each time. Each of
+these 5 was deliberately chosen to test a DIFFERENT real fragility mechanism
+than GZ-51..60 (a near-agreement multi-method convention, an informal
+regression-boundary judgment, a marginal-data-inclusion judgment, a real
+multi-source numeric conflict, and a real historically-observed prefactor
+default failure) -- see groundzero_gold.json's own "why_reproducibility_prone"
+field per question for the specific real mechanism being tested.
+================================================================================
+
+
+GZ-60-r3
+[reference only, do not paste -- REQUIRES the attached image: GZ-15_chart.png (reused). Same real chart as GZ-15, run again as a dedicated repeated-trial probe -- this project's own GZ-15 gold already documents the real visual bend sits away from the real fitted CMC, a genuinely wide plausible range for an eyeball read.]
+
+>>> PASTE BELOW >>>
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis).
+
+Read directly from the chart: your best estimate of the concentration (in mM) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8B -- REPRODUCIBILITY EXTENSION (GZ-61 through GZ-65)
+================================================================================
+SAME PROTOCOL AS BATCH 8: run EACH of these questions MULTIPLE TIMES (5 repeats
+is a reasonable number) per AI, in a FRESH chat/session each time. Each of
+these 5 was deliberately chosen to test a DIFFERENT real fragility mechanism
+than GZ-51..60 (a near-agreement multi-method convention, an informal
+regression-boundary judgment, a marginal-data-inclusion judgment, a real
+multi-source numeric conflict, and a real historically-observed prefactor
+default failure) -- see groundzero_gold.json's own "why_reproducibility_prone"
+field per question for the specific real mechanism being tested.
+================================================================================
+
+
+GZ-60-r4
+[reference only, do not paste -- REQUIRES the attached image: GZ-15_chart.png (reused). Same real chart as GZ-15, run again as a dedicated repeated-trial probe -- this project's own GZ-15 gold already documents the real visual bend sits away from the real fitted CMC, a genuinely wide plausible range for an eyeball read.]
+
+>>> PASTE BELOW >>>
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis).
+
+Read directly from the chart: your best estimate of the concentration (in mM) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8B -- REPRODUCIBILITY EXTENSION (GZ-61 through GZ-65)
+================================================================================
+SAME PROTOCOL AS BATCH 8: run EACH of these questions MULTIPLE TIMES (5 repeats
+is a reasonable number) per AI, in a FRESH chat/session each time. Each of
+these 5 was deliberately chosen to test a DIFFERENT real fragility mechanism
+than GZ-51..60 (a near-agreement multi-method convention, an informal
+regression-boundary judgment, a marginal-data-inclusion judgment, a real
+multi-source numeric conflict, and a real historically-observed prefactor
+default failure) -- see groundzero_gold.json's own "why_reproducibility_prone"
+field per question for the specific real mechanism being tested.
+================================================================================
+
+
+GZ-60-r5
+[reference only, do not paste -- REQUIRES the attached image: GZ-15_chart.png (reused). Same real chart as GZ-15, run again as a dedicated repeated-trial probe -- this project's own GZ-15 gold already documents the real visual bend sits away from the real fitted CMC, a genuinely wide plausible range for an eyeball read.]
+
+>>> PASTE BELOW >>>
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis).
+
+Read directly from the chart: your best estimate of the concentration (in mM) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8B -- REPRODUCIBILITY EXTENSION (GZ-61 through GZ-65)
+================================================================================
+SAME PROTOCOL AS BATCH 8: run EACH of these questions MULTIPLE TIMES (5 repeats
+is a reasonable number) per AI, in a FRESH chat/session each time. Each of
+these 5 was deliberately chosen to test a DIFFERENT real fragility mechanism
+than GZ-51..60 (a near-agreement multi-method convention, an informal
+regression-boundary judgment, a marginal-data-inclusion judgment, a real
+multi-source numeric conflict, and a real historically-observed prefactor
+default failure) -- see groundzero_gold.json's own "why_reproducibility_prone"
+field per question for the specific real mechanism being tested.
+================================================================================
+
+
+GZ-61-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real intermediate-zone kappa*a (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, squarely between the Huckel and Smoluchowski limits) -- three real, accurate closed-form treatments exist for this regime and are not named in the question, testing whether repeated attempts consistently pick the same one (or at minimum consistently avoid the two limiting-case traps).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a specific literature value for this system.
+
+A real anionic micelle in aqueous solution has an effective hydrodynamic radius of 2.5 nm. The solution contains a 1:1 background electrolyte at 20 mM ionic strength, at 298.15 K (relative permittivity of water: 78.4).
+
+The micelle's electrophoretic mobility was measured as 2.7 um*cm/(V*s). The solvent viscosity is 0.8903 mPa*s.
+
+Determine the micelle's zeta potential (mV).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "kappa_a": <number>,
+  "zeta_potential_mV": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-61-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real intermediate-zone kappa*a (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, squarely between the Huckel and Smoluchowski limits) -- three real, accurate closed-form treatments exist for this regime and are not named in the question, testing whether repeated attempts consistently pick the same one (or at minimum consistently avoid the two limiting-case traps).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a specific literature value for this system.
+
+A real anionic micelle in aqueous solution has an effective hydrodynamic radius of 2.5 nm. The solution contains a 1:1 background electrolyte at 20 mM ionic strength, at 298.15 K (relative permittivity of water: 78.4).
+
+The micelle's electrophoretic mobility was measured as 2.7 um*cm/(V*s). The solvent viscosity is 0.8903 mPa*s.
+
+Determine the micelle's zeta potential (mV).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "kappa_a": <number>,
+  "zeta_potential_mV": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-61-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real intermediate-zone kappa*a (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, squarely between the Huckel and Smoluchowski limits) -- three real, accurate closed-form treatments exist for this regime and are not named in the question, testing whether repeated attempts consistently pick the same one (or at minimum consistently avoid the two limiting-case traps).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a specific literature value for this system.
+
+A real anionic micelle in aqueous solution has an effective hydrodynamic radius of 2.5 nm. The solution contains a 1:1 background electrolyte at 20 mM ionic strength, at 298.15 K (relative permittivity of water: 78.4).
+
+The micelle's electrophoretic mobility was measured as 2.7 um*cm/(V*s). The solvent viscosity is 0.8903 mPa*s.
+
+Determine the micelle's zeta potential (mV).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "kappa_a": <number>,
+  "zeta_potential_mV": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-61-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real intermediate-zone kappa*a (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, squarely between the Huckel and Smoluchowski limits) -- three real, accurate closed-form treatments exist for this regime and are not named in the question, testing whether repeated attempts consistently pick the same one (or at minimum consistently avoid the two limiting-case traps).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a specific literature value for this system.
+
+A real anionic micelle in aqueous solution has an effective hydrodynamic radius of 2.5 nm. The solution contains a 1:1 background electrolyte at 20 mM ionic strength, at 298.15 K (relative permittivity of water: 78.4).
+
+The micelle's electrophoretic mobility was measured as 2.7 um*cm/(V*s). The solvent viscosity is 0.8903 mPa*s.
+
+Determine the micelle's zeta potential (mV).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "kappa_a": <number>,
+  "zeta_potential_mV": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-61-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real intermediate-zone kappa*a (electrostatics.henry_function's own docstring: real micelles typically land at kappa*a ~0.2-4.2, squarely between the Huckel and Smoluchowski limits) -- three real, accurate closed-form treatments exist for this regime and are not named in the question, testing whether repeated attempts consistently pick the same one (or at minimum consistently avoid the two limiting-case traps).]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a specific literature value for this system.
+
+A real anionic micelle in aqueous solution has an effective hydrodynamic radius of 2.5 nm. The solution contains a 1:1 background electrolyte at 20 mM ionic strength, at 298.15 K (relative permittivity of water: 78.4).
+
+The micelle's electrophoretic mobility was measured as 2.7 um*cm/(V*s). The solvent viscosity is 0.8903 mPa*s.
+
+Determine the micelle's zeta potential (mV).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "kappa_a": <number>,
+  "zeta_potential_mV": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-62-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) real conductometric break-point data -- tests whether informal point-by-point slope reading near the break (rather than a real two-segment regression over all points) reproduces the true CMC and counterion binding degree consistently across repeats.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real 1:1 ionic surfactant's specific conductivity was measured across a concentration series in water at 298.15 K:
+
+Concentration (mM): 1.0, 2.0, 3.0, 4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0, 12.0
+Specific conductivity (mS/cm): 0.692, 1.327, 1.974, 2.605, 3.260, 3.556, 3.903, 4.0275, 4.191, 4.477, 5.072, 5.659
+
+Determine the critical micelle concentration and the counterion binding degree (beta) from this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "counterion_binding_degree": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-62-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) real conductometric break-point data -- tests whether informal point-by-point slope reading near the break (rather than a real two-segment regression over all points) reproduces the true CMC and counterion binding degree consistently across repeats.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real 1:1 ionic surfactant's specific conductivity was measured across a concentration series in water at 298.15 K:
+
+Concentration (mM): 1.0, 2.0, 3.0, 4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0, 12.0
+Specific conductivity (mS/cm): 0.692, 1.327, 1.974, 2.605, 3.260, 3.556, 3.903, 4.0275, 4.191, 4.477, 5.072, 5.659
+
+Determine the critical micelle concentration and the counterion binding degree (beta) from this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "counterion_binding_degree": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-62-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) real conductometric break-point data -- tests whether informal point-by-point slope reading near the break (rather than a real two-segment regression over all points) reproduces the true CMC and counterion binding degree consistently across repeats.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real 1:1 ionic surfactant's specific conductivity was measured across a concentration series in water at 298.15 K:
+
+Concentration (mM): 1.0, 2.0, 3.0, 4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0, 12.0
+Specific conductivity (mS/cm): 0.692, 1.327, 1.974, 2.605, 3.260, 3.556, 3.903, 4.0275, 4.191, 4.477, 5.072, 5.659
+
+Determine the critical micelle concentration and the counterion binding degree (beta) from this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "counterion_binding_degree": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-62-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) real conductometric break-point data -- tests whether informal point-by-point slope reading near the break (rather than a real two-segment regression over all points) reproduces the true CMC and counterion binding degree consistently across repeats.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real 1:1 ionic surfactant's specific conductivity was measured across a concentration series in water at 298.15 K:
+
+Concentration (mM): 1.0, 2.0, 3.0, 4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0, 12.0
+Specific conductivity (mS/cm): 0.692, 1.327, 1.974, 2.605, 3.260, 3.556, 3.903, 4.0275, 4.191, 4.477, 5.072, 5.659
+
+Determine the critical micelle concentration and the counterion binding degree (beta) from this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "counterion_binding_degree": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-62-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) real conductometric break-point data -- tests whether informal point-by-point slope reading near the break (rather than a real two-segment regression over all points) reproduces the true CMC and counterion binding degree consistently across repeats.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real 1:1 ionic surfactant's specific conductivity was measured across a concentration series in water at 298.15 K:
+
+Concentration (mM): 1.0, 2.0, 3.0, 4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 8.0, 10.0, 12.0
+Specific conductivity (mS/cm): 0.692, 1.327, 1.974, 2.605, 3.260, 3.556, 3.903, 4.0275, 4.191, 4.477, 5.072, 5.659
+
+Determine the critical micelle concentration and the counterion binding degree (beta) from this data.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "counterion_binding_degree": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-63-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) steady-state fluorescence quenching series, Turro-Yekta method -- the highest two quencher concentrations show real, deliberate curvature (a documented real SSFQ artifact at high quencher loading), testing whether repeated attempts consistently include or exclude the deviating points.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real fluorescent probe solubilized in a surfactant's micelles was quenched by a series of quencher concentrations, in a solution where the total surfactant concentration is 50 mM and the critical micelle concentration is 8 mM.
+
+Probe fluorescence intensity without quencher (I0): 1.00
+
+Quencher concentration (mM) and probe intensity (I), paired:
+  0.5, 0.4895
+  1.0, 0.2397
+  1.5, 0.1173
+  2.0, 0.0574
+  2.5, 0.0402
+  3.0, 0.0298
+
+The relationship follows ln(I0/I) = N*[Q] / (Ct - cmc), a straight line through the origin.
+
+Determine the micelle aggregation number (N).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "aggregation_number": <number>,
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-63-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) steady-state fluorescence quenching series, Turro-Yekta method -- the highest two quencher concentrations show real, deliberate curvature (a documented real SSFQ artifact at high quencher loading), testing whether repeated attempts consistently include or exclude the deviating points.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real fluorescent probe solubilized in a surfactant's micelles was quenched by a series of quencher concentrations, in a solution where the total surfactant concentration is 50 mM and the critical micelle concentration is 8 mM.
+
+Probe fluorescence intensity without quencher (I0): 1.00
+
+Quencher concentration (mM) and probe intensity (I), paired:
+  0.5, 0.4895
+  1.0, 0.2397
+  1.5, 0.1173
+  2.0, 0.0574
+  2.5, 0.0402
+  3.0, 0.0298
+
+The relationship follows ln(I0/I) = N*[Q] / (Ct - cmc), a straight line through the origin.
+
+Determine the micelle aggregation number (N).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "aggregation_number": <number>,
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-63-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) steady-state fluorescence quenching series, Turro-Yekta method -- the highest two quencher concentrations show real, deliberate curvature (a documented real SSFQ artifact at high quencher loading), testing whether repeated attempts consistently include or exclude the deviating points.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real fluorescent probe solubilized in a surfactant's micelles was quenched by a series of quencher concentrations, in a solution where the total surfactant concentration is 50 mM and the critical micelle concentration is 8 mM.
+
+Probe fluorescence intensity without quencher (I0): 1.00
+
+Quencher concentration (mM) and probe intensity (I), paired:
+  0.5, 0.4895
+  1.0, 0.2397
+  1.5, 0.1173
+  2.0, 0.0574
+  2.5, 0.0402
+  3.0, 0.0298
+
+The relationship follows ln(I0/I) = N*[Q] / (Ct - cmc), a straight line through the origin.
+
+Determine the micelle aggregation number (N).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "aggregation_number": <number>,
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-63-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) steady-state fluorescence quenching series, Turro-Yekta method -- the highest two quencher concentrations show real, deliberate curvature (a documented real SSFQ artifact at high quencher loading), testing whether repeated attempts consistently include or exclude the deviating points.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real fluorescent probe solubilized in a surfactant's micelles was quenched by a series of quencher concentrations, in a solution where the total surfactant concentration is 50 mM and the critical micelle concentration is 8 mM.
+
+Probe fluorescence intensity without quencher (I0): 1.00
+
+Quencher concentration (mM) and probe intensity (I), paired:
+  0.5, 0.4895
+  1.0, 0.2397
+  1.5, 0.1173
+  2.0, 0.0574
+  2.5, 0.0402
+  3.0, 0.0298
+
+The relationship follows ln(I0/I) = N*[Q] / (Ct - cmc), a straight line through the origin.
+
+Determine the micelle aggregation number (N).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "aggregation_number": <number>,
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-63-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed) steady-state fluorescence quenching series, Turro-Yekta method -- the highest two quencher concentrations show real, deliberate curvature (a documented real SSFQ artifact at high quencher loading), testing whether repeated attempts consistently include or exclude the deviating points.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real fluorescent probe solubilized in a surfactant's micelles was quenched by a series of quencher concentrations, in a solution where the total surfactant concentration is 50 mM and the critical micelle concentration is 8 mM.
+
+Probe fluorescence intensity without quencher (I0): 1.00
+
+Quencher concentration (mM) and probe intensity (I), paired:
+  0.5, 0.4895
+  1.0, 0.2397
+  1.5, 0.1173
+  2.0, 0.0574
+  2.5, 0.0402
+  3.0, 0.0298
+
+The relationship follows ln(I0/I) = N*[Q] / (Ct - cmc), a straight line through the origin.
+
+Determine the micelle aggregation number (N).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "aggregation_number": <number>,
+  "reasoning": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-64-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real, independently sourced CTAB CMC values from three different real methods/papers (Oremusova 2012's own conductometric result; Oremusova's own cited 15-source literature average; Chenyakin & Chen 2025's streaming-potential result) -- a genuine, if modest, real 3-way disagreement, testing resolution-strategy consistency across repeats rather than a single number.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using only the real data given below -- do not search the internet for additional values.
+
+Cetyltrimethylammonium bromide (CTAB) is a real, extremely well-studied cationic surfactant.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Three real, independently reported values for its critical micelle concentration in pure water at room temperature are:
+  0.876 mM (a single-lab conductometric measurement)
+  0.904 mM (a literature average across 15 independent sources)
+  0.930 mM (a streaming-potential measurement)
+
+Report a single best-estimate CMC value for CTAB in pure water, and explain how you arrived at it from these three real values.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": <number>,
+  "resolution_method": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-64-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real, independently sourced CTAB CMC values from three different real methods/papers (Oremusova 2012's own conductometric result; Oremusova's own cited 15-source literature average; Chenyakin & Chen 2025's streaming-potential result) -- a genuine, if modest, real 3-way disagreement, testing resolution-strategy consistency across repeats rather than a single number.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using only the real data given below -- do not search the internet for additional values.
+
+Cetyltrimethylammonium bromide (CTAB) is a real, extremely well-studied cationic surfactant.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Three real, independently reported values for its critical micelle concentration in pure water at room temperature are:
+  0.876 mM (a single-lab conductometric measurement)
+  0.904 mM (a literature average across 15 independent sources)
+  0.930 mM (a streaming-potential measurement)
+
+Report a single best-estimate CMC value for CTAB in pure water, and explain how you arrived at it from these three real values.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": <number>,
+  "resolution_method": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-64-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real, independently sourced CTAB CMC values from three different real methods/papers (Oremusova 2012's own conductometric result; Oremusova's own cited 15-source literature average; Chenyakin & Chen 2025's streaming-potential result) -- a genuine, if modest, real 3-way disagreement, testing resolution-strategy consistency across repeats rather than a single number.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using only the real data given below -- do not search the internet for additional values.
+
+Cetyltrimethylammonium bromide (CTAB) is a real, extremely well-studied cationic surfactant.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Three real, independently reported values for its critical micelle concentration in pure water at room temperature are:
+  0.876 mM (a single-lab conductometric measurement)
+  0.904 mM (a literature average across 15 independent sources)
+  0.930 mM (a streaming-potential measurement)
+
+Report a single best-estimate CMC value for CTAB in pure water, and explain how you arrived at it from these three real values.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": <number>,
+  "resolution_method": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-64-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real, independently sourced CTAB CMC values from three different real methods/papers (Oremusova 2012's own conductometric result; Oremusova's own cited 15-source literature average; Chenyakin & Chen 2025's streaming-potential result) -- a genuine, if modest, real 3-way disagreement, testing resolution-strategy consistency across repeats rather than a single number.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using only the real data given below -- do not search the internet for additional values.
+
+Cetyltrimethylammonium bromide (CTAB) is a real, extremely well-studied cationic surfactant.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Three real, independently reported values for its critical micelle concentration in pure water at room temperature are:
+  0.876 mM (a single-lab conductometric measurement)
+  0.904 mM (a literature average across 15 independent sources)
+  0.930 mM (a streaming-potential measurement)
+
+Report a single best-estimate CMC value for CTAB in pure water, and explain how you arrived at it from these three real values.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": <number>,
+  "resolution_method": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-64-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real, independently sourced CTAB CMC values from three different real methods/papers (Oremusova 2012's own conductometric result; Oremusova's own cited 15-source literature average; Chenyakin & Chen 2025's streaming-potential result) -- a genuine, if modest, real 3-way disagreement, testing resolution-strategy consistency across repeats rather than a single number.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles using only the real data given below -- do not search the internet for additional values.
+
+Cetyltrimethylammonium bromide (CTAB) is a real, extremely well-studied cationic surfactant.
+
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Three real, independently reported values for its critical micelle concentration in pure water at room temperature are:
+  0.876 mM (a single-lab conductometric measurement)
+  0.904 mM (a literature average across 15 independent sources)
+  0.930 mM (a streaming-potential measurement)
+
+Report a single best-estimate CMC value for CTAB in pure water, and explain how you arrived at it from these three real values.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": <number>,
+  "resolution_method": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-65-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed), real excess-electrolyte condition explicitly stated once in the setup -- this library's own gibbs_gamma_max() docstring records a real historical failure (unaugmented Claude Opus 4.8 silently defaulted to the no-added-salt prefactor 5/6 times even when told otherwise); the two candidate prefactors differ by exactly 2x, a large and easily detectable divergence.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real anionic surfactant's pre-CMC surface tension was measured as a function of concentration in an aqueous solution containing 0.1 M NaCl as a background electrolyte, at 298.15 K. The fitted slope of surface tension (mN/m) versus ln(concentration) in the premicellar region is -18.4 mN/m.
+
+Determine the maximum surface excess concentration (Gamma_max, mol/m^2) and the minimum area per surfactant molecule (A_min, nm^2) at the interface.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8C -- CROSS-PROPERTY COMBINATION REPRODUCIBILITY (GZ-66 through GZ-68)
+================================================================================
+SAME PROTOCOL AS BATCH 8/8B: run EACH of these questions MULTIPLE TIMES (5
+repeats is a reasonable number) per AI, in a FRESH chat/session each time.
+Unlike GZ-51..65 (each testing ONE technique's own fragility point), these 3
+each deliberately CHAIN TWO OR THREE DIFFERENT toolkit techniques together in
+one question -- a permutation/combination across the toolkit's property
+space, testing whether multi-step reasoning stays reproducible when it must
+correctly execute several real calculations in sequence and then synthesize
+them, not just recall or apply one formula. See groundzero_gold.json's own
+"why_reproducibility_prone" field per question for the specific real mechanism.
+================================================================================
+
+
+GZ-65-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed), real excess-electrolyte condition explicitly stated once in the setup -- this library's own gibbs_gamma_max() docstring records a real historical failure (unaugmented Claude Opus 4.8 silently defaulted to the no-added-salt prefactor 5/6 times even when told otherwise); the two candidate prefactors differ by exactly 2x, a large and easily detectable divergence.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real anionic surfactant's pre-CMC surface tension was measured as a function of concentration in an aqueous solution containing 0.1 M NaCl as a background electrolyte, at 298.15 K. The fitted slope of surface tension (mN/m) versus ln(concentration) in the premicellar region is -18.4 mN/m.
+
+Determine the maximum surface excess concentration (Gamma_max, mol/m^2) and the minimum area per surfactant molecule (A_min, nm^2) at the interface.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8C -- CROSS-PROPERTY COMBINATION REPRODUCIBILITY (GZ-66 through GZ-68)
+================================================================================
+SAME PROTOCOL AS BATCH 8/8B: run EACH of these questions MULTIPLE TIMES (5
+repeats is a reasonable number) per AI, in a FRESH chat/session each time.
+Unlike GZ-51..65 (each testing ONE technique's own fragility point), these 3
+each deliberately CHAIN TWO OR THREE DIFFERENT toolkit techniques together in
+one question -- a permutation/combination across the toolkit's property
+space, testing whether multi-step reasoning stays reproducible when it must
+correctly execute several real calculations in sequence and then synthesize
+them, not just recall or apply one formula. See groundzero_gold.json's own
+"why_reproducibility_prone" field per question for the specific real mechanism.
+================================================================================
+
+
+GZ-65-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed), real excess-electrolyte condition explicitly stated once in the setup -- this library's own gibbs_gamma_max() docstring records a real historical failure (unaugmented Claude Opus 4.8 silently defaulted to the no-added-salt prefactor 5/6 times even when told otherwise); the two candidate prefactors differ by exactly 2x, a large and easily detectable divergence.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real anionic surfactant's pre-CMC surface tension was measured as a function of concentration in an aqueous solution containing 0.1 M NaCl as a background electrolyte, at 298.15 K. The fitted slope of surface tension (mN/m) versus ln(concentration) in the premicellar region is -18.4 mN/m.
+
+Determine the maximum surface excess concentration (Gamma_max, mol/m^2) and the minimum area per surfactant molecule (A_min, nm^2) at the interface.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8C -- CROSS-PROPERTY COMBINATION REPRODUCIBILITY (GZ-66 through GZ-68)
+================================================================================
+SAME PROTOCOL AS BATCH 8/8B: run EACH of these questions MULTIPLE TIMES (5
+repeats is a reasonable number) per AI, in a FRESH chat/session each time.
+Unlike GZ-51..65 (each testing ONE technique's own fragility point), these 3
+each deliberately CHAIN TWO OR THREE DIFFERENT toolkit techniques together in
+one question -- a permutation/combination across the toolkit's property
+space, testing whether multi-step reasoning stays reproducible when it must
+correctly execute several real calculations in sequence and then synthesize
+them, not just recall or apply one formula. See groundzero_gold.json's own
+"why_reproducibility_prone" field per question for the specific real mechanism.
+================================================================================
+
+
+GZ-65-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed), real excess-electrolyte condition explicitly stated once in the setup -- this library's own gibbs_gamma_max() docstring records a real historical failure (unaugmented Claude Opus 4.8 silently defaulted to the no-added-salt prefactor 5/6 times even when told otherwise); the two candidate prefactors differ by exactly 2x, a large and easily detectable divergence.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real anionic surfactant's pre-CMC surface tension was measured as a function of concentration in an aqueous solution containing 0.1 M NaCl as a background electrolyte, at 298.15 K. The fitted slope of surface tension (mN/m) versus ln(concentration) in the premicellar region is -18.4 mN/m.
+
+Determine the maximum surface excess concentration (Gamma_max, mol/m^2) and the minimum area per surfactant molecule (A_min, nm^2) at the interface.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8C -- CROSS-PROPERTY COMBINATION REPRODUCIBILITY (GZ-66 through GZ-68)
+================================================================================
+SAME PROTOCOL AS BATCH 8/8B: run EACH of these questions MULTIPLE TIMES (5
+repeats is a reasonable number) per AI, in a FRESH chat/session each time.
+Unlike GZ-51..65 (each testing ONE technique's own fragility point), these 3
+each deliberately CHAIN TWO OR THREE DIFFERENT toolkit techniques together in
+one question -- a permutation/combination across the toolkit's property
+space, testing whether multi-step reasoning stays reproducible when it must
+correctly execute several real calculations in sequence and then synthesize
+them, not just recall or apply one formula. See groundzero_gold.json's own
+"why_reproducibility_prone" field per question for the specific real mechanism.
+================================================================================
+
+
+GZ-65-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Forward-constructed (disclosed), real excess-electrolyte condition explicitly stated once in the setup -- this library's own gibbs_gamma_max() docstring records a real historical failure (unaugmented Claude Opus 4.8 silently defaulted to the no-added-salt prefactor 5/6 times even when told otherwise); the two candidate prefactors differ by exactly 2x, a large and easily detectable divergence.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+A real anionic surfactant's pre-CMC surface tension was measured as a function of concentration in an aqueous solution containing 0.1 M NaCl as a background electrolyte, at 298.15 K. The fitted slope of surface tension (mN/m) versus ln(concentration) in the premicellar region is -18.4 mN/m.
+
+Determine the maximum surface excess concentration (Gamma_max, mol/m^2) and the minimum area per surfactant molecule (A_min, nm^2) at the interface.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+================================================================================
+BATCH 8C -- CROSS-PROPERTY COMBINATION REPRODUCIBILITY (GZ-66 through GZ-68)
+================================================================================
+SAME PROTOCOL AS BATCH 8/8B: run EACH of these questions MULTIPLE TIMES (5
+repeats is a reasonable number) per AI, in a FRESH chat/session each time.
+Unlike GZ-51..65 (each testing ONE technique's own fragility point), these 3
+each deliberately CHAIN TWO OR THREE DIFFERENT toolkit techniques together in
+one question -- a permutation/combination across the toolkit's property
+space, testing whether multi-step reasoning stays reproducible when it must
+correctly execute several real calculations in sequence and then synthesize
+them, not just recall or apply one formula. See groundzero_gold.json's own
+"why_reproducibility_prone" field per question for the specific real mechanism.
+================================================================================
+
+
+GZ-66-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Amin=49.37 A^2 (Sachin et al. 2019, PMC6458362, already validated in this project to reproduce the paper's own CPP within 1.2%) combined with SDS's real Davies HLB -- tests whether repeated attempts correctly chain BOTH independent frameworks (CPP geometry + Davies group-additivity) and recognize Davies' well-known ionic-surfactant scale-overflow quirk rather than treating an out-of-0-20-range number naively.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real, well-characterized anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2.
+
+Using Tanford's standard empirical relations for a saturated 12-carbon alkyl chain (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom), compute the critical packing parameter and the predicted aggregate morphology.
+
+Separately, using Davies' group-contribution method (HLB = 7 + sum of hydrophilic group numbers - sum of lipophilic group numbers), compute the HLB for this molecule. Treat it as one sulfate ester salt headgroup (-OSO3Na, hydrophilic group number 38.6) plus eleven -CH2- groups and one terminal -CH3 group (each a lipophilic group number of 0.475).
+
+Discuss whether these two independent structural descriptors (the packing parameter and the HLB value) are consistent with each other for this molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>",
+  "hlb_davies": <number>,
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-66-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Amin=49.37 A^2 (Sachin et al. 2019, PMC6458362, already validated in this project to reproduce the paper's own CPP within 1.2%) combined with SDS's real Davies HLB -- tests whether repeated attempts correctly chain BOTH independent frameworks (CPP geometry + Davies group-additivity) and recognize Davies' well-known ionic-surfactant scale-overflow quirk rather than treating an out-of-0-20-range number naively.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real, well-characterized anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2.
+
+Using Tanford's standard empirical relations for a saturated 12-carbon alkyl chain (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom), compute the critical packing parameter and the predicted aggregate morphology.
+
+Separately, using Davies' group-contribution method (HLB = 7 + sum of hydrophilic group numbers - sum of lipophilic group numbers), compute the HLB for this molecule. Treat it as one sulfate ester salt headgroup (-OSO3Na, hydrophilic group number 38.6) plus eleven -CH2- groups and one terminal -CH3 group (each a lipophilic group number of 0.475).
+
+Discuss whether these two independent structural descriptors (the packing parameter and the HLB value) are consistent with each other for this molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>",
+  "hlb_davies": <number>,
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-66-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Amin=49.37 A^2 (Sachin et al. 2019, PMC6458362, already validated in this project to reproduce the paper's own CPP within 1.2%) combined with SDS's real Davies HLB -- tests whether repeated attempts correctly chain BOTH independent frameworks (CPP geometry + Davies group-additivity) and recognize Davies' well-known ionic-surfactant scale-overflow quirk rather than treating an out-of-0-20-range number naively.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real, well-characterized anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2.
+
+Using Tanford's standard empirical relations for a saturated 12-carbon alkyl chain (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom), compute the critical packing parameter and the predicted aggregate morphology.
+
+Separately, using Davies' group-contribution method (HLB = 7 + sum of hydrophilic group numbers - sum of lipophilic group numbers), compute the HLB for this molecule. Treat it as one sulfate ester salt headgroup (-OSO3Na, hydrophilic group number 38.6) plus eleven -CH2- groups and one terminal -CH3 group (each a lipophilic group number of 0.475).
+
+Discuss whether these two independent structural descriptors (the packing parameter and the HLB value) are consistent with each other for this molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>",
+  "hlb_davies": <number>,
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-66-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Amin=49.37 A^2 (Sachin et al. 2019, PMC6458362, already validated in this project to reproduce the paper's own CPP within 1.2%) combined with SDS's real Davies HLB -- tests whether repeated attempts correctly chain BOTH independent frameworks (CPP geometry + Davies group-additivity) and recognize Davies' well-known ionic-surfactant scale-overflow quirk rather than treating an out-of-0-20-range number naively.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real, well-characterized anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2.
+
+Using Tanford's standard empirical relations for a saturated 12-carbon alkyl chain (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom), compute the critical packing parameter and the predicted aggregate morphology.
+
+Separately, using Davies' group-contribution method (HLB = 7 + sum of hydrophilic group numbers - sum of lipophilic group numbers), compute the HLB for this molecule. Treat it as one sulfate ester salt headgroup (-OSO3Na, hydrophilic group number 38.6) plus eleven -CH2- groups and one terminal -CH3 group (each a lipophilic group number of 0.475).
+
+Discuss whether these two independent structural descriptors (the packing parameter and the HLB value) are consistent with each other for this molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>",
+  "hlb_davies": <number>,
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-66-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Amin=49.37 A^2 (Sachin et al. 2019, PMC6458362, already validated in this project to reproduce the paper's own CPP within 1.2%) combined with SDS's real Davies HLB -- tests whether repeated attempts correctly chain BOTH independent frameworks (CPP geometry + Davies group-additivity) and recognize Davies' well-known ionic-surfactant scale-overflow quirk rather than treating an out-of-0-20-range number naively.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real, well-characterized anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2.
+
+Using Tanford's standard empirical relations for a saturated 12-carbon alkyl chain (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom), compute the critical packing parameter and the predicted aggregate morphology.
+
+Separately, using Davies' group-contribution method (HLB = 7 + sum of hydrophilic group numbers - sum of lipophilic group numbers), compute the HLB for this molecule. Treat it as one sulfate ester salt headgroup (-OSO3Na, hydrophilic group number 38.6) plus eleven -CH2- groups and one terminal -CH3 group (each a lipophilic group number of 0.475).
+
+Discuss whether these two independent structural descriptors (the packing parameter and the HLB value) are consistent with each other for this molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<string>",
+  "hlb_davies": <number>,
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-67-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Cc=-2.63 (Leng & Acosta 2023, already used/validated in this project for GZ-46) combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales et al. 2001, EPR method) -- tests whether repeated attempts correctly recognize Cc is already an empirical, holistic descriptor derived from real HLD-scan data on this actual surfactant, not a separate theoretical prediction that must independently agree or disagree with beta (a real property measured by a completely unrelated technique), rather than treating the two as two independent forecasts to reconcile.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Its real characteristic curvature is Cc = -2.63. For anionic surfactants, the EACN-scaling constant is k = 0.16.
+
+Using the ionic-surfactant Hydrophilic-Lipophilic Difference equation, HLD = ln(S) - k*EACN - alpha*deltaT + Cc (with alpha = 0.01 per K and deltaT = 0 at the 298.15 K reference), determine the Winsor type for this surfactant with toluene (EACN = 0) at 5% NaCl-equivalent aqueous salinity (S = 5).
+
+Separately, this same surfactant's real counterion binding degree (the fraction of counterions bound to the micelle surface, from an independent conductivity/EPR-type measurement) is beta = 0.728.
+
+Discuss whether this counterion binding degree is consistent with, or provides independent support for, the Winsor-type prediction above.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "hld_value": <number>,
+  "winsor_type": "<string>",
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-67-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Cc=-2.63 (Leng & Acosta 2023, already used/validated in this project for GZ-46) combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales et al. 2001, EPR method) -- tests whether repeated attempts correctly recognize Cc is already an empirical, holistic descriptor derived from real HLD-scan data on this actual surfactant, not a separate theoretical prediction that must independently agree or disagree with beta (a real property measured by a completely unrelated technique), rather than treating the two as two independent forecasts to reconcile.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Its real characteristic curvature is Cc = -2.63. For anionic surfactants, the EACN-scaling constant is k = 0.16.
+
+Using the ionic-surfactant Hydrophilic-Lipophilic Difference equation, HLD = ln(S) - k*EACN - alpha*deltaT + Cc (with alpha = 0.01 per K and deltaT = 0 at the 298.15 K reference), determine the Winsor type for this surfactant with toluene (EACN = 0) at 5% NaCl-equivalent aqueous salinity (S = 5).
+
+Separately, this same surfactant's real counterion binding degree (the fraction of counterions bound to the micelle surface, from an independent conductivity/EPR-type measurement) is beta = 0.728.
+
+Discuss whether this counterion binding degree is consistent with, or provides independent support for, the Winsor-type prediction above.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "hld_value": <number>,
+  "winsor_type": "<string>",
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-67-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Cc=-2.63 (Leng & Acosta 2023, already used/validated in this project for GZ-46) combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales et al. 2001, EPR method) -- tests whether repeated attempts correctly recognize Cc is already an empirical, holistic descriptor derived from real HLD-scan data on this actual surfactant, not a separate theoretical prediction that must independently agree or disagree with beta (a real property measured by a completely unrelated technique), rather than treating the two as two independent forecasts to reconcile.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Its real characteristic curvature is Cc = -2.63. For anionic surfactants, the EACN-scaling constant is k = 0.16.
+
+Using the ionic-surfactant Hydrophilic-Lipophilic Difference equation, HLD = ln(S) - k*EACN - alpha*deltaT + Cc (with alpha = 0.01 per K and deltaT = 0 at the 298.15 K reference), determine the Winsor type for this surfactant with toluene (EACN = 0) at 5% NaCl-equivalent aqueous salinity (S = 5).
+
+Separately, this same surfactant's real counterion binding degree (the fraction of counterions bound to the micelle surface, from an independent conductivity/EPR-type measurement) is beta = 0.728.
+
+Discuss whether this counterion binding degree is consistent with, or provides independent support for, the Winsor-type prediction above.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "hld_value": <number>,
+  "winsor_type": "<string>",
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-67-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Cc=-2.63 (Leng & Acosta 2023, already used/validated in this project for GZ-46) combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales et al. 2001, EPR method) -- tests whether repeated attempts correctly recognize Cc is already an empirical, holistic descriptor derived from real HLD-scan data on this actual surfactant, not a separate theoretical prediction that must independently agree or disagree with beta (a real property measured by a completely unrelated technique), rather than treating the two as two independent forecasts to reconcile.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Its real characteristic curvature is Cc = -2.63. For anionic surfactants, the EACN-scaling constant is k = 0.16.
+
+Using the ionic-surfactant Hydrophilic-Lipophilic Difference equation, HLD = ln(S) - k*EACN - alpha*deltaT + Cc (with alpha = 0.01 per K and deltaT = 0 at the 298.15 K reference), determine the Winsor type for this surfactant with toluene (EACN = 0) at 5% NaCl-equivalent aqueous salinity (S = 5).
+
+Separately, this same surfactant's real counterion binding degree (the fraction of counterions bound to the micelle surface, from an independent conductivity/EPR-type measurement) is beta = 0.728.
+
+Discuss whether this counterion binding degree is consistent with, or provides independent support for, the Winsor-type prediction above.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "hld_value": <number>,
+  "winsor_type": "<string>",
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-67-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. Real SDS Cc=-2.63 (Leng & Acosta 2023, already used/validated in this project for GZ-46) combined with SDS's real, independently-measured counterion binding degree beta=0.728 (Bales et al. 2001, EPR method) -- tests whether repeated attempts correctly recognize Cc is already an empirical, holistic descriptor derived from real HLD-scan data on this actual surfactant, not a separate theoretical prediction that must independently agree or disagree with beta (a real property measured by a completely unrelated technique), rather than treating the two as two independent forecasts to reconcile.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this system.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Its real characteristic curvature is Cc = -2.63. For anionic surfactants, the EACN-scaling constant is k = 0.16.
+
+Using the ionic-surfactant Hydrophilic-Lipophilic Difference equation, HLD = ln(S) - k*EACN - alpha*deltaT + Cc (with alpha = 0.01 per K and deltaT = 0 at the 298.15 K reference), determine the Winsor type for this surfactant with toluene (EACN = 0) at 5% NaCl-equivalent aqueous salinity (S = 5).
+
+Separately, this same surfactant's real counterion binding degree (the fraction of counterions bound to the micelle surface, from an independent conductivity/EPR-type measurement) is beta = 0.728.
+
+Discuss whether this counterion binding degree is consistent with, or provides independent support for, the Winsor-type prediction above.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "hld_value": <number>,
+  "winsor_type": "<string>",
+  "consistency_discussion": "<string>"
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-68-r1
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin 2019) -> CPP -> real Bales 1998 aggregation number N=63 (salt-free 69mM SDS) -> ellipsoid-of-revolution axial ratio -> real Sutherland 2009 Taylor-dispersion diffusion coefficient -> Perrin-corrected hydrodynamic radius. Tests whether repeated attempts correctly execute the full real chain (not skip a step or substitute an assumed axial ratio) and report the real, honestly SMALL correction this specific chain produces, rather than assuming "cylindrical" morphology automatically implies a large shape correction.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant, 12-carbon tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2. Using Tanford's standard empirical relations (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom, n_c = 12), compute the critical packing parameter.
+
+A real, independently measured aggregation number for this system is N = 63.
+
+Model the hydrophobic core of this micelle as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length l_c, with the major semi-axis determined by real volume conservation (core volume = N times the tail volume = (4/3)*pi*(major semi-axis)*(minor semi-axis)^2). Compute the resulting axial ratio (major/minor semi-axis).
+
+A real Taylor-dispersion-measured diffusion coefficient for this system is D = 0.093e-5 cm^2/s, in water (viscosity 0.8903 mPa*s) at 298.15 K.
+
+Compute the true (shape-corrected) hydrodynamic radius using the Perrin friction factor for this axial ratio, and compare it to the naive (uncorrected, sphere-assumed) Stokes-Einstein hydrodynamic radius.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "axial_ratio": <number>,
+  "r_h_naive_nm": <number>,
+  "r_h_perrin_corrected_nm": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-68-r2
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin 2019) -> CPP -> real Bales 1998 aggregation number N=63 (salt-free 69mM SDS) -> ellipsoid-of-revolution axial ratio -> real Sutherland 2009 Taylor-dispersion diffusion coefficient -> Perrin-corrected hydrodynamic radius. Tests whether repeated attempts correctly execute the full real chain (not skip a step or substitute an assumed axial ratio) and report the real, honestly SMALL correction this specific chain produces, rather than assuming "cylindrical" morphology automatically implies a large shape correction.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant, 12-carbon tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2. Using Tanford's standard empirical relations (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom, n_c = 12), compute the critical packing parameter.
+
+A real, independently measured aggregation number for this system is N = 63.
+
+Model the hydrophobic core of this micelle as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length l_c, with the major semi-axis determined by real volume conservation (core volume = N times the tail volume = (4/3)*pi*(major semi-axis)*(minor semi-axis)^2). Compute the resulting axial ratio (major/minor semi-axis).
+
+A real Taylor-dispersion-measured diffusion coefficient for this system is D = 0.093e-5 cm^2/s, in water (viscosity 0.8903 mPa*s) at 298.15 K.
+
+Compute the true (shape-corrected) hydrodynamic radius using the Perrin friction factor for this axial ratio, and compare it to the naive (uncorrected, sphere-assumed) Stokes-Einstein hydrodynamic radius.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "axial_ratio": <number>,
+  "r_h_naive_nm": <number>,
+  "r_h_perrin_corrected_nm": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-68-r3
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin 2019) -> CPP -> real Bales 1998 aggregation number N=63 (salt-free 69mM SDS) -> ellipsoid-of-revolution axial ratio -> real Sutherland 2009 Taylor-dispersion diffusion coefficient -> Perrin-corrected hydrodynamic radius. Tests whether repeated attempts correctly execute the full real chain (not skip a step or substitute an assumed axial ratio) and report the real, honestly SMALL correction this specific chain produces, rather than assuming "cylindrical" morphology automatically implies a large shape correction.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant, 12-carbon tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2. Using Tanford's standard empirical relations (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom, n_c = 12), compute the critical packing parameter.
+
+A real, independently measured aggregation number for this system is N = 63.
+
+Model the hydrophobic core of this micelle as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length l_c, with the major semi-axis determined by real volume conservation (core volume = N times the tail volume = (4/3)*pi*(major semi-axis)*(minor semi-axis)^2). Compute the resulting axial ratio (major/minor semi-axis).
+
+A real Taylor-dispersion-measured diffusion coefficient for this system is D = 0.093e-5 cm^2/s, in water (viscosity 0.8903 mPa*s) at 298.15 K.
+
+Compute the true (shape-corrected) hydrodynamic radius using the Perrin friction factor for this axial ratio, and compare it to the naive (uncorrected, sphere-assumed) Stokes-Einstein hydrodynamic radius.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "axial_ratio": <number>,
+  "r_h_naive_nm": <number>,
+  "r_h_perrin_corrected_nm": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-68-r4
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin 2019) -> CPP -> real Bales 1998 aggregation number N=63 (salt-free 69mM SDS) -> ellipsoid-of-revolution axial ratio -> real Sutherland 2009 Taylor-dispersion diffusion coefficient -> Perrin-corrected hydrodynamic radius. Tests whether repeated attempts correctly execute the full real chain (not skip a step or substitute an assumed axial ratio) and report the real, honestly SMALL correction this specific chain produces, rather than assuming "cylindrical" morphology automatically implies a large shape correction.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant, 12-carbon tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2. Using Tanford's standard empirical relations (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom, n_c = 12), compute the critical packing parameter.
+
+A real, independently measured aggregation number for this system is N = 63.
+
+Model the hydrophobic core of this micelle as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length l_c, with the major semi-axis determined by real volume conservation (core volume = N times the tail volume = (4/3)*pi*(major semi-axis)*(minor semi-axis)^2). Compute the resulting axial ratio (major/minor semi-axis).
+
+A real Taylor-dispersion-measured diffusion coefficient for this system is D = 0.093e-5 cm^2/s, in water (viscosity 0.8903 mPa*s) at 298.15 K.
+
+Compute the true (shape-corrected) hydrodynamic radius using the Perrin friction factor for this axial ratio, and compare it to the naive (uncorrected, sphere-assumed) Stokes-Einstein hydrodynamic radius.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "axial_ratio": <number>,
+  "r_h_naive_nm": <number>,
+  "r_h_perrin_corrected_nm": <number>
+}
+<<< PASTE ABOVE <<<
+
+
+GZ-68-r5
+[reference only, do not paste -- see groundzero_gold.json for full source detail. A real, chained 3-technique combination: SDS's real Amin=49.37 A^2 (Sachin 2019) -> CPP -> real Bales 1998 aggregation number N=63 (salt-free 69mM SDS) -> ellipsoid-of-revolution axial ratio -> real Sutherland 2009 Taylor-dispersion diffusion coefficient -> Perrin-corrected hydrodynamic radius. Tests whether repeated attempts correctly execute the full real chain (not skip a step or substitute an assumed axial ratio) and report the real, honestly SMALL correction this specific chain produces, rather than assuming "cylindrical" morphology automatically implies a large shape correction.]
+
+>>> PASTE BELOW >>>
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+Sodium dodecyl sulfate (SDS) is a real anionic surfactant, 12-carbon tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real measured minimum area per molecule for SDS at 298.15 K is 49.37 A^2. Using Tanford's standard empirical relations (tail volume V = 27.4 + 26.9*n_c cubic Angstrom; critical chain length l_c = 1.5 + 1.265*n_c Angstrom, n_c = 12), compute the critical packing parameter.
+
+A real, independently measured aggregation number for this system is N = 63.
+
+Model the hydrophobic core of this micelle as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length l_c, with the major semi-axis determined by real volume conservation (core volume = N times the tail volume = (4/3)*pi*(major semi-axis)*(minor semi-axis)^2). Compute the resulting axial ratio (major/minor semi-axis).
+
+A real Taylor-dispersion-measured diffusion coefficient for this system is D = 0.093e-5 cm^2/s, in water (viscosity 0.8903 mPa*s) at 298.15 K.
+
+Compute the true (shape-corrected) hydrodynamic radius using the Perrin friction factor for this axial ratio, and compare it to the naive (uncorrected, sphere-assumed) Stokes-Einstein hydrodynamic radius.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "axial_ratio": <number>,
+  "r_h_naive_nm": <number>,
+  "r_h_perrin_corrected_nm": <number>
+}
+<<< PASTE ABOVE <<<
+

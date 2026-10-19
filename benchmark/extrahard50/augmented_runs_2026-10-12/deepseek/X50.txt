@@ -1,0 +1,1 @@
+FINAL_JSON: {"cmc_kinetic_mM": 0.26263, "Nagg_rounded": 8, "dG_kinetic": -34.840, "convergence": "converged"}

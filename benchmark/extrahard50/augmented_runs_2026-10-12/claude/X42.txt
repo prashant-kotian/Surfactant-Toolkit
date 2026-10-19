@@ -1,0 +1,15 @@
+I'll compute this with the pinned protocol exactly.
+
+Computed per the pinned protocol. The RSS-minimizing split is decisive: k=6 gives RSS ≈ 2.09, while every other valid split exceeds 200 — the break sits unambiguously between the declining segment (ending at c = 3.8 mM) and the plateau (starting at c = 5.2 mM).
+
+**Results**
+
+1. **cmc_mM: 4.4452** — midpoint x = (log₁₀3.8 + log₁₀5.2)/2 = (0.5798 + 0.7160)/2 = 0.6479 → 10^0.6479
+2. **rel_diff_L1: 7.77%** — |4.10 − 4.4452| / 4.4452 × 100
+3. **rel_diff_L2: 55.22%** — |6.90 − 4.4452| / 4.4452 × 100
+4. **closer: L1** (7.77% < 55.22%)
+5. **either_agrees_15pct: true** — L1 is within 15% (7.77% ≤ 15%); L2 is not
+
+The recent review (L1 = 4.10 mM) matches the computed break well; the older catalog value (L2 = 6.90 mM) sits far out on the plateau side and is not supported by the isotherm.
+
+FINAL_JSON: {"cmc_mM": 4.4452, "rel_diff_L1": 7.77, "rel_diff_L2": 55.22, "closer": "L1", "either_agrees_15pct": true}

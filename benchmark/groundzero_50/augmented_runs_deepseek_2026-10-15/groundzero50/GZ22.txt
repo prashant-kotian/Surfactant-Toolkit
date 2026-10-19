@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"compound1_charge_type": "cationic (permanently charged quaternary ammonium; pH-independent)",
+"compound1_hlb_via_cc": 21.64,
+"compound2_charge_type": "cationic at pH 7.0 (protonated primary amine RNH3+; intrinsically pH-dependent/conditional cationic surfactant)",
+"compound2_hlb_via_cc": null,
+"notes": "Compound 1 HLB = -0.27*(-5.7)+20.1 = 21.64. Compound 2 has no Cc value supplied in the prompt, and per instructions no external/training value was used, so its HLB via the given regression cannot be genuinely determined. MCP charge-classification tools failed repeatedly due to SMILES characters (N+(C)C.[Br-]) being corrupted in transit; charge types were therefore derived from first principles (quaternary ammonium = permanent cation; primary amine pKa ~10-11 means predominantly protonated at pH 7)."
+}

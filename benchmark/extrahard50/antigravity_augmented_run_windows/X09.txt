@@ -1,0 +1,11 @@
+To find the required values, I have used the `bootstrap_cmc` MCP tool from the `surfactantkit` server, providing the exact `log10(c)` values and setting the random generator seed to 27 with 1000 bootstrap iterations. 
+
+Here are the calculated results based on the output from the tool:
+
+1. **cmc_point**: 1.3893807376925276
+2. **cmc_ci_low**: 1.3643471343071574
+3. **cmc_ci_high**: 1.4117902405290688
+4. **ci_width_pct**: 3.4147087640989394
+5. **ci_wide**: true
+
+FINAL_JSON: {"cmc_point": 1.3893807376925276, "cmc_ci_low": 1.3643471343071574, "cmc_ci_high": 1.4117902405290688, "ci_width_pct": 3.4147087640989394, "ci_wide": true}

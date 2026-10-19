@@ -1,0 +1,13 @@
+I'll run the pinned Monte Carlo chain and the exact partition check.
+
+I ran the chain with the pinned settings: 35 monomers, ε = 7.0 kJ/mol, T = 298.15 K, 80,000 steps, seed 44, 10% burn-in and thinning of 10. That gives βε ≈ 2.824.
+
+1. **free_monomer_fraction:** 0.00766. Fewer than 1% of monomers are free.
+2. **mean_cluster_size:** 5.535 (monomer-weighted). The histogram peaks at n = 5 (about 20% of monomers), with n = 4 and n = 6 close behind.
+3. **largest_cluster:** 14.
+4. **exact_max_deviation:** 0.01445, the maximum absolute deviation from the exact Boltzmann distribution over all integer partitions of 35.
+5. **convergence:** converged. The L1 difference between the first and second halves of the chain was 0.0573, below the noise floor of 0.0710.
+
+The run kept 4,354 samples after burn-in and thinning, not the 7,200 that 72,000 ÷ 10 would suggest. The simulation tool applies thinning in its own way. All the statistics above come from those 4,354 samples.
+
+FINAL_JSON: {"free_monomer_fraction": 0.0076635881312635094, "mean_cluster_size": 5.5349315517128455, "largest_cluster": 14, "exact_max_deviation": 0.014445179692999272, "convergence": "converged"}

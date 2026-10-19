@@ -1,0 +1,1 @@
+FINAL_JSON: {"equilibrium_c1_M": 0.0001925, "equilibrium_mean_nagg": 7.303949186340589, "tau_fit_s": 0.02710088630284901, "mass_conservation_max_error": 0, "convergence": "converged"}

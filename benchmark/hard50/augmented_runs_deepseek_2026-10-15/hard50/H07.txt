@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"selected_model": "langmuir",
+"delta_bic": -2.0158873958054784,
+"frumkin_a": 0.02350255107959274,
+"physically_meaningful_interaction": false,
+"raw_rss_frumkin_lower_than_langmuir": true
+}

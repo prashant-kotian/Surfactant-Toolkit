@@ -1,0 +1,499 @@
+ Nonionic Surfactant Micelles
+Step 1: Calculate the Optical Constant K
+𝐾
+=
+4
+𝜋
+2
+𝑛
+2
+(
+𝑑
+𝑛
+/
+𝑑
+𝑐
+)
+2
+𝑁
+𝐴
+𝜆
+0
+4
+K=
+N
+A
+	​
+
+λ
+0
+4
+	​
+
+4π
+2
+n
+2
+(dn/dc)
+2
+	​
+
+With the given values:
+𝑛
+=
+1.333
+n=1.333, 
+(
+𝑑
+𝑛
+/
+𝑑
+𝑐
+)
+=
+0.140
+(dn/dc)=0.140 mL/g
+𝜆
+0
+=
+632.8
+λ
+0
+	​
+
+=632.8 nm 
+=
+6.328
+×
+10
+−
+5
+=6.328×10
+−5
+ cm
+𝑁
+𝐴
+=
+6.022
+×
+10
+23
+N
+A
+	​
+
+=6.022×10
+23
+ mol⁻¹
+Numerator: 
+4
+𝜋
+2
+×
+(
+1.333
+)
+2
+×
+(
+0.140
+)
+2
+=
+39.478
+×
+1.7769
+×
+0.0196
+=
+1.3749
+4π
+2
+×(1.333)
+2
+×(0.140)
+2
+=39.478×1.7769×0.0196=1.3749
+Denominator: 
+6.022
+×
+10
+23
+×
+(
+6.328
+×
+10
+−
+5
+)
+4
+=
+6.022
+×
+10
+23
+×
+1.6035
+×
+10
+−
+17
+=
+9.656
+×
+10
+6
+6.022×10
+23
+×(6.328×10
+−5
+)
+4
+=6.022×10
+23
+×1.6035×10
+−17
+=9.656×10
+6
+𝐾
+=
+1.424
+×
+10
+−
+7
+ 
+cm
+2
+⋅mol/g
+2
+K=1.424×10
+−7
+ cm
+2
+⋅mol/g
+2
+	​
+
+Step 2: Compute Kc/ΔR for Each Point
+c (g/mL)
+	
+ΔR (cm⁻¹)
+	
+Kc/ΔR (mol/g)
+
+
+0.002
+	
+1.847×10⁻⁵
+	
+1.542×10⁻⁵
+
+
+0.004
+	
+3.601×10⁻⁵
+	
+1.581×10⁻⁵
+
+
+0.006
+	
+5.269×10⁻⁵
+	
+1.621×10⁻⁵
+
+
+0.008
+	
+6.856×10⁻⁵
+	
+1.661×10⁻⁵
+
+
+0.010
+	
+8.368×10⁻⁵
+	
+1.701×10⁻⁵
+
+
+0.012
+	
+9.811×10⁻⁵
+	
+1.741×10⁻⁵
+Step 3: Linear Regression (Debye Plot)
+Fitting 
+𝐾
+𝑐
+/
+Δ
+𝑅
+=
+1
+/
+𝑀
+𝑤
++
+2
+𝐴
+2
+𝑐
+Kc/ΔR=1/M
+w
+	​
+
++2A
+2
+	​
+
+c:
+Using least-squares with 
+𝑥
+ˉ
+=
+0.007
+x
+ˉ
+=0.007, 
+𝑦
+ˉ
+=
+1.6415
+×
+10
+−
+5
+y
+ˉ
+	​
+
+=1.6415×10
+−5
+:
+Slope
+=
+∑
+(
+𝑥
+𝑖
+−
+𝑥
+ˉ
+)
+(
+𝑦
+𝑖
+−
+𝑦
+ˉ
+)
+∑
+(
+𝑥
+𝑖
+−
+𝑥
+ˉ
+)
+2
+=
+1.398
+×
+10
+−
+8
+7.0
+×
+10
+−
+5
+=
+1.998
+×
+10
+−
+4
+Slope=
+∑(x
+i
+	​
+
+−
+x
+ˉ
+)
+2
+∑(x
+i
+	​
+
+−
+x
+ˉ
+)(y
+i
+	​
+
+−
+y
+ˉ
+	​
+
+)
+	​
+
+=
+7.0×10
+−5
+1.398×10
+−8
+	​
+
+=1.998×10
+−4
+Intercept
+=
+𝑦
+ˉ
+−
+slope
+⋅
+𝑥
+ˉ
+=
+1.6415
+×
+10
+−
+5
+−
+1.398
+×
+10
+−
+6
+=
+1.5017
+×
+10
+−
+5
+ mol/g
+Intercept=
+y
+ˉ
+	​
+
+−slope⋅
+x
+ˉ
+=1.6415×10
+−5
+−1.398×10
+−6
+=1.5017×10
+−5
+ mol/g
+The data is remarkably linear (R² > 0.9999), confirming dilute-solution Debye behavior.
+Step 4: Extract M_w and Aggregation Number
+𝑀
+𝑤
+=
+1
+intercept
+=
+1
+1.5017
+×
+10
+−
+5
+≈
+66,600
+ g/mol
+M
+w
+	​
+
+=
+intercept
+1
+	​
+
+=
+1.5017×10
+−5
+1
+	​
+
+≈66,600 g/mol
+𝑁
+agg
+=
+𝑀
+𝑤
+𝑀
+monomer
+=
+66,600
+625
+≈
+107
+N
+agg
+	​
+
+=
+M
+monomer
+	​
+
+M
+w
+	​
+
+	​
+
+=
+625
+66,600
+	​
+
+≈107
+Step 5: Consistency Check
+The monomer molar mass of 625 g/mol is consistent with a C₁₂E₁₀-type polyoxyethylene surfactant (e.g., dodecyl decaethylene glycol, M ≈ 626 g/mol). For such nonionic surfactants, literature aggregation numbers typically fall in the range of ~80–130, depending on temperature. An 
+𝑁
+agg
+N
+agg
+	​
+
+ of ~107 sits squarely within this expected window, confirming physical reasonableness. The positive second virial coefficient (
+𝐴
+2
+≈
+1.0
+×
+10
+−
+4
+A
+2
+	​
+
+≈1.0×10
+−4
+ mol·mL/g²) indicates good-solvent conditions consistent with measurements below the cloud point.
+FINAL_JSON:
+{
+"micelle_molar_mass_g_per_mol": 66600,
+"aggregation_number": 107,
+"consistent_with_literature": true,
+"reasoning": "Debye plot (Kc/dR vs c) yields intercept 1.502e-5 mol/g giving Mw ~ 66600 g/mol. Dividing by monomer mass 625 g/mol gives N_agg ~ 107. This is fully consistent with typical C12E10-type nonionic polyoxyethylene micelles, which show aggregation numbers of roughly 80-130 in aqueous solution."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

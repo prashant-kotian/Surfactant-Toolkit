@@ -1,0 +1,259 @@
+el inappropriate." That covers both.
+
+Need ensure final block exact form. JSON valid. x1_rubingh 0.5033, beta -4.24. interaction_character string. maeda null. reasoning string no newlines? Can be long. Need valid JSON with escaped? We can just one string.
+
+Need maybe not include markdown fences around FINAL_JSON? They said "End your response with a block in exactly this form:" likely plain block. We can put:
+
+FINAL_JSON:
+{
+...
+}
+
+No code fence. Good.
+
+Let's write final with moderate detail. Avoid overlong. Include equations. Need mention R=8.314, T=298.15. Good.
+
+Need perhaps "Xcmc" conversion: use 55.5 M water. If use 55.51, no change. Good.
+
+Let's final.
+
+Component 1 is sodium cholate, an anionic bile-salt surfactant; component 2 is SDS, also anionic. So this is an anionic–anionic mixed micelle, not an ionic–nonionic pair.
+
+Using Rubingh regular-solution theory,
+
+𝛼
+𝑖
+𝐶
+𝑀
+𝐶
+∗
+=
+𝑋
+𝑖
+𝐶
+𝑀
+𝐶
+𝑖
+exp
+⁡
+(
+𝛽
+𝑋
+𝑗
+2
+)
+α
+i
+	​
+
+CMC
+∗
+=X
+i
+	​
+
+CMC
+i
+	​
+
+exp(βX
+j
+2
+	​
+
+)
+
+with 
+𝛼
+1
+=
+𝛼
+2
+=
+0.5
+α
+1
+	​
+
+=α
+2
+	​
+
+=0.5, 
+𝐶
+𝑀
+𝐶
+1
+=
+11.50
+CMC
+1
+	​
+
+=11.50 mM, 
+𝐶
+𝑀
+𝐶
+2
+=
+11.98
+CMC
+2
+	​
+
+=11.98 mM, and 
+𝐶
+𝑀
+𝐶
+∗
+=
+4.07
+CMC
+∗
+=4.07 mM. The iterative Rubingh relation gives
+
+𝑋
+1
+≈
+0.503
+,
+𝑋
+2
+≈
+0.497
+X
+1
+	​
+
+≈0.503,X
+2
+	​
+
+≈0.497
+
+and
+
+𝛽
+=
+ln
+⁡
+[
+𝛼
+1
+𝐶
+𝑀
+𝐶
+∗
+/
+(
+𝑋
+1
+𝐶
+𝑀
+𝐶
+1
+)
+]
+𝑋
+2
+2
+≈
+−
+4.24
+β=
+X
+2
+2
+	​
+
+ln[α
+1
+	​
+
+CMC
+∗
+/(X
+1
+	​
+
+CMC
+1
+	​
+
+)]
+	​
+
+≈−4.24
+
+A negative 
+𝛽
+β means attractive, synergistic nonideal mixing in the regular-solution sense. The mixed CMC is far below the ideal harmonic-mean value:
+
+𝐶
+𝑀
+𝐶
+i
+d
+e
+a
+l
+=
+(
+0.5
+11.50
++
+0.5
+11.98
+)
+−
+1
+≈
+11.74
+ mM
+CMC
+ideal
+	​
+
+=(
+11.50
+0.5
+	​
+
++
+11.98
+0.5
+	​
+
+)
+−1
+≈11.74 mM
+
+versus the measured 
+4.07
+4.07 mM, so the apparent synergy is strong.
+
+However, the quoted Maeda-type free-energy expression is explicitly for an ionic/nonionic mixed micelle. Here both surfactants are anionic, so same-charge head-group repulsion, counterion binding, and electrostatic screening are not represented by that ionic/nonionic model. Thus the expression is not an appropriate model for this specific system. A formal insertion of the numbers would give roughly 
+−
+23.6
+−23.6 kJ mol
+−
+1
+−1
+, but that value should not be treated as physically meaningful for this anionic–anionic pair.
+
+FINAL_JSON:
+{
+"x1_rubingh": 0.5033,
+"beta_rubingh": -4.24,
+"interaction_character": "synergistic/attractive nonideal mixing (negative beta); apparent Rubingh parameter only, since both surfactants are anionic",
+"maeda_deltag_kJ_per_mol": null,
+"reasoning": "Rubingh analysis gives X1 ~ 0.503 and beta ~ -4.24, indicating strong apparent attractive interaction/synergism. The Maeda-type free-energy expression requires one ionic and one nonionic surfactant, but both components here are anionic (sodium cholate and SDS). Therefore the expression is not appropriate; a formal numerical insertion would give about -23.6 kJ/mol but is not physically valid for this anionic-anionic system."
+}
+END OF QUESTION
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

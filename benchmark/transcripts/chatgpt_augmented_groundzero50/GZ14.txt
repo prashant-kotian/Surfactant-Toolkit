@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"lateral_interaction_present": false,
+"confidence_from_this_data_alone": "low",
+"reasoning": "The pre-CMC surface tension is essentially perfectly linear in ln(concentration), providing almost no curvature with which to distinguish independent adsorption from a cooperative Frumkin isotherm. The autonomous MCP analysis selects Langmuir by BIC and explicitly flags the interaction question as data-limited; a pre-CMC-only Frumkin fit instead drives the interaction parameter to its search bound (a≈4), which indicates non-identifiability rather than a well-resolved physical interaction. Thus genuine lateral interaction is not demonstrated by these data, but its actual absence cannot be established confidently from this dataset alone."
+}

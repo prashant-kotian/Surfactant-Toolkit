@@ -1,0 +1,1 @@
+FINAL_JSON: {"p_ell": 1.9392, "p_cyl": 0.9277, "cpp": 0.5585, "R_perrin_nm": 5.2424, "morphology": "vesicle/bilayer", "above_1_5": "ellipsoid"}

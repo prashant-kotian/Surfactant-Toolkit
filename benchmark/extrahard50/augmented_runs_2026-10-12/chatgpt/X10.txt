@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 27s
+ChatGPT said:
+kinetic_cmc_M: 0.00039758368177602265 mol/L
+tau_dominant_s: 0.0014444676092658863 s
+mean_aggregation_number: 7.1544063520068795
+mass_conserved: true — max relative mass error = 4.6679831717194086e-14
+convergence: "converged"
+
+FINAL_JSON: {"kinetic_cmc_M": 0.00039758368177602265, "tau_dominant_s": 0.0014444676092658863, "mean_aggregation_number": 7.1544063520068795, "mass_conserved": true, "convergence": "converged"}

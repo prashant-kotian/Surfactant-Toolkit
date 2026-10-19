@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"axial_ratio": 1.383
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "cationic (strong, pH-independent) — dicationic",
+"structural_family": "Gemini (dimeric) cationic surfactant — bis-quaternary ammonium, twin C12 tails with a C4 butyl spacer, 2Br- salt (12-4-12 type)",
+"valid_hlb_method": "Griffin mass-ratio method (HLB = 20 * M_hydrophilic / M_total)",
+"reasoning": "The molecule contains two permanently charged quaternary ammonium headgroups (each N bonded to four carbons, no N-H, no pH dependence) and two dodecyl tails joined by a C4 spacer, giving a +2 cationic gemini surfactant with two Br- counterions. For HLB, the Griffin mass-ratio method is the valid one because it is structure-agnostic: it needs only the molecular weight of the hydrophilic fragment and the total molecular weight, so it works regardless of the unusual bis-quaternary gemini architecture. The Davies group-contribution method, by contrast, requires a per-group lookup table and becomes unreliable or inapplicable for this bis-quaternary gemini (two quaternary N+ headgroups plus spacer chain contributions that are not cleanly tabulated). Hence Griffin applies and Davies does not. Note: the connected surfactant-computation MCP tool could not be used because the transport repeatedly truncated the SMILES at the first '[N+]' token, returning 'unparseable' for every attempt."
+}

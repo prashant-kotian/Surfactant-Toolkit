@@ -1,0 +1,10 @@
+Based on the direct simulation using the `propagate_uncertainty_chain` MCP tool (which reproduces the exact `default_rng(33)` sequence via the mass-action formula loop), here are the calculated exact values:
+
+1. **output_mean**: -13.176182327768155 kJ/mol
+2. **output_sd**: 0.16850327707207413 kJ/mol
+3. **ci_low** (2.5th percentile): -13.520510909239897 kJ/mol
+4. **ci_high** (97.5th percentile): -12.862574467220902 kJ/mol
+5. **skew_label**: "symmetric" (skewness evaluates to approximately -0.0336, which falls well within the ±0.05 threshold for a symmetric classification)
+
+FINAL_JSON: {"output_mean": -13.176182327768155, "output_sd": 0.16850327707207413, "ci_low": -13.520510909239897, "ci_high": -12.862574467220902, "skew_label": "symmetric"}
+_sd": 0.16850327707207413, "ci_low": -13.520510909239897, "ci_high": -12.862574467220902, "skew_label": "symmetric"}

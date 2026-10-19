@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"gamma_max_umol_per_m2": 1.1497
+}

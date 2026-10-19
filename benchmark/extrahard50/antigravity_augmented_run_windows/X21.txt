@@ -1,0 +1,9 @@
+Based on the exact computation using the `eommm_global_fit` tool from the surfactantkit MCP server (using the default full dissociation numbers $r_1=2, r_2=2$), here are the results for the EOMMM global fit on the given five-point mixture series:
+
+1. **W12:** -1.9999999999999982 (approx. -2.00)
+2. **W21:** -1.4999999999999978 (approx. -1.50)
+3. **r_squared:** 0.9673983361751629
+4. **x1_last_point:** 0.8866978053529913
+5. **feasible:** true (Total infeasibility was 3.05e-14, which is well below the 1e-6 threshold)
+
+FINAL_JSON: {"W12": -1.9999999999999982, "W21": -1.4999999999999978, "r_squared": 0.9673983361751629, "x1_last_point": 0.8866978053529913, "feasible": true}

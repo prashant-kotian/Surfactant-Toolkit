@@ -1,0 +1,1 @@
+FINAL_JSON: {"cmc_mM": 4.4452, "rel_diff_L1": 7.77, "rel_diff_L2": 55.22, "closer": "L1", "either_agrees_15pct": true}

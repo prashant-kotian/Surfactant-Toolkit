@@ -1,0 +1,183 @@
+easured Headgroup Area (a = 44.70 Å²)
+𝑃
+meas
+=
+𝑉
+𝑎
+⋅
+𝑙
+𝑐
+=
+350.2
+44.70
+×
+16.68
+=
+350.2
+745.6
+=
+0.4697
+P
+meas
+	​
+
+=
+a⋅l
+c
+	​
+
+V
+	​
+
+=
+44.70×16.68
+350.2
+	​
+
+=
+745.6
+350.2
+	​
+
+=0.4697
+Since 1/3 < 0.4697 ≤ 1/2 → cylindrical/rodlike micelle
+Part 3: Electrostatic Headgroup Area from CMC
+Step 1 – Ionic strength: For a 1:1 ionic surfactant with no added electrolyte, I = CMC = 8 mM = 0.008 M.
+Step 2 – Debye–Hückel screening length (at 25 °C in water):
+
+𝜅
+−
+1
+=
+0.304
+𝐼
+=
+0.304
+0.008
+=
+0.304
+0.08944
+=
+3.399
+ nm
+κ
+−1
+=
+I
+	​
+
+0.304
+	​
+
+=
+0.008
+	​
+
+0.304
+	​
+
+=
+0.08944
+0.304
+	​
+
+=3.399 nm
+Step 3 – Equilibrium headgroup area: Using the sulfate-specific electrostatic prefactor of 82.0 Å (in this convention's units) with the screening length in nm:
+𝑎
+elec
+=
+82.0
+𝜅
+−
+1
+ 
+(
+nm
+)
+=
+82.0
+3.399
+=
+82.0
+1.844
+=
+44.47
+ 
+A
+˚
+2
+a
+elec
+	​
+
+=
+κ
+−1
+(nm)
+	​
+
+82.0
+	​
+
+=
+3.399
+	​
+
+82.0
+	​
+
+=
+1.844
+82.0
+	​
+
+=44.47 
+A
+˚
+2
+Step 4 – CPP from electrostatic area:
+
+𝑃
+elec
+=
+350.2
+44.47
+×
+16.68
+=
+350.2
+741.7
+=
+0.4722
+P
+elec
+	​
+
+=
+44.47×16.68
+350.2
+	​
+
+=
+741.7
+350.2
+	​
+
+=0.4722
+Since 1/3 < 0.4722 ≤ 1/2 → cylindrical/rodlike micelle
+Commentary
+Both independent routes—the directly measured headgroup area (44.70 Å²) and the electrostatic double-layer estimate (44.47 Å²)—converge to nearly identical headgroup areas and therefore nearly identical packing parameters (≈ 0.47). Both place the system in the cylindrical/rodlike regime of the packing-parameter map. This is notable because SDS is classically described as forming spherical micelles (which would require P ≤ 1/3, i.e., a ≥ ~63 Å²). The small headgroup area used here (≈ 45 Å² vs. the more commonly cited 60–65 Å²) pushes the predicted morphology toward rodlike aggregates. The close agreement between the electrostatic estimate and the measured value validates the double-layer model for this sulfate headgroup at 8 mM ionic strength, but both predictions highlight that the morphology assignment is sensitive to the assumed headgroup area and sits near the spherical-to-cylindrical boundary (P = 1/3).
+FINAL_JSON:
+{
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 44.47,
+"cpp_electrostatic_area": 0.4722,
+"morphology_electrostatic_area": "cylindrical/rodlike micelle",
+"comment": "Both the measured (44.70 A2) and electrostatically derived (44.47 A2) headgroup areas yield nearly identical packing parameters (~0.47), placing the aggregate in the cylindrical/rodlike regime (1/3 < P <= 1/2). The electrostatic double-layer model based solely on the CMC reproduces the measured area to within 0.5%, validating the approach for this sulfate headgroup. However, both predictions differ from the classical spherical-micelle assignment for SDS, underscoring that morphology is sensitive to the headgroup area and that P~0.47 lies close to the spherical-to-cylindrical boundary at P=1/3."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

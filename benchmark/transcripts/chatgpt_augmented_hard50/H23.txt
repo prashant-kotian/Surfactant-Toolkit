@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"delta_h_endpoint_kJ_per_mol": -3.0847457234638647,
+"agrees_with_cited_value": false,
+"reported_value_source": "own calculation from the first and last rows of the given CMC-temperature data using the endpoint van't Hoff relation"
+}

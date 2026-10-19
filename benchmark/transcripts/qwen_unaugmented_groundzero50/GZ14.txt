@@ -1,0 +1,48 @@
+ the lowest point. The data shows zero deviation from linearity.
+Does This Require Lateral Interactions?
+In a Frumkin model, repulsive interactions (
+𝑎
+<
+0
+a<0) reduce curvature of π vs ln C, while attractive interactions (
+𝑎
+>
+0
+a>0) increase it. The observed perfect linearity could be explained by a very small repulsive parameter compensating the Langmuir curvature at 
+𝐾
+𝐶
+≈
+4
+KC≈4. However:
+The simpler explanation suffices: At 
+𝐾
+𝐶
+≥
+4
+KC≥4, the Langmuir model is already within ~1.6 mN/m of linearity. With typical experimental uncertainty (±0.2–0.5 mN/m) and only 6 points, this residual curvature would be undetectable.
+The data is synthetic: The exact 6.56 mN/m steps and zero scatter indicate constructed data, not a physical measurement from which subtle curvature could be extracted.
+No independent structural constraint: Without an independent Γ∞ (e.g., from neutron reflectivity or radiotracer), we cannot separate a genuine interaction effect from a slight misestimate of 
+𝐾
+K.
+Molecular reasoning: The bulky branched 2-ethylhexyl chains produce steric repulsion, but in the Langmuir framework this is already captured by the finite-area (1−θ) term. No additional interaction parameter is thermodynamically required.
+Conclusion
+The pre-CMC adsorption is fully consistent with independent (Langmuir/Szyszkowski) adsorption in the near-saturation regime. No lateral interaction parameter is needed to explain the data. The tiny residual curvature predicted by Langmuir at the dilute end (~1.6 mN/m) is below the detection threshold of this dataset.
+Confidence assessment: The dataset contains only 6 pre-CMC points spanning 2 decades, shows no experimental scatter (synthetic), and lacks independent structural validation. While the data is consistent with no interactions, it cannot definitively exclude a very weak Frumkin interaction parameter (
+∣
+𝑎
+∣
+/
+𝑅
+𝑇
+≲
+0.1
+∣a∣/RT≲0.1). Confidence is therefore moderate.
+FINAL_JSON:
+{
+"lateral_interaction_present": false,
+"confidence_from_this_data_alone": "moderate",
+"reasoning": "The pre-CMC surface tension is exactly linear in log(C), giving constant dγ/d(ln C) = -7.122 mN/m and constant Γ = 1.44 μmol/m² via the Gibbs equation (factor 2 for ionic surfactant, no added salt). This is the expected high-coverage-limit behavior of the Langmuir/Szyszkowski isotherm (π = RTΓ∞ ln(1+KC) with KC ≥ 4), requiring no lateral interaction parameter. The Szyszkowski model predicts only ~1.6 mN/m of curvature at the most dilute point, which is below the resolution of 6 synthetic data points with zero scatter. A Frumkin repulsive parameter could in principle flatten this residual curvature, but the effect is negligible and indistinguishable from independent adsorption given the dataset size, concentration range (only 2 decades), absence of experimental uncertainty, and lack of independent surface-excess measurements. No evidence compels the introduction of a lateral interaction term."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

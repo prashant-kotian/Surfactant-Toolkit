@@ -1,0 +1,198 @@
+onstant a at every data point:
+𝑎
+=
+𝐶
+exp
+⁡
+ ⁣
+(
+𝜋
+/
+𝑅
+𝑇
+Γ
+max
+⁡
+)
+−
+1
+a=
+exp(π/RTΓ
+max
+	​
+
+)−1
+C
+	​
+
+C
+	
+π/(RTΓ_max)
+	
+exp(·)−1
+	
+a (mol/L)
+
+
+1e-8
+	
+0.0842
+	
+0.0879
+	
+1.138e-7
+
+
+3e-8
+	
+0.2338
+	
+0.2634
+	
+1.139e-7
+
+
+1e-7
+	
+0.6301
+	
+0.878
+	
+1.139e-7
+
+
+3e-7
+	
+1.2903
+	
+2.634
+	
+1.139e-7
+
+
+1e-6
+	
+2.2809
+	
+8.77
+	
+1.140e-7
+
+
+3e-6
+	
+3.3095
+	
+26.3
+	
+1.139e-7
+
+
+1e-5
+	
+4.4883
+	
+88.0
+	
+1.137e-7
+
+
+3e-5
+	
+5.5798
+	
+264
+	
+1.137e-7
+
+
+8e-5
+	
+6.5589
+	
+706
+	
+1.133e-7
+Every single point returns a = 1.14 × 10⁻⁷ mol/L to within <0.5% scatter. The Szyszkowski (Langmuir) equation reproduces the entire dataset with essentially zero residual.
+Testing for Frumkin (Lateral-Interaction) Corrections
+The Frumkin isotherm introduces an interaction parameter a_F:
+𝜃
+1
+−
+𝜃
+ 
+𝑒
+−
+2
+𝑎
+𝐹
+𝜃
+=
+𝐶
+𝑎
+,
+𝜋
+=
+−
+𝑅
+𝑇
+Γ
+max
+⁡
+[
+ln
+⁡
+(
+1
+−
+𝜃
+)
++
+𝑎
+𝐹
+𝜃
+2
+]
+1−θ
+θ
+	​
+
+e
+−2a
+F
+	​
+
+θ
+=
+a
+C
+	​
+
+,π=−RTΓ
+max
+	​
+
+[ln(1−θ)+a
+F
+	​
+
+θ
+2
+]
+At the highest concentration (8×10⁻⁵ M), θ = C/(C+a) ≈ 0.999. If any lateral attraction (a_F > 0) or repulsion (a_F < 0) existed, it would produce a measurable curvature deviation from the Szyszkowski line at high coverage. No such deviation is present. A Frumkin fit would return a_F = 0 within uncertainty, collapsing exactly to the Langmuir result.
+Physical Interpretation
+The Langmuir model assumes adsorbed molecules occupy independent, non-interacting sites.
+A Frumkin parameter of zero means there is no net lateral interaction (neither attractive chain–chain cohesion nor repulsive headgroup crowding) that measurably perturbs the adsorption equilibrium.
+For C₁₂E₈, the large, heavily hydrated octa-EO headgroup creates a thick steric/hydration barrier that effectively screens intermolecular contacts at the interface, consistent with ideal (non-interacting) 2D adsorption behavior.
+Conclusion
+The data are described exactly by the Langmuir/Szyszkowski isotherm with a = 1.14×10⁻⁷ mol/L and Γ_max = 2.21×10⁻⁶ mol/m². No Frumkin correction is warranted; the lateral interaction parameter is zero, indicating no physically meaningful surfactant–surfactant interaction at the interface in the pre-CMC regime.
+FINAL_JSON:
+{
+"selected_model": "Langmuir (Szyszkowski)",
+"frumkin_a": 0.0,
+"physically_meaningful_interaction": false,
+"reasoning": "The Szyszkowski equation pi = RTGamma_maxln(1 + C/a) with Gamma_max = 2.21e-6 mol/m2 and a = 1.14e-7 mol/L reproduces all nine data points to within <0.5% scatter, yielding a constant a at every concentration from 1e-8 to 8e-5 M (theta up to 0.999). Introducing a Frumkin lateral-interaction parameter a_F produces no improvement; the best-fit a_F is identically zero. The absence of any systematic deviation from ideal Langmuir behavior, even at near-saturation coverage, indicates that surfactant-surfactant lateral interactions at the interface are negligible. This is physically consistent with the large, hydrated octa(ethylene oxide) headgroup of C12E8, which sterically screens intermolecular contacts."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

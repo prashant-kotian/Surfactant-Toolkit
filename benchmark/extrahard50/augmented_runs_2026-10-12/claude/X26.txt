@@ -1,0 +1,33 @@
+I'll work through this forensics protocol computationally to get exact values.
+
+Done. The protocol ran cleanly and the detection is decisive.
+
+**Leave-one-out errors (J/mol):**
+
+| Row | T (K) | LOO error |
+|-----|--------|-----------|
+| 1 | 288.15 | 60.5 |
+| 2 | 293.15 | 31.5 |
+| 3 | 298.15 | 57.0 |
+| 4 | 303.15 | **148.9** |
+| 5 | 308.15 | 57.9 |
+| 6 | 313.15 | 34.8 |
+| 7 | 318.15 | 66.2 |
+
+**Detection:** Row 4 (T = 303.15 K) has the largest LOO error at 148.9 J/mol. The mean of the other six errors is 51.3 J/mol, so the threshold is 2 × 51.3 = 102.6 J/mol. Since 148.9 > 102.6, row 4 is flagged corrupt. This is consistent with its CMC (1.9229) sitting low in the sequence — a 7%-low transcription fits.
+
+**Fits (ΔH at 298.15 K):**
+- All 7 rows: dH_all = **−12.98 kJ/mol**
+- Clean 6 rows (excluding row 4): dH_cleaned = **−13.77 kJ/mol**
+- Cleaned-fit r² = **0.999975**
+
+Removing the corrupt row sharpens the fit substantially (near-perfect r²) and shifts ΔH by ~0.8 kJ/mol.
+
+**Required outputs:**
+1. flagged_T: 303.15
+2. n_flagged: 1
+3. dH_all: −12.98 kJ/mol
+4. dH_cleaned: −13.77 kJ/mol
+5. r2_cleaned: 0.999975
+
+FINAL_JSON: {"flagged_T": 303.15, "n_flagged": 1, "dH_all": -12.9807, "dH_cleaned": -13.7738, "r2_cleaned": 0.999975}

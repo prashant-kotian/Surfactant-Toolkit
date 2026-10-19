@@ -1,0 +1,14 @@
+Following the pinned protocol:
+
+**Step 2 — LOO detection:** Row 5 has by far the largest leave-one-out error (~11,248 J/mol), and it exceeds 2× the mean error of the other seven rows (~1,037). It's flagged as corrupt. Its printed T of 308.15 is indeed 35 °C recorded in kelvin (fits right between rows 4 and 6).
+
+**Step 3–4 — Correction and refit:** Using 308.15 directly as kelvin for row 5 and +273.15 for the rest, the refit on all eight rows gives a clean linear van 't Hoff–type relation (r² ≈ 0.9968).
+
+Results:
+- **flagged_T:** 308.15
+- **n_flagged:** 1
+- **dH_corrected:** −12.7198 kJ/mol
+- **dS_corrected:** 38.2565 J/(mol·K)
+- **r²_corrected:** 0.996819
+
+FINAL_JSON: {"flagged_T": 308.15, "n_flagged": 1, "dH_corrected": -12.7198, "dS_corrected": 38.2565, "r2_corrected": 0.996819}

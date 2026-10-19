@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"cpp": 0.5006,
+"predicted_morphology": "vesicle/bilayer"
+}

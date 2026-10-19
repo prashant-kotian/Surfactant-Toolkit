@@ -1,0 +1,37 @@
+To find the answers purely through reasoning, we must analytically solve the partition function of the associating cluster system and then estimate the Monte Carlo sampling behavior.
+
+**1. Analytical Solution for the Cluster System**
+We have $N=35$ monomers, $T = 298.15$ K, and bond energy $\epsilon = 7.0$ kJ/mol.
+First, we find the inverse temperature $\beta$:
+$\beta = \frac{1}{RT} = \frac{1}{8.31446 \times 10^{-3} \times 298.15} \approx 0.4034 \text{ mol/kJ}$
+The dimensionless bond energy is $\beta\epsilon \approx 0.4034 \times 7.0 \approx 2.8238$.
+The statistical weight for making a bond is $u = e^{\beta\epsilon} \approx 16.840$.
+
+The partition function $Z_N$ for this cluster system is related to the Bell polynomials $B_N(x)$ by:
+$Z_N = u^N B_N(1/u)$
+The expectation values can be derived from the generating function of the system. 
+- The fraction of free monomers ($n=1$) is given precisely by the ratio: 
+  $f_{\text{free}} = \frac{Z_{N-1}}{Z_N}$
+- The monomer-weighted mean cluster size is given by:
+  $\langle n \rangle_w = 1 + u(N-1) \frac{Z_{N-1}}{Z_N}$
+
+Using the saddle-point asymptotic approximation for Bell polynomials, the ratio is $\frac{Z_{N-1}}{Z_N} \approx \frac{r}{N u}$, where $r$ is the solution to $r e^r = N u$.
+Here, $Nu = 35 \times 16.840 \approx 589.4$. 
+Solving $r e^r = 589.4$ yields $r \approx 4.809$.
+Thus, the expected free monomer fraction is:
+$f_{\text{free}} \approx \frac{4.809}{589.4} \approx 0.00816$
+
+The expected monomer-weighted mean cluster size is:
+$\langle n \rangle_w \approx 1 + 16.840 \times 34 \times 0.00816 \approx 5.67$
+
+**2. Monte Carlo Chain Behavior & Largest Cluster**
+The run executes 80,000 steps. Discarding the 10% burn-in leaves 72,000 steps. Thinning by a factor of 10 leaves exactly 7,200 retained samples. 
+For $N=35$ and only 3 simple proposal moves, 80,000 steps provide an enormous number of sweeps ($\sim 2285$ sweeps per monomer), so the chain is well-mixed and comfortably "converged".
+
+To find the largest cluster size observed across the 7,200 samples, we examine the expected cluster size distribution. The number of clusters of size $k$ follows a Poisson distribution with parameter $\lambda_k \approx \frac{1}{u} \frac{r^k}{k!}$. 
+For $k=17$, $\lambda_{17} \approx 6.8 \times 10^{-5}$. Over 7,200 samples, the expected number of occurrences of a size-17 cluster is $7200 \times 6.8 \times 10^{-5} \approx 0.5$. Sizes 18+ become exponentially rarer. Therefore, the absolute largest cluster observed in a typical trace will be $\sim 17$.
+
+**3. Maximum Absolute Deviation**
+The max deviation evaluates the standard error between the 7,200 retained MC histograms and the exact Boltzmann distribution. The statistical noise for the most populated bin (size $k \approx 5$, prob $\approx 0.17$) is roughly $\sigma \approx \sqrt{0.17 / 7200} \approx 0.0048$. Across 35 bins, the maximum deviation is typically $\sim 2.5\sigma$ to $3\sigma$, which gives an expected max absolute deviation of around $0.0145$.
+
+FINAL_JSON: {"free_monomer_fraction": 0.00816, "mean_cluster_size": 5.67, "largest_cluster": 17, "exact_max_deviation": 0.0145, "convergence": "converged"}

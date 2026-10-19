@@ -1,0 +1,54 @@
+ethylene-glycol-type linker to a benzyldimethylammonium head (Cl⁻). Component 2 is dodecyltrimethylammonium bromide (DTAB), a small, simple cationic surfactant (Br⁻). Both carry a positive head, so naïvely you’d expect like-charge repulsion and near-ideal-to-antagonistic mixing (β ≈ 0 or slightly positive).
+
+What the data actually show. Both interaction parameters come out strongly negative, i.e. the mixing is attractive / synergistic despite both components being cationic — and it is markedly asymmetric. A single-β regular-solution (Rubingh) model cannot describe it: the β you’d back out swings from about −1.9 to +0.8 across the composition range, and the values implied by f₁ and f₂ disagree at every point. That internal inconsistency is the signature of asymmetric non-ideality, which the two-parameter asymmetric Margules model (w₁₂ ≠ w₂₁, with RST as its w₁₂=w₂₁ special case) handles exactly.
+
+Fitted parameters (from the linearity of ln f₁/(1−x₁)² in x₁, then verified against every point with the tool):
+
+w₁₂ ≈ −3.56 — a lone molecule of the bulky aromatic surfactant dropped into a DTAB-rich micelle is very favorable.
+w₂₁ ≈ −0.89 — a lone DTAB in an aromatic-rich micelle is only mildly favorable.
+
+The model reproduces all five measurements to 3 significant figures (e.g. x₁=0.305 → f₁ 0.393/f₂ 0.652; x₁=0.483 → 0.769/0.427; x₁=0.808 → 1.028/0.286), so the parameters are tightly determined.
+
+Physical picture. The large size/structure disparity is the source of both the synergy and its asymmetry. Inserting the big aromatic/ether molecule into a crowded, highly charged DTAB micelle relieves headgroup charge density and adds van der Waals / cation–π / dipole contacts — a big energy win (very negative w₁₂). The reverse insertion (small DTAB into an aromatic-rich, already loosely packed micelle) gains much less (small w₂₁). Because the two limits differ so much, the excess free energy of mixing is lopsided in composition — exactly why the symmetric model fails and a single β is meaningless for this pair.
+
+Prediction at x₁ = 0.90 (micelle almost entirely the bulky aromatic; a short extrapolation beyond the measured 0.808):
+
+f₁ ≈ 1.012 — the majority aromatic component is essentially ideal in its own-rich environment (continuing the rise past 1.0 already seen at x₁=0.808).
+f₂ ≈ 0.315 — the minority DTAB remains strongly stabilized (f₂ ≪ 1), consistent with the attractive, asymmetric interaction.
+
+FINAL_JSON:
+{
+“f1_at_x1_0.90”: 1.012,
+“f2_at_x1_0.90”: 0.315,
+“interaction_model_or_approach”: “Two-parameter asymmetric Margules model (EOMMM; w12 != w21), the generalization of Rubingh regular-solution theory. Parameters w12 = -3.56, w21 = -0.89 (RT units) determined from the measured activity coefficients and verified to reproduce all five data points to 3 sig figs; f1,f2 at x1=0.90 computed with asymmetric_margules_activity_coefficients.”,
+“notes”: “Both parameters strongly negative => attractive/synergistic mixing (negative deviation from ideality) even though both surfactants are cationic. Highly asymmetric (|w12| >> |w21|): inserting the bulky tert-octylphenol-ether benzyldimethylammonium surfactant (comp 1) into a DTAB-rich micelle is far more favorable than the reverse, reflecting the large size/charge-density disparity. Single-beta Rubingh RST is inadequate here: apparent beta varies ~ -1.9 to +0.8 across composition and the f1- vs f2-derived values disagree, so a symmetric fit is unreliable. x1=0.90 is a modest extrapolation just beyond the highest measured point (0.808), so the prediction is well constrained. f1 slightly exceeds 1 at high x1, matching the measured trend.”
+}
+
+
+Create a spreadsheet
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 1.4145800566306375e-6,
+"a_min_nm2": 1.1738742246437819,
+"delta_g_mic_kJ_per_mol": -30.562968865098554,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Data at a second temperature (CMC vs T, for van't Hoff dlnCMC/d(1/T)) or a calorimetric enthalpy of micellization ΔH_mic; only 298.15 K data are available, so ΔH_mic and hence ΔS_mic cannot be determined."
+}

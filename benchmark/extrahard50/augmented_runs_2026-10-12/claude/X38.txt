@@ -1,0 +1,18 @@
+**Setup:** v = 485.0 A³, lc = 16.7 A, with a0 = v / (CPP · lc).
+
+**Step 1 — a0 at CPP = 1/3**
+a0 = 485.0 / ((1/3)(16.7)) = 485.0 · 3 / 16.7 = 1455 / 16.7 = **87.1257 A²**
+
+**Step 2 — a0 at CPP = 1/2**
+a0 = 485.0 / (0.5 · 16.7) = 485.0 / 8.35 = **58.0838 A²**
+
+**Step 3 — CPP at a0 = 64.0**
+CPP = 485.0 / (64.0 · 16.7) = 485.0 / 1068.8 = **0.45378**
+
+**Step 4 — Morphology at a0 = 64.0**
+CPP = 0.45378 falls in 1/3 < cpp ≤ 1/2 → **cylindrical/rodlike micelle**
+
+**Step 5 — Morphology at a0 = 95.0**
+CPP = 485.0 / (95.0 · 16.7) = 485.0 / 1586.5 = 0.30570, which is ≤ 1/3 → **spherical micelle**
+
+FINAL_JSON: {"a0_at_cpp_1_3": 87.1257, "a0_at_cpp_1_2": 58.0838, "cpp_at_a0_64": 0.45378, "morph_at_64": "cylindrical/rodlike micelle", "morph_at_95": "spherical micelle"}

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"total_carbons": 20,
+"tail_carbons_total": 16,
+"tails_branched": true,
+"tail_description": "Two identical 2-ethylhexyl tails, each 8 carbons: a six-carbon main chain bearing a single ethyl branch at the C2 position; both tails are branched (not straight-chain).",
+"backbone_carbons": 4
+}

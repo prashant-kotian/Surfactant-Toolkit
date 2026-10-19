@@ -1,0 +1,15 @@
+I'll run this through the connected kinetic Monte Carlo tool.
+
+The simulation with seed 78 fired 25,086 reaction events. Its stationary-window results sit close to the deterministic mass-action prediction (c₁ ≈ 4.89×10⁻⁴ M, n̄ ≈ 7.31), well within normal stochastic scatter for 350 molecules.
+
+1. **equilibrium_c1_M:** 5.571×10⁻⁴ M
+2. **equilibrium_mean_nagg:** 7.165
+3. **tau_fit_s:** 0.05288 s
+4. **mass_conservation_max_error:** 0
+5. **convergence:** converged. Drift in the final window was about 0.9%.
+
+Two things the tool reported that you should know before using these numbers:
+- **tau_fit_s is fit to a different quantity than asked.** The tool fits the micelle-count trajectory, not the monomer trajectory. It describes this as an apparent relaxation time that leans toward the faster modes.
+- **The effective concentration is slightly lower.** Rounding to whole molecules in the initial sample gave an effective c_total of 0.0288 M, not 0.030 M.
+
+FINAL_JSON: {"equilibrium_c1_M": 0.000557142857142857, "equilibrium_mean_nagg": 7.165213963341623, "tau_fit_s": 0.05287971111143619, "mass_conservation_max_error": 0, "convergence": "converged"}

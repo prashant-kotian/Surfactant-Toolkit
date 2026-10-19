@@ -1,0 +1,68 @@
+energy is truly derivable here.
+
+I’ll work through this using the surfactant-computation tools. Let me load the ones I need.
+
+Loaded tools
+
+Loaded tools
+
+The derive_all_properties_from_smiles_and_curve pipeline is the right single entry point here — it chains classification → CMC → surface excess → isotherm selection → ΔG and, importantly, flags unresolved ambiguities in a gaps field rather than papering over them. I’ll run it on the raw data without supplying any electrolyte or counterion assumptions I don’t actually have.
+
+Used surfactant-computation: Derive all properties from smiles and curve
+
+Used surfactant-computation: Derive all properties from smiles and curve
+
+This compound is sodium bis(2-ethylhexyl) sulfosuccinate — a double-tailed sulfosuccinate diester with a sulfonate head and a Na⁺ counterion. Here’s what the analysis of your curve yields.
+
+Charge type — anionic (high confidence). The surface-active ion carries the sulfonate (–SO₃⁻) charge, balanced by a dissociable Na⁺. Structurally unambiguous.
+
+CMC ≈ 2.51 mM. A two-segment (min-RSS) break-point fit on γ vs ln C places the break at 2.51 mM, with γ ≈ 26 mN/m at the CMC. This is consistent with the raw curve: γ falls steeply through 1.58 mM (29.4 mN/m), bottoms out near 3.98 mM (27.5 mN/m), then ticks slightly upward (27.8 → 28.0). That shallow post-CMC rise is a real and characteristic feature of this type of surfactant (often a trace-impurity or repacking signature), not noise that moves the break point.
+
+Pre-CMC adsorption. The most informative quantities from the premicellar branch, via the Gibbs isotherm, are:
+
+Premicellar slope: −7.12 mN·m⁻¹ per ln C
+Maximum surface excess Γ_max ≈ 1.44 × 10⁻⁶ mol·m⁻²
+Minimum area per molecule A_min ≈ 1.16 nm²
+
+I used the Gibbs prefactor n = 2 (ionic surfactant, no added swamping electrolyte), which is the appropriate default given that no background salt was specified. One caveat worth stating plainly: if the real solution actually contained excess inert electrolyte, n = 1 applies, which would double Γ_max and halve A_min (~0.58 nm²) — so this pair is conditional on the no-added-salt assumption. The A_min of ~1.2 nm² is large, which fits the molecule’s bulky twin-branched 2-ethylhexyl tails forcing loose packing at the interface.
+
+For the isotherm shape, BIC selects Langmuir (K ≈ 52.7) over Frumkin. I’d flag this as data-limited rather than proof of zero lateral interaction: the Frumkin fit prefers a strong attraction term (a ≈ 3.8, nominally a 2D-condensation regime), but with only ~6 premicellar points the data can’t resolve that term, so the parsimonious Langmuir model wins. Report it as a monolayer Langmuir adsorption that the data can’t distinguish from weakly cooperative Frumkin.
+
+Free energy of micellization — not genuinely determinable here. For an ionic surfactant, ΔG_mic = (1 + β)·RT·ln X_cmc, where β is the degree of counterion (Na⁺) binding. β cannot be extracted from a surface-tension curve: it requires an independent measurement — classically the conductivity slope ratio above and below the CMC, or a literature value for this specific compound. You gave tensiometry only. I could manufacture a number by assuming β = 0 (treating it as nonionic) or by borrowing a textbook β, but either would be an assumption smuggled in as a result, not something your data supports. So the honest output is null. If you can supply a conductivity-derived β (or α = 1 − β), this becomes a one-step calculation and I’ll run it.
+
+FINAL_JSON:
+{
+“charge_type”: “anionic”,
+“cmc_mM”: 2.51,
+“isotherm_model”: “langmuir”,
+“gamma_max_mol_per_m2”: 1.437e-6,
+“a_min_nm2”: 1.156,
+“delta_g_mic_kJ_per_mol”: null
+}
+
+
+
+
+
+
+1 minute ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

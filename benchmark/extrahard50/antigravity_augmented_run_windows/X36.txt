@@ -1,0 +1,9 @@
+Based on the specific calculations using the `surfactantkit` MCP tool and a 4-parameter sigmoid residual-bootstrap (seed=52), here are the results for the dye-probe transition curve provided:
+
+1. **cmc_point**: 0.9626326370946828 mM
+2. **cmc_ci_low**: 0.9539754794906453 mM
+3. **cmc_ci_high**: 0.971491422707118 mM
+4. **ci_width_pct**: 1.8195874836617066
+5. **ci_wide**: true
+
+FINAL_JSON: {"cmc_point": 0.9626326370946828, "cmc_ci_low": 0.9539754794906453, "cmc_ci_high": 0.971491422707118, "ci_width_pct": 1.8195874836617066, "ci_wide": true}

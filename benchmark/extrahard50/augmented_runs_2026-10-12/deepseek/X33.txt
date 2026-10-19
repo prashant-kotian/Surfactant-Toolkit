@@ -1,0 +1,1 @@
+FINAL_JSON: {"n_rings": 1, "n_esters": 1, "acyl_carbons": 16, "mw": 419, "formula": "C22H42O7", "charge": "nonionic"}

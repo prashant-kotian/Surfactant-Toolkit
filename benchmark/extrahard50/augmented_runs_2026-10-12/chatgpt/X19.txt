@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 1m 29s
+ChatGPT said:
+mu_SI: 4.10e-8 m²/(V·s)
+zeta_plain_mV: 52.56650110770595 mV
+zeta_corr_mV: 69.45501758427869 mV
+shift_pct: 32.12790678605196%
+larger: corrected
+
+FINAL_JSON: {"mu_SI": 4.10e-8, "zeta_plain_mV": 52.56650110770595, "zeta_corr_mV": 69.45501758427869, "shift_pct": 32.12790678605196, "larger": "corrected"}

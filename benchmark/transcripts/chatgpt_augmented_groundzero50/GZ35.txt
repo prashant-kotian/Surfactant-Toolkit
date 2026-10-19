@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"charge_confidence": "moderate; pH-dependent because the ionic group is a carboxylic acid/carboxylate",
+"structural_family": "glycolipid biosurfactant",
+"n_sugar_rings": 2,
+"valid_hlb_method": "Griffin mass-ratio method"
+}

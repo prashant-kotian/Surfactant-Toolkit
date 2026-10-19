@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"rh_nm": 2.229912976162908,
+"aggregation_number": 69,
+"bias_direction": "overestimate — DLS reports a hydrodynamic radius that includes the hydrated headgroup and bound solvent layer, so the dry-core mass is overestimated relative to the true aggregation number"
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type_at_ph": "mixed cationic/neutral",
+"fraction_protonated_at_low_pka": 0.3868631798468573,
+"fraction_protonated_at_high_pka": 0.6131368201531436,
+"confidence": "low"
+}

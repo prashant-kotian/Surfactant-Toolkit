@@ -1,0 +1,1 @@
+FINAL_JSON: {"output_mean": 2.55855248098239, "output_sd": 0.42687810446597774, "ci_low": 2.0108421728056567, "ci_high": 3.5846464274086625, "skew_label": "right-skewed"}

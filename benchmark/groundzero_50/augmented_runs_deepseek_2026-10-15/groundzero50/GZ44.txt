@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"sls_measured_n_agg": 54.5,
+"geometric_n_agg": 55.51,
+"agreement": "Agree within ~2%; geometrically consistent with a spherical micelle core for this C12 cationic surfactant.",
+"reasoning": "Geometric n_agg from Tanford V_tail = 27.4 + 26.9*12 = 350.2 A^3 and core radius = l_c = 1.5 + 1.265*12 = 16.68 A gives V_core ~ 19,437 A^3, so n_agg = 19,437/350.2 ~ 55.5 (MCP tool returned 55.51 for those inputs). SLS gives n_agg = 16,800/308.34 ~ 54.5. The agreement is a cross-method consistency check (independent mass-based measurement vs. a packing-model prediction), which is stronger than two citations of the same technique agreeing, since the latter only tests reproducibility under shared assumptions. The remaining ~2% difference reflects the geometric model's spherical-core and Tanford-coefficient approximations."
+}

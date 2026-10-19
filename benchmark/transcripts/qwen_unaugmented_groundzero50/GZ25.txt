@@ -1,0 +1,203 @@
+on in the mixed micelle. Physically, the cationic N⁺(CH₃)₃ of DTAB is drawn toward the anionic phosphate of the PC headgroup, while the hydrophobic C12/C7 chains co-pack favourably. The magnitude (|β| ~ 1–2) is modest, consistent with a zwitterion–cation pair where the positive choline partially screens the phosphate attraction. This is a moderately synergistic, electrostatically driven attraction, not a strong ion-pair complex.
+6. Independent, Model-Free Check of Micellar Composition
+I bypass the Regular Solution model entirely by using only the mass-balance definitions embedded in the CMC conditions:
+𝑥
+1
+=
+𝛼
+1
+ 
+CMC
+𝑚
+𝑖
+𝑥
+CMC
+1
+ 
+𝑓
+1
+  
+  
+⟶
+  
+  
+𝑥
+1
+𝑓
+1
+=
+𝛼
+1
+ 
+CMC
+𝑚
+𝑖
+𝑥
+CMC
+1
+x
+1
+	​
+
+=
+CMC
+1
+	​
+
+f
+1
+	​
+
+α
+1
+	​
+
+CMC
+mix
+	​
+
+	​
+
+⟶x
+1
+	​
+
+f
+1
+	​
+
+=
+CMC
+1
+	​
+
+α
+1
+	​
+
+CMC
+mix
+	​
+
+	​
+
+Even without knowing f₁, the product x₁f₁ is fixed by data alone. More usefully, the ratio of micellar mole fractions can be bounded: because f₁ and f₂ are both positive, the sign and trend of x₁/x₂ must track
+𝑥
+1
+𝑥
+2
+=
+𝛼
+1
+ 
+CMC
+𝑚
+𝑖
+𝑥
+/
+CMC
+1
+𝛼
+2
+ 
+CMC
+𝑚
+𝑖
+𝑥
+/
+CMC
+2
+⋅
+𝑓
+2
+𝑓
+1
+x
+2
+	​
+
+x
+1
+	​
+
+	​
+
+=
+α
+2
+	​
+
+CMC
+mix
+	​
+
+/CMC
+2
+	​
+
+α
+1
+	​
+
+CMC
+mix
+	​
+
+/CMC
+1
+	​
+
+	​
+
+⋅
+f
+1
+	​
+
+f
+2
+	​
+
+	​
+
+Computing the purely data-driven ratio R = (α₁·CMC_mix/CMC₁)/(α₂·CMC_mix/CMC₂) = α₁·CMC₂/(α₂·CMC₁):
+α₂
+	
+R = α₁·15.6/(α₂·1.8)
+
+
+0.95
+	
+0.456
+
+
+0.90
+	
+0.963
+
+
+0.80
+	
+2.17
+
+
+0.60
+	
+5.78
+
+
+0.50
+	
+8.67
+R increases monotonically as α₂ decreases, meaning component 1 is progressively enriched in the micelle relative to the bulk as its bulk fraction grows. Because CMC₁ ≪ CMC₂ (1.8 vs 15.6 mM), component 1 partitions preferentially into the micelle at every composition—exactly the trend the Rubingh fit gives (x₁ > α₁ throughout). Moreover, the observed CMC_mix values are all below the ideal Clint line, which independently confirms net attraction without invoking any particular activity-coefficient model. The two analyses agree: the interaction is attractive/synergistic and the micelle is enriched in the lower-CMC zwitterionic component.
+FINAL_JSON:
+{
+"component1_charge_type": "zwitterionic",
+"selected_mixture_model": "Regular Solution Theory (Rubingh model)",
+"model_parameters": {"beta": -1.3, "CMC1_mM": 1.8, "CMC2_mM": 15.6},
+"interaction_character": "attractive / synergistic (negative beta); moderate electrostatic attraction between the cationic DTAB headgroup and the anionic phosphate of the zwitterionic PC, aided by favourable hydrophobic co-packing",
+"independent_check_note": "A model-free mass-balance ratio R = alpha1CMC2/(alpha2CMC1) computed directly from the data increases monotonically from 0.46 to 8.7 as alpha2 drops from 0.95 to 0.50, confirming progressive micellar enrichment in component 1 (x1 > alpha1 at every composition). All five measured CMC_mix values fall below the ideal Clint prediction, independently confirming net attractive (synergistic) interaction without invoking the Regular Solution activity-coefficient formalism."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

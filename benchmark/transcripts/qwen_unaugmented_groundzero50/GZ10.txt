@@ -1,0 +1,141 @@
+ium Dodecyl Sulfate (SDS)
+Identification
+The SMILES CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+] corresponds to sodium dodecyl sulfate (SDS), an anionic surfactant with a 12-carbon saturated alkyl tail (n_c = 12) and a sulfate headgroup.
+Step-by-Step Calculation
+Given:
+n_c = 12
+A_min = 44.70 Å² (provided as independently measured from Gibbs adsorption isotherm)
+A. Tail Volume (Tanford)
+𝑉
+=
+27.4
++
+26.9
+×
+𝑛
+𝑐
+=
+27.4
++
+26.9
+×
+12
+=
+27.4
++
+322.8
+=
+350.2
+ 
+A
+˚
+3
+V=27.4+26.9×n
+c
+	​
+
+=27.4+26.9×12=27.4+322.8=350.2 
+A
+˚
+3
+B. Critical Chain Length (Tanford)
+𝑙
+𝑐
+=
+1.5
++
+1.265
+×
+𝑛
+𝑐
+=
+1.5
++
+1.265
+×
+12
+=
+1.5
++
+15.18
+=
+16.68
+ 
+A
+˚
+l
+c
+	​
+
+=1.5+1.265×n
+c
+	​
+
+=1.5+1.265×12=1.5+15.18=16.68 
+A
+˚
+C. Critical Packing Parameter
+𝑃
+=
+𝑉
+𝐴
+min
+⁡
+×
+𝑙
+𝑐
+=
+350.2
+44.70
+×
+16.68
+=
+350.2
+745.596
+≈
+0.4697
+P=
+A
+min
+	​
+
+×l
+c
+	​
+
+V
+	​
+
+=
+44.70×16.68
+350.2
+	​
+
+=
+745.596
+350.2
+	​
+
+≈0.4697
+D. Predicted Morphology
+Checking the morphology criteria:
+P ≤ 1/3 (0.333)? No.
+1/3 < P ≤ 1/2 (0.5)? Yes, since 0.333 < 0.4697 ≤ 0.5.
+→ Cylindrical (rodlike) micelle is predicted.
+Assumptions and Limitations
+Tanford's empirical relations assume a fully extended (all-trans) saturated hydrocarbon chain; real chains have gauche defects, reducing effective length.
+Geometric packing model (Israelachvili) treats the aggregate as a simple volume/area/length constraint, ignoring curvature elasticity, chain entropy, and specific interactions.
+Electrostatic effects: SDS is ionic; the effective headgroup area depends strongly on ionic strength and counterion binding. The given A_min = 44.70 Å² reflects a particular set of solution conditions (likely no added salt, where electrostatic repulsion inflates the area). At higher ionic strength, A_min would shrink and P would increase.
+Morphology discrepancy: SDS is experimentally known to form predominantly spherical micelles at dilute conditions. The prediction of rodlike micelles here highlights that the simple packing-parameter criterion with these particular Tanford parameters and this A_min value places P near the 1/3–1/2 boundary. Small changes in A_min (e.g., 50 Å² would give P ≈ 0.42, still cylindrical; ~63 Å² would give P ≈ 1/3) shift the classification.
+The model does not account for temperature, concentration-dependent aggregation number changes, or polydispersity.
+FINAL_JSON:
+{
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.4697,
+"predicted_morphology": "cylindrical/rodlike micelle",
+"assumptions_or_limitations": "Tanford relations assume all-trans saturated chain; geometric packing model ignores curvature elasticity and chain entropy; A_min from Gibbs analysis is condition-dependent (ionic strength, temperature); electrostatic headgroup repulsion in this ionic surfactant strongly influences effective area; predicted rodlike morphology differs from the commonly observed spherical micelles of dilute SDS, reflecting sensitivity of P near the 1/3-1/2 boundary to the chosen A_min and Tanford parameters."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

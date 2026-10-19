@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"hld_value": -1.0205620875658997,
+"winsor_type": "I",
+"cpp": 0.46969136100515557,
+"cpp_morphology": "cylindrical/rodlike micelle",
+"frameworks_consistent": true
+}

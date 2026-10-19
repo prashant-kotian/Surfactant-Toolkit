@@ -1,0 +1,1 @@
+FINAL_JSON: {"flagged_T": 308.15, "n_flagged": 1, "dH_corrected": -12.746, "dS_corrected": 38.225, "r2_corrected": 0.99790}

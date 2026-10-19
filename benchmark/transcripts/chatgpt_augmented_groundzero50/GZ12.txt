@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.012,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter asymmetric Margules (EOMMM) model fitted to the measured mixed-micelle activity coefficients",
+"notes": "The data are incompatible with a single symmetric Rubingh interaction parameter. Approximate fitted parameters W12=-3.56 and W21=-0.89 RT indicate favorable but strongly asymmetric interactions; prediction at x1=0.90 is a modest extrapolation beyond the measured range."
+}

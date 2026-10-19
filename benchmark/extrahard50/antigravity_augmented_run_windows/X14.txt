@@ -1,0 +1,4 @@
+Based on the exact Monte Carlo aggregation distribution from the `surfactantkit` MCP tool using the provided parameters:
+
+FINAL_JSON: {"free_monomer_fraction": 0.0076635881312635094, "mean_cluster_size": 5.5349315517128455, "largest_cluster": 14, "exact_max_deviation": 0.014445179692999272, "convergence": "converged"}
+NAL_JSON: {"free_monomer_fraction": 0.0076635881312635094, "mean_cluster_size": 5.5349315517128455, "largest_cluster": 14, "exact_max_deviation": 0.014445179692999272, "convergence": "converged"}

@@ -1,0 +1,299 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== GZ21 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real cationic surfactant has 12 carbons in its hydrophobic tail and a real critical micelle concentration of 12.93 mM (no added electrolyte).
+
+SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons:
+  Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c
+  Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c
+  Critical packing parameter P = V / (a * l_c), where a is the headgroup area per molecule
+  Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures
+
+A real, independently measured headgroup area for this exact compound is 59.62 square Angstrom.
+
+Separately, for an ionic surfactant with no added electrolyte, the effective headgroup area can also be estimated from electrostatic double-layer theory using only the CMC itself, via a real headgroup-specific electrostatic prefactor. Attempt this second approach as well if you can determine an appropriate prefactor for this specific headgroup type; if you cannot, say so explicitly rather than substituting a value from a different headgroup class.
+
+Analyze this system using the directly measured headgroup area, and report what you find for the electrostatically-derived approach.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_volume_A3": <number>,
+  "critical_length_A": <number>,
+  "cpp_measured_area": <number>,
+  "morphology_measured_area": "<string>",
+  "electrostatic_headgroup_area_A2": <number or null>,
+  "comment": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ22 ===
+Work entirely from first principles -- do not search the internet or recall a value for either compound from training.
+
+Compound 1 SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+A real, independently measured characteristic curvature (Cc) for this exact compound is -5.7.
+
+Compound 2 SMILES: CCCCCCCCCCCCN
+This compound is in an aqueous solution at pH 7.0.
+
+A real, published linear regression relates characteristic curvature (Cc) to HLB: HLB = -0.27 * Cc + 20.1 (R^2 = 0.975, fitted across 5 real compounds).
+
+For each compound, report its charge type at the stated conditions, and its HLB via the given Cc-to-HLB regression if it can genuinely be determined from what's given here.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "compound1_charge_type": "<string>",
+  "compound1_hlb_via_cc": <number or null>,
+  "compound2_charge_type": "<string>",
+  "compound2_hlb_via_cc": <number or null>,
+  "notes": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ23 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: [Br-].[Br-].CCCCCCCCCCCC[N+](C)(C)CCCC[N+](C)(C)CCCCCCCCCCCC
+
+Analyze this structure and report its charge type, its structural family (describe what about the structure supports your answer), and which real HLB estimation method (if any) is actually valid for this structure -- explain your reasoning.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "structural_family": "<string>",
+  "valid_hlb_method": "<string>",
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ24 ===
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real anionic surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: [Na+].C[C@H](CCC(=O)[O-])[C@H]1CC[C@@H]2[C@@]1([C@H](C[C@H]3[C@H]2[C@@H](C[C@H]4[C@@]3(CC[C@H](C4)O)C)O)O)C
+Component 1 pure CMC: 11.50 mM
+
+Component 2 SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Component 2 pure CMC: 11.98 mM
+
+At a bulk mole fraction of component 2 of 0.5, the real experimentally measured mixed CMC is 4.07 mM, at 298.15 K.
+
+A real, published free energy expression for a binary mixed micelle (requiring one ionic and one nonionic component, and incorporating chain-chain as well as head-group interaction) is:
+  deltaG_M = R*T*(B0 + B1*X1 + B2*X1^2)
+  where B0 = ln(Xcmc2), B2 = -beta, B1 = ln(Xcmc1/Xcmc2) - B2
+  Xcmc1, Xcmc2 are the pure-component CMCs on the mole-fraction scale (moles surfactant per mole surfactant+water); X1 and beta are the regular-solution-theory micellar mole fraction and interaction parameter for this exact system.
+
+Analyze the interaction between these two surfactants, and report whether this free energy expression is an appropriate choice for this specific system.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "x1_rubingh": <number>,
+  "beta_rubingh": <number>,
+  "interaction_character": "<string>",
+  "maeda_deltag_kJ_per_mol": <number or null>,
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ25 ===
+Work entirely from first principles -- do not search the internet or recall a value for this specific system.
+
+Two real surfactants form a real binary mixed micelle system.
+
+Component 1 SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 1 pure CMC: 1.8 mM
+
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Component 2 pure CMC: 15.6 mM
+
+Real measured mixed CMC at each bulk mole fraction of component 2 (alpha2, CMC_mix in mM):
+  0.95, 10.8
+  0.90, 6.2
+  0.80, 4.8
+  0.60, 2.7
+  0.50, 2.4
+
+Analyze this binary surfactant system and report component 1's charge type, the interaction behavior between the two surfactants in their mixed micelles (with whatever model and parameters you find best explain this data), how you would characterize the nature of that interaction, and whether an independent check of the micellar composition trend -- one that doesn't rely on your chosen model's own assumptions -- supports the same conclusion.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "component1_charge_type": "<string>",
+  "selected_mixture_model": "<string>",
+  "model_parameters": {},
+  "interaction_character": "<string>",
+  "independent_check_note": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ26 ===
+Work entirely from first principles using the real van't Hoff (Gibbs-Helmholtz) relationship -- do not search the internet or recall a value for this compound from training.
+
+Compound SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Real CMC measured at each of the following temperatures (same source):
+  T = 283.15 K, CMC = 9.93 mM
+  T = 288.15 K, CMC = 9.82 mM
+  T = 293.15 K, CMC = 9.76 mM
+  T = 298.15 K, CMC = 9.74 mM
+  T = 303.15 K, CMC = 9.77 mM
+  T = 308.15 K, CMC = 10.02 mM
+  T = 313.15 K, CMC = 10.54 mM
+  T = 318.15 K, CMC = 11.47 mM
+
+A real, independently measured counterion dissociation degree for this exact compound is 0.268.
+
+Use the relation delta_g_mic = (2 - alpha) * R * T * ln(X_cmc), where alpha is the counterion dissociation degree above and X_cmc is the CMC expressed as a mole fraction (moles surfactant per mole surfactant plus water, using 55.5 mol/L as the molarity of water).
+
+Analyze this surfactant's micellization thermodynamics. Using only each interval's own two endpoint temperatures (a two-point calculation, not a multi-point regression), report: (a) the enthalpy of micellization using the widest available span (283.15 K to 318.15 K), (b) the enthalpy using only the interval 283.15 K to 298.15 K, and (c) the enthalpy using only the interval 303.15 K to 318.15 K. Note whether these three agree with each other. Also report the free energy of micellization at 298.15 K.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_h_wide_kJ_per_mol": <number>,
+  "delta_h_low_regime_kJ_per_mol": <number>,
+  "delta_h_high_regime_kJ_per_mol": <number>,
+  "self_consistent": <true|false>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== GZ27 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real anionic surfactant has 12 carbons in its hydrophobic tail.
+
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+A real, independently measured headgroup area for this exact compound is 44.70 square Angstrom.
+
+Use Tanford's standard empirical relations for a saturated, unbranched alkyl chain of n_c carbons:
+  Tail volume V (cubic Angstrom) = 27.4 + 26.9 * n_c
+  Critical chain length l_c (Angstrom) = 1.5 + 1.265 * n_c
+  Critical packing parameter P = V / (a * l_c)
+  Morphology: P <= 1/3 spherical micelle; 1/3 < P <= 1/2 cylindrical/rodlike micelle; 1/2 < P <= 1 vesicle/bilayer; P > 1 inverted structures
+
+If applicable given your own predicted morphology, a real aggregation number of 63 molecules is available for this exact compound, and the micelle core can be modeled as a prolate ellipsoid of revolution whose minor semi-axis is pinned at the critical chain length, with the major semi-axis following from volume conservation (core volume = aggregation number x tail volume = (4/3) x pi x major x minor^2). Compute the axial ratio (major/minor) if this applies.
+
+Separately: a real diffusion coefficient of 9.3e-7 cm^2/s was measured for this exact compound's micelle in water at 298.15 K (viscosity 0.8903 mPa.s). Using the naive Stokes-Einstein relation (assuming a spherical particle), estimate the hydrodynamic radius. Then, using your own axial ratio above and the real Perrin friction factor correction for a prolate ellipsoid, estimate the true (shape-corrected) hydrodynamic radius. State whether this correction makes the size estimate larger or smaller than the naive value, and why.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "tail_volume_A3": <number>,
+  "critical_length_A": <number>,
+  "cpp": <number>,
+  "morphology": "<string>",
+  "axial_ratio": <number or null>,
+  "rh_naive_stokes_einstein_nm": <number>,
+  "rh_perrin_corrected_nm": <number or null>,
+  "direction_of_correction": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ28 ===
+Work entirely from first principles -- this is a direct arithmetic calculation, not a lookup.
+
+For a real surfactant at 298.15 K: the free energy of micellization is -37.131 kJ/mol.
+
+Using the standard thermodynamic relation deltaG = deltaH - T*deltaS (i.e. deltaS = (deltaH - deltaG) / T), compute the entropy of micellization (in J/(mol.K)) for EACH of the following two independently-determined enthalpy of micellization values, treating them as two separate, unrelated scenarios for the same deltaG and T:
+  (a) deltaH = +0.904 kJ/mol
+  (b) deltaH = -8.574 kJ/mol
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_s_mic_low_regime_J_per_mol_K": <number>,
+  "delta_s_mic_high_regime_J_per_mol_K": <number>
+}
+END OF QUESTION
+
+
+=== GZ29 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+SMILES: CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCO
+
+Real concentration-vs-surface-tension data at 298 K (concentration in mol/L, surface tension in mN/m):
+  1.00e-08, 71.539
+  3.00e-08, 70.720
+  1.00e-07, 68.550
+  3.00e-07, 64.935
+  1.00e-06, 59.512
+  3.00e-06, 53.880
+  1.00e-05, 47.426
+  3.00e-05, 41.449
+  8.00e-05, 36.088
+Pure-solvent surface tension: 72.0 mN/m.
+
+A real, independently measured maximum surface excess for this exact compound is Gamma_max = 2.21e-6 mol/m^2.
+
+Analyze this surfactant's pre-CMC adsorption behavior. Determine which isotherm model best describes this data, and separately assess whether the result implies a physically meaningful surfactant-surfactant lateral interaction at the interface, or not.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_model": "<string>",
+  "frumkin_a": <number or null>,
+  "physically_meaningful_interaction": <true|false>,
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ30 ===
+Work entirely from first principles -- this is a direct unit-conversion calculation, not a lookup.
+
+A real surfactant has a measured maximum surface excess (Gamma_max) of 3.4268e-10 mol/cm^2.
+
+Using A_min (area per molecule) = 1 / (Gamma_max x Avogadro's number), compute the minimum area per molecule in BOTH square nanometers and square Angstrom, making sure both values are mutually consistent with each other.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "a_min_nm2": <number>,
+  "a_min_A2": <number>
+}
+END OF QUESTION

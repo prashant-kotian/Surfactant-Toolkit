@@ -1,0 +1,1 @@
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}

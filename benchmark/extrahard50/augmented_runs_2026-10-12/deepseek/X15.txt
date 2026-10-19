@@ -1,0 +1,1 @@
+FINAL_JSON: {"margin": 0.013, "feasible_within_1pct": false, "x1_rodenas": 0.8031, "x1_rubingh": 0.7865, "agree_003": true}

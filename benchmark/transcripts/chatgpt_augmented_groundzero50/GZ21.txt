@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.35215034949564666,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": null,
+"comment": "The measured 59.62 A^2 headgroup area gives CPP = 0.35215, placing the surfactant in the cylindrical/rodlike regime. The CMC-based electrostatic calculation was not performed because no appropriate trimethylammonium-bromide-specific electrostatic prefactor was available; the server's 82 A illustrative prefactor is sulfate-like and was not substituted."
+}

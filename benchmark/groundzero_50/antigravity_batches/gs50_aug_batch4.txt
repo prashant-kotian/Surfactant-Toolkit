@@ -1,0 +1,205 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+You have access to a connected MCP tool server named "surfactant-computation"
+-- use it directly for these calculations rather than hand-deriving results,
+wherever a relevant tool exists.
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== GZ31 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: [Br-].[Br-].CCCCCCCCCCCC[N+](C)(C)CCCCCC[N+](C)(C)CCCCCCCCCCCC
+
+Analyze this structure and report its charge type, its structural family, and -- if it is a gemini/dimeric surfactant -- the number of carbons in each hydrophobic tail, the number of carbons in the spacer connecting the two headgroups, and the number of tails.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "structural_family": "<string>",
+  "tail_carbons_per_tail": <integer or null>,
+  "spacer_carbons": <integer or null>,
+  "n_tails": <integer or null>
+}
+END OF QUESTION
+
+
+=== GZ32 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Analyze this structure's hydrophobic tails carefully. Report the total number of carbons in the molecule, the total number of carbons across both hydrophobic tails combined, whether the tails are straight-chain or branched (describe the branching if present), and the number of carbons in the remaining (non-tail) backbone/headgroup portion of the molecule.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "total_carbons": <integer>,
+  "tail_carbons_total": <integer>,
+  "tails_branched": <true|false>,
+  "tail_description": "<string>",
+  "backbone_carbons": <integer>
+}
+END OF QUESTION
+
+
+=== GZ33 ===
+Work entirely from first principles -- do not search the internet or recall a value for this compound from training.
+
+A real nonionic surfactant has the SMILES: CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO
+
+Analyze this structure and report the number of ethylene-oxide repeat units in the polyether chain, the molecule's total molecular weight, and its HLB by Griffin's method (HLB = 20 * hydrophilic-portion mass / total mass; the hydrophilic portion includes the polyoxyethylene chain and its terminal hydroxyl).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": <integer>,
+  "molecular_weight_g_per_mol": <number>,
+  "hlb_griffin": <number>
+}
+END OF QUESTION
+
+
+=== GZ34 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: [Br-].[Br-].C[N+](C)(C)CCCCCCCCCCCCCCCC[N+](C)(C)C
+
+Analyze this structure and report its charge type. It has two quaternary ammonium headgroups, similar to a gemini surfactant -- examine the actual connectivity carefully and determine whether this is genuinely a gemini surfactant (two separate tail-plus-headgroup units joined by a spacer) or a different architecture, explaining your reasoning based on what lies between and beyond the two headgroups.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "true_classification": "<string>",
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ35 ===
+Work entirely from first principles -- do not search the internet or recall information about this specific compound.
+
+SMILES: CC(CCCCCC/C=C/CCCCCCCC(=O)O)O[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)COC(=O)C)O)O)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)COC(=O)C)O)O)O
+
+Analyze this structure carefully and report its charge type (including your confidence in that assignment), its structural family (describe what about the structure supports your answer), how many sugar rings are present in the headgroup, and which real HLB estimation method (if any) is valid for this structure.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "charge_confidence": "<string>",
+  "structural_family": "<string>",
+  "n_sugar_rings": <integer>,
+  "valid_hlb_method": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ36 ===
+The attached image shows a real ln(CMC) vs. 1000/T plot for a real surfactant (van't Hoff-style plot; CMC in mM).
+
+Read the trend directly from the chart -- do not assume this is any particular named/recognized surfactant, and do not use any numeric value except by reading the chart itself:
+(a) As 1000/T increases (i.e. temperature decreases), does ln(CMC) increase or decrease?
+(b) Based on this trend and the real van't Hoff (Gibbs-Helmholtz) relationship, is micellization for this surfactant endothermic or exothermic? Explain your reasoning.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "slope_sign": "<string>",
+  "process_character": "<endothermic|exothermic>",
+  "reasoning": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ37 ===
+The attached image shows real activity coefficients (from regular-solution-type theory) for the two components of a real binary surfactant mixed micelle, plotted against the micellar mole fraction of component 1 (x1). Markers show real independently-derived data points; the curves show a smooth model fit through them.
+
+Read the following directly from the chart -- do not use any numeric value except by reading the chart itself:
+(a) The approximate activity coefficient of component 1 at x1 = 0.5.
+(b) The approximate activity coefficient of component 2 at x1 = 0.5.
+(c) Which component has the larger activity coefficient at x1 = 0.5?
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.5": <number>,
+  "f2_at_x1_0.5": <number>,
+  "which_is_larger_at_0.5": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ38 ===
+The attached image shows a real surface-tension-vs-concentration curve for a real surfactant (log-scale concentration axis, units as labeled on the chart).
+
+Read the following directly from the chart -- do not assume this is any particular named/recognized surfactant, and use the units exactly as shown on the chart's own axis label:
+(a) Your best estimate of the concentration (in the units shown on the chart) at which the curve transitions from its declining pre-plateau behavior to the flat plateau -- this is the critical micelle concentration.
+(b) State explicitly which unit you used, matching the chart's own axis label.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "estimated_cmc_value": <number>,
+  "units_used": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ39 ===
+The attached image shows real measured surface-tension-vs-concentration data for a real surfactant, together with a fitted pre-CMC adsorption isotherm curve (log-scale concentration axis).
+
+Examine where the fitted curve and the measured data agree well and where they diverge. Report:
+(a) The approximate concentration region where the fitted curve stops matching the measured data well.
+(b) A physical explanation for why a pre-CMC adsorption isotherm would be expected to diverge from real data in that region.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "deviation_region": "<string>",
+  "deviation_reason": "<string>"
+}
+END OF QUESTION
+
+
+=== GZ40 ===
+The attached image shows real surface-tension-vs-concentration data for two different real surfactants, labeled Surfactant A and Surfactant B (log-scale concentration axis).
+
+Examine each labeled curve's overall shape carefully, especially at the higher-concentration end. Report:
+(a) Which surfactant (A or B), if either, shows a local DIP (minimum) in surface tension followed by a RISE at higher concentration, rather than simply declining and then plateauing.
+(b) Which surfactant shows the simpler decline-then-plateau behavior with no such dip.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "which_shows_dip_then_rise": "<string>",
+  "which_shows_plain_plateau": "<string>"
+}
+END OF QUESTION

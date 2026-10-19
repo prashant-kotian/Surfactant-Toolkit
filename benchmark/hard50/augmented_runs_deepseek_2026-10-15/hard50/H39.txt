@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"outlier_alpha2": 0.60,
+"beta_mean_excluding_outlier": -1.187969599230992,
+"beta_std_excluding_outlier": 0.6649877960566857,
+"n_points_used": 4
+}

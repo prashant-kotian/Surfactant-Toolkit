@@ -1,0 +1,10 @@
+Based on the residual-bootstrap curve fitting performed using the `bootstrap_cmc` MCP tool, the 4-parameter sigmoidal curve successfully converges.
+
+The calculations are as follows:
+1. **cmc_point**: The point CMC estimate (step 1) is `3.17277720537522` mM.
+2. **cmc_ci_low**: The 2.5th-percentile bootstrap CMC (step 4) is `3.1092964280512` mM.
+3. **cmc_ci_high**: The 97.5th-percentile bootstrap CMC (step 4) is `3.2456417783742193` mM.
+4. **ci_width_pct**: The 95% confidence interval width as a percentage of the point estimate is `4.297350355700201`%.
+5. **convergence**: All 1000/1000 refits successfully completed.
+
+FINAL_JSON: {"cmc_point": 3.17277720537522, "cmc_ci_low": 3.1092964280512, "cmc_ci_high": 3.2456417783742193, "ci_width_pct": 4.297350355700201, "convergence": "converged"}

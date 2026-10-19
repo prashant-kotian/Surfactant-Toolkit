@@ -1,0 +1,9 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"cmc_mM": 5.477225575051662,
+"isotherm_model": "frumkin",
+"condensation_caveat_flagged": true,
+"gamma_max_mol_per_m2": 1.5117195185142552e-6,
+"a_min_nm2": 1.0984438891189643,
+"delta_g_mic_kJ_per_mol": -29.953153909017875
+}

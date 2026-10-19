@@ -1,0 +1,13 @@
+…
+Show more
+Worked for 45s
+ChatGPT said:
+mw: 296 g/mol
+formula: C19H36O2
+n_CH2: 14
+n_CH3: 2
+n_vinyl_CH: 2
+hlb: 0.85
+charge: nonionic
+
+FINAL_JSON: {"mw": 296, "formula": "C19H36O2", "n_CH2": 14, "n_CH3": 2, "n_vinyl_CH": 2, "hlb": 0.85, "charge": "nonionic"}

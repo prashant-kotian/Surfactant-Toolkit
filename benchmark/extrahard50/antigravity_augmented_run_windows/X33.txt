@@ -1,0 +1,11 @@
+Here are the computed properties for the given sugar ester:
+
+1. **n_rings:** 1 (The glucose ring constitutes a single ring in the structure).
+2. **n_esters:** 1 (There is a single -C(=O)O- linkage connecting the acyl chain to the sugar).
+3. **acyl_carbons:** 16 (Counting the carbons in the acyl chain, `CCCCCCCCCCCCCCCC(=O)`, gives a total of 16 carbons, including the carbonyl carbon).
+4. **mw:** 419 g/mol (The molecular weight is 418.571 g/mol, which rounds to 419 given 3 significant figures).
+5. **formula:** C22H42O7 (16 carbons from the acyl chain + 6 from the sugar = 22 C; 31 H from acyl + 11 H from sugar = 42 H; 1 O from carbonyl + 1 O from ester + 1 O from sugar ring + 4 O from hydroxyls = 7 O).
+6. **charge:** nonionic (The sugar hydroxyls and the ester group are not ionizable).
+
+FINAL_JSON: {"n_rings": 1, "n_esters": 1, "acyl_carbons": 16, "mw": 419, "formula": "C22H42O7", "charge": "nonionic"}
+nic"}

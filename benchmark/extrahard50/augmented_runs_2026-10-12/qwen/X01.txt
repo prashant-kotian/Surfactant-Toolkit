@@ -1,0 +1,23 @@
+**Procedure executed as pinned** (x = log10(c/mM), 4‑parameter tanh sigmoid, nonlinear least squares, residual bootstrap with `default_rng(0)`, 1000 refits, `np.percentile` linear interpolation).
+
+**Step 1 — point fit**
+- x₀ = 0.501440 (log₁₀ mM) → **CMC = 10^x₀ = 3.1728 mM**
+- Fitted width w = 0.15544; plateaus: low‑c ≈ 67.97, high‑c ≈ 29.19 (correct orientation: higher concentration → lower plateau)
+- R² = 0.99830
+
+**Steps 2–3 — residual bootstrap**
+- Residuals rᵢ = valueᵢ − fittedᵢ taken at all 10 points, resampled with replacement (n = 10 per repeat), added back onto the fitted curve, and the same 4‑parameter sigmoid refit → 1000 bootstrap x₀ᵇ values.
+
+**Step 4 — discard rule / percentiles**
+- Validity band for w: (10⁻⁴, 10·(x_max−x_min)) = (10⁻⁴, 11.7609). No refit fell outside it and no least‑squares call failed → **n_failed = 0, all 1000 kept** (n_boot_used = 1000).
+- 2.5th percentile: log₁₀CMC = 0.492662 → **3.1093 mM**
+- 97.5th percentile: log₁₀CMC = 0.511301 → **3.2456 mM**
+
+**Step 5 — interval width**
+- ci_width_pct = 100 × (3.2456418 − 3.1092964) / 3.1727772 = **4.297 %**
+
+**Convergence:** all 1000 resamples produced usable fits → **converged**
+
+Note on interpretation: this percentile interval reflects sampling uncertainty of the sigmoid midpoint only; it carries no model‑form error term, and it assumes independent, homoscedastic residuals.
+
+FINAL_JSON: {"cmc_point": 3.1727772041507176, "cmc_ci_low": 3.1092964273672075, "cmc_ci_high": 3.24564177719897, "ci_width_pct": 4.2973504, "convergence": "converged"}

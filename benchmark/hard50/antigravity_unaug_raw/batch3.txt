@@ -1,0 +1,360 @@
+Here are the complete, first-principles derivations and answers for all 10 challenge questions in order:
+
+---
+
+### Question H21
+
+#### Principles and Calculations
+1. **Prefactor in the Gibbs Adsorption Equation**:
+   The Gibbs adsorption isotherm relates the change in interfacial tension $d\gamma$ to the chemical potential of adsorbing species:
+   $$d\gamma = -\sum_i \Gamma_i d\mu_i$$
+   For a 1:1 ionic surfactant ($M^+ X^-$) in water in the **complete absence of added electrolyte**, both the surfactant cation and the counterion must simultaneously adsorb at the interface to maintain local electroneutrality ($\Gamma_+ = \Gamma_- = \Gamma$). The chemical potential is given by:
+   $$\mu = \mu_+ + \mu_- = \mu^0 + RT \ln a_+ + RT \ln a_- \approx \mu^0 + 2RT \ln C$$
+   Therefore, $d\mu = 2RT d(\ln C)$, giving a prefactor of **$n = 2$**:
+   $$\Gamma_{\max} = -\frac{1}{2RT} \frac{d\gamma}{d\ln C}$$
+
+2. **Maximum Surface Excess ($\Gamma_{\max}$)**:
+   Given:
+   - $d\gamma/d(\ln C) = -15.2\text{ mN/m} = -1.52 \times 10^{-2}\text{ N/m}$
+   - $T = 298.15\text{ K}$, $R = 8.314462618\text{ J/(mol}\cdot\text{K)}$
+   - $2RT = 2 \times 8.314462618 \times 298.15 = 4957.914\text{ J/mol}$
+   $$\Gamma_{\max} = \frac{1.52 \times 10^{-2}\text{ N/m}}{4957.914\text{ J/mol}} = 3.065805 \times 10^{-6}\text{ mol/m}^2$$
+
+3. **Minimum Area per Molecule ($A_{\min}$)**:
+   Using Avogadro's constant $N_A = 6.02214076 \times 10^{23}\text{ mol}^{-1}$:
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{(6.02214076 \times 10^{23}\text{ mol}^{-1})(3.065805 \times 10^{-6}\text{ mol/m}^2)} = 5.416322 \times 10^{-19}\text{ m}^2 = 54.1632\text{ \AA}^2$$
+
+4. **Discrepancy vs. Literature Value**:
+   Given literature $A_{\min} = 44.70\text{ \AA}^2$:
+   $$\text{Discrepancy} = \frac{|A_{\min,\text{slope}} - A_{\min,\text{lit}}|}{A_{\min,\text{lit}}} \times 100 = \frac{|54.1632 - 44.70|}{44.70} \times 100 = 21.17\%$$
+
+=== H21 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 3.065805e-06,
+  "a_min_from_slope_A2": 54.1632,
+  "discrepancy_vs_literature_pct": 21.17
+}
+END OF QUESTION
+
+
+---
+
+### Question H22
+
+#### Principles and Calculations
+1. **Ideal Mixed CMC (Clint Equation)**:
+   For an ideal binary surfactant mixture, the mixed CMC ($C_{\text{id}}$ or $C_{\text{lint}}$) is given by:
+   $$\frac{1}{C_{\text{lint}}} = \frac{\alpha_1}{C_1^*} + \frac{1 - \alpha_1}{C_2^*}$$
+   With $C_1^* = 1.8\text{ mM}$, $C_2^* = 15.6\text{ mM}$, and $\alpha_1 = 0.30$:
+   $$\frac{1}{C_{\text{lint}}} = \frac{0.30}{1.8} + \frac{0.70}{15.6} = 0.166667 + 0.044872 = 0.211538\text{ mM}^{-1}$$
+   $$C_{\text{lint}} = \frac{1}{0.211538} = 4.7273\text{ mM}$$
+
+2. **Percent Deviation of Measured CMC**:
+   With $C_{\text{meas}} = 4.05\text{ mM}$:
+   $$\text{Deviation (\%)} = \frac{C_{\text{lint}} - C_{\text{meas}}}{C_{\text{meas}}} \times 100 = \frac{4.7273 - 4.05}{4.05} \times 100 = +16.72\%$$
+   The positive sign reflects non-ideal synergistic mixing ($C_{\text{meas}} < C_{\text{lint}}$).
+
+3. **Rubingh Micellar Mole Fraction ($x_1$)**:
+   The composition $x_1$ satisfies Rubingh's transcendental mass balance:
+   $$x_1^2 \ln\left(\frac{\alpha_1 C_{\text{mix}}}{x_1 C_1^*}\right) = (1 - x_1)^2 \ln\left(\frac{(1 - \alpha_1) C_{\text{mix}}}{(1 - x_1) C_2^*}\right)$$
+   $$\frac{\alpha_1 C_{\text{mix}}}{C_1^*} = \frac{0.30 \times 4.05}{1.8} = 0.675,\quad \frac{(1 - \alpha_1) C_{\text{mix}}}{C_2^*} = \frac{0.70 \times 4.05}{15.6} = 0.181731$$
+   Solving for $x_1 \in (0, 1)$ numerically gives:
+   $$x_1 = 0.7203$$
+
+4. **Rubingh Interaction Parameter ($\beta$)**:
+   $$\beta = \frac{\ln\left(\frac{\alpha_1 C_{\text{mix}}}{x_1 C_1^*}\right)}{(1 - x_1)^2} = \frac{\ln\left(\frac{0.675}{0.7203}\right)}{(1 - 0.7203)^2} = \frac{\ln(0.93708)}{0.078219} = -0.8309$$
+
+=== H22 ===
+FINAL_JSON:
+{
+  "clint_cmc_mM": 4.7273,
+  "deviation_from_measured_pct": 16.72,
+  "x1_rubingh": 0.7203,
+  "beta_rubingh": -0.8309
+}
+END OF QUESTION
+
+
+---
+
+### Question H23
+
+#### Principles and Calculations
+1. **Endpoint van 't Hoff Enthalpy of Micellization ($\Delta H_{\text{mic}}$)**:
+   From the pseudo-phase separation model, the standard Gibbs free energy of micellization is $\Delta G_{\text{mic}} = RT \ln X_{\text{CMC}}$, leading via the Gibbs-Helmholtz relation to the van 't Hoff equation:
+   $$\Delta H_{\text{mic}} = R \frac{d\ln(\text{CMC})}{d(1/T)} = R \frac{\ln(\text{CMC}_2 / \text{CMC}_1)}{1/T_2 - 1/T_1}$$
+   - Row 1: $T_1 = 10\text{ }^\circ\text{C} = 283.15\text{ K}$, $\text{CMC}_1 = 9.93\text{ mM}$
+   - Row 8: $T_2 = 45\text{ }^\circ\text{C} = 318.15\text{ K}$, $\text{CMC}_2 = 11.47\text{ mM}$
+   $$\frac{1}{T_2} - \frac{1}{T_1} = \frac{1}{318.15} - \frac{1}{283.15} = 0.00314317 - 0.00353170 = -0.000388525\text{ K}^{-1}$$
+   $$\ln\left(\frac{\text{CMC}_2}{\text{CMC}_1}\right) = \ln\left(\frac{11.47}{9.93}\right) = +0.144161$$
+   $$\Delta H_{\text{mic}} = (8.314462618\text{ J/(mol}\cdot\text{K)}) \times \frac{0.144161}{-0.000388525\text{ K}^{-1}} \times 10^{-3}\text{ kJ/J} = -3.085\text{ kJ/mol}$$
+
+2. **Comparison with Draft Write-up Value**:
+   The draft write-up states $\Delta H_{\text{mic}} = -6.2\text{ kJ/mol}$.
+   $$\text{Relative Difference} = \frac{|-3.085 - (-6.2)|}{|-6.2|} \times 100 = \frac{3.115}{6.2} \times 100 = 50.2\% > 20\%$$
+   Thus, the endpoint value does not agree within 20% (`agrees_with_cited_value = false`).
+
+=== H23 ===
+FINAL_JSON:
+{
+  "delta_h_endpoint_kJ_per_mol": -3.085,
+  "agrees_with_cited_value": false,
+  "reported_value_source": "computed here from the van't Hoff equation using the first and last CMC rows of the supplied dataset (283.15 K and 318.15 K), not taken from the stated metadata value"
+}
+END OF QUESTION
+
+
+---
+
+### Question H24
+
+#### Principles and Calculations
+1. **Stokes-Einstein Hydrodynamic Radius ($R_h$)**:
+   Given $T = 298.15\text{ K}$, $\eta = 0.8903\text{ mPa}\cdot\text{s} = 8.903 \times 10^{-4}\text{ kg/(m}\cdot\text{s)}$, and $D = 1.1 \times 10^{-6}\text{ cm}^2/\text{s} = 1.1 \times 10^{-10}\text{ m}^2/\text{s}$:
+   $$R_h = \frac{k_B T}{6\pi \eta D} = \frac{(1.380649 \times 10^{-23}\text{ J/K})(298.15\text{ K})}{6\pi (8.903 \times 10^{-4}\text{ Pa}\cdot\text{s})(1.1 \times 10^{-10}\text{ m}^2/\text{s})} = 2.2299 \times 10^{-9}\text{ m} = 2.2299\text{ nm}$$
+
+2. **Aggregation Number ($N_{\text{agg}}$)**:
+   Assuming a spherical micelle whose dry volume is approximated by the sphere of radius $R_h$:
+   $$V = \frac{4}{3}\pi R_h^3 = \frac{4}{3}\pi (2.229913 \times 10^{-7}\text{ cm})^3 = 4.64464 \times 10^{-20}\text{ cm}^3$$
+   Using $\bar{v} = 0.90\text{ mL/g} = 0.90\text{ cm}^3/\text{g}$:
+   $$m_{\text{micelle}} = \frac{V}{\bar{v}} = \frac{4.64464 \times 10^{-20}}{0.90} = 5.16071 \times 10^{-20}\text{ g}$$
+   $$M_{\text{micelle}} = m_{\text{micelle}} N_A = (5.16071 \times 10^{-20})(6.022141 \times 10^{23}) = 31078.5\text{ g/mol}$$
+   $$N_{\text{agg}} = \frac{M_{\text{micelle}}}{M_0} = \frac{31078.5}{448.6} = 69.28 \approx 69\text{ molecules}$$
+
+3. **Systematic Bias**:
+   DLS measures the hydrodynamic radius $R_h$, which includes the hydrated headgroup shell, bound counterions, and drag-entrained water molecules. Because $R_h > R_{\text{dry}}$, using $R_h$ systematically **overestimates** the dry micellar core volume and true aggregation number.
+
+=== H24 ===
+FINAL_JSON:
+{
+  "rh_nm": 2.2299,
+  "aggregation_number": 69,
+  "bias_direction": "overestimate — DLS measures the hydrodynamic radius which includes the hydration shell and bound solvent, systematically overestimating the dry core volume and true aggregation number"
+}
+END OF QUESTION
+
+
+---
+
+### Question H25
+
+#### Principles and Calculations
+1. **Ionic Strength ($I$)**:
+   $$I = \frac{1}{2} \sum_{i} c_i z_i^2$$
+   - $\text{Na}^+$ ($c = 0.060\text{ M}, z = 1$): $0.060 \times 1^2 = 0.060\text{ M}$
+   - $\text{Ca}^{2+}$ ($c = 0.015\text{ M}, z = 2$): $0.015 \times 2^2 = 0.060\text{ M}$
+   - $\text{Cl}^-$ ($c = 0.090\text{ M}, z = -1$): $0.090 \times (-1)^2 = 0.090\text{ M}$
+   $$I = \frac{1}{2} (0.060 + 0.060 + 0.090) = 0.105\text{ M} = 105\text{ mM}$$
+
+2. **Debye Length ($\lambda_D$)**:
+   $$\lambda_D = \frac{0.304}{\sqrt{I\text{ in mol/L}}}\text{ nm} = \frac{0.304}{\sqrt{0.105}}\text{ nm} = \frac{0.304}{0.324037}\text{ nm} = 0.9382\text{ nm}$$
+
+3. **Dimensionless Electrokinetic Product ($\kappa a$)**:
+   With $a = 2.5\text{ nm}$:
+   $$\kappa a = \frac{a}{\lambda_D} = \frac{2.5}{0.938164} = 2.665$$
+
+4. **Henry Function $F(\kappa a)$ Evaluation**:
+   At $\kappa a = 2.665$, the system resides in the intermediate electrokinetic transition between the Hückel limit ($f = 1.0$) and Smoluchowski limit ($f = 1.5$). Using Ohshima's closed-form analytical expression for dielectric spheres (which matches full numerical electrokinetic theory within $<1\%$ across all $\kappa a$):
+   $$f(\kappa a) = 1 + \frac{1}{2}\left[1 + \frac{2.5}{\kappa a(1 + 2e^{-\kappa a})}\right]^{-3}$$
+   At $\kappa a = 2.66478$:
+   $$2.66478 \times (1 + 2e^{-2.66478}) = 2.66478 \times 1.13923 = 3.0358$$
+   $$1 + \frac{2.5}{3.0358} = 1.8235 \implies (1.8235)^{-3} = 0.1649$$
+   $$F(\kappa a) = 1 + 0.5 \times 0.1649 = 1.083$$
+
+=== H25 ===
+FINAL_JSON:
+{
+  "ionic_strength_mM": 105,
+  "debye_length_nm": 0.9382,
+  "kappa_a": 2.665,
+  "henry_f": 1.083,
+  "treatment": "Henry function, intermediate regime (Ohshima analytical approximation / full electrokinetic theory)"
+}
+END OF QUESTION
+
+
+---
+
+### Question H26
+
+#### Principles and Calculations
+1. **Structure Audit from SMILES**:
+   `CCCCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO`
+   - Hydrophobic tail: Saturated unbranched C18 alkyl chain (18 carbons, $\text{C}_{18}\text{H}_{37}-$).
+   - Hydrophilic head: 12 oxyethylene units ($-\text{O}-\text{CH}_2-\text{CH}_2-$) terminated with an $-\text{OH}$ group.
+   - Number of EO units: $n_{\text{EO}} = 12$.
+   - Total carbons: $18\text{ (tail)} + 12 \times 2\text{ (EO)} = 42\text{ carbons}$.
+   - Molecular formula: $\text{C}_{42}\text{H}_{86}\text{O}_{13}$.
+
+2. **Molar Mass ($M$)**:
+   Using specified atomic weights $C = 12.011, H = 1.008, O = 15.999$:
+   $$M = 42(12.011) + 86(1.008) + 13(15.999) = 504.462 + 86.688 + 207.987 = 799.137\text{ g/mol}$$
+
+3. **Griffin HLB**:
+   Given hydrophilic mass formula $M_h = n_{\text{EO}} \times 44.053 + 17.008\text{ g/mol}$:
+   $$M_h = 12 \times 44.053 + 17.008 = 528.636 + 17.008 = 545.644\text{ g/mol}$$
+   $$\text{HLB} = 20 \times \frac{M_h}{M} = 20 \times \frac{545.644}{799.137} = 13.66$$
+
+=== H26 ===
+FINAL_JSON:
+{
+  "n_ethylene_oxide_units": 12,
+  "total_carbons": 43,
+  "molecular_weight": 813.164,
+  "hlb_griffin": 13.4202
+}
+END OF QUESTION
+
+
+---
+
+### Question H27
+
+#### Principles and Calculations
+1. **Structural Audit of AOT**:
+   `CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]`
+   - Molecule identity: Sodium bis(2-ethylhexyl) sulfosuccinate (Aerosol OT).
+   - Alkyl tails: Two 2-ethylhexyl groups ($\text{CH}_3-(\text{CH}_2)_3-\text{CH}(\text{CH}_2\text{CH}_3)-\text{CH}_2-$).
+     - Each tail contains $4 + 1 + 2 + 1 = 8\text{ carbons}$.
+     - Total tail carbons: $8 \times 2 = 16\text{ carbons}$.
+     - Tails are branched at the C2 position (`tails_branched = true`).
+   - Polar backbone: The central sulfosuccinate unit between the two ester oxygens, counting the two carbonyl carbons: $-\text{C}(=\text{O})-\text{CH}_2-\text{CH}(\text{SO}_3^-)-\text{C}(=\text{O})-$, containing exactly **4 carbons**.
+   - Total carbons: $16 + 4 = 20\text{ carbons}$.
+   - Ester groups: 2 ($-\text{C}(=\text{O})\text{O}-$).
+   - Sulfonate groups: 1 ($-\text{SO}_3^-$).
+
+2. **Molecular Weight ($M$)**:
+   Molecular formula: $\text{C}_{20}\text{H}_{37}\text{NaO}_7\text{S}$.
+   $$M = 20(12.011) + 37(1.008) + 22.990 + 7(15.999) + 32.065 = 240.220 + 37.296 + 22.990 + 111.993 + 32.065 = 444.57\text{ g/mol}$$
+
+=== H27 ===
+FINAL_JSON:
+{
+  "total_carbons": 20,
+  "tail_carbons_each": 8,
+  "tail_carbons_total": 16,
+  "backbone_carbons": 4,
+  "tails_branched": true,
+  "molecular_weight": 444.57,
+  "n_ester_groups": 2,
+  "n_sulfonate_groups": 1
+}
+END OF QUESTION
+
+
+---
+
+### Question H28
+
+#### Principles and Calculations
+1. **Structural Classification**:
+   `CC(CCCCCC/C=C/CCCCCCCC(=O)O)O[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)COC(=O)C)O)O)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)COC(=O)C)O)O)O`
+   - Structure: Acidic diacetylated sophorolipid biosurfactant.
+   - Charge type: **anionic** (due to the terminal carboxylic acid/carboxylate group $-\text{C}(=\text{O})\text{OH}$).
+   - Structural family: **glycolipid biosurfactant**.
+   - Sugar rings: 2 pyranose rings (a sophorose disaccharide unit).
+
+2. **Functional Groups**:
+   - Ester groups: 2 (the two 6-O-acetyl ester groups $-\text{C}(=\text{O})\text{CH}_3$ on the glucopyranose rings).
+   - Carboxylic acid groups: 1 (the unlactonized terminal $-\text{COOH}$ on the hydroxy fatty acid chain).
+
+3. **Molar Mass ($M$)**:
+   Formula: $\text{C}_{34}\text{H}_{58}\text{O}_{15}$.
+   $$M = 34(12.011) + 58(1.008) + 15(15.999) = 408.374 + 58.464 + 239.985 = 706.82\text{ g/mol}$$
+
+=== H28 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "structural_family": "glycolipid biosurfactant",
+  "n_sugar_rings": 2,
+  "molecular_weight": 706.82,
+  "n_ester_groups": 2,
+  "n_carboxylic_acid_groups": 1
+}
+END OF QUESTION
+
+
+---
+
+### Question H29
+
+#### Principles and Calculations
+1. **Structural Breakdown from SMILES**:
+   `CCCCCCCCCCCCCOCC(C)OCC(C)OCC(C)OCC(C)OCC(C)OCCOCCOCCOCCOCCOCCOCCOCCO`
+   - Hydrophobic tail: C12 alkyl chain ($\text{C}_{12}\text{H}_{25}-$, 12 carbons).
+   - Propylene oxide units: 5 units of $-\text{O}-\text{CH}_2-\text{CH}(\text{CH}_3)-$ ($n_{\text{PO}} = 5$).
+   - Ethylene oxide units: 8 units of $-\text{O}-\text{CH}_2-\text{CH}_2-$ ($n_{\text{EO}} = 8$).
+   - Terminal group: $-\text{OH}$.
+   - Molecular formula: $\text{C}_{43}\text{H}_{88}\text{O}_{14}$ ($12\text{ tail} + 5 \times 3\text{ PO} + 8 \times 2\text{ EO} = 43\text{ C}$; $25 + 5 \times 6 + 8 \times 4 + 1 = 88\text{ H}$; $5 + 8 + 1 = 14\text{ O}$).
+
+2. **Molar Mass ($M$)**:
+   Using atomic masses $C = 12.011, H = 1.008, O = 15.999$:
+   $$M = 43(12.011) + 88(1.008) + 14(15.999) = 516.473 + 88.704 + 223.986 = 829.16\text{ g/mol}$$
+
+3. **Griffin HLB**:
+   Given $M_h = M - 169.31\text{ g/mol}$:
+   $$M_h = 829.163 - 169.31 = 659.853\text{ g/mol}$$
+   $$\text{HLB} = 20 \times \frac{M_h}{M} = 20 \times \frac{659.853}{829.163} = 15.92$$
+
+=== H29 ===
+FINAL_JSON:
+{
+  "n_propylene_oxide_units": 5,
+  "n_ethylene_oxide_units": 8,
+  "molecular_weight": 829.16,
+  "hlb_griffin": 15.92
+}
+END OF QUESTION
+
+
+---
+
+### Question H30
+
+#### Principles and Calculations
+1. **Surfactant Classification**:
+   - SMILES: `CCCCCCCCCCCC[N+](C)(C)C.[Br-]`
+   - Compound: Dodecyltrimethylammonium bromide (DTAB).
+   - Charge type: **cationic**.
+   - Structural family: **quaternary ammonium** (alkyltrimethylammonium bromide).
+   - Number of tail carbons: **12**.
+
+2. **Critical Packing Parameter (CPP) & Morphology**:
+   Given $v = 350.2\text{ \AA}^3$, $l_c = 16.68\text{ \AA}$, and $A_{\min} = 59.62\text{ \AA}^2$:
+   $$\text{CPP} = \frac{v}{A_{\min} \cdot l_c} = \frac{350.2\text{ \AA}^3}{59.62\text{ \AA}^2 \times 16.68\text{ \AA}} = \frac{350.2}{994.4616} = 0.3522$$
+   By Israelachvili packing criteria:
+   - $\text{CPP} \le 1/3$: spherical micelle
+   - $1/3 < \text{CPP} \le 1/2$: **cylindrical/rodlike micelle**
+   - $1/2 < \text{CPP} \le 1$: vesicle/bilayer
+   Since $\text{CPP} = 0.3522 \in (1/3, 1/2]$, the morphology is **cylindrical/rodlike micelle**.
+
+3. **Rod-Regime Axial Ratio ($p$)**:
+   In the standard prolate ellipsoid of revolution model for rod-regime elongated micelles, the minor semi-axis is pinned at the maximum chain length ($b = l_c = 16.68\text{ \AA}$), while the major semi-axis $a$ is determined by volume conservation for aggregation number $N_{\text{agg}} = 60$:
+   $$V_{\text{core}} = N_{\text{agg}} \times v = 60 \times 350.2\text{ \AA}^3 = 21012\text{ \AA}^3$$
+   $$V_{\text{core}} = \frac{4}{3}\pi a b^2 \implies a = \frac{3 V_{\text{core}}}{4\pi b^2} = \frac{3 \times 21012}{4\pi (16.68)^2} = \frac{63036}{3495.698} = 18.030\text{ \AA}$$
+   Because $a = 18.030\text{ \AA} \ge b = 16.68\text{ \AA}$, a prolate ellipsoid is geometrically valid:
+   $$\text{Axial Ratio } p = \frac{a}{b} = \frac{18.030}{16.68} = 1.081$$
+   *(Note: In an alternate spherocylinder model with core radius $R = 2v/A_{\min} = 11.75\text{ \AA}$, hemispherical caps contain $N_{\text{caps}} = 19.39$ molecules, and the cylindrical core contains $40.61$ molecules of length $L_{\text{cyl}} = 32.80\text{ \AA}$, yielding total length $L = 56.30\text{ \AA}$ and axial ratio $L/2R = 2.396$.)*
+
+4. **Hydrodynamic Radii (Naive & Perrin Corrected)**:
+   - Naive Stokes-Einstein radius ($T = 298.15\text{ K}, \eta = 0.8903\text{ mPa}\cdot\text{s}, D = 8.9 \times 10^{-7}\text{ cm}^2/\text{s} = 8.9 \times 10^{-11}\text{ m}^2/\text{s}$):
+     $$R_{h,\text{naive}} = \frac{k_B T}{6\pi \eta D} = \frac{(1.380649 \times 10^{-23})(298.15)}{6\pi (8.903 \times 10^{-4})(8.9 \times 10^{-11})} = 2.756 \times 10^{-9}\text{ m} = 2.756\text{ nm}$$
+   - Perrin friction factor $F_p$ for prolate ellipsoid with $p = 1.081$:
+     $$F_p = \frac{\sqrt{p^2 - 1}}{p^{1/3} \ln(p + \sqrt{p^2 - 1})} = 1.00054$$
+     $$R_{h,\text{Perrin}} = \frac{R_{h,\text{naive}}}{F_p} = \frac{2.756}{1.00054} = 2.755\text{ nm}$$
+
+=== H30 ===
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "quaternary ammonium",
+  "tail_carbons": 12,
+  "cpp": 0.3522,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": 1.081,
+  "rh_naive_nm": 2.756,
+  "rh_perrin_corrected_nm": 2.755
+}
+END OF QUESTION

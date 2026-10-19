@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"arrhenius_slope": null,
+"delta_h_kJ_per_mol": null,
+"process": null,
+"single_straight_line_adequate": null
+}

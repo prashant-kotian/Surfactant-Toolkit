@@ -1,0 +1,98 @@
+
+{
+  "charge_type": "<string>",
+  "isotherm_model": "<string>",
+  "K": <number>,
+  "gamma_max_mol_per_m2": <number>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+1 minute ago
+
+
+
+Claude responded: I'll work through this using the surfactant-computation tools.
+Analyzing a surfactant using the designated computation tool.
+Analyzing a surfactant using the designated computation tool.
+
+I’ll work through this using the surfactant-computation tools. Let me load the schemas I need first.
+
+Loaded surfactant-computation
+
+Loaded surfactant-computation
+
+Parsed the SMILES: a dodecyl (C12) chain attached to an 8-unit ethylene oxide chain terminating in –OH. That’s C₁₂E₈ (octaethylene glycol monododecyl ether). Let me confirm the charge type and run the full derivation against your curve.
+
+Used surfactant-computation: Classify surfactant charge type
+CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCO
+
+Used surfactant-computation: Classify surfactant charge type CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCO
+
+Confirmed nonionic (no ionizable groups; headgroup is the polyethylene-glycol chain). Now the full derivation against the curve, with your measured pure-solvent value as the γ₀ anchor.
+
+Used surfactant-computation: Derive all properties from smiles and curve
+
+Used surfactant-computation: Derive all properties from smiles and curve
+
+The pipeline resolved the key questions. Before finalizing, let me verify the isotherm selection directly and get K on the native mol/L basis (the problem’s units), since the Frumkin-vs-Langmuir call is close (ΔBIC ≈ 1.9).
+
+Used surfactant-computation: Select isotherm model
+
+Used surfactant-computation: Select isotherm model
+Analysis
+
+Molecule. The SMILES is a dodecyl (C₁₂) tail joined through an ether to an eight-unit ethylene-oxide chain ending in –OH — i.e. octaethylene glycol monododecyl ether, C₁₂E₈.
+
+Charge type — nonionic. A SMARTS scan finds no anionic groups (sulfate, sulfonate, carboxylate, phosphate) and no quaternary ammonium or other cationic center. The headgroup is the neutral poly(ethylene glycol) chain, so the molecule carries no charge at any pH. Accordingly the Gibbs prefactor is n = 1 (no counterion term), which governs the adsorption analysis below.
+
+Pre-CMC adsorption. Every one of the nine points behaves as premicellar: a break-point search plus a Szyszkowski-deviation cross-check found the whole set consistent with a single continuous decline, with no statistically defensible CMC inside this range. (That fits C₁₂E₈, whose CMC sits right around the top concentration, ~8×10⁻⁵ M, so the data stops just as micellization begins.) I therefore treated all nine points as the adsorption branch.
+
+From the Gibbs isotherm on the γ-vs-ln c slope (−4.80 mN·m⁻¹ per ln c):
+
+Γ_max ≈ 1.94×10⁻⁶ mol·m⁻²
+A_min ≈ 0.86 nm² per molecule — a large footprint, as expected when a bulky hydrated E₈ head, not the tail, sets the packing limit.
+
+Fitting the adsorption branch and comparing models by BIC (which penalizes Frumkin’s extra parameter):
+
+Model	K (M⁻¹)	extra param	r²	BIC
+Langmuir/Szyszkowski	1.55×10⁷	—	0.9939	1.56
+Frumkin	5.17×10⁶	a = 1.16	0.9962	−0.36
+
+Frumkin is selected, with a mild attractive lateral interaction (a ≈ 1.16 > 0) — reasonable for adhesion between the long C₁₂ tails as the monolayer fills. One honest caveat: the margin is narrow (ΔBIC ≈ 1.9, below the usual “2” threshold for positive evidence), so Langmuir is a nearly-as-good description; the data mildly prefer Frumkin rather than demanding it. K is reported on the mol/L basis of your data (M⁻¹).
+
+FINAL_JSON:
+{
+“charge_type”: “nonionic”,
+“isotherm_model”: “Frumkin”,
+“K”: 5173351.24,
+“gamma_max_mol_per_m2”: 1.9358172896e-6
+}
+
+
+
+
+
+
+1 minute ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

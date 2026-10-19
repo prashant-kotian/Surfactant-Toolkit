@@ -1,0 +1,22 @@
+I'll work through both datasets using the pinned protocols. Let me compute this carefully with code to get exact values.
+
+Both methods computed per the pinned protocols. Results below.
+
+**1. cmc_cond: 4.5744 mM**
+RSS-minimizing split falls after the 8th point (8 below / 6 above). Below-CMC line κ = 16.053 + 54.972·c; above-CMC line κ = 180.798 + 18.957·c. CMC = (a₂−a₁)/(b₁−b₂).
+
+**2. beta: 0.6552**
+β = 1 − b_above/b_below = 1 − 18.957/54.972.
+
+**3. deltaG: −31.3504 kJ/mol**
+X = (0.0045744)/(0.0045744 + 55.5) = 8.241×10⁻⁵; ΔG = (2 − 0.6552)·R·T·ln(X)/1000.
+
+**4. cmc_tens: 4.4091 mM**
+On x = log₁₀(c), the RSS-minimizing split falls after the 7th point (7 declining / 4 plateau). Last declining point c = 3.60 mM (x = 0.5563), first plateau point c = 5.40 mM (x = 0.7324); CMC = 10^((0.5563+0.7324)/2). Note the plateau segment includes the sharp drop at c = 5.40 (γ = 30.7) as its first point — that is where the RSS split lands given the ≥3/side constraint and the large gap between 54.9 and 30.7.
+
+**5. rel_diff_pct: 3.6797 %**
+
+**6. agree_3pct: false**
+3.68 % exceeds the 3.0 % threshold.
+
+FINAL_JSON: {"cmc_cond": 4.5744, "beta": 0.6552, "deltaG": -31.3504, "cmc_tens": 4.4091, "rel_diff_pct": 3.6797, "agree_3pct": false}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "dimeric/gemini-type bis-quaternary ammonium surfactant with two long hydrocarbon tails, two permanently charged quaternary ammonium headgroups, a four-carbon spacer between the heads, and two bromide counterions",
+"valid_hlb_method": "Griffin mass-ratio HLB method; Davies group-contribution HLB is structurally invalid for this gemini architecture",
+"reasoning": "The organic molecule has two [N+] quaternary ammonium centers, so it is a +2 dication balanced by two Br- counterions and is therefore a cationic surfactant salt. Its connectivity is tail-N+-four-carbon-spacer-N+-tail, with two methyl substituents on each nitrogen, which establishes a dimeric/gemini topology. The connected surfactant-computation structural classifier returned dimeric_gemini_type with high confidence, and its HLB-method recommendation identifies Griffin's HLB = 20(Mh/M) mass-ratio method as the valid approach while explicitly rejecting Davies for this class because additive group contributions do not correctly represent the coupled spacer/headgroup/tail geometry of gemini surfactants."
+}

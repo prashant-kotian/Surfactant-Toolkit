@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"clint_cmc_mM": 4.7273,
+"deviation_from_measured_pct": 16.72,
+"x1_rubingh": 0.7203,
+"beta_rubingh": -0.8309
+}

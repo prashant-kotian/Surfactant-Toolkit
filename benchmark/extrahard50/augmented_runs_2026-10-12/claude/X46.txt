@@ -1,0 +1,16 @@
+I'll verify all the calculations precisely with a quick script.
+
+All values verified. Here's the panel:
+
+1. **mw**: 364 g/mol (raw 364.456, 3 sig figs)
+2. **charge**: cationic
+3. **n_carbons**: 19 (16 tail + 3 N-methyls)
+4. **cpp**: 0.605 (= 485.0 / (48.0 × 16.7))
+5. **morphology**: vesicle/bilayer (since 1/2 < 0.605 ≤ 1)
+6. **p**: 0.730 (r = 20.21 Å, L = 29.49 Å)
+7. **R_nm**: 4.23
+8. **R_perrin_nm**: 4.23 (p ≤ 1 → F = 1.000, no correction)
+
+Formula: **C₁₉H₄₂BrN**
+
+FINAL_JSON: {"mw": 364, "charge": "cationic", "n_carbons": 19, "cpp": 0.605, "morphology": "vesicle/bilayer", "p": 0.730, "R_nm": 4.23, "R_perrin_nm": 4.23}

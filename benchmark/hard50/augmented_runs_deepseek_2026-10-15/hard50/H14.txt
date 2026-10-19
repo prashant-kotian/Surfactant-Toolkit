@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "gemini (dimeric) bis-quaternary ammonium surfactant, 12-4-12 (two C12 tails bridged by a C4 methylene spacer, two dimethylammonium headgroups, 2 Br- counterions)",
+"davies_hlb": null,
+"valid_method": "Griffin",
+"hlb": 6.22
+}

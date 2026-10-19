@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"gamma_s_dispersive_mN_m": 39.8200,
+"gamma_s_polar_mN_m": 3.5713
+}

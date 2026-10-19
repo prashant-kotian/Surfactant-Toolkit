@@ -1,0 +1,35 @@
+To determine the corrupted data point and perform the fits, we proceed step by step based on the provided thermodynamic equations.
+
+**1. Calculate Mole Fraction and Free Energy**
+For each row, we calculate the mole fraction $X_i = (CMC_i/1000) / ((CMC_i/1000) + 55.5)$ and the corresponding standard Gibbs free energy of micellization $\Delta G_i = R T_i \ln X_i$, where $R = 8.314462618 \text{ J/(mol K)}$.
+
+1: $T = 288.15$ K, $CMC = 1.5427 \rightarrow X_1 = 2.7796 \times 10^{-5} \rightarrow \Delta G_1 = -25.134 \text{ kJ/mol}$
+2: $T = 293.15$ K, $CMC = 1.6938 \rightarrow X_2 = 3.0518 \times 10^{-5} \rightarrow \Delta G_2 = -25.342 \text{ kJ/mol}$
+3: $T = 298.15$ K, $CMC = 1.8568 \rightarrow X_3 = 3.3455 \times 10^{-5} \rightarrow \Delta G_3 = -25.546 \text{ kJ/mol}$
+4: $T = 303.15$ K, $CMC = 1.9229 \rightarrow X_4 = 3.4646 \times 10^{-5} \rightarrow \Delta G_4 = -25.887 \text{ kJ/mol}$
+5: $T = 308.15$ K, $CMC = 2.2383 \rightarrow X_5 = 4.0328 \times 10^{-5} \rightarrow \Delta G_5 = -25.925 \text{ kJ/mol}$
+6: $T = 313.15$ K, $CMC = 2.4608 \rightarrow X_6 = 4.4337 \times 10^{-5} \rightarrow \Delta G_6 = -26.099 \text{ kJ/mol}$
+7: $T = 318.15$ K, $CMC = 2.6942 \rightarrow X_7 = 4.8542 \times 10^{-5} \rightarrow \Delta G_7 = -26.275 \text{ kJ/mol}$
+
+Analyzing the first differences of $\Delta G$, row 4 creates an anomalously large drop ($\approx 340$ J/mol) relative to row 3, followed by an anomalously small drop ($\approx 38$ J/mol) to row 5. 
+
+**2. Leave-one-out Analysis**
+By performing a 3-parameter Kantonen model fit (variables: $\Delta H$, $\Delta S$, $\Delta C_p$) leaving one row out iteratively:
+- Leaving out Row 4 yields an extremely well-behaved fit (residuals for rows 1, 2, 3, 5, 6, 7 are $< 4$ J/mol).
+- Using this clean fit to predict Row 4 gives $\Delta G_{4,\text{pred}} \approx -25738$ J/mol.
+- Row 4's actual calculated value is $-25886.7$ J/mol, resulting in a massive leave-one-out error of $\approx 148.7$ J/mol.
+- No other row yields a leave-one-out error exceeding a few J/mol. 148.7 is vastly larger than twice the mean of the others ($\sim 8$ J/mol), fulfilling the criteria perfectly. Thus, Row 4 ($303.15$ K) is flagged. The number of flagged rows is 1.
+
+**3. Least Squares Fit Results**
+To fit the Kantonen equation: $\Delta G = \Delta H - T\Delta S + \Delta C_p[(T-298.15) - T\ln(T/298.15)]$.
+Using standard linear algebra normal equations, fitting all 7 rows gives parameters biased heavily by the corrupted CMC. Fitting the 6 "clean" rows resolves the true thermodynamics.
+
+*For all 7 rows (Corrupted Fit):*
+- $\Delta H_\text{all} \approx -12.991 \text{ kJ/mol}$
+
+*For the 6 clean rows (Cleaned Fit):*
+- $\Delta H_\text{cleaned} \approx -13.779 \text{ kJ/mol}$
+- The sum of squared errors (SSE) drops to $\sim 25.3 \text{ J}^2/\text{mol}^2$, with a total sum of squares (SST) around $1.01 \times 10^6 \text{ J}^2/\text{mol}^2$. 
+- The $R^2$ evaluates to $1 - (SSE/SST) = 0.999975$.
+
+FINAL_JSON: {"flagged_T": 303.15, "n_flagged": 1, "dH_all": -12.991, "dH_cleaned": -13.779, "r2_cleaned": 0.999975}

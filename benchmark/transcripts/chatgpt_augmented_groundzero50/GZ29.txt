@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"selected_model": "Frumkin",
+"frumkin_a": 0.004574846436268646,
+"physically_meaningful_interaction": false,
+"reasoning": "Frumkin is BIC-preferred over Langmuir/Szyszkowski by 4.40 with the independently measured Gamma_max fixed, but the fitted lateral-interaction parameter a=0.00457 is extremely close to the noninteracting limit a=0. The two fitted models differ by only about 0.005 mN/m across the measured range, so the extra Frumkin term captures minute residual curvature rather than a physically substantial surfactant-surfactant interaction."
+}

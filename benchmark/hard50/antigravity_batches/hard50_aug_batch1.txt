@@ -1,0 +1,349 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+You have access to a connected MCP tool server named "surfactant-computation"
+-- use it directly for these calculations rather than hand-deriving results,
+wherever a relevant tool exists.
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== H01 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Static light-scattering data for a nonionic surfactant (monomer molar mass M0 = 448.6 g/mol) in water at T = 298.15 K, measured at wavelength 632.8 nm. Solvent refractive index n = 1.333, dn/dc = 0.135 mL/g, Avogadro constant NA = 6.02214076e23 /mol.
+
+Debye-plot ordinates (c in g/mL, excess Rayleigh ratio Delta R in cm^-1):
+  0.0020, 8.9867e-06
+  0.0040, 1.7048e-05
+  0.0060, 2.4319e-05
+  0.0080, 3.0911e-05
+  0.0100, 3.6915e-05
+  0.0120, 4.2407e-05
+
+Use the standard Debye treatment: K = 4*pi^2*n^2*(dn/dc)^2/(NA*lambda^4) with lambda in cm, and K*c/DeltaR = 1/Mw + 2*A2*c with A2 = 4.0e-4 mol*mL/g^2. The CMC of this surfactant is 8.7e-5 mol/L.
+
+Report: the optical constant K, the micelle weight-average molar mass Mw (g/mol), the aggregation number (Mw/M0), and the mass-action free energy of micellization
+  dG = R*T*[(1 + 1/n)*ln(X) - (1/n)*ln(n)]
+with R = 8.314462618 J/(mol*K), X = CMC(mol/L)/55.5, and n = the aggregation number you found (kJ/mol).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "optical_constant_K": <number>,
+  "micelle_mw": <number>,
+  "aggregation_number": <number>,
+  "delta_g_mass_action_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H02 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Conductivity vs concentration for a 1:1 ionic surfactant in water at 298.15 K (conductivity in mS/cm, concentration in mM):
+
+  c (mM), conductivity (mS/cm)
+  1.0, 0.690
+  2.0, 1.330
+  3.0, 1.970
+  4.0, 2.610
+  5.0, 3.250
+  5.5, 3.570
+  6.0, 3.785
+  6.5, 3.895
+  7.0, 4.005
+  8.0, 4.225
+  10.0, 4.665
+  12.0, 5.105
+
+Report: the CMC (mM) from the break-point, the counterion binding degree beta (= 1 - slope2/slope1), the degree of counterion dissociation alpha (= 1 - beta), and the standard free energy of micellization
+  dG = (2 - beta)*R*T*ln(X),  X = CMC(mol/L)/55.5,  R = 8.314462618 J/(mol*K), T = 298.15 K
+in kJ/mol (use the beta you derived).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "beta": <number>,
+  "alpha": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H03 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Surface tension isotherm for a 1:1 ionic surfactant in water with NO added electrolyte at T = 298.15 K (constructed demonstration dataset; gamma in mN/m, c in mM):
+
+  0.005, 71.9
+  0.010, 71.8
+  0.020, 71.6
+  0.05, 66.5
+  0.10, 61.9
+  0.30, 53.0
+  0.70, 45.0
+  1.50, 38.0
+  3.00, 33.0
+  6.00, 31.2
+  10.00, 31.1
+  16.00, 31.0
+
+Report: the CMC (mM); whether the curve requires a three-segment (flat baseline / decline / plateau) description (true/false) and the number of points in the baseline segment; the maximum surface excess Gamma_max (mol/m^2) from the premicellar slope; the minimum area per molecule A_min (nm^2); and dG_mic (kJ/mol) using the counterion dissociation degree alpha = 0.31 via dG = (1 + alpha)*R*T*ln(X) with X = CMC(mol/L)/55.5, T = 298.15 K. State clearly which Gibbs prefactor n you used and why (the electrolyte condition is given above).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "three_segment_selected": <true or false>,
+  "n_baseline_points": <number>,
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H04 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Real CMC-vs-temperature data for the cationic surfactant [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide); counterion binding degree beta = 0.268 (real value from the same study):
+
+  T (degC), CMC (mM)
+  10, 9.93
+  15, 9.82
+  20, 9.76
+  25, 9.74
+  30, 9.77
+  35, 10.02
+  40, 10.54
+  45, 11.47
+
+Perform a multi-point van't Hoff analysis of this data that allows a nonzero heat capacity change (i.e. curvature in the Arrhenius plot): compute dG_mic(T) at every row with dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5), then extract dH (kJ/mol), dS (J/(mol*K)), and dCp (J/(mol*K)) referenced to 298.15 K, plus dG_mic at 298.15 K (kJ/mol). Finally state whether micellization over this range is entropy-driven or enthalpy-driven (answer: exactly one of "entropy-driven" / "enthalpy-driven").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "delta_H_kJ_per_mol": <number>,
+  "delta_S_J_per_mol_K": <number>,
+  "delta_Cp_J_per_mol_K": <number>,
+  "delta_G_298_kJ_per_mol": <number>,
+  "driver": "entropy-driven" or "enthalpy-driven"
+}
+END OF QUESTION
+
+
+=== H05 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Real measured mixed CMC for the binary system DHPC (zwitterionic phospholipid, component 1, pure CMC 1.8 mM) + DTAB (cationic, component 2, pure CMC 15.6 mM). Data: bulk mole fraction of component 2 (alpha2) and mixed CMC (mM):
+
+  alpha2, CMC_mix (mM)
+  0.95, 10.8
+  0.90, 6.2
+  0.80, 4.8
+  0.60, 2.7
+  0.50, 2.4
+
+Report: the pooled Rubingh interaction parameter beta (mean over all five points, from the regular-solution mass-balance fit) and its sample standard deviation (n-1 denominator); the micellar mole fraction of component 1, x1, at alpha2 = 0.60; the activity coefficients f1 and f2 at that composition computed with the pooled beta; and the molar excess Gibbs energy G_exc at that composition (kJ/mol, T = 298.15 K).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "beta_mean": <number>,
+  "beta_std": <number>,
+  "x1_at_alpha2_0p60": <number>,
+  "f1": <number>,
+  "f2": <number>,
+  "gexc_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H06 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration mixed-micelle series (component 1 pure CMC 1.8 mM, component 2 pure CMC 8.3 mM; bulk mole fraction of component 1):
+
+  alpha1, CMC_mix (mM)
+  0.10, 3.3751
+  0.25, 2.5588
+  0.40, 2.2482
+  0.55, 2.0694
+  0.70, 1.9853
+  0.85, 1.9065
+
+Fit candidate mixed-micelle models to this series and compare them by BIC. Report: the selected model identifier (name it exactly as the fitting routine does, e.g. its own model string), the selected model's BIC, the pooled Rubingh beta (from the Rubingh candidate, regardless of which model wins), whether the interaction is synergistic or antagonistic (answer containing "synerg" or "antagon"), and the two asymmetric-Margules parameters W12 and W21 of the EOMMM candidate (report them even if EOMMM is not the selected model).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_model": "<model identifier string>",
+  "selected_bic": <number>,
+  "rubingh_beta_mean": <number>,
+  "interaction_character": "<synergistic or antagonistic>",
+  "w12": <number>,
+  "w21": <number>
+}
+END OF QUESTION
+
+
+=== H07 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration surface-tension isotherm (gamma0 = 72.0 mN/m, Gamma_max = 2.2e-6 mol/m^2 supplied for the isotherm models; gamma in mN/m, c in mol/L):
+
+  c, gamma
+  3.0e-06, 62.69
+  8.0e-06, 58.03
+  1.5e-05, 54.94
+  3.0e-05, 51.11
+  5.0e-05, 48.38
+  7.5e-05, 46.23
+  1.0e-04, 44.52
+  1.3e-04, 43.22
+
+Compare a Langmuir and a Frumkin fit of this isotherm using BIC. Report: the selected model (exact identifier), delta_BIC defined as BIC(Langmuir) - BIC(Frumkin) (number, sign matters), the fitted Frumkin interaction parameter a, whether that fitted a represents a physically meaningful interaction (true/false), and whether the RAW (unpenalized) residual sum of squares favours Frumkin over Langmuir (true/false).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_model": "<model identifier>",
+  "delta_bic": <number>,
+  "frumkin_a": <number>,
+  "physically_meaningful_interaction": <true or false>,
+  "raw_rss_frumkin_lower_than_langmuir": <true or false>
+}
+END OF QUESTION
+
+
+=== H08 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Two independent measurements on the SAME 1:1 ionic surfactant system at 298.15 K.
+
+(1) Conductivity (mS/cm) vs concentration (mM):
+  1.0, 0.690
+  2.0, 1.330
+  3.0, 1.970
+  4.0, 2.610
+  5.0, 3.250
+  5.5, 3.570
+  6.0, 3.785
+  6.5, 3.895
+  7.0, 4.005
+  8.0, 4.225
+  10.0, 4.665
+  12.0, 5.105
+
+(2) Surface tension (mN/m) vs concentration (mM):
+  0.06, 66.7
+  0.15, 60.3
+  0.40, 53.5
+  0.90, 47.8
+  2.00, 42.2
+  4.00, 37.3
+  5.00, 35.8
+  6.60, 34.6
+  9.00, 34.5
+  12.00, 34.4
+  16.00, 34.3
+
+Report: CMC from conductivity (mM), CMC from tensiometry (mM), whether the two methods agree within 2% relative difference (true/false -- compute the relative difference first), the counterion binding degree beta from the conductivity slopes, and dG_mic (kJ/mol) with dG = (2 - beta)*R*T*ln(CMC_cond[mol/L]/55.5), T = 298.15 K, R = 8.314462618 J/(mol*K).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_conductivity_mM": <number>,
+  "cmc_tensiometry_mM": <number>,
+  "agree_within_2pct": <true or false>,
+  "beta": <number>,
+  "delta_g_mic_kJ_per_mol": <number>
+}
+END OF QUESTION
+
+
+=== H09 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration optimal-salinity scan at reference temperature (delta_T = 0): the phase-behavior optimum S* (wt% NaCl) as a function of oil EACN:
+
+  EACN, S* (wt%)
+  8, 14.585
+  10, 20.086
+  12, 27.660
+  14, 38.092
+
+For ionic-surfactant HLD the governing relation is
+  HLD = ln(S) - k*EACN - alpha_dT*delta_T + Cc
+with S in wt% (ln of the number, e.g. ln(14.585)), and S* is the salinity at which HLD = 0. The temperature coefficient is alpha_dT = 0.01 K^-1.
+
+Report: the fitted k; the fitted Cc; the r^2 of the ln(S*)-vs-EACN linear fit; S* (wt%, as a number) for EACN = 16 at delta_T = +10 K; the HLD at S = 3 wt% for that same condition (EACN 16, delta_T +10 K); the Winsor phase type at that HLD (answer exactly one of "I", "II", "III" -- recall HLD > 0 favours reverse W-in-O structures, HLD < 0 favours direct O-in-W structures, |HLD| <= 0.3 is the balanced middle); and whether the required S* for EACN 16 / +10 K is achievable in water (true/false; recall salts saturate near 26 wt% in water).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "k": <number>,
+  "cc": <number>,
+  "fit_r2": <number>,
+  "s_star_EACN16_dT10_pct": <number>,
+  "hld_at_S3": <number>,
+  "winsor_type": "I" or "II" or "III",
+  "s_star_achievable_in_water": <true or false>
+}
+END OF QUESTION
+
+
+=== H10 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration mixed-CMC series (component 1 pure CMC 2.4 mM, component 2 pure CMC 11.0 mM):
+
+  alpha1, CMC_mix (mM)
+  0.10, 4.6879
+  0.25, 3.5225
+  0.40, 3.0273
+  0.55, 2.7678
+  0.70, 2.5746
+  0.85, 2.4768
+
+Two independent estimators of the micellar composition exist: (A) Rodenas' model-independent Gibbs-Duhem route, x1 = -alpha1*(1-alpha1)*d(ln CMC_mix)/d(alpha1) + alpha1, which needs the LOCAL slope of the series; and (B) the Rubingh regular-solution route, which solves the implicit mass-balance equation at each point.
+
+Report, at alpha1 = 0.55: x1 from Rodenas, x1 from Rubingh; the activity coefficients f1 = alpha1*CMC_mix/(x1*CMC1) and f2 = (1-alpha1)*CMC_mix/((1-x1)*CMC2) using the RODENAS x1 at that composition; the mean absolute difference between the two x1 estimates across all six compositions; whether the two estimators agree within 0.05 on that mean absolute difference (true/false); and which of the two methods is model-independent (answer exactly "Rodenas" or "Rubingh").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "x1_rodenas_at_alpha1_0p55": <number>,
+  "x1_rubingh_at_alpha1_0p55": <number>,
+  "f1_rodenas": <number>,
+  "f2_rodenas": <number>,
+  "mean_abs_x1_difference": <number>,
+  "estimators_agree_within_0p05": <true or false>,
+  "model_independent_method": "Rodenas" or "Rubingh"
+}
+END OF QUESTION

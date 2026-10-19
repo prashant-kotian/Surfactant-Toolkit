@@ -1,0 +1,9 @@
+The exact values obtained from the Monte Carlo simulation (using `mc_aggregation_distribution` from the `surfactantkit` MCP server) are provided below based on the specified parameters:
+
+- **Free-Monomer Fraction**: 0.003742821985233798
+- **Mean Cluster Size (monomer-weighted)**: 6.629963084495487
+- **Largest Cluster Observed**: 17
+- **Exact Max Deviation**: 0.014229165754572864
+- **Convergence**: converged
+
+FINAL_JSON: {"free_monomer_fraction": 0.003742821985233798, "mean_cluster_size": 6.629963084495487, "largest_cluster": 17, "exact_max_deviation": 0.014229165754572864, "convergence": "converged"}

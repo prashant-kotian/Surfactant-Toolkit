@@ -1,0 +1,16 @@
+I'll verify the arithmetic before reporting.
+
+The computed values match the three runs exactly, confirming each error mode.
+
+- Pinned/ground-truth = **−29.890 kJ/mol** → this is run1 (correct).
+- Flipped denominator (1/T1 − 1/T2) = **+29.890 kJ/mol** → matches run2.
+- Base-10 logs = **−12.981 kJ/mol** → matches run3 (ratio vs run1 = 1/ln(10) = 0.4343).
+
+**Results**
+
+1. **sign_flipped_run:** run2 — its sign is inverted precisely because flipping the denominator negates the result.
+2. **corrected_value:** −29.890 kJ/mol — what run2 should have been under the pinned formula.
+3. **base10_run:** run3 — using log10 instead of ln scales the answer by 1/ln(10).
+4. **ratio_run3_run1:** 0.43429448 (= 1/ln 10).
+
+FINAL_JSON: {"sign_flipped_run": "run2", "corrected_value": -29.890, "base10_run": "run3", "ratio_run3_run1": 0.43429448}

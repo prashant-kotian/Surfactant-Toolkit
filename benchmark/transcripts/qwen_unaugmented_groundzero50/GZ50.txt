@@ -1,0 +1,323 @@
+
+=
+C
+cmc
+	​
+
++55.5
+C
+cmc
+	​
+
+	​
+
+At 283.15 K: CMC = 9.93 mM = 0.00993 M
+𝑋
+cmc
+=
+0.00993
+55.50993
+=
+1.7889
+×
+10
+−
+4
+X
+cmc
+	​
+
+=
+55.50993
+0.00993
+	​
+
+=1.7889×10
+−4
+At 318.15 K: CMC = 11.47 mM = 0.01147 M
+𝑋
+cmc
+=
+0.01147
+55.51147
+=
+2.0662
+×
+10
+−
+4
+X
+cmc
+	​
+
+=
+55.51147
+0.01147
+	​
+
+=2.0662×10
+−4
+Computing Δg_mic
+The prefactor is (2 − 0.268) × 8.314 = 1.732 × 8.314 = 14.400 J mol⁻¹ K⁻¹.
+T = 283.15 K
+ln
+⁡
+(
+1.7889
+×
+10
+−
+4
+)
+=
+0.5816
+−
+9.2103
+=
+−
+8.6287
+ln(1.7889×10
+−4
+)=0.5816−9.2103=−8.6287
+Δ
+𝑔
+mic
+=
+14.400
+×
+283.15
+×
+(
+−
+8.6287
+)
+=
+4077.3
+×
+(
+−
+8.6287
+)
+Δg
+mic
+	​
+
+=14.400×283.15×(−8.6287)=4077.3×(−8.6287)
+
+=
+−
+35
+ 
+182
+  
+J/mol
+≈
+−
+35.18
+  
+kJ/mol
+=−35182J/mol≈−35.18kJ/mol
+T = 318.15 K
+ln
+⁡
+(
+2.0662
+×
+10
+−
+4
+)
+=
+0.7257
+−
+9.2103
+=
+−
+8.4846
+ln(2.0662×10
+−4
+)=0.7257−9.2103=−8.4846
+Δ
+𝑔
+mic
+=
+14.400
+×
+318.15
+×
+(
+−
+8.4846
+)
+=
+4581.3
+×
+(
+−
+8.4846
+)
+Δg
+mic
+	​
+
+=14.400×318.15×(−8.4846)=4581.3×(−8.4846)
+
+=
+−
+38
+ 
+870
+  
+J/mol
+≈
+−
+38.87
+  
+kJ/mol
+=−38870J/mol≈−38.87kJ/mol
+Trend Across the Full Range
+Computing at every temperature:
+T (K)
+	
+CMC (mM)
+	
+ln X_cmc
+	
+Δg_mic (kJ/mol)
+
+
+283.15
+	
+9.93
+	
+−8.629
+	
+−35.18
+
+
+288.15
+	
+9.82
+	
+−8.640
+	
+−35.85
+
+
+293.15
+	
+9.76
+	
+−8.646
+	
+−36.50
+
+
+298.15
+	
+9.74
+	
+−8.648
+	
+−37.13
+
+
+303.15
+	
+9.77
+	
+−8.645
+	
+−37.74
+
+
+308.15
+	
+10.02
+	
+−8.620
+	
+−38.25
+
+
+313.15
+	
+10.54
+	
+−8.569
+	
+−38.64
+
+
+318.15
+	
+11.47
+	
+−8.485
+	
+−38.87
+Δg_mic becomes monotonically more negative across the entire range, from −35.18 to −38.87 kJ/mol.
+Does This Mirror the CMC-vs-T Curve?
+No. The CMC data exhibit a shallow minimum near 298 K (CMC dips to 9.74 mM then rises to 11.47 mM), but Δg_mic shows no such minimum — it decreases steadily. The reason is structural: Δg_mic contains an explicit multiplicative factor of T. Taking the derivative,
+𝑑
+(
+Δ
+𝑔
+mic
+)
+𝑑
+𝑇
+=
+(
+2
+−
+𝛼
+)
+𝑅
+[
+ln
+⁡
+𝑋
+cmc
++
+𝑇
+𝑑
+ln
+⁡
+𝑋
+cmc
+𝑑
+𝑇
+]
+dT
+d(Δg
+mic
+	​
+
+)
+	​
+
+=(2−α)R[lnX
+cmc
+	​
+
++T
+dT
+dlnX
+cmc
+	​
+
+	​
+
+]
+Even past the CMC minimum (where d ln X_cmc/dT > 0), the term ln X_cmc ≈ −8.6 dominates the small positive correction T·d(ln X_cmc)/dT (which is only ≈ +0.1 to +0.3 over this range). The linear growth of the T prefactor therefore overwhelms the modest logarithmic change in X_cmc, keeping the product T·ln X_cmc monotonically more negative. The CMC minimum is essentially "washed out" in the free energy.
+FINAL_JSON:
+{
+"delta_g_mic_at_283.15K": -35.18,
+"delta_g_mic_at_318.15K": -38.87,
+"trend": "delta_g_mic becomes monotonically more negative (more favorable) from -35.18 kJ/mol at 283.15 K to -38.87 kJ/mol at 318.15 K, with no minimum",
+"reasoning": "The CMC-vs-T curve has a shallow minimum near 298 K, but delta_g_mic does not mirror this shape because the explicit T multiplier in delta_g_mic = (2-alpha)RT ln(X_cmc) dominates. The ln(X_cmc) term stays around -8.5 to -8.6 throughout, and its small decrease in magnitude at high T is overwhelmed by the linearly increasing T factor, so the product T*ln(X_cmc) keeps becoming more negative monotonically."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

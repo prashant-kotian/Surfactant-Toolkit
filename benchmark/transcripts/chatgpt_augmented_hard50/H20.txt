@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "A compound- and condition-specific refractive-index increment dn/dc for AOT is missing. Measure refractive index versus AOT concentration with a differential refractometer under the same solvent/temperature conditions, preferably at or appropriately matched to 632.8 nm, and use the slope dn/dc in the SLS Debye optical constant K."
+}

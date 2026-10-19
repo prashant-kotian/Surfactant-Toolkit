@@ -1,0 +1,103 @@
+string>"
+}
+END OF QUESTION
+
+
+Thinking completed
+Structural Analysis of the Given SMILES
+Parsing the Structure
+The SMILES: CCCCCCCC(CC(=O)O)OC(=O)CC(CCCCCCC)O[C@H]1[C@@H]([C@@H]([C@H]([C@@H](O1)C)O)O)O
+Aglycone (lipid) portion:
+CCCCCCCC(CC(=O)O) → CH₃(CH₂)₆CH(CH₂COOH)– : a 10-carbon β-hydroxy fatty acid (the β-OH is used in the ester bond)
+OC(=O) → ester linkage
+CC(CCCCCCC) → –CH₂–CH(C₇H₁₅)– : a second 10-carbon β-hydroxy fatty acid (its β-OH is glycosylated)
+Sugar portion:
+O[C@H]1[C@@H]([C@@H]([C@H]([C@@H](O1)C)O)O)O traces a 6-membered pyranose ring: C1–C2–C3–C4–C5–O–C1
+C2, C3, C4 each bear –OH; C5 bears –CH₃ (not –CH₂OH), identifying it as a 6-deoxy sugar (rhamnose)
+The anomeric C1 is linked via O-glycosidic bond to the lipid
+This is a monorhamnolipid with two β-hydroxydecanoic acid chains (Rha–C₁₀–C₁₀), the classic biosurfactant produced by Pseudomonas aeruginosa.
+Charge Type
+The only ionizable group is the terminal –COOH (pKₐ ≈ 4–5). There are no amines, quaternary ammonium, sulfates, sulfonates, or phosphates. At neutral pH the carboxylate is deprotonated → anionic.
+Confidence: High – the structure unambiguously contains one carboxylic acid and no basic/other ionic groups.
+HLB by Davies' Group-Contribution Method
+Hydrophilic group contributions:
+Group
+	
+Count
+	
+Value each
+	
+Subtotal
+
+
+–COOH
+	
+1
+	
++2.1
+	
++2.1
+
+
+–OH (sugar)
+	
+3
+	
++1.9
+	
++5.7
+
+
+–COO– (ester)
+	
+1
+	
++2.4
+	
++2.4
+
+
+–O– (glycosidic ether)
+	
+1
+	
++1.3
+	
++1.3
+
+
+–O– (ring ether)
+	
+1
+	
++1.3
+	
++1.3
+
+
+Total hydrophilic
+	
+	
+	
++12.8
+Lipophilic group contributions (all –CH₃, –CH₂–, >CH– in the lipid tails + the 6-deoxy methyl; sugar ring carbons are part of the hydrophilic head and are not counted as lipophilic –CH₂–):
+First fatty acid chain: 9 carbons (CH₃ + 6CH₂ + CH + CH₂)
+Second fatty acid chain: 9 carbons (CH₂ + CH + 6CH₂ + CH₃)
+Rhamnose C6 methyl: 1 carbon
+Total lipophilic carbons = 19
+Lipophilic contribution = 19 × (−0.475) = −9.025
+HLB = 7 + Σ(hydrophilic) + Σ(lipophilic)
+HLB = 7 + 12.8 − 9.025 = 10.8
+Summary
+The molecule is an anionic glycolipid biosurfactant (monorhamnolipid). The Davies HLB of ≈ 10.8 is consistent with a moderately hydrophilic surfactant suitable for O/W emulsification, in line with literature expectations for rhamnolipids.
+FINAL_JSON:
+{
+"charge_type": "anionic",
+"charge_confidence": "high",
+"structural_family": "Rhamnolipid (monorhamnolipid glycolipid biosurfactant): a 6-deoxy-mannose (rhamnose) headgroup linked via O-glycosidic bond to two beta-hydroxydecanoic acid chains joined by an ester, with a free terminal carboxylic acid providing the anionic charge",
+"hlb": 10.8,
+"notes": "HLB computed by Davies group-contribution: hydrophilic groups (1x COOH=2.1, 3x OH=5.7, 1x ester=2.4, 2x ether-O=2.6, total 12.8) minus lipophilic groups (19 aliphatic carbons x -0.475 = -9.025). Sugar ring carbons treated as part of hydrophilic head. The Davies method is approximate for glycolipids but yields a self-consistent value."
+}
+MCP
+Auto
+AI-generated content may not be accurate.

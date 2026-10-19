@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"compound1_charge_type": "cationic",
+"compound1_hlb_via_cc": 21.639,
+"compound2_charge_type": "cationic",
+"compound2_hlb_via_cc": null,
+"notes": "Compound 1 is a permanently charged quaternary ammonium surfactant; using the supplied Cc = -5.7 gives HLB = 21.639. Compound 2 is a primary amine and the pH-aware surfactant-computation classifier classifies it as cationic at pH 7.0; no Cc is supplied for compound 2, so its HLB via the stated Cc-to-HLB regression cannot be determined."
+}

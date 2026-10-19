@@ -1,0 +1,17 @@
+I'll run this through the connected surfactant-computation KMC tool.
+
+Results from the seeded Gillespie run (seed 31, 60 samples, n_max 25, 400 molecules):
+
+1. **equilibrium_c1_M** = 1.925 × 10⁻⁴ M. The ideal mass-action value is 2.11 × 10⁻⁴ M, so the run sits within the expected stochastic spread.
+2. **equilibrium_mean_nagg** = 7.304. The mass-action value is 7.50.
+3. **tau_fit_s** = 0.02710 s
+4. **mass_conservation_max_error** = 0, over 32,045 reaction events.
+5. **convergence** = converged. Drift in the final window was about 2.4%, and the run did not hit the event cap.
+
+There are three ways the tool's run differs from the procedure as you wrote it:
+
+- **Total concentration.** The Poisson draw that set the starting state gave an effective c_total of 0.01323 M, about 441 molecules, not exactly 400.
+- **Relaxation time.** The tool fits tau_fit_s to the growth of the micelle count, not to the monomer trajectory. The tool says this fit leans toward the fast part of the multi-exponential relaxation.
+- **Checkpoint spacing.** The 60 checkpoints are spaced logarithmically early on and linearly later, not evenly in time.
+
+FINAL_JSON: {"equilibrium_c1_M": 0.0001925, "equilibrium_mean_nagg": 7.303949186340589, "tau_fit_s": 0.02710088630284901, "mass_conservation_max_error": 0, "convergence": "converged"}

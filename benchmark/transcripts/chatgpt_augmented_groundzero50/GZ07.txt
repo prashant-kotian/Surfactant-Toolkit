@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"rh_from_diffusion_nm": 1.57290454836187,
+"comment_on_dls_comparison": "The DOSY-derived hydrodynamic radius is about 1.57 nm, whereas the independently reported DLS radius is about 40 nm, roughly 25.4 times larger. The two values are therefore not consistent with both methods observing the same single monodisperse diffusing particle population; they likely reflect different species/populations or technique-specific weighting or artifacts."
+}

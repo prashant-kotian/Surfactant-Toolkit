@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"tail_molar_volume_contribution_cm3_per_mol": 210.9,
+"v_bar_full_cm3_per_g": null,
+"missing_information": "Headgroup (sulfate + Na+ counterion, including hydration/electrostriction) partial molar volume in water, or a directly measured partial specific volume/density of the surfactant in aqueous solution. Without it, only the tail-only lower-bound estimate (0.7313 cm3/g) can be computed."
+}

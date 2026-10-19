@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"component1_charge_type": "zwitterionic",
+"selected_mixture_model": "rubingh_regular_solution",
+"model_parameters": {"beta": -3.632, "beta_std": 0.327, "beta_unit": "dimensionless"},
+"synergy_classification": "synergistic",
+"independent_check_note": "Rodenas model-independent x1 (from d lnCMC/dalpha1, no activity-coefficient assumption) gave physically valid x1 values at all five compositions and showed x1 > alpha1 throughout, i.e. preferential uptake of the zwitterionic component into the mixed micelle -- the same qualitative trend and the same synergy conclusion as Rubingh, though point values are noisy on this sparse 5-point series."
+}

@@ -1,0 +1,1 @@
+FINAL_JSON: {"flagged_T": 303.15, "n_flagged": 1, "dH_all": -12.98074852958893, "dH_cleaned": -13.773817264398593, "r2_cleaned": 0.9999749616448395}

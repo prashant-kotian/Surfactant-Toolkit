@@ -1,0 +1,31 @@
+I'll run the model-selection race and the pointwise Rubingh beta with the connected surfactant tools.
+
+The tool picks the Rubingh regular-solution model. All five points give a valid Rubingh root, so the beta average uses every point.
+
+| Model | k | RSS (ln space) | BIC |
+|---|---|---|---|
+| clint_ideal | 0 | 0.6029 | −10.577 |
+| rubingh_regular_solution | 1 | 2.907×10⁻⁵ | **−58.667** |
+| eommm_asymmetric_margules | 2 | 4.091×10⁻⁵ | −55.348 |
+
+Pointwise Rubingh beta values:
+
+| α₁ | x₁ | β |
+|---|---|---|
+| 0.1 | 0.4885 | −2.1015 |
+| 0.3 | 0.6514 | −2.0827 |
+| 0.5 | 0.7461 | −2.0825 |
+| 0.7 | 0.8290 | −2.0844 |
+| 0.9 | 0.9272 | −2.0552 |
+
+The mean is −2.0813, which matches the tool's single regressed beta of −2.0813 ± 0.015. The negative value means the two surfactants work together (synergistic).
+
+**One thing looks off in the EOMMM result.** EOMMM includes Rubingh as a special case: setting W12 = W21 = β gives the same model. So a properly converged EOMMM fit should have an RSS no higher than Rubingh's 2.907×10⁻⁵. Instead it reports 4.09×10⁻⁵, at exactly W12 = W21 = −2.10, which looks like a coarse grid point rather than a true optimum. This doesn't change the winner. Even a perfectly converged EOMMM fit would score about −57.06 or worse, still behind Rubingh, because of the ln(5) penalty for the extra parameter. However, the exact EOMMM BIC and delta below are the tool's numbers as returned.
+
+1. bic_rubingh: −58.66749159473379
+2. bic_eommm: −55.348474875637685
+3. delta_bic: 3.319016719096105
+4. selected: rubingh_regular_solution
+5. beta_mean: −2.0812538394748152
+
+FINAL_JSON: {"bic_rubingh": -58.66749159473379, "bic_eommm": -55.348474875637685, "delta_bic": 3.319016719096105, "selected": "rubingh_regular_solution", "beta_mean": -2.0812538394748152}

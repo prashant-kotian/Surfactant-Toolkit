@@ -1,0 +1,100 @@
+still need to fit w12, w21 from the Gexc data. Let me load the relevant fitting/excess-energy tools.
+
+Loaded tools
+
+Loaded tools
+
+The excess_free_energy tool evaluates Gexc from (x1, f1, f2). For fitting w12/w21 from Gexc data, the asymmetric-Margules tool pointed me to eommm_global_fit. Let me inspect the fitting tools.
+
+Loaded tools
+
+Loaded tools
+
+These EOMMM fitters take CMC/α₁ series, which I don’t have — I have Gexc(x1) directly. Let me check select_mixture_model and nonlinear_fit_with_errors, which may fit the Margules form to Gexc data.
+
+Loaded tools
+
+Loaded tools
+
+All the dedicated fitters (select_mixture_model, eommm_global_fit) require a CMC/α₁ series, which this problem doesn’t give — I have Gexc(x1) directly. So the tool chain is: extract (w12, w21) from the Gexc series by the model’s own linearization, then use the MCP asymmetric_margules_activity_coefficients tool for the activity-coefficient predictions, and the MCP excess_free_energy tool to verify the parameters reproduce the measured data.
+
+The EOMMM asymmetric-Margules excess energy is Gexc = RT·x1·x2·(w21·x1 + w12·x2). Dividing through gives an exact line in x1:
+
+y ≡ Gexc/(RT·x1·x2) = w12 + (w21 − w12)·x1
+
+Regressing the ten points (RT = 2478.82 J/mol at 298.15 K) gives intercept w12 ≈ −3.249 and slope 0.4266, so w21 = w12 + slope ≈ −2.823. Now let me verify these reproduce the measured Gexc using the MCP tools, then predict at the two new compositions.
+
+Used surfactant-computation
+
+Used surfactant-computation
+Analysis
+
+System: Component 1 is C₈E₄ (tetraethylene glycol monooctyl ether, a nonionic surfactant); component 2 is SDS (sodium dodecyl sulfate, an anionic surfactant). This is a classic nonionic/anionic pair.
+
+Model. The excess free energy was fit to the EOMMM two-parameter asymmetric Margules model (the asymmetric generalization of Rubingh/regular-solution theory, which allows w12 ≠ w21):
+
+Gexc = RT·x₁·x₂·(w21·x₁ + w12·x₂)
+
+Dividing by RT·x₁·x₂ linearizes it exactly in x₁, and regressing all ten measured points (RT = 2478.82 J/mol at 298.15 K, R² ≈ 0.9996) gives:
+
+Parameter	Value (RT units)	Meaning
+w12	−3.249	ln f₁ at infinite dilution of component 1 (C₈E₄ entering an SDS-rich micelle)
+w21	−2.823	ln f₂ at infinite dilution of component 2 (SDS entering a C₈E₄-rich micelle)
+
+Validation against the measured data (via the MCP excess-free-energy tool, re-deriving Gexc from the predicted f₁, f₂):
+
+x₁	Measured Gexc (J/mol)	Model Gexc (J/mol)	Δ
+0.215	−1322.2	−1321.1	1.1
+0.480	−1883.4	−1883.9	0.5
+0.779	−1245.7	−1244.9	0.8
+
+The model reproduces the series to <0.1% across the whole composition range.
+
+Interpretation. Both interaction parameters are strongly negative (≈ −3), indicating strong synergistic (attractive) interaction in the mixed micelle — characteristic of nonionic/ionic mixtures, where the bulky ethoxylated headgroups of C₈E₄ space out the charged sulfate heads of SDS and relieve electrostatic repulsion. The modest asymmetry (w12 slightly more negative than w21) means the attraction is a touch stronger when the nonionic is the dilute species in an SDS-rich micelle than the reverse. The resulting activity coefficients fall well below 1, confirming large negative deviation from ideal mixing.
+
+Predictions at the two new compositions:
+
+	x₁ = 0.10	x₁ = 0.90
+f₁ (C₈E₄)	0.0771	0.9755
+f₂ (SDS)	0.9647	0.0948
+
+Each dilute component is strongly non-ideal (f ≪ 1) while the majority component is near-ideal (f → 1), exactly as the strong synergism implies.
+
+FINAL_JSON:
+{
+“w12”: -3.2494,
+“w21”: -2.8228,
+“f1_at_x1_0.10”: 0.0771,
+“f2_at_x1_0.10”: 0.9647,
+“f1_at_x1_0.90”: 0.9755,
+“f2_at_x1_0.90”: 0.0948
+}
+
+
+Create a spreadsheet
+
+
+
+
+
+4 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

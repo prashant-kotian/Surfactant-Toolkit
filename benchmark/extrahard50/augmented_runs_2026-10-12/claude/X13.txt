@@ -1,0 +1,19 @@
+This is a numerical stiff-ODE task. Let me set up the 28-state master equation and solve it properly with a BDF integrator and analytic Jacobian.
+
+The surfactant-computation MCP server failed to connect this session, but this question is a self-contained numerical integration — I can solve it directly with scipy's stiff BDF integrator and an analytic Jacobian, exactly as the procedure pins. Let me build and run it.
+
+The stiff BDF solve converged cleanly and every consistency check passed. Here are the results.
+
+**Setup used.** 28-state isodesmic master equation dy/dt = A(y)·y for aggregates y₁…y₂₈, with flux Jₛ = k_on·y₁·y_{s−1} − k_off·yₛ for each step Cₙ + C₁ ⇌ C_{n+1} (dimer step carries the correct factor of 2 on the monomer). Off-rate k_off = k_on/K_final enforces detailed balance. Initial condition was the exact K_initial = 2500 /M equilibrium at 0.018 M from closed-form bisection; integration ran under K_final = 9500 /M with scipy `BDF` + analytic 28×28 Jacobian (rtol 1e-10, atol 1e-16) to the new equilibrium.
+
+**Verification.** At the end state the RHS residual is ≈7e-16 and the integrated state matches the independently computed K_final equilibrium to ≈6e-18, so the new equilibrium is genuinely reached. Max relative mass-conservation error over the whole trajectory is ≈6e-16 (≪ 1e-8). Linearizing at the new equilibrium gives 28 eigenvalues: one ≈0 (the mass-conservation mode) and 27 strictly negative (stable). The least-negative nonzero mode is −97.33 /s → τ = 1/97.33 ≈ 0.01027 s.
+
+Results:
+
+1. **kinetic_cmc_M** (new-equilibrium monomer): 1.0029e-4 mol/L
+2. **tau_dominant_s** (slowest relaxation mode): 1.0274e-2 s
+3. **mean_aggregation_number**: 11.43
+4. **mass_conserved**: true (max rel error ≈6e-16)
+5. **convergence**: converged
+
+FINAL_JSON: {"kinetic_cmc_M": 0.0001002856737705178, "tau_dominant_s": 0.010274254078222118, "mean_aggregation_number": 11.432220436694031, "mass_conserved": true, "convergence": "converged"}

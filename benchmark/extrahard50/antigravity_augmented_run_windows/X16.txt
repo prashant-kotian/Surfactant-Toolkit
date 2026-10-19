@@ -1,0 +1,9 @@
+Based on the EOMMM asymmetric-Margules global fit tool (`eommm_global_fit`) using the default parameters for the surfactant dissociation numbers (r1=2, r2=2) and the stated default `cmc_margin` of 0.10, the results of the 2D grid search are as follows:
+
+1. **W12**: 3.5000000000000013 (fitted asymmetric-Margules interaction parameter)
+2. **W21**: 1.5000000000000002 (fitted asymmetric-Margules interaction parameter)
+3. **r_squared**: 0.9935320744566886 (fit quality in ln(CMC_mix) space against fitted values)
+4. **x1_first_point**: 0.829258785663235 (micellar mole fraction x1 at the first point, alpha1 = 0.15)
+5. **feasible**: true (the total_infeasibility is ~1.79e-13, which is well below 1e-6)
+
+FINAL_JSON: {"W12": 3.5000000000000013, "W21": 1.5000000000000002, "r_squared": 0.9935320744566886, "x1_first_point": 0.829258785663235, "feasible": true}

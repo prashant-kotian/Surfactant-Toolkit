@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"log10_cmc_mol_per_L": -2.0394
+}

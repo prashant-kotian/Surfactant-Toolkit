@@ -1,0 +1,29 @@
+To determine the speciation of decylamine at the given pH values, we use the provided formula for the fractional concentration of the protonated (cationic) form: 
+
+`f_cation(pH) = 1 / (1 + 10^(pH - pKaH))`
+
+Given `pKaH = 10.62`:
+
+**1. f_cation at pH 8.00**
+`pH - pKaH = 8.00 - 10.62 = -2.62`
+`f_cation(8.00) = 1 / (1 + 10^-2.62)`
+`10^-2.62 ≈ 0.0024`
+`f_cation(8.00) ≈ 1 / 1.0024 ≈ 0.9976`
+
+**2. f_cation at pH 10.62**
+`pH - pKaH = 10.62 - 10.62 = 0`
+`f_cation(10.62) = 1 / (1 + 10^0) = 1 / (1 + 1) = 0.5`
+
+**3. f_cation at pH 13.00**
+`pH - pKaH = 13.00 - 10.62 = 2.38`
+`f_cation(13.00) = 1 / (1 + 10^2.38)`
+`10^2.38 ≈ 239.88`
+`f_cation(13.00) ≈ 1 / (1 + 239.88) = 1 / 240.88 ≈ 0.00415`
+
+**4. Dominant species at pH 8.00**
+Since `f_cation` at pH 8.00 is approximately 0.9976, this value is greater than 0.85. According to the pinned rules, the dominant species is "cationic".
+
+**5. Confidence at pH 8.00**
+The dominant fraction (cationic) is approximately 0.9976. Since this exceeds 0.95, the confidence is "high".
+
+FINAL_JSON: {"f_cation_pH8": 0.9976, "f_cation_pH1062": 0.5, "f_cation_pH13": 0.00415, "dominant_at_8": "cationic", "confidence_at_8": "high"}

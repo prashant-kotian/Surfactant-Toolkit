@@ -1,0 +1,56 @@
+To find the required values using pure reasoning, we will step through a manual approximation of the nonlinear least squares fit and the residual bootstrap process.
+
+**1. Estimate the 4-parameter sigmoid fit**
+The model function is:
+`value(x) = lo + (hi - lo)*0.5*(1 + tanh((x - x0)/w))`
+where `x = log10(c)`.
+
+Let's look at the asymptotic plateaus from the data:
+*   At very low concentrations (`c = 0.25, 0.40`), the values are near 71. So the upper plateau is approximately 71.0.
+*   At very high concentrations (`c = 2.30, 3.00, 4.00`), the values are near 30.5. So the lower plateau is approximately 30.5.
+*(Note: Because the transition is from high to low as concentration increases, `lo` corresponds to the upper plateau and `hi` corresponds to the lower plateau, or `w` is negative. Let's assume the standard form where the curve goes from 71.0 down to 30.5).*
+
+The midpoint of the transition is:
+`y_mid = (71.0 + 30.5) / 2 = 50.75`
+
+Looking at the data table, the transition crosses the midpoint between `c = 1.10` (value 65.27) and `c = 1.40` (value 49.50). 
+Specifically, the value at `c = 1.40` (49.50) is very close to, but slightly below, the midpoint (50.75). 
+Let's find the `x` values:
+`x_1.10 = log10(1.10) ≈ 0.041`
+`x_1.40 = log10(1.40) ≈ 0.146`
+
+Interpolating the slope linearly between these points:
+`slope = (49.50 - 65.27) / (0.146 - 0.041) = -15.77 / 0.105 ≈ -150.2`
+
+We want `x0` where `y = 50.75`:
+`x0 ≈ 0.146 - (49.50 - 50.75) / (-150.2) ≈ 0.146 - 0.008 = 0.138`
+This gives our point estimate for the Critical Micelle Concentration (CMC):
+`cmc_point = 10^0.138 ≈ 1.37 mM`
+
+**2. Estimate Bootstrap Residual Variance and Confidence Intervals**
+Next, we evaluate the residuals. The points near the plateaus vary by roughly ±1.0 to ±1.5 units from our visual horizontal asymptotes.
+*   Residual standard deviation (`σ`) ≈ 1.2
+
+The uncertainty in the midpoint `x0` relies heavily on the slope of the curve at the transition and the noise (residual SD). Using a basic error propagation rule for least-squares, the standard error of `x0` is approximated by:
+`SE(x0) ≈ σ / (|slope| * sqrt(N_transition))`
+`SE(x0) ≈ 1.2 / (150 * sqrt(3)) ≈ 0.0046`
+
+For a 95% confidence interval via bootstrap (which will closely mirror the asymptotic standard error here since the sample size is moderate and we perform 1000 resamples), the margin of error in log-space is roughly:
+`ME(x0) ≈ 1.96 * 0.0046 ≈ 0.009`
+
+So the 95% CI for `x0` is `[0.138 - 0.009, 0.138 + 0.009] = [0.129, 0.147]`
+
+Converting these bounds back to the linear concentration scale (mM):
+`cmc_ci_low = 10^0.129 ≈ 1.346 mM`
+`cmc_ci_high = 10^0.147 ≈ 1.403 mM`
+
+**3. Compute `ci_width_pct` and Evaluate Threshold**
+Now we calculate the percentage width of the confidence interval relative to the point estimate:
+`ci_width_pct = 100 * (1.403 - 1.346) / 1.37 ≈ 100 * (0.057) / 1.37 ≈ 4.16%`
+
+Since `4.16%` is significantly greater than the test threshold of `2.0%`, the interval is considered "wide".
+`ci_wide = true`
+
+*(Note: The exact numerical values for the percentiles would fluctuate slightly depending on the specific seed 27 draw sequence, but the general magnitude of the CI width—roughly 3.5% to 5.0%—is physically bound by the residual geometry calculated above and will comfortably exceed 2.0%).*
+
+FINAL_JSON: {"cmc_point": 1.37, "cmc_ci_low": 1.346, "cmc_ci_high": 1.403, "ci_width_pct": 4.16, "ci_wide": true}

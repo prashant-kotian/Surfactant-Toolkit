@@ -1,0 +1,61 @@
+ase-separation / mass-action standard, charged surfactant, no added salt):
+
+For an ionic surfactant with counterion binding, the common approximation is ΔG°_mic ≈ RT ln(CMC) (with activities ≈ concentrations, and treating the CMC in mole fraction or molarity with a small correction). Using the charged-surfactant form with complete dissociation would give 2RT ln(CMC); but for micellization the standard practice (and the physically meaningful "per monomer" free energy) uses the degree of counterion binding β:
+
+ΔG°_mic = RT ln(CMC) + (1−β)RT ln(CMC) = RT(2−β) ln(CMC)
+
+Without an independent measure of β we cannot rigorously fix it. However, the entropy cannot be genuinely determined from this data set, and here is why:
+
+Critical point on ΔS°_mic: ΔS°_mic = −(∂ΔG°_mic/∂T)_P. To get entropy you need ΔG at multiple temperatures (or a calorimetric enthalpy). We have data at a single temperature (296.35 K) only. A single ΔG value gives no derivative with respect to T, hence no entropy, and no enthalpy either. Any ΔS quoted would require assuming a temperature dependence of the CMC that isn't in the data.
+
+So:
+
+ΔG°_mic can be estimated (needs a β assumption, stated transparently).
+
+ΔS°_mic cannot be genuinely determined from this data → report null.
+
+Computing ΔG°_mic:
+
+CMC = 16.37 mM = 0.01637 M. Mole-fraction basis: x_CMC = 0.01637/(0.01637 + 55.51) ≈ 2.948 × 10⁻⁴.
+
+Using the simplest charged-surfactant approximation ΔG°_mic = RT ln(x_CMC) (this embeds the counterion via the mole-fraction/CMC convention commonly used; equivalently ≈ RT ln CMC with molarity and a small constant):
+
+RT = 2463.9 J/mol; ln(2.948×10⁻⁴) = −8.128.
+
+ΔG°_mic = 2463.9 × (−8.128) = −20.03 kJ/mol
+
+If instead one uses the fully-dissociated (2RT ln) form: 2 × (−20.03) = −40.1 kJ/mol — this overestimates magnitude because it ignores counterion binding (β ≈ 0.6–0.7 for DTAB reduces the effective factor to ~1.3–1.4). The mass-action value with β ≈ 0.65 would be RT(2−0.65)ln x = 1.35 × (−20.03) = −27.0 kJ/mol.
+
+The most defensible single number given only CMC data and no β is the standard RT ln(CMC) estimate:
+
+ΔG°_mic ≈ −20 kJ/mol (per mole of surfactant; note the true value including counterion binding is more negative, roughly −25 to −27 kJ/mol, but cannot be pinned down without β).
+
+Summary
+
+Surfactant: dodecyltrimethylammonium bromide (DTAB), cationic.
+
+CMC ≈ 16 mM (break/minimum at 16.37 mM; the 32.7 mM point is a post-CMC impurity minimum).
+
+Pre-CMC adsorption (Gibbs, 1:1 ionic, prefactor 2): Γ_max ≈ 2.4 × 10⁻⁶ mol/m², a_min ≈ 0.70 nm².
+
+ΔG°_mic ≈ −20 kJ/mol (RT ln CMC; more negative if counterion binding included).
+
+ΔS°_mic: not determinable — single temperature, no T-dependence of CMC or calorimetric enthalpy available.
+
+FINAL_JSON:
+{
+"charge_type": "cationic",
+"cmc_mM": 16.37,
+"gamma_max_mol_per_m2": 2.38e-6,
+"a_min_nm2": 0.70,
+"delta_g_mic_kJ_per_mol": -20.0,
+"delta_s_mic_J_per_mol_K": null
+}
+END OF QUESTION
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

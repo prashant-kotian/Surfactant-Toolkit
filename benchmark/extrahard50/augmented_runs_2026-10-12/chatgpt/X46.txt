@@ -1,0 +1,23 @@
+…
+Show more
+Worked for 1m 5s
+Analyzed
+ChatGPT said:
+mw: 364 g/mol (formula: C19H42BrN)
+charge: cationic
+n_carbons: 19
+cpp: 0.6050399202
+morphology: vesicle/bilayer
+p: 0.7295666651
+R_nm: 4.230570854 nm
+R_perrin_nm: 4.230570854 nm (since 
+𝑝
+≤
+1
+p≤1, 
+𝐹
+=
+1.000
+F=1.000)
+
+FINAL_JSON: {"mw": 364, "charge": "cationic", "n_carbons": 19, "cpp": 0.6050399202, "morphology": "vesicle/bilayer", "p": 0.7295666651, "R_nm": 4.230570854, "R_perrin_nm": 4.230570854}

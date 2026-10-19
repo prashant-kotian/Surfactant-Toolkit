@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "nonionic",
+"isotherm_model": "frumkin (BIC-selected over Langmuir, ΔBIC = 14.35)",
+"K": 19563777.90471785,
+"gamma_max_mol_per_m2": 3e-06
+}

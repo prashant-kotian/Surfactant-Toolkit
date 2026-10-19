@@ -1,0 +1,426 @@
+================================================================================
+GZ SURFACTANT / INTERFACIAL CHEMISTRY PROBLEM SET - FULL SOLUTIONS
+298 K unless otherwise stated. All fits/regressions performed on the raw data.
+================================================================================
+
+
+================================================================================
+GZ-01
+================================================================================
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]
+
+Identification
+The molecule is a succinate diester bearing a sulfonate on the alpha-carbon, with
+both carboxyls esterified by 2-ethylhexyl groups, plus a sodium counterion. This
+is sodium bis(2-ethylhexyl) sulfosuccinate - Aerosol OT (AOT) / docusate sodium.
+A twin-tailed anionic surfactant.
+
+Charge type
+Anionic; specifically a 1:1 ionic surfactant (surface-active sulfosuccinate anion
+plus a bindable Na+ counterion) with NO added electrolyte. This dictates the Gibbs
+prefactor n = 2 (not 1).
+
+Critical micelle concentration
+The six lowest points fall on a mathematically exact straight line in gamma vs
+log C - successive drops are identically 6.56 mN/m per 0.4-decade step
+(R^2 = 0.99999999):
+    gamma = 32.70 - 16.40 * log10(C[mM])
+The last three points plateau at ~27.5-28.0 mN/m. Taking the CMC as the
+intersection of the descending line with the plateau gives CMC ~ 2.0 mM
+(1.999 mM against the mean plateau of 27.77 mN/m; 2.17 mM if the slightly rising
+plateau line is used). Reported: ~2.0 mM, with gamma_CMC ~ 27.5-27.8 mN/m.
+
+Pre-CMC adsorption behavior
+The pre-CMC branch is linear in log C down to the lowest concentration; the line
+extrapolated to gamma = 72 mN/m (water) hits only C ~ 0.004 mM, below the measured
+range. So every measured pre-CMC point already lies in the surface-saturated
+(constant-Gamma) regime - the Gibbs / Langmuir-Szyszkowski saturated limit. With
+the correct ionic, salt-free prefactor n = 2:
+    dgamma/dlnC = -16.40 / ln(10) = -7.12 mN/m
+    Gamma_max = -(1/(2RT)) * dgamma/dlnC = 1.44e-6 mol/m^2
+    a_min = 1/(N_A * Gamma_max) = 1.16 nm^2
+(Using n = 1 by mistake would halve the area to 0.58 nm^2 - too small for a bulky
+twin-2-ethylhexyl head; this is why the ionic prefactor matters.) ~1 nm^2 is
+consistent with AOT's bulky, loosely packed double-tailed monolayer.
+
+Free energy of micellization
+CANNOT be genuinely determined from these data. For an ionic surfactant
+    delta_G_mic = (1 + beta) * RT * ln(X_CMC)
+where beta is the counterion (Na+) binding degree. Surface tension fixes the CMC
+(X_CMC = 3.6e-5, RT*lnX_CMC = -25.4 kJ/mol) but carries NO information about beta,
+which needs conductivity/EMF/activity data. The answer spans -25.4 kJ/mol
+(beta=0) to -50.7 kJ/mol (beta=1); e.g. -43 kJ/mol for beta~0.7. Reported as
+not determinable rather than invented.
+
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.0,
+  "isotherm_model": "Langmuir-Szyszkowski (Gibbs adsorption, surface-saturated regime)",
+  "gamma_max_mol_per_m2": 1.44e-6,
+  "a_min_nm2": 1.16,
+  "delta_g_mic_kJ_per_mol": null
+}
+
+
+================================================================================
+GZ-02
+================================================================================
+Component 1: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC  (CMC 1.8 mM)
+Component 2: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]                             (CMC 8.3 mM)
+
+Component identification
+Component 1 is 1,2-diheptanoyl-sn-glycero-3-phosphocholine (DHPC), a short-chain
+phosphatidylcholine; its phosphocholine head carries a phosphate anion and a
+quaternary-ammonium cation with zero net charge -> ZWITTERIONIC.
+Component 2 is sodium dodecyl sulfate (SDS), anionic.
+
+Ideal-mixing baseline (Clint)
+1/CMC_ideal = alpha2/CMC2 + alpha1/CMC1. Every measured mixed CMC sits far below
+the ideal value (ratios 0.37-0.61) -> large NEGATIVE deviation (attraction).
+
+Interaction model (Rubingh regular-solution theory)
+Solving the Rubingh coupled equations point-by-point:
+  alpha1(DHPC)  x1(micelle)   beta     f1(DHPC)  f2(SDS)
+   0.05          0.366       -3.22      0.27      0.65
+   0.10          0.436       -3.25      0.36      0.54
+   0.20          0.512       -3.95      0.39      0.36
+   0.40          0.594       -3.93      0.52      0.25
+   0.80          0.743       -3.81      0.78      0.12
+beta = -3.6 +/- 0.3 (nearly composition-independent -> RST adequate). Both
+activity coefficients < 1 everywhere -> mutual attraction. Physically the classic
+zwitterionic-anionic synergism: SDS sulfate pairs with the DHPC choline (ion-dipole
+attraction), relieving head-group repulsion.
+
+Synergy classification
+Synergism requires beta < 0 AND |beta| > |ln(CMC1/CMC2)|. Here |ln(1.8/8.3)| = 1.53
+and |beta| = 3.6 >> 1.53 -> strongly SYNERGISTIC. Mixed CMC reaches 1.3 mM, below
+both pure CMCs.
+
+Independent check (no RST assumptions)
+1) CMC minimum (purely thermodynamic): the mixed CMC (1.3-1.4 mM at alpha1=0.6-0.8)
+   falls below BOTH pure CMCs; since pure DHPC is 1.8 > 1.3 the curve must pass
+   through a minimum - a model-free signature of attractive mixing.
+2) Motomura composition (no beta / activity assumptions): micellar DHPC fractions
+   0.26, 0.55, 0.85, 0.64, 0.83 across alpha1=0.05->0.80, all exceeding bulk
+   alpha1 -> DHPC-enriched micelles, same increasing trend as Rubingh x1.
+Both independent checks support the same conclusion.
+
+FINAL_JSON:
+{
+  "component1_charge_type": "zwitterionic",
+  "selected_mixture_model": "Rubingh regular solution theory",
+  "model_parameters": {"beta": -3.6, "beta_per_point": [-3.22, -3.25, -3.95, -3.93, -3.81], "x1_DHPC_in_micelle": [0.366, 0.436, 0.512, 0.594, 0.743], "f1_DHPC_mean": 0.47, "f2_SDS_mean": 0.38, "ln_CMC1_over_CMC2_abs": 1.53},
+  "synergy_classification": "synergistic",
+  "independent_check_note": "Yes. Two model-free checks agree with Rubingh: (1) the mixed CMC (min 1.3 mM) lies below both pure CMCs (1.8 and 8.3 mM), forcing a CMC minimum that is a purely thermodynamic signature of attractive synergism; (2) Motomura's composition relation (no regular-solution/activity assumptions) gives micellar DHPC fractions all exceeding bulk alpha1, i.e. DHPC-enriched micelles with the same increasing trend as Rubingh x1."
+}
+
+
+================================================================================
+GZ-03
+================================================================================
+SMILES: [Br-].[Br-].CCCCCCCCCCCCCCCC[N+](C)(C)CCCCCC[N+](C)(C)CCCCCCCCCCCCCCCC
+
+Structure
+Two bromides plus a dication: two quaternary-ammonium nitrogens, each carrying two
+methyls and a hexadecyl (C16) chain, joined head-to-head by a hexamethylene
+(-(CH2)6-) spacer:
+    C16H33-N+(CH3)2-(CH2)6-N+(CH3)2-C16H33 . 2 Br-
+This is the gemini surfactant "16-6-16" (hexanediyl-1,6-bis(dimethylhexadecyl-
+ammonium) dibromide).
+
+Charge type
+CATIONIC - two permanently charged quaternary ammonium heads (pH-independent) with
+two bromide counterions; a divalent cationic (dicationic) surfactant.
+
+Structural family
+Cationic gemini (dimeric) quaternary-ammonium surfactant. Supported by two
+identical CTAB-type monomers (C16 tail + dimethyl-quaternary-ammonium head) tied
+together AT THE HEAD GROUPS by a short alkanediyl spacer - the defining gemini
+"m-s-m" architecture (here 16-6-16).
+
+HLB by Davies - NOT genuinely computable
+Davies: HLB = 7 + sum(hydrophilic) - sum(hydrophobic). Hydrophobic side is defined
+(2xC16 + C6 spacer + 4 N-methyls = 42 CH/CH2/CH3 x 0.475 ~ 20). The problem is the
+hydrophilic side: Davies' table has NO group number for a quaternary ammonium head
+(R4N+ X-). Its only nitrogen entry is the tertiary amine (-N = 9.4), chemically
+different, and its ionic heads are all anionic. The method is also parameterized
+for single-headed surfactants, not dimeric geminis with two heads/two tails/a
+spacer. Substituting 9.4 x2 gives ~5.8, but that is a fabricated substitution, not
+a valid Davies computation. Reported as null.
+
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "cationic gemini (dimeric) quaternary-ammonium surfactant; hexanediyl-1,6-bis(dimethylhexadecylammonium) dibromide, i.e. the 16-6-16 gemini",
+  "hlb": null,
+  "notes": "Davies' method cannot genuinely be applied: its group table has no contribution for a quaternary ammonium head (R4N+ X-) - only a tertiary amine (-N, 9.4) and anionic heads are tabulated - so the hydrophilic contribution of the two -N+(CH3)2- centers is undefined. The method is also parameterized for single-headed nonionic/simple ionic surfactants, not dimeric gemini architectures with two heads, two C16 tails and a spacer. The hydrophobic sum alone is ~20 (42 CH/CH2/CH3 x 0.475). Forcing the tertiary-amine value (9.4 x2) would give ~5.8, but that is a fabricated substitution, not a valid Davies computation, so no honest HLB can be assigned."
+}
+
+
+================================================================================
+GZ-04
+================================================================================
+SMILES: CCCCCCCC(CC(=O)O)OC(=O)CC(CCCCCCC)O[C@H]1[C@@H]([C@@H]([C@H]([C@@H](O1)C)O)O)O
+
+Structure
+- A rhamnose ring (6-deoxyhexose: ring O, C-methyl, three OH).
+- Glycosidically linked to the 3-OH of a 3-hydroxydecanoic acid (beta-hydroxy C10).
+- That acid's carboxyl is esterified to the 3-OH of a SECOND 3-hydroxydecanoic
+  acid, which ends in a FREE carboxylic acid.
+So: sugar-O-[beta-OH-C10]-ester-[beta-OH-C10]-COOH = mono-rhamnolipid Rha-C10-C10.
+
+Charge type
+The only ionizable group is the single terminal carboxylic acid. As drawn it is
+the neutral, protonated form; in water the charge is pH-dependent: below pKa
+(~4.3-5.5) neutral, above it anionic (carboxylate). Functionally an anionic
+(weak-acid) surfactant at neutral pH. Confidence: high that it is a single-carboxyl
+ionizable anionic surfactant; only caveat is the pH-dependent instantaneous charge.
+
+Structural family
+Glycolipid biosurfactant - specifically a mono-rhamnolipid. Rhamnose head +
+ester-linked dimer of beta-hydroxy fatty acids + free carboxyl = the defining
+Rha-C10-C10 motif (Pseudomonas aeruginosa rhamnolipids).
+
+HLB by Davies - NOT genuinely computable
+Hydrophobic side is clean (~11.4). Free -COOH (2.1) and one ester (2.4) are
+tabulated. But the rhamnose head is NOT parameterized: no group value for the
+glycosidic (acetal) linkage, and the ring hydroxyls fit neither "free -OH" (1.9)
+nor "sorbitan-ring -OH" (0.5). That choice alone swings the result:
+    ring OH = 1.9: HLB ~ 8.4
+    ring OH = 0.5: HLB ~ 4.2
+a ~4-unit spread, before the untabulated acetal and the pH-dependent ionization
+(Davies captures only the neutral form; a carboxylate would add strongly, cf.
+-COO-Na+ = 19.1). No single defensible value -> null (neutral-form estimate loosely
+~4-8.5).
+
+FINAL_JSON:
+{
+  "charge_type": "anionic (weak-acid, pH-dependent): neutral/protonated -COOH as drawn, carboxylate (anionic) above pKa ~4.3-5.5",
+  "charge_confidence": "high that it is a single-carboxyl ionizable anionic surfactant (no other ionizable or permanently-charged groups); the only qualifier is that the instantaneous net charge is pH-dependent, neutral in the drawn protonated form",
+  "structural_family": "glycolipid biosurfactant - mono-rhamnolipid (Rha-C10-C10): L-rhamnose glycosidically linked to an ester-linked dimer of two 3-hydroxydecanoic acids with a free terminal carboxyl",
+  "hlb": null,
+  "notes": "Davies cannot genuinely resolve this. The rhamnose head is not in Davies' parameter set: the glycosidic acetal linkage has no tabulated group, and the pyranose ring hydroxyls fit neither 'free -OH'=1.9 nor 'sorbitan-ring -OH'=0.5. That ambiguity alone swings the result from ~4.2 (ring-OH=0.5) to ~8.4 (free-OH=1.9). The hydrophobic sum is ~11.4 (24 CH/CH2/CH3 and ring-CH x 0.475); recognized hydrophilic groups are free -COOH (2.1), one ester (2.4), and ring+glycosidic ethers (~2.6). Additionally the surfactant is an ionizable weak acid, so its effective HLB is pH-dependent while Davies captures only the neutral protonated form (a carboxylate would add strongly, cf. -COO-Na+ = 19.1). No single defensible Davies value exists; neutral-form estimate is loosely ~4-8.5."
+}
+
+
+================================================================================
+GZ-05
+================================================================================
+SMILES: CCCCCCCCCCCCCCCCS(=O)(=O)O
+CMC(T): 30 C -> 0.592 mM ; 50 C -> 0.805 mM ; 70 C -> 1.11 mM
+
+Surfactant
+Hexadecane-1-sulfonic acid (C16H33-SO3H). Strong-acid sulfonate -> ANIONIC 1:1
+ionic surfactant. CMC rises with T (above the usual CMC-T minimum) -> exothermic
+micellization.
+
+Enthalpy of micellization (van't Hoff / Gibbs-Helmholtz)
+delta_H_mic = R * d(lnX_CMC)/d(1/T). The slope is independent of the concentration
+reference (mole-fraction conversion is a constant offset that cancels), so ln(CMC)
+is used directly. Pseudo-phase (per mole, prefactor 1):
+    Widest span 30 -> 70 C:  delta_H ~ -13.6 kJ/mol
+    30 -> 50 C:              delta_H ~ -12.5 kJ/mol
+    50 -> 70 C:              delta_H ~ -14.8 kJ/mol
+
+Self-consistency
+Same sign and similar magnitude; the endpoint (-13.59) equals the average of the
+two sub-intervals (-13.66) - exactly what a finite-difference van't Hoff gives, so
+the extraction is internally consistent. There is a real systematic drift (more
+exothermic at higher T, ~17%), the fingerprint of a small NEGATIVE heat capacity
+of micellization, delta_Cp_mic ~ -115 J/mol/K. So delta_H_mic is not strictly
+T-independent; -13.6 kJ/mol is a good average for 30-70 C. Classified self-consistent.
+
+Free energy and entropy - NOT genuinely determinable
+delta_G_mic = (1+beta)*RT*lnX_CMC needs beta (counterion binding), unobtainable
+from CMC-vs-T data (needs conductivity/EMF/activity). Hence delta_G is null, and
+delta_S = (delta_H - delta_G)/T inherits this -> null. (The same (1+beta) factor
+also scales the absolute delta_H; the values above are the pseudo-phase/beta=0
+enthalpies, so true |delta_H| would be larger by that unknown factor.)
+
+FINAL_JSON:
+{
+  "delta_h_endpoint_kJ_per_mol": -13.6,
+  "sub_intervals": [{"t_lo_C": 30.0, "t_hi_C": 50.0, "delta_h_kJ_per_mol": -12.5}, {"t_lo_C": 50.0, "t_hi_C": 70.0, "delta_h_kJ_per_mol": -14.8}],
+  "self_consistent": true,
+  "delta_g_mic_kJ_per_mol": null,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+
+================================================================================
+GZ-06
+================================================================================
+Micelle R_h = 2.637 nm; 100 mM NaCl; 298.15 K.
+
+Debye screening length
+For 1:1 electrolyte (I = 0.1 M), kappa^-1 = sqrt(eps0*eps_r*kB*T / (2*NA*e^2*I)).
+Using eps_r = 78.4:
+    kappa^-1 = 0.961 nm
+Matches the shortcut 0.304/sqrt(0.1) = 0.961 nm; insensitive to eps_r (0.960-0.962
+over 78.3-78.5).
+
+Dimensionless kappa*a
+With a = R_h = 2.637 nm:  kappa*a = 2.637 / 0.961 = 2.74.
+
+Electrophoretic mobility correction (Henry function)
+In mu = (2*eps0*eps_r*zeta/3eta)*f(kappa*a), f runs from 1.0 (Huckel, kappa*a<<1)
+to 1.5 (Smoluchowski, kappa*a>>1). At kappa*a ~ 2.74 the system is INTERMEDIATE -
+far above the Huckel range and far below where Smoluchowski holds (kappa*a >~
+100-1000) - so the full Henry function is required. Using Ohshima's closed-form
+approximation:
+    f(kappa*a = 2.74) = 1.085
+Applying Smoluchowski here would overestimate the mobility-to-zeta conversion by
+~38%; Huckel would underestimate by ~8%. (Classical Henry for a rigid,
+non-conducting sphere; neglects surface-conductance/relaxation effects, not
+determinable from the given data.)
+
+FINAL_JSON:
+{
+  "debye_length_nm": 0.961,
+  "kappa_a": 2.74,
+  "henry_function_value": 1.085,
+  "method_used": "Henry's function via Ohshima's closed-form approximation (intermediate kappa*a ~ 2.7; neither the Huckel limit f=1.0 for kappa*a<<1 nor the Smoluchowski limit f=1.5 for kappa*a>>1 applies, so the full Henry correction for a rigid non-conducting sphere is required)"
+}
+
+
+================================================================================
+GZ-07
+================================================================================
+DOSY-NMR: D = 1.56e-6 cm^2/s; eta = 0.89 mPa.s; 298.15 K.
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]  (CTAB)
+Independent DLS on same system: R_h ~ 40 nm.
+
+Surfactant
+Cetyltrimethylammonium bromide (CTAB) - C16 cationic surfactant; small spherical
+micelles (typical R_h ~2-3 nm).
+
+Hydrodynamic radius from DOSY (Stokes-Einstein)
+R_h = kB*T / (6*pi*eta*D), D = 1.56e-10 m^2/s:
+    R_h = 1.57 nm
+
+Comparison with the 40 nm DLS value
+They do NOT agree - the DOSY radius (~1.57 nm) is ~25x smaller than DLS (~40 nm).
+~1.6 nm is exactly an individual small CTAB micelle; 40 nm is vesicle/large-aggregate
+scale. The mismatch is not error but weighting: DLS intensity ~ R^6 (z-average), so
+a trace population of large aggregates/dust dominates the signal (a 40 nm object
+outscatters a 1.6 nm micelle by ~3e8 per particle). DOSY is population/mole-fraction
+weighted and reports the dominant small micelles. The two numbers describe opposite
+ends of one distribution -> a bimodal/polydisperse system: abundant ~1.6 nm micelles
+plus a minor ~40 nm large-aggregate tail. The DOSY value best represents the true
+micelle size; the DLS value flags larger structures. (Stokes-Einstein assumes
+dilute, spherical, non-interacting particles; fast monomer-micelle exchange would
+if anything bias the DOSY radius slightly low, not high.)
+
+FINAL_JSON:
+{
+  "rh_from_diffusion_nm": 1.57,
+  "comment_on_dls_comparison": "The Stokes-Einstein radius from DOSY (~1.57 nm) is that of an individual small CTAB micelle and is ~25x smaller than the ~40 nm DLS value; the two do not agree. The gap arises from different distribution weighting, not error: DLS intensity scales as R^6 (z-average), so a trace population of large aggregates/dust dominates its signal and inflates the apparent radius to tens of nm, whereas DOSY is population/mole-fraction-weighted and reports the dominant small-micelle species. This indicates a bimodal/polydisperse system - abundant ~1.6 nm micelles plus a minor large-aggregate (~40 nm) tail. The DOSY value best represents the true micelle size; the DLS value signals the presence of larger structures. Stokes-Einstein assumes dilute, spherical, non-interacting particles, and fast monomer-micelle exchange would if anything bias the DOSY radius slightly low, not high."
+}
+
+
+================================================================================
+GZ-08
+================================================================================
+SMILES: CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCO
+Pure-solvent gamma = 72.0 mN/m; 298 K.
+
+Surfactant
+C12H25-(OCH2CH2)7-OH = heptaethylene glycol monododecyl ether, C12E7
+(polyoxyethylene alkyl ether). Neutral polyether/hydroxyl head -> NONIONIC, so the
+Gibbs prefactor n = 1.
+
+Data character
+All points (1e-8 to 8e-5 mol/L) are below the C12E7 CMC (~8e-5 M), with no plateau
+- the complete pre-CMC adsorption isotherm from onset to near saturation.
+
+Best-fit model - Langmuir adsorption (Szyszkowski equation of state)
+Fitting pi = gamma0 - gamma to pi = RT*Gamma_max*ln(1 + K*C) reproduces all nine
+points essentially exactly (RMSE ~ 0.000 mN/m):
+    Gamma_max = 2.21e-6 mol/m^2 ,  K = 8.77e6 L/mol
+    a_min = 1/(N_A*Gamma_max) = 0.75 nm^2   (sensible for a C12En head)
+A more general Frumkin fit drives the lateral-interaction parameter a_F -> 0,
+adding no improvement -> the monolayer is ideal Langmuir with negligible lateral
+head-group interactions. So pre-CMC behavior is Langmuir adsorption: strong
+chain-driven adsorption (large K), heads packing to Gamma_max ~ 2.21e-6 mol/m^2
+(0.75 nm^2/molecule), no Frumkin correction needed.
+
+FINAL_JSON:
+{
+  "charge_type": "nonionic",
+  "isotherm_model": "Langmuir (Szyszkowski equation of state), nonionic prefactor n=1; Frumkin interaction parameter fits to ~0, confirming ideal Langmuir behavior",
+  "K": 8.77e6,
+  "gamma_max_mol_per_m2": 2.21e-6
+}
+
+
+================================================================================
+GZ-09
+================================================================================
+gamma_LV = 25.777 mN/m; theta = 24.370 deg.
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]  (AOT, the wetting liquid)
+
+Young-Dupre (cos theta = 0.9109)
+Work of adhesion:   W_A = gamma_LV*(1 + cos theta) = 25.777*1.9109 = 49.26 mJ/m^2
+Spreading coeff.:   S   = gamma_LV*(cos theta - 1) = 25.777*(-0.0891) = -2.30 mJ/m^2
+
+Spontaneous wetting?
+Criterion for spontaneous (complete) spreading is S >= 0. Here S = -2.30 < 0, so
+the liquid does NOT spontaneously spread - it forms a finite equilibrium angle
+(consistent with theta = 24.37 > 0). Answer: false.
+Nuance: theta = 24.4 deg << 90 deg, so the solid is highly wettable and the liquid
+PARTIALLY wets it (strong adhesion: W_A ~ 49 mJ/m^2 vs liquid cohesion
+2*gamma_LV ~ 51.6 mJ/m^2). It spreads to a low-angle drop but stops just short of a
+spontaneously spreading film. Complete wetting requires theta -> 0 (S = 0); this
+system is near that edge but does not reach it.
+
+FINAL_JSON:
+{
+  "work_of_adhesion_mJ_per_m2": 49.257,
+  "spreading_coefficient_mJ_per_m2": -2.297,
+  "spontaneous_wetting": false
+}
+
+
+================================================================================
+GZ-10
+================================================================================
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]  (SDS, anionic, C12 tail -> n_c = 12)
+Independently measured A_min = 44.70 A^2.
+
+Tanford geometry (n_c = 12)
+    V   = 27.4 + 26.9*12 = 350.2 A^3
+    l_c = 1.5 + 1.265*12 = 16.68 A
+
+Critical packing parameter
+    P = V / (A_min * l_c) = 350.2 / (44.70*16.68) = 350.2 / 745.6 = 0.470
+
+Predicted morphology
+P = 0.470 lies in 1/3 < P <= 1/2  ->  cylindrical / rodlike micelle.
+
+Assumptions and limitations
+- Tanford V and l_c are empirical for saturated, unbranched, fluid C12 chains near
+  25 C, taking the full tail into the core. P is essentially insensitive to the
+  n_c = 11 vs 12 convention (0.469-0.470) because V/l_c is nearly constant.
+- The result hinges on A_min. 44.70 A^2 is small for SDS (near-CMC salt-free SDS is
+  ~60 A^2 and spherical, P ~ 0.33); 44.7 A^2 implies screened/compressed heads
+  (added salt or counterion binding), raising P to the rodlike band. A_min itself
+  embeds the anionic Gibbs prefactor (n = 2).
+- P = 0.470 lies close to the 0.5 boundary, so the sphere/rod/vesicle assignment is
+  sensitive to modest changes in A_min or conditions.
+- CPP is a geometric mean-field predictor; it neglects head hydration, temperature,
+  concentration and counterion specifics, and predicts equilibrium curvature rather
+  than kinetically trapped structures.
+
+FINAL_JSON:
+{
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp": 0.470,
+  "predicted_morphology": "cylindrical/rodlike micelle",
+  "assumptions_or_limitations": "Tanford V and l_c are empirical relations for saturated, unbranched, fluid C12 chains near 25 C, taking the full tail into the core (n_c=12); P is essentially insensitive to the n_c=11 vs 12 convention (0.469-0.470) because V/l_c is nearly constant. The result depends mainly on A_min=44.70 A^2, which is small for SDS (near-CMC salt-free SDS is ~60 A^2 and spherical, P~0.33); 44.7 A^2 implies screened/compressed heads (added salt or counterion binding), raising P to the rodlike band. A_min itself embeds the anionic Gibbs prefactor (n=2). P=0.470 lies close to the 0.5 boundary, so the sphere/rod/vesicle assignment is sensitive to modest changes in A_min or conditions. CPP is a geometric mean-field predictor that neglects head hydration, temperature, concentration and counterion specifics."
+}
+
+================================================================================
+END OF SOLUTIONS
+================================================================================

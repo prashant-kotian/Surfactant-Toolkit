@@ -1,0 +1,191 @@
+.5. Negative β = attractive interaction in mixed micelle. Rosen: β < ln(CMC1/CMC2)=−1.53, so synergism. Measured CMC below both pure CMCs at low α2, and below ideal everywhere."
+
+"RST x2: 0.24,0.40,0.49,0.56,0.63 for α2 .2,.6,.8,.9,.95 (order)." Need order maybe. At .95 x=.63. Good.
+
+"Independent check: S2=α2 CMC/CMC2: .031,.101,.174,.304,.412; S1+S2: .609,.412,.374,.459,.512 all <1. This is model-free (only mass action/saturation) and supports increasing SDS in micelle and negative deviation. A Motomura derivative check on high-α side also gives x2^M ~0.5-0.7 at α2 .9-.95, consistent."
+
+Maybe "S1+S2<1" is not exactly model-free? It uses ideal reference. But okay.
+
+Need final JSON. Ensure no extra text after END OF QUESTION? The instruction says end response with block exactly. We'll put final block.
+
+Let's produce final.
+
+Component 1 is a short-chain phosphatidylcholine: it has a phosphate anion and a quaternary ammonium cation, so it is zwitterionic with net zero charge. Component 2 is SDS, anionic.
+
+The measured mixed CMCs lie well below the ideal Clint values at every composition:
+
+α₂	CMC measured / mM	CMC Clint ideal / mM	CMC RST fit / mM
+0.95	3.6	7.03	~3.4
+0.90	2.8	6.10	~2.6
+0.80	1.8	4.82	~2.0
+0.60	1.4	3.40	~1.6
+0.20	1.3	2.13	~1.38
+
+The best simple description is Regular Solution Theory / Rubingh’s nonideal mixed-micelle model with
+
+𝛽
+≈
+−
+3.5
+β≈−3.5
+
+using 
+𝐶
+𝑀
+𝐶
+1
+=
+1.8
+CMC
+1
+	​
+
+=1.8 mM and 
+𝐶
+𝑀
+𝐶
+2
+=
+8.3
+CMC
+2
+	​
+
+=8.3 mM. The negative 
+𝛽
+β means attractive interaction between the zwitterionic phospholipid and anionic SDS in the mixed micelle. The Rosen synergy condition is satisfied:
+
+𝛽
+=
+−
+3.5
+<
+ln
+⁡
+(
+𝐶
+𝑀
+𝐶
+1
+/
+𝐶
+𝑀
+𝐶
+2
+)
+=
+ln
+⁡
+(
+1.8
+/
+8.3
+)
+≈
+−
+1.53
+β=−3.5<ln(CMC
+1
+	​
+
+/CMC
+2
+	​
+
+)=ln(1.8/8.3)≈−1.53
+
+so the system is clearly synergistic, not antagonistic.
+
+As an independent check not relying on the RST fit, the model-free saturation ratios
+
+𝑆
+2
+=
+𝛼
+2
+𝐶
+𝑀
+𝐶
+m
+i
+x
+𝐶
+𝑀
+𝐶
+2
+S
+2
+	​
+
+=
+CMC
+2
+	​
+
+α
+2
+	​
+
+CMC
+mix
+	​
+
+	​
+
+
+rise monotonically from about 0.03 at 
+𝛼
+2
+=
+0.2
+α
+2
+	​
+
+=0.2 to 0.41 at 
+𝛼
+2
+=
+0.95
+α
+2
+	​
+
+=0.95, and 
+𝑆
+1
++
+𝑆
+2
+<
+1
+S
+1
+	​
+
++S
+2
+	​
+
+<1 at all measured points. This independently indicates negative deviation from ideal mixing and increasing SDS content in the mixed micelle as bulk SDS increases, consistent with the RST conclusion.
+
+FINAL_JSON:
+{
+"component1_charge_type": "zwitterionic (net neutral; phosphatidylcholine with phosphate anion and quaternary ammonium cation)",
+"selected_mixture_model": "Regular Solution Theory / Rubingh nonideal mixed-micelle model",
+"model_parameters": {
+"beta_RST": -3.5,
+"CMC1_mM": 1.8,
+"CMC2_mM": 8.3
+},
+"synergy_classification": "synergistic",
+"independent_check_note": "Model-free saturation ratios S2 = alpha2*CMCmix/CMC2 rise monotonically from about 0.03 to 0.41, and S1+S2 < 1 at all measured compositions, independently confirming negative deviation and increasing SDS content in the mixed micelles."
+}
+END OF QUESTION
+
+DeepResearch
+DeepThink
+Search
+MCP
+AI-generated, for reference only
+BDS

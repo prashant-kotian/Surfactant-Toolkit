@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"cmc_in_chart_units": null,
+"cmc_in_molar": null,
+"beta_from_chart": null,
+"delta_g_mic_kJ_per_mol": null
+}

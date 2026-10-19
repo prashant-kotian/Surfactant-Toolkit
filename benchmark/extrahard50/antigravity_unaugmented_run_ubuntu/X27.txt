@@ -1,0 +1,40 @@
+To find the transcription error and complete the protocol, we must perform the calculations step-by-step.
+
+**Step 1: Naive Pass**
+First, we calculate the mole fraction $X_i = \frac{\text{CMC}/1000}{(\text{CMC}/1000) + 55.5}$ and naive temperatures in Kelvin ($K_i = T_{\text{printed}} + 273.15$) for each row, followed by $\Delta G_i = R K_i \ln(X_i)$ using $R = 8.314462618 \text{ J/(mol K)}$.
+
+*   **Row 1**: $T=15.00$ -> $K=288.15$, $\text{CMC}=2.7989$ -> $X=5.0428 \times 10^{-5}$, $\ln(X) = -9.8950$ -> $\Delta G_1 = -23706.52 \text{ J/mol}$
+*   **Row 2**: $T=20.00$ -> $K=293.15$, $\text{CMC}=3.0180$ -> $X=5.4375 \times 10^{-5}$, $\ln(X) = -9.8198$ -> $\Delta G_2 = -23934.58 \text{ J/mol}$
+*   **Row 3**: $T=25.00$ -> $K=298.15$, $\text{CMC}=3.2339$ -> $X=5.8265 \times 10^{-5}$, $\ln(X) = -9.7505$ -> $\Delta G_3 = -24171.12 \text{ J/mol}$
+*   **Row 4**: $T=30.00$ -> $K=303.15$, $\text{CMC}=3.5653$ -> $X=6.4236 \times 10^{-5}$, $\ln(X) = -9.6529$ -> $\Delta G_4 = -24330.50 \text{ J/mol}$
+*   **Row 5**: $T=308.15$ -> $K=581.30$, $\text{CMC}=3.9049$ -> $X=7.0354 \times 10^{-5}$, $\ln(X) = -9.5620$ -> $\Delta G_5 = -46215.03 \text{ J/mol}$
+*   **Row 6**: $T=40.00$ -> $K=313.15$, $\text{CMC}=4.1781$ -> $X=7.5275 \times 10^{-5}$, $\ln(X) = -9.4943$ -> $\Delta G_6 = -24720.04 \text{ J/mol}$
+*   **Row 7**: $T=45.00$ -> $K=318.15$, $\text{CMC}=4.5961$ -> $X=8.2806 \times 10^{-5}$, $\ln(X) = -9.3989$ -> $\Delta G_7 = -24862.51 \text{ J/mol}$
+*   **Row 8**: $T=50.00$ -> $K=323.15$, $\text{CMC}=4.9040$ -> $X=8.8353 \times 10^{-5}$, $\ln(X) = -9.3341$ -> $\Delta G_8 = -25078.71 \text{ J/mol}$
+
+**Step 2: Leave-One-Out Error**
+When we perform leave-one-out fitting $\Delta G = \Delta H - K\Delta S$, the anomaly at row 5 immediately dominates. 
+If we fit the 7 "normal" rows (leaving row 5 out), we get a stable linear relationship ($\Delta G \approx -12718.7 - 38.26 \cdot K$). 
+Projecting this to the anomalous naive $K_5 = 581.30 \text{ K}$ predicts a $\Delta G_5$ of $\approx -34962 \text{ J/mol}$, whereas the actual calculated $\Delta G_5$ was $-46215.03 \text{ J/mol}$. This creates a massive leave-one-out error of $\approx 11253 \text{ J/mol}$. By contrast, leaving out any other row forces row 5 into the fit, severely skewing the regression line, but limiting individual normal row prediction errors to roughly $\sim 700 \text{ J/mol}$. Row 5 is unambiguously flagged (error $\gg$ 2x mean error of the others). 
+
+**Step 3 & 4: Correction and Refitting**
+We apply the correction to Row 5, directly adopting its printed value as Kelvin without adding 273.15. Thus $K_5$ becomes $308.15 \text{ K}$ (which corresponds to exactly $35^\circ \text{C}$, completely consistent with the sequence). 
+Re-calculating $\Delta G_5$ with $K=308.15 \text{ K}$:
+$\Delta G_5 = 8.314462618 \times 308.15 \times (-9.5619934) = -24498.92 \text{ J/mol}$
+
+Now, utilizing the fully corrected set of 8 variables, we have evenly spaced $K$ values starting from 288.15 to 323.15 with a mean $K = 305.65 \text{ K}$, and corresponding $\Delta G$ spanning from $-23706.52$ to $-25078.71 \text{ J/mol}$ with a mean $\Delta G = -24412.86 \text{ J/mol}$. 
+
+*   Sum of $(K_i - \text{Mean } K)^2 = 1050$
+*   Sum of products $(K_i - \text{Mean } K)(\Delta G_i - \text{Mean } \Delta G) = -40150.404$
+*   Sum of $(\Delta G_i - \text{Mean } \Delta G)^2 = 1540197.274$
+
+Slope ($-\Delta S$) = $-40150.404 / 1050 = -38.23848$
+$\implies \Delta S_{\text{corrected}} = 38.23848 \text{ J/(mol K)}$
+
+Intercept ($\Delta H$) = Mean $\Delta G - \text{Slope} \times \text{Mean } K$
+$\implies \Delta H = -24412.861 - (-38.23848 \times 305.65) = -12725.27 \text{ J/mol}$
+$\implies \Delta H_{\text{corrected}} = -12.72527 \text{ kJ/mol}$
+
+$r^2_{\text{corrected}} = \frac{(-40150.404)^2}{1050 \times 1540197.274} = 0.99681$
+
+FINAL_JSON: {"flagged_T": 308.15, "n_flagged": 1, "dH_corrected": -12.72527, "dS_corrected": 38.23848, "r2_corrected": 0.99681}

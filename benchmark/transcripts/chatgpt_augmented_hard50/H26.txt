@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"n_ethylene_oxide_units": 11,
+"total_carbons": 41,
+"molecular_weight": 769.111,
+"hlb_griffin": 13.0433968569
+}

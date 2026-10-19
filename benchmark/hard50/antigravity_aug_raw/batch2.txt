@@ -1,0 +1,295 @@
+I have started checking the available MCP tool schemas and will proceed as soon as the results are available.
+### Question H11
+
+**Step-by-step calculation & analysis:**
+1. **Rubingh Root Scan across Compositions:**
+   Using pure component CMCs $C_1 = 8.0\text{ mM}$ and $C_2 = 15.0\text{ mM}$, we attempt to solve the regular-solution mass balance for the micellar mole fraction $x_1 \in (0, 1)$:
+   $$\frac{x_1^2 \ln\left(\frac{\alpha_1 C_{\text{mix}}}{x_1 C_1}\right)}{(1 - x_1)^2 \ln\left(\frac{(1 - \alpha_1) C_{\text{mix}}}{(1 - x_1) C_2}\right)} = 1$$
+   - Point 1 ($\alpha_1 = 0.10, C_{\text{mix}} = 9.0\text{ mM}$): Valid root found, $x_1 = 0.319772$, $\beta = -2.257691$.
+   - Point 2 ($\alpha_1 = 0.25, C_{\text{mix}} = 12.0\text{ mM}$): Valid root found, $x_1 = 0.390176$, $\beta = -0.106679$.
+   - Point 3 ($\alpha_1 = 0.50, C_{\text{mix}} = 15.0\text{ mM}$): Valid root found, $x_1 = 0.926175$, $\beta = 2.230015$.
+   - Point 4 ($\alpha_1 = 0.70, C_{\text{mix}} = 16.0\text{ mM}$): Infeasible; no valid root exists in $(0, 1)$ because $C_{\text{mix}}$ exceeds the upper bound permitted by the regular-solution model.
+   - Point 5 ($\alpha_1 = 0.85, C_{\text{mix}} = 13.0\text{ mM}$): Infeasible; no valid root exists in $(0, 1)$.
+   
+   Hence, $2$ points have no valid solution: $\alpha_1 = 0.70$ and $\alpha_1 = 0.85$.
+
+2. **Pooled Regression on Feasible Points ($n = 3$):**
+   Pooling the three valid compositions ($\alpha_1 \in \{0.10, 0.25, 0.50\}$):
+   - Sample mean $\bar{\beta} = \frac{-2.257691 - 0.106679 + 2.230015}{3} = -0.044785$
+   - Sample standard deviation ($n-1 = 2$ denominator): $s = 1.832621$
+   - Number of points used in regression: $3$
+
+=== H11 ===
+FINAL_JSON:
+{
+  "n_points_without_solution": 2,
+  "alpha1_no_root_1": 0.7,
+  "alpha1_no_root_2": 0.85,
+  "beta_mean": -0.04478506183152057,
+  "beta_std": 1.8326207206410465,
+  "n_points_used": 3
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H12
+
+**Step-by-step calculation & analysis:**
+1. **Model Fitting & Selection via BIC:**
+   Fitting the pre-CMC surface tension isotherm ($\gamma_0 = 71.8\text{ mN/m}, \Gamma_{\max} = 2.1 \times 10^{-6}\text{ mol/m}^2$):
+   - Langmuir/Szyszkowski fit (1 free parameter $K$): $\text{BIC} = -19.06$.
+   - Frumkin fit (2 free parameters $K$ and lateral interaction parameter $a$): $\text{BIC} = -79.97$, $K \approx 2.67 \times 10^5\text{ M}^{-1}$, $a = 2.5333$.
+   - Comparison: $\Delta\text{BIC} = 60.91 \gg 10$, selecting the **Frumkin** isotherm model overwhelmingly.
+
+2. **Thermodynamic Regularity Assessment:**
+   - The fitted parameter $a \approx 2.533 \ge 2.0$, placing the monolayer in the two-dimensional condensation regime (coexistence of diluted and condensed surface phases where the isotherm equation can become multi-valued).
+   - Because $a \ge 2.0$, downstream thermodynamic properties derived from $\Gamma$ and $a$ cannot be trusted without first inspecting the fit residuals and verifying physical consistency across the transition region.
+
+=== H12 ===
+FINAL_JSON:
+{
+  "selected_model": "frumkin",
+  "frumkin_a": 2.5333077215068407,
+  "condensation_regime_flagged": true,
+  "a_trustworthy_downstream_unexamined": false
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H13
+
+**Step-by-step calculation & analysis:**
+1. **Critical Packing Parameter (CPP):**
+   Given for C12 tail: $v = 350.2\text{ \AA}^3$, $l_c = 16.68\text{ \AA}$, and $A_{\min} = 50.0\text{ \AA}^2$:
+   $$\text{CPP} = \frac{v}{A_{\min} l_c} = \frac{350.2}{50.0 \times 16.68} = 0.419904$$
+
+2. **Morphology Classification:**
+   Since $\frac{1}{3} < \text{CPP} \le \frac{1}{2}$ ($0.333 < 0.4199 \le 0.500$), the geometry corresponds to a **cylindrical/rodlike micelle**.
+
+3. **Geometric Consistency Audit:**
+   - For a cylindrical/rodlike micelle, the semi-minor axis is constrained by the chain length $b \le l_c \approx 16.68\text{ \AA}$.
+   - The reported small aggregation number $N_{\text{agg}} = 20$ would yield a core volume $V_{\text{core}} = 20 \times 350.2 = 7004\text{ \AA}^3$.
+   - In a prolate geometry, this requires a semi-major axis $a = \frac{3 V_{\text{core}}}{4 \pi b^2} \approx 6.0\text{ \AA} < b$, which would imply an unphysical axial ratio $a/b < 1$ (smaller than the minor axis constraint).
+   - Thus, the three inputs ($A_{\min}$, rodlike CPP, and $N_{\text{agg}} = 20$) are geometrically inconsistent; a valid axial ratio cannot be calculated (`axial_ratio: null`, `conflict_detected: true`).
+
+=== H13 ===
+FINAL_JSON:
+{
+  "cpp": 0.4199040767386091,
+  "morphology": "cylindrical/rodlike micelle",
+  "axial_ratio": null,
+  "conflict_detected": true
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H14
+
+**Step-by-step calculation & analysis:**
+1. **Structure Identification:**
+   SMILES `[Br-].[Br-].CCCCCCCCCCCC[N+](C)(C)CCCC[N+](C)(C)CCCCCCCCCCCC` represents $N,N'$-bis(dimethyldodecyl)-1,4-butanediammonium dibromide:
+   - Charge type: **cationic** (two quaternary ammonium headgroups with bromide counterions).
+   - Structural family: **gemini** (bis-surfactant consisting of two C12 tails and two dimethylammonium heads linked by a butyl C4 spacer).
+
+2. **Method Applicability:**
+   - Davies group-contribution method is structurally invalid for gemini surfactants as group additivity fails to account for spacer-mediated headgroup interactions and conformational constraints (`davies_hlb: null`).
+   - Therefore, the valid applicable method is **Griffin**.
+
+3. **Table Lookup:**
+   - The surfactant is a 12-4-12 gemini (two C12 tails, butyl 4-carbon spacer).
+   - From the supplied Griffin reference table: 12-4-12 corresponds to **6.22**.
+
+=== H14 ===
+FINAL_JSON:
+{
+  "charge_type": "cationic",
+  "structural_family": "gemini",
+  "davies_hlb": null,
+  "valid_method": "Griffin",
+  "hlb": 6.22
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H15
+
+**Step-by-step calculation & analysis:**
+1. **Debye Optical Constant ($K$):**
+   $$K = \frac{4 \pi^2 n^2 (dn/dc)^2}{N_A \lambda^4}$$
+   With $n = 1.333$, $dn/dc = 0.140\text{ mL/g}$, $\lambda = 6.328 \times 10^{-5}\text{ cm}$, $N_A = 6.02214076 \times 10^{23}\text{ mol}^{-1}$:
+   $$K = 1.423985 \times 10^{-7}\text{ cm}^2\cdot\text{mol/g}^2$$
+
+2. **Debye Plot Regression:**
+   Linear regression of $\frac{K c}{\Delta R} = \frac{1}{M_w} + 2 A_2 c$:
+   - Intercept $\frac{1}{M_w} = 0.002500067\text{ mol/g} \implies M_w \approx 400.0\text{ g/mol}$
+   - Aggregation number:
+     $$N_{\text{agg}} = \frac{M_w}{M_0} = \frac{400.0\text{ g/mol}}{625.0\text{ g/mol}} = 0.64$$
+
+3. **Physical Validity:**
+   - An aggregation number $N_{\text{agg}} = 0.64 < 1$ implies fewer than one monomer per aggregate, which is physically impossible for a micelle.
+
+=== H15 ===
+FINAL_JSON:
+{
+  "micelle_mw": 399.9893308756428,
+  "aggregation_number": 0.6399829294010285,
+  "physically_valid": false,
+  "why": "The calculated aggregation number Nagg = 0.64 is less than one, which is physically impossible as a micelle cannot contain fewer than one monomer."
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H16
+
+**Step-by-step calculation & analysis:**
+1. **Conductivity Break-Point Determination:**
+   - Premicellar slope ($c \le 4.0\text{ mM}$): $S_1 = 0.550\text{ mS/(cm}\cdot\text{mM)}$
+   - Postmicellar slope ($c \ge 5.0\text{ mM}$): $S_2 = 0.154\text{ mS/(cm}\cdot\text{mM)}$
+   - Break-point intersection: $\text{CMC} = 4.20\text{ mM}$ ($0.00420\text{ M}$)
+
+2. **Counterion Binding & Free Energy:**
+   - Degree of counterion binding:
+     $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.154}{0.550} = 0.72$$
+   - Mole fraction at CMC: $X = \frac{0.00420}{55.5} = 7.5676 \times 10^{-5}$
+   - Free energy of micellization:
+     $$\Delta G_{\text{mic}} = (2 - \beta) R T \ln(X) = (2 - 0.72) \times 8.314462618 \times 298.15 \times \ln(7.5676 \times 10^{-5}) / 1000 = -30.1096\text{ kJ/mol}$$
+
+3. **Entropy of Micellization:**
+   - Determining $\Delta S_{\text{mic}} = \frac{\Delta H_{\text{mic}} - \Delta G_{\text{mic}}}{T}$ requires knowledge of the enthalpy of micellization ($\Delta H_{\text{mic}}$) or CMC measurements across a series of temperatures (van 't Hoff analysis). From a single-temperature conductivity run, $\Delta S_{\text{mic}}$ cannot be determined (`null`).
+
+=== H16 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.199494949494949,
+  "beta": 0.72,
+  "delta_g_mic_kJ_per_mol": -30.10962450899553,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Enthalpy of micellization (delta_H_mic) or temperature-dependent CMC measurements for van 't Hoff analysis."
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H17
+
+**Step-by-step calculation & analysis:**
+1. **Intrinsic Aqueous Solubility Estimate:**
+   - For naphthalene (`c1ccc2ccccc2c1`), intrinsic water solubility estimated from structure via the ESOL QSPR model yields:
+     $$\log_{10}(S) = -3.11897 \implies S_{\text{intrinsic}} = 7.60376 \times 10^{-4}\text{ M}$$
+   - This value is a QSPR estimate (ESOL), not an experimentally measured value.
+
+2. **Molar Solubilization Ratio (MSR):**
+   - Given $C_{\text{total}} = 0.0110\text{ M}$, $C_{\text{surf}} = 0.050\text{ M}$, and $\text{CMC} = 0.0009\text{ M}$:
+     $$\text{MSR} = \frac{C_{\text{total}} - S_{\text{intrinsic}}}{C_{\text{surf}} - \text{CMC}} = \frac{0.0110 - 0.000760376}{0.050 - 0.0009} = \frac{0.0102396}{0.0491} = 0.208546\text{ mol/mol}$$
+
+=== H17 ===
+FINAL_JSON:
+{
+  "solubility_estimate_M": 0.0007603761741598127,
+  "solubility_source": "QSPR estimate via ESOL (Delaney 2004, RDKit-refit coefficients), not a measurement.",
+  "msr": 0.2085463100985781
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H18
+
+**Step-by-step calculation & analysis:**
+1. **Ionization Equilibrium:**
+   For dodecylamine (`CCCCCCCCCCCCN`) at $\text{pH} = 10.6$ with reported primary amine $\text{p}K_a\text{H}$ range of $10.4 - 10.8$:
+   - At $\text{p}K_a\text{H}_{\text{low}} = 10.4$:
+     $$\text{fraction protonated} = \frac{1}{1 + 10^{\text{pH} - \text{p}K_a\text{H}}} = \frac{1}{1 + 10^{10.6 - 10.4}} = \frac{1}{1 + 10^{0.2}} = 0.386863$$
+   - At $\text{p}K_a\text{H}_{\text{high}} = 10.8$:
+     $$\text{fraction protonated} = \frac{1}{1 + 10^{\text{pH} - \text{p}K_a\text{H}}} = \frac{1}{1 + 10^{10.6 - 10.8}} = \frac{1}{1 + 10^{-0.2}} = 0.613137$$
+
+2. **Charge State & Confidence:**
+   - Because the solution $\text{pH} = 10.6$ falls squarely within the $\text{p}K_a\text{H}$ range ($10.4 - 10.8$), the protonated fraction spans $\sim 39\% - 61\%$. The population is genuinely mixed between neutral amine and cationic ammonium.
+   - The charge label remains ambiguous (`still_ambiguous`), and confidence in any single charge label is **low**.
+
+=== H18 ===
+FINAL_JSON:
+{
+  "charge_type_at_ph": "still_ambiguous",
+  "fraction_protonated_at_low_pka": 0.3868631798468573,
+  "fraction_protonated_at_high_pka": 0.6131368201531436,
+  "confidence": "low"
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H19
+
+**Step-by-step calculation & analysis:**
+1. **Gibbs Surface Excess & Prefactor ($n$):**
+   - For a 1:1 ionic surfactant in the presence of **excess inert electrolyte**, the chemical potential of the counterion is held virtually constant by the electrolyte background ($d\ln a_{\text{counterion}} \approx 0$). Therefore, the prefactor in the Gibbs adsorption equation is **$n = 1$**:
+     $$\Gamma_{\max} = -\frac{1}{1 \cdot R T} \frac{d\gamma}{d\ln C} = \frac{18.4 \times 10^{-3}\text{ N/m}}{8.314462618 \times 298.15\text{ J/mol}} = 7.422476 \times 10^{-6}\text{ mol/m}^2$$
+
+2. **Minimum Area per Molecule ($A_{\min}$):**
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 7.422476 \times 10^{-6}} = 2.237177 \times 10^{-19}\text{ m}^2 = 0.223718\text{ nm}^2$$
+
+3. **Micellization Thermodynamics:**
+   - Given $\text{CMC} = 8.0\text{ mM} = 0.0080\text{ M}$ and $\alpha = 0.30$:
+     $$X = \frac{0.0080}{55.5} = 1.44123 \times 10^{-4}$$
+     $$\Delta G_{\text{mic}} = (1 + \alpha) R T \ln(X) = 1.30 \times 8.314462618 \times 298.15 \times \ln(1.44123 \times 10^{-4}) / 1000 = -28.503775\text{ kJ/mol}$$
+   - Standard entropy of micellization $\Delta S_{\text{mic}}$ cannot be calculated from a single-temperature measurement without the enthalpy of micellization ($\Delta H_{\text{mic}}$) or a temperature series (`null`).
+
+=== H19 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.422476380435842e-06,
+  "a_min_nm2": 0.22371766268609417,
+  "delta_g_mic_kJ_per_mol": -28.50377465528527,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Enthalpy of micellization (delta_H_mic) or temperature-dependent CMC series for van 't Hoff analysis."
+}
+END OF QUESTION
+
+
+---
+
+
+### Question H20
+
+**Step-by-step calculation & analysis:**
+1. **Refractive Index Increment ($dn/dc$):**
+   - The Debye optical constant $K = \frac{4 \pi^2 n^2 (dn/dc)^2}{N_A \lambda^4}$ depends quadratically on the specific refractive index increment $dn/dc$ of the analyte.
+   - The reference value supplied ($0.110\text{ mL/g}$) is explicitly measured for SDS, a completely different surfactant. Using it for AOT would be an invalid fabrication of input data.
+   - AOT's own $dn/dc$ is absent from the provided data (`dn_dc_for_this_compound: null`).
+
+2. **SLS Aggregation Number ($N_{\text{agg}}$):**
+   - Without a compound-specific $dn/dc$, $K$ cannot be determined, leaving the Debye equation with two independent unknowns ($K$ and $M_w$). Hence, $N_{\text{agg}}$ cannot be calculated (`sls_aggregation_number: null`).
+
+3. **Missing Input Identification:**
+   - The compound-specific $dn/dc$ for AOT in water at $\lambda = 632.8\text{ nm}$ is missing and must be measured experimentally using a differential refractometer (or cited from literature specific to AOT).
+
+=== H20 ===
+FINAL_JSON:
+{
+  "dn_dc_for_this_compound": null,
+  "sls_aggregation_number": null,
+  "what_is_missing": "The compound-specific refractive index increment (dn/dc) for AOT is missing; the provided dn/dc belongs to SDS and cannot be substituted. It must be experimentally measured with a differential refractometer or cited from literature specific to AOT."
+}
+END OF QUESTION

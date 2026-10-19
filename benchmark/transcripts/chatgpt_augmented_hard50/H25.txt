@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"ionic_strength_mM": 105,
+"debye_length_nm": 0.938201,
+"kappa_a": 2.66468,
+"henry_f": 1.09084,
+"treatment": "Swan-Furst full-range Henry-function approximation (intermediate kappa*a regime)"
+}

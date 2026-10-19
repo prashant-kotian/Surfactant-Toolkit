@@ -1,0 +1,488 @@
+5
++
+1.265
+×
+12
+=
+1.5
++
+15.18
+=
+16.68
+ 
+A
+˚
+l
+c
+	​
+
+=1.5+1.265×12=1.5+15.18=16.68 
+A
+˚
+2. Critical Packing Parameter
+With the given headgroup area 
+𝑎
+0
+=
+44.70
+a
+0
+	​
+
+=44.70 Å²:
+𝑃
+=
+𝑉
+𝑎
+0
+ 
+𝑙
+𝑐
+=
+350.2
+44.70
+×
+16.68
+=
+350.2
+745.60
+=
+0.4697
+P=
+a
+0
+	​
+
+l
+c
+	​
+
+V
+	​
+
+=
+44.70×16.68
+350.2
+	​
+
+=
+745.60
+350.2
+	​
+
+=0.4697
+3. Morphology
+Since 
+1
+3
+<
+𝑃
+=
+0.470
+≤
+1
+2
+3
+1
+	​
+
+<P=0.470≤
+2
+1
+	​
+
+, the predicted morphology is a cylindrical (rodlike) micelle.
+4. Axial Ratio (Prolate Ellipsoid Core)
+Core volume: 
+𝑉
+core
+=
+𝑁
+×
+𝑉
+=
+63
+×
+350.2
+=
+22
+ 
+062.6
+V
+core
+	​
+
+=N×V=63×350.2=22062.6 Å³
+Setting the minor semi-axis 
+𝑏
+=
+𝑙
+𝑐
+=
+16.68
+b=l
+c
+	​
+
+=16.68 Å and solving for the major semi-axis 
+𝑎
+a:
+4
+3
+𝜋
+ 
+𝑎
+ 
+𝑏
+2
+=
+22
+ 
+062.6
+  
+⟹
+  
+𝑎
+=
+22
+ 
+062.6
+4.1888
+×
+278.22
+=
+18.93
+ 
+A
+˚
+3
+4
+	​
+
+πab
+2
+=22062.6⟹a=
+4.1888×278.22
+22062.6
+	​
+
+=18.93 
+A
+˚
+Axial ratio
+=
+𝑎
+𝑏
+=
+18.93
+16.68
+=
+1.135
+Axial ratio=
+b
+a
+	​
+
+=
+16.68
+18.93
+	​
+
+=1.135
+5. Naive Stokes–Einstein Hydrodynamic Radius
+𝑅
+𝐻
+=
+𝑘
+𝐵
+𝑇
+6
+𝜋
+𝜂
+𝐷
+=
+(
+1.3806
+×
+10
+−
+23
+)
+(
+298.15
+)
+6
+𝜋
+(
+0.8903
+×
+10
+−
+3
+)
+(
+9.3
+×
+10
+−
+11
+)
+R
+H
+	​
+
+=
+6πηD
+k
+B
+	​
+
+T
+	​
+
+=
+6π(0.8903×10
+−3
+)(9.3×10
+−11
+)
+(1.3806×10
+−23
+)(298.15)
+	​
+
+𝑅
+𝐻
+=
+4.116
+×
+10
+−
+21
+1.561
+×
+10
+−
+12
+=
+2.638
+×
+10
+−
+9
+ m
+=
+2.638
+ nm
+R
+H
+	​
+
+=
+1.561×10
+−12
+4.116×10
+−21
+	​
+
+=2.638×10
+−9
+ m=2.638 nm
+6. Perrin Shape Correction
+For a prolate ellipsoid with axial ratio 
+𝑝
+=
+𝑎
+/
+𝑏
+p=a/b, the Perrin friction factor (ratio of ellipsoid friction to that of an equal-volume sphere) is:
+𝑓
+𝑓
+0
+=
+𝑝
+2
+−
+1
+𝑝
+1
+/
+3
+ 
+ln
+⁡
+ ⁣
+(
+𝑝
++
+𝑝
+2
+−
+1
+)
+f
+0
+	​
+
+f
+	​
+
+=
+p
+1/3
+ln(p+
+p
+2
+−1
+	​
+
+)
+p
+2
+−1
+	​
+
+	​
+
+With 
+𝑝
+=
+1.135
+p=1.135:
+𝑝
+2
+−
+1
+=
+0.2885
+=
+0.5371
+p
+2
+−1
+	​
+
+=
+0.2885
+	​
+
+=0.5371
+𝑝
+1
+/
+3
+=
+1.0432
+p
+1/3
+=1.0432
+ln
+⁡
+(
+𝑝
++
+𝑝
+2
+−
+1
+)
+=
+ln
+⁡
+(
+1.6722
+)
+=
+0.5144
+ln(p+
+p
+2
+−1
+	​
+
+)=ln(1.6722)=0.5144
+𝑓
+𝑓
+0
+=
+0.5371
+1.0432
+×
+0.5144
+=
+0.5371
+0.5366
+=
+1.0011
+f
+0
+	​
+
+f
+	​
+
+=
+1.0432×0.5144
+0.5371
+	​
+
+=
+0.5366
+0.5371
+	​
+
+=1.0011
+The shape-corrected (equivalent-volume-sphere) radius:
+𝑅
+true
+=
+𝑅
+𝐻
+naive
+𝑓
+/
+𝑓
+0
+=
+2.638
+1.0011
+=
+2.635
+ nm
+R
+true
+	​
+
+=
+f/f
+0
+	​
+
+R
+H
+naive
+	​
+
+	​
+
+=
+1.0011
+2.638
+	​
+
+=2.635 nm
+Direction of correction: The corrected radius is smaller than the naive value. A prolate shape presents a larger frictional drag than a sphere of identical volume, so the naive spherical Stokes–Einstein model overestimates the size needed to account for the observed diffusion coefficient. Correcting for elongation reveals the particle can be slightly smaller while still producing the same drag.
+FINAL_JSON:
+{
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.4697,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.135,
+"rh_naive_stokes_einstein_nm": 2.638,
+"rh_perrin_corrected_nm": 2.635,
+"direction_of_correction": "smaller – the prolate shape has a higher friction coefficient than an equal-volume sphere, so the naive spherical Stokes-Einstein model overestimates the hydrodynamic size; correcting for elongation reduces the inferred radius"
+}
+MCP
+Auto
+AI-generated content may not be accurate.

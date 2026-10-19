@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"beta_mean": -3.69997
+}

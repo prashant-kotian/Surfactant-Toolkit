@@ -1,0 +1,361 @@
+{
+ "X-01": {
+  "cmc_point": 3.17277720537522,
+  "cmc_ci_low": 3.1092964280512,
+  "cmc_ci_high": 3.2456417783742193,
+  "ci_width_pct": 4.297350355700201,
+  "convergence": "converged"
+ },
+ "X-02": {
+  "cmc_point": 5.703137825413387,
+  "cmc_ci_low": 5.478833380002887,
+  "cmc_ci_high": 5.971876414913788,
+  "ci_width_pct": 8.645118776615965,
+  "ci_wide": true
+ },
+ "X-03": {
+  "output_mean": -12.508534840934505,
+  "output_sd": 0.18458250834953427,
+  "ci_low": -12.877637318848512,
+  "ci_high": -12.161768924123988,
+  "skew_label": "symmetric"
+ },
+ "X-04": {
+  "output_mean": 2.55855248098239,
+  "output_sd": 0.42687810446597774,
+  "ci_low": 2.0108421728056567,
+  "ci_high": 3.5846464274086625,
+  "skew_label": "right-skewed"
+ },
+ "X-05": {
+  "output_mean": 3.9180368710274043,
+  "output_sd": 0.8228883131088521,
+  "ci_low": 2.7797746405348045,
+  "ci_high": 5.899481483434835,
+  "skew_label": "right-skewed"
+ },
+ "X-06": {
+  "cmc_point": 4.626279844123793,
+  "cmc_ci_low": 4.445566916875789,
+  "cmc_ci_high": 4.836676189917956,
+  "ci_width_pct": 8.454077651083995,
+  "ci_wide": true
+ },
+ "X-07": {
+  "output_mean": -13.176182327768155,
+  "output_sd": 0.16850327707207413,
+  "ci_low": -13.520510909239897,
+  "ci_high": -12.862574467220902,
+  "skew_label": "symmetric"
+ },
+ "X-08": {
+  "output_mean": 5.386415264704639,
+  "output_sd": 1.4132677561999263,
+  "ci_low": 3.594562885227173,
+  "ci_high": 8.776667388732983,
+  "skew_label": "right-skewed"
+ },
+ "X-09": {
+  "cmc_point": 1.3893807376925276,
+  "cmc_ci_low": 1.3643471343071574,
+  "cmc_ci_high": 1.4117902405290688,
+  "ci_width_pct": 3.4147087640989393,
+  "ci_wide": true
+ },
+ "X-10": {
+  "kinetic_cmc_M": 0.00039758368177602265,
+  "tau_dominant_s": 0.0014444676092658863,
+  "mean_aggregation_number": 7.1544063520068795,
+  "mass_conserved": true,
+  "convergence": "converged"
+ },
+ "X-11": {
+  "equilibrium_c1_M": 0.0001925,
+  "equilibrium_mean_nagg": 7.303949186340589,
+  "tau_fit_s": 0.02710088630284901,
+  "mass_conservation_max_error": 0,
+  "convergence": "converged"
+ },
+ "X-12": {
+  "bic_rubingh": -58.66749159473379,
+  "bic_eommm": -55.348474875637685,
+  "delta_bic": 3.319016719096105,
+  "selected": "rubingh_regular_solution",
+  "beta_mean": -2.081253839474815
+ },
+ "X-13": {
+  "kinetic_cmc_M": 0.00010028567377051737,
+  "tau_dominant_s": 0.010274254078222224,
+  "mean_aggregation_number": 11.432220436694069,
+  "mass_conserved": true,
+  "convergence": "converged"
+ },
+ "X-14": {
+  "free_monomer_fraction": 0.0076635881312635094,
+  "mean_cluster_size": 5.5349315517128455,
+  "largest_cluster": 14,
+  "exact_max_deviation": 0.014445179692999272,
+  "convergence": "converged"
+ },
+ "X-15": {
+  "margin": 0.013,
+  "feasible_within_1pct": false,
+  "x1_rodenas": 0.8030576510871787,
+  "x1_rubingh": 0.786516397985111,
+  "agree_003": true
+ },
+ "X-16": {
+  "W12": 3.5000000000000013,
+  "W21": 1.5000000000000002,
+  "r_squared": 0.9935320744566886,
+  "x1_first_point": 0.829258785663235,
+  "feasible": true
+ },
+ "X-17": {
+  "cmc_point": 1.9989659591083466,
+  "cmc_ci_low": 1.9734683957737174,
+  "cmc_ci_high": 2.0207775318134877,
+  "ci_width_pct": 2.366680406857944,
+  "ci_wide": false
+ },
+ "X-18": {
+  "free_monomer_fraction": 0.0148043254376931,
+  "mean_cluster_size": 5.010960717963807,
+  "largest_cluster": 14,
+  "exact_max_deviation": 0.01714459483472136,
+  "convergence": "converged"
+ },
+ "X-19": {
+  "mu_SI": 4.1e-08,
+  "zeta_plain_mV": 52.566497,
+  "zeta_corr_mV": 92.3092,
+  "shift_pct": 75.6046,
+  "larger": "corrected"
+ },
+ "X-20": {
+  "equilibrium_c1_M": 0.000557142857142857,
+  "equilibrium_mean_nagg": 7.165213963341623,
+  "tau_fit_s": 0.05287971111143619,
+  "mass_conservation_max_error": 0,
+  "convergence": "converged"
+ },
+ "X-21": {
+  "W12": -1.9999999999999982,
+  "W21": -1.4999999999999978,
+  "r_squared": 0.9673983361751629,
+  "x1_last_point": 0.8866978053529913,
+  "feasible": true
+ },
+ "X-22": {
+  "W12": 0.8999999999999999,
+  "W21": 1.6000000000000003,
+  "r_squared": 0.9984240805557485,
+  "x1_third_point": 0.8108824340338063,
+  "feasible": true
+ },
+ "X-23": {
+  "free_monomer_fraction": 0.003742821985233798,
+  "mean_cluster_size": 6.629963084495487,
+  "largest_cluster": 17,
+  "exact_max_deviation": 0.014229165754572864,
+  "convergence": "converged"
+ },
+ "X-24": {
+  "W12": -0.39999999999999936,
+  "W21": -1.3999999999999977,
+  "r_squared": 0.997863645133461,
+  "x1_second_point": 0.8200805781749387,
+  "feasible": true
+ },
+ "X-25": {
+  "W12": 0.4,
+  "W21": 0.8000000000000006,
+  "r_squared": 0.9839135971801352,
+  "x1_middle_point": 0.861256575229002,
+  "feasible": true
+ },
+ "X-26": {
+  "flagged_T": 303.15,
+  "n_flagged": 1,
+  "dH_all": -12.98074852958893,
+  "dH_cleaned": -13.773817264398593,
+  "r2_cleaned": 0.9999749616448395
+ },
+ "X-27": {
+  "flagged_T": 308.15,
+  "n_flagged": 1,
+  "dH_corrected": -12.719796562204314,
+  "dS_corrected": 38.256498531934184,
+  "r2_corrected": 0.9968185231101583
+ },
+ "X-28": {
+  "excluded_gamma": 38.7,
+  "cmc_mM": 2.898275349237888,
+  "gamma_max": 1.8873104683058867e-06,
+  "n_used": 9,
+  "conflict_detected": true
+ },
+ "X-29": {
+  "sign_flipped_run": "run2",
+  "corrected_value": -29.88985523740715,
+  "base10_run": "run3",
+  "ratio_run3_run1": 0.4342924054867849
+ },
+ "X-30": {
+  "flagged_c": 1.5,
+  "delta_bic": -67.5537863687,
+  "cmc_mM": 4.326661530556787,
+  "n_used": 8,
+  "corrupt_detected": true
+ },
+ "X-31": {
+  "mw": 296,
+  "formula": "C19H36O2",
+  "n_CH2": 14,
+  "n_CH3": 2,
+  "n_vinyl_CH": 2,
+  "hlb": 0.85,
+  "charge": "nonionic"
+ },
+ "X-32": {
+  "family": "dimeric_gemini_type",
+  "charge": "cationic",
+  "mw": 554,
+  "formula": "C32H70Cl2N2",
+  "n_heads": 2,
+  "n_N_methyls": 4
+ },
+ "X-33": {
+  "n_rings": 1,
+  "n_esters": 1,
+  "acyl_carbons": 16,
+  "mw": 419,
+  "formula": "C22H42O7",
+  "charge": "nonionic"
+ },
+ "X-34": {
+  "tail_carbons": 8,
+  "n_CH3": 2,
+  "mw": 232,
+  "formula": "C8H17NaO4S",
+  "charge": "anionic",
+  "hlb": 41.8
+ },
+ "X-35": {
+  "f_cation_pH8": 0.9976069004880533,
+  "f_cation_pH1062": 0.5,
+  "f_cation_pH13": 0.004151387600865518,
+  "dominant_at_8": "cationic",
+  "confidence_at_8": "high"
+ },
+ "X-36": {
+  "cmc_point": 0.9626326370946828,
+  "cmc_ci_low": 0.9539754794906453,
+  "cmc_ci_high": 0.971491422707118,
+  "ci_width_pct": 1.8195874836617065,
+  "ci_wide": true
+ },
+ "X-37": {
+  "p_ell": 1.9390945,
+  "p_cyl": 0.927577,
+  "cpp": 0.558498,
+  "R_perrin_nm": 5.242445,
+  "morphology": "vesicle/bilayer",
+  "above_1_5": "ellipsoid"
+ },
+ "X-38": {
+  "a0_at_cpp_1_3": 87.12574850299401,
+  "a0_at_cpp_1_2": 58.08383233532934,
+  "cpp_at_a0_64": 0.45377994011976047,
+  "morph_at_64": "cylindrical/rodlike micelle",
+  "morph_at_95": "spherical micelle"
+ },
+ "X-39": {
+  "equilibrium_c1_M": 0.0008437500000000001,
+  "equilibrium_mean_nagg": 5.493780571382919,
+  "tau_fit_s": 0.0513657014240904,
+  "mass_conservation_max_error": 0,
+  "convergence": "converged"
+ },
+ "X-40": {
+  "free_monomer_fraction": 0.006027397260273973,
+  "mean_cluster_size": 5.93683686176837,
+  "largest_cluster": 15,
+  "exact_max_deviation": 0.010694313527763677,
+  "convergence": "converged"
+ },
+ "X-41": {
+  "dG_correct": -29.259789950457463,
+  "rel_diff_pct": 20.026766993132643,
+  "claim_agrees": false,
+  "what_wrong": "formula",
+  "direction": "less_negative"
+ },
+ "X-42": {
+  "cmc_mM": 4.445222154178574,
+  "rel_diff_L1": 7.766139478,
+  "rel_diff_L2": 55.222839017,
+  "closer": "L1",
+  "either_agrees_15pct": true
+ },
+ "X-43": {
+  "gamma_correct": 1.129507275283715e-06,
+  "ratio_draft_over_correct": 2.000000397900742,
+  "a_min": 1.470144640508619,
+  "draft_ok": false,
+  "n_used": "2"
+ },
+ "X-44": {
+  "k": 0.022681674665335362,
+  "cc": -0.9221321194997147,
+  "matching_candidate": "-0.92",
+  "S_star_E16": 3.614820253457593,
+  "hld_S3_E12": -0.09569992681562947,
+  "winsor": "Winsor III"
+ },
+ "X-45": {
+  "beta_mean": -1.59,
+  "sign": "negative",
+  "claim_agrees": false,
+  "synergy": "synergistic",
+  "x1_a050": 0.7431211048700926
+ },
+ "X-46": {
+  "mw": 364,
+  "charge": "cationic",
+  "n_carbons": 19,
+  "cpp": 0.6050399201596807,
+  "morphology": "vesicle/bilayer",
+  "p": 0.7295666014470287,
+  "R_nm": 4.230570854214686,
+  "R_perrin_nm": 4.230570854214686
+ },
+ "X-47": {
+  "cmc_cond": 4.574362416009867,
+  "beta": 0.6551540731892789,
+  "deltaG": -31.350376592851447,
+  "cmc_tens": 4.409081537009721,
+  "rel_diff_pct": 3.6796773347514216,
+  "agree_3pct": false
+ },
+ "X-48": {
+  "k": 0.018865559305818146,
+  "cc": -1.0514862259806415,
+  "S_star_E16_dT10": 4.277356484110553,
+  "achievable": false,
+  "hld_S9_E10": 0.9570827582973964,
+  "winsor": "Winsor II"
+ },
+ "X-49": {
+  "cmc_point": 1.6112125326645657,
+  "dG_point": -26.58451634344713,
+  "dG_ci_low": -26.616798330383766,
+  "dG_ci_high": -26.54976508822643
+ },
+ "X-50": {
+  "cmc_kinetic_mM": 0.2626262626262626,
+  "Nagg_rounded": 8,
+  "dG_kinetic": -34.83862333937016,
+  "convergence": "converged"
+ }
+}

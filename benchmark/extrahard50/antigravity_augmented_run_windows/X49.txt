@@ -1,0 +1,10 @@
+To find the exact required values, we followed a two-step process utilizing the `surfactantkit` MCP tools. 
+
+First, we mapped the given concentrations (`c`) into a base-10 logarithm space (`log10(c)`) and utilized the `bootstrap_cmc` MCP tool to fit the 4-parameter sigmoid. Using a seed of 85 and the required 1000 bootstrap resamples, we derived the critical micelle concentration (CMC) midpoint and its 95% confidence interval:
+* **Point CMC:** ~1.611 mM
+* **Lower Bound CMC:** ~1.591 mM
+* **Upper Bound CMC:** ~1.634 mM
+
+Then, we took these three CMC estimates, combined them with the given aggregation number (Nagg = 52) and standard conditions (T = 298.15 K), and passed them through the `mass_action_free_energy_of_micellization` MCP tool to compute the exact free energy of micellization (`dG`) in kJ/mol at each of the evaluated bounds.
+
+FINAL_JSON: {"cmc_point": 1.6112125326645657, "dG_point": -26.58451634344713, "dG_ci_low": -26.616798330383766, "dG_ci_high": -26.54976508822643}

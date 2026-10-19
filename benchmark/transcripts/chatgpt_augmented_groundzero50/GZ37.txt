@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"f1_at_x1_0.5": 0.37,
+"f2_at_x1_0.5": 0.37,
+"which_is_larger_at_0.5": "neither; approximately equal"
+}

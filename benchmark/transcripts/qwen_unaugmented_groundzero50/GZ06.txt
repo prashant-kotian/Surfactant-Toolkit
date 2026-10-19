@@ -1,0 +1,300 @@
+l/L
+I=
+2
+1
+	​
+
+∑c
+i
+	​
+
+z
+i
+2
+	​
+
+=
+2
+1
+	​
+
+(0.1×1
+2
++0.1×1
+2
+)=0.1 mol/L
+The Debye parameter is:
+𝜅
+2
+=
+2
+ 
+𝑛
+0
+ 
+𝑒
+2
+𝑧
+2
+𝜀
+0
+ 
+𝜀
+𝑟
+ 
+𝑘
+𝐵
+𝑇
+κ
+2
+=
+ε
+0
+	​
+
+ε
+r
+	​
+
+k
+B
+	​
+
+T
+2n
+0
+	​
+
+e
+2
+z
+2
+	​
+
+where n₀ = c·N_A = 100 mol/m³ × 6.022×10²³ = 6.022×10²⁵ m⁻³.
+Numerator: 2 × 6.022×10²⁵ × (1.602×10⁻¹⁹)² = 3.092×10⁻¹² C² m⁻³
+Denominator: (8.854×10⁻¹²)(78.36)(1.381×10⁻²³)(298.15) = 2.856×10⁻³⁰ C² m⁻¹
+𝜅
+2
+=
+3.092
+×
+10
+−
+12
+2.856
+×
+10
+−
+30
+=
+1.083
+×
+10
+18
+  
+m
+−
+2
+κ
+2
+=
+2.856×10
+−30
+3.092×10
+−12
+	​
+
+=1.083×10
+18
+m
+−2
+𝜅
+=
+1.040
+×
+10
+9
+  
+m
+−
+1
+κ=1.040×10
+9
+m
+−1
+𝜅
+−
+1
+=
+0.961
+  
+nm
+κ
+−1
+=0.961nm
+	​
+
+(Cross-check with the standard shortcut: κ⁻¹ = 0.304/√I nm = 0.304/√0.1 = 0.961 nm ✓)
+Part B: Dimensionless Product κa
+Using the hydrodynamic radius a = 2.637 nm as the effective particle radius (the hydrodynamic/shear-plane radius is the relevant length in electrophoresis):
+𝜅
+𝑎
+=
+𝑎
+𝜅
+−
+1
+=
+2.637
+0.9613
+=
+2.74
+κa=
+κ
+−1
+a
+	​
+
+=
+0.9613
+2.637
+	​
+
+=2.74
+𝜅
+𝑎
+≈
+2.74
+κa≈2.74
+	​
+
+This places the system firmly in the intermediate regime: neither the thin-double-layer (Smoluchowski, κa ≫ 1) nor the thick-double-layer (Hückel, κa ≪ 1) limit applies.
+Part C: Electrophoretic Mobility Correction – Henry's Function
+Because κa ≈ 2.74 is of order unity, the appropriate treatment is Henry's (1931) general solution for the electrophoresis of a non-conducting sphere in the Debye–Hückel (low-ζ) limit. The mobility is:
+𝜇
+𝑒
+=
+2
+ 
+𝜀
+0
+𝜀
+𝑟
+ 
+𝜁
+3
+𝜂
+  
+𝑓
+(
+𝜅
+𝑎
+)
+μ
+e
+	​
+
+=
+3η
+2ε
+0
+	​
+
+ε
+r
+	​
+
+ζ
+	​
+
+f(κa)
+where f(κa) interpolates between f(0) = 1 (Hückel) and f(∞) = 3/2 (Smoluchowski).
+The exact Henry function requires numerical evaluation (it involves exponential integrals and cannot be expressed in simple closed form for arbitrary κa). Using the standard tabulated values of Henry's function:
+κa
+	
+f(κa)
+
+
+2.0
+	
+1.066
+
+
+2.5
+	
+≈ 1.083
+
+
+2.74
+	
+≈ 1.09
+
+
+3.0
+	
+≈ 1.101
+
+
+5.0
+	
+≈ 1.16
+
+
+∞
+	
+1.500
+Linear interpolation between κa = 2.5 and κa = 3.0:
+𝑓
+(
+2.74
+)
+≈
+1.083
++
+2.74
+−
+2.5
+3.0
+−
+2.5
+(
+1.101
+−
+1.083
+)
+≈
+1.083
++
+0.48
+×
+0.018
+≈
+1.09
+f(2.74)≈1.083+
+3.0−2.5
+2.74−2.5
+	​
+
+(1.101−1.083)≈1.083+0.48×0.018≈1.09
+𝑓
+(
+𝜅
+𝑎
+)
+≈
+1.09
+f(κa)≈1.09
+	​
+
+Why Henry's treatment? At κa ≈ 2.74 the double layer thickness (~0.96 nm) is comparable to the particle radius (2.64 nm). The Smoluchowski limit (κa ≫ 1, f = 3/2) would overestimate the mobility by ~37%, while the Hückel limit (κa ≪ 1, f = 1) would underestimate it. Only the full Henry treatment correctly accounts for the coupled electrostatic and hydrodynamic fields at this intermediate κa. (Note: for higher ζ potentials, relaxation corrections of O'Brien–White or WLO type would additionally be needed, but the Henry function is the correct zeroth-order correction factor.)
+FINAL_JSON:
+{
+"debye_length_nm": 0.961,
+"kappa_a": 2.74,
+"henry_function_value": 1.09,
+"method_used": "Henry (1931) general treatment for intermediate kappa*a; numerical/interpolated Henry function (neither Huckel nor Smoluchowski limit valid)"
+}
+MCP
+Auto
+AI-generated content may not be accurate.

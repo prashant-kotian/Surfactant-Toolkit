@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"x1_mole_fraction": 0.6651,
+"clint_cmc_mM": 9.8425,
+"deviation_from_measured_pct": 21.51,
+"x1_rubingh": 0.7084,
+"beta_rubingh": -1.0297
+}

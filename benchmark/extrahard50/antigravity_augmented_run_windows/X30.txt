@@ -1,0 +1,40 @@
+To detect the scale-corrupted row, we evaluate all possible 2-segment OLS fits (with $\ge 3$ points per side) on the raw 9-point data and find the split that minimizes the Residual Sum of Squares (RSS). Then, we perform a leave-one-out cross-validation to see if removing a single point reduces the total minimum RSS by more than half. 
+
+### 1. Identify the corrupt row (Leave-one-out RSS)
+For the raw 9 points, there are 4 possible splits (3 left/6 right, 4L/5R, 5L/4R, 6L/3R). The RSS-minimizing split for the raw data is **4 left, 5 right**, yielding:
+- `RSS_before` = 899.50745
+
+We run the same procedure for all 8-point subsets formed by dropping one point. Removing row 4 (where $\gamma$ = 0.046 mN/m) gives a new RSS-minimizing split of **5 left, 3 right** on the remaining points:
+- Left 5 points ($c$: 0.20, 0.50, 0.90, 2.40, 3.60): RSS = 0.31943
+- Right 3 points ($c$: 5.20, 7.20, 10.00): RSS = 0.05556
+- `RSS_after` = 0.37498
+
+Since 0.37498 is vastly less than half of 899.50745, row 4 is successfully flagged as a corrupt outlier. Its concentration exactly as printed is **1.50**.
+
+### 2. BIC Calculation
+Using the formula $\text{BIC} = n \ln(\text{RSS}/n) + 5 \ln(n)$:
+- For raw 9 points ($n=9$): 
+  $\text{bic\_before} = 9 \ln(899.50745 / 9) + 5 \ln(9) = 52.42773$
+- For clean 8 points ($n=8$): 
+  $\text{bic\_after} = 8 \ln(0.37498 / 8) + 5 \ln(8) = -14.08553$
+- `delta_bic` = -14.08553 - 52.42773 = -66.51303
+
+### 3. CMC Extraction
+On the clean 8-point fit, the transition from decline to plateau occurs between the last decline point and the first plateau point:
+- $x_{\text{last\_decl}}$ = $\log_{10}(3.60)$
+- $x_{\text{first\_plateau}}$ = $\log_{10}(5.20)$
+
+$\text{CMC} = 10^{(\log_{10}(3.6) + \log_{10}(5.2)) / 2} = \sqrt{3.6 \times 5.2} = \sqrt{18.72} = 4.32666 \text{ mM}$
+
+### 4. Output values
+- `n_used`: 8 clean points were used for the final analysis.
+- `corrupt_detected`: true (since RSS dropped by $> 50\%$).
+
+FINAL_JSON: {"flagged_c": 1.50, "delta_bic": -66.51303263159993, "cmc_mM": 4.326661530556787, "n_used": 8, "corrupt_detected": true}
+26661530556787 \text{ mM}}$
+
+### 4. Detection Status
+*   **Points used:** 8 points were used in the final clean model.
+*   **Corrupt row detected:** `true`
+
+FINAL_JSON: {"flagged_c": 1.50, "delta_bic": -67.5537863687, "cmc_mM": 4.326661530556787, "n_used": 8, "corrupt_detected": true}

@@ -1,0 +1,27 @@
+I'll compute this directly with a script to keep every step exact.
+
+Both geometric conventions executed independently. Here's the report:
+
+1. **p_ell** (ellipsoid axial ratio a/b): **1.93909**
+   - V_mic = 78 × 485.0 = 37830.0 A³
+   - a = 3 × 37830.0 / (4π × 16.7²) = 32.3828 A
+   - p_ell = 32.3828 / 16.7 = 1.93909
+
+2. **p_cyl** (cylinder aspect ratio L/2r): **0.92758**
+   - r = 2 × 485.0 / 52.0 = 18.6538 A
+   - L = 78 × 485.0 / (π × 18.6538²) = 34.6059 A
+   - p_cyl = 34.6059 / (2 × 18.6538) = 0.92758
+
+3. **cpp**: **0.55850**
+   - v / (a0 × lc) = 485.0 / (52.0 × 16.7) = 0.55850
+
+4. **R_perrin_nm** (from p_ell): **5.24248 nm**
+   - R_stokes = kT/(6πηD) = 5.45274 nm
+   - F(1.93909) interpolated linearly between F(1.75) and F(2.00): 1.04011
+   - R_perrin = 5.45274 / 1.04011 = 5.24248 nm
+
+5. **morphology**: **vesicle/bilayer** (cpp = 0.5585 falls in the (1/2, 1] band)
+
+6. **above_1_5**: **ellipsoid** (p_ell = 1.939 > 1.5; p_cyl = 0.928 ≤ 1.5)
+
+FINAL_JSON: {"p_ell": 1.93909, "p_cyl": 0.92758, "cpp": 0.55850, "R_perrin_nm": 5.24248, "morphology": "vesicle/bilayer", "above_1_5": "ellipsoid"}

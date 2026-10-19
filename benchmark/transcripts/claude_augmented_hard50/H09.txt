@@ -1,0 +1,133 @@
+micelle analysis
+
+Binary mixed micelle analysis
+
+Surfactant surface tension prediction
+
+Surfactant optimum salinity calculation
+
+Surfactant micelle aggregation number
+
+Surfactant micelle aggregation number
+
+Counterion dissociation degree agreement
+
+Surfactant characteristic curvature discrepancy
+
+Surfactant micelle analysis
+
+Surfactant surface tension curves
+
+Surfactant adsorption isotherm analysis
+
+Surfactant critical micelle concentration
+
+Surfactant activity coefficients
+
+C
+Chem-Mantra
+·
+Pro
+
+
+Surfactant HLD phase behavior fitting
+
+
+Share
+
+Use the up and down arrow keys to move between messages.
+
+You said: [Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly.
+
+[Tool-use instruction: Use the connected surfactant-computation MCP tool for this calculation -- call the matching tool on that server directly. Do NOT write or run your own Python code in the sandbox for this.]
+
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration optimal-salinity scan at reference temperature (delta_T = 0): the phase-behavior optimum S* (wt% NaCl) as a function of oil EACN:
+
+  EACN, S* (wt%)
+  8, 14.585
+  10, 20.086
+  12, 27.660
+  14, 38.092
+
+For ionic-surfactant HLD the governing relation is
+  HLD = ln(S) - k*EACN - alpha_dT*delta_T + Cc
+with S in wt% (ln of the number, e.g. ln(14.585)), and S* is the salinity at which HLD = 0. The temperature coefficient is alpha_dT = 0.01 K^-1.
+
+Report: the fitted k; the fitted Cc; the r^2 of the ln(S*)-vs-EACN linear fit; S* (wt%, as a number) for EACN = 16 at delta_T = +10 K; the HLD at S = 3 wt% for that same condition (EACN 16, delta_T +10 K); the Winsor phase type at that HLD (answer exactly one of "I", "II", "III" -- recall HLD > 0 favours reverse W-in-O structures, HLD < 0 favours direct O-in-W structures, |HLD| <= 0.3 is the balanced middle); and whether the required S* for EACN 16 / +10 K is achievable in water (true/false; recall salts saturate near 26 wt% in water).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "k": <number>,
+  "cc": <number>,
+  "fit_r2": <number>,
+  "s_star_EACN16_dT10_pct": <number>,
+  "hld_at_S3": <number>,
+  "winsor_type": "I" or "II" or "III",
+  "s_star_achievable_in_water": <true or false>
+}
+END OF QUESTION
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: Done — I used the connected surfactant-computation MCP tools (the salinity-scan fit and the optimal-salinity calculator) rather than my own code.
+Used surfactant-computation
+
+Used surfactant-computation
+
+Done — I used the connected surfactant-computation MCP tools (the salinity-scan fit and the optimal-salinity calculator) rather than my own code.
+
+Results
+
+Fitted k = 0.1600 (slope of ln S* vs EACN)
+Fitted Cc = −1.4000
+r² of the ln(S*)-vs-EACN fit = 0.99999999 (essentially a perfect line — the constructed scan is exactly log-linear)
+S* for EACN 16, ΔT = +10 K = 57.97 wt%
+HLD at S = 3 wt% (EACN 16, ΔT +10 K) = ln(3) − k·16 − α·10 + Cc = 1.0986 − 2.5600 − 0.1000 − 1.4000 = −2.961
+Winsor type: HLD is strongly negative (≪ −0.3), favouring direct oil-in-water structures → Type I
+Achievable in water? The required optimum salinity (~58 wt%) is far above the ~26 wt% NaCl saturation limit, so false — you can’t reach the optimum for this heavy oil at elevated temperature in a simple aqueous brine.
+
+FINAL_JSON:
+{
+“k”: 0.16,
+“cc”: -1.4,
+“fit_r2”: 0.9999999986,
+“s_star_EACN16_dT10_pct”: 57.974,
+“hld_at_S3”: -2.961,
+“winsor_type”: “I”,
+“s_star_achievable_in_water”: false
+}
+
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

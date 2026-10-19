@@ -1,0 +1,272 @@
+You will be given 10 challenge questions about a chemistry/surfactant-science
+software toolkit. Answer each question as precisely as you can, following its
+own instructions exactly (which inputs to use, what field and rounding to
+report).
+
+Several questions reference a chart image file by name (e.g. "H-38_chart.png"
+or "GZ-15_chart.png") -- these files are present in the current working
+directory. For any such question, use your file-viewing tool to actually open
+and read that image file before answering; do not guess its contents.
+
+Immediately before each question's own FINAL_JSON block, output a line of the
+exact form
+=== <ID> ===
+(using that question's own ID exactly as shown) so your answers can be told
+apart afterward. Work through all 10 questions in order, in a single
+response.
+
+---
+
+=== H11 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration mixed-CMC series (component 1 pure CMC 8.0 mM, component 2 pure CMC 15.0 mM):
+
+  alpha1, CMC_mix (mM)
+  0.10, 9.0
+  0.25, 12.0
+  0.50, 15.0
+  0.70, 16.0
+  0.85, 13.0
+
+Attempt a Rubingh analysis at EVERY composition: solve the regular-solution mass balance for x1 and check that a physical root exists (0 < x1 < 1). Report: how many of the five points have NO valid solution (number); the alpha1 values of those points (two numbers, ascending); then, pooling only the VALID points, the Rubingh beta mean, its sample standard deviation (n-1 denominator), and the number of points used in that regression.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "n_points_without_solution": <number>,
+  "alpha1_no_root_1": <number>,
+  "alpha1_no_root_2": <number>,
+  "beta_mean": <number>,
+  "beta_std": <number>,
+  "n_points_used": <number>
+}
+END OF QUESTION
+
+
+=== H12 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration surface-tension isotherm (gamma0 = 71.8 mN/m, Gamma_max = 2.1e-6 mol/m^2 supplied for the isotherm models; gamma in mN/m, c in mol/L):
+
+  c, gamma
+  2.0e-06, 61.81
+  5.0e-06, 57.08
+  1.0e-05, 53.48
+  2.0e-05, 49.88
+  4.0e-05, 46.28
+  7.0e-05, 43.36
+  1.1e-04, 41.01
+
+Fit Langmuir and Frumkin isotherm models to this data and select between them by BIC. Report: the selected model identifier; the fitted Frumkin interaction parameter a; whether the selected fit lies in the two-dimensional-condensation regime (true/false -- the regularity criterion for the Frumkin isotherm); and whether its downstream Gamma-derived thermodynamics can be trusted WITHOUT inspecting the fit residuals first (true/false).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "selected_model": "<model identifier>",
+  "frumkin_a": <number>,
+  "condensation_regime_flagged": <true or false>,
+  "a_trustworthy_downstream_unexamined": <true or false>
+}
+END OF QUESTION
+
+
+=== H13 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+A C12 surfactant is characterized with minimum area per molecule A_min = 50.0 A^2 and a reported aggregation number Nagg = 20. Reference geometric constants for a C12 chain: tanford tail volume v = 350.2 A^3, critical chain length lc = 16.68 A.
+
+Report: the critical packing parameter CPP = v/(A_min * lc); the aggregate morphology implied by CPP (answer exactly one of "spherical micelle", "cylindrical/rodlike micelle", "vesicle/bilayer"); the axial ratio implied by the prolate/rod geometry consistent with CPP and Nagg (number, or null if the geometric constraints cannot all be satisfied); and whether the three inputs (A_min, CPP classification, Nagg) are mutually consistent (true/false -- report any conflict you detect rather than smoothing it over).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cpp": <number>,
+  "morphology": "<one of the three listed classes>",
+  "axial_ratio": <number or null>,
+  "conflict_detected": <true or false>
+}
+END OF QUESTION
+
+
+=== H14 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+
+SMILES: [Br-].[Br-].CCCCCCCCCCCC[N+](C)(C)CCCC[N+](C)(C)CCCCCCCCCCCC
+
+Supplied Griffin HLB reference table (Liao et al. 2023, as given to you):
+  8-3-8: 7.97
+  12-3-12: 6.37
+  8-4-8: 7.73
+  12-4-12: 6.22
+
+Report: the charge type; the structural family (describe it; a correct answer should make clear this is a gemini/dimeric surfactant); the HLB by Davies group-contribution (number or null); which method is validly applicable here (answer exactly "Griffin" or "Davies"); and the HLB value to adopt for this surfactant from the supplied table (number).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type": "<string>",
+  "structural_family": "<string>",
+  "davies_hlb": <number or null>,
+  "valid_method": "Griffin" or "Davies",
+  "hlb": <number>
+}
+END OF QUESTION
+
+
+=== H15 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Constructed demonstration static light-scattering data for a surfactant with monomer molar mass M0 = 625 g/mol in water at 298.15 K (lambda = 632.8 nm, n = 1.333, dn/dc = 0.140 mL/g):
+
+  c (g/mL), Delta R (cm^-1)
+  0.0020, 1.1383e-07
+  0.0040, 2.2752e-07
+  0.0060, 3.4107e-07
+  0.0080, 4.5446e-07
+  0.0100, 5.6772e-07
+  0.0120, 6.8083e-07
+
+Use K = 4*pi^2*n^2*(dn/dc)^2/(NA*lambda^4) (lambda in cm, NA = 6.02214076e23) and K*c/DeltaR = 1/Mw + 2*A2*c with A2 = 4.0e-4.
+
+Report: the micelle molar mass Mw (g/mol), the aggregation number Nagg = Mw/M0, whether this result is physically valid (true/false), and if not, why (state clearly that the aggregation number is smaller than one / impossible).
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "micelle_mw": <number>,
+  "aggregation_number": <number>,
+  "physically_valid": <true or false>,
+  "why": "<short explanation>"
+}
+END OF QUESTION
+
+
+=== H16 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Conductivity vs concentration for a 1:1 ionic surfactant at 298.15 K (mS/cm vs mM):
+
+  c (mM), conductivity (mS/cm)
+  1.0, 0.580
+  2.0, 1.130
+  3.0, 1.680
+  4.0, 2.230
+  5.0, 2.463
+  5.5, 2.540
+  6.0, 2.617
+  6.5, 2.694
+  7.0, 2.771
+  8.0, 2.925
+  10.0, 3.233
+  12.0, 3.541
+
+Report: the CMC (mM); the counterion binding degree beta (1 - slope2/slope1); dG_mic (kJ/mol) using dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5) with T = 298.15 K, R = 8.314462618 J/(mol*K); the standard entropy of micellization dS_mic (J/(mol*K)) at 298.15 K as a number or null if it is not determinable from the information given; and if null, what specific missing input would be required.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "cmc_mM": <number>,
+  "beta": <number>,
+  "delta_g_mic_kJ_per_mol": <number>,
+  "delta_s_mic_J_per_mol_K": <number or null>,
+  "missing_for_delta_s": "<what is missing>"
+}
+END OF QUESTION
+
+
+=== H17 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+Naphthalene SMILES: c1ccc2ccccc2c1
+
+In a micellar solubilization experiment at 25 degC: total naphthalene in the micellar solution (above intrinsic water solubility, i.e. everything dissolved) = 0.0110 M; total surfactant = 0.050 M; CMC = 0.9e-3 M. No measured water solubility of naphthalene is provided.
+
+Estimate naphthalene's intrinsic water solubility from its structure alone (a QSPR-style estimate such as ESOL is appropriate). Report: the estimated solubility in M; the source of that number (state clearly that it is an estimate/QSPR, not a measurement); and the molar solubilization ratio MSR = (C_total_dissolved - S_intrinsic) / (C_surfactant - CMC) in mol naphthalene per mol surfactant.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "solubility_estimate_M": <number>,
+  "solubility_source": "<estimate/QSPR/ESOL wording>",
+  "msr": <number>
+}
+END OF QUESTION
+
+
+=== H18 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCCCCCCCCCN   (dodecylamine)
+
+Solution pH = 10.6. The reported pKaH range for a primary alkylamine of this class is 10.4-10.8 (supplied). Henderson-Hasselbalch: fraction protonated = 1/(1 + 10^(pH - pKaH)).
+
+Report: the charge type at this pH (report it honestly -- if the protonated/deprotonated population is genuinely mixed, say so rather than forcing a pick); the fraction protonated at the LOW end of the pKaH range; the fraction protonated at the HIGH end; and your confidence in any single charge label (answer exactly "low", "moderate", or "high").
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "charge_type_at_ph": "<string>",
+  "fraction_protonated_at_low_pka": <number>,
+  "fraction_protonated_at_high_pka": <number>,
+  "confidence": "low" or "moderate" or "high"
+}
+END OF QUESTION
+
+
+=== H19 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+A 1:1 ionic surfactant solution WITH excess inert electrolyte at T = 298.15 K. The measured premicellar surface-tension slope is d(gamma)/d(ln C) = -18.4 mN/m. The CMC is 8.0 mM, and the degree of counterion dissociation is alpha = 0.30.
+
+Report: Gamma_max (mol/m^2) from the Gibbs adsorption equation (state which prefactor n you used and why -- the electrolyte condition is given); A_min (nm^2); dG_mic (kJ/mol) using dG = (1 + alpha)*R*T*ln(CMC[mol/L]/55.5); dS_mic (J/(mol*K)) as a number or null if not determinable from the information given; and if null, what is missing.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": <number>,
+  "a_min_nm2": <number>,
+  "delta_g_mic_kJ_per_mol": <number>,
+  "delta_s_mic_J_per_mol_K": <number or null>,
+  "missing_for_delta_s": "<what is missing>"
+}
+END OF QUESTION
+
+
+=== H20 ===
+Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
+
+SMILES: CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]   (AOT, sodium bis(2-ethylhexyl) sulfosuccinate, monomer molar mass M0 = 332.43 g/mol)
+
+Static light-scattering data at 632.8 nm (c in g/mL, Delta R in cm^-1, n = 1.333):
+  0.0020, 1.2e-05
+  0.0040, 2.4e-05
+  0.0060, 3.6e-05
+  0.0080, 4.8e-05
+  0.0100, 6.0e-05
+  0.0120, 7.2e-05
+
+Supplied reference table of refractive-index increments (a DIFFERENT compound's value):
+  SDS (sodium dodecyl sulfate): dn/dc = 0.110 mL/g  [measured for SDS]
+
+Report: the dn/dc to use for THIS compound (number or null if it cannot be determined from what is given); the SLS aggregation number Nagg (number or null -- the Debye relation needs K, which needs dn/dc); and what specifically is missing and how it should be obtained.
+
+End your response with a block in exactly this form:
+
+FINAL_JSON:
+{
+  "dn_dc_for_this_compound": <number or null>,
+  "sls_aggregation_number": <number or null>,
+  "what_is_missing": "<missing input + how to obtain it>"
+}
+END OF QUESTION

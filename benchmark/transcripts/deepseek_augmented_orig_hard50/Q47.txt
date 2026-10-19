@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"gamma_at_t0p1_mN_per_m": 64.441
+}

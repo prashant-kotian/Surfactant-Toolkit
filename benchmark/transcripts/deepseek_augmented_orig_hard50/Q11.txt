@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"predicted_cmc": 9.9403,
+"g": 0.1595
+}

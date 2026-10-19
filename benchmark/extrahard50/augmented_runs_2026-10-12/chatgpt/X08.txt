@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 26s
+ChatGPT said:
+output_mean: 5.386415264704639 nm
+output_sd: 1.4132677561999258 nm
+ci_low: 3.594562885227173 nm
+ci_high: 8.776667388732983 nm
+skew_label: right-skewed
+
+FINAL_JSON: {"output_mean": 5.386415264704639, "output_sd": 1.4132677561999258, "ci_low": 3.594562885227173, "ci_high": 8.776667388732983, "skew_label": "right-skewed"}

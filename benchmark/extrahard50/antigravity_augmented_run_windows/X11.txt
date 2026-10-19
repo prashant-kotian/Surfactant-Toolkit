@@ -1,0 +1,9 @@
+Based on the results from the `kmc_micelle_kinetics` simulation using the provided parameters and exact seed, here are the required outputs:
+
+1. **equilibrium_c1_M**: 0.0001925 mol/L
+2. **equilibrium_mean_nagg**: 7.303949186340589
+3. **tau_fit_s**: 0.02710088630284901 s
+4. **mass_conservation_max_error**: 0
+5. **convergence**: "converged"
+
+FINAL_JSON: {"equilibrium_c1_M": 0.0001925, "equilibrium_mean_nagg": 7.303949186340589, "tau_fit_s": 0.02710088630284901, "mass_conservation_max_error": 0, "convergence": "converged"}

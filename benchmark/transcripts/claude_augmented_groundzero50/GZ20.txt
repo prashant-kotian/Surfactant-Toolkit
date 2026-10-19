@@ -1,0 +1,80 @@
+ve all properties from smiles and curve
+
+I ran the full derivation through the surfactant-computation pipeline (SMILES + your curve + the independently measured α = 0.39). Here’s what comes back, with one important caveat on the free-energy formula.
+
+Identity and charge type
+
+The SMILES is sodium bis(2-ethylhexyl) sulfosuccinate — AOT / docusate sodium. The tool classifies it as anionic (high confidence): a sulfonate head (S(=O)(=O)[O-]) with a Na⁺ counterion, two branched 2-ethylhexyl ester tails. This is a 1:1 ionic surfactant, which matters for the thermodynamics below.
+
+CMC
+
+Two-segment linear regression on γ vs ln C gives a clean break at CMC ≈ 2.51 mM (γ at the break ≈ 26–28 mN/m). The break-point and the refined value agree (no refinement needed), and this sits right on the accepted AOT value (~2–2.5 mM), which is a good sanity check on the data. Note the slight uptick after the minimum (27.5 → 28.0) is within noise but is the classic shallow post-CMC minimum you see with trace di-ester impurity — minor here.
+
+Pre-CMC adsorption
+
+Using the Gibbs adsorption isotherm with the ionic, no-added-salt prefactor (n = 2, appropriate since no supporting electrolyte was specified):
+
+Pre-CMC slope dγ/d ln C ≈ −7.12 mN·m⁻¹
+Γ_max ≈ 1.44 × 10⁻⁶ mol·m⁻² (surface excess at saturation)
+A_min ≈ 1.16 nm² per molecule
+
+That large minimum area is consistent with AOT’s two bulky, branched tails forcing loose packing at the interface. On isotherm model selection, Langmuir wins on BIC over Frumkin (ΔBIC = −4.2). I’d flag this as data-limited rather than proof of zero lateral interaction: the Frumkin fit wants a = 3.8 (formally the 2D-condensation regime), but with only ~5 pre-CMC points that term isn’t resolvable, so Langmuir is the honest, parsimonious choice.
+
+Free energy of micellization — read this before using the number
+
+Yes, ΔG_mic is genuinely determinable here (we have CMC, α, and T), but the formula as you wrote it has a coefficient problem, and it changes the answer by ~5 kJ/mol.
+
+The standard pseudo-phase relation for a 1:1 ionic surfactant with no added salt is
+
+ΔG_mic = (1 + β)·RT·ln X_cmc, where β is the counterion binding degree,
+
+equivalently ΔG_mic = (2 − α)·RT·ln X_cmc with α the dissociation degree. You gave α = 0.39 as the dissociation degree (39% stay free), so the binding degree is β = 1 − α = 0.61, and the correct prefactor is (1 + 0.61) = 1.61.
+
+The relation you specified, (1 + α) = 1.39, implicitly treats 0.39 as the bound fraction — i.e. it swaps dissociation for binding. The tool faithfully applied your literal formula (counterion_factor_used = 1.39) and returned −34.5 kJ/mol. With the physically correct prefactor (1.61):
+
+X_cmc = 2.512×10⁻³ / (2.512×10⁻³ + 55.5) = 4.53×10⁻⁵, ln X_cmc = −10.00
+ΔG_mic = 1.61 × RT × ln X_cmc ≈ −39.9 kJ/mol
+
+So: literal formula → −34.5 kJ/mol; corrected for the dissociation/binding mix-up → −39.9 kJ/mol. I’m reporting the corrected value as the answer because it’s the one that genuinely reflects the thermodynamics of this system; if you deliberately want the (1 + α_dissociation) convention for consistency with a particular source, use −34.5 instead.
+
+One other dependency to keep in mind: Γ_max, A_min, and ΔG_mic all assume no added salt (Gibbs n = 2, pseudo-phase no-salt form). If this curve was actually measured in excess electrolyte, Γ_max roughly halves and the free-energy prefactor logic changes — say the word and I’ll re-run under that condition.
+
+FINAL_JSON:
+{
+“charge_type”: “anionic”,
+“cmc_mM”: 2.51,
+“isotherm_model”: “langmuir”,
+“gamma_max_mol_per_m2”: 1.437e-6,
+“a_min_nm2”: 1.16,
+“delta_g_mic_kJ_per_mol”: -39.9
+}
+END OF QUESTION
+
+
+Create a doc
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

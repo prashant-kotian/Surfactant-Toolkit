@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.46969136100515557,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 67.27174770212636,
+"cpp_electrostatic_area": 0.31209541232517773,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The measured headgroup area gives a CPP in the cylindrical/rodlike regime, whereas the CMC-derived electrostatic area is substantially larger and lowers the CPP into the spherical-micelle regime. The disagreement shows that the morphology prediction is highly sensitive to how the headgroup area is obtained."
+}

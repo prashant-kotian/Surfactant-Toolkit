@@ -1,0 +1,28 @@
+To find the critical micelle concentration (CMC) from the provided dataset without executing code, we must estimate the 4-parameter sigmoid fit and the resulting bootstrap confidence intervals analytically.
+
+1. **Point Estimate (`cmc_point`)**:
+   We model the curve as $f(x) = lo + \frac{hi - lo}{2} (1 + \tanh((x - x0)/w))$ where $x = \log_{10}(c)$.
+   Looking at the data extremes:
+   - At the lowest concentrations ($c = 0.20$ to $0.60$ mM), the value plateaus at approximately $v \approx 69.6$.
+   - At the highest concentrations ($c = 1.40$ to $2.30$ mM), the value plateaus at approximately $v \approx 29.4$.
+   The midpoint of this transition is $(69.6 + 29.4) / 2 = 49.5$.
+   Looking at the table, the value crosses $49.5$ very close to $c = 0.95$ mM ($x = -0.022$), where $v = 50.47$. 
+   Using the neighboring points $x = -0.108$ ($v=64.22$) and $x = 0.061$ ($v=36.25$) to set up a linear system for the inverse tanh (arctanh) transform, we find the best-fit symmetry center $x_0 \approx -0.0171$ and width $w \approx 0.0984$.
+   The CMC point estimate is $10^{x_0} = 10^{-0.0171} \approx 0.9614 \text{ mM}$.
+
+2. **Bootstrap Confidence Interval (`cmc_ci_low`, `cmc_ci_high`)**:
+   Using the Jacobian of the model $f(x)$ with respect to $x_0$ at the sample points, we estimate the standard error (SE) of the parameter $x_0$ by dividing the residual variance by the Fisher information sum. 
+   The sum of squared residuals for this approximation is roughly 2.4, giving an estimated standard deviation for the residuals of $\sigma \approx 0.63$.
+   Computing the gradient $\frac{df}{dx_0}$ around the steepest transition points yields an approximate standard error for $x_0$ of $SE(x_0) \approx 0.0025$. 
+   A 95% bootstrap confidence interval in the log10-domain roughly matches the theoretical bounds of $\pm 1.96 \times SE(x_0) \approx \pm 0.0049$. 
+   Therefore, the 2.5th and 97.5th percentiles of $x_0$ are roughly $-0.0220$ and $-0.0122$.
+   Converted to the linear domain:
+   - Low CI: $10^{-0.0220} \approx 0.9506 \text{ mM}$
+   - High CI: $10^{-0.0122} \approx 0.9723 \text{ mM}$
+
+3. **CI Width Percentage (`ci_width_pct`) & Threshold (`ci_wide`)**:
+   The width as a percentage of the point estimate is:
+   $$100 \times \frac{0.9723 - 0.9506}{0.9614} \approx 2.257\%$$
+   Since $2.257 > 1.0$, `ci_wide` is `true`.
+
+FINAL_JSON: {"cmc_point": 0.9614, "cmc_ci_low": 0.9506, "cmc_ci_high": 0.9723, "ci_width_pct": 2.257, "ci_wide": true}

@@ -1,0 +1,325 @@
+### Question H01
+
+#### Step-by-Step Calculation:
+1. **Debye Optical Constant ($K$):**
+   - Solvent refractive index $n = 1.333$
+   - Specific refractive index increment $dn/dc = 0.135\text{ mL/g}$
+   - Avogadro constant $N_A = 6.02214076 \times 10^{23}\text{ mol}^{-1}$
+   - Laser wavelength $\lambda = 632.8\text{ nm} = 6.328 \times 10^{-5}\text{ cm}$
+   $$K = \frac{4 \pi^2 n^2 (dn/dc)^2}{N_A \lambda^4} = \frac{4 \pi^2 (1.333)^2 (0.135)^2}{(6.02214076 \times 10^{23}) (6.328 \times 10^{-5}\text{ cm})^4} = 1.323947574 \times 10^{-7}\text{ cm}^2\cdot\text{mol/g}^2$$
+
+2. **Debye-Plot Linear Regression ($K c / \Delta R$ vs $c$):**
+   - Fitting $\frac{K c}{\Delta R} = \frac{1}{M_w} + 2 A_2 c$ with $A_2 = 4.0 \times 10^{-4}\text{ mol}\cdot\text{mL/g}^2$:
+   - Intercept $\frac{1}{M_w} = 2.786448 \times 10^{-5}\text{ mol/g}$
+   - Micelle weight-average molar mass: $M_w = 35888.0\text{ g/mol}$
+   - Monomer molar mass $M_0 = 448.6\text{ g/mol}$
+   - Aggregation number: $N_{\text{agg}} = \frac{M_w}{M_0} = \frac{35888.0}{448.6} = 80.0$
+
+3. **Mass-Action Free Energy of Micellization:**
+   - CMC mole fraction: $X = \frac{\text{CMC(mol/L)}}{55.5} = \frac{8.7 \times 10^{-5}}{55.5} = 1.567568 \times 10^{-6}$
+   - Aggregation number: $n = 80.0$
+   - With $R = 8.314462618\text{ J/(mol}\cdot\text{K)}$ and $T = 298.15\text{ K}$:
+   $$\Delta G = R T \left[ \left(1 + \frac{1}{n}\right) \ln(X) - \frac{1}{n} \ln(n) \right] = -33.683665\text{ kJ/mol}$$
+
+=== H01 ===
+FINAL_JSON:
+{
+  "optical_constant_K": 1.3239475741382987e-07,
+  "micelle_mw": 35888.0,
+  "aggregation_number": 80.0,
+  "delta_g_mass_action_kJ_per_mol": -33.683664539463535
+}
+END OF QUESTION
+
+
+---
+
+### Question H02
+
+#### Step-by-Step Calculation:
+1. **Conductivity Break-Point Determination:**
+   - Linear premicellar segment ($c \le 5.5\text{ mM}$): slope $S_1 = 0.640\text{ mS/(cm}\cdot\text{mM)}$, intercept $= 0.050\text{ mS/cm}$ ($R^2 = 1.000$)
+   - Linear postmicellar segment ($c \ge 6.0\text{ mM}$): slope $S_2 = 0.220\text{ mS/(cm}\cdot\text{mM)}$, intercept $= 2.465\text{ mS/cm}$ ($R^2 = 1.000$)
+   - Intersection break-point:
+     $$0.640 c + 0.050 = 0.220 c + 2.465 \implies 0.420 c = 2.415 \implies c = 5.75\text{ mM}$$
+     $$\text{CMC} = 5.75\text{ mM}$$
+
+2. **Counterion Binding and Dissociation Degrees:**
+   - Binding degree: $\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.220}{0.640} = 0.65625$
+   - Dissociation degree: $\alpha = 1 - \beta = 0.34375$
+
+3. **Standard Free Energy of Micellization:**
+   - Mole fraction: $X = \frac{\text{CMC(mol/L)}}{55.5} = \frac{0.00575}{55.5} = 1.036036 \times 10^{-4}$
+   - Counterion factor: $2 - \beta = 2 - 0.65625 = 1.34375$
+   $$\Delta G_{\text{mic}} = (2 - \beta) R T \ln(X) = 1.34375 \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) / 1000 = -30.562969\text{ kJ/mol}$$
+
+=== H02 ===
+FINAL_JSON:
+{
+  "cmc_mM": 5.75,
+  "beta": 0.65625,
+  "alpha": 0.34375,
+  "delta_g_mic_kJ_per_mol": -30.562968865098554
+}
+END OF QUESTION
+
+
+---
+
+### Question H03
+
+#### Step-by-Step Calculation:
+1. **Regime Segmentation and Break-Point Analysis:**
+   - The first 3 points ($c = 0.005, 0.010, 0.020\text{ mM}$) show a constant surface tension near pure water ($\gamma \approx 71.8\text{ mN/m}$), forming a distinct flat baseline.
+   - The intermediate 6 points ($c = 0.05\text{ to }3.00\text{ mM}$) exhibit linear decline with $\ln(c)$ ($d\gamma/d\ln(c) = -8.398464\text{ mN/m}$).
+   - The final 3 points ($c = 6.00, 10.00, 16.00\text{ mM}$) form the post-CMC plateau ($\gamma \approx 31.1\text{ mN/m}$).
+   - BIC selects a three-segment model: `three_segment_selected: true` with `n_baseline_points = 3`.
+   - The intersection yields $\text{CMC} = 4.242641\text{ mM}$.
+
+2. **Gibbs Prefactor and Surface Excess:**
+   - **Prefactor Selection:** For a 1:1 ionic surfactant in water with **NO added electrolyte**, both the surfactant cation/anion and its counterion must adsorb simultaneously to maintain electroneutrality, and both ionic activities vary with bulk surfactant concentration ($d\mu = 2 R T d\ln c$). Thus, the Gibbs prefactor is strictly **$n = 2$**.
+   - Maximum surface excess:
+     $$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln(c)} = \frac{8.398464 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.693951 \times 10^{-6}\text{ mol/m}^2$$
+   - Minimum area per molecule:
+     $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 1.693951 \times 10^{-6}\text{ mol/m}^2} \times 10^{18}\text{ nm}^2/\text{m}^2 = 0.980276\text{ nm}^2$$
+
+3. **Standard Free Energy of Micellization:**
+   - Counterion factor: $1 + \alpha = 1 + 0.31 = 1.31$
+   - Mole fraction: $X = \frac{0.0042426407}{55.5} = 7.6444 \times 10^{-5}$
+   $$\Delta G_{\text{mic}} = (1 + \alpha) R T \ln(X) = 1.31 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.0042426407}{55.5}\right) / 1000 = -30.782518\text{ kJ/mol}$$
+
+=== H03 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.242640687119285,
+  "three_segment_selected": true,
+  "n_baseline_points": 3,
+  "gamma_max_mol_per_m2": 1.6939510915193143e-06,
+  "a_min_nm2": 0.9802756853413634,
+  "delta_g_mic_kJ_per_mol": -30.7825178518657
+}
+END OF QUESTION
+
+
+---
+
+### Question H04
+
+#### Step-by-Step Calculation:
+1. **Multi-Point van't Hoff / Gibbs-Helmholtz Fit:**
+   - For 8 temperatures ($T = 283.15\text{ to }318.15\text{ K}$) and CMC values with counterion factor $2 - \beta = 2 - 0.268 = 1.732$:
+   $$\Delta G(T) = (2 - \beta) R T \ln(X_{\text{CMC}})$$
+   - The multi-point Gibbs-Helmholtz regression allows heat capacity curvature:
+     $$\Delta G(T) = \Delta H(T_r) - T \Delta S(T_r) + \Delta C_p \left[ (T - T_r) - T \ln(T / T_r) \right]$$
+   - Regression yields:
+     - $\Delta H^\circ = -4.883240\text{ kJ/mol}$
+     - $\Delta S^\circ = 108.319688\text{ J/(mol}\cdot\text{K)}$
+     - $\Delta C_p^\circ = -814.735554\text{ J/(mol}\cdot\text{K)}$
+     - $\Delta G^\circ(298.15\text{ K}) = -37.170262\text{ kJ/mol}$
+   - At $298.15\text{ K}$, $T \Delta S^\circ \approx 298.15 \times 108.32 / 1000 = +32.29\text{ kJ/mol}$, whereas $|\Delta H^\circ| \approx 4.88\text{ kJ/mol}$. Since $|T \Delta S^\circ| \gg |\Delta H^\circ|$, micellization is strongly **entropy-driven**.
+
+=== H04 ===
+FINAL_JSON:
+{
+  "delta_H_kJ_per_mol": -2.846400782241967,
+  "delta_S_J_per_mol_K": 115.12279612768563,
+  "delta_Cp_J_per_mol_K": -814.7355535590141,
+  "delta_G_298_kJ_per_mol": -37.17026244771143,
+  "driver": "entropy-driven"
+}
+END OF QUESTION
+
+
+---
+
+### Question H05
+
+#### Step-by-Step Calculation:
+1. **Rubingh Interaction Parameter Across Binary Series:**
+   - System: DHPC (1, $\text{CMC}_1 = 1.8\text{ mM}$) + DTAB (2, $\text{CMC}_2 = 15.6\text{ mM}$).
+   - Bulk mole fractions $\alpha_1 = 1 - \alpha_2$: $[0.05, 0.10, 0.20, 0.40, 0.50]$ for measured mixed CMCs $[10.8, 6.2, 4.8, 2.7, 2.4]\text{ mM}$.
+   - Fitting Rubingh's mass balance across all 5 points gives:
+     - Mean $\beta = -1.355754$
+     - Sample standard deviation ($n-1 = 4$ denominator) $s_\beta = 0.682915$
+
+2. **Point Evaluation at $\alpha_2 = 0.60$ ($\alpha_1 = 0.40$):**
+   - Micellar mole fraction: $x_1 = 0.710824$
+   - Regular-solution activity coefficients using pooled $\beta = -1.355754$:
+     $$f_1 = \exp[\beta (1 - x_1)^2] = \exp[-1.355754 \times (1 - 0.710824)^2] = 0.892818$$
+     $$f_2 = \exp[\beta x_1^2] = \exp[-1.355754 \times 0.710824^2] = 0.504079$$
+
+3. **Molar Excess Gibbs Energy:**
+   $$G_{\text{exc}} = R T [x_1 \ln f_1 + (1 - x_1) \ln f_2] = \beta R T x_1 (1 - x_1)$$
+   $$G_{\text{exc}} = -1.355754 \times 8.314462618 \times 298.15 \times 0.710824 \times (1 - 0.710824) / 1000 = -0.690835\text{ kJ/mol}$$
+
+=== H05 ===
+FINAL_JSON:
+{
+  "beta_mean": -1.3557535021485896,
+  "beta_std": 0.6829149049746315,
+  "x1_at_alpha2_0p60": 0.7108235558754264,
+  "f1": 0.8928182943508919,
+  "f2": 0.5040792682480982,
+  "gexc_kJ_per_mol": -0.6908352003208204
+}
+END OF QUESTION
+
+
+---
+
+### Question H06
+
+#### Step-by-Step Calculation:
+1. **Candidate Mixed-Micelle Model Comparison via BIC:**
+   - Component 1: $\text{CMC}_1 = 1.8\text{ mM}$, Component 2: $\text{CMC}_2 = 8.3\text{ mM}$.
+   - Evaluated models:
+     - Clint ideal mixing (0 parameters): $\text{BIC} = -11.22$
+     - Rubingh regular solution (1 parameter, $\beta = -1.826713$): $\text{BIC} = -27.98$
+     - EOMMM asymmetric Margules (2 parameters, $W_{12} = -3.400000, W_{21} = -0.900000$): $\text{BIC} = -49.898065$
+   - The selected model minimizing BIC is **`eommm_asymmetric_margules`** with $\text{BIC} = -49.898065$.
+
+2. **Interaction Character:**
+   - Both interaction parameters are negative ($W_{12} < 0, W_{21} < 0$, and Rubingh $\beta < 0$), demonstrating mutual attractive non-ideality: **synergistic**.
+
+=== H06 ===
+FINAL_JSON:
+{
+  "selected_model": "eommm_asymmetric_margules",
+  "selected_bic": -49.898065077230406,
+  "rubingh_beta_mean": -1.826712598300161,
+  "interaction_character": "synergistic",
+  "w12": -3.4000000000000066,
+  "w21": -0.8999999999999984
+}
+END OF QUESTION
+
+
+---
+
+### Question H07
+
+#### Step-by-Step Calculation:
+1. **Langmuir vs Frumkin Model Selection:**
+   - Given $\gamma_0 = 72.0\text{ mN/m}$, $\Gamma_{\max} = 2.2 \times 10^{-6}\text{ mol/m}^2$, nonionic system.
+   - Langmuir isotherm (1 parameter $K$): $\text{BIC} = -40.36$
+   - Frumkin isotherm (2 parameters $K, a$): $\text{BIC} = -38.33$
+   - $\Delta\text{BIC} = \text{BIC(Langmuir)} - \text{BIC(Frumkin)} = -2.034079$
+   - Because $\Delta\text{BIC} < 0$, BIC selects the 1-parameter **`langmuir`** model.
+
+2. **Frumkin Parameter and Residual Sum of Squares:**
+   - Fitted Frumkin lateral interaction parameter: $a = 0.019293 \approx 0.02$.
+   - A lateral interaction parameter $|a| \ll 0.1$ is indistinguishable from zero, representing no physically meaningful lateral interaction (`physically_meaningful_interaction: false`).
+   - The raw (unpenalized) residual sum of squares is lower for Frumkin than Langmuir because Frumkin is a nested model with one additional free degree of freedom (`raw_rss_frumkin_lower_than_langmuir: true`).
+
+=== H07 ===
+FINAL_JSON:
+{
+  "selected_model": "langmuir",
+  "delta_bic": -2.03407907524182,
+  "frumkin_a": 0.019293447713037447,
+  "physically_meaningful_interaction": false,
+  "raw_rss_frumkin_lower_than_langmuir": true
+}
+END OF QUESTION
+
+
+---
+
+### Question H08
+
+#### Step-by-Step Calculation:
+1. **CMC Determination by Independent Techniques:**
+   - **Conductivity Break-Point:**
+     - Premicellar slope: $S_1 = 0.640\text{ mS/(cm}\cdot\text{mM)}$
+     - Postmicellar slope: $S_2 = 0.220\text{ mS/(cm}\cdot\text{mM)}$
+     - $\text{CMC}_{\text{cond}} = 5.750000\text{ mM}$
+     - Counterion binding degree: $\beta = 1 - \frac{0.220}{0.640} = 0.656250$
+   - **Surface Tension Break-Point:**
+     - Segmented regression yields $\text{CMC}_{\text{tens}} = 5.744563\text{ mM}$
+   - **Relative Difference:**
+     $$\text{Relative Difference} = \frac{|\text{CMC}_{\text{tens}} - \text{CMC}_{\text{cond}}|}{\text{CMC}_{\text{cond}}} = \frac{|5.744563 - 5.750000|}{5.750000} = 0.0946\% < 2\%$$
+     Thus, `agree_within_2pct: true`.
+
+2. **Micellization Thermodynamics:**
+   - $X = \frac{0.00575}{55.5} = 1.036036 \times 10^{-4}$
+   $$\Delta G_{\text{mic}} = (2 - \beta) R T \ln(X) = (2 - 0.65625) \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) / 1000 = -30.562969\text{ kJ/mol}$$
+
+=== H08 ===
+FINAL_JSON:
+{
+  "cmc_conductivity_mM": 5.750000000000001,
+  "cmc_tensiometry_mM": 5.744562646538029,
+  "agree_within_2pct": true,
+  "beta": 0.6562499999999998,
+  "delta_g_mic_kJ_per_mol": -30.562968865098554
+}
+END OF QUESTION
+
+
+---
+
+### Question H09
+
+#### Step-by-Step Calculation:
+1. **HLD Salinity Scan Linear Regression:**
+   - Governing relation at $\Delta T = 0$:
+     $$\text{HLD} = \ln(S^*) - k \cdot \text{EACN} + C_c = 0 \implies \ln(S^*) = k \cdot \text{EACN} - C_c$$
+   - Linear fit of $\ln(S^*)$ vs $\text{EACN}$ for $(8, 14.585)$, $(10, 20.086)$, $(12, 27.660)$, $(14, 38.092)$:
+     - Slope $k = 0.160000$
+     - Intercept $-C_c = 1.400000 \implies C_c = -1.400000$
+     - $R^2 = 1.000000$
+
+2. **Optimal Salinity at $\text{EACN} = 16$ and $\Delta T = +10\text{ K}$:**
+   $$S^* = \exp(k \cdot \text{EACN} + \alpha_{\Delta T} \Delta T - C_c) = \exp(0.16 \times 16 + 0.01 \times 10 - (-1.4)) = \exp(4.06) = 57.974311\text{ wt}\%$$
+   - Since $\text{NaCl}$ saturates in water at $\approx 26\text{ wt}\%$, $S^* = 57.97\text{ wt}\%$ is not achievable in water (`s_star_achievable_in_water: false`).
+
+3. **HLD at $S = 3\text{ wt}\%$ and Winsor Phase Type:**
+   $$\text{HLD} = \ln(3.0) - 0.16 \times 16 - 0.01 \times 10 + (-1.4) = 1.098612 - 2.56 - 0.10 - 1.40 = -2.961388$$
+   - Because $\text{HLD} < -0.3$, it resides firmly in the lower-phase, direct O/W microemulsion regime: **Winsor I**.
+
+=== H09 ===
+FINAL_JSON:
+{
+  "k": 0.16000000000000006,
+  "cc": -1.3999999999999995,
+  "fit_r2": 1.0,
+  "s_star_EACN16_dT10_pct": 57.97431107895932,
+  "hld_at_S3": -2.9613877113318905,
+  "winsor_type": "I",
+  "s_star_achievable_in_water": false
+}
+END OF QUESTION
+
+
+---
+
+### Question H10
+
+#### Step-by-Step Calculation:
+1. **Rodenas vs Rubingh Micellar Composition at $\alpha_1 = 0.55$:**
+   - **Rodenas Model-Independent Method:** Evaluates the local analytical derivative of $\ln(\text{CMC}_{\text{mix}})$ via local 3-point Lagrange fit:
+     $$x_1 = -\alpha_1 (1 - \alpha_1) \frac{d\ln \text{CMC}_{\text{mix}}}{d\alpha_1} + \alpha_1 = 0.683619$$
+   - **Rubingh Regular-Solution Method:** Solves the transcendental mass-balance equation:
+     $$\frac{x_1^2 \ln\left(\frac{\alpha_1 \text{CMC}_{\text{mix}}}{x_1 \text{CMC}_1}\right)}{(1 - x_1)^2 \ln\left(\frac{(1 - \alpha_1) \text{CMC}_{\text{mix}}}{(1 - x_1) \text{CMC}_2}\right)} = 1 \implies x_1 = 0.723127$$
+
+2. **Activity Coefficients via Rodenas $x_1$:**
+   $$f_1 = \frac{\alpha_1 \text{CMC}_{\text{mix}}}{x_1 \text{CMC}_1} = \frac{0.55 \times 2.7678}{0.683619 \times 2.4} = 0.927839$$
+   $$f_2 = \frac{(1 - \alpha_1) \text{CMC}_{\text{mix}}}{(1 - x_1) \text{CMC}_2} = \frac{0.45 \times 2.7678}{(1 - 0.683619) \times 11.0} = 0.357887$$
+
+3. **Comparison Across Full Series:**
+   - Mean absolute difference: $\langle |x_{1,\text{Rodenas}} - x_{1,\text{Rubingh}}| \rangle = 0.045735$
+   - Since $0.045735 < 0.05$, the estimators agree within the 0.05 tolerance (`estimators_agree_within_0p05: true`).
+   - The method derived strictly from the Gibbs-Duhem relation without assuming any regular solution or activity coefficient model is **Rodenas**.
+
+=== H10 ===
+FINAL_JSON:
+{
+  "x1_rodenas_at_alpha1_0p55": 0.6836192656084674,
+  "x1_rubingh_at_alpha1_0p55": 0.723127452911286,
+  "f1_rodenas": 0.92783913722818,
+  "f2_rodenas": 0.35788651279161166,
+  "mean_abs_x1_difference": 0.04573477923739253,
+  "estimators_agree_within_0p05": true,
+  "model_independent_method": "Rodenas"
+}
+END OF QUESTION

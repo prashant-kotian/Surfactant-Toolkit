@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"cmc_mM": 5.75,
+"beta": 0.65625,
+"alpha": 0.34375,
+"delta_g_mic_kJ_per_mol": -30.562623769165402
+}

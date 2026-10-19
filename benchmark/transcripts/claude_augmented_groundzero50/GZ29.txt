@@ -1,0 +1,61 @@
+therm model
+
+Used surfactant-computation: Select isotherm model
+
+BIC nominally selects Frumkin, but the returned interaction parameter a ≈ 0.0046 is essentially zero. Let me cross-check with the standalone Szyszkowski fit and verify the area-per-molecule implied by the measured Γ_max.
+
+Used surfactant-computation
+
+Used surfactant-computation
+Analysis: C₁₂E₈ pre-CMC adsorption
+
+System. The SMILES is octaethylene glycol monododecyl ether (C₁₂E₈): a C₁₂ tail on an 8-unit ethylene-oxide chain with a terminal OH. No ionizable groups → nonionic (Gibbs prefactor n = 1).
+
+Two fits, both anchored to the measured Γ_max = 2.21×10⁻⁶ mol/m² (→ A_min = 0.751 nm²/molecule, a physically sensible packing area for a bulky E₈ headgroup):
+
+Model	Params	K (L/mol)	a	R²	BIC
+Langmuir / Szyszkowski	1 (K)	8.79×10⁶	— (0)	0.99999990	−97.9
+Frumkin	2 (K, a)	8.75×10⁶	0.00457	0.99999995	−102.3
+
+ΔBIC = +4.40, so the selection criterion nominally lands on Frumkin. But that verdict and the physics point in opposite directions, which is the substance of the second question.
+
+The fitted interaction is not physically meaningful. The one-parameter Langmuir/Szyszkowski model already reproduces all nine points across four decades of concentration to within ~0.01–0.04 mN/m (R² = 0.9999999) using the independently measured Γ_max. There is essentially no systematic residual left for a lateral-interaction term to explain, and indeed the Frumkin fit prices that term at a ≈ 0.0046 — i.e. it collapses back onto Langmuir. In the Frumkin/Fowler–Guggenheim convention the pair interaction enters as exp(−2aθ), so a = 0.0046 corresponds to a cohesion energy of order 2a·kT ≈ 0.01 kT per molecule — about 1% of thermal energy. A real attractive (a > 0) or repulsive (a < 0) interaction is O(1); |a| ≥ 2 is required even for 2D condensation. This a sits ~400× below that threshold and is statistically indistinguishable from zero.
+
+Why BIC still “picked” Frumkin. The data are essentially noiseless (residuals at the 7th significant figure). BIC’s complexity penalty is calibrated against the noise level, so when noise → 0 the criterion will “reward” an extra parameter for a microscopic RSS reduction that carries no physical content. The ΔBIC = 4.4 reflects a seventh-figure improvement in fit, not the detection of a cohesive monolayer. For any practical purpose the interface is described by the simple Langmuir/Szyszkowski isotherm with ideal (non-interacting) adsorption.
+
+So: the model-selection step formally returns Frumkin, but the correct physical reading is that C₁₂E₈ shows no meaningful surfactant–surfactant lateral interaction in the pre-CMC regime — the Frumkin term is a degenerate, noise-driven artifact.
+
+FINAL_JSON:
+{
+“selected_model”: “frumkin”,
+“frumkin_a”: 0.00457,
+“physically_meaningful_interaction”: false,
+“reasoning”: “BIC marginally selects Frumkin over Langmuir/Szyszkowski (ΔBIC ≈ +4.4), but the fitted interaction parameter a ≈ 0.0046 is negligible — ~2a·kT ≈ 0.01 kT per molecule, ~1% of thermal energy and ~400x below the |a|≈2 threshold for 2D condensation, so Frumkin degenerates to Langmuir. The one-parameter Langmuir fit already reproduces all 9 points across 4 decades to within ~0.01-0.04 mN/m (R²=0.9999999) using the independently measured Γ_max=2.21e-6 mol/m² (A_min=0.751 nm²), leaving no systematic residual for a lateral-interaction term. The Frumkin ‘win’ is an artifact of near-noiseless data, where BIC’s parameter penalty (calibrated to noise) rewards a 7th-significant-figure RSS reduction with no physical content. Conclusion: adsorption is effectively ideal; no physically meaningful surfactant-surfactant lateral interaction.”
+}
+
+
+
+
+
+
+2 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"alpha_m": 0.0836
+}

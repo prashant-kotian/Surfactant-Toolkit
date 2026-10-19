@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"gamma_final_umol_per_m2": 2.8566
+}

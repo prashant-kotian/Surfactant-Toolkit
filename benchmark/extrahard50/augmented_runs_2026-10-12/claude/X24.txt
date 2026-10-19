@@ -1,0 +1,13 @@
+I'll run the EOMMM global fit on this series.
+
+The fit converged to a feasible solution at cmc_margin = 0.10.
+
+1. **W12:** −0.40
+2. **W21:** −1.40
+3. **r_squared:** 0.9979 (in ln CMC_mix space)
+4. **x1_second_point:** 0.8201 (at α1 = 0.50)
+5. **feasible:** true (total_infeasibility ≈ 2.9 × 10⁻¹⁴)
+
+The fitted CMC values (2.29, 1.31, 0.97, 0.87 mM) all stay within the ±10% margin of the experimental ones. The question gave no dissociation numbers, so the tool's default r1 = r2 = 2 (fully dissociated 1:1 ionic surfactants) was used, the same as the other EOMMM questions. Two cautions: four points is fewer than the five the method recommends, and a ±10% margin does not guarantee a unique (W12, W21). If stability matters, refit at a tighter margin to check.
+
+FINAL_JSON: {"W12": -0.4, "W21": -1.4, "r_squared": 0.997864, "x1_second_point": 0.820081, "feasible": true}

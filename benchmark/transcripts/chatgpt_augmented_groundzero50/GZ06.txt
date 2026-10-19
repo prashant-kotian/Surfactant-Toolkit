@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"debye_length_nm": 0.9613700798317342,
+"kappa_a": 2.7429603389170865,
+"henry_function_value": 1.093555616040726,
+"method_used": "Swan-Furst full-range Henry-function approximation"
+}

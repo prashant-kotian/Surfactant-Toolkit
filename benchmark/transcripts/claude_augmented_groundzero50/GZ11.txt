@@ -1,0 +1,78 @@
+he Debye length.
+
+Used surfactant-computation
+
+Used surfactant-computation
+
+Both routes are computed. Here’s what the system looks like.
+
+Chain geometry (Tanford, n_c = 12)
+Tail volume V = 350.2 Å³
+Critical chain length l_c = 16.68 Å
+
+These are fixed by the tail and feed both packing-parameter calculations.
+
+Approach 1 — directly measured headgroup area (44.70 Å²)
+
+CPP = V / (a·l_c) = 350.2 / (44.70 × 16.68) = 0.470
+
+That sits in the 1/3 < P ≤ 1/2 window → cylindrical/rodlike micelle.
+
+Approach 2 — electrostatically-derived headgroup area
+
+At the CMC with no added salt, ionic strength I = 8 mM (Na⁺ and DS⁻ each at 8 mM, z = ±1), giving a Debye screening length κ⁻¹ ≈ 34 Å. Feeding that and the sulfate prefactor (82.0) into the Nagarajan ionic equilibrium-area relation yields an effective area a_e = 67.27 Å² — substantially larger than the measured value.
+
+CPP = 350.2 / (67.27 × 16.68) = 0.312
+
+That falls just below 1/3 → spherical micelle.
+
+What this means
+
+The two approaches disagree on morphology, and the disagreement is physically informative rather than a mistake. This compound is sodium dodecyl sulfate, which in pure water near its CMC is known to form small spherical micelles — so the electrostatic estimate lands on the physically correct answer, while the measured-area calculation over-predicts curvature-reducing packing and lands on rods.
+
+The reason is what each “area” represents. The 44.70 Å² figure is a tightly-packed value (characteristic of a condensed monolayer, or of headgroups whose mutual repulsion has been screened). The electrostatic route instead asks how much area a charged sulfate head actually commands when the double layer is thick: here κ⁻¹ ≈ 34 Å is far larger than the headgroup itself, so unscreened like-charge repulsion swells the effective area to ~67 Å². A bigger head area means a smaller packing parameter and higher interfacial curvature — i.e., spheres.
+
+This also predicts the right trend: adding electrolyte would collapse the double layer, shrink the effective area back toward the packed ~45 Å² value, push the CPP from ~0.31 up through 1/3 into the rodlike regime — which is exactly the salt-induced sphere-to-rod transition SDS is famous for. So the measured-area result isn’t wrong so much as it describes a more screened state than the salt-free CMC condition the problem specifies. The two numbers bracket the surfactant’s behavior across ionic-strength conditions.
+
+(Note: both CPPs sit near the 1/3 boundary — 0.312 just below, 0.470 mid-window — so the morphology is genuinely sensitive to the effective area here, which is why getting the electrostatics right matters for this system.)
+
+FINAL_JSON:
+{
+“tail_volume_A3”: 350.2,
+“critical_length_A”: 16.68,
+“cpp_measured_area”: 0.4697,
+“morphology_measured_area”: “cylindrical/rodlike micelle”,
+“electrostatic_headgroup_area_A2”: 67.27,
+“cpp_electrostatic_area”: 0.3121,
+“morphology_electrostatic_area”: “spherical micelle”,
+“comment”: “This is SDS, which forms small spherical micelles in salt-free water near its CMC. The electrostatic route (effective area ~67.3 A2, CPP 0.312) gives the physically correct spherical result because at I=8mM the Debye length (~34 A) is large and unscreened headgroup repulsion inflates the effective area. The directly measured 44.70 A2 is a more tightly-packed/screened value; it drops the area, raises CPP to 0.470, and predicts rods. The two bracket the surfactant’s behavior: adding salt screens repulsion, shrinks the effective area toward ~45 A2, and drives the known sphere-to-rod transition. Both CPPs lie near the 1/3 boundary, so morphology is sensitive to the effective area.”
+}
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "dimeric gemini-type (bis-quaternary ammonium); two C16 alkyl tails, two N+(CH3)2 headgroups joined by a C6 spacer, 2 Br- counterions",
+"hlb": null,
+"notes": "Davies' group-contribution HLB is structurally invalid for gemini surfactants (the spacer does not pack like a free lipophilic tail); the tool also has no verified Davies group numbers for quaternary ammonium or the spacer, and refuses to guess. Griffin is the only named alternative but its evidence base is nonionic-only and counterion bookkeeping alone can swing the value ~2x, so no defensible number is reported."
+}

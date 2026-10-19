@@ -1,0 +1,16 @@
+Based on the exact fits and pointwise roots computed via the `surfactantkit` MCP server, here are the requested model selection parameters and the pointwise-averaged interaction parameter:
+
+1. **BIC of `rubingh_regular_solution`**: `-58.66749159473379`
+2. **BIC of `eommm_asymmetric_margules`**: `-55.348474875637685`
+3. **$\Delta$BIC (EOMMM - Rubingh)**: `3.319016719096105`
+4. **Selected model**: `rubingh_regular_solution` (since it has the lowest BIC)
+5. **Beta Mean**: Pointwise evaluation of Rubingh's equation at each composition yields roots of `x1` with corresponding interaction parameters:
+    - $\alpha_1=0.10, \beta=-2.1014843163600743$
+    - $\alpha_1=0.30, \beta=-2.0827014589137330$
+    - $\alpha_1=0.50, \beta=-2.0824680277872556$
+    - $\alpha_1=0.70, \beta=-2.0844476113429766$
+    - $\alpha_1=0.90, \beta=-2.0551677829700363$
+    
+    Averaging these five points gives a mean beta of `-2.081253839474815`.
+
+FINAL_JSON: {"bic_rubingh": -58.66749159473379, "bic_eommm": -55.348474875637685, "delta_bic": 3.319016719096105, "selected": "rubingh_regular_solution", "beta_mean": -2.081253839474815}

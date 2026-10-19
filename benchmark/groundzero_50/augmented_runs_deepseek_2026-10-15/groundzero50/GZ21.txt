@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.352,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": null,
+"comment": "Tanford relations for n_c=12 give V=350.2 A3 and l_c=16.68 A. With the measured headgroup area a=59.62 A2, CPP=0.352, which sits in the 1/3<P<=1/2 rodlike regime (just above the sphere/rod boundary, so rods are expected with spheres as a minority population). The electrostatic route from the CMC alone cannot be completed for this compound: the required headgroup-specific prefactor is unavailable for quaternary ammonium headgroups in the Nagarajan-Ruckenstein reference (only pyridinium bromide and trimethylammonium bromide are tabulated for cations), so no value is reported rather than borrowing one from a different headgroup class."
+}

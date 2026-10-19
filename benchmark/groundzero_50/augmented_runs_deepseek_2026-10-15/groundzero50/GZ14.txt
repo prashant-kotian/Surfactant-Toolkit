@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"lateral_interaction_present": true,
+"confidence_from_this_data_alone": "low",
+"reasoning": "The Frumkin isotherm (which includes an explicit lateral-interaction term, a=4.0) beats the interaction-free Langmuir isotherm by ΔBIC≈45 (R² 0.999999 vs 0.9972), and the γ-vs-lnC plot is almost perfectly linear—both signatures of a condensed, laterally-interacting monolayer, so an interaction is very likely present. However, the dataset alone cannot support more than low confidence in that specific conclusion: it is a single isotherm with only 6 pre-CMC points, no replicate measurements or error bars; Γ_max (1.44e-6 mol/m²) was itself derived from the same Gibbs slope used in the fits, so the test is not independent; and the fitted interaction parameter a=4.0 hit the search bound (|a|≥2 indicates the 2D-condensation regime where θ(C) can be multi-valued and a is ill-constrained). The existence of interaction is well supported by ΔBIC, but the confidence in answering this specific question from this data alone is conservatively low."
+}

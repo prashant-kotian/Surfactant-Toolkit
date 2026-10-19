@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"micellar_mole_fraction_x1": 0.7554
+}

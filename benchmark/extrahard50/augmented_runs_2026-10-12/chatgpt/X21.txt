@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 25s
+ChatGPT said:
+W12: -2.0000000000
+W21: -1.5000000000
+r_squared: 0.9673983362
+x1_last_point: 0.8866978054
+feasible: true
+
+FINAL_JSON: {"W12": -1.9999999999999982, "W21": -1.4999999999999978, "r_squared": 0.9673983361751629, "x1_last_point": 0.8866978053529913, "feasible": true}

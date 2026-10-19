@@ -1,0 +1,9 @@
+FINAL_JSON: {
+"x1_rodenas_at_alpha1_0p55": 0.6836309845032733,
+"x1_rubingh_at_alpha1_0p55": 0.7231269477727108,
+"f1_rodenas": 0.9278214627162834,
+"f2_rodenas": 0.35789908705314827,
+"mean_abs_x1_difference": 0.04573,
+"estimators_agree_within_0p05": true,
+"model_independent_method": "Rodenas"
+}

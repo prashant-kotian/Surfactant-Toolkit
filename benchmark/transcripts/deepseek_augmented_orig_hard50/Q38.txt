@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"selected_model": "frumkin",
+"delta_bic": 6.75
+}

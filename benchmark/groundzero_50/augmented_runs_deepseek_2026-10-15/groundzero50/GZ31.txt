@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"structural_family": "gemini (dimeric) quaternary ammonium / bis-quaternary cationic gemini",
+"tail_carbons_per_tail": 12,
+"spacer_carbons": 6,
+"n_tails": 2
+}

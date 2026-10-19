@@ -1,0 +1,64 @@
+factor is an independent experimental quantity — it is not contained in a CMC-vs-temperature series and the tooling refuses to guess it. Keep that in mind for ΔG and ΔS below.
+
+Enthalpy (van’t Hoff / Gibbs–Helmholtz)
+
+Working from ΔH = −R·d(ln X_cmc)/d(1/T) applied as the integrated two-point form (CMC in molarity, apparent/uncorrected convention, counterion factor = 1):
+
+Widest span (30 → 70 °C): ΔH ≈ −13.59 kJ/mol
+Sub-interval 30 → 50 °C: ΔH ≈ −12.52 kJ/mol
+Sub-interval 50 → 70 °C: ΔH ≈ −14.81 kJ/mol
+
+Micellization is exothermic across the whole range (the CMC rises with temperature, so the van’t Hoff slope is negative).
+
+Agreement. The two adjacent-pair values do not agree with each other — they differ by ~2.3 kJ/mol (~17%), and the disagreement is systematic, not scatter: ΔH grows steadily more negative as temperature increases. That is the signature of a real, non-zero heat capacity of micellization, not a numerical artifact. A three-point Gibbs–Helmholtz fit pins it down: ΔCp ≈ −115 J/mol·K (negative, as expected from dehydration of the hydrophobic tail on aggregation). The two sub-intervals have mean temperatures 40 °C and 60 °C — 20 K apart — and −115 J/mol·K × 20 K ≈ −2.3 kJ/mol, which accounts for the entire spread exactly.
+
+The widest-span value (−13.59) is essentially the arithmetic mean of the two sub-intervals and matches the fitted ΔH at the mid-range reference temperature (−13.69 kJ/mol at 323 K). So the endpoint number is a legitimate span-averaged enthalpy — but it masks a genuine temperature dependence. Because of that, the constant-ΔH assumption behind a single van’t Hoff number does not strictly hold here, so I’m flagging the result as not self-consistent in the strict sense. If you want one defensible number, report −13.6 kJ/mol as the average over 30–70 °C and quote ΔCp alongside it; a C₁₆ chain over a 40 K window is right at the edge of where the two-point approximation starts to visibly bend.
+
+Free energy and entropy — not determinable from what’s given
+
+I’m reporting these as null, and this is a substantive finding rather than a shortfall:
+
+ΔG_mic for an ionic surfactant is (2 − α)·RT·ln X_cmc. The CMC values fix X_cmc, but α (equivalently the counterion binding degree β) is simply absent from the data. Plugging in the nonionic formula would give ≈ −29 kJ/mol at 30 °C — but the correct ionic value swings from roughly −37 to −49 kJ/mol as α runs over a plausible 0.7–0.3. A ±6 kJ/mol fork driven entirely by an unmeasured parameter is not a “determined” value, so I won’t hand you one.
+ΔS_mic = (ΔH − ΔG)/T inherits that indeterminacy directly — it cannot be fixed while ΔG cannot.
+
+Qualitatively, even the floor of that ΔG range (~−37 kJ/mol) dwarfs |ΔH| (~14 kJ/mol), so micellization here is clearly entropy-dominated — the classic hydrophobic-effect picture. But the quantitative ΔG/ΔS split genuinely requires a counterion-binding measurement (conductivity slope ratio, or an ISE/activity determination) that isn’t in this dataset.
+
+Note also that the van’t Hoff ΔH above is the apparent (uncorrected) enthalpy; the counterion-corrected ΔH would likewise scale by (2 − α). I’m reporting the uncorrected slope value because it is the one quantity the temperature dependence fixes unambiguously — unlike ΔG, which depends on the CMC’s absolute value through that unknown prefactor.
+
+FINAL_JSON:
+{
+“delta_h_endpoint_kJ_per_mol”: -13.59,
+“sub_intervals”: [{“t_lo_C”: 30.0, “t_hi_C”: 50.0, “delta_h_kJ_per_mol”: -12.52}, {“t_lo_C”: 50.0, “t_hi_C”: 70.0, “delta_h_kJ_per_mol”: -14.81}],
+“self_consistent”: false,
+“delta_g_mic_kJ_per_mol”: null,
+“delta_s_mic_J_per_mol_K”: null
+}
+
+
+Create a doc
+
+
+
+
+
+4 minutes ago
+
+Reply
+
+
+
+
+
+
+
+
+Claude is AI and can make mistakes.
+Opus 4.8 High
+Manual
+Claude finished the response
+Used in this session
+Connectors: surfactant-computation
+
+Connectors
+surfactant-computation
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.

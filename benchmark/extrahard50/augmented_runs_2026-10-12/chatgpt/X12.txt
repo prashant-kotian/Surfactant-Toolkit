@@ -1,0 +1,11 @@
+…
+Show more
+Worked for 48s
+ChatGPT said:
+bic_rubingh: -58.66749159473379
+bic_eommm: -55.348474875637685
+delta_bic: 3.319016719096105
+selected: "rubingh_regular_solution"
+beta_mean: -2.0812538394748152
+
+FINAL_JSON: {"bic_rubingh": -58.66749159473379, "bic_eommm": -55.348474875637685, "delta_bic": 3.319016719096105, "selected": "rubingh_regular_solution", "beta_mean": -2.0812538394748152}

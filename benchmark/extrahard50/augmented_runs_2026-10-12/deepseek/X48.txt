@@ -1,0 +1,1 @@
+FINAL_JSON: {"k": 0.01886556, "cc": -1.05148623, "S_star_E16_dT10": 4.27735648, "achievable": false, "hld_S9_E10": 0.95708276, "winsor": "Winsor II"}

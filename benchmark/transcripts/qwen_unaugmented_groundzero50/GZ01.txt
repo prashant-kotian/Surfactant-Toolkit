@@ -1,0 +1,371 @@
+ <number or null>
+}
+END OF QUESTION
+
+
+Thinking completed
+Surfactant Analysis: Branched Diester Sulfonate
+1. Identifying the Surfactant and Charge Type
+Parsing the SMILES CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]:
+Two branched alkyl chains (2-ethylhexyl-type) connected via ester linkages
+Central sulfonate headgroup: –S(=O)₂O⁻
+Sodium counterion Na⁺
+This is a dialkyl sulfosuccinate-type anionic surfactant (structurally related to AOT). It dissociates as a 1:1 electrolyte (R⁻ Na⁺).
+Charge type: Anionic (1:1)
+2. CMC Determination
+Plotting γ vs. log₁₀(C/mM) for the first six points:
+log₁₀(C)
+	
+γ (mN/m)
+	
+Δγ per 0.4 decade
+
+
+−1.800
+	
+62.22
+	
+—
+
+
+−1.400
+	
+55.66
+	
+6.56
+
+
+−1.000
+	
+49.10
+	
+6.56
+
+
+−0.600
+	
+42.54
+	
+6.56
+
+
+−0.200
+	
+35.98
+	
+6.56
+
+
++0.200
+	
+29.42
+	
+6.56
+The pre-CMC region is perfectly linear with slope = −16.4 mN/m per decade.
+Post-CMC points (3.981, 6.31, 10.0 mM) give γ ≈ 27.5, 27.8, 28.0 mN/m (essentially flat, average ≈ 27.77 mN/m).
+Intersection of the two regimes:
+
+62.22
+−
+16.4
+(
+log
+⁡
+10
+𝐶
++
+1.800
+)
+=
+27.77
+62.22−16.4(log
+10
+	​
+
+C+1.800)=27.77
+
+log
+⁡
+10
+𝐶
+CMC
+=
+0.301
+  
+⇒
+  
+𝐶
+𝑀
+𝐶
+=
+2.00
+ mM
+log
+10
+	​
+
+C
+CMC
+	​
+
+=0.301⇒
+CMC=2.00 mM
+	​
+
+3. Pre-CMC Adsorption: Gibbs Analysis
+For a 1:1 ionic surfactant without added electrolyte, the Gibbs prefactor is n = 2:
+Γ
+=
+−
+1
+2
+𝑅
+𝑇
+𝑑
+𝛾
+𝑑
+ln
+⁡
+𝐶
+Γ=−
+2RT
+1
+	​
+
+dlnC
+dγ
+	​
+
+Converting the slope:
+
+𝑑
+𝛾
+𝑑
+ln
+⁡
+𝐶
+=
+−
+16.4
+×
+10
+−
+3
+2.3026
+=
+−
+7.123
+×
+10
+−
+3
+  
+N/m
+dlnC
+dγ
+	​
+
+=
+2.3026
+−16.4×10
+−3
+	​
+
+=−7.123×10
+−3
+N/m
+Γ
+max
+⁡
+=
+7.123
+×
+10
+−
+3
+2
+×
+8.314
+×
+298.15
+=
+7.123
+×
+10
+−
+3
+4957.6
+=
+1.44
+×
+10
+−
+6
+  
+mol/m
+2
+Γ
+max
+	​
+
+=
+2×8.314×298.15
+7.123×10
+−3
+	​
+
+=
+4957.6
+7.123×10
+−3
+	​
+
+=1.44×10
+−6
+mol/m
+2
+Minimum molecular area:
+
+𝑎
+min
+⁡
+=
+1
+Γ
+max
+⁡
+𝑁
+𝐴
+=
+1
+1.437
+×
+10
+−
+6
+×
+6.022
+×
+10
+23
+=
+1.16
+  
+nm
+2
+a
+min
+	​
+
+=
+Γ
+max
+	​
+
+N
+A
+	​
+
+1
+	​
+
+=
+1.437×10
+−6
+×6.022×10
+23
+1
+	​
+
+=1.16nm
+2
+This large area is consistent with a double-tailed, branched architecture.
+4. Isotherm Model
+The perfect linearity of γ vs. log C over two decades identifies the Langmuir (Szyszkowski) model in its logarithmic limit (KC ≫ 1 throughout the measured range):
+𝛾
+0
+−
+𝛾
+=
+𝑛
+𝑅
+𝑇
+Γ
+∞
+ln
+⁡
+(
+1
++
+𝐾
+𝐶
+)
+  
+≈
+  
+𝑛
+𝑅
+𝑇
+Γ
+∞
+ln
+⁡
+(
+𝐾
+𝐶
+)
+γ
+0
+	​
+
+−γ=nRTΓ
+∞
+	​
+
+ln(1+KC)≈nRTΓ
+∞
+	​
+
+ln(KC)
+Using γ₀ = 72.0 mN/m for pure water at 298.15 K, the adsorption constant is K ≈ 250 mM⁻¹.
+5. Free Energy of Micellization
+For a 1:1 ionic surfactant, the pseudo-phase-separation result is:
+Δ
+𝐺
+mic
+∘
+=
+(
+2
+−
+𝛽
+)
+ 
+𝑅
+𝑇
+ln
+⁡
+𝑋
+CMC
+ΔG
+mic
+∘
+	​
+
+=(2−β)RTlnX
+CMC
+	​
+
+where β is the degree of counterion binding. β cannot be extracted from surface-tension data alone (it requires conductivity, EMF, or NMR measurements). Since the problem provides only γ(C) data, ΔG°_mic cannot be genuinely determined for this ionic surfactant. I therefore report it as null.
+FINAL_JSON:
+{
+"charge_type": "anionic",
+"cmc_mM": 2.0,
+"isotherm_model": "Langmuir",
+"gamma_max_mol_per_m2": 1.44e-6,
+"a_min_nm2": 1.16,
+"delta_g_mic_kJ_per_mol": null
+}
+MCP
+Auto
+AI-generated content may not be accurate.

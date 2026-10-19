@@ -1,0 +1,10 @@
+Based on the Monte Carlo uncertainty propagation calculated using the `surfactantkit` MCP tool (10,000 samples, seed=19), we get the following results:
+
+1. **output_mean**: 3.9180368710274043 nm
+2. **output_sd**: 0.8228883131088521 nm
+3. **ci_low** (2.5th percentile): 2.7797746405348045 nm
+4. **ci_high** (97.5th percentile): 5.899481483434835 nm
+
+Since `skew = (mean - median) / sd` evaluates to `(3.9180368710274043 - 3.7658078629759775) / 0.8228883131088521 ≈ 0.185`, which is greater than +0.05, the distribution is right-skewed.
+
+FINAL_JSON: {"output_mean": 3.9180368710274043, "output_sd": 0.8228883131088521, "ci_low": 2.7797746405348045, "ci_high": 5.899481483434835, "skew_label": "right-skewed"}

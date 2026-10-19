@@ -1,0 +1,3 @@
+FINAL_JSON: {
+"a_min_nm2": 0.9074
+}

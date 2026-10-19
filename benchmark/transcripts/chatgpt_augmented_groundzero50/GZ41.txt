@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"micelle_molar_mass_g_per_mol": 66591.88,
+"aggregation_number": 106.55,
+"consistent_with_literature": true,
+"reasoning": "The single-angle Debye fit gives an intercept corresponding to Mw = 66591.88 g/mol; dividing by the supplied 625 g/mol monomer mass gives Nagg = 106.55. An aggregation number of about 107 is within the typical tens-to-low-hundreds scale expected for conventional nonionic surfactant micelles of this general type."
+}

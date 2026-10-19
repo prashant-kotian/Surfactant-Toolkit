@@ -1,0 +1,34 @@
+To identify the corrupted row, I followed the specified leave-one-out cross-validation protocol using the exact Kantonen 3-parameter thermodynamic model for micellization. I used the provided `surfactantkit` MCP tools (`vant_hoff_multi_point_fit` and `gibbs_free_energy_micellization`) to compute the exact values for parameters and free energy, strictly adhering to the constraint to avoid external computation tools.
+
+Here are the step-by-step results:
+
+1. **Experimental Free Energies ($dG_i$):**
+   Using the `gibbs_free_energy_micellization` tool, the experimental $dG_i = R T_i \ln(X_i)$ at each temperature (in kJ/mol) was calculated precisely:
+   - Row 1 (288.15 K): -25.13359
+   - Row 2 (293.15 K): -25.34196
+   - Row 3 (298.15 K): -25.54644
+   - Row 4 (303.15 K): -25.88669
+   - Row 5 (308.15 K): -25.92453
+   - Row 6 (313.15 K): -26.09844
+   - Row 7 (318.15 K): -26.27546
+
+2. **Leave-one-out Fit and Predictions:**
+   By leaving out one row at a time and fitting the 3-parameter model (with $T_{ref} = 298.15$ K) to the remaining 6 rows, the predicted $dG$ for the omitted row yielded the following absolute errors ($|dG_{exp} - dG_{pred}|$ in kJ/mol):
+   - Leave-out Row 1: 0.06046
+   - Leave-out Row 2: 0.03150
+   - Leave-out Row 3: 0.05699
+   - Leave-out Row 4: 0.14890
+   - Leave-out Row 5: 0.05795
+   - Leave-out Row 6: 0.03469
+   - Leave-out Row 7: 0.06626
+
+3. **Corruption Detection:**
+   - **Largest Error:** Row 4 (0.14890 kJ/mol)
+   - **Mean of Other 6 Errors:** 0.05131 kJ/mol
+   - Since $0.14890 > 2 \times 0.05131$ ($0.10262$), Row 4 (303.15 K) is successfully flagged as corrupt. The number of flagged rows is exactly 1.
+
+4. **Enthalpy & Quality of Fit ($dH$ & $r^2$):**
+   - Fitting all 7 rows using `vant_hoff_multi_point_fit` yields an overall $dH = -12.9807$ kJ/mol.
+   - Filtering out the corrupted Row 4 (cleaning) and refitting the 6 good rows yields a highly precise fit with $dH = -13.7738$ kJ/mol and an extraordinary $r^2 \approx 1.0000$, validating the anomaly detection.
+
+FINAL_JSON: {"flagged_T": 303.15, "n_flagged": 1, "dH_all": -12.98074852958893, "dH_cleaned": -13.773817264398593, "r2_cleaned": 0.9999749616448395}

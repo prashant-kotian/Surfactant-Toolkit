@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"charge_type": "cationic (permanent, pH-independent; dication with 2 Br- counterions)",
+"true_classification": "bolaamphiphile / bolaform bis-quaternary ammonium surfactant (head-tail-head), NOT a gemini surfactant",
+"reasoning": "The molecule is (CH3)3N+-(CH2)16-N+(CH3)3 with two Br-. It has two quaternary ammonium headgroups but only ONE long hydrophobic chain (C16), and that chain lies BETWEEN the two headgroups. Beyond each headgroup there are only three methyls, i.e. no separate tails. A genuine gemini requires two separate tail-plus-headgroup units joined by a short spacer (typ. 2-6 carbons) with a tail pendant to each head. Here the connectivity is head-tail-head: a single C16 chain terminated at both ends by N+(CH3)3, which is the defining topology of a bolaamphiphile (bolaform surfactant), not a gemini."
+}

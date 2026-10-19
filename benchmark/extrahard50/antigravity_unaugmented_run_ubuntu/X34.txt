@@ -1,0 +1,34 @@
+To determine the required properties for Sodium 2-ethylhexyl sulfate based on the provided SMILES `CCCCC(CC)COS(=O)(=O)[O-].[Na+]`:
+
+1. **tail_carbons**: 
+   The organic tail attached to the sulfate oxygen is the 2-ethylhexyl group. It consists of a 6-carbon main chain (hexyl) and a 2-carbon branch (ethyl). 
+   Total carbons = 6 + 2 = 8.
+
+2. **n_CH3**:
+   The tail has two distinct ends (the end of the hexyl chain and the end of the ethyl branch), both terminating in a methyl (-CH3) group.
+   Total methyl groups = 2.
+
+3. **mw (Molecular Weight)**:
+   - First, derive the atomic composition: C8 (tail) + H17 (tail) + Na (counterion) + O4 (sulfate) + S (sulfate).
+   - Compute mass using given average masses:
+     C (8 × 12.011) = 96.088
+     H (17 × 1.008) = 17.136
+     Na (1 × 22.990) = 22.990
+     O (4 × 15.999) = 63.996
+     S (1 × 32.06) = 32.060
+     Sum = 232.270 g/mol
+   - Rounding to 3 significant figures, we get 232.
+
+4. **formula**:
+   Writing in Hill order (C, H, then alphabetical for the rest: Na, O, S) based on the atom counts determined above: `C8H17NaO4S`.
+
+5. **charge**:
+   The compound contains a negatively charged sulfate group `[O-]` and a positively charged sodium counterion `[Na+]`, making it an overall anionic surfactant. 
+   Charge class: `anionic`.
+
+6. **hlb (Davies HLB)**:
+   - Total tail CH count (number of carbons in the tail) = 8.
+   - HLB = 7 + 38.6 (for the SO4Na group) - 0.475 × (8 carbons)
+   - HLB = 45.6 - 3.8 = 41.8.
+
+FINAL_JSON: {"tail_carbons": 8, "n_CH3": 2, "mw": 232, "formula": "C8H17NaO4S", "charge": "anionic", "hlb": 41.8}

@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"solubility_estimate_M": 0.0007603761741598127,
+"solubility_source": "ESOL-style QSPR estimate from SMILES; not a measurement",
+"msr": 0.2085463100985781
+}
