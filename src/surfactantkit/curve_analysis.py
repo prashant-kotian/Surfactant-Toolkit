@@ -410,7 +410,7 @@ def cmc_from_surface_tension_curve(
 
 def plateau_is_statistically_suspect(cmc_result: CmcFromCurveResult, ratio_threshold: float = 0.2) -> bool:
     """Real, disclosed limitation of cmc_from_surface_tension_curve's own
-    break-point placement, found via GZ-17 in benchmark/paper3_groundzero
+    break-point placement, found via GZ-17 in benchmark/groundzero_50
     (ported from SurfactantKit): the postmicellar "plateau" segment can
     have as few as 2 points (an unavoidable consequence of allowing the
     3-segment model to engage at all for the 6-10 point datasets real
@@ -1138,7 +1138,7 @@ def estimate_partial_specific_volume_from_tail_and_headgroup(
     specific volume v_bar (cm^3/g) -- the input
     aggregation_number_from_svedberg_equation and aggregation_number_from_dls
     both require as an external, fully-formed, system-specific value (see
-    benchmark/paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 11).
+    benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md item 11).
     This REDUCES, not eliminates, that external requirement: the
     hydrophobic TAIL's molar-volume contribution is computed exactly
     from cpp.py's already-verified tanford_tail_volume (an EXACT unit

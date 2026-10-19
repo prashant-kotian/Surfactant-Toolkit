@@ -273,7 +273,7 @@ def vant_hoff_enthalpy(cmc1_mole_fraction: float, temperature1_K: float, cmc2_mo
     counterion_factor: explicit, not guessed -- same convention as
     gibbs_free_energy_micellization's own counterion_factor (1.0 for
     nonionic, (2-beta)=(1+alpha) for ionic). Added 2026-09-23, real gap
-    found via GZ-26 in benchmark/paper3_groundzero: this function
+    found via GZ-26 in benchmark/groundzero_50: this function
     previously had NO counterion_factor parameter at all (unlike its
     siblings gibbs_free_energy_micellization and vant_hoff_multi_point_fit),
     silently always returning the nonionic-assumption value even for an

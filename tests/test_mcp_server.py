@@ -985,7 +985,7 @@ def test_classify_surfactant_charge_type_tool_zwitterion_gives_null_system_type(
 
 def test_derive_all_properties_tool_matches_independently_verified_gold_values():
     """Real regression guard: matches the gold CMC/Gamma_max values in
-    benchmark/paper3_pilot/pilot50_v2_questions.json (A01, SDS), computed
+    the Paper 1 pilot bank (pilot50_v2_questions.json) (A01, SDS), computed
     independently by directly calling the underlying library functions."""
     concs = [0.40577109375, 0.8115421875, 1.623084375, 3.24616875, 6.4923375, 12.984675, 25.96935, 51.9387]
     gammas = [69.85933451975876, 67.9370105943862, 62.892649575815454, 54.57301518905874,

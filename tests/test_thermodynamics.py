@@ -237,7 +237,7 @@ def test_vant_hoff_enthalpy_rejects_equal_temperatures():
 
 def test_vant_hoff_enthalpy_default_counterion_factor_is_backward_compatible():
     """counterion_factor added (ported from SurfactantKit, real gap found
-    via GZ-26 in benchmark/paper3_groundzero: this function had no way to
+    via GZ-26 in benchmark/groundzero_50: this function had no way to
     report a self-consistent deltaH for an ionic surfactant whose deltaG
     already used gibbs_free_energy_micellization's counterion_factor).
     Default 1.0 must reproduce the pre-existing (nonionic) behavior

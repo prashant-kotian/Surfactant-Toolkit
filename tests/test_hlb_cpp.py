@@ -1046,7 +1046,7 @@ def test_recommend_hlb_method_rejects_unknown_family():
         recommend_hlb_method_for_structural_family("something_made_up")
 
 
-# Real gap found via GZ-23 in benchmark/paper3_groundzero (ported from
+# Real gap found via GZ-23 in benchmark/groundzero_50 (ported from
 # SurfactantKit): an augmented Claude answer correctly used this
 # function's own Griffin recommendation, then correctly pushed back on
 # it -- GEMINI_SURFACTANT_HLB_GRIFFIN_REFERENCE (this function's own Liao

@@ -15,7 +15,7 @@ from ._optimize import solve_3x3 as _solve_3x3
 # polar split) and van_oss_chaudhury_good_solid_surface_energy (LW/acid/
 # base split). NOT a universal constant table for arbitrary liquids -- this
 # resolves what looked like a "caller must supply an unmeasured value"
-# bottleneck (see benchmark/paper3_groundzero/GENUINE_BOTTLENECK_AUDIT.md
+# bottleneck (audit note retained with the authors; see
 # item 12) ONLY for these specific, standard reference liquids, which ARE
 # real and independently tabulated; any liquid not in this dict still must
 # be supplied directly by the caller, never guessed.

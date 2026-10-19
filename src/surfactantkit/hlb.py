@@ -529,7 +529,7 @@ def recommend_hlb_method_for_structural_family(structural_family: str, charge_ty
 
     charge_type: optional, the output of classify.classify_surfactant_charge_type
     ('cationic'/'anionic'/'nonionic'/'zwitterionic'/'ambiguous_pH_dependent').
-    Real gap found via GZ-23 in benchmark/paper3_groundzero: this
+    Real gap found via GZ-23 in benchmark/groundzero_50: this
     function's own Liao et al. 2023 evidence base
     (GEMINI_SURFACTANT_HLB_GRIFFIN_REFERENCE) is entirely NONIONIC
     aminoglycerol geminis -- Griffin's formula (HLB = 20*M_hydrophilic/M)

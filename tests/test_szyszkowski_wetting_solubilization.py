@@ -213,7 +213,7 @@ def test_van_oss_chaudhury_good_rejects_bad_inputs():
 
 
 # Tests for the real, cited standard-probe-liquid lookup tables added
-# 2026-09-15 (see benchmark/paper3_groundzero/GENUINE_BOTTLENECK_AUDIT.md
+# 2026-09-15 (audit note retained with the authors; see
 # item 12 and BOTTLENECK_RESOLUTION_PLAN.md Tier 0) -- these values were
 # never guessed, they were live-verified against real sources (van Oss,
 # Chaudhury & Good 1988; van Oss, Good & Busscher 1990) before being

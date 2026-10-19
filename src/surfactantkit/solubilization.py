@@ -84,7 +84,7 @@ def estimate_intrinsic_water_solubility_qspr(smiles: str) -> QsprSolubilityEstim
     intrinsic aqueous solubility from structure alone -- closes part of
     the intrinsic_water_solubility_M bottleneck for
     molar_solubilization_ratio/micelle_water_partition_coefficient (see
-    benchmark/paper3_groundzero/BOTTLENECK_RESOLUTION_PLAN.md item 13),
+    benchmark/groundzero_50/BOTTLENECK_RESOLUTION_PLAN.md item 13),
     for compounds no real measured value has been sourced for yet.
 
     Method: ESOL (Delaney, J. Chem. Inf. Comput. Sci. 2004, 44, 1000-1005)

@@ -6,9 +6,9 @@ autonomously derive CMC, Gamma_max, A_min, the Langmuir-vs-Frumkin choice,
 and deltaG_mic where the inputs actually support it.
 
 The SDS/DTAB/CTAB cases use the real 8-point robotic-tensiometer datasets
-from benchmark/paper3_pilot/build_pilot_50_v2.py (Dankloff et al. 2025,
+from the Paper 1 pilot builder (build_pilot_50_v2.py) (Dankloff et al. 2025,
 PendantProp), with gold CMC/Gamma_max/A_min values already independently
-verified in benchmark/paper3_pilot/pilot50_v2_questions.json by actually
+verified in the Paper 1 pilot bank (pilot50_v2_questions.json) by actually
 calling cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min --
 this is a real regression guard for the min_points_per_segment fix in
 curve_analysis.py (found via this exact orchestrator, see that module's
@@ -221,7 +221,7 @@ def test_no_cmc_detected_returns_none_and_uses_all_points_as_premicellar():
 
 
 def test_gz29_real_c12e8_case_reproduces_gold_exactly_with_overrides():
-    """Real, direct reproduction of GZ-29 (benchmark/paper3_groundzero):
+    """Real, direct reproduction of GZ-29 (benchmark/groundzero_50):
     given the same real curve PLUS the paper's own independently-measured
     gamma0 (72.0, pure water) and Gamma_max (2.21e-6 mol/m^2) as overrides
     -- exactly what the question itself supplies -- the orchestrator now

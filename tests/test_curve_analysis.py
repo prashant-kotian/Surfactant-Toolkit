@@ -166,7 +166,7 @@ def test_cmc_from_surface_tension_curve_rejects_too_few_points():
 
 
 # --- plateau_is_statistically_suspect / cmc_via_szyszkowski_deviation -------
-# Real, characterized limitation found via GZ-17 in benchmark/paper3_groundzero
+# Real, characterized limitation found via GZ-17 in benchmark/groundzero_50
 # (ported from SurfactantKit): with a sparse 6-8 point real tensiometry
 # curve, cmc_from_surface_tension_curve's own 3-segment BIC selection can
 # pick a "postmicellar plateau" segment with as few as 2 points, which
