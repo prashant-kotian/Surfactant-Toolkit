@@ -28,18 +28,29 @@ first-release harness (their grader is not part of this repository).
 `build_results.py` assembles `results/results.json`, `build_tables.py` renders
 the per-source-set diagnostic tables, `build_question_set.py` rebuilds the
 benchmark classification, and `build_bench200.py` produces the headline
-tables. Expected at this release: 30 result cells from the three in-tree
-graders (plus 9 orig_hard50 cells read as frozen inputs), 1 declared data gap,
-and `results/per_question_results.csv` byte-identical to the committed file.
-Re-runs may differ from the committed bytes only in JSON formatting (the
-provenance ledger's `source_sha` column tracks this); verdict data must not
-change. The grand-table cell totals must equal the sums of their
+tables. Expected at this release: 27 result cells in `results.json` (three
+source sets x nine model arms), 1 declared data gap, and
+`results/per_question_results.csv` byte-identical to the committed file (1350
+records). The fourth source set, `benchmark/source_sets/orig_hard50/`, has no
+in-tree grader; its committed grading JSONs are consumed directly by
+`build_bench200.py`.
+
+Re-runs may differ from the committed bytes only in JSON formatting and in the
+provenance ledger's `source_sha` hashes; verdict data downstream of the
+corrections layer must not change, and `bench200.json`, `TABLE200.md`,
+`CLASSIFICATION200.md` and `results/figs_data/*.tsv` reproduce byte-identically.
+Note on the raw grading JSONs: they are deliberately preserved as PRE-correction
+audit artifacts. The machine-readable corrections applied downstream
+(`benchmark/repair_2026-10-20/`, logged per cell in `results.json`) change some
+verdicts when the raw graders are re-run against corrected golds, so
+re-running the graders rewrites those files; the diff is exactly the logged
+corrections (see `DATA_NOTES.md`) and must not be committed. The grand-table cell totals must equal the sums of their
 per-source-set cells; `build_bench200.py` derives them from the same JSONs.
 
 ## 2. Test suite
 
 ```bash
-PYTHONPATH=src python3 -m pytest -q        # 832 passed
+PYTHONPATH=src python3 -m pytest -q        # 920 passed
 ```
 
 ## 3. Executing new model runs (optional)
