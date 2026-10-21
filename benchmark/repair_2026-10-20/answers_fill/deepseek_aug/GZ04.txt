@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"charge_confidence": "moderate",
+"structural_family": "glycolipid_biosurfactant (mono-rhamnolipid congener: rhamnose glycosidically linked to the 3-OH of a 3-hydroxydecanoic acid that is esterified at its own 3-OH to a 3-hydroxyundecanoic acid bearing a free COOH)",
+"hlb": null,
+"notes": "Parsed from first principles: 1 COOH, 3 free OH, 1 ester, 2 ether O (ring + glycosidic), 27 carbons; two beta-hydroxy acid chains plus one 6-deoxyhexose. Anionic only via a single COOH (pKa ~4-5): ionized at pH >~6, nonionic below pH ~4, hence moderate not high confidence. Davies HLB could not be computed: the MCP group-contribution tool accepts CH3/CH2/CH (0.475 each, base 7.0) and COOH (2.1) but errors on OH, hydroxyl, O, COO, ester and ether - i.e. it lacks every polar increment this polyol surfactant needs (7.6 of ~11.7 hydrophilic units). A hand estimate using classical Davies increments gives ~5.9 (7 + 11.7 - 27x0.475), reported here only as an order-of-magnitude reference and deliberately excluded from the hlb field; it should be replaced by measured CMC/partition data."
+}

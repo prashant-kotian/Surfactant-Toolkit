@@ -159,4 +159,7 @@ def grade_condition(label: str, raw_dir: Path):
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     grade_condition("augmented", HERE / "antigravity_aug_raw")
-    grade_condition("unaugmented", HERE / "antigravity_unaug_raw")
+    # unaugmented condition kept for reference only (2026-10-21): agy had coding/web-search tools, so it was
+    # not a true unaugmented baseline; Gemini web is the unaugmented Gemini arm. Not used in comparisons.
+    if "--with-unaug" in sys.argv:
+        grade_condition("unaugmented", HERE / "antigravity_unaug_raw")

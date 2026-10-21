@@ -1,0 +1,1274 @@
+{
+ "claude_unaug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.86
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.36
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T19:12:29+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T19:15:38+0530",
+    "end": "2026-10-21T19:18:55+0530"
+   }
+  },
+  "Q07": {
+   "verdict": "PASS",
+   "detail": "",
+   "fields": {
+    "answer": {
+     "ok": true,
+     "gold": 0.7554,
+     "model": 0.7554
+    }
+   },
+   "meta": {
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+    "qid": "Q07",
+    "provider": "claude",
+    "condition": "unaug",
+    "settings": "Opus 4.8, effort High, incognito, all connectors/web search off",
+    "web_search_used": false
+   }
+  }
+ },
+ "claude_aug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.85
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.34
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-21T19:19:00+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-21T19:22:06+0530",
+    "end": "2026-10-21T19:24:58+0530"
+   }
+  }
+ },
+ "chatgpt_unaug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.131
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.851
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.566
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.343
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-21T19:25:03+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T19:26:56+0530",
+    "end": "2026-10-21T19:28:39+0530"
+   }
+  },
+  "Q24": {
+   "verdict": "FAIL",
+   "detail": "part1 got -2.1051 vs gold -2.0394",
+   "fields": {
+    "answer": {
+     "ok": false,
+     "gold": -2.0394,
+     "model": -2.1051
+    }
+   },
+   "meta": {
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+    "qid": "Q24",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "settings": "GPT-5.6 Sol, thinking High, no app/connector",
+    "web_search_used": true
+   }
+  },
+  "Q25": {
+   "verdict": "FAIL",
+   "detail": "part1 got 20.187 vs gold 20.219",
+   "fields": {
+    "answer": {
+     "ok": false,
+     "gold": 20.219,
+     "model": 20.187
+    }
+   },
+   "meta": {
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+    "qid": "Q25",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "settings": "GPT-5.6 Sol, thinking High, no app/connector",
+    "web_search_used": true
+   }
+  },
+  "Q29": {
+   "verdict": "FAIL",
+   "detail": "part1 got -2.563 vs gold 2.6086",
+   "fields": {
+    "answer": {
+     "ok": false,
+     "gold": 2.6086,
+     "model": -2.563
+    }
+   },
+   "meta": {
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+    "qid": "Q29",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "settings": "GPT-5.6 Sol, thinking High, no app/connector",
+    "web_search_used": true
+   }
+  },
+  "Q44": {
+   "verdict": "FAIL",
+   "detail": "part1 got 0.025 vs gold 0.0388",
+   "fields": {
+    "answer": {
+     "ok": false,
+     "gold": 0.0388,
+     "model": 0.025
+    }
+   },
+   "meta": {
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+    "qid": "Q44",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "settings": "GPT-5.6 Sol, thinking High, no app/connector",
+    "web_search_used": false
+   }
+  }
+ },
+ "chatgpt_aug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.131
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.851
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.566
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.343
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-21T19:28:44+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-21T19:32:13+0530",
+    "end": "2026-10-21T19:35:05+0530"
+   }
+  }
+ },
+ "deepseek_unaug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.85
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.34
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T19:43:03+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T19:45:03+0530",
+    "end": "2026-10-21T19:47:04+0530"
+   }
+  },
+  "GZ-49": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.10": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.077,
+     "model": 0.0771
+    },
+    "f1_at_x1_0.90": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.976,
+     "model": 0.9755
+    },
+    "f2_at_x1_0.10": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.965,
+     "model": 0.9647
+    },
+    "f2_at_x1_0.90": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.095,
+     "model": 0.0949
+    },
+    "w12": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -3.25,
+     "model": -3.2492
+    },
+    "w21": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -2.82,
+     "model": -2.8227
+    }
+   },
+   "meta": {
+    "qid": "GZ49",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T19:47:09+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T19:49:08+0530",
+    "end": "2026-10-21T19:51:29+0530"
+   }
+  }
+ },
+ "deepseek_aug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.85
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.34
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T19:51:34+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ADDED; SuperAssistant Inactive",
+    "sent": "2026-10-21T19:54:08+0530",
+    "end": "2026-10-21T19:55:52+0530"
+   }
+  },
+  "GZ-04": {
+   "verdict": "PASS",
+   "fields": {
+    "charge_confidence": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
+     "model": "moderate",
+     "rationale": "answer 'moderate' is exactly the gold's choice; the rest of the gold is the reason (net-200 fill)"
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "hlb": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "structural_family": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "glycolipid/sugar-based (real pyranose sugar ring + long hydrocarbon tail)",
+     "model": "glycolipid_biosurfactant (mono-rhamnolipid congener: rhamnose glycosidically linked to the 3-OH of a 3-hydroxydecanoic acid that is esterified at its own 3-OH to a 3-hydroxyundecanoic acid bearing a free COOH)",
+     "rationale": "'glycolipid_biosurfactant (mono-rhamnolipid ...)' is the gold's class 'glycolipid/sugar-based'; the underscore label fails the token matcher (same precedent as the Gemini CLI grader's 'dimeric_gemini_type' = 'dimeric/gemini')"
+    }
+   },
+   "meta": {
+    "qid": "GZ04",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T19:55:57+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T19:57:55+0530",
+    "end": "2026-10-21T20:02:35+0530"
+   }
+  },
+  "GZ-17": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.702,
+     "model": 0.7019614611819444
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "cationic",
+     "model": "cationic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 8.185,
+     "model": 8.185
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "kind": "null-check",
+     "gold": null,
+     "model": -43.4745711822137
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.3656e-06,
+     "model": 2.3655701331208045e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ17",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T22:00:35+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ADDED; SuperAssistant Inactive",
+    "sent": "2026-10-21T22:03:11+0530",
+    "end": "2026-10-21T22:05:33+0530"
+   }
+  },
+  "GZ-49": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.10": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.077,
+     "model": 0.07709
+    },
+    "f1_at_x1_0.90": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.976,
+     "model": 0.97549
+    },
+    "f2_at_x1_0.10": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.965,
+     "model": 0.96473
+    },
+    "f2_at_x1_0.90": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.095,
+     "model": 0.09485
+    },
+    "w12": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -3.25,
+     "model": -3.2492046
+    },
+    "w21": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -2.82,
+     "model": -2.8226632
+    }
+   },
+   "meta": {
+    "qid": "GZ49",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T20:13:32+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T20:15:31+0530",
+    "end": "2026-10-21T20:18:13+0530"
+   }
+  }
+ },
+ "qwen_unaug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.85
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.34
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T19:35:10+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T19:36:43+0530",
+    "end": "2026-10-21T19:42:58+0530"
+   }
+  }
+ },
+ "gemini_unaug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.13
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.85
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.57
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.34
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T20:52:36+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T20:54:03+0530",
+    "end": "2026-10-21T21:02:35+0530"
+   }
+  },
+  "GZ-01": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1558892601017348,
+     "model": 1.16
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 2.5118612800073175,
+     "model": 2.0
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.436590099494216e-06,
+     "model": 1.44e-06
+    },
+    "isotherm_model": {
+     "ok": false,
+     "kind": "string",
+     "gold": "langmuir (BIC-selected over Frumkin)",
+     "model": "Gibbs"
+    }
+   },
+   "meta": {
+    "qid": "GZ01",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": false
+   }
+  },
+  "GZ-05": {
+   "verdict": "FAIL",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "delta_h_endpoint_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -13.592197635471393,
+     "model": -13.592
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "self_consistent": {
+     "ok": false,
+     "kind": "bool",
+     "gold": true,
+     "model": false
+    },
+    "sub_intervals": {
+     "ok": false,
+     "kind": "unknown",
+     "gold": [
+      {
+       "t_lo_C": 30.0,
+       "t_hi_C": 50.0,
+       "delta_h_kJ_per_mol": -12.51622692462097
+      },
+      {
+       "t_lo_C": 50.0,
+       "t_hi_C": 70.0,
+       "delta_h_kJ_per_mol": -14.810140401192402
+      }
+     ],
+     "model": [
+      {
+       "t_lo_C": 30.0,
+       "t_hi_C": 50.0,
+       "delta_h_kJ_per_mol": -12.516
+      },
+      {
+       "t_lo_C": 50.0,
+       "t_hi_C": 70.0,
+       "delta_h_kJ_per_mol": -14.81
+      }
+     ]
+    }
+   },
+   "meta": {
+    "qid": "GZ05",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": false
+   }
+  },
+  "GZ-11": {
+   "verdict": "FAIL",
+   "fields": {
+    "cpp_electrostatic_area": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 0.31209541232517773,
+     "model": 0.181
+    },
+    "cpp_measured_area": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.46969136100515557,
+     "model": 0.4697
+    },
+    "critical_length_A": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 16.68,
+     "model": 16.68
+    },
+    "electrostatic_headgroup_area_A2": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 67.27174770212636,
+     "model": 116.0
+    },
+    "morphology_electrostatic_area": {
+     "ok": true,
+     "kind": "string",
+     "gold": "spherical micelle",
+     "model": "spherical micelle"
+    },
+    "morphology_measured_area": {
+     "ok": true,
+     "kind": "string",
+     "gold": "cylindrical/rodlike micelle",
+     "model": "cylindrical/rodlike micelle"
+    },
+    "tail_volume_A3": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 350.2,
+     "model": 350.2
+    }
+   },
+   "meta": {
+    "qid": "GZ11",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": true
+   }
+  },
+  "GZ-13": {
+   "verdict": "PASS",
+   "fields": {
+    "hlb_griffin": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 13.398313559607427,
+     "model": 13.4
+    },
+    "molecular_weight_g_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 682.9770000000001,
+     "model": 682.98
+    },
+    "n_ethylene_oxide_units": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 10,
+     "model": 10
+    }
+   },
+   "meta": {
+    "qid": "GZ13",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": true,
+    "note": "answered in the same chat as GZ17; this file keeps only this question's own final answer"
+   }
+  },
+  "GZ-17": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.702,
+     "model": 0.685
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "cationic",
+     "model": "cationic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 8.185,
+     "model": 16.37
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.3656e-06,
+     "model": 2.425e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ17",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": false,
+    "web_search_attempted": false,
+    "note": "answered in the same chat as GZ13; this file keeps only this question's own final answer"
+   }
+  },
+  "GZ-27": {
+   "verdict": "PASS",
+   "fields": {
+    "axial_ratio": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.135,
+     "model": 1.134958
+    },
+    "cpp": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4697,
+     "model": 0.469691
+    },
+    "critical_length_A": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 16.68,
+     "model": 16.68
+    },
+    "direction_of_correction": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the shape-corrected radius is SMALLER than the naive spherical estimate (Perrin friction factor F_P=1.0014 at this mild elongation, R_eff=R_h,apparent/F_P) -- a real, somewhat counter-intuitive direction: an elongated particle experiences MORE drag than a sphere of the same volume, so a naive Stokes-Einstein calculation (which assumes sphericity) OVERSTATES the true equivalent-sphere size once shape is accounted for.",
+     "model": "smaller, because non-spherical shape increases drag factor relative to equivalent volume sphere",
+     "rationale": "answer 'smaller, because non-spherical shape increases drag' is the gold's direction (SMALLER) and reason"
+    },
+    "morphology": {
+     "ok": true,
+     "kind": "string",
+     "gold": "cylindrical/rodlike micelle",
+     "model": "cylindrical/rodlike micelle"
+    },
+    "rh_naive_stokes_einstein_nm": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.638,
+     "model": 2.637531
+    },
+    "rh_perrin_corrected_nm": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.634,
+     "model": 2.633764
+    },
+    "tail_volume_A3": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 350.2,
+     "model": 350.2
+    }
+   },
+   "meta": {
+    "qid": "GZ27",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": false
+   }
+  },
+  "GZ-29": {
+   "verdict": "FAIL",
+   "fields": {
+    "frumkin_a": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 0.00457,
+     "model": null
+    },
+    "physically_meaningful_interaction": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    },
+    "selected_model": {
+     "ok": false,
+     "kind": "string",
+     "gold": "frumkin (wins by BIC, delta_bic=+4.40)",
+     "model": "Langmuir"
+    }
+   },
+   "meta": {
+    "qid": "GZ29",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": false,
+    "web_search_attempted": false
+   }
+  },
+  "GZ-33": {
+   "verdict": "PASS",
+   "fields": {
+    "hlb_griffin": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 17.18,
+     "model": 17.18
+    },
+    "molecular_weight_g_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1199.56,
+     "model": 1199.56
+    },
+    "n_ethylene_oxide_units": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 23,
+     "model": 23
+    }
+   },
+   "meta": {
+    "qid": "GZ33",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": false,
+    "note": "answered in the same chat as GZ50; this file keeps only this question's own final answer"
+   }
+  },
+  "GZ-50": {
+   "verdict": "FAIL",
+   "fields": {
+    "delta_g_mic_at_283.15K": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": -35.18,
+     "model": -35182.2
+    },
+    "delta_g_mic_at_318.15K": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": -38.87,
+     "model": -38871.5
+    },
+    "trend": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
+     "model": "The free energy of micellization becomes monotonically more negative across the entire temperature range.",
+     "rationale": "answer 'monotonically more negative across the entire temperature range' is the gold's trend"
+    }
+   },
+   "meta": {
+    "qid": "GZ50",
+    "provider": "gemini web",
+    "condition": "unaug",
+    "run": "2026-10-21",
+    "mode": "manual (run by the author in the browser)",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+    "code_execution_used": true,
+    "web_search_attempted": false,
+    "note": "answered in the same chat as GZ33; this file keeps only this question's own final answer"
+   }
+  }
+ },
+ "agy_aug": {
+  "GZ-26": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.131,
+     "model": -37.131
+    },
+    "delta_h_high_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -14.851,
+     "model": -14.851
+    },
+    "delta_h_low_regime_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.566,
+     "model": 1.566
+    },
+    "delta_h_wide_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -5.343,
+     "model": -5.343
+    },
+    "self_consistent": {
+     "ok": true,
+     "kind": "bool",
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "GZ26",
+    "provider": "gemini-cli",
+    "condition": "aug",
+    "model": "gemini-3.8-flash-high",
+    "mcp": "surfactant-computation (agy mcp_config)",
+    "batch": "agy_fill/fill_aug_batch1.txt",
+    "run": "2026-10-21 19:17"
+   }
+  },
+  "X-19": {
+   "verdict": "PASS",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": true,
+     "model": 32.1279
+    },
+    "zeta_corr_mV": {
+     "ok": true,
+     "model": 69.455
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "gemini-cli",
+    "condition": "aug",
+    "model": "gemini-3.8-flash-high",
+    "mcp": "surfactant-computation (agy mcp_config)",
+    "batch": "agy_fill/fill_aug_batch1.txt",
+    "run": "2026-10-21 19:17"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.9637
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.8571
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "gemini-cli",
+    "condition": "aug",
+    "model": "gemini-3.8-flash-high",
+    "mcp": "surfactant-computation (agy mcp_config)",
+    "batch": "agy_fill/fill_aug_batch1.txt",
+    "run": "2026-10-21 19:17"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.6552
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.5744
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.4091
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.5841
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.6797
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "gemini-cli",
+    "condition": "aug",
+    "model": "gemini-3.8-flash-high",
+    "mcp": "surfactant-computation (agy mcp_config)",
+    "batch": "agy_fill/fill_aug_batch1.txt",
+    "run": "2026-10-21 19:17"
+   }
+  }
+ }
+}

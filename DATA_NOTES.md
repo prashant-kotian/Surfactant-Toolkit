@@ -31,17 +31,16 @@ in that cell's `corrections` list in `results/results.json`:
 
 - Chart/typo repair. The nine chart questions and X-19 were re-run on 2026-10-20/21 with the chart
   attached and the corrected X-19 text, under the original model settings, with the condition checked
-  on the live page before each send (`answers/*/*.meta.json`). DeepSeek augmented and Gemini-CLI
-  originally received the charts and keep their original chart verdicts. A question stays excluded
-  for an arm only when that arm has no gradable re-run answer (reason logged). Gemini-CLI X-19 is not
-  re-run (its extrahard tier is retired).
+  on the live page before each send (`answers/*/*.meta.json`). DeepSeek augmented and Gemini
+  augmented (Gemini CLI) originally received the charts and keep their original chart verdicts. A question stays excluded
+  for an arm only when that arm has no gradable re-run answer (reason logged).
 - Counterion-factor correction. The pseudo-phase ionic factor is (1 + beta) = (2 - alpha); earlier
   toolkit text and 13 question texts (GZ-16, GZ-20, H-02, H-03, H-08, H-16, H-19, H-31, H-38, H-47,
   H-49, X-41, X-47) stated the inverse. Texts and golds were corrected (H-46 gold, H-04 label as
   well) and every arm was re-run on the corrected texts; those verdicts replace the originals. An arm
   without a gradable re-run answer is excluded on that question, never scored on the stale text.
-  H-46 (gold-only error) is regraded from stored answers where a record holds them (Claude and
-  Gemini-CLI unaugmented) and re-run otherwise. Gemini-CLI X-41/X-47 are excluded (tier retired).
+  H-46 (gold-only error) is regraded from stored answers where a record holds them (Claude
+  unaugmented) and re-run otherwise.
 - GZ-16/GZ-20 electrolyte condition. These texts did not state the electrolyte condition. Arms that
   assumed no added salt keep their answers; ChatGPT augmented, which withheld Gamma_max/A_min for
   that reason, was re-run with the sentence "The solution contains no added salt; the surfactant is
@@ -60,6 +59,29 @@ are excluded from n as ungradable; the 2026-09-21 Gemini unaugmented groundzero 
 records removed from n, and an earlier alternative grading pass (22/50) is not reproducible from this
 repository and is not reported.
 
+## Web search in the unaugmented condition (must be stated in the paper)
+
+In the unaugmented condition Claude was run with web search disabled and answered every question from its own reasoning, whereas the other models (ChatGPT, DeepSeek, Gemini web, Qwen) used web search on some questions; the unaugmented comparison is therefore, if anything, biased against Claude. Example: the 2026-10-21 orig_hard50 re-runs (ChatGPT Q24/Q25/Q29 cite web sources; Claude Q07 used none; recorded per answer as `web_search_used` in `answers_fill/*/*.meta.json`).
+
+## Gemini arms
+
+Gemini is reported as one model with two clients: the unaugmented arm is Gemini web (gemini.google.com,
+no tools), the augmented arm is Gemini CLI (Antigravity) with the surfactant-computation MCP server.
+Gemini CLI unaugmented runs were made but are not part of the results: the CLI keeps its own coding
+and web-search tools, so they were not a true unaugmented baseline. Those runs are kept in the repository for
+reference (`source_sets/*/antigravity_unaug*`, `groundzero/gemini_cli_2026-09-19/`,
+`repair_2026-10-20/answers_dg/agy_unaug/`) but are not used in any comparison (2026-10-21). The Gemini CLI extrahard tier used originally (pro-high) was retired; X-19, X-41 and X-47
+were re-run on gemini-3.8-flash-high, the model used for all Gemini CLI re-runs.
+
+## Net-200 fill (2026-10-21)
+
+GZ-26 (retired 2026-10-18) was re-run on its current text for every arm and graded against the
+corrected gold; answers missing from the original runs (Gemini web GZ-01/05/11/13/17/27/29/33/50,
+DeepSeek GZ-04/17/49, orig_hard50 Claude Q07 and ChatGPT Q24/25/29/44) were re-run the same way
+(`benchmark/repair_2026-10-20/answers_fill/`, graded by `grade_repair.py --fill`; orig_hard50 items by
+the first-release rule in `orig_hard50_grade.py`, which reproduces all 250 original verdicts). The
+orig_hard50 re-runs use the tool-free question text with a one-line FINAL_JSON answer format.
+
 ## Classification
 
 Labels are rule-derived from gold field names, declared failure axes, and
@@ -74,7 +96,7 @@ are reported but should be read as descriptive only.
 H-04 (reference-temperature mismatch), H-26 (surfactant identity), GZ-48
 (factor-of-2 row mix-up): golds corrected on 2026-10-18 with per-field
 `remediation_note`. The GZ-48 correction revealed a masked model error
-(Antigravity unaugmented PASS->FAIL): reported rather than smoothed. See
+(in the since set-aside Gemini CLI unaugmented runs, PASS->FAIL): reported rather than smoothed. See
 `results/REPRODUCIBILITY.md`.
 
 Re-grade completeness (2026-10-19): the DeepSeek augmented groundzero and

@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-21T09:57Z",
+ "generated": "2026-10-21T16:43Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "01a396c661bf-dirty",
+ "toolkit_state": "5090c97bd32d-dirty",
  "gold_sha": {
   "groundzero": "00ffab5b7eeb",
   "hard50": "6b64deb7a96c",
@@ -10,13 +10,11 @@
  "gold_fix_date": "2026-10-18",
  "cells": {
   "groundzero|Claude|aug": {
-   "n": 49,
-   "passed": 43,
-   "pct": 87.8,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 44,
+   "pct": 88.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": true,
     "GZ-02": true,
@@ -43,6 +41,7 @@
     "GZ-23": false,
     "GZ-24": true,
     "GZ-25": true,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": true,
@@ -150,18 +149,21 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "True->False"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     }
    ],
    "note": null
   },
   "groundzero|ChatGPT|aug": {
-   "n": 49,
-   "passed": 39,
-   "pct": 79.6,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 40,
+   "pct": 80.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
@@ -188,6 +190,7 @@
     "GZ-23": true,
     "GZ-24": false,
     "GZ-25": true,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": true,
@@ -274,18 +277,21 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     }
    ],
    "note": null
   },
   "groundzero|Qwen|unaug": {
-   "n": 49,
-   "passed": 31,
-   "pct": 63.3,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 32,
+   "pct": 64.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
@@ -312,6 +318,7 @@
     "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": false,
     "GZ-29": false,
@@ -412,18 +419,21 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->False"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     }
    ],
    "note": null
   },
   "groundzero|DeepSeek|unaug": {
-   "n": 48,
-   "passed": 32,
-   "pct": 66.7,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 34,
+   "pct": 68.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
@@ -450,6 +460,7 @@
     "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": false,
@@ -472,12 +483,13 @@
     "GZ-46": true,
     "GZ-47": true,
     "GZ-48": true,
+    "GZ-49": true,
     "GZ-50": true
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json",
    "source_sha": "2e8f8288e360",
-   "partial": true,
+   "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
@@ -535,18 +547,26 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->False"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-49",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
     }
    ],
    "note": null
   },
   "groundzero|ChatGPT|unaug": {
-   "n": 49,
-   "passed": 31,
-   "pct": 63.3,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 32,
+   "pct": 64.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
@@ -573,6 +593,7 @@
     "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": false,
@@ -645,31 +666,39 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->False"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     }
    ],
    "note": null
   },
   "groundzero|Gemini|unaug": {
-   "n": 40,
-   "passed": 15,
-   "pct": 37.5,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 19,
+   "pct": 38.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
+    "GZ-01": false,
     "GZ-02": false,
     "GZ-03": false,
     "GZ-04": false,
+    "GZ-05": false,
     "GZ-06": false,
     "GZ-07": true,
     "GZ-08": false,
     "GZ-09": true,
     "GZ-10": false,
+    "GZ-11": false,
     "GZ-12": false,
+    "GZ-13": true,
     "GZ-14": false,
     "GZ-15": false,
     "GZ-16": true,
+    "GZ-17": false,
     "GZ-18": false,
     "GZ-19": true,
     "GZ-20": false,
@@ -678,10 +707,14 @@
     "GZ-23": false,
     "GZ-24": false,
     "GZ-25": false,
+    "GZ-26": true,
+    "GZ-27": true,
     "GZ-28": false,
+    "GZ-29": false,
     "GZ-30": false,
     "GZ-31": true,
     "GZ-32": false,
+    "GZ-33": true,
     "GZ-34": false,
     "GZ-35": false,
     "GZ-36": true,
@@ -697,12 +730,13 @@
     "GZ-46": true,
     "GZ-47": true,
     "GZ-48": true,
-    "GZ-49": false
+    "GZ-49": false,
+    "GZ-50": false
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
    "source_sha": "af7478178bb7",
-   "partial": true,
+   "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
@@ -746,18 +780,66 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->False"
+    },
+    {
+     "qid": "GZ-01",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-05",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-11",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-13",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-17",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-27",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-29",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-33",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-50",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
     }
    ],
    "note": null
   },
   "groundzero|Claude|unaug": {
-   "n": 49,
-   "passed": 33,
-   "pct": 67.3,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 34,
+   "pct": 68.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
@@ -784,6 +866,7 @@
     "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": false,
@@ -856,128 +939,21 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->False"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     }
    ],
    "note": "Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes a genuinely truncated GZ-01..10-only Sept-18 capture used through 2026-10-18). Full coverage, n=43 after standard exclusions, same as ChatGPT/Gemini; long-prose fields resolved via the grader's JUDGMENT_RESOLUTIONS table (one rationale per field)"
   },
-  "groundzero|Gemini-CLI|unaug": {
-   "n": 49,
+  "groundzero|Gemini|aug": {
+   "n": 50,
    "passed": 48,
-   "pct": 98.0,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
-   "per_q": {
-    "GZ-01": true,
-    "GZ-02": true,
-    "GZ-03": true,
-    "GZ-04": true,
-    "GZ-05": true,
-    "GZ-06": true,
-    "GZ-07": true,
-    "GZ-08": true,
-    "GZ-09": true,
-    "GZ-10": true,
-    "GZ-11": true,
-    "GZ-12": true,
-    "GZ-13": true,
-    "GZ-14": true,
-    "GZ-15": true,
-    "GZ-16": true,
-    "GZ-17": true,
-    "GZ-18": true,
-    "GZ-19": true,
-    "GZ-20": true,
-    "GZ-21": true,
-    "GZ-22": true,
-    "GZ-23": true,
-    "GZ-24": true,
-    "GZ-25": true,
-    "GZ-27": true,
-    "GZ-28": true,
-    "GZ-29": true,
-    "GZ-30": true,
-    "GZ-31": true,
-    "GZ-32": true,
-    "GZ-33": true,
-    "GZ-34": true,
-    "GZ-35": true,
-    "GZ-36": true,
-    "GZ-37": true,
-    "GZ-38": true,
-    "GZ-39": true,
-    "GZ-40": true,
-    "GZ-41": true,
-    "GZ-42": true,
-    "GZ-43": true,
-    "GZ-44": true,
-    "GZ-45": true,
-    "GZ-46": true,
-    "GZ-47": true,
-    "GZ-48": false,
-    "GZ-49": true,
-    "GZ-50": true
-   },
-   "harness": "agy-cli",
-   "source": "benchmark/source_sets/groundzero/antigravity_unaugmented_grade_results.json",
-   "source_sha": "c58703abce24",
-   "partial": false,
-   "gold_state": "post-fix",
-   "count_only": false,
-   "si_only": false,
-   "corrections": [
-    {
-     "qid": "GZ-15",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-36",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-37",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-38",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-39",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-40",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "GZ-16",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "GZ-20",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    }
-   ],
-   "note": null
-  },
-  "groundzero|Gemini-CLI|aug": {
-   "n": 49,
-   "passed": 47,
-   "pct": 95.9,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "pct": 96.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": true,
     "GZ-02": true,
@@ -1004,6 +980,7 @@
     "GZ-23": true,
     "GZ-24": true,
     "GZ-25": true,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": true,
@@ -1076,22 +1053,26 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "True->True"
     }
    ],
    "note": null
   },
   "groundzero|DeepSeek|aug": {
-   "n": 46,
-   "passed": 39,
-   "pct": 84.8,
-   "excluded": [
-    "GZ-26"
-   ],
-   "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
+   "n": 50,
+   "passed": 42,
+   "pct": 84.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "GZ-01": false,
     "GZ-02": false,
     "GZ-03": true,
+    "GZ-04": true,
     "GZ-05": false,
     "GZ-06": true,
     "GZ-07": true,
@@ -1104,6 +1085,7 @@
     "GZ-14": true,
     "GZ-15": true,
     "GZ-16": true,
+    "GZ-17": false,
     "GZ-18": true,
     "GZ-19": true,
     "GZ-20": true,
@@ -1112,6 +1094,7 @@
     "GZ-23": true,
     "GZ-24": true,
     "GZ-25": true,
+    "GZ-26": true,
     "GZ-27": true,
     "GZ-28": true,
     "GZ-29": false,
@@ -1134,12 +1117,13 @@
     "GZ-46": true,
     "GZ-47": true,
     "GZ-48": true,
+    "GZ-49": true,
     "GZ-50": true
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/groundzero/deepseek_augmented_grade_results.json",
    "source_sha": "42ac653966c4",
-   "partial": true,
+   "partial": false,
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": true,
@@ -1204,6 +1188,26 @@
      "qid": "GZ-20",
      "change": "replaced by corrected-text re-run",
      "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-04",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-17",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-26",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-49",
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
     }
    ],
    "note": null
@@ -2111,136 +2115,7 @@
    ],
    "note": null
   },
-  "hard50|Gemini-CLI|unaug": {
-   "n": 50,
-   "passed": 48,
-   "pct": 96.0,
-   "excluded": [],
-   "exclude_reason": null,
-   "per_q": {
-    "H-01": true,
-    "H-02": true,
-    "H-03": true,
-    "H-04": true,
-    "H-05": true,
-    "H-06": true,
-    "H-07": true,
-    "H-08": true,
-    "H-09": true,
-    "H-10": true,
-    "H-11": true,
-    "H-12": true,
-    "H-13": true,
-    "H-14": true,
-    "H-15": true,
-    "H-16": true,
-    "H-17": true,
-    "H-18": true,
-    "H-19": true,
-    "H-20": true,
-    "H-21": true,
-    "H-22": true,
-    "H-23": true,
-    "H-24": true,
-    "H-25": true,
-    "H-26": true,
-    "H-27": true,
-    "H-28": true,
-    "H-29": true,
-    "H-30": false,
-    "H-31": true,
-    "H-32": true,
-    "H-33": true,
-    "H-34": true,
-    "H-35": true,
-    "H-36": true,
-    "H-37": true,
-    "H-38": true,
-    "H-39": true,
-    "H-40": true,
-    "H-41": true,
-    "H-42": true,
-    "H-43": true,
-    "H-44": true,
-    "H-45": true,
-    "H-46": false,
-    "H-47": true,
-    "H-48": true,
-    "H-49": true,
-    "H-50": true
-   },
-   "harness": "agy-cli",
-   "source": "benchmark/source_sets/hard50/antigravity_unaugmented_grade_results.json",
-   "source_sha": "bde27dffc7f2",
-   "partial": false,
-   "gold_state": "post-fix",
-   "count_only": false,
-   "si_only": false,
-   "corrections": [
-    {
-     "qid": "H-36",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "H-37",
-     "change": "included (original run delivered the chart)",
-     "verdict": "PASS"
-    },
-    {
-     "qid": "H-02",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-03",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-08",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-16",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-19",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-31",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-38",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-46",
-     "change": "regraded stored answer vs corrected gold",
-     "verdict": "True->False"
-    },
-    {
-     "qid": "H-47",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    },
-    {
-     "qid": "H-49",
-     "change": "replaced by corrected-text re-run",
-     "verdict": "True->True"
-    }
-   ],
-   "note": null
-  },
-  "hard50|Gemini-CLI|aug": {
+  "hard50|Gemini|aug": {
    "n": 50,
    "passed": 50,
    "pct": 100.0,
@@ -3170,101 +3045,12 @@
    ],
    "note": null
   },
-  "extrahard|Gemini-CLI|unaug": {
-   "n": 47,
-   "passed": 23,
-   "pct": 48.9,
-   "excluded": [
-    "X-19",
-    "X-41",
-    "X-47"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
-   "per_q": {
-    "X-01": false,
-    "X-02": false,
-    "X-03": false,
-    "X-04": true,
-    "X-05": true,
-    "X-06": false,
-    "X-07": true,
-    "X-08": false,
-    "X-09": false,
-    "X-10": false,
-    "X-11": false,
-    "X-12": false,
-    "X-13": false,
-    "X-14": false,
-    "X-15": false,
-    "X-16": false,
-    "X-17": false,
-    "X-18": false,
-    "X-20": false,
-    "X-21": false,
-    "X-22": false,
-    "X-23": false,
-    "X-24": false,
-    "X-25": false,
-    "X-26": true,
-    "X-27": true,
-    "X-28": true,
-    "X-29": true,
-    "X-30": true,
-    "X-31": true,
-    "X-32": true,
-    "X-33": true,
-    "X-34": true,
-    "X-35": true,
-    "X-36": false,
-    "X-37": true,
-    "X-38": true,
-    "X-39": false,
-    "X-40": false,
-    "X-42": true,
-    "X-43": true,
-    "X-44": true,
-    "X-45": true,
-    "X-46": true,
-    "X-48": true,
-    "X-49": true,
-    "X-50": true
-   },
-   "harness": "agy-cli",
-   "source": "benchmark/source_sets/extrahard/antigravity_unaugmented_grade_results.json",
-   "source_sha": "a22ae6e7d157",
-   "partial": false,
-   "gold_state": "post-fix",
-   "count_only": false,
-   "si_only": false,
-   "corrections": [
-    {
-     "qid": "X-19",
-     "change": "stays excluded",
-     "reason": "Gemini-CLI extrahard tier retired; X-19 not re-run"
-    },
-    {
-     "qid": "X-41",
-     "change": "excluded",
-     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
-    },
-    {
-     "qid": "X-47",
-     "change": "excluded",
-     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
-    }
-   ],
-   "note": null
-  },
-  "extrahard|Gemini-CLI|aug": {
-   "n": 47,
-   "passed": 47,
+  "extrahard|Gemini|aug": {
+   "n": 50,
+   "passed": 50,
    "pct": 100.0,
-   "excluded": [
-    "X-19",
-    "X-41",
-    "X-47"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -3284,6 +3070,7 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
+    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -3305,11 +3092,13 @@
     "X-38": true,
     "X-39": true,
     "X-40": true,
+    "X-41": true,
     "X-42": true,
     "X-43": true,
     "X-44": true,
     "X-45": true,
     "X-46": true,
+    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -3324,18 +3113,18 @@
    "corrections": [
     {
      "qid": "X-19",
-     "change": "stays excluded",
-     "reason": "Gemini-CLI extrahard tier retired; X-19 not re-run"
+     "change": "included (net-200 fill re-run)",
+     "verdict": "False->True"
     },
     {
      "qid": "X-41",
-     "change": "excluded",
-     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
     },
     {
      "qid": "X-47",
-     "change": "excluded",
-     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+     "change": "included (net-200 fill re-run)",
+     "verdict": "PASS"
     }
    ],
    "note": null

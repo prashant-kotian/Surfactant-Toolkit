@@ -37,7 +37,7 @@ ARMS = {   # folder -> (model label used in build_results, condition)
     "chatgpt_unaug": ("ChatGPT", "unaug"), "chatgpt_aug": ("ChatGPT", "aug"),
     "deepseek_unaug": ("DeepSeek", "unaug"), "deepseek_aug": ("DeepSeek", "aug"),
     "qwen_unaug": ("Qwen", "unaug"), "gemini_unaug": ("Gemini", "unaug"),
-    "agy_unaug": ("Gemini-CLI", "unaug"), "agy_aug": ("Gemini-CLI", "aug"),   # counterion re-runs only
+    "agy_aug": ("Gemini", "aug"),   # Gemini augmented arm = Gemini CLI (Antigravity)
 }
 QIDS = {"GZ15": "GZ-15", "GZ36": "GZ-36", "GZ37": "GZ-37", "GZ38": "GZ-38", "GZ39": "GZ-39",
         "GZ40": "GZ-40", "H36": "H-36", "H37": "H-37", "H38": "H-38", "X19": "X-19"}
@@ -45,6 +45,12 @@ QIDS = {"GZ15": "GZ-15", "GZ36": "GZ-36", "GZ37": "GZ-37", "GZ38": "GZ-38", "GZ3
 QIDS_DG = {q: f"{q[:2]}-{q[2:]}" if q.startswith("GZ") else f"{q[0]}-{q[1:]}"
            for q in ("GZ16", "GZ20", "H02", "H03", "H08", "H16", "H19", "H31", "H38", "H46", "H47", "H49",
                      "X41", "X47")}
+# third run set (net-200 fill, 2026-10-21): GZ-26 (retired, re-run on the current text), answers never captured
+# in the original runs, Gemini-CLI augmented X-19/X-41/X-47, and orig_hard50 unanswered Q items
+QIDS_FILL = {**{q: f"GZ-{q[2:]}" for q in ("GZ26", "GZ01", "GZ04", "GZ05", "GZ11", "GZ13", "GZ17", "GZ27", "GZ29",
+                                          "GZ33", "GZ49", "GZ50")},
+             **{q: f"X-{q[1:]}" for q in ("X19", "X41", "X47")},
+             **{q: q for q in ("Q07", "Q24", "Q25", "Q29", "Q44")}}
 
 
 def _load(name: str, path: Path):
@@ -59,6 +65,7 @@ def _load(name: str, path: Path):
 GZ = _load("gz_grader", SETS / "groundzero" / "grade_unaugmented.py")
 H50 = _load("h50_grader", SETS / "hard50" / "grade_unaugmented_legacy.py")
 X50 = _load("x50_grader", SETS / "extrahard" / "grade_x50.py")
+OH = _load("orig_hard50_grade", HERE / "orig_hard50_grade.py")
 
 with open(SETS / "groundzero" / "gold_answers.json", encoding="utf-8") as f:
     GZ_GOLD = json.load(f)
@@ -111,6 +118,16 @@ JUDGMENTS: dict[tuple[str, str, str], tuple[bool, str]] = {
     ("chatgpt_unaug", "GZ-39", "deviation_reason"): (True, _GZ39_REASON),
     ("deepseek_unaug", "GZ-39", "deviation_reason"): (True, _GZ39_REASON),
     ("qwen_unaug", "GZ-39", "deviation_reason"): (True, _GZ39_REASON),
+    ("deepseek_aug", "GZ-04", "charge_confidence"): (
+        True, "answer 'moderate' is exactly the gold's choice; the rest of the gold is the reason (net-200 fill)"),
+    ("deepseek_aug", "GZ-04", "structural_family"): (
+        True, "'glycolipid_biosurfactant (mono-rhamnolipid ...)' is the gold's class 'glycolipid/sugar-based'; the "
+              "underscore label fails the token matcher (same precedent as the Gemini CLI grader's "
+              "'dimeric_gemini_type' = 'dimeric/gemini')"),
+    ("gemini_unaug", "GZ-27", "direction_of_correction"): (
+        True, "answer 'smaller, because non-spherical shape increases drag' is the gold's direction (SMALLER) and reason"),
+    ("gemini_unaug", "GZ-50", "trend"): (
+        True, "answer 'monotonically more negative across the entire temperature range' is the gold's trend"),
     ("gemini_unaug", "GZ-39", "deviation_reason"): (True, _GZ39_REASON),
     ("gemini_unaug", "GZ-39", "deviation_region"): (
         True, _GZ39_REGION + " ('concentrations above ~2-3 mM', the gold's own range)"),
@@ -130,7 +147,7 @@ JUDGMENTS: dict[tuple[str, str, str], tuple[bool, str]] = {
 }
 # Fields where the shared keyword matcher fails on wording a reader would accept are routed to
 # JUDGMENTS too (not only > 80-char gold); the comparator itself is left unchanged.
-JUDGED_FIELDS = {("GZ-39", "deviation_region")}
+JUDGED_FIELDS = {("GZ-39", "deviation_region"), ("GZ-04", "structural_family")}
 
 # GZ-15's grading_note asks for a "wider tolerance than the other numeric fields" on
 # estimated_cmc_mM but gives no number; the author set +/-10% on 2026-10-20 (FIELD_RULES above).
@@ -196,6 +213,18 @@ def grade_x(qid: str, text: str) -> dict:
             "fields": {k: {"ok": bool(v), "model": ans.get(k)} for k, v in r["fields"].items()}}
 
 
+def grade_q(qid: str, text: str) -> dict:
+    """orig_hard50 item: FINAL_JSON {"answer": <number>} graded by the first-release rule (orig_hard50_grade)."""
+    ans = GZ.extract_last_json_block(normalize_quotes(text))
+    if not isinstance(ans, dict) or "answer" not in ans:
+        return {"verdict": "NO_JSON", "fields": {}}
+    val = ans["answer"]
+    verdict, detail = OH.grade_question(qid, [val])
+    gold = OH.GOLDS[qid][0][0] if isinstance(OH.GOLDS[qid][0], tuple) else OH.GOLDS[qid][0]
+    return {"verdict": verdict, "detail": detail,
+            "fields": {"answer": {"ok": verdict == "PASS", "gold": gold, "model": val}}}
+
+
 def grade_all(answers_dir: Path = ANSWERS, qids: dict = QIDS) -> dict:
     out = {}
     for arm in ARMS:
@@ -208,7 +237,9 @@ def grade_all(answers_dir: Path = ANSWERS, qids: dict = QIDS) -> dict:
             if not p.exists():
                 continue                    # not run (or not yet): absent, not a fail
             text = p.read_text(encoding="utf-8", errors="replace")
-            if qid.startswith("GZ"):
+            if qid.startswith("Q"):
+                r = grade_q(qid, text)
+            elif qid.startswith("GZ"):
                 r = grade_gz(arm, qid, text)
             elif qid.startswith("H"):
                 r = grade_h(qid, text)
@@ -223,8 +254,9 @@ def grade_all(answers_dir: Path = ANSWERS, qids: dict = QIDS) -> dict:
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     dg = "--dg" in sys.argv                    # grade the counterion-correction re-runs instead
-    qids = QIDS_DG if dg else QIDS
-    res = grade_all(HERE / "answers_dg" if dg else ANSWERS, qids)
+    fill = "--fill" in sys.argv                # grade the net-200 fill re-runs instead
+    qids = QIDS_FILL if fill else (QIDS_DG if dg else QIDS)
+    res = grade_all(HERE / ("answers_fill" if fill else "answers_dg" if dg else "answers"), qids)
     print(f"{'arm':<16}" + "".join(f"{q:>7}" for q in qids.values()))
     pending = []
     for arm, qs in res.items():
@@ -246,7 +278,7 @@ def main() -> int:
         if f:
             dev = abs(float(f["model"]) - float(f["gold"])) / float(f["gold"]) * 100 if f["model"] is not None else None
             print(f"  {arm:<16} {f['model']} mM ({dev:.0f}% from 2.51)" if dev is not None else f"  {arm:<16} none")
-    name = "dg_regrade_results.json" if dg else "repair_grade_results.json"
+    name = "fill_regrade_results.json" if fill else ("dg_regrade_results.json" if dg else "repair_grade_results.json")
     (HERE / name).write_text(json.dumps(res, indent=1, default=str), encoding="utf-8")
     return 0
 

@@ -43,6 +43,9 @@ GOLD_FIX_DATE = "2026-10-18"
 # ---------------------------------------------------------------- registry --
 # fmt: V = {qid:{verdict,fields}} | P = {passed,failed[,n_pass]} |
 #      B = {qid:bool} | A = {qid:{pass,fields:{name:bool}}}
+# Gemini: unaugmented = Gemini web (multi-model unaug cells); augmented = Gemini CLI (Antigravity, agy-cli
+# harness). The Gemini CLI unaugmented runs were set aside 2026-10-21 (agy keeps coding/web-search
+# tools, so they were not a true unaugmented baseline) and are not part of the benchmark results.
 CELLS: list[tuple[str, dict]] = [
     # ---- GroundZero 50 -----------------------------------------------------
     ("groundzero", dict(model="Claude", cond="aug", src=B / "source_sets/groundzero/claude_augmented_grade_results.json",
@@ -61,9 +64,7 @@ CELLS: list[tuple[str, dict]] = [
                            "2026-10-18). Full coverage, n=43 after standard exclusions, same as "
                            "ChatGPT/Gemini; long-prose fields resolved via the grader's "
                            "JUDGMENT_RESOLUTIONS table (one rationale per field)")),
-    ("groundzero", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/groundzero/antigravity_unaugmented_grade_results.json",
-                  fmt="V", harness="agy-cli")),
-    ("groundzero", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/groundzero/antigravity_augmented_grade_results.json",
+    ("groundzero", dict(model="Gemini", cond="aug", src=B / "source_sets/groundzero/antigravity_augmented_grade_results.json",
                   fmt="V", harness="agy-cli")),
     ("groundzero", dict(model="DeepSeek", cond="aug", src=B / "source_sets/groundzero/deepseek_augmented_grade_results.json",
                   fmt="V", harness="mcp", si_only=True)),
@@ -76,9 +77,7 @@ CELLS: list[tuple[str, dict]] = [
                     fmt="OK", harness="mcp")),
     ("hard50", dict(model="*", cond="unaug", src=B / "source_sets/hard50/unaugmented_grade_stats.json", pick="baseline",
                     fmt="P", harness="cli", multi=True, count_only=True)),
-    ("hard50", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/hard50/antigravity_unaugmented_grade_results.json",
-                    fmt="V", harness="agy-cli")),
-    ("hard50", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/hard50/antigravity_augmented_grade_results.json",
+    ("hard50", dict(model="Gemini", cond="aug", src=B / "source_sets/hard50/antigravity_augmented_grade_results.json",
                     fmt="V", harness="agy-cli")),
     ("hard50", dict(model="DeepSeek", cond="aug", src=B / "source_sets/hard50/deepseek_augmented_grade_results.json",
                     fmt="OK", harness="mcp", si_only=True)),
@@ -91,9 +90,7 @@ CELLS: list[tuple[str, dict]] = [
                  fmt="P", harness="mcp")),
     ("extrahard", dict(model="ChatGPT", cond="aug", src=B / "source_sets/extrahard/augmented_runs_2026-10-12/grade_results_chatgpt.json",
                  fmt="P", harness="mcp")),
-    ("extrahard", dict(model="Gemini-CLI", cond="unaug", src=B / "source_sets/extrahard/antigravity_unaugmented_grade_results.json",
-                 fmt="A", harness="agy-cli")),
-    ("extrahard", dict(model="Gemini-CLI", cond="aug", src=B / "source_sets/extrahard/antigravity_augmented_grade_results.json",
+    ("extrahard", dict(model="Gemini", cond="aug", src=B / "source_sets/extrahard/antigravity_augmented_grade_results.json",
                  fmt="A", harness="agy-cli")),
 ]
 

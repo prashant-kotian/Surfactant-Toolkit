@@ -23,15 +23,14 @@ OUT = ROOT / "results"
 MASTER = json.loads((HERE / "../results/results.json").read_text(encoding="utf-8"))
 CELLS: dict = MASTER["cells"]
 
-MODELS = ["Claude", "ChatGPT", "DeepSeek", "Gemini", "Qwen", "Gemini-CLI"]
-DISPLAY = {"Gemini-CLI": "Antigravity CLI", "Gemini": "Gemini (web)"}
+MODELS = ["Claude", "ChatGPT", "DeepSeek", "Gemini", "Qwen"]
+DISPLAY = {"Gemini": "Gemini (unaug: web; aug: CLI)"}
 BANKS = ["groundzero", "hard50", "extrahard"]
 BANKNAME = {"groundzero": "GroundZero-50", "hard50": "Hard50 (new)", "extrahard": "ExtraHard-50"}
 
 # Manual overlay — remove entries as the corresponding backend steps land.
 PENDING = {   # §1b RESOLVED at merge 4ccbd87 (full recaptures, re-graded 2026-10-18)
-    "extrahard|Gemini-CLI|aug": "pro-high tier (retired) — disclosed, final",
-    "extrahard|Gemini-CLI|unaug": "pro-high tier (retired) — disclosed, final",
+    "extrahard|Gemini|aug": "Gemini CLI pro-high tier (retired); X-19/X-41/X-47 re-run on flash-high — disclosed",
 }
 
 

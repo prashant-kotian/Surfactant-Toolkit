@@ -122,3 +122,10 @@ def test_curly_quotes_are_normalised():
                                     (None, False)])
 def test_gz20_isotherm_choice_rule(ans, ok):
     assert G.FIELD_RULES[("GZ-20", "isotherm_model")][0](ans) is ok
+
+def test_orig_hard50_items_graded_by_the_first_release_rule():
+    gold = G.OH.GOLDS["Q07"][0][0]
+    assert G.grade_q("Q07", _final({"answer": gold}))["verdict"] == "PASS"
+    assert G.grade_q("Q07", _final({"answer": round(gold + 0.01, 4)}))["verdict"] == "FAIL"
+    assert G.grade_q("Q07", "no json here")["verdict"] == "NO_JSON"
+    assert G.QIDS_FILL["GZ26"] == "GZ-26" and G.QIDS_FILL["Q44"] == "Q44"

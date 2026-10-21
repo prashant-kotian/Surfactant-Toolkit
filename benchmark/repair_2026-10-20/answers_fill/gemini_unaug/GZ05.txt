@@ -1,0 +1,123 @@
+```python
+import numpy as np
+
+R = 8.31446261815324
+
+temps_C = np.array([30.0, 50.0, 70.0])
+temps_K = temps_C + 273.15
+cmc_mM = np.array([0.592, 0.805, 1.11])
+
+# Mole fraction
+# Assuming aqueous solution, density ~ 1kg/L, water molar mass = 18.015 g/mol
+# Molarity of water = 1000 / 18.015 = 55.508 mol/L
+X_cmc = cmc_mM * 1e-3 / 55.508
+
+inv_T = 1.0 / temps_K
+ln_X = np.log(X_cmc)
+ln_cmc = np.log(cmc_mM)
+
+# Delta H = R * d(ln X) / d(1/T)
+# For T1 and T2:
+def calc_dh(i, j):
+    return R * (ln_X[j] - ln_X[i]) / (inv_T[j] - inv_T[i])
+
+dh_30_50 = calc_dh(0, 1)
+dh_50_70 = calc_dh(1, 2)
+dh_30_70 = calc_dh(0, 2)
+
+print(f"dH (30-50): {dh_30_50/1000:.3f} kJ/mol")
+print(f"dH (50-70): {dh_50_70/1000:.3f} kJ/mol")
+print(f"dH (30-70): {dh_30_70/1000:.3f} kJ/mol")
+
+# G and S?
+# G = R * T * ln_X
+G = R * temps_K * ln_X
+# S = (H - G) / T
+# But wait, dH changes over temperature, or is it constant?
+# If we assume H is constant over the interval, then we can find G at specific T
+print("G:", G/1000)
+print("S_30_50 (using dH 30_50 and G at 40C?):")
+
+
+```
+
+```text
+dH (30-50): -12.516 kJ/mol
+dH (50-70): -14.810 kJ/mol
+dH (30-70): -13.592 kJ/mol
+G: [-28.85635851 -29.93437107 -30.87040556]
+S_30_50 (using dH 30_50 and G at 40C?):
+
+
+```
+
+```python
+def calc_dh_direct(i, j):
+    return R * (np.log(cmc_mM[j]) - np.log(cmc_mM[i])) / (1/temps_K[j] - 1/temps_K[i])
+
+print("dH (30-50):", calc_dh_direct(0, 1)/1000)
+print("dH (50-70):", calc_dh_direct(1, 2)/1000)
+print("dH (30-70):", calc_dh_direct(0, 2)/1000)
+
+
+```
+
+```text
+dH (30-50): -12.516383220568448
+dH (50-70): -14.810393734436536
+dH (30-70): -13.592399447211044
+
+
+```
+
+To determine the thermodynamics of micellization for hexadecanesulfonic acid (SMILES: `CCCCCCCCCCCCCCCCS(=O)(=O)O`) from the provided Critical Micelle Concentration (CMC) values, we must analyze the temperature dependence of the CMC using the van't Hoff (Gibbs-Helmholtz) relationship.
+
+### 1. Enthalpy of Micellization ($\Delta H_{mic}$)
+
+From first principles, the van't Hoff equation relates the equilibrium constant of micellization to the apparent enthalpy of micellization. For a surfactant, this is expressed as:
+
+
+$$\frac{d(\ln CMC)}{d(1/T)} = \frac{\Delta H_{mic}}{R}$$
+
+
+*(Note: Because this is a derivative of a natural logarithm, any multiplicative constant used to convert CMC into standard state units—such as converting mM to mole fraction by dividing by 55,508 mM—vanishes. Thus, $\Delta H$ is independent of the choice of standard concentration state).*
+
+Integrating between two temperatures $T_1$ and $T_2$ yields:
+
+
+$$\ln\left(\frac{CMC_2}{CMC_1}\right) = -\frac{\Delta H_{mic}}{R} \left(\frac{1}{T_2} - \frac{1}{T_1}\right)$$
+
+
+Where $R = 8.314 \text{ J/(mol K)}$. Let's calculate $\Delta H_{mic}$ using the given data (temperatures must be in Kelvin):
+
+* $T_1 = 30.0^\circ\text{C} = 303.15\text{ K}$, $CMC_1 = 0.592\text{ mM}$
+* $T_2 = 50.0^\circ\text{C} = 323.15\text{ K}$, $CMC_2 = 0.805\text{ mM}$
+* $T_3 = 70.0^\circ\text{C} = 343.15\text{ K}$, $CMC_3 = 1.11\text{ mM}$
+
+**Calculations:**
+
+* **30 °C to 50 °C:**
+$\Delta H = -8.314 \times \frac{\ln(0.805 / 0.592)}{(1/323.15 - 1/303.15)} = -12,516 \text{ J/mol} = \mathbf{-12.52 \text{ kJ/mol}}$
+* **50 °C to 70 °C:**
+$\Delta H = -8.314 \times \frac{\ln(1.11 / 0.805)}{(1/343.15 - 1/323.15)} = -14,810 \text{ J/mol} = \mathbf{-14.81 \text{ kJ/mol}}$
+* **Widest Span (30 °C to 70 °C):**
+$\Delta H = -8.314 \times \frac{\ln(1.11 / 0.592)}{(1/343.15 - 1/303.15)} = -13,592 \text{ J/mol} = \mathbf{-13.59 \text{ kJ/mol}}$
+
+**Consistency Check:**
+The adjacent temperature pairs yield values that differ by ~18% (-12.52 vs -14.81 kJ/mol). They do not perfectly agree. This lack of self-consistency under a constant-enthalpy van't Hoff assumption reveals a non-zero heat capacity of micellization ($\Delta C_{p,mic} \approx -114 \text{ J/mol K}$). This is physically expected due to the hydrophobic effect, which causes the van't Hoff plot to curve rather than form a perfectly straight line.
+
+### 2. Free Energy ($\Delta G_{mic}$) and Entropy ($\Delta S_{mic}$)
+
+These properties **cannot be genuinely determined** from the given information alone, for two primary reasons:
+
+1. **Missing Counterion Binding Degree ($\beta$):** Hexadecanesulfonic acid is an ionic surfactant. The true standard free energy of micellization for an ionic surfactant is $\Delta G_{mic}^\circ = (1 + \beta)RT \ln(X_{cmc})$. Without experimental data (e.g., from conductivity measurements) to determine $\beta$ (the fraction of counterions bound to the micelle), the true magnitudes of $\Delta G$ and $\Delta S$ are unknown.
+2. **Standard State Dependence:** Unlike enthalpy, calculating $\Delta G = RT \ln(CMC)$ does not utilize a derivative, meaning the result is highly sensitive to standard state unit assumptions. Using molarity vs. mole fraction yields drastically differing free energy and entropy values.
+
+FINAL_JSON:
+{
+"delta_h_endpoint_kJ_per_mol": -13.592,
+"sub_intervals": [{"t_lo_C": 30.0, "t_hi_C": 50.0, "delta_h_kJ_per_mol": -12.516}, {"t_lo_C": 50.0, "t_hi_C": 70.0, "delta_h_kJ_per_mol": -14.810}],
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": null,
+"delta_s_mic_J_per_mol_K": null
+}

@@ -1,5 +1,5 @@
 model	unaug_pct	unaug_lo	unaug_hi	aug_pct	aug_lo	aug_hi	lift_pp	ci_overlap
-Claude	64.1	57.3	70.5	96.0	92.3	97.9	31.9	no
-ChatGPT	65.1	58.2	71.5	93.5	89.1	96.1	28.4	no
-DeepSeek	60.6	53.7	67.1	92.3	87.8	95.3	31.7	no
-Gemini-CLI	81.5	74.4	87.0	99.0	96.4	99.7	17.5	no
+Claude	64.5	57.7	70.8	96.0	92.3	98.0	31.5	no
+ChatGPT	64.0	57.1	70.3	93.5	89.2	96.2	29.5	no
+DeepSeek	61.0	54.1	67.5	92.0	87.4	95.0	31.0	no
+Gemini	50.5	43.6	57.4	99.0	96.4	99.7	48.5	no

@@ -1,0 +1,10 @@
+{
+ "run": "2026-10-21",
+ "mode": "manual (run by the author in the browser)",
+ "question_file": "paste_orig_unaug (tool-free text + FINAL_JSON)",
+ "qid": "Q07",
+ "provider": "claude",
+ "condition": "unaug",
+ "settings": "Opus 4.8, effort High, incognito, all connectors/web search off",
+ "web_search_used": false
+}

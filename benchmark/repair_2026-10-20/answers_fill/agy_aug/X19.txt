@@ -1,0 +1,28 @@
+---
+
+### X19 — Zeta Potential: Unit Chain + Relaxation Correction
+
+#### 1. Unit Conversions & Henry Plain Formula
+- Electrophoretic mobility:
+  $$\mu_{\text{SI}} = 4.10 \times 10^{-8}\text{ m}^2/(\text{V}\cdot\text{s})$$
+- Viscosity:
+  $$\eta_{\text{SI}} = 0.89\text{ mPa}\cdot\text{s} = 0.89 \times 10^{-3}\text{ Pa}\cdot\text{s}$$
+- Dielectric permittivity:
+  $$\varepsilon_r \varepsilon_0 = 78.4 \times 8.8541878128 \times 10^{-12}\text{ F/m} \approx 6.941683 \times 10^{-10}\text{ F/m}$$
+- For Smoluchowski regime ($f = 1.5$):
+  $$\zeta_{\text{plain}} = \frac{3 \eta_{\text{SI}} \mu_{\text{SI}}}{2 \varepsilon_r \varepsilon_0 f} = \frac{\eta_{\text{SI}} \mu_{\text{SI}}}{\varepsilon_r \varepsilon_0} = \frac{0.89 \times 10^{-3} \times 4.10 \times 10^{-8}}{6.941683 \times 10^{-10}} \approx 0.0525665\text{ V} = 52.5665\text{ mV}$$
+- Computed using `zeta_potential(electrophoretic_mobility_um_cm_per_Vs=4.10, viscosity_mPas=0.89, regime='smoluchowski')`:
+  $$\zeta_{\text{plain}} = 52.5665\text{ mV}$$
+
+#### 2. Relaxation-Corrected Determination
+- Using `zeta_potential_relaxation_corrected(electrophoretic_mobility_um_cm_per_Vs=4.10, viscosity_mPas=0.89, kappa_a=14.5, z=1, m=0.15, temperature_K=298.15)`:
+  $$\zeta_{\text{corr}} = 69.4550\text{ mV}$$
+
+#### 3. Relative Shift & Comparison
+- Percentage shift:
+  $$\text{shift} = \frac{|\zeta_{\text{corr}} - \zeta_{\text{plain}}|}{|\zeta_{\text{plain}}|} \times 100 = \frac{|69.4550 - 52.5665|}{52.5665} \times 100 = 32.1279\%$$
+- Magnitude comparison:
+  $$\text{larger} = \text{"corrected"}$$
+
+=== X19 ===
+FINAL_JSON: {"mu_SI": 4.10e-8, "zeta_plain_mV": 52.5665, "zeta_corr_mV": 69.4550, "shift_pct": 32.1279, "larger": "corrected"}

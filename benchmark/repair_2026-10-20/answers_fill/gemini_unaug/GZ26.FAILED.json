@@ -1,0 +1,10 @@
+{
+ "qid": "GZ26",
+ "provider": "gemini",
+ "condition": "unaug",
+ "start": "2026-10-21T20:33:13+0530",
+ "model_seen": "Gemini 3.1 Pro, thinking High",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-21T20:34:39+0530",
+ "failed": "provider glitch (no answer produced) -- will retry on a fresh chat"
+}

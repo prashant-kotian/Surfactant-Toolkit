@@ -5,24 +5,21 @@
 \toprule
 Source set & Model & passed & n & \% & flags \\
 \midrule
-GroundZero-50 & Claude & 33 & 49 & 67.3 &  \\
-GroundZero-50 & ChatGPT & 31 & 49 & 63.3 &  \\
-GroundZero-50 & DeepSeek & 32 & 48 & 66.7 & partial coverage (n=48) \\
-GroundZero-50 & Gemini (web) & 15 & 40 & 37.5 & partial coverage (n=40) \\
-GroundZero-50 & Qwen & 31 & 49 & 63.3 &  \\
-GroundZero-50 & Antigravity CLI & 48 & 49 & 98.0 &  \\
+GroundZero-50 & Claude & 34 & 50 & 68.0 &  \\
+GroundZero-50 & ChatGPT & 32 & 50 & 64.0 &  \\
+GroundZero-50 & DeepSeek & 34 & 50 & 68.0 &  \\
+GroundZero-50 & Gemini (unaug: web; aug: CLI) & 19 & 50 & 38.0 &  \\
+GroundZero-50 & Qwen & 32 & 50 & 64.0 &  \\
 Hard50 (new) & Claude & 36 & 50 & 72.0 &  \\
 Hard50 (new) & ChatGPT & 36 & 50 & 72.0 & count-only \\
 Hard50 (new) & DeepSeek & 34 & 50 & 68.0 & count-only \\
-Hard50 (new) & Gemini (web) & 32 & 50 & 64.0 & count-only \\
+Hard50 (new) & Gemini (unaug: web; aug: CLI) & 32 & 50 & 64.0 & count-only \\
 Hard50 (new) & Qwen & 33 & 50 & 66.0 & count-only \\
-Hard50 (new) & Antigravity CLI & 48 & 50 & 96.0 &  \\
 ExtraHard-50 & Claude & 33 & 50 & 66.0 & count-only \\
 ExtraHard-50 & ChatGPT & 33 & 50 & 66.0 & count-only \\
 ExtraHard-50 & DeepSeek & 28 & 50 & 56.0 & count-only \\
-ExtraHard-50 & Gemini (web) & 27 & 50 & 54.0 & count-only \\
+ExtraHard-50 & Gemini (unaug: web; aug: CLI) & 27 & 50 & 54.0 & count-only \\
 ExtraHard-50 & Qwen & 21 & 50 & 42.0 & count-only \\
-ExtraHard-50 & Antigravity CLI & 23 & 47 & 48.9 & pro-high tier (retired) — disclosed, final \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -33,18 +30,18 @@ ExtraHard-50 & Antigravity CLI & 23 & 47 & 48.9 & pro-high tier (retired) — di
 \toprule
 Source set & Model & passed & n & \% & flags \\
 \midrule
-GroundZero-50 & Claude & 43 & 49 & 87.8 &  \\
-GroundZero-50 & ChatGPT & 39 & 49 & 79.6 &  \\
-GroundZero-50 & DeepSeek & 39 & 46 & 84.8 & SI-only; partial coverage (n=46) \\
-GroundZero-50 & Antigravity CLI & 47 & 49 & 95.9 &  \\
+GroundZero-50 & Claude & 44 & 50 & 88.0 &  \\
+GroundZero-50 & ChatGPT & 40 & 50 & 80.0 &  \\
+GroundZero-50 & DeepSeek & 42 & 50 & 84.0 & SI-only \\
+GroundZero-50 & Gemini (unaug: web; aug: CLI) & 48 & 50 & 96.0 &  \\
 Hard50 (new) & Claude & 48 & 50 & 96.0 &  \\
 Hard50 (new) & ChatGPT & 47 & 50 & 94.0 &  \\
 Hard50 (new) & DeepSeek & 46 & 50 & 92.0 & SI-only \\
-Hard50 (new) & Antigravity CLI & 50 & 50 & 100.0 &  \\
+Hard50 (new) & Gemini (unaug: web; aug: CLI) & 50 & 50 & 100.0 &  \\
 ExtraHard-50 & Claude & 50 & 50 & 100.0 & count-only \\
 ExtraHard-50 & ChatGPT & 50 & 50 & 100.0 & count-only \\
 ExtraHard-50 & DeepSeek & 47 & 50 & 94.0 & count-only \\
-ExtraHard-50 & Antigravity CLI & 47 & 47 & 100.0 & pro-high tier (retired) — disclosed, final \\
+ExtraHard-50 & Gemini (unaug: web; aug: CLI) & 50 & 50 & 100.0 & Gemini CLI pro-high tier (retired); X-19/X-41/X-47 re-run on flash-high — disclosed \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -55,18 +52,18 @@ ExtraHard-50 & Antigravity CLI & 47 & 47 & 100.0 & pro-high tier (retired) — d
 \toprule
 Source set & Model & unaug \% & aug \% & Δ pts & comparability \\
 \midrule
-GroundZero-50 & Claude & 67.3 & 87.8 & +20.5 & ok \\
-GroundZero-50 & ChatGPT & 63.3 & 79.6 & +16.3 & ok \\
-GroundZero-50 & DeepSeek & 66.7 & 84.8 & +18.1 & ok \\
-GroundZero-50 & Antigravity CLI & 98.0 & 95.9 & -2.1 & ok \\
+GroundZero-50 & Claude & 68.0 & 88.0 & +20.0 & ok \\
+GroundZero-50 & ChatGPT & 64.0 & 80.0 & +16.0 & ok \\
+GroundZero-50 & DeepSeek & 68.0 & 84.0 & +16.0 & ok \\
+GroundZero-50 & Gemini (unaug: web; aug: CLI) & 38.0 & 96.0 & +58.0 & harness differs \\
 Hard50 (new) & Claude & 72.0 & 96.0 & +24.0 & ok \\
 Hard50 (new) & ChatGPT & 72.0 & 94.0 & +22.0 & harness differs \\
 Hard50 (new) & DeepSeek & 68.0 & 92.0 & +24.0 & harness differs \\
-Hard50 (new) & Antigravity CLI & 96.0 & 100.0 & +4.0 & ok \\
+Hard50 (new) & Gemini (unaug: web; aug: CLI) & 64.0 & 100.0 & +36.0 & harness differs \\
 ExtraHard-50 & Claude & 66.0 & 100.0 & +34.0 & ok \\
 ExtraHard-50 & ChatGPT & 66.0 & 100.0 & +34.0 & ok \\
 ExtraHard-50 & DeepSeek & 56.0 & 94.0 & +38.0 & ok \\
-ExtraHard-50 & Antigravity CLI & 48.9 & 100.0 & +51.1 & pro-high tier \\
+ExtraHard-50 & Gemini (unaug: web; aug: CLI) & 54.0 & 100.0 & +46.0 & Gemini CLI pro-high tier; harness differs \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -77,9 +74,9 @@ ExtraHard-50 & Antigravity CLI & 48.9 & 100.0 & +51.1 & pro-high tier \\
 \toprule
 Source set & n & n cells & excluded & reason \\
 \midrule
-GroundZero-50 & 50 & 40/46/48/49 & GZ-26 & question requires image/chart input the harnesses cannot deliver \\
+GroundZero-50 & 50 & 50 & — & — \\
 Hard50 (new) & 50 & 50 & — & — \\
-ExtraHard-50 & 50 & 47/50 & X-19, X-41, X-47 & question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set \\
+ExtraHard-50 & 50 & 50 & — & — \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -96,28 +93,25 @@ extrahard / Claude / aug & 50/50 & 100.0 & mcp & benchmark/source\_sets/extrahar
 extrahard / Claude / unaug & 33/50 & 66.0 & mcp & benchmark/transcripts/extrahard50\_unaugmented/grade\_results.json & 5455c165d6ef & post-fix & count-only \\
 extrahard / DeepSeek / aug & 47/50 & 94.0 & mcp & benchmark/source\_sets/extrahard/augmented\_runs\_2026-10-12/grade\_results\_augmented.json & 03c5689f29cd & post-fix & count-only \\
 extrahard / DeepSeek / unaug & 28/50 & 56.0 & mcp & benchmark/transcripts/extrahard50\_unaugmented/grade\_results.json & 5455c165d6ef & post-fix & count-only \\
-extrahard / Gemini-CLI / aug & 47/47 & 100.0 & agy-cli & benchmark/source\_sets/extrahard/antigravity\_augmented\_grade\_results.json & 6043b0793db0 & post-fix & pro-high tier (retired) — disclosed, final \\
-extrahard / Gemini-CLI / unaug & 23/47 & 48.9 & agy-cli & benchmark/source\_sets/extrahard/antigravity\_unaugmented\_grade\_results.json & a22ae6e7d157 & post-fix & pro-high tier (retired) — disclosed, final \\
+extrahard / Gemini / aug & 50/50 & 100.0 & agy-cli & benchmark/source\_sets/extrahard/antigravity\_augmented\_grade\_results.json & 6043b0793db0 & post-fix & Gemini CLI pro-high tier (retired); X-19/X-41/X-47 re-run on flash-high — disclosed \\
 extrahard / Gemini / unaug & 27/50 & 54.0 & mcp & benchmark/transcripts/extrahard50\_unaugmented/grade\_results.json & 5455c165d6ef & post-fix & count-only \\
 extrahard / Qwen / unaug & 21/50 & 42.0 & mcp & benchmark/transcripts/extrahard50\_unaugmented/grade\_results.json & 5455c165d6ef & post-fix & count-only \\
-groundzero / ChatGPT / aug & 39/49 & 79.6 & mcp & benchmark/source\_sets/groundzero/chatgpt\_augmented\_grade\_results.json & 26bf68e59aa6 & post-fix &  \\
-groundzero / ChatGPT / unaug & 31/49 & 63.3 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix &  \\
-groundzero / Claude / aug & 43/49 & 87.8 & mcp & benchmark/source\_sets/groundzero/claude\_augmented\_grade\_results.json & a0bc7ccb7625 & post-fix &  \\
-groundzero / Claude / unaug & 33/49 & 67.3 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix &  \\
-groundzero / DeepSeek / aug & 39/46 & 84.8 & mcp & benchmark/source\_sets/groundzero/deepseek\_augmented\_grade\_results.json & 42ac653966c4 & post-fix & SI-only; partial coverage (n=46) \\
-groundzero / DeepSeek / unaug & 32/48 & 66.7 & mcp & benchmark/source\_sets/groundzero/deepseek\_unaugmented\_grade\_results.json & 2e8f8288e360 & post-fix & partial coverage (n=48) \\
-groundzero / Gemini-CLI / aug & 47/49 & 95.9 & agy-cli & benchmark/source\_sets/groundzero/antigravity\_augmented\_grade\_results.json & 5a753572989a & post-fix &  \\
-groundzero / Gemini-CLI / unaug & 48/49 & 98.0 & agy-cli & benchmark/source\_sets/groundzero/antigravity\_unaugmented\_grade\_results.json & c58703abce24 & post-fix &  \\
-groundzero / Gemini / unaug & 15/40 & 37.5 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix & partial coverage (n=40) \\
-groundzero / Qwen / unaug & 31/49 & 63.3 & mcp & benchmark/source\_sets/groundzero/qwen\_unaugmented\_grade\_results.json & f8b8615eb935 & post-fix &  \\
+groundzero / ChatGPT / aug & 40/50 & 80.0 & mcp & benchmark/source\_sets/groundzero/chatgpt\_augmented\_grade\_results.json & 26bf68e59aa6 & post-fix &  \\
+groundzero / ChatGPT / unaug & 32/50 & 64.0 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix &  \\
+groundzero / Claude / aug & 44/50 & 88.0 & mcp & benchmark/source\_sets/groundzero/claude\_augmented\_grade\_results.json & a0bc7ccb7625 & post-fix &  \\
+groundzero / Claude / unaug & 34/50 & 68.0 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix &  \\
+groundzero / DeepSeek / aug & 42/50 & 84.0 & mcp & benchmark/source\_sets/groundzero/deepseek\_augmented\_grade\_results.json & 42ac653966c4 & post-fix & SI-only \\
+groundzero / DeepSeek / unaug & 34/50 & 68.0 & mcp & benchmark/source\_sets/groundzero/deepseek\_unaugmented\_grade\_results.json & 2e8f8288e360 & post-fix &  \\
+groundzero / Gemini / aug & 48/50 & 96.0 & agy-cli & benchmark/source\_sets/groundzero/antigravity\_augmented\_grade\_results.json & 5a753572989a & post-fix &  \\
+groundzero / Gemini / unaug & 19/50 & 38.0 & mcp & benchmark/source\_sets/groundzero/unaugmented\_2026-09-21/grade\_results.json & af7478178bb7 & post-fix &  \\
+groundzero / Qwen / unaug & 32/50 & 64.0 & mcp & benchmark/source\_sets/groundzero/qwen\_unaugmented\_grade\_results.json & f8b8615eb935 & post-fix &  \\
 hard50 / ChatGPT / aug & 47/50 & 94.0 & mcp & benchmark/source\_sets/hard50/chatgpt\_augmented\_grade\_results.json & 33cd934a4128 & post-fix &  \\
 hard50 / ChatGPT / unaug & 36/50 & 72.0 & cli & benchmark/source\_sets/hard50/unaugmented\_grade\_stats.json & c39dc851fee0 & not field-verifiable & count-only \\
 hard50 / Claude / aug & 48/50 & 96.0 & mcp & benchmark/source\_sets/hard50/claude\_augmented\_grade\_results.json & ecbb39aa68e1 & post-fix &  \\
 hard50 / Claude / unaug & 36/50 & 72.0 & mcp & benchmark/source\_sets/hard50/claude\_unaugmented\_grade\_results.json & 03ebde500fa9 & post-fix &  \\
 hard50 / DeepSeek / aug & 46/50 & 92.0 & mcp & benchmark/source\_sets/hard50/deepseek\_augmented\_grade\_results.json & 2ae21eb719d3 & post-fix & SI-only \\
 hard50 / DeepSeek / unaug & 34/50 & 68.0 & cli & benchmark/source\_sets/hard50/unaugmented\_grade\_stats.json & c39dc851fee0 & not field-verifiable & count-only \\
-hard50 / Gemini-CLI / aug & 50/50 & 100.0 & agy-cli & benchmark/source\_sets/hard50/antigravity\_augmented\_grade\_results.json & bedea6408f77 & post-fix &  \\
-hard50 / Gemini-CLI / unaug & 48/50 & 96.0 & agy-cli & benchmark/source\_sets/hard50/antigravity\_unaugmented\_grade\_results.json & bde27dffc7f2 & post-fix &  \\
+hard50 / Gemini / aug & 50/50 & 100.0 & agy-cli & benchmark/source\_sets/hard50/antigravity\_augmented\_grade\_results.json & bedea6408f77 & post-fix &  \\
 hard50 / Gemini / unaug & 32/50 & 64.0 & cli & benchmark/source\_sets/hard50/unaugmented\_grade\_stats.json & c39dc851fee0 & not field-verifiable & count-only \\
 hard50 / Qwen / unaug & 33/50 & 66.0 & cli & benchmark/source\_sets/hard50/unaugmented\_grade\_stats.json & c39dc851fee0 & not field-verifiable & count-only \\
 \bottomrule

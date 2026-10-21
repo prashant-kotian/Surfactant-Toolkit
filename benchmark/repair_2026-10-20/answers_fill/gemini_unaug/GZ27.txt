@@ -1,0 +1,114 @@
+```python
+import math
+
+# Constants
+k_b = 1.380649e-23
+T = 298.15
+eta = 0.8903e-3
+D = 9.3e-11
+n_c = 12
+a = 44.70
+
+# Step 1
+V = 27.4 + 26.9 * n_c
+l_c = 1.5 + 1.265 * n_c
+cpp = V / (a * l_c)
+
+print(f"V: {V}")
+print(f"l_c: {l_c}")
+print(f"cpp: {cpp}")
+
+# Step 2
+N_agg = 63
+V_core = N_agg * V
+b = l_c
+a_major = V_core / ((4/3) * math.pi * b**2)
+p = a_major / b
+print(f"a_major: {a_major}")
+print(f"axial ratio p: {p}")
+
+# Step 3
+R_h_naive = k_b * T / (6 * math.pi * eta * D)
+R_h_naive_nm = R_h_naive * 1e9
+print(f"R_h_naive_nm: {R_h_naive_nm}")
+
+# Step 4
+# Perrin friction factor for prolate ellipsoid
+def perrin_prolate(p):
+    return math.sqrt(p**2 - 1) / (p**(1/3) * math.log(p + math.sqrt(p**2 - 1)))
+
+F = perrin_prolate(p)
+print(f"Perrin factor F: {F}")
+R_0 = R_h_naive_nm / F
+print(f"R_0_nm: {R_0}")
+
+
+```
+
+```text
+V: 350.19999999999993
+l_c: 16.68
+cpp: 0.4696913610051555
+a_major: 18.931106090627047
+axial ratio p: 1.134958398718648
+R_h_naive_nm: 2.6375314771819345
+Perrin factor F: 1.0014305290682397
+R_0_nm: 2.633763801505004
+
+
+```
+
+To analyze the properties of the surfactant micelle from first principles, we break the calculations down into the core geometry, packing parameters, and hydrodynamic size.
+
+### 1. Surfactant Geometry & Morphology
+
+Using Tanford's standard empirical relations for a saturated alkyl chain with $n_c = 12$ carbons:
+
+* **Tail volume ($V$):**
+$V = 27.4 + 26.9(12) = 350.2 \, \text{\AA}^3$
+* **Critical chain length ($l_c$):**
+$l_c = 1.5 + 1.265(12) = 16.68 \, \text{\AA}$
+* **Critical packing parameter ($P$):**
+$P = \frac{V}{a \cdot l_c} = \frac{350.2}{44.70 \times 16.68} \approx 0.4697$
+* **Morphology:**
+Since $1/3 < P \le 1/2$, the preferred geometry is a **cylindrical/rodlike micelle**.
+
+### 2. Micelle Core Axial Ratio
+
+Given the aggregation number $N_{agg} = 63$ and the prolate ellipsoid model where the minor semi-axis $b = l_c$:
+
+* **Micelle core volume ($V_{core}$):**
+$V_{core} = N_{agg} \times V = 63 \times 350.2 = 22,062.6 \, \text{\AA}^3$
+* **Major semi-axis ($a$):**
+$V_{core} = \frac{4}{3} \pi a b^2$
+$22,062.6 = \frac{4}{3} \pi \cdot a \cdot (16.68)^2 \implies a \approx 18.931 \, \text{\AA}$
+* **Axial ratio ($p$):**
+$p = \frac{a}{b} = \frac{18.931}{16.68} \approx 1.135$
+
+### 3. Hydrodynamic Radius (Naive vs. Perrin-Corrected)
+
+The experimental diffusion coefficient is $D = 9.3 \times 10^{-11} \, \text{m}^2/\text{s}$, temperature $T = 298.15 \, \text{K}$, and viscosity $\eta = 0.8903 \times 10^{-3} \, \text{Pa}\cdot\text{s}$.
+
+* **Naive Stokes-Einstein Radius ($R_{h,naive}$):**
+Assuming a perfect sphere:
+$R_{h,naive} = \frac{k_B T}{6 \pi \eta D} = \frac{1.3806 \times 10^{-23} \cdot 298.15}{6 \pi (0.8903 \times 10^{-3}) (9.3 \times 10^{-11})} \approx 2.6375 \times 10^{-9} \, \text{m} = 2.6375 \, \text{nm}$
+* **Perrin Friction Correction ($F$):**
+A prolate ellipsoid experiences more drag than a sphere of the equivalent volume ($R_0$). The shape correction factor $F(p)$ for $p = 1.135$ is:
+$F(p) = \frac{\sqrt{p^2 - 1}}{p^{1/3} \ln(p + \sqrt{p^2 - 1})} \approx 1.00143$
+* **True Volume-Equivalent Radius ($R_0$):**
+$R_0 = \frac{R_{h,naive}}{F(p)} = \frac{2.6375}{1.00143} \approx 2.6338 \, \text{nm}$
+
+**Correction Direction & Reasoning:**
+The shape-corrected (true) volume-equivalent radius is **smaller** than the naive estimate. Because an ellipsoid has a larger surface-area-to-volume ratio than a sphere, it generates higher frictional drag. A perfect sphere would need to be artificially bloated to a larger volume (the naive radius) to exhibit the same sluggish diffusion as the more streamlined but drag-heavy ellipsoid.
+
+FINAL_JSON:
+{
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp": 0.469691,
+"morphology": "cylindrical/rodlike micelle",
+"axial_ratio": 1.134958,
+"rh_naive_stokes_einstein_nm": 2.637531,
+"rh_perrin_corrected_nm": 2.633764,
+"direction_of_correction": "smaller, because non-spherical shape increases drag factor relative to equivalent volume sphere"
+}

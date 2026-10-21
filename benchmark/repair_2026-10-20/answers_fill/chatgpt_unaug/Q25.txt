@@ -1,0 +1,13 @@
+Using \(I=\mathrm{CMC}=0.0082\ \mathrm{M}\) at \(298.15\ \mathrm{K}\) with \(\varepsilon_r=78.5\):
+
+\[
+\kappa^{-1}=33.594\ \text{Å},\qquad
+a_e=\frac{24.7}{\sqrt{1+\kappa(16.7)}}=20.187\ \text{Å}^2.
+\]
+
+This applies the Debye–Hückel screening correction used in the molecular-thermodynamic model. [doczz.net](https://doczz.net/doc/7990332/molecular-packing-parameter-and-surfactant-self?utm_source=chatgpt.com)
+
+FINAL_JSON:
+{
+  "answer": 20.187
+}

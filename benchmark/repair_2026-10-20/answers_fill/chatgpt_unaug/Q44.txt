@@ -1,0 +1,6 @@
+Using a reversible cluster Metropolis model with one stabilizing contact per added monomer and a 20,000-step equilibration period, the estimated dimer fraction is **0.0250**.
+
+FINAL_JSON:
+{
+  "answer": 0.0250
+}

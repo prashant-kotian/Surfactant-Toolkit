@@ -1,0 +1,26 @@
+## Rodenas' method
+
+The Rodenas approach applies the Gibbs–Duhem relation to the micellar pseudophase, treating the monomer concentration of each component at the mixed CMC as αᵢ·cmc. This yields:
+
+$$\frac{d\ln c_{mix}}{d\alpha_1} = \frac{1-x_1}{1-\alpha_1} - \frac{x_1}{\alpha_1} = \frac{\alpha_1 - x_1}{\alpha_1\alpha_2}$$
+
+Solving for the micellar mole fraction:
+
+$$x_1 = \alpha_1 - \alpha_1\alpha_2\,\frac{d\ln c_{mix}}{d\alpha_1}$$
+
+## Calculation
+
+With α₁ = 0.55, α₂ = 1 − 0.55 = 0.45, and slope = −0.83:
+
+$$x_1 = 0.55 - (0.55)(0.45)(-0.83)$$
+$$x_1 = 0.55 - (0.2475)(-0.83)$$
+$$x_1 = 0.55 + 0.205425 = 0.755425$$
+
+Rounded to 4 decimal places: **x₁ = 0.7554**
+
+The negative slope (CMC drops as the surfactant 1 fraction increases) drives the micelle to be richer in component 1 than the bulk (0.7554 vs. 0.55), consistent with synergistic mixing.
+
+FINAL_JSON:
+{
+  "answer": 0.7554
+}

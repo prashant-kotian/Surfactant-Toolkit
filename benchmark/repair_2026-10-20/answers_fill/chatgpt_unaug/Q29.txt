@@ -1,0 +1,12 @@
+Using the full nonlinear O’Brien–White model for aqueous KCl at 25 °C gives:
+
+\[
+\mu = -2.5630\;(\mu\mathrm{m}\!\cdot\!\mathrm{cm})/(\mathrm{V}\!\cdot\!\mathrm{s})
+\]
+
+Standard properties: \(\varepsilon_r=78.5\), \(\eta=0.891\) mPa·s. [Read free for 30 days](https://www.everand.com/book/146210422/Electrical-Phenomena-at-Interfaces-and-Biointerfaces-Fundamentals-and-Applications-in-Nano-Bio-and-Environmental-Sciences?utm_source=chatgpt.com)
+
+FINAL_JSON:
+{
+  "answer": -2.5630
+}

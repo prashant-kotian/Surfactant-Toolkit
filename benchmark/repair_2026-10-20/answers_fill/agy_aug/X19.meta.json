@@ -1,0 +1,1 @@
+{"qid": "X19", "provider": "gemini-cli", "condition": "aug", "model": "gemini-3.8-flash-high", "mcp": "surfactant-computation (agy mcp_config)", "batch": "agy_fill/fill_aug_batch1.txt", "run": "2026-10-21 19:17"}

@@ -9,8 +9,8 @@
 
 2. Chart/typo repair (10 questions excluded until now: GZ-15, GZ-36..40, H-36..38, X-19). Re-run on
    2026-10-20 with the chart attached / corrected X-19 text and graded by grade_repair.py. Arms whose
-   original runs already delivered the charts (DeepSeek augmented except GZ-36; Gemini-CLI both
-   conditions) keep their original verdicts. A question stays excluded for an arm only when it has
+   original runs already delivered the charts (DeepSeek augmented except GZ-36; Gemini CLI
+   augmented) keep their original verdicts. A question stays excluded for an arm only when it has
    no gradable re-run answer (reason logged).
 
 3. Counterion-factor correction (14 questions). The question text of GZ-16, GZ-20, H-02, H-03, H-08,
@@ -43,21 +43,17 @@ ARM = {("Claude", "unaug"): "claude_unaug", ("Claude", "aug"): "claude_aug",
        ("ChatGPT", "unaug"): "chatgpt_unaug", ("ChatGPT", "aug"): "chatgpt_aug",
        ("DeepSeek", "unaug"): "deepseek_unaug", ("DeepSeek", "aug"): "deepseek_aug",
        ("Qwen", "unaug"): "qwen_unaug", ("Gemini", "unaug"): "gemini_unaug",
-       ("Gemini-CLI", "unaug"): "agy_unaug", ("Gemini-CLI", "aug"): "agy_aug"}
+       ("Gemini", "aug"): "agy_aug"}   # Gemini augmented arm = Gemini CLI (Antigravity)
 
 REPAIR = {"groundzero": ["GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40"],
           "hard50": ["H-36", "H-37", "H-38"], "extrahard": ["X-19"]}
 CHARTS_ORIGINALLY_DELIVERED = {
     ("DeepSeek", "aug"): {"GZ-15", "GZ-37", "GZ-38", "GZ-39", "GZ-40", "H-36", "H-37", "H-38"},
-    ("Gemini-CLI", "unaug"): {"GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40", "H-36", "H-37", "H-38"},
-    ("Gemini-CLI", "aug"): {"GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40", "H-36", "H-37", "H-38"},
+    ("Gemini", "aug"): {"GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40", "H-36", "H-37", "H-38"},
 }
-NOT_RERUN = {(("Gemini-CLI", "unaug"), "X-19"): "Gemini-CLI extrahard tier retired; X-19 not re-run",
-             (("Gemini-CLI", "aug"), "X-19"): "Gemini-CLI extrahard tier retired; X-19 not re-run",
-             (("Gemini-CLI", "unaug"), "X-41"): "Gemini-CLI extrahard tier retired; not re-run on corrected text",
-             (("Gemini-CLI", "aug"), "X-41"): "Gemini-CLI extrahard tier retired; not re-run on corrected text",
-             (("Gemini-CLI", "unaug"), "X-47"): "Gemini-CLI extrahard tier retired; not re-run on corrected text",
-             (("Gemini-CLI", "aug"), "X-47"): "Gemini-CLI extrahard tier retired; not re-run on corrected text"}
+NOT_RERUN = {(("Gemini", "aug"), "X-19"): "Gemini-CLI extrahard tier retired; X-19 not re-run",
+             (("Gemini", "aug"), "X-41"): "Gemini-CLI extrahard tier retired; not re-run on corrected text",
+             (("Gemini", "aug"), "X-47"): "Gemini-CLI extrahard tier retired; not re-run on corrected text"}
 
 DG = {"groundzero": ["GZ-16", "GZ-20"],
       "hard50": ["H-02", "H-03", "H-08", "H-16", "H-19", "H-31", "H-38", "H-46", "H-47", "H-49"],
@@ -79,6 +75,7 @@ def _results(name: str) -> dict:
 
 REPAIR_RES = _results("repair_grade_results.json")
 DG_RES = _results("dg_regrade_results.json")
+FILL_RES = _results("fill_regrade_results.json")
 
 
 def _head(v) -> str:
@@ -192,13 +189,38 @@ def apply(bank: str, model: str, cond: str, verdicts: dict, obj, excluded: list[
             log.append(dict(qid=q, change="replaced by corrected-text re-run", verdict=f"{old}->{got == 'PASS'}"))
         else:
             exclude(q, f"awaiting gradable re-run on corrected text ({raw or 'not run yet'})")
+
+    # 4. Net-200 fill (2026-10-21): GZ-26 re-run on the current text, answers never captured in the
+    #    original runs, Gemini-CLI augmented X-19/X-41/X-47. A gradable fill answer replaces the
+    #    exclusion or the missing record for that arm; anything else stays as above.
+    for q, r in sorted((FILL_RES.get(arm) or {}).items()) if arm else []:
+        if not q.startswith(BANK_PREFIX.get(bank, "?")) or r.get("verdict") not in ("PASS", "FAIL"):
+            continue
+        old_v = v.get(q)
+        lift(q)
+        v[q] = r["verdict"] == "PASS"
+        log[:] = [e for e in log if not (e.get("qid") == q and e.get("change") in ("excluded", "stays excluded"))]
+        log.append(dict(qid=q, change="included (net-200 fill re-run)",
+                        verdict=f"{old_v}->{v[q]}" if old_v is not None else r["verdict"]))
     return v, ex, log
+
+
+BANK_PREFIX = {"groundzero": "GZ-", "hard50": "H-", "extrahard": "X-"}
+
+
+def orig_overlay(model: str, cond: str) -> dict:
+    """orig_hard50 fill verdicts for an arm: {"Q07": "PASS"|"FAIL", ...} (re-run of NOT_ANSWERED items)."""
+    arm = ARM.get((model, cond))
+    return {q: r["verdict"] for q, r in (FILL_RES.get(arm) or {}).items()
+            if q.startswith("Q") and r.get("verdict") in ("PASS", "FAIL")}
 
 
 def detail(bank: str, model: str, cond: str, qid: str, obj) -> list | None:
     """Per-field (ok, gold, got) for a question whose verdict this layer set (re-run or regraded),
     so failure-anatomy figures describe the verdict actually scored. None = not set by this layer."""
     arm = ARM.get((model, cond))
+    if arm and isinstance((FILL_RES.get(arm) or {}).get(qid), dict) and FILL_RES[arm][qid].get("verdict") in ("PASS", "FAIL"):
+        return [(bool(f.get("ok")), f.get("gold"), f.get("model")) for f in FILL_RES[arm][qid].get("fields", {}).values()]
     for res, qset in ((DG_RES, DG.get(bank, [])), (REPAIR_RES, REPAIR.get(bank, []))):
         if qid in qset and arm:
             r = (res.get(arm) or {}).get(qid)

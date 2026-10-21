@@ -1,0 +1,10 @@
+The a priori molecular-thermodynamic prediction is \(7.85\ \mathrm{mM}\) at \(25^\circ\mathrm{C}\). [bpb-us-e1.wpmucdn.com](https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/7/54945/files/2016/06/2003-StructurePerformance_Relationships-Ch-1.pdf?bid=54945\&utm_source=chatgpt.com)
+
+\[
+\log_{10}(7.85\times10^{-3})=-2.1051
+\]
+
+FINAL_JSON:
+{
+  "answer": -2.1051
+}

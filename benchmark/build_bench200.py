@@ -29,8 +29,20 @@ HERE = Path(__file__).resolve().parent          # benchmark/
 ROOT = HERE.parent
 RESULTS = ROOT / "results"
 SET_ALIAS = {"groundzero": "groundzero", "hard50": "hard50", "extrahard": "extrahard"}
-MODEL_ORDER = ["Claude", "ChatGPT", "DeepSeek", "Qwen", "Gemini", "Gemini-CLI"]
-NAME_FIX = {"Antigravity": "Gemini-CLI", "Gemini CLI": "Gemini-CLI", "GPT-4o": "ChatGPT"}
+MODEL_ORDER = ["Claude", "ChatGPT", "DeepSeek", "Gemini", "Qwen"]
+# Gemini: unaugmented = Gemini web, augmented = Gemini CLI (Antigravity); Gemini CLI unaugmented set aside
+NAME_FIX = {"Antigravity": "Gemini", "Gemini CLI": "Gemini", "Gemini-CLI": "Gemini", "GPT-4o": "ChatGPT"}
+
+
+def _load_corrections():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("corrections", HERE / "repair_2026-10-20" / "corrections.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+CORR = _load_corrections()
 
 
 def norm(m: str) -> str:
@@ -66,8 +78,11 @@ def main() -> int:
         for model, md in d.items():
             model = norm(model)
             na = 0
+            fill = CORR.orig_overlay(model, cond)      # net-200 fill re-runs of NOT_ANSWERED items
             for alias, q in md["questions"].items():
                 v = q["verdict"]
+                if v == "NOT_ANSWERED" and alias in fill:
+                    v = fill[alias]
                 it = alias2sb.get(alias)
                 if it is None:
                     raise SystemExit(f"question_set missing alias {alias}")
@@ -77,6 +92,10 @@ def main() -> int:
                 rec[(model, cond)][it["sb"]] = (v == "PASS", None)
             if na:
                 notes[(model, cond)].append(f"orig_hard50: {na} unanswered (ungradeable, excluded from n)")
+
+    # Gemini pairs two clients of the same model family: disclose it on the row
+    notes[("Gemini", "unaug")].insert(0, "unaugmented = Gemini web")
+    notes[("Gemini", "aug")].insert(0, "augmented = Gemini CLI (Antigravity)")
 
     def stats(subset_sbs):
         out = {}

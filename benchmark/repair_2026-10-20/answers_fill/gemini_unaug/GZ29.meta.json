@@ -1,0 +1,10 @@
+{
+ "qid": "GZ29",
+ "provider": "gemini web",
+ "condition": "unaug",
+ "run": "2026-10-21",
+ "mode": "manual (run by the author in the browser)",
+ "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
+ "code_execution_used": false,
+ "web_search_attempted": false
+}

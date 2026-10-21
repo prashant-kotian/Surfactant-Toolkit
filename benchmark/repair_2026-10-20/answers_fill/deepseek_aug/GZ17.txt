@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"charge_type": "cationic",
+"cmc_mM": 8.185,
+"gamma_max_mol_per_m2": 2.3655701331208045e-6,
+"a_min_nm2": 0.7019614611819444,
+"delta_g_mic_kJ_per_mol": -43.4745711822137,
+"delta_s_mic_J_per_mol_K": null
+}

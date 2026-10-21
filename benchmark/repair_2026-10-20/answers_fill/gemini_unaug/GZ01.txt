@@ -1,0 +1,128 @@
+```python
+import numpy as np
+from scipy.stats import linregress
+
+# Data
+C = np.array([0.01585, 0.03981, 0.10000, 0.25119, 0.63096, 1.58489, 3.981, 6.31, 10.0])
+gamma = np.array([62.22, 55.66, 49.10, 42.54, 35.98, 29.42, 27.5, 27.8, 28.0])
+
+# Pre-CMC data (first 6 points)
+C_pre = C[:6]
+gamma_pre = gamma[:6]
+logC_pre = np.log10(C_pre)
+lnC_pre = np.log(C_pre)
+
+# Linear regression for pre-CMC
+slope_log10, intercept_log10, r, p, se = linregress(logC_pre, gamma_pre)
+slope_ln, intercept_ln, _, _, _ = linregress(lnC_pre, gamma_pre)
+
+print(f"Pre-CMC slope (d_gamma/d_log10C): {slope_log10}")
+print(f"Pre-CMC slope (d_gamma/d_lnC): {slope_ln}")
+
+# Post-CMC baseline (last 3 points average, or just find intersection)
+gamma_post_avg = np.mean(gamma[-3:])
+print(f"Post-CMC gamma avg: {gamma_post_avg}")
+
+# CMC is intersection of pre-CMC line and post-CMC gamma
+logC_cmc = (gamma_post_avg - intercept_log10) / slope_log10
+cmc = 10**logC_cmc
+print(f"CMC (mM): {cmc}")
+
+# Or maybe just use the first post-CMC point or min gamma? 
+# Many papers take the intersection of the two linear regimes.
+gamma_cmc_intersect = np.mean(gamma[6:]) # mean of [27.5, 27.8, 28.0] = 27.766
+logC_cmc_alt = (27.7666 - intercept_log10) / slope_log10
+print(f"CMC alt (mM): {10**logC_cmc_alt}")
+
+# Constants
+R = 8.314 # J / (mol K)
+T = 298.15 # K
+N_A = 6.022e23 # mol^-1
+
+# Gibbs adsorption isotherm for 1:1 ionic surfactant (n=2 in pure water)
+n = 2
+# d_gamma/d_lnC is in mN/m = 1e-3 N/m = 1e-3 J/m^2
+dgamma_dlnC = slope_ln * 1e-3
+gamma_max = -dgamma_dlnC / (n * R * T) # mol / m^2
+print(f"Gamma_max (mol/m2): {gamma_max}")
+
+# A_min in nm^2
+A_min = 1 / (N_A * gamma_max) * 1e18 # nm^2
+print(f"A_min (nm2): {A_min}")
+
+# Delta G micellization
+# for ionic surfactant 1:1, Delta G_mic = (1 + beta) * R * T * ln(x_cmc)
+# without degree of counterion binding beta, standard assumption is Delta G_mic = R T * ln(x_cmc) for nonionic, 
+# for ionic often nRT ln(x_cmc) is used, but usually it's written as (1+beta)RT ln(X_cmc) or ~ 2 RT ln(X_cmc) if beta is not known or beta ~ 1 (highly unlikely to be 1).
+# Often for n=2, Delta G = (2-alpha)RT ln x_cmc where alpha is degree of ionization. 
+# We don't have beta. Wait. If we just assume the phase separation model, Delta_G_mic = RT ln(X_cmc) or (1+beta)RT ln(X_cmc). 
+# If beta is unknown, maybe it can't be "genuinely determined from what's given here"?
+# The prompt says: "if it can genuinely be determined from what's given here"
+# We don't have conductivity data to determine beta. So we cannot determine Delta G_mic genuinely!
+
+print("Done")
+
+
+```
+
+```text
+Pre-CMC slope (d_gamma/d_log10C): -16.400139878019854
+Pre-CMC slope (d_gamma/d_lnC): -7.122490251465491
+Post-CMC gamma avg: 27.766666666666666
+CMC (mM): 1.9989767507850624
+CMC alt (mM): 1.9989954613393341
+Gamma_max (mol/m2): 1.4366700360396391e-06
+A_min (nm2): 1.1558519628349837
+Done
+
+
+```
+
+Based on a first-principles analysis of the provided SMILES string and surface tension data, here is the breakdown of the surfactant:
+
+### 1. Surfactant Structure & Charge Type
+
+The SMILES string `CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]` corresponds to the sodium salt of bis(2-ethylhexyl) sulfosuccinate (commonly known as AOT or docusate sodium). It contains a negatively charged sulfonate group `[O-]` accompanied by a sodium counterion `[Na+]`. Therefore, it functions as an **anionic** surfactant.
+
+### 2. Critical Micelle Concentration (CMC)
+
+To find the CMC, we examine the pre-micellar linear decrease in surface tension ($\gamma$) as a function of the logarithm of concentration ($\log_{10}C$), and locate its intersection with the post-micellar baseline.
+
+* Plotting $\gamma$ vs $\log_{10}C$ for the first six points yields a highly linear relationship with a slope of $-16.40 \text{ mN/m}$ per decade.
+* The surface tension reaches a plateau at higher concentrations. Note that the slight dip at 3.981 mM ($27.5 \text{ mN/m}$) before rising slightly to $28.0 \text{ mN/m}$ is a classic signature of trace, highly surface-active impurities (such as unreacted alcohol from the synthesis). Averaging the post-CMC plateau points gives a baseline of $\sim 27.77 \text{ mN/m}$.
+* Intersecting the pre-CMC line with this baseline yields a **CMC of 2.00 mM**.
+
+### 3. Pre-CMC Adsorption Behavior
+
+The surface excess concentration ($\Gamma_{max}$) and the minimum area per molecule ($A_{min}$) at the air-water interface are determined using the **Gibbs adsorption isotherm**:
+
+
+$$\Gamma = -\frac{1}{n R T} \frac{d\gamma}{d\ln C}$$
+
+
+Because this is a 1:1 ionic surfactant in pure water (no added electrolyte), both the surfactant ion and its counterion must adsorb to maintain electroneutrality, meaning **$n = 2$**.
+
+* The slope $d\gamma/d\ln C = -7.12 \text{ mN/m}$.
+* Using $R = 8.314 \text{ J/(mol K)}$ and $T = 298.15 \text{ K}$, the maximum surface excess is **$\Gamma_{max} = 1.44 \times 10^{-6} \text{ mol/m}^2$**.
+* Converting this to the minimum area per molecule ($A_{min} = 1 / (N_A \Gamma_{max})$) yields **$A_{min} = 1.16 \text{ nm}^2$**. This relatively large area per molecule is physically consistent with the bulky, double-tailed (twin 2-ethylhexyl) hydrophobic structure of the surfactant.
+
+### 4. Free Energy of Micellization ($\Delta G_{mic}$)
+
+For an ionic surfactant, the standard free energy of micellization using the phase separation model is given by:
+
+
+$$\Delta G_{mic} = (1 + \beta) R T \ln X_{cmc}$$
+
+
+where $\beta$ is the degree of counterion binding to the micelle and $X_{cmc}$ is the mole fraction of the surfactant at the CMC.
+Surface tension data alone is insufficient to calculate $\beta$ (which typically requires conductometry or specific ion electrode measurements). Because we lack the counterion binding parameter, $\Delta G_{mic}$ **cannot genuinely be determined** from the given dataset.
+
+FINAL_JSON:
+{
+"charge_type": "anionic",
+"cmc_mM": 2.00,
+"isotherm_model": "Gibbs",
+"gamma_max_mol_per_m2": 1.44e-06,
+"a_min_nm2": 1.16,
+"delta_g_mic_kJ_per_mol": null
+}

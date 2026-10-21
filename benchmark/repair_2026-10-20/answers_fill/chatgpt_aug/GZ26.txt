@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"delta_h_wide_kJ_per_mol": -5.343,
+"delta_h_low_regime_kJ_per_mol": 1.566,
+"delta_h_high_regime_kJ_per_mol": -14.851,
+"self_consistent": false,
+"delta_g_mic_kJ_per_mol": -37.131
+}

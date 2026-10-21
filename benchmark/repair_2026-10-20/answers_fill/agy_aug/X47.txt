@@ -1,0 +1,30 @@
+END OF QUESTION
+
+---
+
+### X47 — Dual-Method Mega-Panel: Conductometry & Tensiometry
+
+#### 1. Conductometry Break Analysis
+- Fitting two linear segments $\kappa = a + b c$ with RSS minimization via `cmc_from_conductivity`:
+  - $\text{CMC}_{\text{cond}} = 4.5744\text{ mM}$
+  - $b_{\text{below}} = 54.9716\text{ }\mu\text{S}/(\text{cm}\cdot\text{mM})$, $b_{\text{above}} = 18.9567\text{ }\mu\text{S}/(\text{cm}\cdot\text{mM})$
+  - $\beta = 1 - \frac{b_{\text{above}}}{b_{\text{below}}} = 1 - \frac{18.9567}{54.9716} = 0.6552$
+
+#### 2. Tensiometry Break Analysis
+- Fitting two linear segments $\gamma$ vs $\log_{10}(c)$ with RSS minimization via `cmc_from_surface_tension_curve`:
+  - Split between decline (first 7 points) and plateau (last 4 points)
+  - $\text{CMC}_{\text{tens}} = 4.4091\text{ mM}$
+
+#### 3. Free Energy of Micellization
+- Using $\text{CMC}_{\text{cond}} = 4.5744\text{ mM}$ and factor $(1 + \beta) = 1 + 0.655154 = 1.655154$:
+  $$X = \frac{0.00457436}{0.00457436 + 55.5} \approx 8.241415 \times 10^{-5}$$
+  $$\Delta G = (1 + \beta) R T \ln(X) = -38.5841\text{ kJ/mol}$$
+  (Computed via `gibbs_free_energy_micellization(cmc_M=0.00457436, counterion_factor=1.655154, temperature_K=298.15)`)
+
+#### 4. Relative Difference & Agreement Check
+- Relative difference between methods:
+  $$\text{rel\_diff} = \frac{|\text{CMC}_{\text{cond}} - \text{CMC}_{\text{tens}}|}{(\text{CMC}_{\text{cond}} + \text{CMC}_{\text{tens}})/2} \times 100 = \frac{|4.57436 - 4.40908|}{(4.57436 + 4.40908)/2} \times 100 = 3.6797\%$$
+- Agreement within $3.0\%$: Since $3.68\% > 3.0\%$, `agree_3pct` is **false**.
+
+=== X47 ===
+FINAL_JSON: {"cmc_cond": 4.5744, "beta": 0.6552, "deltaG": -38.5841, "cmc_tens": 4.4091, "rel_diff_pct": 3.6797, "agree_3pct": false}

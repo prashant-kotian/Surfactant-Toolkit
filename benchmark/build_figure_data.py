@@ -24,9 +24,20 @@ HERE = Path(__file__).resolve().parent          # benchmark/
 ROOT = HERE.parent
 RES = ROOT / "results"
 FIG = RES / "figs_data"
-MODEL_ORDER = ["Claude", "ChatGPT", "DeepSeek", "Qwen", "Gemini", "Gemini-CLI"]
+MODEL_ORDER = ["Claude", "ChatGPT", "DeepSeek", "Gemini", "Qwen"]
 NOMINAL = {"groundzero": 50, "hard50": 50, "extrahard": 50, "orig_hard50": 50}
 Z = 1.96
+
+
+def _load_corrections():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("corrections", HERE / "repair_2026-10-20" / "corrections.py")
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+CORR = _load_corrections()   # 2026-10-20/21 corrections (regrades, re-runs, net-200 fill)
 
 
 def wilson(p: int, n: int) -> tuple[float, float]:
@@ -58,7 +69,7 @@ def normalize_detail(path: Path, model: str | None = None, transform=None) -> di
     j = json.loads(path.read_text(encoding="utf-8"))
     if model and isinstance(j, dict):
         own = {k.lower(): k for k in j}
-        for name in (model, "Antigravity" if model == "Gemini-CLI" else None):
+        for name in (model, "Antigravity" if model in ("Gemini", "Gemini-CLI") else None):
             if name and name.lower() in own:
                 j = j[own[name.lower()]]
                 break
@@ -138,11 +149,13 @@ def main() -> int:
     for cond, fname in (("unaug", "unaugmented_grade_results.json"), ("aug", "augmented_grade_results.json")):
         d = json.loads((HERE / "source_sets/orig_hard50" / fname).read_text(encoding="utf-8"))
         for model, md in d.items():
-            model = "Gemini-CLI" if model == "Antigravity" else model
+            model = "Gemini" if model == "Antigravity" else model
+            fill = CORR.orig_overlay(model, cond)
             for alias, q in md["questions"].items():
-                if q["verdict"] == "NOT_ANSWERED":
+                verdict = fill.get(alias, q["verdict"]) if q["verdict"] == "NOT_ANSWERED" else q["verdict"]
+                if verdict == "NOT_ANSWERED":
                     continue
-                rec[(model, cond)][alias2[alias]["sb"]] = q["verdict"] == "PASS"
+                rec[(model, cond)][alias2[alias]["sb"]] = verdict == "PASS"
 
     def w(name, header, rows):
         with open(FIG / name, "w", newline="") as f:
@@ -250,10 +263,6 @@ def main() -> int:
     detail_src = {}
     # 2026-10-20 corrections: choice-field regrade applied to the stored records; verdicts set by
     # re-runs/regrades take their field detail from the corrections layer (not the stale record)
-    import importlib.util
-    _spec = importlib.util.spec_from_file_location("corrections", HERE / "repair_2026-10-20" / "corrections.py")
-    CORR = importlib.util.module_from_spec(_spec)
-    _spec.loader.exec_module(CORR)
     for key, cell in rj["cells"].items():
         bank, model = key.split("|")[0], key.split("|")[1]
         tf = (lambda j: CORR.choice_regrade(j)[0]) if bank == "groundzero" else None
@@ -263,7 +272,7 @@ def main() -> int:
         det = detail_src.get(key, {})
         src = json.loads((ROOT / cell["source"]).read_text(encoding="utf-8"))
         own = {k.lower(): k for k in src} if isinstance(src, dict) else {}
-        for name in (model.lower(), "antigravity" if model == "Gemini-CLI" else None):
+        for name in (model.lower(), "antigravity" if model in ("Gemini", "Gemini-CLI") else None):
             if name and name in own and isinstance(src[own[name]], dict):
                 src = src[own[name]]
                 break
@@ -277,10 +286,15 @@ def main() -> int:
     for cond, fname in (("unaug", "unaugmented_grade_results.json"), ("aug", "augmented_grade_results.json")):
         d = json.loads((HERE / "source_sets/orig_hard50" / fname).read_text(encoding="utf-8"))
         for model, md in d.items():
-            model = "Gemini-CLI" if model == "Antigravity" else model
+            model = "Gemini" if model == "Antigravity" else model
+            fill = CORR.orig_overlay(model, cond)
+            arm = CORR.ARM.get((model, cond))
             for alias, q in md["questions"].items():
                 if q["verdict"] == "FAIL":
                     rows[(model, cond, "orig_hard50", classify(q.get("detail")))] += 1
+                elif q["verdict"] == "NOT_ANSWERED" and fill.get(alias) == "FAIL":
+                    det = CORR.FILL_RES[arm][alias].get("detail")
+                    rows[(model, cond, "orig_hard50", classify(det))] += 1
     w("F8_failure_anatomy.tsv",
       ["model", "condition", "source_set", "failure_class", "n_failed_questions"],
       [(a, b, c, d, n) for (a, b, c, d), n in sorted(rows.items())])

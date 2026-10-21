@@ -1,0 +1,24 @@
+END OF QUESTION
+
+---
+
+### X41 — Recompute Against a Factor-Omitting Draft
+
+#### 1. Corrected $\Delta G^\circ_{\text{mic}}$
+- Given $\text{CMC} = 4.40\text{ mM}$, $\beta = 0.75$, $T = 298.15\text{ K}$, $R = 8.314462618\text{ J/(mol K)}$:
+  $$X = \frac{0.00440}{0.00440 + 55.5} \approx 7.927299 \times 10^{-5}$$
+  $$\ln(X) \approx -9.442604$$
+- Pinned formula with counterion factor $(1 + \beta) = 1 + 0.75 = 1.75$:
+  $$\Delta G = (1 + \beta) R T \ln(X) = 1.75 \times 8.314462618 \times 298.15 \times (-9.442604) / 1000 = -40.9637\text{ kJ/mol}$$
+  (Computed via `gibbs_free_energy_micellization(cmc_M=0.0044, counterion_factor=1.75, temperature_K=298.15)`)
+
+#### 2. Relative Difference & Diagnosis
+- Stated draft value: $-23.40\text{ kJ/mol}$ (which equals $R T \ln(X)$ where $(1 + \beta)$ was omitted).
+- Relative difference against correct value:
+  $$\text{rel\_diff} = \frac{|\text{draft} - \text{correct}|}{|\text{correct}|} \times 100 = \frac{|-23.40 - (-40.9637)|}{|-40.9637|} \times 100 = 42.8571\%$$
+- The claim that the values agree within $10\%$ is **false** ($42.86\% > 10\%$).
+- Diagnosis: What is wrong with the draft is the **formula** (omission of the $(1 + \beta)$ factor for an ionic surfactant).
+- Direction: The draft ($-23.40\text{ kJ/mol}$) is **less_negative** than the correct value ($-40.96\text{ kJ/mol}$).
+
+=== X41 ===
+FINAL_JSON: {"dG_correct": -40.9637, "rel_diff_pct": 42.8571, "claim_agrees": false, "what_wrong": "formula", "direction": "less_negative"}

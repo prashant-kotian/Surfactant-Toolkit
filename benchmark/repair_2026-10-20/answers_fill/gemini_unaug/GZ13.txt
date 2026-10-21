@@ -1,0 +1,323 @@
+```python
+import pandas as pd
+import numpy as np
+from scipy.stats import linregress
+
+# GZ-13
+smiles = "CCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+c_count = smiles.count("C")
+o_count = smiles.count("O")
+print("GZ-13:")
+print("C:", c_count, "O:", o_count)
+# C16H34O? No, C16H33-O-(CH2CH2O)10-H. 
+# Hydrophobe: C16H33 (mass = 16*12.011 + 33*1.008 = 225.43)
+# Or is the hydrophobe C16H34O? Usually it's just the alkyl chain.
+# But Griffin's method uses weight % of the hydrophilic part.
+# The whole molecule is Ceteth-10: C16H33(OCH2CH2)10OH.
+# Let's calculate total exact mass.
+
+# GZ-17
+c_mM = np.array([0.2558, 0.5116, 1.0231, 2.0463, 4.0925, 16.370, 32.740])
+gamma = np.array([70.269, 68.207, 65.397, 57.504, 49.236, 32.348, 36.224])
+ln_c = np.log(c_mM)
+
+# Linear fit for pre-CMC (c = 1.0231, 2.0463, 4.0925 ??)
+print("\nln_c:", ln_c)
+print("gamma:", gamma)
+for i in range(len(c_mM)-1):
+    slope = (gamma[i+1] - gamma[i]) / (ln_c[i+1] - ln_c[i])
+    print(f"slope {i}-{i+1}: {slope}")
+
+
+```
+
+```text
+GZ-13:
+C: 36 O: 11
+
+ln_c: [-1.36335939 -0.67021221  0.02283723  0.71603328  1.40915603  2.79545039
+  3.48859757]
+gamma: [70.269 68.207 65.397 57.504 49.236 32.348 36.224]
+slope 0-1: -2.9748371743130595
+slope 1-2: -4.054544776929188
+slope 2-3: -11.386389167892277
+slope 3-4: -11.928623102777182
+slope 4-5: -12.182116925266406
+slope 5-6: 5.591885978485618
+
+
+```
+
+```python
+from scipy.stats import linregress
+# Use indices 2, 3, 4
+x = ln_c[2:5]
+y = gamma[2:5]
+slope, intercept, r_value, p_value, std_err = linregress(x, y)
+print(f"Pre-CMC Line: gamma = {slope} * ln_c + {intercept}")
+
+# True plateau is likely 36.224
+# Find intersection
+ln_cmc = (36.224 - intercept) / slope
+cmc = np.exp(ln_cmc)
+print(f"CMC = {cmc} mM")
+
+# What if plateau is 32.348?
+ln_cmc_min = (32.348 - intercept) / slope
+cmc_min = np.exp(ln_cmc_min)
+print(f"CMC (using minimum) = {cmc_min} mM")
+
+# Thermodynamic properties
+T = 296.35 # K
+R = 8.314 # J/mol*K
+# Gamma_max = - slope / (n * R * T)
+# For DTAB without added salt, n = 2
+gamma_max = - slope / (2 * R * T) * 1000 # mN/m = 1e-3 J/m2, so slope is in mN/m. 
+# wait: slope is d(gamma)/d(ln c). gamma is mJ/m^2. 
+# Gamma_max = - (1e-3 * slope) / (2 * 8.314 * 296.35)  in mol / m^2
+gamma_max_mol_per_m2 = - (slope * 1e-3) / (2 * 8.314 * 296.35)
+print(f"Gamma_max = {gamma_max_mol_per_m2} mol/m2")
+
+N_A = 6.022e23
+a_min = 1e18 / (gamma_max_mol_per_m2 * N_A) # nm^2
+print(f"a_min = {a_min} nm^2")
+
+# Delta G mic = n * R * T * ln(x_cmc)
+# x_cmc = cmc / 55500 (mol fraction)
+x_cmc = cmc / 55500
+x_cmc_min = cmc_min / 55500
+dg_mic = 2 * R * T * np.log(x_cmc) / 1000 # kJ/mol
+print(f"delta_g_mic = {dg_mic} kJ/mol")
+
+dg_mic_min = 2 * R * T * np.log(x_cmc_min) / 1000 # kJ/mol
+print(f"delta_g_mic (min) = {dg_mic_min} kJ/mol")
+
+
+```
+
+```text
+Pre-CMC Line: gamma = -11.657487020826872 * ln_c + 65.72586386989222
+CMC = 12.562578430751252 mM
+CMC (using minimum) = 17.517714264725726 mM
+Gamma_max = 2.3657017611366633e-06 mol/m2
+a_min = 0.7019388108773084 nm^2
+delta_g_mic = -41.36030085464704 kJ/mol
+delta_g_mic (min) = -39.72188638344266 kJ/mol
+
+
+```
+
+```python
+x2 = ln_c[2:6]
+y2 = gamma[2:6]
+slope2, intercept2, r_value2, p_value2, std_err2 = linregress(x2, y2)
+print(f"Pre-CMC Line (2 to 5): gamma = {slope2} * ln_c + {intercept2}")
+print(f"R^2: {r_value2**2}")
+
+ln_cmc2 = (36.224 - intercept2) / slope2
+cmc2 = np.exp(ln_cmc2)
+print(f"CMC (intersecting plateau at 36.224): {cmc2}")
+
+gamma_max2 = - (slope2 * 1e-3) / (2 * 8.314 * 296.35)
+a_min2 = 1e18 / (gamma_max2 * 6.022e23)
+print(f"Gamma_max = {gamma_max2}")
+print(f"a_min = {a_min2}")
+
+x_cmc2 = cmc2 / 55500
+dg2 = 2 * 8.314 * 296.35 * np.log(x_cmc2) / 1000
+print(f"delta_g_mic = {dg2}")
+
+# Let's consider 16.37 is already after the CMC, but the minimum is at the CMC. 
+# Usually, a minimum in gamma means the CMC is at the minimum.
+# The minimum is at 16.37, gamma = 32.348.
+# If CMC is exactly 16.37:
+x_cmc_min = 16.37 / 55500
+dg_min_actual = 2 * 8.314 * 296.35 * np.log(x_cmc_min) / 1000
+print(f"delta_g_mic (at 16.37) = {dg_min_actual}")
+
+
+```
+
+```text
+Pre-CMC Line (2 to 5): gamma = -11.950534560113331 * ln_c + 65.89054800433642
+R^2: 0.9997826588717442
+CMC (intersecting plateau at 36.224): 11.970499774712062
+Gamma_max = 2.425171102903734e-06
+a_min = 0.6847260711272543
+delta_g_mic = -41.598196583040526
+delta_g_mic (at 16.37) = -40.055798809749284
+
+
+```
+
+```python
+y_pred = -11.9505 * ln_c[2:6] + 65.8905
+print(f"Predicted gamma: {y_pred}")
+print(f"Actual gamma: {gamma[2:6]}")
+
+
+```
+
+```text
+Predicted gamma: [65.61758364 57.33354424 49.05038086 32.4834701 ]
+Actual gamma: [65.397 57.504 49.236 32.348]
+
+
+```
+
+```python
+import urllib.request
+url = 'https://scholar.google.com'
+
+
+```
+
+```python
+x = ln_c[:6]
+y = gamma[:6]
+slope_all, int_all, r, p, err = linregress(x, y)
+print(f"All pre-CMC: slope = {slope_all}, int = {int_all}, r2 = {r**2}")
+print(f"gamma predicted: {slope_all * x + int_all}")
+print(f"gamma actual: {y}")
+
+
+```
+
+```text
+All pre-CMC: slope = -9.399420075937003, int = 61.718737113201826, r2 = 0.952064681433404
+gamma predicted: [74.53352473 68.01834321 61.50408036 54.98843949 48.47348763 35.44312458]
+gamma actual: [70.269 68.207 65.397 57.504 49.236 32.348]
+
+
+```
+
+```python
+slope = -11.950534560113331
+gamma_max = (-slope * 1e-3) / (2 * 8.31446 * 296.35)
+a_min = 1 / (6.02214076e23 * gamma_max) * 1e18
+print(f"Gamma_max: {gamma_max}")
+print(f"a_min: {a_min}")
+
+
+```
+
+```text
+Gamma_max: 2.4250369295831162e-06
+a_min: 0.6847479503989686
+
+
+```
+
+```python
+smiles = "CCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+c_count = smiles.count("C")
+o_count = smiles.count("O")
+print(f"C: {c_count}, O: {o_count}")
+
+
+```
+
+```text
+C: 36, O: 11
+
+
+```
+
+```python
+from rdkit import Chem
+from rdkit.Chem import Descriptors
+mol = Chem.MolFromSmiles("CCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO")
+mw = Descriptors.MolWt(mol)
+print(f"Molecular weight: {mw}")
+
+hydrophilic_smiles = "OCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO" # 10 EO units
+# Wait, Griffin's method: HLB = 20 * Mh / M
+# What is the hydrophilic portion?
+# For ethoxylates, the hydrophilic portion is the polyoxyethylene chain plus the terminal OH, or the entire (EO)n part.
+# The hydrophobic part is C16H33 (mass = 16*12.011 + 33*1.008 = 225.43).
+# Wait, oxygen of the ether linkage - is it part of the hydrophilic or hydrophobic?
+# Griffin defined it as mass of the hydrophilic portion. In polyethoxylated alcohols, the mass of the hydrophilic portion is simply mass of the EO units + the OH. Actually, it's just mass of (EO)n. 
+# Or simpler: weight percentage of ethylene oxide. 
+# E = weight percent of ethylene oxide = (10 * 44.05) / MW * 100
+# HLB = E / 5
+mass_EO = 10 * (2*12.011 + 4*1.008 + 15.999) # 10 * 44.053
+mass_hydrophobe = 16 * 12.011 + 33 * 1.008
+total_mass = mass_hydrophobe + mass_EO + 17.007 # OH group?
+# wait, C16H33O (EO)9 CH2CH2OH.
+# Let's just use exact atomic weights for C36 H74 O11
+total_mass = 36 * 12.011 + 74 * 1.008 + 11 * 15.999
+print(f"Total mass: {total_mass}")
+
+# Griffin's HLB for ethoxylated alcohols: HLB = 20 * Mh / M
+# where Mh is the molecular mass of the hydrophilic portion.
+# Usually, Mh = mass of (EO)n chain + mass of OH, or it's just 20 * (mass of hydrophilic portion) / total mass
+# Griffin's original formula: HLB = E / 5, where E is the weight percentage of oxyethylene content.
+E = (10 * 44.053 / total_mass) * 100
+hlb1 = E / 5
+print(f"HLB (E/5): {hlb1}")
+
+Mh = total_mass - mass_hydrophobe
+hlb2 = 20 * Mh / total_mass
+print(f"HLB (20*Mh/M): {hlb2}")
+
+
+```
+
+```text
+Molecular weight: 682.9770000000001
+Total mass: 682.977
+HLB (E/5): 12.900288003842002
+HLB (20*Mh/M): 13.398313559607425
+
+
+```
+
+```python
+mass_hydrophobe = 16 * 12.011 + 33 * 1.008
+mass_total = 36 * 12.011 + 74 * 1.008 + 11 * 15.999
+mass_hydrophile = mass_total - mass_hydrophobe
+hlb = 20 * mass_hydrophile / mass_total
+print("HLB:", hlb)
+
+
+```
+
+```text
+HLB: 13.398313559607425
+
+
+```
+
+```python
+smiles = "CCCCCCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+print(smiles.split("O"))
+
+
+```
+
+```text
+['CCCCCCCCCCCCCCCC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', '']
+
+
+```
+
+**Analysis of GZ-13 (Nonionic Surfactant)**
+The given SMILES string represents a cetyl alcohol ethoxylate (Ceteth-10), consisting of a hexadecyl (C16) hydrophobic tail and a polyoxyethylene hydrophilic head ending in a hydroxyl group.
+
+* **Ethylene-oxide units**: Splitting the SMILES by the oxygen atoms reveals 10 `-CH2-CH2-O-` (or `CCO`) repeat units.
+* **Molecular Weight**: The molecular formula is C36H74O11. Total molecular weight is $36(12.011) + 74(1.008) + 11(15.999) = 682.98 \text{ g/mol}$.
+* **HLB (Griffin's method)**: The hydrophobe is the cetyl chain (C16H33–) with a mass of $225.44 \text{ g/mol}$. The hydrophilic portion is the remainder of the molecule (the polyether chain and terminal hydroxyl), which has a mass of $682.98 - 225.44 = 457.54 \text{ g/mol}$.
+$\text{HLB} = 20 \times \frac{457.54}{682.98} = 13.40$
+
+FINAL_JSON:
+
+```json
+{
+  "n_ethylene_oxide_units": 10,
+  "molecular_weight_g_per_mol": 682.98,
+  "hlb_griffin": 13.40
+}
+
+```
+
+---

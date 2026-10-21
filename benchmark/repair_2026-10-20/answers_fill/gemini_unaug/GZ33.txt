@@ -1,0 +1,196 @@
+```python
+def solve_gz33():
+    smiles = "CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+    # Dodecyl tail: C12H25-
+    # Polyether chain: O-(CH2-CH2-O)_n - H
+    # Let's count "OCCO" in the string? Wait, it's O C C O C C O...
+    # The string after dodecyl is OCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO
+    tail = "CCCCCCCCCCCC"
+    head = smiles[len(tail):]
+    # head is OCCOCCO...
+    # "OCC" is one unit if we consider the terminal OH? 
+    # Actually, a repeat unit is CH2-CH2-O (mass 44.05).
+    # Let's count 'O's in the head.
+    num_O = head.count('O')
+    n_units = num_O  # since each EO unit has 1 oxygen. The terminal is OH.
+    
+    # Molecular weight:
+    # Dodecyl = C12H25 = 12*12.011 + 25*1.008 = 144.132 + 25.2 = 169.332
+    # Hydrophilic = (O-CH2-CH2)_n - H ? No, it's (CH2-CH2-O)_n - H. 
+    # Let's look at the SMILES: C...C - O - C - C - O - C - C - O ...
+    # Number of oxygens = n_units.
+    # Number of carbons in head = head.count('C') = 2 * n_units
+    # Hydrogen in head: each -CH2-CH2-O- is 4 H. The last one is -CH2-CH2-OH (so 5 H on the last unit? No, wait.)
+    # Let's write the molecular formula. 
+    # Tail: C12H25
+    # Head attached: (O-CH2-CH2)_n - OH ? 
+    # Let's count carefully from SMILES: C(12) - O - C - C - O - C - C ...
+    # If n_units = 2, it would be C-C-O-C-C-O. SMILES: CCOCCO.
+    # Wait, the SMILES ends with O. But SMILES implies valid valences. 
+    # If it ends in O, it's an alcohol (-OH).
+    
+    print("GZ-33:")
+    print("num O:", num_O)
+    print("num C in head:", head.count('C'))
+    
+    # Mass of tail C12H25 = 12 * 12.011 + 25 * 1.008
+    m_tail = 12 * 12.011 + 25 * 1.008
+    
+    # Mass of head: num_O * O + (num_C) * C + (num_C * 2 + 1) * H 
+    # Since each carbon is a CH2, and the terminal oxygen has an H.
+    m_head = num_O * 15.999 + head.count('C') * 12.011 + (head.count('C') * 2 + 1) * 1.008
+    m_total = m_tail + m_head
+    hlb = 20 * m_head / m_total
+    
+    print(f"n_units: {num_O}")
+    print(f"m_tail: {m_tail}")
+    print(f"m_head: {m_head}")
+    print(f"m_total: {m_total}")
+    print(f"hlb: {hlb}")
+
+def solve_gz50():
+    import math
+    
+    alpha = 0.268
+    R = 8.314 # J/(mol K)
+    
+    data = [
+        (283.15, 9.93),
+        (288.15, 9.82),
+        (293.15, 9.76),
+        (298.15, 9.74),
+        (303.15, 9.77),
+        (308.15, 10.02),
+        (313.15, 10.54),
+        (318.15, 11.47)
+    ]
+    
+    print("\nGZ-50:")
+    for T, cmc in data:
+        X_cmc = (cmc / 1000.0) / (cmc / 1000.0 + 55.5)
+        dg = (2 - alpha) * R * T * math.log(X_cmc)
+        print(f"T={T} K, CMC={cmc} mM, X_cmc={X_cmc:.6e}, dG={dg/1000:.3f} kJ/mol")
+
+solve_gz33()
+solve_gz50()
+
+
+```
+
+```text
+GZ-33:
+num O: 24
+num C in head: 46
+n_units: 24
+m_tail: 169.332
+m_head: 1030.2259999999999
+m_total: 1199.558
+hlb: 17.176760106639275
+
+GZ-50:
+T=283.15 K, CMC=9.93 mM, X_cmc=1.788869e-04, dG=-35.182 kJ/mol
+T=288.15 K, CMC=9.82 mM, X_cmc=1.769056e-04, dG=-35.850 kJ/mol
+T=293.15 K, CMC=9.76 mM, X_cmc=1.758249e-04, dG=-36.498 kJ/mol
+T=298.15 K, CMC=9.74 mM, X_cmc=1.754647e-04, dG=-37.129 kJ/mol
+T=303.15 K, CMC=9.77 mM, X_cmc=1.760051e-04, dG=-37.738 kJ/mol
+T=308.15 K, CMC=10.02 mM, X_cmc=1.805080e-04, dG=-38.248 kJ/mol
+T=313.15 K, CMC=10.54 mM, X_cmc=1.898739e-04, dG=-38.641 kJ/mol
+T=318.15 K, CMC=11.47 mM, X_cmc=2.066240e-04, dG=-38.871 kJ/mol
+
+
+```
+
+```python
+head = "OCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+print("len:", len(head))
+print("O:", head.count('O'))
+print("C:", head.count('C'))
+print(head.split('O'))
+
+
+```
+
+```text
+len: 70
+O: 24
+C: 46
+['', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', '']
+
+
+```
+
+```python
+smiles = "CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO"
+print(smiles[12:])
+parts = smiles[12:].split('O')
+print("parts:", parts)
+print("count of CC:", parts.count('CC'))
+print("number of O:", smiles[12:].count('O'))
+
+
+```
+
+```text
+OCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO
+parts: ['', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', 'CC', '']
+count of CC: 23
+number of O: 24
+
+
+```
+
+To provide a complete answer based on first principles, let's break down both of your analyses:
+
+### Analysis of GZ-33 (Nonionic Surfactant)
+
+1. **Chemical Structure**:
+The SMILES string is `CCCCCCCCCCCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO`.
+* The initial `CCCCCCCCCCCC` represents a 12-carbon straight alkyl chain (a dodecyl group, derived from dodecanol), formula $C_{12}H_{25}$.
+* The remaining sequence `OCCO...` represents repeating ethylene oxide (EO) units. Counting the `O` and `C` atoms in the SMILES string after the dodecyl group gives exactly 24 oxygen atoms and 46 carbon atoms (which corresponds to 23 pairs of `CC`).
+* Therefore, there are **23 ethylene oxide repeat units**, with the last oxygen being a terminal hydroxyl group (OH). The formula is $C_{12}H_{25}O(CH_2CH_2O)_{23}H$ (also known as Laureth-23).
+
+
+2. **Molecular Weight Calculation**:
+* Hydrophobic tail ($C_{12}H_{25}$): $12(12.011) + 25(1.008) = 169.332 \text{ g/mol}$
+* Hydrophilic portion (23 EO units + terminal OH): $46(12.011) + 93(1.008) + 24(15.999) = 1030.226 \text{ g/mol}$
+* Total Molecular Weight: $169.332 + 1030.226 = 1199.558 \text{ g/mol}$
+
+
+3. **Griffin's HLB**:
+* $HLB = 20 \times \frac{\text{Mass of hydrophilic portion}}{\text{Total mass}} = 20 \times \frac{1030.226}{1199.558} = 17.18$
+
+
+
+---
+
+### Analysis of GZ-50 (Thermodynamics of Micellization)
+
+1. **Equation & Constants**:
+We compute the standard free energy of micellization using $\Delta G^\circ_{mic} = (2 - \alpha) R T \ln(X_{cmc})$.
+* $R = 8.314 \text{ J/(mol K)}$
+* $\alpha = 0.268$, meaning $(2 - \alpha) = 1.732$
+* $X_{cmc} = \frac{\text{CMC}/1000}{\text{CMC}/1000 + 55.5}$
+
+
+2. **Calculations at Lowest and Highest Temperatures**:
+* **At T = 283.15 K (CMC = 9.93 mM)**:
+$X_{cmc} = \frac{0.00993}{0.00993 + 55.5} = 1.7889 \times 10^{-4}$
+$\ln(X_{cmc}) = -8.6287$
+$\Delta G^\circ_{mic} = 1.732 \times 8.314 \times 283.15 \times (-8.6287) \approx -35182 \text{ J/mol}$ (or $-35.18 \text{ kJ/mol}$)
+* **At T = 318.15 K (CMC = 11.47 mM)**:
+$X_{cmc} = \frac{0.01147}{0.01147 + 55.5} = 2.0662 \times 10^{-4}$
+$\ln(X_{cmc}) = -8.4846$
+$\Delta G^\circ_{mic} = 1.732 \times 8.314 \times 318.15 \times (-8.4846) \approx -38871 \text{ J/mol}$ (or $-38.87 \text{ kJ/mol}$)
+
+
+3. **Trend Observation**:
+While the CMC values plot a U-shaped curve with respect to temperature (decreasing initially to a minimum around 298.15 K before rising again), $\Delta G^\circ_{mic}$ becomes monotonically more negative across the entire range. The trend does not mirror the CMC curve shape because the $T$ multiplier outside the logarithm dominates the relatively small, incremental fluctuations in $\ln(X_{cmc})$.
+
+---
+
+FINAL_JSON:
+{
+"n_ethylene_oxide_units": 23,
+"molecular_weight_g_per_mol": 1199.56,
+"hlb_griffin": 17.18
+}
