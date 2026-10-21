@@ -1084,19 +1084,21 @@
    }
   },
   "GZ-50": {
-   "verdict": "FAIL",
+   "verdict": "PASS",
    "fields": {
     "delta_g_mic_at_283.15K": {
-     "ok": false,
-     "kind": "numeric",
+     "ok": true,
+     "kind": "field-rule",
      "gold": -35.18,
-     "model": -35182.2
+     "model": -35182.2,
+     "rationale": "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the shared numeric comparison (author decision 2026-10-21)"
     },
     "delta_g_mic_at_318.15K": {
-     "ok": false,
-     "kind": "numeric",
+     "ok": true,
+     "kind": "field-rule",
      "gold": -38.87,
-     "model": -38871.5
+     "model": -38871.5,
+     "rationale": "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the shared numeric comparison (author decision 2026-10-21)"
     },
     "trend": {
      "ok": true,

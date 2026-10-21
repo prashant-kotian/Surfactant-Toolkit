@@ -11,7 +11,7 @@
 | GroundZero-50 | Claude | 34 | 50 | 68.0 |  |
 | GroundZero-50 | ChatGPT | 32 | 50 | 64.0 |  |
 | GroundZero-50 | DeepSeek | 34 | 50 | 68.0 |  |
-| GroundZero-50 | Gemini (unaug: web; aug: CLI) | 19 | 50 | 38.0 |  |
+| GroundZero-50 | Gemini (unaug: web; aug: CLI) | 20 | 50 | 40.0 |  |
 | GroundZero-50 | Qwen | 32 | 50 | 64.0 |  |
 | Hard50 (new) | Claude | 36 | 50 | 72.0 |  |
 | Hard50 (new) | ChatGPT | 36 | 50 | 72.0 | count-only |
@@ -48,7 +48,7 @@
 | GroundZero-50 | Claude | 68.0 | 88.0 | +20.0 | ok |
 | GroundZero-50 | ChatGPT | 64.0 | 80.0 | +16.0 | ok |
 | GroundZero-50 | DeepSeek | 68.0 | 84.0 | +16.0 | ok |
-| GroundZero-50 | Gemini (unaug: web; aug: CLI) | 38.0 | 96.0 | +58.0 | harness differs |
+| GroundZero-50 | Gemini (unaug: web; aug: CLI) | 40.0 | 96.0 | +56.0 | harness differs |
 | Hard50 (new) | Claude | 72.0 | 96.0 | +24.0 | ok |
 | Hard50 (new) | ChatGPT | 72.0 | 94.0 | +22.0 | harness differs |
 | Hard50 (new) | DeepSeek | 68.0 | 92.0 | +24.0 | harness differs |
@@ -86,7 +86,7 @@
 | groundzero / DeepSeek / aug | 42/50 | 84.0 | mcp | benchmark/source_sets/groundzero/deepseek_augmented_grade_results.json | 42ac653966c4 | post-fix | SI-only |
 | groundzero / DeepSeek / unaug | 34/50 | 68.0 | mcp | benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json | 2e8f8288e360 | post-fix |  |
 | groundzero / Gemini / aug | 48/50 | 96.0 | agy-cli | benchmark/source_sets/groundzero/antigravity_augmented_grade_results.json | 5a753572989a | post-fix |  |
-| groundzero / Gemini / unaug | 19/50 | 38.0 | mcp | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json | af7478178bb7 | post-fix |  |
+| groundzero / Gemini / unaug | 20/50 | 40.0 | mcp | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json | af7478178bb7 | post-fix |  |
 | groundzero / Qwen / unaug | 32/50 | 64.0 | mcp | benchmark/source_sets/groundzero/qwen_unaugmented_grade_results.json | f8b8615eb935 | post-fix |  |
 | hard50 / ChatGPT / aug | 47/50 | 94.0 | mcp | benchmark/source_sets/hard50/chatgpt_augmented_grade_results.json | 33cd934a4128 | post-fix |  |
 | hard50 / ChatGPT / unaug | 36/50 | 72.0 | cli | benchmark/source_sets/hard50/unaugmented_grade_stats.json | c39dc851fee0 | not field-verifiable | count-only |

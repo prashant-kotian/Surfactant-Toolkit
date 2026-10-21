@@ -446,7 +446,7 @@ SB-050,GZ-50,groundzero,analytical,kinetics_transport,ChatGPT,unaug,1,
 SB-050,GZ-50,groundzero,analytical,kinetics_transport,ChatGPT,aug,1,
 SB-050,GZ-50,groundzero,analytical,kinetics_transport,DeepSeek,unaug,1,
 SB-050,GZ-50,groundzero,analytical,kinetics_transport,DeepSeek,aug,1,SI-only grading
-SB-050,GZ-50,groundzero,analytical,kinetics_transport,Gemini,unaug,0,
+SB-050,GZ-50,groundzero,analytical,kinetics_transport,Gemini,unaug,1,
 SB-050,GZ-50,groundzero,analytical,kinetics_transport,Gemini,aug,1,
 SB-050,GZ-50,groundzero,analytical,kinetics_transport,Qwen,unaug,1,
 SB-051,H-01,hard50,computational,micelle_structure,Claude,unaug,1,

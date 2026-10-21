@@ -85,7 +85,7 @@ kinetics_transport	11	ChatGPT	unaug	5	11	45.5
 kinetics_transport	11	ChatGPT	aug	11	11	100.0
 kinetics_transport	11	DeepSeek	unaug	6	11	54.5
 kinetics_transport	11	DeepSeek	aug	11	11	100.0
-kinetics_transport	11	Gemini	unaug	5	11	45.5
+kinetics_transport	11	Gemini	unaug	6	11	54.5
 kinetics_transport	11	Gemini	aug	11	11	100.0
 kinetics_transport	11	Qwen	unaug	3	11	27.3
 kinetics_transport	11	Qwen	aug	0	0	NA

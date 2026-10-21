@@ -12,7 +12,7 @@
 | groundzero | ChatGPT | 32/50 | 64.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | Claude | 34/50 | 68.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | DeepSeek | 34/50 | 68.0 | post-fix |  | benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json |
-| groundzero | Gemini | 19/50 | 38.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
+| groundzero | Gemini | 20/50 | 40.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | Qwen | 32/50 | 64.0 | post-fix |  | benchmark/source_sets/groundzero/qwen_unaugmented_grade_results.json |
 | hard50 | ChatGPT | 36/50 | 72.0 | not field-verifiable | yes | benchmark/source_sets/hard50/unaugmented_grade_stats.json |
 | hard50 | Claude | 36/50 | 72.0 | post-fix |  | benchmark/source_sets/hard50/claude_unaugmented_grade_results.json |

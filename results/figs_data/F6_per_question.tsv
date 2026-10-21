@@ -446,7 +446,7 @@ SB-050	kinetics_transport	analytical	ChatGPT	unaug	1
 SB-050	kinetics_transport	analytical	ChatGPT	aug	1
 SB-050	kinetics_transport	analytical	DeepSeek	unaug	1
 SB-050	kinetics_transport	analytical	DeepSeek	aug	1
-SB-050	kinetics_transport	analytical	Gemini	unaug	0
+SB-050	kinetics_transport	analytical	Gemini	unaug	1
 SB-050	kinetics_transport	analytical	Gemini	aug	1
 SB-050	kinetics_transport	analytical	Qwen	unaug	1
 SB-051	micelle_structure	computational	Claude	unaug	1

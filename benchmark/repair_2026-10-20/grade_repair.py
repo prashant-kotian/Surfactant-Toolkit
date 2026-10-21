@@ -80,6 +80,17 @@ def _letter(v) -> str:
     return s.upper()
 
 
+def _kj(m, gold) -> bool:
+    """GZ-50 Delta G fields: accept kJ/mol, or J/mol (|value| > 1000) converted to kJ/mol."""
+    try:
+        v = float(m)
+    except (TypeError, ValueError):
+        return False
+    if abs(v) > 1000:
+        v /= 1000.0
+    return bool(GZ.grade_field(v, gold)[0])
+
+
 # Field rules: applied identically to EVERY arm, before the shared comparator. Each exists
 # because the shared keyword matcher cannot score this gold string correctly (it strips
 # non-ASCII such as the micro sign, and drops one-letter tokens), and follows the gold's
@@ -100,6 +111,14 @@ FIELD_RULES = {
         "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; "
         "the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; "
         "'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"),
+    ("GZ-50", "delta_g_mic_at_283.15K"): (
+        lambda m: _kj(m, GZ_GOLD["GZ-50"]["gold"]["delta_g_mic_at_283.15K"]),
+        "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the "
+        "shared numeric comparison (author decision 2026-10-21)"),
+    ("GZ-50", "delta_g_mic_at_318.15K"): (
+        lambda m: _kj(m, GZ_GOLD["GZ-50"]["gold"]["delta_g_mic_at_318.15K"]),
+        "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the "
+        "shared numeric comparison (author decision 2026-10-21)"),
     ("GZ-15", "estimated_cmc_mM"): (
         lambda m: GZ.is_close(m, GZ_GOLD["GZ-15"]["gold"]["estimated_cmc_mM"], rel=0.10),
         "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's "

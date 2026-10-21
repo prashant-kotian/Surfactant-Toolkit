@@ -5,6 +5,6 @@ ChatGPT	unaug	128	200	64.0	57.1	70.3
 ChatGPT	aug	187	200	93.5	89.2	96.2
 DeepSeek	unaug	122	200	61.0	54.1	67.5
 DeepSeek	aug	184	200	92.0	87.4	95.0
-Gemini	unaug	101	200	50.5	43.6	57.4
+Gemini	unaug	102	200	51.0	44.1	57.8
 Gemini	aug	198	200	99.0	96.4	99.7
 Qwen	unaug	106	200	53.0	46.1	59.8

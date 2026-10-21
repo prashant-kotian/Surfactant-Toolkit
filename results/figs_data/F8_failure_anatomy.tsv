@@ -52,7 +52,7 @@ Gemini	aug	groundzero	magnitude_error	1
 Gemini	aug	groundzero	selection_or_convention	1
 Gemini	unaug	extrahard	selection_or_convention	1
 Gemini	unaug	extrahard	unclassified	22
-Gemini	unaug	groundzero	magnitude_error	5
+Gemini	unaug	groundzero	magnitude_error	4
 Gemini	unaug	groundzero	magnitude_error+selection_or_convention	2
 Gemini	unaug	groundzero	selection_or_convention	24
 Gemini	unaug	hard50	magnitude_error	3

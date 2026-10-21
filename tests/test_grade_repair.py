@@ -129,3 +129,9 @@ def test_orig_hard50_items_graded_by_the_first_release_rule():
     assert G.grade_q("Q07", _final({"answer": round(gold + 0.01, 4)}))["verdict"] == "FAIL"
     assert G.grade_q("Q07", "no json here")["verdict"] == "NO_JSON"
     assert G.QIDS_FILL["GZ26"] == "GZ-26" and G.QIDS_FILL["Q44"] == "Q44"
+
+
+@pytest.mark.parametrize("v,ok", [(-35.18, True), (-35182.2, True), (-46.0, False), (-46000.0, False), (None, False)])
+def test_gz50_delta_g_accepts_j_per_mol_converted(v, ok):
+    # groundzero numeric tolerance is 20% relative (grade_unaugmented.is_close); -46 is ~31% off
+    assert G.FIELD_RULES[("GZ-50", "delta_g_mic_at_283.15K")][0](v) is ok

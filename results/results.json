@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-21T16:43Z",
+ "generated": "2026-10-21T17:11Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "5090c97bd32d-dirty",
+ "toolkit_state": "7deb6a0cb07a-dirty",
  "gold_sha": {
   "groundzero": "00ffab5b7eeb",
   "hard50": "6b64deb7a96c",
@@ -677,8 +677,8 @@
   },
   "groundzero|Gemini|unaug": {
    "n": 50,
-   "passed": 19,
-   "pct": 38.0,
+   "passed": 20,
+   "pct": 40.0,
    "excluded": [],
    "exclude_reason": null,
    "per_q": {
@@ -731,7 +731,7 @@
     "GZ-47": true,
     "GZ-48": true,
     "GZ-49": false,
-    "GZ-50": false
+    "GZ-50": true
    },
    "harness": "mcp",
    "source": "benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json",
@@ -829,7 +829,7 @@
     {
      "qid": "GZ-50",
      "change": "included (net-200 fill re-run)",
-     "verdict": "FAIL"
+     "verdict": "PASS"
     }
    ],
    "note": null

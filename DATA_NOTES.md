@@ -51,6 +51,8 @@ in that cell's `corrections` list in `results/results.json`:
   passes iff the answer's first word is the gold's choice ("Szyszkowski", the Langmuir equation of
   state, counts as Langmuir). A record is changed only if its stored verdict is reproducible from its
   own field flags.
+- GZ-50 Delta G fields: the question names no unit; a value given in J/mol is converted to kJ/mol before the
+  standard comparison (author decision 2026-10-21; affects Gemini web, now PASS).
 - GZ-15 estimated CMC is graded at +/-10% (author decision; the gold note asked for a wider, unquantified
   tolerance). Free-text GZ-39 fields carry one written judgment per arm in `grade_repair.py`.
 
