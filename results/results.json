@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-21T07:57Z",
+ "generated": "2026-10-21T09:57Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "3276032e4a1d-dirty",
+ "toolkit_state": "01a396c661bf-dirty",
  "gold_sha": {
   "groundzero": "00ffab5b7eeb",
   "hard50": "6b64deb7a96c",
@@ -10,13 +10,11 @@
  "gold_fix_date": "2026-10-18",
  "cells": {
   "groundzero|Claude|aug": {
-   "n": 47,
-   "passed": 42,
-   "pct": 89.4,
+   "n": 49,
+   "passed": 43,
+   "pct": 87.8,
    "excluded": [
-    "GZ-26",
-    "GZ-16",
-    "GZ-20"
+    "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
    "per_q": {
@@ -35,9 +33,11 @@
     "GZ-13": true,
     "GZ-14": true,
     "GZ-15": true,
+    "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
     "GZ-19": true,
+    "GZ-20": false,
     "GZ-21": true,
     "GZ-22": true,
     "GZ-23": false,
@@ -143,13 +143,13 @@
     },
     {
      "qid": "GZ-16",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "GZ-20",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
     }
    ],
    "note": null
@@ -1209,28 +1209,20 @@
    "note": null
   },
   "hard50|Claude|aug": {
-   "n": 40,
-   "passed": 38,
-   "pct": 95.0,
-   "excluded": [
-    "H-38",
-    "H-02",
-    "H-03",
-    "H-08",
-    "H-16",
-    "H-19",
-    "H-31",
-    "H-46",
-    "H-47",
-    "H-49"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 48,
+   "pct": 96.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
+    "H-02": true,
+    "H-03": true,
     "H-04": true,
     "H-05": true,
     "H-06": false,
     "H-07": true,
+    "H-08": true,
     "H-09": true,
     "H-10": true,
     "H-11": true,
@@ -1238,8 +1230,10 @@
     "H-13": true,
     "H-14": true,
     "H-15": true,
+    "H-16": true,
     "H-17": true,
     "H-18": true,
+    "H-19": true,
     "H-20": true,
     "H-21": true,
     "H-22": true,
@@ -1251,12 +1245,14 @@
     "H-28": true,
     "H-29": true,
     "H-30": true,
+    "H-31": true,
     "H-32": true,
     "H-33": true,
     "H-34": true,
     "H-35": true,
     "H-36": true,
     "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -1264,7 +1260,10 @@
     "H-43": true,
     "H-44": true,
     "H-45": false,
+    "H-46": true,
+    "H-47": true,
     "H-48": true,
+    "H-49": true,
     "H-50": true
    },
    "harness": "mcp",
@@ -1287,53 +1286,53 @@
     },
     {
      "qid": "H-02",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-03",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-08",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-16",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-19",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-31",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-38",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
     },
     {
      "qid": "H-46",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-47",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-49",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     }
    ],
    "note": null
@@ -1855,22 +1854,20 @@
    "note": null
   },
   "hard50|Gemini|unaug": {
-   "n": 47,
-   "passed": 31,
-   "pct": 66.0,
-   "excluded": [
-    "H-03",
-    "H-08",
-    "H-16"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 32,
+   "pct": 64.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
+    "H-03": false,
     "H-04": false,
     "H-05": false,
     "H-06": false,
     "H-07": false,
+    "H-08": false,
     "H-09": true,
     "H-10": true,
     "H-11": false,
@@ -1878,6 +1875,7 @@
     "H-13": true,
     "H-14": true,
     "H-15": false,
+    "H-16": true,
     "H-17": false,
     "H-18": false,
     "H-19": true,
@@ -1938,18 +1936,18 @@
     },
     {
      "qid": "H-03",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
     },
     {
      "qid": "H-08",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
     },
     {
      "qid": "H-16",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "H-19",
@@ -2837,13 +2835,11 @@
    "note": null
   },
   "extrahard|Gemini|unaug": {
-   "n": 49,
-   "passed": 26,
-   "pct": 53.1,
-   "excluded": [
-    "X-47"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "n": 50,
+   "passed": 27,
+   "pct": 54.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": false,
     "X-02": false,
@@ -2891,6 +2887,7 @@
     "X-44": true,
     "X-45": true,
     "X-46": true,
+    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -2915,21 +2912,18 @@
     },
     {
      "qid": "X-47",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     }
    ],
    "note": null
   },
   "extrahard|Claude|aug": {
-   "n": 48,
-   "passed": 48,
+   "n": 50,
+   "passed": 50,
    "pct": 100.0,
-   "excluded": [
-    "X-41",
-    "X-47"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -2971,11 +2965,13 @@
     "X-38": true,
     "X-39": true,
     "X-40": true,
+    "X-41": true,
     "X-42": true,
     "X-43": true,
     "X-44": true,
     "X-45": true,
     "X-46": true,
+    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -2995,13 +2991,13 @@
     },
     {
      "qid": "X-41",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     },
     {
      "qid": "X-47",
-     "change": "excluded",
-     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
     }
    ],
    "note": null

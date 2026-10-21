@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“delta_g_from_cmc_kJ_per_mol”: -37.888,
+“delta_s_J_per_mol_K”: 110.307,
+“delta_g_recomputed_kJ_per_mol”: -37.888,
+“self_consistent”: true
+}

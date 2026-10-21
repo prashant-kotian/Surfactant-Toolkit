@@ -14,7 +14,7 @@ ChatGPT	unaug	orig_hard50	magnitude_error	12
 ChatGPT	unaug	orig_hard50	precision_drift	7
 Claude	aug	groundzero	magnitude_error	1
 Claude	aug	groundzero	magnitude_error+selection_or_convention	2
-Claude	aug	groundzero	selection_or_convention	2
+Claude	aug	groundzero	selection_or_convention	3
 Claude	aug	hard50	magnitude_error	1
 Claude	aug	hard50	magnitude_error+selection_or_convention	1
 Claude	unaug	extrahard	selection_or_convention	1
@@ -52,7 +52,7 @@ Gemini	unaug	extrahard	selection_or_convention	1
 Gemini	unaug	extrahard	unclassified	22
 Gemini	unaug	groundzero	magnitude_error	2
 Gemini	unaug	groundzero	selection_or_convention	23
-Gemini	unaug	hard50	magnitude_error	1
+Gemini	unaug	hard50	magnitude_error	3
 Gemini	unaug	hard50	unclassified	15
 Gemini	unaug	orig_hard50	magnitude_error	19
 Gemini	unaug	orig_hard50	precision_drift	8

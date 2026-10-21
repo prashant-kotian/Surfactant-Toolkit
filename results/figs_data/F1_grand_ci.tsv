@@ -1,11 +1,11 @@
 model	condition	passed	n	pct	wilson95_lo	wilson95_hi
 Claude	unaug	127	198	64.1	57.3	70.5
-Claude	aug	178	185	96.2	92.4	98.2
+Claude	aug	191	199	96.0	92.3	97.9
 ChatGPT	unaug	127	195	65.1	58.2	71.5
 ChatGPT	aug	186	199	93.5	89.1	96.1
 DeepSeek	unaug	120	198	60.6	53.7	67.1
 DeepSeek	aug	181	196	92.3	87.8	95.3
 Qwen	unaug	105	199	52.8	45.8	59.6
-Gemini	unaug	95	186	51.1	43.9	58.2
+Gemini	unaug	97	190	51.1	44.0	58.1
 Gemini-CLI	unaug	119	146	81.5	74.4	87.0
 Gemini-CLI	aug	194	196	99.0	96.4	99.7

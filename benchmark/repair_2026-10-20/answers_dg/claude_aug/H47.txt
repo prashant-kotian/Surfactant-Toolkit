@@ -1,0 +1,7 @@
+FINAL_JSON: {
+“gamma_max_mol_per_m2”: 1.4145800566306375e-6,
+“a_min_nm2”: 1.1738742246437819,
+“delta_g_mic_kJ_per_mol”: -37.670636043028445,
+“delta_s_mic_J_per_mol_K”: null,
+“missing_for_delta_s”: “Enthalpy of micellization (delta_H_mic). It requires CMC measured at several temperatures so delta_H can be obtained from a van’t Hoff fit (d ln X_CMC / d(1/T)); only single-temperature (298.15 K) data were provided, so delta_H and hence delta_S cannot be determined.”
+}

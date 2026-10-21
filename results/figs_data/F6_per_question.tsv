@@ -145,6 +145,7 @@ SB-015	cmc_measurement	analytical	Gemini	unaug	0
 SB-015	cmc_measurement	analytical	Gemini-CLI	unaug	1
 SB-015	cmc_measurement	analytical	Gemini-CLI	aug	1
 SB-016	adsorption	computational	Claude	unaug	1
+SB-016	adsorption	computational	Claude	aug	1
 SB-016	adsorption	computational	ChatGPT	unaug	1
 SB-016	adsorption	computational	ChatGPT	aug	1
 SB-016	adsorption	computational	DeepSeek	unaug	1
@@ -182,6 +183,7 @@ SB-019	packing_morphology	computational	Gemini	unaug	1
 SB-019	packing_morphology	computational	Gemini-CLI	unaug	1
 SB-019	packing_morphology	computational	Gemini-CLI	aug	1
 SB-020	adsorption	computational	Claude	unaug	0
+SB-020	adsorption	computational	Claude	aug	0
 SB-020	adsorption	computational	ChatGPT	unaug	0
 SB-020	adsorption	computational	ChatGPT	aug	1
 SB-020	adsorption	computational	DeepSeek	unaug	0
@@ -485,6 +487,7 @@ SB-051	micelle_structure	computational	Gemini	unaug	1
 SB-051	micelle_structure	computational	Gemini-CLI	unaug	1
 SB-051	micelle_structure	computational	Gemini-CLI	aug	1
 SB-052	kinetics_transport	computational	Claude	unaug	1
+SB-052	kinetics_transport	computational	Claude	aug	1
 SB-052	kinetics_transport	computational	ChatGPT	unaug	1
 SB-052	kinetics_transport	computational	ChatGPT	aug	1
 SB-052	kinetics_transport	computational	DeepSeek	unaug	1
@@ -494,11 +497,13 @@ SB-052	kinetics_transport	computational	Gemini	unaug	1
 SB-052	kinetics_transport	computational	Gemini-CLI	unaug	1
 SB-052	kinetics_transport	computational	Gemini-CLI	aug	1
 SB-053	adsorption	computational	Claude	unaug	0
+SB-053	adsorption	computational	Claude	aug	1
 SB-053	adsorption	computational	ChatGPT	unaug	0
 SB-053	adsorption	computational	ChatGPT	aug	1
 SB-053	adsorption	computational	DeepSeek	unaug	0
 SB-053	adsorption	computational	DeepSeek	aug	1
 SB-053	adsorption	computational	Qwen	unaug	0
+SB-053	adsorption	computational	Gemini	unaug	0
 SB-053	adsorption	computational	Gemini-CLI	unaug	1
 SB-053	adsorption	computational	Gemini-CLI	aug	1
 SB-054	kinetics_transport	computational	Claude	unaug	1
@@ -542,11 +547,13 @@ SB-057	adsorption	analytical	Gemini	unaug	0
 SB-057	adsorption	analytical	Gemini-CLI	unaug	1
 SB-057	adsorption	analytical	Gemini-CLI	aug	1
 SB-058	adsorption	computational	Claude	unaug	0
+SB-058	adsorption	computational	Claude	aug	1
 SB-058	adsorption	computational	ChatGPT	unaug	0
 SB-058	adsorption	computational	ChatGPT	aug	1
 SB-058	adsorption	computational	DeepSeek	unaug	0
 SB-058	adsorption	computational	DeepSeek	aug	1
 SB-058	adsorption	computational	Qwen	unaug	0
+SB-058	adsorption	computational	Gemini	unaug	0
 SB-058	adsorption	computational	Gemini-CLI	unaug	1
 SB-058	adsorption	computational	Gemini-CLI	aug	1
 SB-059	emulsion_hld	analytical	Claude	unaug	1
@@ -620,11 +627,13 @@ SB-065	micelle_structure	analytical	Gemini	unaug	0
 SB-065	micelle_structure	analytical	Gemini-CLI	unaug	1
 SB-065	micelle_structure	analytical	Gemini-CLI	aug	1
 SB-066	kinetics_transport	analytical	Claude	unaug	1
+SB-066	kinetics_transport	analytical	Claude	aug	1
 SB-066	kinetics_transport	analytical	ChatGPT	unaug	1
 SB-066	kinetics_transport	analytical	ChatGPT	aug	1
 SB-066	kinetics_transport	analytical	DeepSeek	unaug	1
 SB-066	kinetics_transport	analytical	DeepSeek	aug	1
 SB-066	kinetics_transport	analytical	Qwen	unaug	1
+SB-066	kinetics_transport	analytical	Gemini	unaug	1
 SB-066	kinetics_transport	analytical	Gemini-CLI	unaug	1
 SB-066	kinetics_transport	analytical	Gemini-CLI	aug	1
 SB-067	solubilization	analytical	Claude	unaug	0
@@ -648,6 +657,7 @@ SB-068	mixed_micelles	analytical	Gemini	unaug	0
 SB-068	mixed_micelles	analytical	Gemini-CLI	unaug	1
 SB-068	mixed_micelles	analytical	Gemini-CLI	aug	1
 SB-069	adsorption	analytical	Claude	unaug	1
+SB-069	adsorption	analytical	Claude	aug	1
 SB-069	adsorption	analytical	ChatGPT	unaug	1
 SB-069	adsorption	analytical	ChatGPT	aug	1
 SB-069	adsorption	analytical	DeepSeek	unaug	1
@@ -767,6 +777,7 @@ SB-080	adsorption	computational	Gemini	unaug	0
 SB-080	adsorption	computational	Gemini-CLI	unaug	0
 SB-080	adsorption	computational	Gemini-CLI	aug	1
 SB-081	adsorption	computational	Claude	unaug	1
+SB-081	adsorption	computational	Claude	aug	1
 SB-081	adsorption	computational	ChatGPT	unaug	1
 SB-081	adsorption	computational	ChatGPT	aug	1
 SB-081	adsorption	computational	DeepSeek	unaug	1
@@ -836,6 +847,7 @@ SB-087	adsorption	analytical	Gemini	unaug	1
 SB-087	adsorption	analytical	Gemini-CLI	unaug	1
 SB-087	adsorption	analytical	Gemini-CLI	aug	1
 SB-088	mixed_micelles	analytical	Claude	unaug	1
+SB-088	mixed_micelles	analytical	Claude	aug	1
 SB-088	mixed_micelles	analytical	ChatGPT	unaug	1
 SB-088	mixed_micelles	analytical	ChatGPT	aug	1
 SB-088	mixed_micelles	analytical	DeepSeek	unaug	0
@@ -915,6 +927,7 @@ SB-095	analysis_synthesis	analytical	Gemini	unaug	1
 SB-095	analysis_synthesis	analytical	Gemini-CLI	unaug	1
 SB-095	analysis_synthesis	analytical	Gemini-CLI	aug	1
 SB-096	adsorption	analytical	Claude	unaug	0
+SB-096	adsorption	analytical	Claude	aug	1
 SB-096	adsorption	analytical	ChatGPT	unaug	0
 SB-096	adsorption	analytical	ChatGPT	aug	1
 SB-096	adsorption	analytical	DeepSeek	unaug	0
@@ -924,6 +937,7 @@ SB-096	adsorption	analytical	Gemini	unaug	0
 SB-096	adsorption	analytical	Gemini-CLI	unaug	0
 SB-096	adsorption	analytical	Gemini-CLI	aug	1
 SB-097	adsorption	analytical	Claude	unaug	1
+SB-097	adsorption	analytical	Claude	aug	1
 SB-097	adsorption	analytical	ChatGPT	unaug	0
 SB-097	adsorption	analytical	ChatGPT	aug	1
 SB-097	adsorption	analytical	DeepSeek	unaug	1
@@ -943,6 +957,7 @@ SB-098	adsorption	analytical	Gemini	unaug	1
 SB-098	adsorption	analytical	Gemini-CLI	unaug	1
 SB-098	adsorption	analytical	Gemini-CLI	aug	1
 SB-099	mixed_micelles	computational	Claude	unaug	1
+SB-099	mixed_micelles	computational	Claude	aug	1
 SB-099	mixed_micelles	computational	ChatGPT	unaug	1
 SB-099	mixed_micelles	computational	ChatGPT	aug	1
 SB-099	mixed_micelles	computational	DeepSeek	unaug	1
@@ -1360,6 +1375,7 @@ SB-140	micelle_structure	computational	Gemini	unaug	0
 SB-140	micelle_structure	computational	Gemini-CLI	unaug	0
 SB-140	micelle_structure	computational	Gemini-CLI	aug	1
 SB-141	mixed_micelles	computational	Claude	unaug	1
+SB-141	mixed_micelles	computational	Claude	aug	1
 SB-141	mixed_micelles	computational	ChatGPT	unaug	1
 SB-141	mixed_micelles	computational	ChatGPT	aug	1
 SB-141	mixed_micelles	computational	DeepSeek	unaug	1
@@ -1417,11 +1433,13 @@ SB-146	packing_morphology	analytical	Gemini	unaug	1
 SB-146	packing_morphology	analytical	Gemini-CLI	unaug	1
 SB-146	packing_morphology	analytical	Gemini-CLI	aug	1
 SB-147	mixed_micelles	analytical	Claude	unaug	1
+SB-147	mixed_micelles	analytical	Claude	aug	1
 SB-147	mixed_micelles	analytical	ChatGPT	unaug	1
 SB-147	mixed_micelles	analytical	ChatGPT	aug	1
 SB-147	mixed_micelles	analytical	DeepSeek	unaug	1
 SB-147	mixed_micelles	analytical	DeepSeek	aug	0
 SB-147	mixed_micelles	analytical	Qwen	unaug	1
+SB-147	mixed_micelles	analytical	Gemini	unaug	1
 SB-148	emulsion_hld	analytical	Claude	unaug	1
 SB-148	emulsion_hld	analytical	Claude	aug	1
 SB-148	emulsion_hld	analytical	ChatGPT	unaug	1

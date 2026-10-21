@@ -67,8 +67,7 @@ Full §1 chain re-run (graders included) through `build_figure_data.py`:
   with per-answer meta (model, tools/MCP state, chart attachment, question variant).
 - Rebuild order: `grade_repair.py`, `grade_repair.py --dg`, `build_results.py`, `build_bench200.py`,
   `build_tables.py`, `build_figure_data.py` (all cross-checks pass; F8 uses the corrected field detail).
-- Pending at this commit: Claude augmented counterion re-runs (connector not yet enabled on the run
-  account); those 14 questions are excluded from that cell with a logged reason until re-run.
+- Claude augmented counterion re-runs completed 2026-10-21 (connector enabled on the run account); no re-runs pending.
 
 ## Accepted non-determinism (documented, not chased)
 

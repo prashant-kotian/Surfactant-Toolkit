@@ -3,9 +3,9 @@ Claude	unaug	groundzero	50	49	1	partial
 Claude	unaug	hard50	50	50	0	full
 Claude	unaug	extrahard	50	50	0	full
 Claude	unaug	orig_hard50	50	49	1	full
-Claude	aug	groundzero	50	47	3	full
-Claude	aug	hard50	50	40	10	full
-Claude	aug	extrahard	50	48	2	full
+Claude	aug	groundzero	50	49	1	full
+Claude	aug	hard50	50	50	0	full
+Claude	aug	extrahard	50	50	0	full
 Claude	aug	orig_hard50	50	50	0	full
 ChatGPT	unaug	groundzero	50	49	1	full
 ChatGPT	unaug	hard50	50	50	0	full
@@ -32,8 +32,8 @@ Qwen	aug	hard50	50	0	50	not-run
 Qwen	aug	extrahard	50	0	50	not-run
 Qwen	aug	orig_hard50	50	0	50	not-run
 Gemini	unaug	groundzero	50	40	10	full
-Gemini	unaug	hard50	50	47	3	full
-Gemini	unaug	extrahard	50	49	1	full
+Gemini	unaug	hard50	50	50	0	full
+Gemini	unaug	extrahard	50	50	0	full
 Gemini	unaug	orig_hard50	50	50	0	full
 Gemini	aug	groundzero	50	0	50	not-run
 Gemini	aug	hard50	50	0	50	not-run

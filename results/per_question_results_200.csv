@@ -145,6 +145,7 @@ SB-015,GZ-15,groundzero,analytical,cmc_measurement,Gemini,unaug,0,partial transc
 SB-015,GZ-15,groundzero,analytical,cmc_measurement,Gemini-CLI,unaug,1,
 SB-015,GZ-15,groundzero,analytical,cmc_measurement,Gemini-CLI,aug,1,
 SB-016,GZ-16,groundzero,computational,adsorption,Claude,unaug,1,
+SB-016,GZ-16,groundzero,computational,adsorption,Claude,aug,1,
 SB-016,GZ-16,groundzero,computational,adsorption,ChatGPT,unaug,1,
 SB-016,GZ-16,groundzero,computational,adsorption,ChatGPT,aug,1,
 SB-016,GZ-16,groundzero,computational,adsorption,DeepSeek,unaug,1,partial transcript
@@ -182,6 +183,7 @@ SB-019,GZ-19,groundzero,computational,packing_morphology,Gemini,unaug,1,partial 
 SB-019,GZ-19,groundzero,computational,packing_morphology,Gemini-CLI,unaug,1,
 SB-019,GZ-19,groundzero,computational,packing_morphology,Gemini-CLI,aug,1,
 SB-020,GZ-20,groundzero,computational,adsorption,Claude,unaug,0,
+SB-020,GZ-20,groundzero,computational,adsorption,Claude,aug,0,
 SB-020,GZ-20,groundzero,computational,adsorption,ChatGPT,unaug,0,
 SB-020,GZ-20,groundzero,computational,adsorption,ChatGPT,aug,1,
 SB-020,GZ-20,groundzero,computational,adsorption,DeepSeek,unaug,0,partial transcript
@@ -485,6 +487,7 @@ SB-051,H-01,hard50,computational,micelle_structure,Gemini,unaug,1,count-only gra
 SB-051,H-01,hard50,computational,micelle_structure,Gemini-CLI,unaug,1,
 SB-051,H-01,hard50,computational,micelle_structure,Gemini-CLI,aug,1,
 SB-052,H-02,hard50,computational,kinetics_transport,Claude,unaug,1,
+SB-052,H-02,hard50,computational,kinetics_transport,Claude,aug,1,
 SB-052,H-02,hard50,computational,kinetics_transport,ChatGPT,unaug,1,count-only grading
 SB-052,H-02,hard50,computational,kinetics_transport,ChatGPT,aug,1,
 SB-052,H-02,hard50,computational,kinetics_transport,DeepSeek,unaug,1,count-only grading
@@ -494,11 +497,13 @@ SB-052,H-02,hard50,computational,kinetics_transport,Gemini,unaug,1,count-only gr
 SB-052,H-02,hard50,computational,kinetics_transport,Gemini-CLI,unaug,1,
 SB-052,H-02,hard50,computational,kinetics_transport,Gemini-CLI,aug,1,
 SB-053,H-03,hard50,computational,adsorption,Claude,unaug,0,
+SB-053,H-03,hard50,computational,adsorption,Claude,aug,1,
 SB-053,H-03,hard50,computational,adsorption,ChatGPT,unaug,0,count-only grading
 SB-053,H-03,hard50,computational,adsorption,ChatGPT,aug,1,
 SB-053,H-03,hard50,computational,adsorption,DeepSeek,unaug,0,count-only grading
 SB-053,H-03,hard50,computational,adsorption,DeepSeek,aug,1,SI-only grading
 SB-053,H-03,hard50,computational,adsorption,Qwen,unaug,0,count-only grading
+SB-053,H-03,hard50,computational,adsorption,Gemini,unaug,0,count-only grading
 SB-053,H-03,hard50,computational,adsorption,Gemini-CLI,unaug,1,
 SB-053,H-03,hard50,computational,adsorption,Gemini-CLI,aug,1,
 SB-054,H-04,hard50,computational,kinetics_transport,Claude,unaug,1,
@@ -542,11 +547,13 @@ SB-057,H-07,hard50,analytical,adsorption,Gemini,unaug,0,count-only grading
 SB-057,H-07,hard50,analytical,adsorption,Gemini-CLI,unaug,1,
 SB-057,H-07,hard50,analytical,adsorption,Gemini-CLI,aug,1,
 SB-058,H-08,hard50,computational,adsorption,Claude,unaug,0,
+SB-058,H-08,hard50,computational,adsorption,Claude,aug,1,
 SB-058,H-08,hard50,computational,adsorption,ChatGPT,unaug,0,count-only grading
 SB-058,H-08,hard50,computational,adsorption,ChatGPT,aug,1,
 SB-058,H-08,hard50,computational,adsorption,DeepSeek,unaug,0,count-only grading
 SB-058,H-08,hard50,computational,adsorption,DeepSeek,aug,1,SI-only grading
 SB-058,H-08,hard50,computational,adsorption,Qwen,unaug,0,count-only grading
+SB-058,H-08,hard50,computational,adsorption,Gemini,unaug,0,count-only grading
 SB-058,H-08,hard50,computational,adsorption,Gemini-CLI,unaug,1,
 SB-058,H-08,hard50,computational,adsorption,Gemini-CLI,aug,1,
 SB-059,H-09,hard50,analytical,emulsion_hld,Claude,unaug,1,
@@ -620,11 +627,13 @@ SB-065,H-15,hard50,analytical,micelle_structure,Gemini,unaug,0,count-only gradin
 SB-065,H-15,hard50,analytical,micelle_structure,Gemini-CLI,unaug,1,
 SB-065,H-15,hard50,analytical,micelle_structure,Gemini-CLI,aug,1,
 SB-066,H-16,hard50,analytical,kinetics_transport,Claude,unaug,1,
+SB-066,H-16,hard50,analytical,kinetics_transport,Claude,aug,1,
 SB-066,H-16,hard50,analytical,kinetics_transport,ChatGPT,unaug,1,count-only grading
 SB-066,H-16,hard50,analytical,kinetics_transport,ChatGPT,aug,1,
 SB-066,H-16,hard50,analytical,kinetics_transport,DeepSeek,unaug,1,count-only grading
 SB-066,H-16,hard50,analytical,kinetics_transport,DeepSeek,aug,1,SI-only grading
 SB-066,H-16,hard50,analytical,kinetics_transport,Qwen,unaug,1,count-only grading
+SB-066,H-16,hard50,analytical,kinetics_transport,Gemini,unaug,1,count-only grading
 SB-066,H-16,hard50,analytical,kinetics_transport,Gemini-CLI,unaug,1,
 SB-066,H-16,hard50,analytical,kinetics_transport,Gemini-CLI,aug,1,
 SB-067,H-17,hard50,analytical,solubilization,Claude,unaug,0,
@@ -648,6 +657,7 @@ SB-068,H-18,hard50,analytical,mixed_micelles,Gemini,unaug,0,count-only grading
 SB-068,H-18,hard50,analytical,mixed_micelles,Gemini-CLI,unaug,1,
 SB-068,H-18,hard50,analytical,mixed_micelles,Gemini-CLI,aug,1,
 SB-069,H-19,hard50,analytical,adsorption,Claude,unaug,1,
+SB-069,H-19,hard50,analytical,adsorption,Claude,aug,1,
 SB-069,H-19,hard50,analytical,adsorption,ChatGPT,unaug,1,count-only grading
 SB-069,H-19,hard50,analytical,adsorption,ChatGPT,aug,1,
 SB-069,H-19,hard50,analytical,adsorption,DeepSeek,unaug,1,count-only grading
@@ -767,6 +777,7 @@ SB-080,H-30,hard50,computational,adsorption,Gemini,unaug,0,count-only grading
 SB-080,H-30,hard50,computational,adsorption,Gemini-CLI,unaug,0,
 SB-080,H-30,hard50,computational,adsorption,Gemini-CLI,aug,1,
 SB-081,H-31,hard50,computational,adsorption,Claude,unaug,1,
+SB-081,H-31,hard50,computational,adsorption,Claude,aug,1,
 SB-081,H-31,hard50,computational,adsorption,ChatGPT,unaug,1,count-only grading
 SB-081,H-31,hard50,computational,adsorption,ChatGPT,aug,1,
 SB-081,H-31,hard50,computational,adsorption,DeepSeek,unaug,1,count-only grading
@@ -836,6 +847,7 @@ SB-087,H-37,hard50,analytical,adsorption,Gemini,unaug,1,count-only grading
 SB-087,H-37,hard50,analytical,adsorption,Gemini-CLI,unaug,1,
 SB-087,H-37,hard50,analytical,adsorption,Gemini-CLI,aug,1,
 SB-088,H-38,hard50,analytical,mixed_micelles,Claude,unaug,1,
+SB-088,H-38,hard50,analytical,mixed_micelles,Claude,aug,1,
 SB-088,H-38,hard50,analytical,mixed_micelles,ChatGPT,unaug,1,count-only grading
 SB-088,H-38,hard50,analytical,mixed_micelles,ChatGPT,aug,1,
 SB-088,H-38,hard50,analytical,mixed_micelles,DeepSeek,unaug,0,count-only grading
@@ -915,6 +927,7 @@ SB-095,H-45,hard50,analytical,analysis_synthesis,Gemini,unaug,1,count-only gradi
 SB-095,H-45,hard50,analytical,analysis_synthesis,Gemini-CLI,unaug,1,
 SB-095,H-45,hard50,analytical,analysis_synthesis,Gemini-CLI,aug,1,
 SB-096,H-46,hard50,analytical,adsorption,Claude,unaug,0,
+SB-096,H-46,hard50,analytical,adsorption,Claude,aug,1,
 SB-096,H-46,hard50,analytical,adsorption,ChatGPT,unaug,0,count-only grading
 SB-096,H-46,hard50,analytical,adsorption,ChatGPT,aug,1,
 SB-096,H-46,hard50,analytical,adsorption,DeepSeek,unaug,0,count-only grading
@@ -924,6 +937,7 @@ SB-096,H-46,hard50,analytical,adsorption,Gemini,unaug,0,count-only grading
 SB-096,H-46,hard50,analytical,adsorption,Gemini-CLI,unaug,0,
 SB-096,H-46,hard50,analytical,adsorption,Gemini-CLI,aug,1,
 SB-097,H-47,hard50,analytical,adsorption,Claude,unaug,1,
+SB-097,H-47,hard50,analytical,adsorption,Claude,aug,1,
 SB-097,H-47,hard50,analytical,adsorption,ChatGPT,unaug,0,count-only grading
 SB-097,H-47,hard50,analytical,adsorption,ChatGPT,aug,1,
 SB-097,H-47,hard50,analytical,adsorption,DeepSeek,unaug,1,count-only grading
@@ -943,6 +957,7 @@ SB-098,H-48,hard50,analytical,adsorption,Gemini,unaug,1,count-only grading
 SB-098,H-48,hard50,analytical,adsorption,Gemini-CLI,unaug,1,
 SB-098,H-48,hard50,analytical,adsorption,Gemini-CLI,aug,1,
 SB-099,H-49,hard50,computational,mixed_micelles,Claude,unaug,1,
+SB-099,H-49,hard50,computational,mixed_micelles,Claude,aug,1,
 SB-099,H-49,hard50,computational,mixed_micelles,ChatGPT,unaug,1,count-only grading
 SB-099,H-49,hard50,computational,mixed_micelles,ChatGPT,aug,1,
 SB-099,H-49,hard50,computational,mixed_micelles,DeepSeek,unaug,1,count-only grading
@@ -1360,6 +1375,7 @@ SB-140,X-40,extrahard,computational,micelle_structure,Gemini,unaug,0,count-only 
 SB-140,X-40,extrahard,computational,micelle_structure,Gemini-CLI,unaug,0,
 SB-140,X-40,extrahard,computational,micelle_structure,Gemini-CLI,aug,1,
 SB-141,X-41,extrahard,computational,mixed_micelles,Claude,unaug,1,count-only grading
+SB-141,X-41,extrahard,computational,mixed_micelles,Claude,aug,1,count-only grading
 SB-141,X-41,extrahard,computational,mixed_micelles,ChatGPT,unaug,1,count-only grading
 SB-141,X-41,extrahard,computational,mixed_micelles,ChatGPT,aug,1,count-only grading
 SB-141,X-41,extrahard,computational,mixed_micelles,DeepSeek,unaug,1,count-only grading
@@ -1417,11 +1433,13 @@ SB-146,X-46,extrahard,analytical,packing_morphology,Gemini,unaug,1,count-only gr
 SB-146,X-46,extrahard,analytical,packing_morphology,Gemini-CLI,unaug,1,
 SB-146,X-46,extrahard,analytical,packing_morphology,Gemini-CLI,aug,1,
 SB-147,X-47,extrahard,analytical,mixed_micelles,Claude,unaug,1,count-only grading
+SB-147,X-47,extrahard,analytical,mixed_micelles,Claude,aug,1,count-only grading
 SB-147,X-47,extrahard,analytical,mixed_micelles,ChatGPT,unaug,1,count-only grading
 SB-147,X-47,extrahard,analytical,mixed_micelles,ChatGPT,aug,1,count-only grading
 SB-147,X-47,extrahard,analytical,mixed_micelles,DeepSeek,unaug,1,count-only grading
 SB-147,X-47,extrahard,analytical,mixed_micelles,DeepSeek,aug,0,count-only grading
 SB-147,X-47,extrahard,analytical,mixed_micelles,Qwen,unaug,1,count-only grading
+SB-147,X-47,extrahard,analytical,mixed_micelles,Gemini,unaug,1,count-only grading
 SB-148,X-48,extrahard,analytical,emulsion_hld,Claude,unaug,1,count-only grading
 SB-148,X-48,extrahard,analytical,emulsion_hld,Claude,aug,1,count-only grading
 SB-148,X-48,extrahard,analytical,emulsion_hld,ChatGPT,unaug,1,count-only grading
