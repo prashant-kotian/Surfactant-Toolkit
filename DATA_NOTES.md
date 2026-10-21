@@ -23,11 +23,12 @@ per-source-set graders and is exercised by their self-tests.
 
 ## Exclusions and 2026-10-20/21 corrections
 
-The standard exclusion list is declared in `benchmark/build_results.py` (`EXCLUSIONS`) and
-`benchmark/question_set.json`: chart/image questions GZ-15, GZ-36..40 and H-36..38, the retired
-ambiguous GZ-26, and X-19 (authoring typo until 2026-10-16). Since 2026-10-20 a corrections layer
-(`benchmark/repair_2026-10-20/corrections.py`) adjusts each cell, and every change it makes is logged
-in that cell's `corrections` list in `results/results.json`:
+**Every model arm is scored on all 200 questions (2026-10-21).** Until 2026-10-20 the chart/image
+questions GZ-15, GZ-36..40 and H-36..38, the retired GZ-26 and X-19 (authoring typo until
+2026-10-16) were excluded for every arm (`EXCLUSIONS` in `benchmark/build_results.py`;
+`formerly_excluded` in `benchmark/question_set.json`). They were re-run and are now scored. A
+corrections layer (`benchmark/repair_2026-10-20/corrections.py`) applies the re-runs and re-grades
+to each cell, and every change it makes is logged in that cell's `corrections` list in `results/results.json`:
 
 - Chart/typo repair. The nine chart questions and X-19 were re-run on 2026-10-20/21 with the chart
   attached and the corrected X-19 text, under the original model settings, with the condition checked

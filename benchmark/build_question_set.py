@@ -136,13 +136,16 @@ def main() -> int:
             it["type"], it["subconcept"] = OVERRIDES[it["sb"]]
 
     out = {"benchmark": BENCH_NAME, "n": len(items),
-           "excluded_from_scoring": {
+           # 2026-10-21: every arm is scored on all 200 questions. The questions excluded until then were
+           # re-run (chart attached / corrected text / current GZ-26 text); see DATA_NOTES.md.
+           "excluded_from_scoring": {},
+           "formerly_excluded": {
                "groundzero": {"image_input": ["GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40"],
                                "retired_ambiguous": ["GZ-26"]},
                "hard50": {"image_input": ["H-36", "H-37", "H-38"]},
                "extrahard": {"pre_fix_packet_cells": ["X-19"]},
-               "per_arm_corrections": "standard list above; per-arm re-runs, re-grades and exclusions since "
-                                      "2026-10-20 are logged in results/results.json cells[*].corrections"},
+               "note": "re-run 2026-10-20/21 and scored for every arm; per-arm re-runs and re-grades are "
+                       "logged in results/results.json cells[*].corrections"},
            "items": items}
     (HERE / "question_set.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
     from collections import Counter

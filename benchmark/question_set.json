@@ -1,7 +1,8 @@
 {
  "benchmark": "SurfBench-200",
  "n": 200,
- "excluded_from_scoring": {
+ "excluded_from_scoring": {},
+ "formerly_excluded": {
   "groundzero": {
    "image_input": [
     "GZ-15",
@@ -27,7 +28,7 @@
     "X-19"
    ]
   },
-  "per_arm_corrections": "standard list above; per-arm re-runs, re-grades and exclusions since 2026-10-20 are logged in results/results.json cells[*].corrections"
+  "note": "re-run 2026-10-20/21 and scored for every arm; per-arm re-runs and re-grades are logged in results/results.json cells[*].corrections"
  },
  "items": [
   {

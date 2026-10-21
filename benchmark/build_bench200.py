@@ -240,6 +240,7 @@ def main() -> int:
         return {f"{m}|{c}": (list(v) if v else None) for (m, c), v in st.items()}
     json.dump({"benchmark": qs["benchmark"], "n": qs["n"],
                 "excluded": qs["excluded_from_scoring"],
+        "formerly_excluded": qs.get("formerly_excluded", {}),
                 "grand": pack(grand), "per_set": {k: pack(v[1]) for k, v in per_set_stats.items()},
                 "by_type": {t: pack(v) for t, v in by_type.items()},
                 "by_subconcept": {k: pack(v) | {"_n": sub_n[k]} for k, v in by_sub.items()}},
