@@ -1,0 +1,34 @@
+### Question H03
+
+#### 1. Surface Tension Curve Fitting & Segment Selection
+Analyzing the surface tension isotherm via `cmc_from_surface_tension_curve`:
+- At low concentrations ($0.005, 0.010, 0.020\text{ mM}$), surface tension remains essentially flat ($71.9, 71.8, 71.6\text{ mN/m}$).
+- A Bayesian Information Criterion (BIC) comparison selects a **three-segment model** (`three_segment_selected: true`): flat pre-onset baseline ($3$ points), linear premicellar decline ($6$ points: $0.05$ to $3.00\text{ mM}$), and post-CMC plateau ($3$ points: $6.00, 10.00, 16.00\text{ mM}$).
+- **CMC**: $4.2426\text{ mM}$ ($= 4.24\text{ mM}$).
+- **Premicellar slope**: $\frac{d\gamma}{d\ln C} = -8.39846\text{ mN/m}$.
+
+#### 2. Gibbs Adsorption Analysis
+- **Prefactor $n$ used**: **$n = 2$**. Because this is a 1:1 ionic surfactant in water with **NO added electrolyte**, both the surfactant anion and sodium/counterion cation must co-adsorb to maintain electroneutrality, giving $d\mu = 2 R T d\ln C$.
+- **Maximum surface excess ($\Gamma_\text{max}$)** via `gibbs_surface_excess`:
+  $$\Gamma_\text{max} = -\frac{1}{n R T} \frac{d\gamma}{d\ln C} = -\frac{-8.39846 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.69395 \times 10^{-6}\text{ mol/m}^2$$
+- **Minimum area per molecule ($A_\text{min}$)** via `gibbs_area_per_molecule`:
+  $$A_\text{min} = \frac{1}{\Gamma_\text{max} N_A} = \frac{1}{1.69395 \times 10^{-6} \times 6.02214 \times 10^{23}} \times 10^{18} = 0.9803\text{ nm}^2$$
+
+#### 3. Standard Free Energy of Micellization
+With $\alpha = 0.31$, counterion factor $= 2 - \alpha = 1.69$:
+$$\Delta G^\circ_\text{mic} = (2 - \alpha) R T \ln\left(\frac{\text{CMC}}{55.5}\right) = 1.69 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00424264}{55.5}\right) \times 10^{-3} = -39.7115\text{ kJ/mol}$$
+*(via `gibbs_free_energy_micellization`: $-39.7118\text{ kJ/mol}$)*.
+
+=== H03 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.24264,
+  "three_segment_selected": true,
+  "n_baseline_points": 3,
+  "gamma_max_mol_per_m2": 1.69395e-06,
+  "a_min_nm2": 0.98028,
+  "delta_g_mic_kJ_per_mol": -39.7115
+}
+END OF QUESTION
+
+---

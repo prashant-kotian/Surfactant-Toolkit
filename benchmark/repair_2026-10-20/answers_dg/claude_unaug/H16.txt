@@ -1,0 +1,7 @@
+FINAL_JSON: {
+“cmc_mM”: 4.20,
+“beta”: 0.72,
+“delta_g_mic_kJ_per_mol”: -40.46,
+“delta_s_mic_J_per_mol_K”: null,
+“missing_for_delta_s”: “The enthalpy of micellization (ΔH_mic) is unknown. It requires either CMC/ΔG measured at multiple temperatures to obtain d(ln CMC)/dT via the Gibbs–Helmholtz relation, or a directly measured ΔH_mic from calorimetry. A single-temperature isotherm cannot decompose ΔG into ΔH and TΔS.”
+}

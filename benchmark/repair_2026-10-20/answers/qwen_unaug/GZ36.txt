@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"slope_sign": "negative",
+"process_character": "exothermic",
+"reasoning": "The chart shows ln(CMC) falling linearly as 1000/T increases (from +0.105 at 1000/T=2.915 to -0.525 at 1000/T=3.30), i.e. d ln(CMC)/d(1/T) ~ -1.6e3 K < 0, meaning CMC increases with temperature. By the van't Hoff / Gibbs-Helmholtz relation for micellization, Delta_H_mic = R * d ln(CMC)/d(1/T) (since Delta_G_mic = RT ln CMC, K ~ 1/CMC), so the negative slope gives Delta_H_mic ~ -13.6 kJ/mol < 0: micellization is exothermic. Consistently, heating shifts the equilibrium toward monomers (CMC rises with T), as expected when heat is a product of the process."
+}

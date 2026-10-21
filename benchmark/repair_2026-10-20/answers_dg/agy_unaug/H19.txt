@@ -1,0 +1,29 @@
+### Question H19
+
+#### Principles and Calculations
+1. **Gibbs Prefactor and Surface Excess**:
+   - **Gibbs Prefactor $n$**: The solution contains **excess inert electrolyte**. Under excess salt, the chemical potential of the counterion is effectively buffered constant ($d\mu_{\text{counterion}} \approx 0$), meaning only the surfactant ion activity changes with surfactant concentration ($d\mu \approx R T d\ln c$). Thus, the prefactor is strictly **$n = 1$**.
+   - Given $\frac{d\gamma}{d\ln C} = -18.4\text{ mN/m} = -18.4 \times 10^{-3}\text{ N/m}$:
+     $$\Gamma_{\max} = -\frac{1}{n R T} \frac{d\gamma}{d\ln C} = \frac{18.4 \times 10^{-3}}{1 \times 8.314462618 \times 298.15} \approx 7.4225 \times 10^{-6}\text{ mol/m}^2$$
+
+2. **Minimum Area per Molecule ($A_{\min}$)**:
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{10^{18}}{6.02214076 \times 10^{23} \times 7.42248 \times 10^{-6}} \approx 0.2237\text{ nm}^2$$
+
+3. **Standard Free Energy ($\Delta G^\circ_{\text{mic}}$) and Entropy ($\Delta S^\circ_{\text{mic}}$)**:
+   Given $\text{CMC} = 8.0\text{ mM} = 0.0080\text{ mol/L}$, $\alpha = 0.30$:
+   $$X = \frac{0.0080}{55.5} \approx 1.44144 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X) = (2 - 0.30) \times 8.314462618 \times 298.15 \times \ln(1.44144 \times 10^{-4}) \times 10^{-3} \approx -37.2736\text{ kJ/mol}$$
+   Because only single-temperature data ($298.15\text{ K}$) are available without calorimetric enthalpy $\Delta H^\circ_{\text{mic}}$, $\Delta S^\circ_{\text{mic}}$ cannot be determined (`null`).
+
+=== H19 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.4225e-06,
+  "a_min_nm2": 0.2237,
+  "delta_g_mic_kJ_per_mol": -37.2736,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "The enthalpy of micellization dH_mic (from calorimetry or temperature-dependent CMC data via van 't Hoff analysis)."
+}
+END OF QUESTION
+
+---

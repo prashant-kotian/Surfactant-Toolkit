@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 7.4225e-6,
+"a_min_nm2": 0.22372,
+"delta_g_mic_kJ_per_mol": -37.274,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Delta H_mic or equivalent temperature-dependent micellization data sufficient to determine -(d Delta G_mic/dT)_P, including CMC(T) and alpha(T) if alpha varies with temperature"
+}

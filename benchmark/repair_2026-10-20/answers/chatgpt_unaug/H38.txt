@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"cmc_in_chart_units": 5761.9047619047615,
+"cmc_in_molar": 0.0057619047619047615,
+"beta_from_chart": 0.65625,
+"delta_g_mic_kJ_per_mol": -30.55573421446858
+}

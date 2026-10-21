@@ -707,7 +707,7 @@ def test_hlb_davies_guo_ecl_matches_manual_formula():
     n_carbons, n_eo = 12, 9  # C12E9-like nonionic ethoxylate
     n_ch2_eff = 0.965 * (n_carbons - 1) - 0.178
     n_eo_eff = 13.45 * __import__("math").log(n_eo) - 0.16 * n_eo + 1.26
-    expected = 7.0 + 1.3 * n_eo_eff - 0.475 * n_ch2_eff - 0.475 * 1
+    expected = 7.0 + 0.33 * n_eo_eff - 0.475 * n_ch2_eff - 0.475 * 1   # EO unit 0.33 (corrected 2026-10-20)
     assert hlb_davies_guo_ecl(n_carbons, n_eo) == pytest.approx(expected)
 
 
@@ -719,7 +719,7 @@ def test_hlb_davies_guo_ecl_vs_plain_davies_diverges_for_long_eo_chains():
     something real, not silently reducing to the plain formula."""
     n_carbons, n_eo = 12, 40
     guo_hlb = hlb_davies_guo_ecl(n_carbons, n_eo)
-    plain_davies_hlb = hlb_davies({"O_ether": n_eo, "CH2": n_carbons - 1, "CH3": 1})
+    plain_davies_hlb = hlb_davies({"EO_unit": n_eo, "CH2": n_carbons - 1, "CH3": 1})
     assert abs(guo_hlb - plain_davies_hlb) > 1.0
 
 
@@ -727,6 +727,16 @@ def test_hlb_davies_guo_ecl_with_extra_group_counts():
     base = hlb_davies_guo_ecl(12, 9)
     with_extra = hlb_davies_guo_ecl(12, 9, extra_group_counts={"OH_free": 1})
     assert with_extra == pytest.approx(base + 1.9)
+
+
+def test_hlb_davies_guo_ecl_c12e8_lands_in_the_physical_range():
+    """Sanity check against reality, not against the formula itself (the 2026-10-20 bug, EO weighted
+    1.3 instead of 0.33, passed the formula-mirroring tests above while giving C12E8 an HLB of 37.9).
+    C12E8 (C12H25(OCH2CH2)8OH) is a classic O/W emulsifier/detergent with an HLB near 13 on every
+    standard scale (Griffin mass fraction: 20 x 352/539 = 13.1)."""
+    hlb = hlb_davies_guo_ecl(12, 8, extra_group_counts={"OH_free": 1})
+    assert 11.5 < hlb < 14.5
+    assert hlb_griffin(8 * 44.053, 538.8) == pytest.approx(13.08, abs=0.05)
 
 
 def test_hlb_davies_guo_ecl_rejects_unknown_extra_group():

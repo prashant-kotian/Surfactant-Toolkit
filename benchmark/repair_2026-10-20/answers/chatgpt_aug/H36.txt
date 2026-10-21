@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"arrhenius_slope": -0.300,
+"delta_h_kJ_per_mol": -2.494,
+"process": "exothermic",
+"single_straight_line_adequate": false
+}

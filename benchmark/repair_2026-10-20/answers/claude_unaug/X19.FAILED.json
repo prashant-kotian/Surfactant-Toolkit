@@ -1,0 +1,8 @@
+{
+ "qid": "X19",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-20T09:59:59+0530",
+ "model_seen": "NOT INCOGNITO",
+ "failed": "model guard: NOT INCOGNITO"
+}

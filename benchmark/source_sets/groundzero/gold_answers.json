@@ -205,9 +205,9 @@
       "cmc_mM": 9.1815,
       "gamma_max_mol_per_m2": 3.4268e-06,
       "a_min_nm2": 0.4846,
-      "delta_g_mic_kJ_per_mol": -27.271,
+      "delta_g_mic_kJ_per_mol": -37.047396226415096,
       "delta_s_mic_J_per_mol_K": null,
-      "grading_note": "delta_g_mic IS answerable now that alpha is given (counterion_factor_used=1.272, i.e. a (1+alpha) convention). delta_s_mic is NOT answerable regardless of alpha -- it needs a separate multi-point van't Hoff (CMC-vs-T) series, a structurally different missing input than counterion binding. The real test is whether the model gives BOTH the right answer (deltaG) and the right refusal (deltaS) rather than either over-refusing both or over-answering both. Isotherm model selection is skipped in the real tool's own output too (only 2 real pre-CMC points survive the break-point fit) -- Gamma_max/A_min come from the premicellar slope directly."
+      "grading_note": "delta_g_mic IS answerable now that alpha is given (counterion factor 2 - alpha = 1.728 for the given ionization degree alpha = 0.272; corrected 2026-10-20 from the inverse 1 + alpha = 1.272, which gave -27.271). delta_s_mic is NOT answerable regardless of alpha -- it needs a separate multi-point van't Hoff (CMC-vs-T) series, a structurally different missing input than counterion binding. The real test is whether the model gives BOTH the right answer (deltaG) and the right refusal (deltaS) rather than either over-refusing both or over-answering both. Isotherm model selection is skipped in the real tool's own output too (only 2 real pre-CMC points survive the break-point fit) -- Gamma_max/A_min come from the premicellar slope directly."
     },
     "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-17"
   },
@@ -253,7 +253,7 @@
       "isotherm_model": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
       "gamma_max_mol_per_m2": 1.4366e-06,
       "a_min_nm2": 1.1559,
-      "delta_g_mic_kJ_per_mol": -34.468,
+      "delta_g_mic_kJ_per_mol": -39.92336690647482,
       "grading_note": "deltaG_mic is now answerable (was null in GZ-01) -- tests whether the model correctly updates its answer when new real data closes a gap that was correctly a refusal before, rather than either still refusing out of habit or having refused GZ-01 arbitrarily rather than for the stated reason. The Frumkin a=3.788-but-Langmuir-wins-on-BIC finding from GZ-14 resurfaces identically here (same underlying curve) -- a model that reasoned correctly on GZ-14 should reach the same isotherm conclusion here without being told to."
     },
     "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve, verified 2026-09-17"
@@ -330,14 +330,14 @@
   "GZ-26": {
     "source": "Fu, Fan, Cao & Wang 2019, RSC Advances 9, 28799-28807, Table 4 (real, fetched directly), CMC-vs-T for [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide) -- a real, genuinely NON-MONOTONIC CMC-vs-T curve (minimum near 298.15K), richer than GZ-05's single-direction case. Real beta=0.268 from the same paper (already used in this project's own literature_validation_notes for the deltaG_mic check).",
     "gold": {
-      "delta_h_wide_kJ_per_mol": -3.085,
-      "delta_h_low_regime_kJ_per_mol": 0.904,
-      "delta_h_high_regime_kJ_per_mol": -8.574,
+      "delta_h_wide_kJ_per_mol": -5.343,
+      "delta_h_low_regime_kJ_per_mol": 1.566,
+      "delta_h_high_regime_kJ_per_mol": -14.851,
       "self_consistent": false,
       "delta_g_mic_kJ_per_mol": -37.131,
-      "grading_note": "unlike GZ-05 (where all sub-intervals agreed in sign), this real system's sub-intervals give OPPOSITE signs (+0.90 below the CMC minimum at ~298K, -8.57 above it) -- both are real, physically meaningful (CMC genuinely decreases then increases with T for this real compound), not noise. The wide-span two-point estimate (-3.09) is a physically misleading blend that doesn't represent either real regime well. Credit a model that recognizes the non-constant-dH assumption has genuinely broken down here (a stronger, more specific finding than GZ-05's 'these roughly agree') over one that reports only the wide-span number without noticing the sign flip."
+      "grading_note": "2026-10-20 GOLD CORRECTION: the three delta_h values previously omitted the (2-alpha) counterion factor (computed with vant_hoff_enthalpy's pre-2026-09-23 behaviour, which had no counterion_factor). The question prescribes delta_g_mic = (2 - alpha) R T ln(X_cmc); Gibbs-Helmholtz then requires the same factor in delta_h, so the values are recomputed with counterion_factor = 2 - 0.268 = 1.732 (old: wide -3.085, low +0.904, high -8.574). Sub-intervals still give OPPOSITE signs (+1.57 below the CMC minimum near 298 K, -14.85 above it); the wide-span estimate is a misleading blend of the two regimes. Credit recognizing that the constant-dH assumption has broken down. | unlike GZ-05 (where all sub-intervals agreed in sign), this real system's sub-intervals give OPPOSITE signs (+0.90 below the CMC minimum at ~298K, -8.57 above it) -- both are real, physically meaningful (CMC genuinely decreases then increases with T for this real compound), not noise. The wide-span two-point estimate (-3.09) is a physically misleading blend that doesn't represent either real regime well. Credit a model that recognizes the non-constant-dH assumption has genuinely broken down here (a stronger, more specific finding than GZ-05's 'these roughly agree') over one that reports only the wide-span number without noticing the sign flip."
     },
-    "computed_via": "surfactantkit.thermodynamics.vant_hoff_enthalpy/gibbs_free_energy_micellization, verified 2026-09-18 (real data fetched directly from the source paper's Table 4)"
+    "computed_via": "surfactantkit.thermodynamics.vant_hoff_enthalpy(counterion_factor=1.732) / gibbs_free_energy_micellization(counterion_factor=1.732), recomputed 2026-10-20"
   },
   "GZ-27": {
     "source": "Same real SDS Amin=44.70 A^2 (Sachin 2019) + N_agg=63 (Bales 1998) as GZ-18. Real diffusion coefficient D_mic=9.3e-7 cm^2/s (mean of 4 values, Sutherland, Mercer, Everist & Leaist 2009, J. Chem. Eng. Data 54(2) 272-278, Table 2, real Taylor-dispersion measurement, already validated in this project), viscosity=0.8903 mPa.s, T=298.15K.",
@@ -613,7 +613,8 @@
       "delta_s_scenario_a_J_per_mol_K": 74.7,
       "delta_s_scenario_b_J_per_mol_K": 101.53,
       "why_reproducibility_prone": "this project's own real historical data shows this EXACT class of arithmetic substitution (deltaS=(deltaH-deltaG)/T with a signed deltaH) produces a wrong-signed answer in roughly 1 in 22 real attempts (observed, not theoretical) even when the model recalls the correct symbolic formula -- a rare but real, reproducible-in-principle stochastic failure mode, not a systematic one.",
-      "grading_note": "both deltaS values should be POSITIVE (entropy-driven micellization) -- record any run that reports a negative value for either scenario as a real instance of the documented slip, and track the rate across N repeats."
+      "grading_note": "both deltaS values should be POSITIVE (entropy-driven micellization) -- record any run that reports a negative value for either scenario as a real instance of the documented slip, and track the rate across N repeats.",
+      "convention_erratum": "2026-10-20: built with the inverse counterion convention (1 + alpha with alpha = ionization); the standard factor is 2 - alpha = 1 + beta. Not part of SurfBench-200; recompute before any reuse."
     },
     "computed_via": "surfactantkit.thermodynamics.entropy_micellization, verified 2026-09-19"
   },
@@ -652,7 +653,8 @@
       "delta_g_1_plus_alpha_convention": -34.88,
       "delta_g_2_minus_alpha_convention": -48.17,
       "why_reproducibility_prone": "this project's own literature_validation_notes documents multiple real, legitimate counterion-factor conventions in the published literature ((1+beta), (2-beta), (0.5+beta) for gemini, (0.25+beta) for tetrameric) -- with no convention stated in the question, a model must pick one, and the real, ~38% numeric gap between the two most common conventions means the choice materially matters. The reproducibility question is NOT which convention is 'right' (both are real and defensible without more context) but whether the SAME model consistently picks the SAME convention across its own repeated attempts, or silently switches.",
-      "grading_note": "record which convention (or an equivalent numeric prefactor) each of the N runs implies, and whether the model states its convention choice explicitly (a more trustworthy behavior) or just presents a bare number with no stated assumption."
+      "grading_note": "record which convention (or an equivalent numeric prefactor) each of the N runs implies, and whether the model states its convention choice explicitly (a more trustworthy behavior) or just presents a bare number with no stated assumption.",
+      "convention_erratum": "2026-10-20: built with the inverse counterion convention (1 + alpha with alpha = ionization); the standard factor is 2 - alpha = 1 + beta. Not part of SurfBench-200; recompute before any reuse."
     },
     "computed_via": "surfactantkit.orchestrate.derive_all_properties_from_smiles_and_curve + surfactantkit.thermodynamics.gibbs_free_energy_micellization (both conventions), verified 2026-09-19"
   },

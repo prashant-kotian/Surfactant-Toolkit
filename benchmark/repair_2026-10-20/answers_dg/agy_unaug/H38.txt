@@ -1,0 +1,36 @@
+### Question H38
+
+#### Principles and Calculations
+1. **Reading the Chart (`H-38_chart.png`)**:
+   - The x-axis is labeled "Concentration ($\mu\text{M}$)" with tick marks at $1000, 2000, 3000, \dots, 12000\ \mu\text{M}$.
+   - The y-axis shows conductivity ($\text{mS/cm}$).
+   - The plotted points are:
+     $(1000, 0.690), (2000, 1.330), (3000, 1.970), (4000, 2.610), (5000, 3.250), (5500, 3.570)$,
+     $(6000, 3.785), (6500, 3.895), (7000, 4.005), (8000, 4.225), (10000, 4.665), (12000, 5.105)$.
+   - Premicellar segment ($c \le 5000\ \mu\text{M}$):
+     $$\text{Slope}_1 = 6.40 \times 10^{-4}\text{ mS/(cm}\cdot\mu\text{M)},\quad \text{Intercept}_1 = 0.050\text{ mS/cm}$$
+   - Postmicellar segment ($c \ge 6500\ \mu\text{M}$):
+     $$\text{Slope}_2 = 2.20 \times 10^{-4}\text{ mS/(cm}\cdot\mu\text{M)},\quad \text{Intercept}_2 = 2.465\text{ mS/cm}$$
+
+2. **CMC Break-Point**:
+   Equating the two linear segments:
+   $$6.40 \times 10^{-4} c + 0.050 = 2.20 \times 10^{-4} c + 2.465 \implies 4.20 \times 10^{-4} c = 2.415 \implies c = 5750.0\ \mu\text{M}$$
+   In molarity:
+   $$\text{CMC} = 5750.0 \times 10^{-6}\text{ mol/L} = 0.00575\text{ mol/L}$$
+
+3. **Counterion Binding Degree ($\beta$) and Free Energy ($\Delta G^\circ_{\text{mic}}$)**:
+   $$\beta = 1 - \frac{\text{Slope}_2}{\text{Slope}_1} = 1 - \frac{2.20 \times 10^{-4}}{6.40 \times 10^{-4}} = 1 - 0.34375 = 0.65625$$
+   $$X = \frac{0.00575}{55.5} \approx 1.036036 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \beta) R T \ln(X) = (1 + 0.65625) \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) \times 10^{-3} \approx -37.6702\text{ kJ/mol}$$
+
+=== H38 ===
+FINAL_JSON:
+{
+  "cmc_in_chart_units": 5750.0,
+  "cmc_in_molar": 0.00575,
+  "beta_from_chart": 0.65625,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

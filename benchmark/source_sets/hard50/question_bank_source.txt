@@ -43,7 +43,7 @@ FINAL_JSON:
 ============================================================================
 
 H-02
-[reference only, do not paste -- source: constructed demonstration dataset (forward-generated, true break 5.75 mM, true beta 0.6562); axis: arithmetic-execution (regression + convention chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; Version B: break -> beta -> counterion factor (2-beta) -> dG; expected failure: slope-ratio arithmetic, silently dropping the counterion factor or assuming nonionic (1.0); ref: MedMCP-Calc 2601.23049 calculator-avoidance; procedural-execution 2605.00817]
+[reference only, do not paste -- source: constructed demonstration dataset (forward-generated, true break 5.75 mM, true beta 0.6562); axis: arithmetic-execution (regression + convention chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; Version B: break -> beta -> counterion factor (1 + beta) -> dG; expected failure: slope-ratio arithmetic, silently dropping the counterion factor or assuming nonionic (1.0); ref: MedMCP-Calc 2601.23049 calculator-avoidance; procedural-execution 2605.00817]
 
 >>> PASTE BELOW >>>
 Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
@@ -65,7 +65,7 @@ Conductivity vs concentration for a 1:1 ionic surfactant in water at 298.15 K (c
   12.0, 5.105
 
 Report: the CMC (mM) from the break-point, the counterion binding degree beta (= 1 - slope2/slope1), the degree of counterion dissociation alpha (= 1 - beta), and the standard free energy of micellization
-  dG = (2 - beta)*R*T*ln(X),  X = CMC(mol/L)/55.5,  R = 8.314462618 J/(mol*K), T = 298.15 K
+  dG = (1 + beta)*R*T*ln(X),  X = CMC(mol/L)/55.5,  R = 8.314462618 J/(mol*K), T = 298.15 K
 in kJ/mol (use the beta you derived).
 
 End your response with a block in exactly this form:
@@ -102,7 +102,7 @@ Surface tension isotherm for a 1:1 ionic surfactant in water with NO added elect
   10.00, 31.1
   16.00, 31.0
 
-Report: the CMC (mM); whether the curve requires a three-segment (flat baseline / decline / plateau) description (true/false) and the number of points in the baseline segment; the maximum surface excess Gamma_max (mol/m^2) from the premicellar slope; the minimum area per molecule A_min (nm^2); and dG_mic (kJ/mol) using the counterion dissociation degree alpha = 0.31 via dG = (1 + alpha)*R*T*ln(X) with X = CMC(mol/L)/55.5, T = 298.15 K. State clearly which Gibbs prefactor n you used and why (the electrolyte condition is given above).
+Report: the CMC (mM); whether the curve requires a three-segment (flat baseline / decline / plateau) description (true/false) and the number of points in the baseline segment; the maximum surface excess Gamma_max (mol/m^2) from the premicellar slope; the minimum area per molecule A_min (nm^2); and dG_mic (kJ/mol) using the counterion dissociation degree alpha = 0.31 via dG = (2 - alpha)*R*T*ln(X) with X = CMC(mol/L)/55.5, T = 298.15 K. State clearly which Gibbs prefactor n you used and why (the electrolyte condition is given above).
 
 End your response with a block in exactly this form:
 
@@ -120,12 +120,12 @@ FINAL_JSON:
 ============================================================================
 
 H-04
-[reference only, do not paste -- source: REAL Fu, Fan, Cao & Wang 2019 RSC Adv. 9 28799 Table data for [C12mpy][Br] CMC-vs-T (same 8-point table as GZ-26/28/50/51), beta=0.268 real; axis: arithmetic-execution (8-row multi-point fit with curvature); Version A: vant_hoff_multi_point_fit (returns dH, dS, dCp, dG(T)); Version B: build dG(T) rows with (2-beta), then allow a dCp term; do not use a two-point shortcut; expected failure: two-point substitution, 1/T orientation sign slips (the toolkit's own docstring records this exact sign bug caught in an unaugmented Claude Opus 4.8 pilot), entropy-vs-enthalpy misjudgment; ref: AtmosCoder sign-convention carry-over; GZ-26 (universal FAIL recipe on this data)]
+[reference only, do not paste -- source: REAL Fu, Fan, Cao & Wang 2019 RSC Adv. 9 28799 Table data for [C12mpy][Br] CMC-vs-T (same 8-point table as GZ-26/28/50/51), beta=0.268 real; axis: arithmetic-execution (8-row multi-point fit with curvature); Version A: vant_hoff_multi_point_fit (returns dH, dS, dCp, dG(T)); Version B: build dG(T) rows with (2 - alpha), then allow a dCp term; do not use a two-point shortcut; expected failure: two-point substitution, 1/T orientation sign slips (the toolkit's own docstring records this exact sign bug caught in an unaugmented Claude Opus 4.8 pilot), entropy-vs-enthalpy misjudgment; ref: AtmosCoder sign-convention carry-over; GZ-26 (universal FAIL recipe on this data)]
 
 >>> PASTE BELOW >>>
 Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
 
-Real CMC-vs-temperature data for the cationic surfactant [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide); counterion binding degree beta = 0.268 (real value from the same study):
+Real CMC-vs-temperature data for the cationic surfactant [C12mpy][Br] (1-dodecyl-3-methylpyridinium bromide); degree of counterion ionization alpha = 0.268 (S2/S1) (real value from the same study):
 
   T (degC), CMC (mM)
   10, 9.93
@@ -137,7 +137,7 @@ Real CMC-vs-temperature data for the cationic surfactant [C12mpy][Br] (1-dodecyl
   40, 10.54
   45, 11.47
 
-Perform a multi-point van't Hoff analysis of this data that allows a nonzero heat capacity change (i.e. curvature in the Arrhenius plot): compute dG_mic(T) at every row with dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5), then extract dH (kJ/mol), dS (J/(mol*K)), and dCp (J/(mol*K)) referenced to 298.15 K, plus dG_mic at 298.15 K (kJ/mol). Finally state whether micellization over this range is entropy-driven or enthalpy-driven (answer: exactly one of "entropy-driven" / "enthalpy-driven").
+Perform a multi-point van't Hoff analysis of this data that allows a nonzero heat capacity change (i.e. curvature in the Arrhenius plot): compute dG_mic(T) at every row with dG = (2 - alpha)*R*T*ln(CMC[mol/L]/55.5), then extract dH (kJ/mol), dS (J/(mol*K)), and dCp (J/(mol*K)) referenced to 298.15 K, plus dG_mic at 298.15 K (kJ/mol). Finally state whether micellization over this range is entropy-driven or enthalpy-driven (answer: exactly one of "entropy-driven" / "enthalpy-driven").
 
 End your response with a block in exactly this form:
 
@@ -287,7 +287,7 @@ Two independent measurements on the SAME 1:1 ionic surfactant system at 298.15 K
   12.00, 34.4
   16.00, 34.3
 
-Report: CMC from conductivity (mM), CMC from tensiometry (mM), whether the two methods agree within 2% relative difference (true/false -- compute the relative difference first), the counterion binding degree beta from the conductivity slopes, and dG_mic (kJ/mol) with dG = (2 - beta)*R*T*ln(CMC_cond[mol/L]/55.5), T = 298.15 K, R = 8.314462618 J/(mol*K).
+Report: CMC from conductivity (mM), CMC from tensiometry (mM), whether the two methods agree within 2% relative difference (true/false -- compute the relative difference first), the counterion binding degree beta from the conductivity slopes, and dG_mic (kJ/mol) with dG = (1 + beta)*R*T*ln(CMC_cond[mol/L]/55.5), T = 298.15 K, R = 8.314462618 J/(mol*K).
 
 End your response with a block in exactly this form:
 
@@ -548,7 +548,7 @@ Conductivity vs concentration for a 1:1 ionic surfactant at 298.15 K (mS/cm vs m
   10.0, 3.233
   12.0, 3.541
 
-Report: the CMC (mM); the counterion binding degree beta (1 - slope2/slope1); dG_mic (kJ/mol) using dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5) with T = 298.15 K, R = 8.314462618 J/(mol*K); the standard entropy of micellization dS_mic (J/(mol*K)) at 298.15 K as a number or null if it is not determinable from the information given; and if null, what specific missing input would be required.
+Report: the CMC (mM); the counterion binding degree beta (1 - slope2/slope1); dG_mic (kJ/mol) using dG = (1 + beta)*R*T*ln(CMC[mol/L]/55.5) with T = 298.15 K, R = 8.314462618 J/(mol*K); the standard entropy of micellization dS_mic (J/(mol*K)) at 298.15 K as a number or null if it is not determinable from the information given; and if null, what specific missing input would be required.
 
 End your response with a block in exactly this form:
 
@@ -621,7 +621,7 @@ Work entirely from first principles -- do not search the internet or recall a li
 
 A 1:1 ionic surfactant solution WITH excess inert electrolyte at T = 298.15 K. The measured premicellar surface-tension slope is d(gamma)/d(ln C) = -18.4 mN/m. The CMC is 8.0 mM, and the degree of counterion dissociation is alpha = 0.30.
 
-Report: Gamma_max (mol/m^2) from the Gibbs adsorption equation (state which prefactor n you used and why -- the electrolyte condition is given); A_min (nm^2); dG_mic (kJ/mol) using dG = (1 + alpha)*R*T*ln(CMC[mol/L]/55.5); dS_mic (J/(mol*K)) as a number or null if not determinable from the information given; and if null, what is missing.
+Report: Gamma_max (mol/m^2) from the Gibbs adsorption equation (state which prefactor n you used and why -- the electrolyte condition is given); A_min (nm^2); dG_mic (kJ/mol) using dG = (2 - alpha)*R*T*ln(CMC[mol/L]/55.5); dS_mic (J/(mol*K)) as a number or null if not determinable from the information given; and if null, what is missing.
 
 End your response with a block in exactly this form:
 
@@ -938,7 +938,7 @@ Work entirely from first principles -- do not search the internet or recall a li
 
 A 1:1 ionic surfactant in water with NO added electrolyte at T = 298.15 K. Measured premicellar slope: d(gamma)/d(log10 C) = -9.2 mN/m per decade. CMC = 6.0 mM. Degree of counterion dissociation alpha = 0.30.
 
-Report: Gamma_max (mol/m^2); A_min (nm^2); and dG_mic (kJ/mol) using dG = (1 + alpha)*R*T*ln(X), X = CMC(mol/L)/55.5, R = 8.314462618 J/(mol*K). State the prefactor n you used for the Gibbs equation.
+Report: Gamma_max (mol/m^2); A_min (nm^2); and dG_mic (kJ/mol) using dG = (2 - alpha)*R*T*ln(X), X = CMC(mol/L)/55.5, R = 8.314462618 J/(mol*K). State the prefactor n you used for the Gibbs equation.
 
 End your response with a block in exactly this form:
 
@@ -1098,7 +1098,7 @@ Work entirely from first principles -- do not search the internet or recall a li
 
 See chart H-38_chart.png: electrical conductivity (mS/cm) versus concentration with x-axis labeled "Concentration (uM)" (values plotted as micromolar: 1000, 2000, ... -- read the chart faithfully in the units shown). Two linear segments meet at the CMC break.
 
-Report: the break concentration IN THE CHART'S OWN UNITS (number as plotted); the same CMC in mol/L; the counterion binding degree beta = 1 - slope2/slope1 extracted from the two segments (same units on both sides, so the ratio is unit-invariant); and dG_mic (kJ/mol) from dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5) at T = 298.15 K, R = 8.314462618 J/(mol*K).
+Report: the break concentration IN THE CHART'S OWN UNITS (number as plotted); the same CMC in mol/L; the counterion binding degree beta = 1 - slope2/slope1 extracted from the two segments (same units on both sides, so the ratio is unit-invariant); and dG_mic (kJ/mol) from dG = (1 + beta)*R*T*ln(CMC[mol/L]/55.5) at T = 298.15 K, R = 8.314462618 J/(mol*K).
 
 End your response with a block in exactly this form:
 
@@ -1368,7 +1368,7 @@ FINAL_JSON:
 ============================================================================
 
 H-47
-[reference only, do not paste -- source: constructed demonstration pair (same conductivity + tension data as H-02/H-08, fused into a property cascade); axis: reasoning-decision (fusion cascade + genuine dS null) with cross-method factor discipline; Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: Gamma/A_min come from the TENSION slope (n=2, no added salt); dG comes from the CONDUCTIVITY CMC with (2-beta); do not cross the two prefactors; dS is null without a temperature series; expected failure: cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS; ref: GZ refusal + multi-method fusion recipes; MedMCP calc accuracy]
+[reference only, do not paste -- source: constructed demonstration pair (same conductivity + tension data as H-02/H-08, fused into a property cascade); axis: reasoning-decision (fusion cascade + genuine dS null) with cross-method factor discipline; Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: Gamma/A_min come from the TENSION slope (n=2, no added salt); dG comes from the CONDUCTIVITY CMC with (1 + beta); do not cross the two prefactors; dS is null without a temperature series; expected failure: cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS; ref: GZ refusal + multi-method fusion recipes; MedMCP calc accuracy]
 
 >>> PASTE BELOW >>>
 Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
@@ -1402,7 +1402,7 @@ Same 1:1 ionic surfactant system at 298.15 K (NO added salt), measured two ways.
   12.00, 34.4
   16.00, 34.3
 
-Report: Gamma_max (mol/m^2) from the tension premicellar slope (1:1 ionic, no added salt -- choose the Gibbs prefactor accordingly and say which you used); A_min (nm^2); dG_mic (kJ/mol) computed from the CONDUCTIVITY CMC with dG = (2 - beta)*R*T*ln(CMC[mol/L]/55.5) where beta comes from the conductivity slopes; dS_mic (J/(mol*K)) as a number or null if not determinable; and if null, what is missing.
+Report: Gamma_max (mol/m^2) from the tension premicellar slope (1:1 ionic, no added salt -- choose the Gibbs prefactor accordingly and say which you used); A_min (nm^2); dG_mic (kJ/mol) computed from the CONDUCTIVITY CMC with dG = (1 + beta)*R*T*ln(CMC[mol/L]/55.5) where beta comes from the conductivity slopes; dS_mic (J/(mol*K)) as a number or null if not determinable; and if null, what is missing.
 
 End your response with a block in exactly this form:
 
@@ -1445,14 +1445,14 @@ FINAL_JSON:
 ============================================================================
 
 H-49
-[reference only, do not paste -- source: constructed demonstration thermodynamic triangle (cmc 8.0 mM, alpha=0.272, dH=-5.0 kJ/mol stated inputs); axis: arithmetic-execution (triangle closure: dG->dS->dG) ; Version A: gibbs_free_energy_micellization + entropy_micellization; Version B: factor (1+alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle; expected failure: counterion factor forgotten (or 2-beta used with alpha), triangle not closing -- report the mismatch honestly; ref: GZ thermodynamic-consistency recipes (GZ-28 family); procedural-execution]
+[reference only, do not paste -- source: constructed demonstration thermodynamic triangle (cmc 8.0 mM, alpha=0.272, dH=-5.0 kJ/mol stated inputs); axis: arithmetic-execution (triangle closure: dG->dS->dG) ; Version A: gibbs_free_energy_micellization + entropy_micellization; Version B: factor (2 - alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle; expected failure: counterion factor forgotten (or 2-beta used with alpha), triangle not closing -- report the mismatch honestly; ref: GZ thermodynamic-consistency recipes (GZ-28 family); procedural-execution]
 
 >>> PASTE BELOW >>>
 Work entirely from first principles -- do not search the internet or recall a literature value for this compound or system.
 
 For a surfactant at T = 298.15 K: CMC = 8.0 mM, degree of counterion dissociation alpha = 0.272, and dH_mic = -5.0 kJ/mol (from a separate temperature study).
 
-Report: dG_mic from the CMC, using dG = (1 + alpha)*R*T*ln(CMC[mol/L]/55.5) with R = 8.314462618 J/(mol*K) (kJ/mol); dS_mic from the thermodynamic triangle dS = (dH - dG)/T (J/(mol*K)); dG recomputed as dH - T*dS (kJ/mol); and whether your triangle closes self-consistently within 2% (true/false).
+Report: dG_mic from the CMC, using dG = (2 - alpha)*R*T*ln(CMC[mol/L]/55.5) with R = 8.314462618 J/(mol*K) (kJ/mol); dS_mic from the thermodynamic triangle dS = (dH - dG)/T (J/(mol*K)); dG recomputed as dH - T*dS (kJ/mol); and whether your triangle closes self-consistently within 2% (true/false).
 
 End your response with a block in exactly this form:
 

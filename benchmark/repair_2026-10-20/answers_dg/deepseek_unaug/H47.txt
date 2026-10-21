@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 1.41e-6,
+"a_min_nm2": 1.18,
+"delta_g_mic_kJ_per_mol": -37.67,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Temperature dependence of the CMC and beta (or calorimetric enthalpy) to obtain Delta H_mic; a single temperature gives only Delta G_mic."
+}

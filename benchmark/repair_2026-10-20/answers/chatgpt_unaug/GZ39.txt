@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "Approximately above 1–2 mM, with clear divergence by about 3–4 mM and higher concentrations",
+"deviation_reason": "Near and above the CMC, added surfactant forms micelles, so the monomer concentration and interfacial adsorption no longer increase as assumed by a pre-CMC isotherm; the surface tension therefore plateaus while the extrapolated pre-CMC fit continues to decrease."
+}

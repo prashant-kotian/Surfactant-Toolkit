@@ -1,0 +1,8 @@
+{
+ "qid": "H37",
+ "provider": "claude",
+ "condition": "aug",
+ "start": "2026-10-20T10:14:28+0530",
+ "model_seen": "NOT INCOGNITO",
+ "failed": "model guard: NOT INCOGNITO"
+}

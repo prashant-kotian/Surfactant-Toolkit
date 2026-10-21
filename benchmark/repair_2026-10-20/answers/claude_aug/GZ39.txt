@@ -1,0 +1,4 @@
+FINAL_JSON: {
+“deviation_region”: “Above roughly 1-2 mM, i.e. at and beyond the CMC (~2.5 mM), where measured data plateaus near 27.5-28 mN/m but the fitted curve keeps declining toward ~18 mN/m at 10 mM.”,
+“deviation_reason”: “A pre-CMC adsorption isotherm assumes all added surfactant remains free monomer, so monomer activity (and thus the driving force lowering surface tension) keeps rising with concentration. Above the CMC, micelles form and buffer the free-monomer activity at a nearly constant value, so surface tension plateaus. The pre-CMC model has no micellization term and cannot reproduce this plateau, so it keeps predicting falling tension and diverges from the data.”
+}

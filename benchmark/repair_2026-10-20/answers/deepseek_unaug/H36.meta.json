@@ -1,0 +1,11 @@
+{
+ "qid": "H36",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-20T04:59:42+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "Inactive",
+ "chart": "attached (H-36_chart.png visible)",
+ "sent": "2026-10-20T05:01:10+0530",
+ "end": "2026-10-20T05:02:18+0530"
+}

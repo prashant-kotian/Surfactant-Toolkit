@@ -1952,7 +1952,7 @@
    "arith": 2,
    "reason": 3
   },
-  "body": "Question X-41 — Recompute against a factor-omitting draft\n\nAn earlier report on an IONIC 1:1 surfactant at T = 298.15 K states:\n\n    CMC = 4.40 mM,  beta = 0.75,\n    deltaG_mic = -23.40 kJ/mol  (\"standard pseudo-phase value\")\n\nPinned instructions (authoritative):\n\n1. Recompute with the counterion factor the draft appears to have\n   omitted (both the value of beta and the formula are pinned):\n\n       X = (CMC/1000)/((CMC/1000) + 55.5)\n       deltaG = (2 - beta) * R * T * ln(X),\n       R = 8.314462618 J/(mol K), T = 298.15 K   [kJ/mol]\n\n2. rel_diff = |draft - yours| / |yours| * 100 (percent), where the\n   draft value is the stated -23.40 kJ/mol.\n3. The draft's implicit claim that the two values agree within 10%:\n   true/false (against your rel_diff).\n4. What is wrong with the draft, from [\"formula\", \"data\", \"both\",\n   \"neither\"]?\n5. Direction: is the draft magnitude SMALLER or LARGER than the\n   correct |deltaG|? From [\"less_negative\", \"more_negative\"] (answer\n   in terms of signed values: which is more negative).\n\nRequired outputs (report every item, in this order):\n1. dG_correct: kJ/mol (step 1)\n2. rel_diff_pct: percent (step 2)\n3. claim_agrees: true/false (step 3)\n4. what_wrong: one of [\"formula\", \"data\", \"both\", \"neither\"]\n5. direction: one of [\"less_negative\", \"more_negative\"]\n\nEnd with exactly one line of this form (JSON, keys exactly as written):\nFINAL_JSON: {\"dG_correct\": <value>, \"rel_diff_pct\": <value>, \"claim_agrees\": <value>, \"what_wrong\": <value>, \"direction\": <value>}\nEND OF QUESTION",
+  "body": "Question X-41 — Recompute against a factor-omitting draft\n\nAn earlier report on an IONIC 1:1 surfactant at T = 298.15 K states:\n\n    CMC = 4.40 mM,  beta = 0.75,\n    deltaG_mic = -23.40 kJ/mol  (\"standard pseudo-phase value\")\n\nPinned instructions (authoritative):\n\n1. Recompute with the counterion factor the draft appears to have\n   omitted (both the value of beta and the formula are pinned):\n\n       X = (CMC/1000)/((CMC/1000) + 55.5)\n       deltaG = (1 + beta) * R * T * ln(X),\n       R = 8.314462618 J/(mol K), T = 298.15 K   [kJ/mol]\n\n2. rel_diff = |draft - yours| / |yours| * 100 (percent), where the\n   draft value is the stated -23.40 kJ/mol.\n3. The draft's implicit claim that the two values agree within 10%:\n   true/false (against your rel_diff).\n4. What is wrong with the draft, from [\"formula\", \"data\", \"both\",\n   \"neither\"]?\n5. Direction: is the draft magnitude SMALLER or LARGER than the\n   correct |deltaG|? From [\"less_negative\", \"more_negative\"] (answer\n   in terms of signed values: which is more negative).\n\nRequired outputs (report every item, in this order):\n1. dG_correct: kJ/mol (step 1)\n2. rel_diff_pct: percent (step 2)\n3. claim_agrees: true/false (step 3)\n4. what_wrong: one of [\"formula\", \"data\", \"both\", \"neither\"]\n5. direction: one of [\"less_negative\", \"more_negative\"]\n\nEnd with exactly one line of this form (JSON, keys exactly as written):\nFINAL_JSON: {\"dG_correct\": <value>, \"rel_diff_pct\": <value>, \"claim_agrees\": <value>, \"what_wrong\": <value>, \"direction\": <value>}\nEND OF QUESTION",
   "family": "G9",
   "fields": {
    "claim_agrees": {
@@ -1963,7 +1963,7 @@
     "tol": 0.015,
     "type": "num",
     "unit": "kJ/mol",
-    "value": -29.2597899505
+    "value": -40.9637059307
    },
    "direction": {
     "type": "str",
@@ -1973,7 +1973,7 @@
     "tol": 0.01,
     "type": "num",
     "unit": "%",
-    "value": 20.0
+    "value": 42.85714285714286
    },
    "what_wrong": {
     "type": "str",
@@ -2268,7 +2268,7 @@
    "arith": 5,
    "reason": 1
   },
-  "body": "Question X-47 — Dual-method mega-panel: CMC, beta, dG, comparison\n\nSame surfactant system, two independent raw datasets at 298.15 K.\n\nConductometry:\n\n    c (mM)    kappa (uS/cm)\n      0.35      35.5\n      0.70      54.7\n      1.10      75.8\n      1.60     104.2\n      2.20     136.5\n      2.90     176.3\n      3.60     214.3\n      4.30     251.9\n      5.00     275.8\n      5.90     293.5\n      7.00     312.5\n      8.40     339.3\n     10.00     370.8\n     12.00     408.5\n\nTensiometry:\n\n    c (mM)    gamma (mN/m)\n      0.25     70.0\n      0.50     65.9\n      0.85     62.8\n      1.35     60.4\n      2.05     57.4\n      2.95     56.5\n      3.60     54.9\n      5.40     30.7\n      7.40     30.5\n      9.80     30.8\n     12.50     30.2\n\nPinned protocols (authoritative):\n\nCONDUCTIVITY: sort by c; RSS-minimizing split (>= 3/side) of two OLS\nlines kappa = a + b*c (LINEAR c); CMC_cond = (a2-a1)/(b1-b2);\nbeta = 1 - b_above/b_below.\nTENSION: sort by c; x = log10(c); RSS-minimizing split (>= 3/side) of\ntwo OLS lines gamma vs x; CMC_tens = 10^((x_last_decl+x_first_plateau)/2).\ndeltaG = (2 - beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),\nR = 8.314462618, T = 298.15 K, kJ/mol.\nrel_diff = |CMC_cond - CMC_tens| / ((CMC_cond + CMC_tens)/2) * 100.\nagree = true iff rel_diff <= 3.0.\n\nReport cmc_cond, beta, deltaG, cmc_tens, rel_diff_pct, agree.\n\nRequired outputs (report every item, in this order):\n1. cmc_cond: mM\n2. beta: counterion binding degree\n3. deltaG: kJ/mol\n4. cmc_tens: mM\n5. rel_diff_pct: percent\n6. agree_3pct: true/false\n\nEnd with exactly one line of this form (JSON, keys exactly as written):\nFINAL_JSON: {\"cmc_cond\": <value>, \"beta\": <value>, \"deltaG\": <value>, \"cmc_tens\": <value>, \"rel_diff_pct\": <value>, \"agree_3pct\": <value>}\nEND OF QUESTION",
+  "body": "Question X-47 — Dual-method mega-panel: CMC, beta, dG, comparison\n\nSame surfactant system, two independent raw datasets at 298.15 K.\n\nConductometry:\n\n    c (mM)    kappa (uS/cm)\n      0.35      35.5\n      0.70      54.7\n      1.10      75.8\n      1.60     104.2\n      2.20     136.5\n      2.90     176.3\n      3.60     214.3\n      4.30     251.9\n      5.00     275.8\n      5.90     293.5\n      7.00     312.5\n      8.40     339.3\n     10.00     370.8\n     12.00     408.5\n\nTensiometry:\n\n    c (mM)    gamma (mN/m)\n      0.25     70.0\n      0.50     65.9\n      0.85     62.8\n      1.35     60.4\n      2.05     57.4\n      2.95     56.5\n      3.60     54.9\n      5.40     30.7\n      7.40     30.5\n      9.80     30.8\n     12.50     30.2\n\nPinned protocols (authoritative):\n\nCONDUCTIVITY: sort by c; RSS-minimizing split (>= 3/side) of two OLS\nlines kappa = a + b*c (LINEAR c); CMC_cond = (a2-a1)/(b1-b2);\nbeta = 1 - b_above/b_below.\nTENSION: sort by c; x = log10(c); RSS-minimizing split (>= 3/side) of\ntwo OLS lines gamma vs x; CMC_tens = 10^((x_last_decl+x_first_plateau)/2).\ndeltaG = (1 + beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),\nR = 8.314462618, T = 298.15 K, kJ/mol.\nrel_diff = |CMC_cond - CMC_tens| / ((CMC_cond + CMC_tens)/2) * 100.\nagree = true iff rel_diff <= 3.0.\n\nReport cmc_cond, beta, deltaG, cmc_tens, rel_diff_pct, agree.\n\nRequired outputs (report every item, in this order):\n1. cmc_cond: mM\n2. beta: counterion binding degree\n3. deltaG: kJ/mol\n4. cmc_tens: mM\n5. rel_diff_pct: percent\n6. agree_3pct: true/false\n\nEnd with exactly one line of this form (JSON, keys exactly as written):\nFINAL_JSON: {\"cmc_cond\": <value>, \"beta\": <value>, \"deltaG\": <value>, \"cmc_tens\": <value>, \"rel_diff_pct\": <value>, \"agree_3pct\": <value>}\nEND OF QUESTION",
   "family": "G10",
   "fields": {
    "agree_3pct": {
@@ -2296,7 +2296,7 @@
     "tol": 0.01,
     "type": "num",
     "unit": "kJ/mol",
-    "value": -31.3503765929
+    "value": -38.584125125442114
    },
    "rel_diff_pct": {
     "tol": 0.01,

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"cmc_mM": 4.199494949494949,
+"beta": 0.72,
+"delta_g_mic_kJ_per_mol": -40.46,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "The standard enthalpy of micellization, deltaH_mic, at 298.15 K (or CMC-versus-temperature data sufficient to determine deltaH_mic)."
+}

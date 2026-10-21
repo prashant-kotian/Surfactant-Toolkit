@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "High-concentration region above ~2 mM (roughly 2-10 mM, i.e., at and above the CMC of ~2-3 mM): the measured surface tension plateaus at ~27-28 mN/m while the fitted pre-CMC curve keeps falling (to ~17-18 mN/m at 10 mM).",
+"deviation_reason": "A pre-CMC adsorption isotherm assumes all surfactant remains as free monomers whose rising activity continuously increases adsorption and lowers surface tension. Above the CMC, added surfactant forms micelles, so the monomer activity stays constant and the interface is already saturated, giving a plateau in surface tension; the isotherm lacks micellization and therefore extrapolates a continued decrease, diverging from the data."
+}

@@ -1,0 +1,30 @@
+### Question H38
+
+#### 1. Visual Chart Inspection (`H-38_chart.png`)
+Opening and inspecting `H-38_chart.png`:
+- The x-axis is titled **"Concentration ($\mu$M)"** with points at $1000, 2000, 3000, 4000, 5000, 5500, 6000, 6500, 7000, 8000, 10000, 12000\ \mu\text{M}$.
+- The y-axis is titled **"conductivity (mS/cm)"** with values corresponding to $0.690, 1.330, 1.970, 2.610, 3.250, 3.570, 3.785, 3.895, 4.005, 4.225, 4.665, 5.105\text{ mS/cm}$.
+- Linear regression on the plotted units ($\mu\text{M}$):
+  - Premicellar slope ($S_1$): $6.40 \times 10^{-4}\text{ mS}\cdot\text{cm}^{-1}\cdot\mu\text{M}^{-1}$
+  - Postmicellar slope ($S_2$): $2.20 \times 10^{-4}\text{ mS}\cdot\text{cm}^{-1}\cdot\mu\text{M}^{-1}$
+  - Break concentration in chart's own units:
+    $$\text{CMC} = 5750.0\ \mu\text{M}$$
+  - In molarity:
+    $$\text{CMC} = 5750.0 \times 10^{-6}\text{ mol/L} = 0.00575\text{ mol/L}$$
+  - Counterion binding degree:
+    $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{2.20 \times 10^{-4}}{6.40 \times 10^{-4}} = 0.65625$$
+
+#### 2. Free Energy of Micellization
+$$\Delta G^\circ_\text{mic} = (1 + \beta) R T \ln\left(\frac{\text{CMC}}{55.5}\right) = 1.65625 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00575}{55.5}\right) \times 10^{-3} = -37.6702\text{ kJ/mol}$$
+
+=== H38 ===
+FINAL_JSON:
+{
+  "cmc_in_chart_units": 5750.0,
+  "cmc_in_molar": 0.00575,
+  "beta_from_chart": 0.65625,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

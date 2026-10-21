@@ -1,0 +1,4 @@
+FINAL_JSON: {
+“deviation_region”: “Above approximately 1.5-2 mM (the high-concentration tail), where measured surface tension plateaus near 27-28 mN/m but the fitted curve keeps falling toward ~18 mN/m at 10 mM.”,
+“deviation_reason”: “This concentration marks the critical micelle concentration (CMC). The pre-CMC isotherm assumes all surfactant is free monomer, so monomer activity and thus surface-tension lowering increase indefinitely. In reality, above the CMC the interface is saturated (complete monolayer) and extra surfactant forms micelles instead of raising monomer activity, which stays pinned at its CMC value. Surface tension therefore plateaus, while the micelle-free isotherm has no mechanism to capture this and keeps predicting a decrease.”
+}

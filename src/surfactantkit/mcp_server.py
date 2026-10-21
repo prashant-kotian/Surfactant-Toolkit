@@ -1433,9 +1433,10 @@ def counterion_binding_degree_reference(surfactant: str) -> dict:
 def gibbs_free_energy_micellization(cmc_M: float, temperature_K: float, counterion_factor: float = 1.0) -> dict:
     """Standard Gibbs free energy of micellization (kJ/mol) from CMC
     (molarity, mol/L) and temperature. counterion_factor must be stated
-    explicitly: use 1.0 for a nonionic surfactant, or (2 - beta) for an
-    ionic surfactant given its counterion binding degree beta (see
-    counterion_binding_degree) -- this is never auto-detected, since
+    explicitly: use 1.0 for a nonionic surfactant; for an ionic surfactant
+    use (1 + beta) where beta is the counterion BINDING degree (beta = 1 -
+    S2/S1, see counterion_binding_degree), equivalently (2 - alpha) where
+    alpha = S2/S1 is the degree of ionization -- this is never auto-detected, since
     silently assuming nonionic behavior for an ionic surfactant (or vice
     versa) is exactly the kind of hidden-assumption error this tool
     exists to prevent."""
@@ -1486,7 +1487,8 @@ def vant_hoff_enthalpy(cmc1_M: float, temperature1_K: float, cmc2_M: float, temp
     appropriate caution, and note this breaks down if the aggregation
     number itself varies significantly with temperature.
 
-    counterion_factor: 1.0 for nonionic, (2-beta) for ionic -- same
+    counterion_factor: 1.0 for nonionic, (1 + beta) for ionic with beta =
+    counterion binding degree (= 2 - alpha, alpha = ionization degree) -- same
     convention as gibbs_free_energy_micellization and
     vant_hoff_multi_point_fit; not auto-detected, do not guess. Required
     for a consistent answer on an ionic surfactant: deltaH must use the
@@ -1997,7 +1999,9 @@ def derive_all_properties_from_smiles_and_curve(
         dependent outputs NULL rather than silently resolved.
         electrolyte_condition ('excess_electrolyte'|'no_added_salt') and
         counterion_dissociation_alpha: pass ONLY if independently known --
-        neither is derivable from SMILES + curve alone.
+        neither is derivable from SMILES + curve alone. alpha is the degree
+        of IONIZATION (= S2/S1 = 1 - beta); deltaG_mic then uses the
+        counterion factor (2 - alpha) = (1 + beta).
 
         'cmc_mM' is the AUTHORITATIVE value used for every downstream step
         (Gamma_max's own premicellar range, deltaG_mic) -- it can differ

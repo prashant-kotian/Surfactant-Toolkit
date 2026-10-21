@@ -1,0 +1,28 @@
+### Question H08
+
+#### 1. Method Comparisons
+- **Conductivity Break-Point**:
+  Using `cmc_from_conductivity`, $S_1 = 0.640$, $S_2 = 0.220$:
+  $$\text{CMC}_\text{cond} = 5.750\text{ mM}$$
+  $$\beta = 1 - \frac{S_2}{S_1} = 0.65625$$
+- **Tensiometry Break-Point**:
+  Using `cmc_from_surface_tension_curve`:
+  $$\text{CMC}_\text{tens} = 5.74456\text{ mM} \approx 5.745\text{ mM}$$
+- **Relative Difference**:
+  $$\text{Rel. Diff} = \frac{|5.750 - 5.74456|}{5.750} \times 100\% = 0.0946\% < 2\% \implies \text{agree\_within\_2pct: true}$$
+
+#### 2. Free Energy of Micellization
+$$\Delta G^\circ_\text{mic} = (1 + \beta) R T \ln\left(\frac{\text{CMC}_\text{cond}}{55.5}\right) = 1.65625 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00575}{55.5}\right) \times 10^{-3} = -37.6702\text{ kJ/mol}$$
+
+=== H08 ===
+FINAL_JSON:
+{
+  "cmc_conductivity_mM": 5.75,
+  "cmc_tensiometry_mM": 5.74456,
+  "agree_within_2pct": true,
+  "beta": 0.65625,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

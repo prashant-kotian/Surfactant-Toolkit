@@ -1,0 +1,43 @@
+## Question GZ16 Analysis
+
+### 1. Structural & Charge Classification
+* **SMILES**: `CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]`
+* **Charge Type**: Classified as **anionic** via functional-group matching (sulfate ester headgroup, dodecyl sulfate sodium salt).
+* **System Type for Gibbs Adsorption**: In the absence of added inert electrolyte, the Gibbs prefactor is $n = 2$ (`ionic_no_added_salt`) to account for simultaneous adsorption of the surfactant anion and sodium counterion.
+
+### 2. Tensiometric Curve & Critical Micelle Concentration (CMC)
+* **Break-point Detection**: Evaluated via piecewise linear regression break-point analysis at $T = 296.15\text{ K}$.
+* **Model Selection**: BIC selects a three-segment model (pre-onset baseline lag + premicellar decline + postmicellar plateau).
+  * Pre-onset baseline: 3 points ($0.4058$ to $1.6231\text{ mM}$)
+  * Premicellar decline slope: $d\gamma / d\ln C = -16.87558\text{ mN/m}$
+  * Postmicellar plateau: 3 points ($12.9847$ to $51.9387\text{ mM}$)
+* **CMC**: **$9.18153\text{ mM}$** (surface tension at CMC: $37.03\text{ mN/m}$).
+
+### 3. Pre-CMC Adsorption Behavior
+* **Maximum Surface Excess ($\Gamma_{\max}$)**:
+  $$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = 3.42675 \times 10^{-6}\text{ mol/m}^2$$
+* **Minimum Area per Molecule ($A_{\min}$)**:
+  $$A_{\min} = \frac{10^{18}}{N_A \Gamma_{\max}} = 0.48458\text{ nm}^2/\text{molecule}\quad (48.46\text{ \AA}^2)$$
+* **Isotherm Model**: Only 2 points exist in the post-baseline premicellar decline region prior to CMC ($3.2462$ and $6.4923\text{ mM}$), which is insufficient ($\ge 4$ required) for statistical discrimination between Langmuir and Frumkin adsorption isotherms.
+
+### 4. Micellization Thermodynamics
+* **Counterion Dissociation Degree**: $\alpha = 0.272 \implies (2 - \alpha) = 1.728$.
+* **Mole Fraction at CMC**:
+  $$X_{\text{cmc}} = \frac{C_{\text{cmc}}}{C_{\text{cmc}} + 55.5} = \frac{0.00918153}{0.00918153 + 55.5} \approx 1.65406 \times 10^{-4}$$
+* **Standard Gibbs Free Energy of Micellization**:
+  $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X_{\text{cmc}}) = 1.728 \times 8.31446 \times 296.15 \times \ln(1.65406 \times 10^{-4}) \times 10^{-3} = -37.0479\text{ kJ/mol}$$
+* **Entropy of Micellization ($\Delta S^\circ_{\text{mic}}$)**:
+  $\Delta S^\circ_{\text{mic}} = (\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}}) / T$. Determining $\Delta H^\circ_{\text{mic}}$ requires temperature-dependent CMC data (via the van 't Hoff relation $d\ln X_{\text{cmc}} / dT$) or calorimetry (ITC). Because tensiometric data is available at only a single temperature ($296.15\text{ K}$), $\Delta H^\circ_{\text{mic}}$ and consequently $\Delta S^\circ_{\text{mic}}$ cannot genuinely be determined from the provided inputs.
+
+=== GZ16 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 9.181534066265833,
+  "gamma_max_mol_per_m2": 3.4267526865508074e-06,
+  "a_min_nm2": 0.48458094851463,
+  "delta_g_mic_kJ_per_mol": -37.047905676293354,
+  "delta_s_mic_J_per_mol_K": null
+}
+
+---

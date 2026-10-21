@@ -1,0 +1,41 @@
+## Question GZ20 Analysis
+
+### 1. Structural & Charge Classification
+* **SMILES**: `CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]`
+* **Charge Type**: Classified as **anionic** via functional-group matching (sulfonate headgroup, sodium bis(2-ethylhexyl) sulfosuccinate / Aerosol OT).
+* **System Type for Gibbs Adsorption**: In the absence of added inert electrolyte, the Gibbs prefactor is $n = 2$ (`ionic_no_added_salt`).
+
+### 2. Tensiometric Curve & Critical Micelle Concentration (CMC)
+* **Break-point Detection**: Piecewise linear regression at $T = 298.15\text{ K}$.
+* **Model Selection**: Two-segment linear regression break-point minimizing total residual sum of squares ($R^2 = 1.000$ on the premicellar segment).
+  * Premicellar points: 6 points ($0.01585$ to $1.58489\text{ mM}$)
+  * Premicellar slope: $d\gamma / d\ln C = -7.12249\text{ mN/m}$
+  * Postmicellar plateau: 3 points ($3.981$ to $10.0\text{ mM}$)
+* **CMC**: **$2.51186\text{ mM}$** (surface tension at CMC: $26.14\text{ mN/m}$).
+
+### 3. Pre-CMC Adsorption Behavior
+* **Maximum Surface Excess ($\Gamma_{\max}$)**:
+  $$\Gamma_{\max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = 1.43659 \times 10^{-6}\text{ mol/m}^2$$
+* **Minimum Area per Molecule ($A_{\min}$)**:
+  $$A_{\min} = \frac{10^{18}}{N_A \Gamma_{\max}} = 1.15589\text{ nm}^2/\text{molecule}\quad (115.59\text{ \AA}^2)$$
+  *(Consistent with the large cross-sectional area of the branched double octyl chains).*
+* **Isotherm Model Selection**: Evaluated against pre-CMC tensiometry points via Bayesian Information Criterion (BIC).
+  * Selected Model: **`langmuir`** (Szyszkowski/Langmuir isotherm preferred over Frumkin by $\Delta\text{BIC} = -4.22$).
+
+### 4. Micellization Thermodynamics
+* **Counterion Dissociation Degree**: $\alpha = 0.39 \implies (2 - \alpha) = 1.61$.
+* **Mole Fraction at CMC**:
+  $$X_{\text{cmc}} = \frac{C_{\text{cmc}}}{C_{\text{cmc}} + 55.5} = \frac{0.00251186}{0.00251186 + 55.5} \approx 4.52567 \times 10^{-5}$$
+* **Standard Gibbs Free Energy of Micellization**:
+  $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X_{\text{cmc}}) = 1.61 \times 8.31446 \times 298.15 \times \ln(4.52567 \times 10^{-5}) \times 10^{-3} = -39.9238\text{ kJ/mol}$$
+
+=== GZ20 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.5118612800073175,
+  "isotherm_model": "langmuir",
+  "gamma_max_mol_per_m2": 1.436590099494216e-06,
+  "a_min_nm2": 1.1558892601017348,
+  "delta_g_mic_kJ_per_mol": -39.92381825506257
+}

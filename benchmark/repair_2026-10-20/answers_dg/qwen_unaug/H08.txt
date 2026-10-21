@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"cmc_conductivity_mM": 5.75,
+"cmc_tensiometry_mM": 6.05,
+"agree_within_2pct": false,
+"beta": 0.656,
+"delta_g_mic_kJ_per_mol": -37.7
+}

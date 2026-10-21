@@ -1,0 +1,7 @@
+FINAL_JSON: {
+“gamma_max_mol_per_m2”: 1.42e-6,
+“a_min_nm2”: 1.17,
+“delta_g_mic_kJ_per_mol”: -37.7,
+“delta_s_mic_J_per_mol_K”: null,
+“missing_for_delta_s”: “Temperature dependence of the CMC (CMC measured at multiple temperatures) or a calorimetric enthalpy of micellization ΔH_mic; only single-temperature (298.15 K) data were provided, so ΔG alone cannot be split into ΔH and ΔS.”
+}

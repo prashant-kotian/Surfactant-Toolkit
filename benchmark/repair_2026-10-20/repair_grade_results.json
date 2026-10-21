@@ -1,0 +1,2572 @@
+{
+ "claude_unaug": {
+  "GZ-15": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 1.5,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 28
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T15:39:35+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-15_chart.png visible)",
+    "sent": "2026-10-20T15:41:54+0530",
+    "end": "2026-10-20T15:44:15+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative (ln(CMC) decreases as 1000/T increases)",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T15:44:20+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-36_chart.png visible)",
+    "sent": "2026-10-20T15:46:52+0530",
+    "end": "2026-10-20T15:54:22+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "Component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:17:52+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-37_chart.png visible)",
+    "sent": "2026-10-20T16:20:03+0530",
+    "end": "2026-10-20T16:23:16+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 10
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u00b5M",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:23:21+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-38_chart.png visible)",
+    "sent": "2026-10-20T16:25:30+0530",
+    "end": "2026-10-20T16:27:48+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "This concentration marks the critical micelle concentration (CMC). The pre-CMC isotherm assumes all surfactant is free monomer, so monomer activity and thus surface-tension lowering increase indefinitely. In reality, above the CMC the interface is saturated (complete monolayer) and extra surfactant forms micelles instead of raising monomer activity, which stays pinned at its CMC value. Surface tension therefore plateaus, while the micelle-free isotherm has no mechanism to capture this and keeps predicting a decrease.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "Above approximately 1.5-2 mM (the high-concentration tail), where measured surface tension plateaus near 27-28 mN/m but the fitted curve keeps falling toward ~18 mN/m at 10 mM.",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('above approximately 1.5-2 mM, the high-concentration tail')"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:27:53+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-39_chart.png visible)",
+    "sent": "2026-10-20T16:30:00+0530",
+    "end": "2026-10-20T16:35:23+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:35:28+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-40_chart.png visible)",
+    "sent": "2026-10-20T16:37:40+0530",
+    "end": "2026-10-20T16:39:58+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.3
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.5
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T17:50:43+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-36_chart.png visible)",
+    "sent": "2026-10-20T17:54:44+0530",
+    "end": "2026-10-20T17:56:44+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.0
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.5
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.5
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:41:41+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-37_chart.png visible)",
+    "sent": "2026-10-20T16:43:55+0530",
+    "end": "2026-10-20T16:47:27+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5720
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00572
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.66
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.5
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:47:32+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-20T16:49:39+0530",
+    "end": "2026-10-20T16:53:29+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "FAIL",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": false,
+     "model": 14.48
+    },
+    "zeta_corr_mV": {
+     "ok": false,
+     "model": 60.18
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.57
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T16:53:34+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T16:54:51+0530",
+    "end": "2026-10-20T17:03:21+0530"
+   }
+  }
+ },
+ "claude_aug": {
+  "GZ-15": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2.5,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62.2
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 27.8
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T17:03:26+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-15_chart.png visible)",
+    "sent": "2026-10-20T17:07:20+0530",
+    "end": "2026-10-20T17:12:41+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative (ln(CMC) decreases as 1000/T increases)",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T17:12:46+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-36_chart.png visible)",
+    "sent": "2026-10-20T17:18:27+0530",
+    "end": "2026-10-20T17:21:58+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "Component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T17:22:03+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-37_chart.png visible)",
+    "sent": "2026-10-20T17:24:10+0530",
+    "end": "2026-10-20T17:27:40+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 9.2
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u00b5M",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T17:27:45+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-38_chart.png visible)",
+    "sent": "2026-10-20T17:29:52+0530",
+    "end": "2026-10-20T17:48:16+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "A pre-CMC adsorption isotherm assumes all added surfactant remains free monomer, so monomer activity (and thus the driving force lowering surface tension) keeps rising with concentration. Above the CMC, micelles form and buffer the free-monomer activity at a nearly constant value, so surface tension plateaus. The pre-CMC model has no micellization term and cannot reproduce this plateau, so it keeps predicting falling tension and diverges from the data.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "Above roughly 1-2 mM, i.e. at and beyond the CMC (~2.5 mM), where measured data plateaus near 27.5-28 mN/m but the fitted curve keeps declining toward ~18 mN/m at 10 mM.",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('above roughly 1-2 mM, at and beyond the CMC (~2.5 mM)')"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T17:56:50+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-39_chart.png visible)",
+    "sent": "2026-10-20T18:00:46+0530",
+    "end": "2026-10-20T18:03:13+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T18:03:18+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-40_chart.png visible)",
+    "sent": "2026-10-20T18:05:26+0530",
+    "end": "2026-10-20T18:07:30+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.3
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.5
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T18:07:35+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-36_chart.png visible)",
+    "sent": "2026-10-20T18:09:42+0530",
+    "end": "2026-10-20T18:12:10+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.4
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.4
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.0
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T18:12:15+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-37_chart.png visible)",
+    "sent": "2026-10-20T18:14:23+0530",
+    "end": "2026-10-20T18:19:11+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5733.41
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.0057334103
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.6571809676
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.55
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T18:19:16+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-20T18:21:24+0530",
+    "end": "2026-10-20T18:25:27+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "PASS",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": true,
+     "model": 32.13
+    },
+    "zeta_corr_mV": {
+     "ok": true,
+     "model": 69.455
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "claude",
+    "condition": "aug",
+    "start": "2026-10-20T18:25:32+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": true,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T18:26:51+0530",
+    "end": "2026-10-20T18:34:20+0530"
+   }
+  }
+ },
+ "chatgpt_unaug": {
+  "GZ-15": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 28
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T06:56:12+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-15_chart(2).png visible)",
+    "sent": "2026-10-20T06:59:15+0530",
+    "end": "2026-10-20T07:01:02+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T06:42:02+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-36_chart(3).png visible)",
+    "sent": "2026-10-20T06:44:54+0530",
+    "end": "2026-10-20T06:46:22+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "Component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T07:01:07+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-37_chart(2).png visible)",
+    "sent": "2026-10-20T07:03:58+0530",
+    "end": "2026-10-20T07:05:28+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 13
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u03bcM",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T07:05:33+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-38_chart(2).png visible)",
+    "sent": "2026-10-20T07:08:26+0530",
+    "end": "2026-10-20T07:10:14+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "Near and above the CMC, added surfactant forms micelles, so the monomer concentration and interfacial adsorption no longer increase as assumed by a pre-CMC isotherm; the surface tension therefore plateaus while the extrapolated pre-CMC fit continues to decrease.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "Approximately above 1\u20132 mM, with clear divergence by about 3\u20134 mM and higher concentrations",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('above 1-2 mM, clear divergence by 3-4 mM and higher')"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T07:10:19+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-39_chart(2).png visible)",
+    "sent": "2026-10-20T07:13:24+0530",
+    "end": "2026-10-20T07:14:58+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "Surfactant B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "Surfactant A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T07:15:03+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-40_chart(2).png visible)",
+    "sent": "2026-10-20T07:18:57+0530",
+    "end": "2026-10-20T07:20:43+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.30094
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.502
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T07:20:48+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-36_chart(1).png visible)",
+    "sent": "2026-10-20T07:24:50+0530",
+    "end": "2026-10-20T07:27:27+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.2
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.5
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.3
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T18:34:25+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-37_chart(1).png visible)",
+    "sent": "2026-10-20T18:36:53+0530",
+    "end": "2026-10-20T18:39:14+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5761.9047619047615
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.0057619047619047615
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.55573421446858
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T18:39:19+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart(1).png visible)",
+    "sent": "2026-10-20T18:41:48+0530",
+    "end": "2026-10-20T18:48:51+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "PASS",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": true,
+     "model": 32.1279
+    },
+    "zeta_corr_mV": {
+     "ok": true,
+     "model": 69.455
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T18:48:56+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T18:50:49+0530",
+    "end": "2026-10-20T18:52:50+0530"
+   }
+  }
+ },
+ "chatgpt_aug": {
+  "GZ-15": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2.5,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62.2
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 27.8
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T18:52:55+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-15_chart(3).png visible)",
+    "sent": "2026-10-20T18:56:53+0530",
+    "end": "2026-10-20T18:59:20+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T06:50:46+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-36_chart(5).png visible)",
+    "sent": "2026-10-20T06:53:54+0530",
+    "end": "2026-10-20T06:55:42+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-21T11:45:44+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-37_chart(3).png visible)",
+    "sent": "2026-10-21T11:49:40+0530",
+    "end": "2026-10-21T11:51:43+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 9.1
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u03bcM",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:03:24+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-38_chart(3).png visible)",
+    "sent": "2026-10-20T19:05:51+0530",
+    "end": "2026-10-20T19:07:55+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "Near and above the CMC, added surfactant predominantly forms micelles rather than increasing free-monomer concentration; the interface approaches saturation and surface tension plateaus, so a pre-CMC adsorption isotherm extrapolated into this region continues decreasing and diverges from the measured data.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "Approximately 2\u20133 mM and above; breakpoint analysis gives a CMC of about 2.5 mM.",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('approximately 2-3 mM and above', the gold's own range)"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:08:00+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-39_chart(3).png visible)",
+    "sent": "2026-10-20T19:11:58+0530",
+    "end": "2026-10-20T19:14:03+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "Surfactant B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "Surfactant A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:14:08+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (GZ-40_chart(3).png visible)",
+    "sent": "2026-10-20T19:18:07+0530",
+    "end": "2026-10-20T19:20:10+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.3
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.494
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:20:15+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-36_chart(2).png visible)",
+    "sent": "2026-10-20T19:24:13+0530",
+    "end": "2026-10-20T19:26:40+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.18
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.46
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.29
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:26:45+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-37_chart(2).png visible)",
+    "sent": "2026-10-20T19:30:44+0530",
+    "end": "2026-10-20T19:33:11+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5752.147319104632
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.005752147319104632
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.6568082742114711
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.54902806746137
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:33:16+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-38_chart(2).png visible)",
+    "sent": "2026-10-20T19:37:16+0530",
+    "end": "2026-10-20T19:40:08+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "PASS",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": true,
+     "model": 32.1279067861
+    },
+    "zeta_corr_mV": {
+     "ok": true,
+     "model": 69.4550175843
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665011077
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T19:40:13+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T19:43:41+0530",
+    "end": "2026-10-20T19:45:45+0530"
+   }
+  }
+ },
+ "deepseek_unaug": {
+  "GZ-15": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2.0,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 28
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:46:21+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-15_chart.png visible)",
+    "sent": "2026-10-20T04:47:49+0530",
+    "end": "2026-10-20T04:48:57+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T03:03:43+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-36_chart.png visible)",
+    "sent": "2026-10-20T03:05:36+0530",
+    "end": "2026-10-20T03:06:48+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "Component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:49:02+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-37_chart.png visible)",
+    "sent": "2026-10-20T04:50:30+0530",
+    "end": "2026-10-20T04:51:38+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 12
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u00b5M",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:51:43+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-38_chart.png visible)",
+    "sent": "2026-10-20T04:53:10+0530",
+    "end": "2026-10-20T04:54:18+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "The fitted pre-CMC isotherm ignores micellization. Near/above the CMC, added surfactant forms micelles, monomer activity and adsorption become approximately constant, and surface tension plateaus; the pre-CMC model instead predicts continuing adsorption and a continuing surface-tension decrease.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "c \u2248 2\u20133 mM and above; pronounced across the plateau region \u22483\u201310 mM, where measured surface tension is ~27\u201328 mN/m but the fitted curve continues decreasing.",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('2-3 mM and above', the gold's own range)"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:54:23+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-39_chart.png visible)",
+    "sent": "2026-10-20T04:55:50+0530",
+    "end": "2026-10-20T04:56:58+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "Surfactant B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "Surfactant A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:57:03+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-40_chart.png visible)",
+    "sent": "2026-10-20T04:58:30+0530",
+    "end": "2026-10-20T04:59:37+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.296
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.46
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T04:59:42+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-36_chart.png visible)",
+    "sent": "2026-10-20T05:01:10+0530",
+    "end": "2026-10-20T05:02:18+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.2
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.5
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.3
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T05:02:23+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-37_chart.png visible)",
+    "sent": "2026-10-20T05:03:52+0530",
+    "end": "2026-10-20T05:04:59+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5770
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00577
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.662
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.3
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T05:05:04+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-20T05:06:32+0530",
+    "end": "2026-10-20T05:07:55+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "FAIL",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": false,
+     "model": 21.9
+    },
+    "zeta_corr_mV": {
+     "ok": false,
+     "model": 64.1
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.57
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-20T05:08:00+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T05:09:01+0530",
+    "end": "2026-10-20T05:11:23+0530"
+   }
+  }
+ },
+ "deepseek_aug": {
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-20T19:45:50+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ADDED; SuperAssistant Inactive",
+    "chart": "attached (GZ-36_chart.png visible)",
+    "sent": "2026-10-20T19:48:53+0530",
+    "end": "2026-10-20T19:50:36+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "PASS",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": true,
+     "model": 32.1279
+    },
+    "zeta_corr_mV": {
+     "ok": true,
+     "model": 69.455
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-20T07:19:48+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-20T07:22:54+0530",
+    "end": "2026-10-20T07:24:47+0530"
+   }
+  }
+ },
+ "qwen_unaug": {
+  "GZ-15": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62.3
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 28
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T03:58:32+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-15_chart.png visible)",
+    "sent": "2026-10-20T04:00:41+0530",
+    "end": "2026-10-20T04:03:29+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T01:38:36+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-36_chart.png visible)",
+    "sent": "2026-10-20T01:41:00+0530",
+    "end": "2026-10-20T01:43:38+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:03:34+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-37_chart.png visible)",
+    "sent": "2026-10-20T04:05:44+0530",
+    "end": "2026-10-20T04:07:06+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "PASS",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 10
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u03bcM",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:07:11+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-38_chart.png visible)",
+    "sent": "2026-10-20T04:09:23+0530",
+    "end": "2026-10-20T04:12:12+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "A pre-CMC adsorption isotherm assumes all surfactant remains as free monomers whose rising activity continuously increases adsorption and lowers surface tension. Above the CMC, added surfactant forms micelles, so the monomer activity stays constant and the interface is already saturated, giving a plateau in surface tension; the isotherm lacks micellization and therefore extrapolates a continued decrease, diverging from the data.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "High-concentration region above ~2 mM (roughly 2-10 mM, i.e., at and above the CMC of ~2-3 mM): the measured surface tension plateaus at ~27-28 mN/m while the fitted pre-CMC curve keeps falling (to ~17-18 mN/m at 10 mM).",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('high-concentration region above ~2 mM, at and above the CMC')"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:12:17+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-39_chart.png visible)",
+    "sent": "2026-10-20T04:14:25+0530",
+    "end": "2026-10-20T04:16:59+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:17:04+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (GZ-40_chart.png visible)",
+    "sent": "2026-10-20T04:19:13+0530",
+    "end": "2026-10-20T04:20:35+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.3
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.5
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:20:40+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-36_chart.png visible)",
+    "sent": "2026-10-20T04:22:53+0530",
+    "end": "2026-10-20T04:25:41+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.2
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.5
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.3
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:25:46+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-37_chart.png visible)",
+    "sent": "2026-10-20T04:27:56+0530",
+    "end": "2026-10-20T04:30:31+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5740
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00574
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.657
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.5
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:30:36+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-20T04:32:50+0530",
+    "end": "2026-10-20T04:37:49+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "FAIL",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": false,
+     "model": 5.0
+    },
+    "zeta_corr_mV": {
+     "ok": false,
+     "model": 55.2
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.57
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-20T04:37:54+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T04:39:36+0530",
+    "end": "2026-10-20T04:46:15+0530"
+   }
+  }
+ },
+ "gemini_unaug": {
+  "GZ-15": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_mM": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": 2.5118612800073175,
+     "model": 2.0,
+     "rationale": "author decision 2026-10-20: +/-10% (shared comparator formula, tolerance 0.10); the gold note's 'wider tolerance' gave no number"
+    },
+    "gamma_lowest_conc_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 62.22,
+     "model": 62.5
+    },
+    "gamma_plateau_mN_per_m": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 27.5,
+     "model": 28
+    }
+   },
+   "meta": {
+    "qid": "GZ15",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:29:18+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-21T08:31:20+0530",
+    "end": "2026-10-21T08:36:24+0530"
+   }
+  },
+  "GZ-36": {
+   "verdict": "PASS",
+   "fields": {
+    "process_character": {
+     "ok": true,
+     "kind": "string",
+     "gold": "exothermic (delta_h_mic < 0)",
+     "model": "exothermic"
+    },
+    "slope_sign": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "negative (ln(CMC) decreases as 1000/T increases, i.e. ln(CMC) increases as temperature rises)",
+     "model": "negative",
+     "rationale": "gold sign is 'negative' (the rest is explanation); same resolution as groundzero JUDGMENT_RESOLUTIONS"
+    }
+   },
+   "meta": {
+    "qid": "GZ36",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T01:20:36+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-20T01:23:18+0530",
+    "end": "2026-10-20T01:24:48+0530"
+   }
+  },
+  "GZ-37": {
+   "verdict": "PASS",
+   "fields": {
+    "f1_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.32,
+     "model": 1.3
+    },
+    "f2_at_x1_0.5": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.51,
+     "model": 0.5
+    },
+    "which_is_larger_at_0.5": {
+     "ok": true,
+     "kind": "string",
+     "gold": "component 1",
+     "model": "Component 1"
+    }
+   },
+   "meta": {
+    "qid": "GZ37",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T06:10:24+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-20T06:12:43+0530",
+    "end": "2026-10-20T06:14:50+0530"
+   }
+  },
+  "GZ-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "estimated_cmc_value": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 9.18,
+     "model": 13
+    },
+    "units_used": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "\u00b5M (as labeled on the chart)",
+     "model": "\u03bcM",
+     "rationale": "gold is 'uM (as labeled on the chart)': pass iff the reported unit is micromolar as labelled"
+    }
+   },
+   "meta": {
+    "qid": "GZ38",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T06:14:55+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-20T06:17:17+0530",
+    "end": "2026-10-20T06:19:04+0530"
+   }
+  },
+  "GZ-39": {
+   "verdict": "PASS",
+   "fields": {
+    "deviation_reason": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "the fitted curve is a pre-CMC adsorption isotherm, which assumes surfactant exists as free monomer adsorbing at the interface -- once the real CMC is reached, micelles form and the surface tension plateaus, which this isotherm equation does not capture (it keeps predicting a continuing decline). This is a real, general, already-documented limitation of Langmuir/Szyszkowski-type isotherms in this project, not specific to this one fit.",
+     "model": "The surfactant reaches its Critical Micelle Concentration (CMC); additional molecules form micelles in the bulk rather than further saturating the interface, causing the real surface tension to plateau.",
+     "rationale": "identifies micelle formation at/above the CMC (monomer activity pinned, surface tension plateaus) as what the pre-CMC isotherm cannot capture -- the gold's explanation"
+    },
+    "deviation_region": {
+     "ok": true,
+     "kind": "judgment",
+     "gold": "above roughly 2-3 mM (near/above the real CMC)",
+     "model": "Concentrations above ~2-3 mM",
+     "rationale": "grading_note credits placing the deviation in the HIGH-concentration region near/above the CMC; the answer does ('concentrations above ~2-3 mM', the gold's own range)"
+    }
+   },
+   "meta": {
+    "qid": "GZ39",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:36:29+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-21T08:38:27+0530",
+    "end": "2026-10-21T08:40:06+0530"
+   }
+  },
+  "GZ-40": {
+   "verdict": "PASS",
+   "fields": {
+    "which_shows_dip_then_rise": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant B",
+     "model": "Surfactant B",
+     "rationale": "gold 'Surfactant B': pass iff the answer names series B"
+    },
+    "which_shows_plain_plateau": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "Surfactant A",
+     "model": "Surfactant A",
+     "rationale": "gold 'Surfactant A': pass iff the answer names series A"
+    }
+   },
+   "meta": {
+    "qid": "GZ40",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T06:30:25+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-20T06:32:39+0530",
+    "end": "2026-10-20T06:36:39+0530"
+   }
+  },
+  "H-36": {
+   "verdict": "PASS",
+   "fields": {
+    "arrhenius_slope": {
+     "ok": true,
+     "gold": -0.30086384025132706,
+     "model": -0.3
+    },
+    "delta_h_kJ_per_mol": {
+     "ok": true,
+     "gold": -2.5015211528775825,
+     "model": -2.494
+    },
+    "process": {
+     "ok": true,
+     "gold": "exothermic",
+     "model": "exothermic"
+    },
+    "single_straight_line_adequate": {
+     "ok": true,
+     "gold": false,
+     "model": false
+    }
+   },
+   "meta": {
+    "qid": "H36",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:40:11+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-21T08:42:09+0530",
+    "end": "2026-10-21T08:44:37+0530"
+   }
+  },
+  "H-37": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_A": {
+     "ok": true,
+     "gold": 60.17565814802871,
+     "model": 60.0
+    },
+    "gamma_B": {
+     "ok": true,
+     "gold": 70.4626386796694,
+     "model": 70.5
+    },
+    "delta_gamma_A_minus_B": {
+     "ok": true,
+     "gold": -10.286980531640687,
+     "model": -10.5
+    },
+    "larger_K_curve": {
+     "ok": true,
+     "gold": "A",
+     "model": "A"
+    }
+   },
+   "meta": {
+    "qid": "H37",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T06:50:00+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-20T06:52:20+0530",
+    "end": "2026-10-20T06:55:50+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5720.93
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00572093
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.66154
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.811
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:55:33+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-21T08:57:29+0530",
+    "end": "2026-10-21T09:00:11+0530"
+   }
+  },
+  "X-19": {
+   "verdict": "FAIL",
+   "fields": {
+    "larger": {
+     "ok": true,
+     "model": "corrected"
+    },
+    "mu_SI": {
+     "ok": true,
+     "model": 4.1e-08
+    },
+    "shift_pct": {
+     "ok": false,
+     "model": 12.62
+    },
+    "zeta_corr_mV": {
+     "ok": false,
+     "model": 59.2
+    },
+    "zeta_plain_mV": {
+     "ok": true,
+     "model": 52.5665
+    }
+   },
+   "meta": {
+    "qid": "X19",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-20T03:53:04+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T03:54:40+0530",
+    "end": "2026-10-20T03:58:27+0530"
+   }
+  }
+ }
+}

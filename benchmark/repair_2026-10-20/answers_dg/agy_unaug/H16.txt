@@ -1,0 +1,33 @@
+### Question H16
+
+#### Principles and Calculations
+1. **Conductivity Branches and CMC Determination**:
+   - Premicellar branch ($c \le 4.0\text{ mM}$):
+     Points $(1.0, 0.580), (2.0, 1.130), (3.0, 1.680), (4.0, 2.230)$:
+     $$\text{Slope}_1 = 0.550\text{ mS/(cm}\cdot\text{mM)},\quad \text{Intercept}_1 = 0.030\text{ mS/cm}$$
+   - Postmicellar branch ($c \ge 5.0\text{ mM}$):
+     Points $(5.0, 2.463), (5.5, 2.540), (6.0, 2.617), (6.5, 2.694), (7.0, 2.771), (8.0, 2.925), (10.0, 3.233), (12.0, 3.541)$:
+     $$\text{Slope}_2 = 0.154\text{ mS/(cm}\cdot\text{mM)},\quad \text{Intercept}_2 = 1.693\text{ mS/cm}$$
+   - Break-point intersection:
+     $$0.550 c + 0.030 = 0.154 c + 1.693 \implies 0.396 c = 1.663 \implies \text{CMC} = 4.199495\text{ mM} \approx 4.1995\text{ mM}$$
+
+2. **Counterion Binding ($\beta$) and Free Energy ($\Delta G^\circ_{\text{mic}}$)**:
+   $$\beta = 1 - \frac{\text{Slope}_2}{\text{Slope}_1} = 1 - \frac{0.154}{0.550} = 1 - 0.280 = 0.720$$
+   $$X = \frac{4.199495 \times 10^{-3}}{55.5} \approx 7.56666 \times 10^{-5}$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \beta) R T \ln(X) = (1 + 0.720) \times 8.314462618 \times 298.15 \times \ln(7.56666 \times 10^{-5}) \times 10^{-3} \approx -40.4600\text{ kJ/mol}$$
+
+3. **Standard Entropy of Micellization ($\Delta S^\circ_{\text{mic}}$)**:
+   Determining $\Delta S^\circ_{\text{mic}} = (\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}})/T$ requires the standard enthalpy of micellization $\Delta H^\circ_{\text{mic}}$ (calorimetric or temperature-dependent CMC data via a van 't Hoff relation $d\ln X/d(1/T)$). Because data are provided only at a single temperature ($298.15\text{ K}$), $\Delta S^\circ_{\text{mic}}$ cannot be determined (`null`).
+
+=== H16 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.1995,
+  "beta": 0.72,
+  "delta_g_mic_kJ_per_mol": -40.46,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "The standard enthalpy of micellization dH_mic (obtained calorimetrically or from temperature-dependent CMC data via a van 't Hoff analysis)."
+}
+END OF QUESTION
+
+---

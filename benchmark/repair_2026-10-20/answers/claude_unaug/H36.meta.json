@@ -1,0 +1,17 @@
+{
+ "qid": "H36",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-20T17:50:43+0530",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "tools_seen": {
+  "surfactant-computation": false,
+  "Claude in Chrome": false,
+  "Research": false,
+  "Memory": false
+ },
+ "mcp_seen": "Inactive",
+ "chart": "attached (H-36_chart.png visible)",
+ "sent": "2026-10-20T17:54:44+0530",
+ "end": "2026-10-20T17:56:44+0530"
+}

@@ -1,0 +1,26 @@
+### Question H49
+
+#### Principles and Calculations
+1. **$\Delta G^\circ_{\text{mic}}$ from CMC**:
+   Given $\text{CMC} = 8.0\text{ mM} = 0.0080\text{ mol/L}$, $T = 298.15\text{ K}$, $\alpha = 0.272$:
+   $$X = \frac{0.0080}{55.5} \approx 1.441441 \times 10^{-4}$$
+   $$\ln(X) \approx -8.845112$$
+   $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X) = (2 - 0.272) \times 8.314462618 \times 298.15 \times (-8.845112) \times 10^{-3} \approx -37.8875\text{ kJ/mol}$$
+
+2. **$\Delta S^\circ_{\text{mic}}$ from Thermodynamic Triangle**:
+   With $\Delta H^\circ_{\text{mic}} = -5.0\text{ kJ/mol} = -5000.0\text{ J/mol}$:
+   $$\Delta S^\circ_{\text{mic}} = \frac{\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}}}{T} = \frac{-5000.0 - (-37887.48)}{298.15} \approx \frac{32887.48}{298.15} \approx 110.3051\text{ J/(mol}\cdot\text{K)}$$
+
+3. **Recomputed $\Delta G^\circ_{\text{mic}}$ and Self-Consistency**:
+   $$\Delta G^\circ_{\text{recomputed}} = \Delta H^\circ_{\text{mic}} - T \Delta S^\circ_{\text{mic}} = -5.0 - (298.15 \times 0.1103051) = -37.8875\text{ kJ/mol}$$
+   The difference between the CMC-derived $\Delta G^\circ_{\text{mic}}$ and the recomputed value is identically $0.0\%$, well within the 2% tolerance threshold: `true`.
+
+=== H49 ===
+FINAL_JSON:
+{
+  "delta_g_from_cmc_kJ_per_mol": -37.8875,
+  "delta_s_J_per_mol_K": 110.3051,
+  "delta_g_recomputed_kJ_per_mol": -37.8875,
+  "self_consistent": true
+}
+END OF QUESTION

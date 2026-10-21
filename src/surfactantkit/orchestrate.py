@@ -108,7 +108,9 @@ def derive_all_properties_from_smiles_and_curve(
     independently measured (e.g. via the conductivity slope-ratio method,
     counterion_binding_degree, or a literature/EPR value like Bales et
     al.'s alpha=0.272 for SDS -- see gibbs_free_energy_micellization's
-    own docstring). Without it, deltaG_mic for an IONIC surfactant is
+    own docstring). It is the degree of IONIZATION (S2/S1 = 1 - beta), and
+    deltaG_mic uses the counterion factor 2 - alpha (= 1 + beta; 1.728 for
+    SDS). Without it, deltaG_mic for an IONIC surfactant is
     left undetermined (reported as a named gap) rather than guessed --
     this is real information a surface-tension curve alone cannot supply,
     the same reasoning gibbs_free_energy_micellization's own docstring
@@ -244,7 +246,9 @@ def derive_all_properties_from_smiles_and_curve(
         delta_g_mic = gibbs_free_energy_micellization(cmc_to_mole_fraction(cmc_mM / 1000.0), temperature_K, counterion_factor_used)
     elif system_type in ("ionic_no_added_salt", "ionic_excess_electrolyte"):
         if counterion_dissociation_alpha is not None:
-            counterion_factor_used = 1.0 + counterion_dissociation_alpha
+            # alpha = degree of IONIZATION (S2/S1); pseudo-phase factor = 2 - alpha = 1 + beta.
+            # Was 1 + alpha until 2026-10-20 (inverse convention; see gibbs_free_energy_micellization).
+            counterion_factor_used = 2.0 - counterion_dissociation_alpha
             delta_g_mic = gibbs_free_energy_micellization(cmc_to_mole_fraction(cmc_mM / 1000.0), temperature_K, counterion_factor_used)
         else:
             gaps.append("deltaG_mic skipped for this ionic surfactant: no independent counterion-binding "

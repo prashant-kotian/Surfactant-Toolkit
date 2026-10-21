@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"slope_sign": "negative",
+"process_character": "exothermic",
+"reasoning": "As 1000/T increases, ln(CMC) decreases, giving a negative slope. In the van't Hoff relation the slope sign tracks the enthalpy of micellization, so a negative slope means ΔH_mic < 0 and micellization is exothermic."
+}

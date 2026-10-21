@@ -13,13 +13,21 @@ _SPEC.loader.exec_module(br)
 CELLS = json.loads((ROOT / "results" / "results.json").read_text(encoding="utf-8"))["cells"]
 
 
-def test_every_arm_excludes_the_same_questions():
-    # an unaug/aug pair scored on different question sets is not a paired comparison
+def test_every_departure_from_the_standard_exclusions_is_logged():
+    # Since the 2026-10-20 corrections, exclusions can differ between arms (re-run answers available
+    # for some arms only, re-runs still pending). Every difference must carry a logged reason, and
+    # an excluded question is never scored.
     for key, cell in CELLS.items():
         bank = key.split("|")[0]
-        want = {q for _, qids, _ in br.EXCLUSIONS.get(bank, []) for q in qids}
-        assert set(cell["excluded"]) == want, key
-        assert not want & set(cell["per_q"]), key
+        standard = {q for _, qids, _ in br.EXCLUSIONS.get(bank, []) for q in qids}
+        log = cell.get("corrections", [])
+        included = {c["qid"] for c in log if str(c.get("change", "")).startswith(("included", "replaced",
+                                                                                    "regraded"))}
+        excluded_logged = {c["qid"] for c in log if c.get("change") in ("excluded", "stays excluded")}
+        excluded = set(cell["excluded"])
+        assert not excluded & set(cell["per_q"]), key
+        assert standard - excluded <= included, (key, standard - excluded - included)
+        assert excluded - standard <= excluded_logged, (key, excluded - standard - excluded_logged)
 
 
 def test_no_reported_cell_is_graded_against_superseded_gold():

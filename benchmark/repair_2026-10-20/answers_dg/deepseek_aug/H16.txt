@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"cmc_mM": 4.199494949494949,
+"beta": 0.72,
+"delta_g_mic_kJ_per_mol": -40.46032064919014,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "The micellization enthalpy ΔH_mic (or CMC values at several temperatures for a van't Hoff analysis) is required; a single conductivity isotherm at one temperature gives ΔG_mic only, and ΔS_mic = (ΔH_mic − ΔG_mic)/T cannot be evaluated without ΔH_mic."
+}

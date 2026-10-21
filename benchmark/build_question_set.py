@@ -140,7 +140,9 @@ def main() -> int:
                "groundzero": {"image_input": ["GZ-15", "GZ-36", "GZ-37", "GZ-38", "GZ-39", "GZ-40"],
                                "retired_ambiguous": ["GZ-26"]},
                "hard50": {"image_input": ["H-36", "H-37", "H-38"]},
-               "extrahard": {"pre_fix_packet_cells": ["X-19"]}},
+               "extrahard": {"pre_fix_packet_cells": ["X-19"]},
+               "per_arm_corrections": "standard list above; per-arm re-runs, re-grades and exclusions since "
+                                      "2026-10-20 are logged in results/results.json cells[*].corrections"},
            "items": items}
     (HERE / "question_set.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
     from collections import Counter

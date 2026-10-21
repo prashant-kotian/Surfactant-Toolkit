@@ -1,0 +1,33 @@
+### Question H46
+
+#### 1. Autonomous Pipeline Execution
+The SMILES `CCCCC(CC)OS(=O)(=O)[O-].[Na+]` along with the tensiometry isotherm was processed through `derive_all_properties_from_smiles_and_curve`:
+- **Charge type**: `"anionic"` (sodium alkyl sulfate salt).
+- **CMC**: $5.47723\text{ mM} \approx 5.48\text{ mM}$.
+- **Premicellar slope**: $\frac{d\gamma}{d\ln C} = -7.49498\text{ mN/m}$.
+- **Gibbs prefactor $n$**: **$n = 2$** (1:1 ionic surfactant with no added salt).
+- **Maximum surface excess ($\Gamma_\text{max}$)**:
+  $$\Gamma_\text{max} = 1.51172 \times 10^{-6}\text{ mol/m}^2$$
+- **Minimum area per molecule ($A_\text{min}$)**:
+  $$A_\text{min} = 1.09844\text{ nm}^2$$
+- **Pre-CMC Isotherm Model**: BIC model selection selects the **`"frumkin"`** isotherm ($\Delta\text{BIC} = 43.13$ over Langmuir; fitted $K = 0.4821$, interaction parameter $a = 3.7240$).
+- **Condensation Caveat**: **`true`**. Because $|a| = 3.724 \ge 2$, the fit enters the classic two-dimensional condensation regime (first-order phase transition in the monolayer), which is explicitly flagged in the pipeline's audit gaps.
+- **Micellization Free Energy**:
+  With $\alpha = 0.31$, counterion factor $2 - \alpha = 1.69$:
+  $$\Delta G^\circ_\text{mic} = 1.69 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00547723}{55.5}\right) \times 10^{-3} = -38.6415\text{ kJ/mol}$$
+  *(via pipeline: $-38.6419\text{ kJ/mol}$)*.
+
+=== H46 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 5.47723,
+  "isotherm_model": "frumkin",
+  "condensation_caveat_flagged": true,
+  "gamma_max_mol_per_m2": 1.51172e-06,
+  "a_min_nm2": 1.09844,
+  "delta_g_mic_kJ_per_mol": -38.6415
+}
+END OF QUESTION
+
+---

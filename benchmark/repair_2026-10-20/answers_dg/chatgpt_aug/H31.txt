@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 8.058851335201267e-7,
+"a_min_nm2": 2.0605158205618834,
+"delta_g_mic_kJ_per_mol": -38.48637255485787
+}

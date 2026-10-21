@@ -1,0 +1,1 @@
+FINAL_JSON: {"dG_correct": -40.9637, "rel_diff_pct": 42.876, "claim_agrees": false, "what_wrong": "formula", "direction": "less_negative"}

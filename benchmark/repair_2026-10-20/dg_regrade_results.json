@@ -1,0 +1,4902 @@
+{
+ "claude_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.48
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 8.8
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.2
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-20T23:45:02+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T23:48:06+0530",
+    "end": "2026-10-20T23:52:19+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.16
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.1
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -40.6
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.44e-06
+    },
+    "isotherm_model": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Gibbs adsorption isotherm (ionic, n=2); linear region consistent with Langmuir/Szyszkowski",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T09:38:42+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T09:41:13+0530",
+    "end": "2026-10-21T09:44:16+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T09:45:51+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T09:47:09+0530",
+    "end": "2026-10-21T09:48:51+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_mM": {
+     "ok": false,
+     "gold": 4.242640687119285,
+     "model": 3.1
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": false,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.88e-06
+    },
+    "a_min_nm2": {
+     "ok": false,
+     "gold": 0.9802756853413634,
+     "model": 0.88
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -41.0
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T09:48:56+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T09:50:15+0530",
+    "end": "2026-10-21T09:53:31+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": false,
+     "gold": 5.744562646538029,
+     "model": 6.09
+    },
+    "agree_within_2pct": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T09:53:36+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T09:54:54+0530",
+    "end": "2026-10-21T09:57:33+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.2
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "The enthalpy of micellization (\u0394H_mic) is unknown. It requires either CMC/\u0394G measured at multiple temperatures to obtain d(ln CMC)/dT via the Gibbs\u2013Helmholtz relation, or a directly measured \u0394H_mic from calorimetry. A single-temperature isotherm cannot decompose \u0394G into \u0394H and T\u0394S."
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T09:57:38+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T09:59:01+0530",
+    "end": "2026-10-21T10:01:02+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.42e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.224
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.3
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Temperature dependence of the CMC, d(ln CMC)/dT (to get \u0394H_mic via van't Hoff/Gibbs-Helmholtz), or a directly measured \u0394H_mic from calorimetry; only single-temperature data were provided."
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T10:01:07+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T10:02:26+0530",
+    "end": "2026-10-21T10:04:11+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.06e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.06
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.5
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:29:18+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T00:34:58+0530",
+    "end": "2026-10-21T00:36:59+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5720
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00572
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.66
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.8
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:37:04+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-21T00:39:11+0530",
+    "end": "2026-10-21T00:41:11+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.42e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.17
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.7
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Temperature dependence of the CMC (CMC measured at multiple temperatures) or a calorimetric enthalpy of micellization \u0394H_mic; only single-temperature (298.15 K) data were provided, so \u0394G alone cannot be split into \u0394H and \u0394S."
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:41:16+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T00:42:35+0530",
+    "end": "2026-10-21T00:44:54+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.89
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.31
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.89
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:44:59+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T00:46:16+0530",
+    "end": "2026-10-21T00:47:57+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.96
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.88
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:48:02+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T00:49:19+0530",
+    "end": "2026-10-21T00:51:00+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.6552
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.409
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.58
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.67
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "claude",
+    "condition": "unaug",
+    "start": "2026-10-21T00:51:05+0530",
+    "model_seen": "Claude Opus 4.8, effort High, incognito",
+    "tools_seen": {
+     "surfactant-computation": false,
+     "Claude in Chrome": false,
+     "Research": false,
+     "Memory": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T00:52:21+0530",
+    "end": "2026-10-21T00:56:53+0530"
+   }
+  }
+ },
+ "claude_aug": {},
+ "chatgpt_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.566
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.32
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -36.98
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 2.93e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:09:22+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:11:12+0530",
+    "end": "2026-10-20T21:15:23+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.1559
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic, monovalent sulfonate sodium salt"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.1685
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -40.51
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.4366e-06
+    },
+    "isotherm_model": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Gibbs adsorption from linear surface tension vs ln(concentration); no independently resolvable Langmuir-type isotherm",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:15:28+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:17:19+0530",
+    "end": "2026-10-20T21:20:34+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:20:39+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:22:28+0530",
+    "end": "2026-10-20T21:24:09+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_mM": {
+     "ok": false,
+     "gold": 4.242640687119285,
+     "model": 3.6926
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.69395e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.98028
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -40.2932
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:24:14+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:26:06+0530",
+    "end": "2026-10-20T21:28:44+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": true,
+     "gold": 5.744562646538029,
+     "model": 5.890269
+    },
+    "agree_within_2pct": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.670211
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:28:49+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:30:40+0530",
+    "end": "2026-10-20T21:33:18+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.199495
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.459998
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "The standard enthalpy of micellization, delta_H_mic, at 298.15 K (or equivalently temperature-dependent CMC and beta data near 298.15 K sufficient to determine the temperature derivative of delta_G_mic)."
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:33:23+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:35:17+0530",
+    "end": "2026-10-20T21:36:59+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.4225e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.22372
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.274
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Delta H_mic or equivalent temperature-dependent micellization data sufficient to determine -(d Delta G_mic/dT)_P, including CMC(T) and alpha(T) if alpha varies with temperature"
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:38:59+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:40:56+0530",
+    "end": "2026-10-20T21:42:38+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.058851335e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.060515821
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.48591699
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:42:43+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:44:36+0530",
+    "end": "2026-10-20T21:46:18+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5736.34
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00573634
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65435
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.64
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:46:23+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart(3).png visible)",
+    "sent": "2026-10-20T21:48:50+0530",
+    "end": "2026-10-20T21:53:58+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "FAIL",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.477225575051662,
+     "model": 5.477225575051662
+    },
+    "isotherm_model": {
+     "ok": true,
+     "gold": "frumkin",
+     "model": "frumkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.5117195185142552e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.0984438891189643
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -38.641855042931454,
+     "model": -29.952833440212515
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-21T11:51:48+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T11:53:41+0530",
+    "end": "2026-10-21T11:56:38+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "FAIL",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.41075e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.17706
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": false,
+     "gold": -37.67063604302845,
+     "model": -30.5626
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Delta H_mic (or temperature-dependent CMC/equilibrium data sufficient to determine Delta H_mic)"
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:54:03+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:55:54+0530",
+    "end": "2026-10-20T21:57:54+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.305
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T21:57:59+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T21:59:51+0530",
+    "end": "2026-10-20T22:01:51+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.9637
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.8763
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T22:01:56+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T22:03:46+0530",
+    "end": "2026-10-20T22:05:28+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.655154
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574362
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.409082
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.584125
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.679677
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "chatgpt",
+    "condition": "unaug",
+    "start": "2026-10-20T22:05:33+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": false
+    },
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-20T22:07:23+0530",
+    "end": "2026-10-20T22:09:23+0530"
+   }
+  }
+ },
+ "chatgpt_aug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.48458094851462996
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.181534066265833
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.047905676293354
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4267526865508074e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-21T11:32:21+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-21T11:35:44+0530",
+    "question_variant": "/home/prashant-kotian/repair11/paste_salt_aug/GZ16.md",
+    "end": "2026-10-21T11:38:58+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.1558892601017348
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.5118612800073175
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -39.92381825506257
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.436590099494216e-06
+    },
+    "isotherm_model": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Langmuir/Szyszkowski (BIC-selected; data-limited)",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-21T11:39:03+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-21T11:42:25+0530",
+    "question_variant": "/home/prashant-kotian/repair11/paste_salt_aug/GZ20.md",
+    "end": "2026-10-21T11:45:39+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67021
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:22:59+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:26:20+0530",
+    "end": "2026-10-20T22:29:11+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.242640687119285,
+     "model": 4.242640687119285
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.6939510915193143e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.9802756853413634
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -39.711797839429785
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:29:16+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:32:39+0530",
+    "end": "2026-10-20T22:34:43+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": true,
+     "gold": 5.744562646538029,
+     "model": 5.744562646538029
+    },
+    "agree_within_2pct": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67063604302844
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:34:48+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:38:11+0530",
+    "end": "2026-10-20T22:40:16+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.199494949494949
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "The standard enthalpy of micellization, deltaH_mic, at 298.15 K (or CMC-versus-temperature data sufficient to determine deltaH_mic)."
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:40:21+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:43:44+0530",
+    "end": "2026-10-20T22:46:35+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.422476380435842e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.22371766268609417
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.2742
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Delta H_mic (enthalpy of micellization), obtainable for example from temperature-dependent CMC data"
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:46:40+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:50:03+0530",
+    "end": "2026-10-20T22:52:30+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.058851335201267e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.0605158205618834
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.48637255485787
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:52:35+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T22:57:28+0530",
+    "end": "2026-10-20T22:59:32+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5747.902511916855
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.0057479025119168544
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.6536157930413451
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.61179315311876
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T22:59:37+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "chart": "attached (H-38_chart(4).png visible)",
+    "sent": "2026-10-20T23:03:32+0530",
+    "end": "2026-10-20T23:06:46+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "PASS",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.477225575051662,
+     "model": 5.477225575051662
+    },
+    "isotherm_model": {
+     "ok": true,
+     "gold": "frumkin",
+     "model": "frumkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.5117195185142552e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.0984438891189643
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -38.64185504293145
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T23:31:42+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T23:35:08+0530",
+    "end": "2026-10-20T23:37:34+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.4145800566306375e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.1738742246437819
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.670636043028445
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Micellization enthalpy (deltaH_mic), or CMC-vs-temperature data sufficient to determine it"
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T23:06:51+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T23:10:19+0530",
+    "end": "2026-10-20T23:13:09+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.88809431102534
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.30720882450225
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.88809431102534
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T23:13:14+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T23:16:36+0530",
+    "end": "2026-10-20T23:18:40+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.963706
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.876262
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T23:18:45+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T23:22:07+0530",
+    "end": "2026-10-20T23:24:56+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.6551540732
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574362416
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.409081537
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.58412512
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.679677412
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "chatgpt",
+    "condition": "aug",
+    "start": "2026-10-20T23:25:01+0530",
+    "model_seen": "GPT-5.6 Sol, thinking effort High",
+    "tools_seen": {
+     "surfactant-computation": true
+    },
+    "mcp_seen": "Active",
+    "sent": "2026-10-20T23:28:24+0530",
+    "end": "2026-10-20T23:31:37+0530"
+   }
+  }
+ },
+ "deepseek_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.485
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.3
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.0
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:31:59+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:33:59+0530",
+    "end": "2026-10-21T04:36:21+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.16
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.0
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -40.8
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.44e-06
+    },
+    "isotherm_model": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Gibbs adsorption isotherm (1:1 ionic, n=2)",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:36:26+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:38:25+0530",
+    "end": "2026-10-21T04:40:29+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:40:34+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:42:33+0530",
+    "end": "2026-10-21T04:43:57+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_mM": {
+     "ok": false,
+     "gold": 4.242640687119285,
+     "model": 3.4
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": false,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.99e-06
+    },
+    "a_min_nm2": {
+     "ok": false,
+     "gold": 0.9802756853413634,
+     "model": 0.835
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -40.6
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:44:02+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:46:00+0530",
+    "end": "2026-10-21T04:47:43+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": false,
+     "gold": 5.744562646538029,
+     "model": 6.1
+    },
+    "agree_within_2pct": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:47:48+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:49:47+0530",
+    "end": "2026-10-21T04:51:30+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.1995
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "standard enthalpy of micellization \u0394H_mic at 298.15 K (or the temperature dependence of the CMC, e.g. d ln(CMC)/dT)"
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:51:35+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:53:34+0530",
+    "end": "2026-10-21T04:55:18+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.42e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.224
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.3
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Temperature dependence of CMC and alpha (d ln CMC/dT and d alpha/dT), or direct calorimetric Delta H_mic; a single Delta G at one temperature is insufficient."
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:55:23+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T04:57:21+0530",
+    "end": "2026-10-21T04:59:04+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.06e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.06
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.49
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T04:59:09+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T05:01:08+0530",
+    "end": "2026-10-21T05:03:10+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": false,
+     "gold": 5750.000000000001,
+     "model": 6000
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.006
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.66
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T05:03:15+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-21T05:05:42+0530",
+    "end": "2026-10-21T05:07:25+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "FAIL",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "gold": 5.477225575051662,
+     "model": 6.95
+    },
+    "isotherm_model": {
+     "ok": false,
+     "gold": "frumkin",
+     "model": "Temkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.53e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.08
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -37.6
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T11:56:43+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T11:58:43+0530",
+    "end": "2026-10-21T12:02:04+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.41e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.18
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Temperature dependence of the CMC and beta (or calorimetric enthalpy) to obtain Delta H_mic; a single temperature gives only Delta G_mic."
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T05:07:30+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T05:09:34+0530",
+    "end": "2026-10-21T05:11:17+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.887
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.305
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.887
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T05:11:22+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T05:13:21+0530",
+    "end": "2026-10-21T05:14:44+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.96
+    },
+    "direction": {
+     "ok": true,
+     "model": "more_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.88
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T05:14:49+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T05:16:49+0530",
+    "end": "2026-10-21T05:18:13+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.655154
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574362
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.409082
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.5841
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.67968
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "deepseek",
+    "condition": "unaug",
+    "start": "2026-10-21T05:18:18+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+    "sent": "2026-10-21T05:20:18+0530",
+    "end": "2026-10-21T05:22:40+0530"
+   }
+  }
+ },
+ "deepseek_aug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.4846
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.1815
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.05
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4268e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T01:47:05+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ADDED; SuperAssistant Inactive",
+    "sent": "2026-10-21T01:49:39+0530",
+    "end": "2026-10-21T01:51:22+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.156
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.51
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -39.9
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.4366e-06
+    },
+    "isotherm_model": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "langmuir",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T01:51:27+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T01:53:26+0530",
+    "end": "2026-10-21T01:55:10+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T01:55:15+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T01:57:13+0530",
+    "wait_timeout": true,
+    "end": "2026-10-21T02:22:26+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.242640687119285,
+     "model": 4.24
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.69e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.98
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -39.7
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:22:31+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:24:29+0530",
+    "end": "2026-10-21T02:26:11+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": true,
+     "gold": 5.744562646538029,
+     "model": 5.745
+    },
+    "agree_within_2pct": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.656
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:26:16+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:28:15+0530",
+    "end": "2026-10-21T02:29:58+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.199494949494949
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46032064919014
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "The micellization enthalpy \u0394H_mic (or CMC values at several temperatures for a van't Hoff analysis) is required; a single conductivity isotherm at one temperature gives \u0394G_mic only, and \u0394S_mic = (\u0394H_mic \u2212 \u0394G_mic)/T cannot be evaluated without \u0394H_mic."
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:30:03+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:32:02+0530",
+    "end": "2026-10-21T02:33:45+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.422476380435842e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.22371766268609417
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.274166856911506
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "deltaH_mic (enthalpy of micellization), obtainable from the temperature dependence of the CMC (van't Hoff) or calorimetry; a single CMC at one temperature gives only deltaG"
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:33:50+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:35:54+0530",
+    "end": "2026-10-21T02:37:37+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "FAIL",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": false,
+     "gold": 8.058851335201267e-07,
+     "model": 1.2399e-06
+    },
+    "a_min_nm2": {
+     "ok": false,
+     "gold": 2.0605158205618834,
+     "model": 1.3393
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.49
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:37:42+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:39:42+0530",
+    "end": "2026-10-21T02:41:44+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5729
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.005729
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.656
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:41:49+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-21T02:44:17+0530",
+    "end": "2026-10-21T02:46:00+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "PASS",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.477225575051662,
+     "model": 5.477225575051662
+    },
+    "isotherm_model": {
+     "ok": true,
+     "gold": "frumkin",
+     "model": "frumkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.5117195185142552e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.0984438891189643
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -38.64185504293145
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T03:01:35+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T03:03:34+0530",
+    "end": "2026-10-21T03:05:23+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.41e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.17
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.7
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Temperature dependence of the CMC (CMC at multiple temperatures) to get delta H_mic via van't Hoff; only a single 298.15 K isotherm is available"
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:46:05+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:48:05+0530",
+    "end": "2026-10-21T02:50:08+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.888
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.307
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.888
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:50:13+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:52:11+0530",
+    "end": "2026-10-21T02:53:54+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.9637
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.876
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:53:59+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:55:57+0530",
+    "end": "2026-10-21T02:57:40+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "FAIL",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.6551540732
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574362416
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.409081537
+    },
+    "deltaG": {
+     "ok": false,
+     "model": -15.27262455
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.679683
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "deepseek",
+    "condition": "aug",
+    "start": "2026-10-21T02:57:45+0530",
+    "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+    "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+    "sent": "2026-10-21T02:59:45+0530",
+    "end": "2026-10-21T03:01:30+0530"
+   }
+  }
+ },
+ "qwen_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.566
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.3
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.0
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 2.93e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:06:26+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:08:00+0530",
+    "end": "2026-10-21T03:14:54+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.16
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.0
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -40.8
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.44e-06
+    },
+    "isotherm_model": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Szyszkowski",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:14:59+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:16:34+0530",
+    "end": "2026-10-21T03:20:52+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:20:57+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:22:29+0530",
+    "end": "2026-10-21T03:26:28+0530"
+   }
+  },
+  "H-03": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_mM": {
+     "ok": false,
+     "gold": 4.242640687119285,
+     "model": 6.0
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.69e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.98
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -38.3
+    }
+   },
+   "meta": {
+    "qid": "H03",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:26:33+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:28:04+0530",
+    "end": "2026-10-21T03:34:57+0530"
+   }
+  },
+  "H-08": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": false,
+     "gold": 5.744562646538029,
+     "model": 6.05
+    },
+    "agree_within_2pct": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.656
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.7
+    }
+   },
+   "meta": {
+    "qid": "H08",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:35:02+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:36:34+0530",
+    "end": "2026-10-21T03:43:27+0530"
+   }
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.2
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "Standard enthalpy of micellization at 298.15 K (e.g. from ITC/calorimetry), or the temperature dependence of the CMC (d ln CMC/d(1/T)) for a van 't Hoff enthalpy; conductivity at one temperature gives no thermal data."
+    }
+   },
+   "meta": {
+    "qid": "H16",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:43:32+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:45:05+0530",
+    "end": "2026-10-21T03:48:26+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.42e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.224
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.27
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Enthalpy of micellization (dH_mic) from calorimetry, or the temperature dependence of the CMC (d(ln CMC)/d(1/T)) at multiple temperatures, is required."
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:48:31+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:50:03+0530",
+    "end": "2026-10-21T03:52:44+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.06e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.06
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.5
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:52:49+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T03:54:21+0530",
+    "end": "2026-10-21T03:57:41+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "FAIL",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": false,
+     "gold": 5750.000000000001,
+     "model": 6000
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.006
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.657
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.52
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T03:57:46+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "chart": "attached (H-38_chart.png visible)",
+    "sent": "2026-10-21T03:59:47+0530",
+    "end": "2026-10-21T04:05:22+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "FAIL",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "gold": 5.477225575051662,
+     "model": 6.0
+    },
+    "isotherm_model": {
+     "ok": false,
+     "gold": "frumkin",
+     "model": "Szyszkowski"
+    },
+    "condensation_caveat_flagged": {
+     "ok": false,
+     "gold": true,
+     "model": false
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.507e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.1
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -38.2
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T12:02:09+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T12:03:42+0530",
+    "end": "2026-10-21T12:10:35+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.41e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.18
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.7
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Enthalpy of micellization (dH_mic) or the temperature dependence of the CMC (d(CMC)/dT) is needed; only single-temperature data are provided."
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T04:05:27+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T04:06:58+0530",
+    "end": "2026-10-21T04:12:14+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.89
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.31
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.89
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T04:12:19+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T04:13:51+0530",
+    "end": "2026-10-21T04:18:09+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.96
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.88
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T04:18:14+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T04:19:46+0530",
+    "end": "2026-10-21T04:23:44+0530"
+   }
+  },
+  "X-47": {
+   "verdict": "PASS",
+   "fields": {
+    "agree_3pct": {
+     "ok": true,
+     "model": false
+    },
+    "beta": {
+     "ok": true,
+     "model": 0.655
+    },
+    "cmc_cond": {
+     "ok": true,
+     "model": 4.574
+    },
+    "cmc_tens": {
+     "ok": true,
+     "model": 4.41
+    },
+    "deltaG": {
+     "ok": true,
+     "model": -38.46
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 3.65
+    }
+   },
+   "meta": {
+    "qid": "X47",
+    "provider": "qwen",
+    "condition": "unaug",
+    "start": "2026-10-21T04:23:49+0530",
+    "model_seen": "Qwen3.8-Max (mode switch false)",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T04:25:21+0530",
+    "end": "2026-10-21T04:31:54+0530"
+   }
+  }
+ },
+ "gemini_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.485
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 8.52
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.36
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.43e-06
+    }
+   },
+   "meta": {
+    "qid": "GZ16",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T05:22:45+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T05:24:14+0530",
+    "end": "2026-10-21T05:27:16+0530"
+   }
+  },
+  "GZ-20": {
+   "verdict": "FAIL",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.156
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.17
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -40.51
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.437e-06
+    },
+    "isotherm_model": {
+     "ok": false,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "Gibbs",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": {
+    "qid": "GZ20",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T12:42:15+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T12:43:43+0530",
+    "end": "2026-10-21T12:48:56+0530"
+   }
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67021069222712
+    }
+   },
+   "meta": {
+    "qid": "H02",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T12:49:01+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T12:50:29+0530",
+    "end": "2026-10-21T12:52:28+0530"
+   }
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.42289e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.22371
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.273
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Temperature dependence of the CMC (d(ln CMC)/dT) or the enthalpy of micellization (Delta H_mic)."
+    }
+   },
+   "meta": {
+    "qid": "H19",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T07:14:03+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T07:15:30+0530",
+    "end": "2026-10-21T07:17:51+0530"
+   }
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.05885e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.0605
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.486
+    }
+   },
+   "meta": {
+    "qid": "H31",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T07:17:56+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T07:19:23+0530",
+    "end": "2026-10-21T07:21:21+0530"
+   }
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5720.93
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00572093
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.661538
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.811
+    }
+   },
+   "meta": {
+    "qid": "H38",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T07:49:58+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "chart": "attached (new attachment image)",
+    "sent": "2026-10-21T07:51:53+0530",
+    "end": "2026-10-21T07:54:50+0530"
+   }
+  },
+  "H-46": {
+   "verdict": "FAIL",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": false,
+     "gold": 5.477225575051662,
+     "model": 7.12
+    },
+    "isotherm_model": {
+     "ok": true,
+     "gold": "frumkin",
+     "model": "Frumkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.5115e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.1
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -37.53
+    }
+   },
+   "meta": {
+    "qid": "H46",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T12:22:32+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T12:23:58+0530",
+    "end": "2026-10-21T12:30:07+0530"
+   }
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.412e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.176
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.67
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Temperature dependence of the CMC (i.e. data at multiple temperatures) or a direct calorimetric measurement of the enthalpy of micellization."
+    }
+   },
+   "meta": {
+    "qid": "H47",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:06:22+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T08:07:49+0530",
+    "end": "2026-10-21T08:10:22+0530"
+   }
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.887476894225905
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.30513799840988
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.887476894225905
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": {
+    "qid": "H49",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:10:27+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T08:11:54+0530",
+    "end": "2026-10-21T08:13:58+0530"
+   }
+  },
+  "X-41": {
+   "verdict": "PASS",
+   "fields": {
+    "claim_agrees": {
+     "ok": true,
+     "model": false
+    },
+    "dG_correct": {
+     "ok": true,
+     "model": -40.9637
+    },
+    "direction": {
+     "ok": true,
+     "model": "less_negative"
+    },
+    "rel_diff_pct": {
+     "ok": true,
+     "model": 42.8763
+    },
+    "what_wrong": {
+     "ok": true,
+     "model": "formula"
+    }
+   },
+   "meta": {
+    "qid": "X41",
+    "provider": "gemini",
+    "condition": "unaug",
+    "start": "2026-10-21T08:14:03+0530",
+    "model_seen": "Gemini 3.1 Pro, thinking High",
+    "mcp_seen": "Inactive",
+    "sent": "2026-10-21T08:15:30+0530",
+    "end": "2026-10-21T08:17:13+0530"
+   }
+  }
+ },
+ "agy_unaug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.4846
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.1815
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.048
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4268e-06
+    }
+   },
+   "meta": null
+  },
+  "GZ-20": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.1559
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.5119
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -39.924
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.4366e-06
+    },
+    "isotherm_model": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "langmuir (BIC-selected over Frumkin)",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": null
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-03": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.242640687119285,
+     "model": 4.24264
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.69395e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.98028
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -39.7115
+    }
+   },
+   "meta": null
+  },
+  "H-08": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": true,
+     "gold": 5.744562646538029,
+     "model": 5.74456
+    },
+    "agree_within_2pct": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.1995
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "The standard enthalpy of micellization dH_mic (obtained calorimetrically or from temperature-dependent CMC data via a van 't Hoff analysis)."
+    }
+   },
+   "meta": null
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.4225e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.2237
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.2736
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "The enthalpy of micellization dH_mic (from calorimetry or temperature-dependent CMC data via van 't Hoff analysis)."
+    }
+   },
+   "meta": null
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.0589e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.0605
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.4859
+    }
+   },
+   "meta": null
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5750.0
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00575
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.4146e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.1739
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "The enthalpy of micellization dH_mic (obtained calorimetrically or from temperature-dependent CMC measurements via a van 't Hoff analysis)."
+    }
+   },
+   "meta": null
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.3051
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": null
+  }
+ },
+ "agy_aug": {
+  "GZ-16": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 0.4846,
+     "model": 0.48458094851463
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 9.1815,
+     "model": 9.181534066265833
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -37.047396226415096,
+     "model": -37.047905676293354
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "kind": "null-check",
+     "gold": null,
+     "model": null
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 3.4268e-06,
+     "model": 3.4267526865508074e-06
+    }
+   },
+   "meta": null
+  },
+  "GZ-20": {
+   "verdict": "PASS",
+   "fields": {
+    "a_min_nm2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.1559,
+     "model": 1.1558892601017348
+    },
+    "charge_type": {
+     "ok": true,
+     "kind": "string",
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 2.5119,
+     "model": 2.5118612800073175
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": -39.92336690647482,
+     "model": -39.92381825506257
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "kind": "numeric",
+     "gold": 1.4366e-06,
+     "model": 1.436590099494216e-06
+    },
+    "isotherm_model": {
+     "ok": true,
+     "kind": "field-rule",
+     "gold": "langmuir (BIC-selected over Frumkin, same data-limited finding as GZ-14)",
+     "model": "langmuir",
+     "rationale": "gold 'langmuir (BIC-selected over Frumkin, ...)': the choice is the first word, the rest is justification; the shared token matcher failed a plain 'langmuir' and passed 'frumkin (BIC-selected over Langmuir)'; 'Szyszkowski' (the Langmuir equation of state) counts as the Langmuir choice (author decision 2026-10-21)"
+    }
+   },
+   "meta": null
+  },
+  "H-02": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "alpha": {
+     "ok": true,
+     "gold": 0.3437500000000002,
+     "model": 0.34375
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-03": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.242640687119285,
+     "model": 4.24264
+    },
+    "three_segment_selected": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "n_baseline_points": {
+     "ok": true,
+     "gold": 3,
+     "model": 3
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.6939510915193143e-06,
+     "model": 1.69395e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.9802756853413634,
+     "model": 0.98028
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -39.71179783942979,
+     "model": -39.7115
+    }
+   },
+   "meta": null
+  },
+  "H-08": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_conductivity_mM": {
+     "ok": true,
+     "gold": 5.750000000000001,
+     "model": 5.75
+    },
+    "cmc_tensiometry_mM": {
+     "ok": true,
+     "gold": 5.744562646538029,
+     "model": 5.74456
+    },
+    "agree_within_2pct": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-16": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_mM": {
+     "ok": true,
+     "gold": 4.200000000000001,
+     "model": 4.19949
+    },
+    "beta": {
+     "ok": true,
+     "gold": 0.72,
+     "model": 0.72
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -40.45980793396274,
+     "model": -40.46
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "multiple",
+      "series",
+      "2nd",
+      "second"
+     ],
+     "model": "Enthalpy of micellization (dH_mic) from isothermal titration calorimetry (ITC) or temperature dependence of CMC (d ln CMC / dT via van 't Hoff equation)"
+    }
+   },
+   "meta": null
+  },
+  "H-19": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 7.422476380435842e-06,
+     "model": 7.42248e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 0.22371766268609417,
+     "model": 0.22372
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.274166856911506,
+     "model": -37.2736
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "enthalpy",
+      "temperature",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat"
+     ],
+     "model": "Enthalpy of micellization (dH_mic) from calorimetry or temperature dependence of CMC (d ln CMC / dT via van 't Hoff equation)"
+    }
+   },
+   "meta": null
+  },
+  "H-31": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 8.058851335201267e-07,
+     "model": 8.05885e-07
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 2.0605158205618834,
+     "model": 2.06052
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.48637255485788,
+     "model": -38.4857
+    }
+   },
+   "meta": null
+  },
+  "H-38": {
+   "verdict": "PASS",
+   "fields": {
+    "cmc_in_chart_units": {
+     "ok": true,
+     "gold": 5750.000000000001,
+     "model": 5750.0
+    },
+    "cmc_in_molar": {
+     "ok": true,
+     "gold": 0.005750000000000001,
+     "model": 0.00575
+    },
+    "beta_from_chart": {
+     "ok": true,
+     "gold": 0.6562499999999998,
+     "model": 0.65625
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    }
+   },
+   "meta": null
+  },
+  "H-46": {
+   "verdict": "PASS",
+   "fields": {
+    "charge_type": {
+     "ok": true,
+     "gold": "anionic",
+     "model": "anionic"
+    },
+    "cmc_mM": {
+     "ok": true,
+     "gold": 5.477225575051662,
+     "model": 5.47723
+    },
+    "isotherm_model": {
+     "ok": true,
+     "gold": "frumkin",
+     "model": "frumkin"
+    },
+    "condensation_caveat_flagged": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    },
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.5117195185142548e-06,
+     "model": 1.51172e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.0984438891189645,
+     "model": 1.09844
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -38.641855042931454,
+     "model": -38.6415
+    }
+   },
+   "meta": null
+  },
+  "H-47": {
+   "verdict": "PASS",
+   "fields": {
+    "gamma_max_mol_per_m2": {
+     "ok": true,
+     "gold": 1.4145800566306375e-06,
+     "model": 1.41458e-06
+    },
+    "a_min_nm2": {
+     "ok": true,
+     "gold": 1.1738742246437819,
+     "model": 1.17387
+    },
+    "delta_g_mic_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.67063604302845,
+     "model": -37.6702
+    },
+    "delta_s_mic_J_per_mol_K": {
+     "ok": true,
+     "gold": null,
+     "model": null
+    },
+    "missing_for_delta_s": {
+     "ok": true,
+     "gold": [
+      "temperature",
+      "enthalpy",
+      "van't hoff",
+      "vant hoff",
+      "series",
+      "heat",
+      "multiple",
+      "2nd",
+      "second"
+     ],
+     "model": "Enthalpy of micellization (dH_mic) from calorimetry or temperature-dependent CMC data (d ln CMC / dT via van 't Hoff equation)"
+    }
+   },
+   "meta": null
+  },
+  "H-49": {
+   "verdict": "PASS",
+   "fields": {
+    "delta_g_from_cmc_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "delta_s_J_per_mol_K": {
+     "ok": true,
+     "gold": 110.30720882450225,
+     "model": 110.305
+    },
+    "delta_g_recomputed_kJ_per_mol": {
+     "ok": true,
+     "gold": -37.88809431102534,
+     "model": -37.8875
+    },
+    "self_consistent": {
+     "ok": true,
+     "gold": true,
+     "model": true
+    }
+   },
+   "meta": null
+  }
+ }
+}

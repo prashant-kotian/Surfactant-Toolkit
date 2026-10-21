@@ -1,0 +1,30 @@
+### Question H16
+
+#### 1. Conductivity Break-Point Analysis
+Fitting conductivity vs concentration via `cmc_from_conductivity`:
+- **Premicellar segment** ($1.0$ to $4.0\text{ mM}$): $\kappa = 0.550 c + 0.030$ ($S_1 = 0.550\text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}$, $R^2 = 1.0000$)
+- **Postmicellar segment** ($5.0$ to $12.0\text{ mM}$): $\kappa = 0.154 c + 1.693$ ($S_2 = 0.154\text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}$, $R^2 = 1.0000$)
+- **Break-point CMC**:
+  $$\text{CMC} = \frac{1.693 - 0.030}{0.550 - 0.154} = \frac{1.663}{0.396} = 4.19949\text{ mM} \approx 4.20\text{ mM}$$
+- **Counterion binding degree ($\beta$)**:
+  $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.154}{0.550} = 0.720$$
+
+#### 2. Standard Free Energy of Micellization
+$$\Delta G^\circ_\text{mic} = (1 + 0.72) \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.0041995}{55.5}\right) \times 10^{-3} = -40.4600\text{ kJ/mol}$$
+*(via `gibbs_free_energy_micellization`: $-40.4603\text{ kJ/mol}$)*.
+
+#### 3. Standard Entropy of Micellization ($\Delta S^\circ_\text{mic}$)
+$\Delta S^\circ_\text{mic}$ cannot be determined at a single temperature without the enthalpy of micellization ($\Delta H^\circ_\text{mic}$) or temperature-dependent CMC data ($d\ln\text{CMC}/dT$ via the van 't Hoff equation). Therefore, $\Delta S^\circ_\text{mic} = \text{null}$.
+
+=== H16 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.19949,
+  "beta": 0.72,
+  "delta_g_mic_kJ_per_mol": -40.46,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Enthalpy of micellization (dH_mic) from isothermal titration calorimetry (ITC) or temperature dependence of CMC (d ln CMC / dT via van 't Hoff equation)"
+}
+END OF QUESTION
+
+---

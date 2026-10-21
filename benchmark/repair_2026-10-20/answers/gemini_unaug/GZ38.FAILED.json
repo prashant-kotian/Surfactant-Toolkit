@@ -1,0 +1,10 @@
+{
+ "qid": "GZ38",
+ "provider": "gemini",
+ "condition": "unaug",
+ "start": "2026-10-20T03:43:17+0530",
+ "model_seen": "Gemini 3.1 Pro, thinking High",
+ "mcp_seen": "Inactive",
+ "chart": "upload control not found",
+ "failed": "chart guard: upload control not found"
+}

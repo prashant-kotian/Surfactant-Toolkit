@@ -1,0 +1,11 @@
+{
+ "qid": "H38",
+ "provider": "deepseek",
+ "condition": "aug",
+ "start": "2026-10-21T02:41:49+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "BetterDeepSeek ALREADY_PRESENT; SuperAssistant Inactive",
+ "chart": "attached (H-38_chart.png visible)",
+ "sent": "2026-10-21T02:44:17+0530",
+ "end": "2026-10-21T02:46:00+0530"
+}

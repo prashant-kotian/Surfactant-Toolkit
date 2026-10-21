@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"cmc_mM": 4.20,
+"beta": 0.72,
+"delta_g_mic_kJ_per_mol": -40.46,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Standard enthalpy of micellization at 298.15 K (e.g. from ITC/calorimetry), or the temperature dependence of the CMC (d ln CMC/d(1/T)) for a van 't Hoff enthalpy; conductivity at one temperature gives no thermal data."
+}

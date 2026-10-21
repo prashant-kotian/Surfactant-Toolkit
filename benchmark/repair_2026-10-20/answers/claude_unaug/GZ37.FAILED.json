@@ -1,0 +1,8 @@
+{
+ "qid": "GZ37",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-20T16:04:46+0530",
+ "model_seen": "NOT INCOGNITO",
+ "failed": "model guard: NOT INCOGNITO"
+}

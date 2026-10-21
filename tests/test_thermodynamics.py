@@ -69,37 +69,40 @@ def test_gibbs_free_energy_matches_second_independent_literature_system():
     0.74, at 298 K, with their own reported deltaG_mic = -28.3 +/- 0.9
     kJ/mol.
 
-    Computing deltaG via this project's counterion_factor = (2-beta)
-    convention (mmol/kg treated as ~mM, dilute-solution approximation,
-    same as elsewhere in this project) reproduces -28.4 kJ/mol -- a
-    ~0.4% relative error, well within the paper's own stated
-    uncertainty (+/-0.9 kJ/mol, ~3.2%). A clean, strong match, not just
-    right sign/order of magnitude -- confirms both the deltaG formula
-    itself and the (2-beta) counterion_factor convention against a
-    second, chemically unrelated real system."""
+    REVISED 2026-10-20 -- this is a documented DISAGREEMENT, not a
+    validation. The paper's -28.3 kJ/mol is reproduced only by the factor
+    (2 - beta) = 1.26 with beta = 0.74 taken as the BINDING degree. The
+    standard pseudo-phase factor for a binding degree is (1 + beta) = 1.74
+    (Zana, Langmuir 12 (1996) 1208), which gives about -39 kJ/mol. Either
+    the paper's 0.74 is a binding degree used in the inverse convention,
+    or its symbol means something else; this test used to treat the match
+    as proof of (2 - beta), which is how the inverse convention entered
+    this library. Both numbers are pinned so any future change is
+    deliberate."""
     cmc_M = 6.2e-3  # mmol/kg ~= mM, dilute approximation
     beta = 0.74
-    counterion_factor = 2.0 - beta
     x_cmc = cmc_to_mole_fraction(cmc_M)
-    dg = gibbs_free_energy_micellization(x_cmc, 298.0, counterion_factor)
-    assert dg == pytest.approx(-28.3, rel=0.01)
+    standard = gibbs_free_energy_micellization(x_cmc, 298.0, 1.0 + beta)
+    paper_convention = gibbs_free_energy_micellization(x_cmc, 298.0, 2.0 - beta)
+    assert standard == pytest.approx(-39.2, abs=0.2)
+    assert paper_convention == pytest.approx(-28.3, rel=0.01)   # the paper's own reported value
 
 
 def test_gibbs_free_energy_counterion_factor_alpha_beta_identity_physical_limits():
-    """(2-beta) = (1+alpha), alpha=1-beta (dissociation vs. binding
-    degree) checked via real physical limits, not just algebra (see
-    gibbs_free_energy_micellization's own docstring): fully dissociated
-    (alpha=1, beta=0) and fully bound (alpha=0, beta=1) must both give
-    the SAME counterion_factor whichever form is used, landing at the
-    correct physical endpoints (2 and 1 respectively)."""
-    for alpha, beta, expected in [(1.0, 0.0, 2.0), (0.0, 1.0, 1.0)]:
-        assert (1.0 + alpha) == pytest.approx(expected)
-        assert (2.0 - beta) == pytest.approx(expected)
+    """(1 + beta) = (2 - alpha), alpha = 1 - beta (ionization vs. binding
+    degree), checked at the physical limits: fully BOUND counterions
+    (beta=1, alpha=0) leave solution with every surfactant ion -> factor 2;
+    fully DISSOCIATED (beta=0, alpha=1) stay in solution -> factor 1, the
+    nonionic value. Corrected 2026-10-20 (the inverse (2 - beta) form had
+    these limits reversed)."""
+    for alpha, beta, expected in [(0.0, 1.0, 2.0), (1.0, 0.0, 1.0)]:
+        assert (1.0 + beta) == pytest.approx(expected)
+        assert (2.0 - alpha) == pytest.approx(expected)
     # and at a real, in-between, sourced value (Bales 2001, SDS alpha=0.272):
     alpha_sds = 0.272
     beta_sds = 1.0 - alpha_sds
-    assert (1.0 + alpha_sds) == pytest.approx(2.0 - beta_sds)
-    assert (1.0 + alpha_sds) == pytest.approx(1.272)
+    assert (1.0 + beta_sds) == pytest.approx(2.0 - alpha_sds)
+    assert (2.0 - alpha_sds) == pytest.approx(1.728)
 
 
 def test_gibbs_free_energy_sds_with_bales_2001_counterion_factor():
@@ -112,12 +115,15 @@ def test_gibbs_free_energy_sds_with_bales_2001_counterion_factor():
     paper's own eq. 5 fit). No independently-published deltaG_mic number
     for this exact system was found to check the final result against,
     so this is a real, traceable calculation with a properly-sourced
-    input, not a literature match -- honestly scoped as such."""
-    counterion_factor_sds = 1.0 + 0.272  # Bales 2001's own alpha for SDS
+    input. Corrected 2026-10-20 to the standard factor 2 - alpha = 1.728
+    (was 1 + alpha = 1.272, the inverse convention, giving -27.77); the
+    result now sits in the usual literature range for SDS (about -37 to
+    -38 kJ/mol)."""
+    counterion_factor_sds = 2.0 - 0.272  # Bales 2001's own alpha (ionization) for SDS
     x_cmc = cmc_to_mole_fraction(0.0083)
     dg = gibbs_free_energy_micellization(x_cmc, 298.15, counterion_factor_sds)
     assert dg < 0.0  # spontaneous, as it must be
-    assert dg == pytest.approx(-27.77, abs=0.05)
+    assert dg == pytest.approx(-37.73, abs=0.05)
 
 
 # Tests for COUNTERION_BINDING_DEGREE_REFERENCE, added 2026-09-15 as
@@ -145,10 +151,11 @@ def test_counterion_reference_sds_usable_directly_in_gibbs_free_energy():
     reproduces the exact same result as the already-verified hand-
     computed worked example above."""
     entry = COUNTERION_BINDING_DEGREE_REFERENCE["SDS"]
-    counterion_factor = 1.0 + entry["alpha"]
+    counterion_factor = 1.0 + entry["beta"]          # = 2 - alpha
+    assert counterion_factor == pytest.approx(2.0 - entry["alpha"])
     x_cmc = cmc_to_mole_fraction(0.0083)
     dg = gibbs_free_energy_micellization(x_cmc, 298.15, counterion_factor)
-    assert dg == pytest.approx(-27.77, abs=0.05)
+    assert dg == pytest.approx(-37.73, abs=0.05)
 
 
 def test_counterion_reference_dtab_and_ctab_are_present_with_moderate_confidence():
@@ -172,7 +179,7 @@ def test_counterion_reference_aot_real_primary_source_high_confidence():
 
 def test_gibbs_free_energy_nonionic_vs_ionic_factor():
     # same CMC, but the ionic (counterion_factor > 1) case should be
-    # more negative than the nonionic (factor=1) case, since 2-beta > 1
+    # more negative than the nonionic (factor=1) case, since 1 + beta > 1
     x_cmc = cmc_to_mole_fraction(0.008)
     dg_nonionic = gibbs_free_energy_micellization(x_cmc, 298.15, counterion_factor=1.0)
     dg_ionic = gibbs_free_energy_micellization(x_cmc, 298.15, counterion_factor=1.6)

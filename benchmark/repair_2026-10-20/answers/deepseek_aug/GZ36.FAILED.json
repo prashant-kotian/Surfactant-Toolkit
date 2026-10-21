@@ -1,0 +1,8 @@
+{
+ "qid": "GZ36",
+ "provider": "deepseek",
+ "condition": "aug",
+ "start": "2026-10-20T09:41:18+0530",
+ "model_seen": "DeepThink None, Search None",
+ "failed": "model guard: DeepThink None, Search None"
+}

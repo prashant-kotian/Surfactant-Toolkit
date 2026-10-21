@@ -17,6 +17,8 @@ from .adsorption import (
     frumkin_surface_tension,
     frumkin_theta,
     gibbs_a_min,
+    gibbs_marangoni_elasticity_frumkin,
+    gibbs_marangoni_elasticity_langmuir,
     gibbs_gamma_max,
     select_isotherm_model,
     szyszkowski_fit_K,
@@ -78,6 +80,12 @@ from .dpd_micelle import (
     estimate_dpd_runtime_s,
     submit_dpd_micelle_cmc_job,
 )
+from .dynamic_surface_tension import (
+    fit_dla_regime,
+    fit_kla_regime,
+    fit_rosen_hua,
+    select_dst_kinetic_regime,
+)
 from .dynamic_tension import (
     dynamic_surface_tension_forward,
     dynamic_surface_tension_ode,
@@ -104,6 +112,12 @@ from .electrostatics import (
 from .emulsion import (
     population_balance_emulsion,
     simulate_emulsion_stability,
+)
+from .foam import (
+    bikerman_foaminess_index,
+    foam_stability_elasticity_summary,
+    ross_miles_summary,
+    select_foam_decay_model,
 )
 from .hlb import (
     derive_davies_group_number_from_griffin,
@@ -229,6 +243,7 @@ __all__ = [
     "anderson_cmc_analysis",
     "aniansson_wall_two_regime",
     "asymmetric_margules_activity_coefficients",
+    "bikerman_foaminess_index",
     "blankschtein_counterion_self_energy_release",
     "blankschtein_entropy_of_binding_free_energy",
     "blankschtein_steric_free_energy_with_counterion",
@@ -276,9 +291,13 @@ __all__ = [
     "estimate_intrinsic_water_solubility_qspr",
     "estimate_partial_specific_volume_from_tail_and_headgroup",
     "excess_free_energy",
+    "fit_dla_regime",
     "fit_k_and_cc_from_salinity_scan",
+    "fit_kla_regime",
+    "fit_rosen_hua",
     "flory_huggins_surface_tension",
     "flory_huggins_theta",
+    "foam_stability_elasticity_summary",
     "free_monomer_from_cmc",
     "frumkin_fit_K_and_a",
     "frumkin_surface_tension",
@@ -289,6 +308,8 @@ __all__ = [
     "gibbs_a_min",
     "gibbs_free_energy_micellization",
     "gibbs_gamma_max",
+    "gibbs_marangoni_elasticity_frumkin",
+    "gibbs_marangoni_elasticity_langmuir",
     "global_multi_dataset_fit",
     "grahame_equation_surface_potential",
     "guo_effective_alkyl_chain_length",
@@ -339,9 +360,12 @@ __all__ = [
     "rodenas_x1",
     "rodenas_x1_series",
     "rosen_beta_sigma",
+    "ross_miles_summary",
     "rubingh_beta",
     "rubingh_beta_regression",
     "rubingh_predict_cmc_mix",
+    "select_dst_kinetic_regime",
+    "select_foam_decay_model",
     "select_isotherm_model",
     "select_mixture_model",
     "simulate_emulsion_stability",

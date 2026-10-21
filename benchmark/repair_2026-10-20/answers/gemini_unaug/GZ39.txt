@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "Concentrations above ~2-3 mM",
+"deviation_reason": "The surfactant reaches its Critical Micelle Concentration (CMC); additional molecules form micelles in the bulk rather than further saturating the interface, causing the real surface tension to plateau."
+}

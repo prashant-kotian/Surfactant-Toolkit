@@ -442,7 +442,7 @@ Real concentration-vs-surface-tension data at 296.15 K (concentration in mM, sur
 
 A real, independently measured counterion dissociation degree for this exact compound is 0.272 (27.2% of counterions remain dissociated in the micellar Stern layer).
 
-Use the relation delta_g_mic = (1 + alpha) * R * T * ln(X_cmc), where alpha is the counterion dissociation degree above and X_cmc is the CMC expressed as a mole fraction (moles surfactant per mole surfactant plus water, using 55.5 mol/L as the molarity of water).
+Use the relation delta_g_mic = (2 - alpha) * R * T * ln(X_cmc), where alpha is the counterion dissociation degree above and X_cmc is the CMC expressed as a mole fraction (moles surfactant per mole surfactant plus water, using 55.5 mol/L as the molarity of water).
 
 Analyze this surfactant and report the critical micelle concentration, its charge type, its pre-CMC adsorption behavior (whatever quantities and approach you find most appropriate), and the free energy and entropy of micellization if they can genuinely be determined from what's given here.
 
@@ -572,7 +572,7 @@ Real concentration-vs-surface-tension data at 298.15 K (concentration in mM, sur
 
 A real, independently measured counterion dissociation degree for this exact compound is 0.39 (39% of counterions remain dissociated in the micellar Stern layer).
 
-Use the relation delta_g_mic = (1 + alpha) * R * T * ln(X_cmc), where alpha is the counterion dissociation degree above and X_cmc is the CMC expressed as a mole fraction (moles surfactant per mole surfactant plus water, using 55.5 mol/L as the molarity of water).
+Use the relation delta_g_mic = (2 - alpha) * R * T * ln(X_cmc), where alpha is the counterion dissociation degree above and X_cmc is the CMC expressed as a mole fraction (moles surfactant per mole surfactant plus water, using 55.5 mol/L as the molarity of water).
 
 Analyze this surfactant and report the critical micelle concentration, its charge type, its pre-CMC adsorption behavior (whatever quantities and approach you find most appropriate), and the free energy of micellization if it can genuinely be determined from what's given here.
 

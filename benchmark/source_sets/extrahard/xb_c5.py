@@ -45,7 +45,7 @@ def _gen_rubingh(alpha: float, beta: float, c1: float, c2: float) -> float:
 # ============================================================ X-41
 def build_x41():
     beta, T, cmc = 0.75, 298.15, 4.40
-    dG_ok = thermo.gibbs_free_energy_micellization(_X(cmc), T, 2.0 - beta)
+    dG_ok = thermo.gibbs_free_energy_micellization(_X(cmc), T, 1.0 + beta)
     dG_draft = thermo.gibbs_free_energy_micellization(_X(cmc), T, 1.0)
     rel = abs(dG_draft - dG_ok) / abs(dG_ok) * 100.0
     agrees = rel <= 10.0
@@ -62,7 +62,7 @@ Pinned instructions (authoritative):
    omitted (both the value of beta and the formula are pinned):
 
        X = (CMC/1000)/((CMC/1000) + 55.5)
-       deltaG = (2 - beta) * R * T * ln(X),
+       deltaG = (1 + beta) * R * T * ln(X),
        R = 8.314462618 J/(mol K), T = 298.15 K   [kJ/mol]
 
 2. rel_diff = |draft - yours| / |yours| * 100 (percent), where the
@@ -435,7 +435,7 @@ def build_x47():
         k.append(round(v * (1 + rng.gauss(0, 0.008)), 1))
     rc = curve.cmc_from_conductivity_curve(c14, k)
     beta = rc.counterion_binding_degree
-    dG = thermo.gibbs_free_energy_micellization(_X(rc.cmc_mM), 298.15, 2.0 - beta)
+    dG = thermo.gibbs_free_energy_micellization(_X(rc.cmc_mM), 298.15, 1.0 + beta)
     # tension arm
     ct = [0.25, 0.50, 0.85, 1.35, 2.05, 2.95, 3.60, 5.40, 7.40, 9.80, 12.50]
     gt = []
@@ -471,7 +471,7 @@ lines kappa = a + b*c (LINEAR c); CMC_cond = (a2-a1)/(b1-b2);
 beta = 1 - b_above/b_below.
 TENSION: sort by c; x = log10(c); RSS-minimizing split (>= 3/side) of
 two OLS lines gamma vs x; CMC_tens = 10^((x_last_decl+x_first_plateau)/2).
-deltaG = (2 - beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),
+deltaG = (1 + beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),
 R = 8.314462618, T = 298.15 K, kJ/mol.
 rel_diff = |CMC_cond - CMC_tens| / ((CMC_cond + CMC_tens)/2) * 100.
 agree = true iff rel_diff <= 3.0.

@@ -56,6 +56,20 @@ Full §1 chain re-run (graders included) through `build_figure_data.py`:
 - Grand CSV rows = sum of grand denominators (1821).
 - Test suite: 832 passed (828 + 4 exclusion/gold-state regression tests).
 
+## Re-run after the counterion-factor correction and chart/typo repair (2026-10-21, Windows, Python 3.13)
+
+- Toolkit: ionic factor corrected to (1 + beta) = (2 - alpha) in thermodynamics, orchestrate and the MCP
+  tool descriptions; Guo-Rong-Ying EO weight corrected (0.33). Ported from the development copy:
+  `foam.py`, `dynamic_surface_tension.py`, Gibbs-Marangoni elasticity in `adsorption.py`.
+- Re-runs and regrades are applied by `benchmark/repair_2026-10-20/corrections.py` and logged per cell
+  (`results.json` `corrections`); grading of the re-runs: `benchmark/repair_2026-10-20/grade_repair.py`
+  (repair set) and `grade_repair.py --dg` (counterion set). Answers are in `answers/` and `answers_dg/`
+  with per-answer meta (model, tools/MCP state, chart attachment, question variant).
+- Rebuild order: `grade_repair.py`, `grade_repair.py --dg`, `build_results.py`, `build_bench200.py`,
+  `build_tables.py`, `build_figure_data.py` (all cross-checks pass; F8 uses the corrected field detail).
+- Pending at this commit: Claude augmented counterion re-runs (connector not yet enabled on the run
+  account); those 14 questions are excluded from that cell with a logged reason until re-run.
+
 ## Accepted non-determinism (documented, not chased)
 
 - `source_sha` in the ledger hashes the grading-JSON bytes as last written;

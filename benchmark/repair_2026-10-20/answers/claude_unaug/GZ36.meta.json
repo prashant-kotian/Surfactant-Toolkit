@@ -1,0 +1,17 @@
+{
+ "qid": "GZ36",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-20T15:44:20+0530",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "tools_seen": {
+  "surfactant-computation": false,
+  "Claude in Chrome": false,
+  "Research": false,
+  "Memory": false
+ },
+ "mcp_seen": "Inactive",
+ "chart": "attached (GZ-36_chart.png visible)",
+ "sent": "2026-10-20T15:46:52+0530",
+ "end": "2026-10-20T15:54:22+0530"
+}

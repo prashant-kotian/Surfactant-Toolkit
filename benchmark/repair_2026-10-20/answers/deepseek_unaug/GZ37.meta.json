@@ -1,0 +1,11 @@
+{
+ "qid": "GZ37",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-20T04:49:02+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "Inactive",
+ "chart": "attached (GZ-37_chart.png visible)",
+ "sent": "2026-10-20T04:50:30+0530",
+ "end": "2026-10-20T04:51:38+0530"
+}

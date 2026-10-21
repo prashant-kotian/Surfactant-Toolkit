@@ -1,0 +1,13 @@
+{
+ "qid": "H31",
+ "provider": "chatgpt",
+ "condition": "unaug",
+ "start": "2026-10-20T21:42:43+0530",
+ "model_seen": "GPT-5.6 Sol, thinking effort High",
+ "tools_seen": {
+  "surfactant-computation": false
+ },
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-20T21:44:36+0530",
+ "end": "2026-10-20T21:46:18+0530"
+}

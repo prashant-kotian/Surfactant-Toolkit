@@ -1,0 +1,37 @@
+### Question H02
+
+#### Principles and Calculations
+1. **Conductivity Break-Point (Piecewise Linear Fit)**:
+   - Premicellar branch ($c \le 5.0\text{ mM}$):
+     Points $(1.0, 0.690), (2.0, 1.330), (3.0, 1.970), (4.0, 2.610), (5.0, 3.250)$
+     $$\text{Slope}_1 = \frac{3.250 - 0.690}{5.0 - 1.0} = 0.640\text{ mS/(cm}\cdot\text{mM)},\quad \text{Intercept}_1 = 0.690 - 0.640(1.0) = 0.050\text{ mS/cm}$$
+   - Postmicellar branch ($c \ge 6.5\text{ mM}$):
+     Points $(6.5, 3.895), (7.0, 4.005), (8.0, 4.225), (10.0, 4.665), (12.0, 5.105)$
+     $$\text{Slope}_2 = \frac{5.105 - 3.895}{12.0 - 6.5} = 0.220\text{ mS/(cm}\cdot\text{mM)},\quad \text{Intercept}_2 = 3.895 - 0.220(6.5) = 2.465\text{ mS/cm}$$
+   - Intermediate transition points:
+     At $c = 5.5\text{ mM}$, $\kappa = 0.640(5.5) + 0.050 = 3.570\text{ mS/cm}$ (lies on branch 1).
+     At $c = 6.0\text{ mM}$, $\kappa = 0.220(6.0) + 2.465 = 3.785\text{ mS/cm}$ (lies on branch 2).
+   - Intersection of the two linear branches yields the CMC:
+     $$0.640 c + 0.050 = 0.220 c + 2.465 \implies 0.420 c = 2.415 \implies \text{CMC} = 5.75\text{ mM}$$
+
+2. **Counterion Binding ($\beta$) and Dissociation ($\alpha$)**:
+   $$\beta = 1 - \frac{\text{Slope}_2}{\text{Slope}_1} = 1 - \frac{0.220}{0.640} = 1 - 0.34375 = 0.65625$$
+   $$\alpha = 1 - \beta = 0.34375$$
+
+3. **Standard Free Energy of Micellization ($\Delta G^\circ_{\text{mic}}$)**:
+   Given $T = 298.15\text{ K}$, $R = 8.314462618\text{ J/(mol}\cdot\text{K)}$:
+   $$X = \frac{\text{CMC}\text{ (mol/L)}}{55.5} = \frac{5.75 \times 10^{-3}}{55.5} \approx 1.036036 \times 10^{-4}$$
+   $$\ln(X) = \ln(1.036036 \times 10^{-4}) \approx -9.174902$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \beta) R T \ln(X) = (1 + 0.65625) \times 8.314462618 \times 298.15 \times (-9.174902) \times 10^{-3} \approx -37.6702\text{ kJ/mol}$$
+
+=== H02 ===
+FINAL_JSON:
+{
+  "cmc_mM": 5.75,
+  "beta": 0.65625,
+  "alpha": 0.34375,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"cmc_mM": 9.181534066265833,
+"gamma_max_mol_per_m2": 3.4267526865508074e-6,
+"a_min_nm2": 0.48458094851462996,
+"delta_g_mic_kJ_per_mol": -37.047905676293354,
+"delta_s_mic_J_per_mol_K": null
+}

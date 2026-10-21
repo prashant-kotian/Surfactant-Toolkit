@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "Approximately 2–3 mM and above; breakpoint analysis gives a CMC of about 2.5 mM.",
+"deviation_reason": "Near and above the CMC, added surfactant predominantly forms micelles rather than increasing free-monomer concentration; the interface approaches saturation and surface tension plateaus, so a pre-CMC adsorption isotherm extrapolated into this region continues decreasing and diverges from the measured data."
+}

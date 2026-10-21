@@ -1,0 +1,26 @@
+### Question H49
+
+#### 1. Free Energy from CMC
+For $\text{CMC} = 8.0\text{ mM} = 0.008\text{ mol/L}$, $\alpha = 0.272$, counterion factor $= 2 - \alpha = 1.728$:
+$$\Delta G^\circ_\text{mic} = (2 - \alpha) R T \ln\left(\frac{\text{CMC}}{55.5}\right) = 1.728 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.008}{55.5}\right) \times 10^{-3} = -37.8875\text{ kJ/mol}$$
+*(via `gibbs_free_energy_micellization`: $-37.8881\text{ kJ/mol}$)*.
+
+#### 2. Entropy from the Thermodynamic Triangle
+With $\Delta H^\circ_\text{mic} = -5.0\text{ kJ/mol} = -5000\text{ J/mol}$:
+$$\Delta S^\circ_\text{mic} = \frac{\Delta H^\circ_\text{mic} - \Delta G^\circ_\text{mic}}{T} = \frac{-5000 - (-37887.5)}{298.15} = \frac{32887.5}{298.15} = 110.305\text{ J}/(\text{mol}\cdot\text{K})$$
+*(via `entropy_of_micellization`: $110.307\text{ J}/(\text{mol}\cdot\text{K})$)*.
+
+#### 3. Recomputed $\Delta G^\circ_\text{mic}$ and Self-Consistency
+$$\Delta G^\circ_\text{recomputed} = \Delta H^\circ_\text{mic} - T \Delta S^\circ_\text{mic} = -5.0 - 298.15 \times 0.110305 = -37.8875\text{ kJ/mol}$$
+Relative difference:
+$$\frac{|\Delta G^\circ_\text{recomputed} - \Delta G^\circ_\text{mic}|}{|\Delta G^\circ_\text{mic}|} \times 100\% = 0.000\% < 2\% \implies \text{self\_consistent: true}$$
+
+=== H49 ===
+FINAL_JSON:
+{
+  "delta_g_from_cmc_kJ_per_mol": -37.8875,
+  "delta_s_J_per_mol_K": 110.305,
+  "delta_g_recomputed_kJ_per_mol": -37.8875,
+  "self_consistent": true
+}
+END OF QUESTION

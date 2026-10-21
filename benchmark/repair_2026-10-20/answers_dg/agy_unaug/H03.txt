@@ -1,0 +1,40 @@
+### Question H03
+
+#### Principles and Calculations
+1. **Model Selection (Two-segment vs. Three-segment)**:
+   - Baseline region: The first three points $(0.005, 71.9), (0.010, 71.8), (0.020, 71.6)$ form a flat dilute baseline with surface tension close to pure water ($\gamma \approx 71.8\text{ mN/m}$).
+   - Premicellar decline region: Points $0.05\text{ to }3.00\text{ mM}$ show a linear decrease of $\gamma$ versus $\log_{10}(c)$.
+   - Postmicellar plateau: Points $6.00, 10.00, 16.00\text{ mM}$ plateau at $\gamma \approx 31.1\text{ mN/m}$.
+   - Comparing two-segment vs. three-segment models via Bayesian Information Criterion (BIC), the three-segment model strongly minimizes the BIC due to the initial induction/lag baseline. Hence, `three_segment_selected` is `true`, with `n_baseline_points = 3`.
+
+2. **CMC Determination**:
+   The transition occurs between the declining branch ($c \le 3.00\text{ mM}$) and the plateau branch ($c \ge 6.00\text{ mM}$). The breakpoint in logarithmic concentration space is:
+   $$\log_{10}(\text{CMC}) = \frac{\log_{10}(3.00) + \log_{10}(6.00)}{2} \implies \text{CMC} = \sqrt{3.00 \times 6.00} = \sqrt{18} \approx 4.24264\text{ mM}$$
+
+3. **Gibbs Prefactor and Surface Excess**:
+   - **Gibbs Prefactor $n$**: For a 1:1 ionic surfactant in water with **no added electrolyte**, electroneutrality mandates that both the surfactant ion and counterion adsorb at the interface, and both ions change concentration simultaneously in the bulk solution ($d\mu = d\mu_+ + d\mu_- \approx 2 R T d\ln c$). Therefore, $n = 2$.
+   - Premicellar slope against $\ln(c)$:
+     $$\frac{d\gamma}{d\ln c} = -8.398464\text{ mN/m} = -8.398464 \times 10^{-3}\text{ N/m}$$
+   - Maximum surface excess $\Gamma_{\max}$:
+     $$\Gamma_{\max} = -\frac{1}{n R T} \frac{d\gamma}{d\ln c} = \frac{8.398464 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} \approx 1.69395 \times 10^{-6}\text{ mol/m}^2$$
+   - Minimum area per molecule $A_{\min}$:
+     $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{10^{18}}{6.02214076 \times 10^{23} \times 1.693951 \times 10^{-6}} \approx 0.98028\text{ nm}^2$$
+
+4. **Free Energy of Micellization ($\Delta G^\circ_{\text{mic}}$)**:
+   Given $\alpha = 0.31$, $X = \frac{4.24264 \times 10^{-3}}{55.5} \approx 7.64440 \times 10^{-5}$:
+   $$\ln(X) \approx -9.47950$$
+   $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X) = (2 - 0.31) \times 8.314462618 \times 298.15 \times (-9.47950) \times 10^{-3} \approx -39.7115\text{ kJ/mol}$$
+
+=== H03 ===
+FINAL_JSON:
+{
+  "cmc_mM": 4.24264,
+  "three_segment_selected": true,
+  "n_baseline_points": 3,
+  "gamma_max_mol_per_m2": 1.69395e-06,
+  "a_min_nm2": 0.98028,
+  "delta_g_mic_kJ_per_mol": -39.7115
+}
+END OF QUESTION
+
+---

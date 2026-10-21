@@ -26,7 +26,8 @@
    "pre_fix_packet_cells": [
     "X-19"
    ]
-  }
+  },
+  "per_arm_corrections": "standard list above; per-arm re-runs, re-grades and exclusions since 2026-10-20 are logged in results/results.json cells[*].corrections"
  },
  "items": [
   {

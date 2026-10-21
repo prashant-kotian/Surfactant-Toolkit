@@ -21,24 +21,44 @@ magnitude class; categorical labels by token-set equality after stripping
 justifications; NO-JSON detection per transcript). The rule set lives in the
 per-source-set graders and is exercised by their self-tests.
 
-## Exclusions (all symmetric, declared in `benchmark/build_results.py` and
-## `benchmark/question_set.json`)
+## Exclusions and 2026-10-20/21 corrections
 
-- groundzero n=43: six questions requiring chart/image input (GZ-15, GZ-36..40;
-  chart files retained in the source directory for reference) and one retired
-  ambiguous question (GZ-26).
-- hard50 n=47: three figure-dependent questions (H-36..38).
-- extrahard n=49 in every arm: X-19's question text carried an authoring typo
-  until 2026-10-16. It is excluded from all arms, including the augmented
-  cells run after the fix (which had included it at n=50 until 2026-10-19),
-  so every unaugmented/augmented pair is scored on the same questions.
-- orig_hard50 scores n=50; NOT_ANSWERED records (Claude unaugmented 1, ChatGPT
-  unaugmented 4) reflect no answer content captured and are excluded from n
-  as ungradable rather than scored as failures.
-- 2026-09-21 Gemini unaugmented groundzero: 11 ungradable (no-content) records
-  removed from n; an earlier alternative grading pass (22/50) is not
-  reproducible from the transcripts in this repository and is therefore not
-  reported.
+The standard exclusion list is declared in `benchmark/build_results.py` (`EXCLUSIONS`) and
+`benchmark/question_set.json`: chart/image questions GZ-15, GZ-36..40 and H-36..38, the retired
+ambiguous GZ-26, and X-19 (authoring typo until 2026-10-16). Since 2026-10-20 a corrections layer
+(`benchmark/repair_2026-10-20/corrections.py`) adjusts each cell, and every change it makes is logged
+in that cell's `corrections` list in `results/results.json`:
+
+- Chart/typo repair. The nine chart questions and X-19 were re-run on 2026-10-20/21 with the chart
+  attached and the corrected X-19 text, under the original model settings, with the condition checked
+  on the live page before each send (`answers/*/*.meta.json`). DeepSeek augmented and Gemini-CLI
+  originally received the charts and keep their original chart verdicts. A question stays excluded
+  for an arm only when that arm has no gradable re-run answer (reason logged). Gemini-CLI X-19 is not
+  re-run (its extrahard tier is retired).
+- Counterion-factor correction. The pseudo-phase ionic factor is (1 + beta) = (2 - alpha); earlier
+  toolkit text and 13 question texts (GZ-16, GZ-20, H-02, H-03, H-08, H-16, H-19, H-31, H-38, H-47,
+  H-49, X-41, X-47) stated the inverse. Texts and golds were corrected (H-46 gold, H-04 label as
+  well) and every arm was re-run on the corrected texts; those verdicts replace the originals. An arm
+  without a gradable re-run answer is excluded on that question, never scored on the stale text.
+  H-46 (gold-only error) is regraded from stored answers where a record holds them (Claude and
+  Gemini-CLI unaugmented) and re-run otherwise. Gemini-CLI X-41/X-47 are excluded (tier retired).
+- GZ-16/GZ-20 electrolyte condition. These texts did not state the electrolyte condition. Arms that
+  assumed no added salt keep their answers; ChatGPT augmented, which withheld Gamma_max/A_min for
+  that reason, was re-run with the sentence "The solution contains no added salt; the surfactant is
+  the only electrolyte present." (author decision; recorded in each answer's `question_variant`).
+- Choice-field regrade (groundzero). Golds of the form "<choice> (<justification>)" (GZ-01/GZ-20
+  isotherm_model, GZ-29 selected_model, GZ-23/GZ-35 valid_hlb_method) were scored by token overlap,
+  which failed correct one-word answers and passed opposite choices. Rule for every arm: the field
+  passes iff the answer's first word is the gold's choice ("Szyszkowski", the Langmuir equation of
+  state, counts as Langmuir). A record is changed only if its stored verdict is reproducible from its
+  own field flags.
+- GZ-15 estimated CMC is graded at +/-10% (author decision; the gold note asked for a wider, unquantified
+  tolerance). Free-text GZ-39 fields carry one written judgment per arm in `grade_repair.py`.
+
+Other standing rules: orig_hard50 NOT_ANSWERED records (Claude unaugmented 1, ChatGPT unaugmented 4)
+are excluded from n as ungradable; the 2026-09-21 Gemini unaugmented groundzero run has 11 no-content
+records removed from n, and an earlier alternative grading pass (22/50) is not reproducible from this
+repository and is not reported.
 
 ## Classification
 

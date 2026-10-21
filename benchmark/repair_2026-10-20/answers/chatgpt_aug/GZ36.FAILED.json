@@ -1,0 +1,13 @@
+{
+ "qid": "GZ36",
+ "provider": "chatgpt",
+ "condition": "aug",
+ "start": "2026-10-20T06:46:54+0530",
+ "model_seen": "GPT-5.6 Sol, thinking effort High",
+ "tools_seen": {
+  "surfactant-computation": true
+ },
+ "mcp_seen": "Active",
+ "chart": "attached (GZ-36_chart(4).png visible)",
+ "failed": "model changed before send"
+}

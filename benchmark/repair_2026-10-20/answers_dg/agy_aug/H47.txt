@@ -1,0 +1,31 @@
+### Question H47
+
+#### 1. Surface Tension Monolayer Analysis
+For the tensiometry dataset (1:1 ionic, NO added salt):
+- **Prefactor $n$ used**: **$n = 2$** (both surfactant anion and counterion change chemical potential together, $d\mu = 2 R T d\ln C$).
+- Premicellar slope from `cmc_from_surface_tension_curve`: $\frac{d\gamma}{d\ln C} = -7.01337\text{ mN/m}$.
+- **$\Gamma_\text{max}$** via `gibbs_surface_excess`:
+  $$\Gamma_\text{max} = -\frac{-7.01337 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 1.41458 \times 10^{-6}\text{ mol/m}^2$$
+- **$A_\text{min}$** via `gibbs_area_per_molecule`:
+  $$A_\text{min} = \frac{1}{\Gamma_\text{max} N_A} = 1.17387\text{ nm}^2$$
+
+#### 2. Conductivity-Derived Micellization Thermodynamics
+- From the conductivity curve (`cmc_from_conductivity`):
+  $$\text{CMC}_\text{cond} = 5.750\text{ mM} = 0.00575\text{ mol/L}$$
+  $$\beta = 1 - \frac{0.220}{0.640} = 0.65625$$
+- **Standard Free Energy ($\Delta G^\circ_\text{mic}$)**:
+  $$\Delta G^\circ_\text{mic} = (1 + \beta) R T \ln\left(\frac{\text{CMC}_\text{cond}}{55.5}\right) = -37.6702\text{ kJ/mol}$$
+- **Entropy of Micellization ($\Delta S^\circ_\text{mic}$)**: **`null`**, because $\Delta H^\circ_\text{mic}$ is unknown and cannot be calculated without multi-temperature data or calorimetric enthalpy.
+
+=== H47 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 1.41458e-06,
+  "a_min_nm2": 1.17387,
+  "delta_g_mic_kJ_per_mol": -37.6702,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Enthalpy of micellization (dH_mic) from calorimetry or temperature-dependent CMC data (d ln CMC / dT via van 't Hoff equation)"
+}
+END OF QUESTION
+
+---

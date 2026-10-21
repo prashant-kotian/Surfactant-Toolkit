@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"slope_sign": "negative",
+"process_character": "exothermic",
+"reasoning": "ln(CMC) decreases as 1000/T increases, giving a negative slope; for a CMC-based Gibbs-Helmholtz/van't Hoff plot, the slope has the same sign as the micellization enthalpy, so the negative slope implies deltaH_mic < 0 and therefore exothermic micellization."
+}

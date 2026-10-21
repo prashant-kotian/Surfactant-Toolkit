@@ -1,0 +1,10 @@
+{
+ "qid": "X19",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-20T05:08:00+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-20T05:09:01+0530",
+ "end": "2026-10-20T05:11:23+0530"
+}

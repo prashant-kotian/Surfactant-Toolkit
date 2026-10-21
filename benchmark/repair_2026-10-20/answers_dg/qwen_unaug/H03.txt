@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"cmc_mM": 6.0,
+"three_segment_selected": true,
+"n_baseline_points": 3,
+"gamma_max_mol_per_m2": 1.69e-06,
+"a_min_nm2": 0.98,
+"delta_g_mic_kJ_per_mol": -38.3
+}

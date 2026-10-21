@@ -1,0 +1,39 @@
+### Solution for Question GZ20
+
+#### 1. Compound Classification
+- **SMILES**: `CCCCC(CC)COC(=O)CC(C(=O)OCC(CC)CCCC)S(=O)(=O)[O-].[Na+]` (AOT / Sodium bis(2-ethylhexyl) sulfosuccinate)
+- **Structure**: A branched double-tailed dialkyl ester linked to a sulfonate headgroup ($-\text{SO}_3^-$) paired with a sodium counterion ($\text{Na}^+$).
+- **Charge Type**: **anionic** (1:1 ionic surfactant; in water with no added inert electrolyte, Gibbs prefactor $n = 2$).
+
+#### 2. Surface Tension Curve Analysis & Pre-CMC Adsorption
+The experimental concentration–surface tension data at $298.15\text{ K}$:
+- The first 6 concentrations ($0.01585\text{ to }1.58489\text{ mM}$) span equal logarithmic steps ($\Delta \log_{10} c = 0.40$) and show a linear reduction in $\gamma$ with $\Delta \gamma = -6.56\text{ mN/m}$ per step:
+  $$\frac{d\gamma}{d\log_{10} c} = -16.400\text{ mN/m per decade}, \quad \frac{d\gamma}{d\ln c} = \frac{-16.400}{\ln(10)} = -7.1225\text{ mN/m} \quad (R^2 = 1.000)$$
+- Concentrations $3.981\text{ to }10.0\text{ mM}$ form the post-micellar plateau ($\approx 27.8\text{ mN/m}$).
+- Segment break-point analysis in logarithmic concentration space yields:
+  $$\log_{10}(\text{CMC}) = \frac{\log_{10}(1.58489) + \log_{10}(3.981)}{2} = \frac{0.2000 + 0.6000}{2} = 0.4000 \implies \text{CMC} = 10^{0.4000} \approx 2.5119\text{ mM}$$
+- Pre-CMC adsorption parameters ($T = 298.15\text{ K}$, $n = 2$):
+  $$\Gamma_{\max} = -\frac{1}{2 R T}\left(\frac{d\gamma}{d\ln c}\right) = \frac{7.1225 \times 10^{-3}\text{ N/m}}{2 \times 8.3144626\text{ J/(mol}\cdot\text{K)} \times 298.15\text{ K}} \approx 1.4366 \times 10^{-6}\text{ mol/m}^2$$
+  $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 1.43659 \times 10^{-6}}\text{ m}^2 \approx 1.1559\text{ nm}^2 \quad (115.6\text{ \AA}^2)$$
+- **Isotherm Model**:
+  Model comparison via Bayesian Information Criterion (BIC) between the Langmuir and Frumkin adsorption isotherms strongly favors the Langmuir isotherm ($\Delta \text{BIC} = -12.09$ favoring Langmuir), as the pre-CMC data show no significant lateral interaction curvature.
+  $$\text{Model}: \textbf{langmuir (BIC-selected over Frumkin)}$$
+
+#### 3. Free Energy of Micellization
+- Given counterion dissociation degree $\alpha = 0.39$:
+  $$X_{\text{cmc}} = \frac{\text{CMC (mol/L)}}{55.5 + \text{CMC (mol/L)}} = \frac{0.0025119}{55.5 + 0.0025119} \approx 4.5257 \times 10^{-5}$$
+  $$\ln(X_{\text{cmc}}) \approx -10.0033$$
+- Applying the specified relation $\Delta G_{\text{mic}}^\circ = (2 - \alpha) R T \ln(X_{\text{cmc}})$:
+  $$\Delta G_{\text{mic}}^\circ = (2 - 0.39) \times 8.3144626\text{ J/(mol}\cdot\text{K)} \times 298.15\text{ K} \times (-10.0033) \approx -39924\text{ J/mol} = -39.924\text{ kJ/mol}$$
+
+=== GZ20 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 2.5119,
+  "isotherm_model": "langmuir (BIC-selected over Frumkin)",
+  "gamma_max_mol_per_m2": 1.4366e-06,
+  "a_min_nm2": 1.1559,
+  "delta_g_mic_kJ_per_mol": -39.924
+}
+END OF QUESTION

@@ -15,6 +15,8 @@ curve_analysis.py (found via this exact orchestrator, see that module's
 own docstring), not just a smoke test.
 """
 
+import math
+
 import pytest
 
 from surfactantkit.adsorption import (
@@ -129,8 +131,11 @@ def test_ionic_surfactant_with_supplied_alpha_computes_delta_g_mic():
         SDS_SMILES, concs, gammas, temperature_K=296.15, counterion_dissociation_alpha=0.272,
     )
     assert r.delta_g_mic_kJ_per_mol is not None
-    assert r.counterion_factor_used == pytest.approx(1.272)
+    # alpha is the ionization degree: factor 2 - alpha (corrected 2026-10-20; was 1 + alpha = 1.272)
+    assert r.counterion_factor_used == pytest.approx(1.728)
     assert r.delta_g_mic_kJ_per_mol < 0  # micellization is spontaneous
+    assert r.delta_g_mic_kJ_per_mol == pytest.approx(
+        1.728 * 8.314462618 * 296.15 * math.log((r.cmc_mM / 1000) / (r.cmc_mM / 1000 + 55.5)) / 1000, rel=1e-6)
 
 
 def test_nonionic_surfactant_computes_delta_g_mic_with_default_counterion_factor():

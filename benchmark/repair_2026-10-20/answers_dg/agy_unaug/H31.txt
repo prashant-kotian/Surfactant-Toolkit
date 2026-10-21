@@ -1,0 +1,27 @@
+### Question H31
+
+#### Principles and Calculations
+1. **Gibbs Prefactor and Surface Excess**:
+   - **Gibbs Prefactor $n$**: For a 1:1 ionic surfactant in pure water with **no added electrolyte**, both the surfactant amphiphile and counterion adsorb together and vary together in solution. Hence, the Gibbs prefactor is **$n = 2$**.
+   - Given $\frac{d\gamma}{d\log_{10} C} = -9.2\text{ mN/m per decade} = -9.2 \times 10^{-3}\text{ N/m per decade}$:
+     $$\frac{d\gamma}{d\ln C} = \frac{1}{\ln(10)} \frac{d\gamma}{d\log_{10} C} = \frac{-9.2 \times 10^{-3}}{\ln(10)} \approx -3.99551 \times 10^{-3}\text{ N/m}$$
+     $$\Gamma_{\max} = -\frac{1}{n R T} \frac{d\gamma}{d\ln C} = \frac{3.99551 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} \approx 8.05885 \times 10^{-7}\text{ mol/m}^2$$
+
+2. **Minimum Area per Molecule ($A_{\min}$)**:
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{10^{18}}{6.02214076 \times 10^{23} \times 8.05885 \times 10^{-7}} \approx 2.0605\text{ nm}^2$$
+
+3. **Free Energy of Micellization ($\Delta G^\circ_{\text{mic}}$)**:
+   Given $\text{CMC} = 6.0\text{ mM} = 0.0060\text{ mol/L}$, $\alpha = 0.30$:
+   $$X = \frac{0.0060}{55.5} \approx 1.08108 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (2 - \alpha) R T \ln(X) = (2 - 0.30) \times 8.314462618 \times 298.15 \times \ln(1.08108 \times 10^{-4}) \times 10^{-3} \approx -38.4859\text{ kJ/mol}$$
+
+=== H31 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 8.0589e-07,
+  "a_min_nm2": 2.0605,
+  "delta_g_mic_kJ_per_mol": -38.4859
+}
+END OF QUESTION
+
+---

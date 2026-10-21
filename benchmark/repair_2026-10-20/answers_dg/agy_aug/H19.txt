@@ -1,0 +1,27 @@
+### Question H19
+
+#### 1. Gibbs Adsorption Analysis
+- **Prefactor $n$ used**: **$n = 1$**. In the presence of excess inert electrolyte, the counterion concentration is fixed by the background salt, keeping its chemical potential constant ($d\mu_\text{counterion} \approx 0$). Consequently, the surfactant chemical potential depends solely on the surfactant co-ion: $d\mu = R T d\ln C$.
+- **Maximum surface excess ($\Gamma_\text{max}$)** via `gibbs_surface_excess`:
+  $$\Gamma_\text{max} = -\frac{1}{1 \times R T} \frac{d\gamma}{d\ln C} = -\frac{-18.4 \times 10^{-3}}{8.314462618 \times 298.15} = 7.42248 \times 10^{-6}\text{ mol/m}^2$$
+- **Minimum area per molecule ($A_\text{min}$)** via `gibbs_area_per_molecule`:
+  $$A_\text{min} = \frac{1}{\Gamma_\text{max} N_A} = \frac{1}{7.42248 \times 10^{-6} \times 6.02214 \times 10^{23}} \times 10^{18} = 0.22372\text{ nm}^2$$
+
+#### 2. Micellization Thermodynamics
+- **Free energy ($\Delta G^\circ_\text{mic}$)** with $\alpha = 0.30$ (counterion factor $2 - \alpha = 1.70$):
+  $$\Delta G^\circ_\text{mic} = (2 - \alpha) R T \ln\left(\frac{\text{CMC}}{55.5}\right) = 1.70 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.008}{55.5}\right) \times 10^{-3} = -37.2736\text{ kJ/mol}$$
+  *(via `gibbs_free_energy_micellization`: $-37.2742\text{ kJ/mol}$)*.
+- **Entropy of micellization ($\Delta S^\circ_\text{mic}$)**: Cannot be determined without enthalpy of micellization ($\Delta H^\circ_\text{mic}$) or temperature-dependent CMC data.
+
+=== H19 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.42248e-06,
+  "a_min_nm2": 0.22372,
+  "delta_g_mic_kJ_per_mol": -37.2736,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "Enthalpy of micellization (dH_mic) from calorimetry or temperature dependence of CMC (d ln CMC / dT via van 't Hoff equation)"
+}
+END OF QUESTION
+
+---

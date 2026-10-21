@@ -1,0 +1,16 @@
+{
+ "qid": "H36",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-20T16:40:03+0530",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "tools_seen": {
+  "surfactant-computation": false,
+  "Claude in Chrome": false,
+  "Research": false,
+  "Memory": false
+ },
+ "mcp_seen": "Inactive",
+ "chart": "upload control not found",
+ "failed": "chart guard: upload control not found"
+}

@@ -317,7 +317,7 @@ def gold_h02():
     r = cmc_from_conductivity_curve(H02_CONC, H02_COND)
     alpha = 1.0 - r.counterion_binding_degree
     X = cmc_to_mole_fraction(r.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=2.0 - r.counterion_binding_degree)
+    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=1.0 + r.counterion_binding_degree)
     return dict(cmc_mM=_num(r.cmc_mM, 0.03),
                 beta=_num(r.counterion_binding_degree, 0.03),
                 alpha=_num(alpha, 0.03),
@@ -329,7 +329,7 @@ def gold_h03():
     gm = gibbs_gamma_max(r.premicellar_slope_mN_per_m_per_lnC, "ionic_no_added_salt", H03_T)
     am = gibbs_a_min(gm)
     X = cmc_to_mole_fraction(r.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, H03_T, counterion_factor=1.0 + H03_ALPHA)
+    dg = gibbs_free_energy_micellization(X, H03_T, counterion_factor=2.0 - H03_ALPHA)
     return dict(cmc_mM=_num(r.cmc_mM, 0.05),
                 three_segment_selected=_bool(r.n_baseline_points > 0),
                 n_baseline_points=_num(r.n_baseline_points, 0.0),
@@ -422,7 +422,7 @@ def gold_h08():
     rt = cmc_from_surface_tension_curve([p[0] for p in H08_TENS_PTS], [p[1] for p in H08_TENS_PTS])
     agree = abs(rt.cmc_mM - rc.cmc_mM) / rc.cmc_mM < 0.02
     X = cmc_to_mole_fraction(rc.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=2.0 - rc.counterion_binding_degree)
+    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=1.0 + rc.counterion_binding_degree)
     return dict(cmc_conductivity_mM=_num(rc.cmc_mM, 0.03),
                 cmc_tensiometry_mM=_num(rt.cmc_mM, 0.04),
                 agree_within_2pct=_bool(agree),
@@ -551,7 +551,7 @@ def gold_h16():
     r = cmc_from_conductivity_curve(H02_CONC, H16_COND)
     alpha = 1 - r.counterion_binding_degree
     X = cmc_to_mole_fraction(r.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=1.0 + alpha)
+    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=2.0 - alpha)
     return dict(cmc_mM=_num(r.cmc_mM, 0.03),
                 beta=_num(r.counterion_binding_degree, 0.03),
                 delta_g_mic_kJ_per_mol=_num(dg, 0.05),
@@ -580,7 +580,7 @@ def gold_h19():
     gm = gibbs_gamma_max(H19_SLOPE, "ionic_excess_electrolyte", H19_T)
     am = gibbs_a_min(gm)
     X = cmc_to_mole_fraction(H19_CMC_M)
-    dg = gibbs_free_energy_micellization(X, H19_T, counterion_factor=1.0 + H19_ALPHA)
+    dg = gibbs_free_energy_micellization(X, H19_T, counterion_factor=2.0 - H19_ALPHA)
     return dict(gamma_max_mol_per_m2=_num(gm, 0.05),
                 a_min_nm2=_num(am, 0.05),
                 delta_g_mic_kJ_per_mol=_num(dg, 0.05),
@@ -741,7 +741,7 @@ def gold_h31():
     gm = gibbs_gamma_max(slope_ln, "ionic_no_added_salt", H31_T)
     am = gibbs_a_min(gm)
     X = cmc_to_mole_fraction(H31_CMC_M)
-    dg = gibbs_free_energy_micellization(X, H31_T, counterion_factor=1.0 + H31_ALPHA)
+    dg = gibbs_free_energy_micellization(X, H31_T, counterion_factor=2.0 - H31_ALPHA)
     return dict(gamma_max_mol_per_m2=_num(gm, 0.05),
                 a_min_nm2=_num(am, 0.05),
                 delta_g_mic_kJ_per_mol=_num(dg, 0.05))
@@ -834,7 +834,7 @@ def gold_h38():
     r = cmc_from_conductivity_curve(H02_CONC, H02_COND)
     cmc_uM = r.cmc_mM * 1000.0
     X = cmc_to_mole_fraction(r.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=2.0 - r.counterion_binding_degree)
+    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=1.0 + r.counterion_binding_degree)
     return dict(cmc_in_chart_units=_num(cmc_uM, 0.04),
                 cmc_in_molar=_num(r.cmc_mM / 1000.0, 0.05),
                 beta_from_chart=_num(r.counterion_binding_degree, 0.08),
@@ -984,7 +984,7 @@ def gold_h47():
     rt = cmc_from_surface_tension_curve([p[0] for p in H08_TENS_PTS], [p[1] for p in H08_TENS_PTS])
     gm = gibbs_gamma_max(rt.premicellar_slope_mN_per_m_per_lnC, "ionic_no_added_salt", 298.15)
     X = cmc_to_mole_fraction(rc.cmc_mM / 1000.0)
-    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=2.0 - rc.counterion_binding_degree)
+    dg = gibbs_free_energy_micellization(X, 298.15, counterion_factor=1.0 + rc.counterion_binding_degree)
     return dict(gamma_max_mol_per_m2=_num(gm, 0.06),
                 a_min_nm2=_num(gibbs_a_min(gm), 0.06),
                 delta_g_mic_kJ_per_mol=_num(dg, 0.06),
@@ -1008,7 +1008,7 @@ def gold_h48():
 # ---------------- H-49 ----------------
 def gold_h49():
     X = cmc_to_mole_fraction(H49_CMC_M)
-    factor = 1.0 + H49_ALPHA
+    factor = 2.0 - H49_ALPHA
     dg = gibbs_free_energy_micellization(X, H49_T, counterion_factor=factor)
     ds = entropy_micellization(dg, H49_DH, H49_T)
     dg2 = H49_DH - H49_T * ds / 1000.0

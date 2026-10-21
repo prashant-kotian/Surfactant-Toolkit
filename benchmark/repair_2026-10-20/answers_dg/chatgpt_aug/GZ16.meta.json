@@ -1,0 +1,14 @@
+{
+ "qid": "GZ16",
+ "provider": "chatgpt",
+ "condition": "aug",
+ "start": "2026-10-21T11:32:21+0530",
+ "model_seen": "GPT-5.6 Sol, thinking effort High",
+ "tools_seen": {
+  "surfactant-computation": true
+ },
+ "mcp_seen": "Active",
+ "sent": "2026-10-21T11:35:44+0530",
+ "question_variant": "/home/prashant-kotian/repair11/paste_salt_aug/GZ16.md",
+ "end": "2026-10-21T11:38:58+0530"
+}

@@ -105,27 +105,37 @@ def gibbs_free_energy_micellization(cmc_mole_fraction: float, temperature_K: flo
     deltaG_mic = counterion_factor * R * T * ln(X_cmc).
 
     counterion_factor: explicit, not guessed. Use 1.0 for a nonionic
-    surfactant. For an ionic surfactant with counterion binding degree
-    beta (see counterion_binding_degree), use (2 - beta) -- equivalently,
-    (1 + alpha) if what's in hand is the counterion DISSOCIATION/
-    ionization degree alpha (= 1 - beta) instead, e.g. as directly
-    reported by Bales, Messina, Vidal & Peric, J. Phys. Chem. B 105
-    (2001) 6798-6804 (PDF provided by the user, 2026-09-11), which gives
-    a real, precisely-measured alpha = 0.272 +/- 0.017 for SDS via a
-    novel EPR method, cross-validated there against multiple independent
-    literature techniques -- i.e. counterion_factor = 1.272 for SDS
-    specifically, a real sourced value rather than an arbitrary
-    illustrative one. The (2-beta) = (1+alpha) identity (alpha=1-beta)
-    is checked via its own physical limits, not just algebra: fully
-    dissociated (alpha=1, beta=0) behaves like two independent particles
-    losing translational entropy together, counterion_factor -> 2 (both
-    forms agree); fully bound (alpha=0, beta=1, counterion moves as one
-    package with the surfactant) behaves like a single nonionic-style
-    particle, counterion_factor -> 1 (both forms agree too) -- see
-    tests/test_thermodynamics.py for the worked check. This is NOT
-    auto-detected from the inputs, because silently assuming nonionic
-    behavior for an ionic surfactant (or vice versa) is exactly the kind
-    of hidden-assumption error this library exists to prevent.
+    surfactant. For an ionic surfactant (pseudo-phase model with
+    counterion binding; Zana, Langmuir 12 (1996) 1208):
+
+        counterion_factor = 1 + beta = 2 - alpha
+
+    where beta is the degree of counterion BINDING (fraction of the
+    micelle's charge neutralised by bound counterions; from conductivity
+    beta = 1 - S2/S1, see counterion_binding_degree) and alpha = 1 - beta
+    is the degree of IONIZATION / dissociation (alpha = S2/S1). Physical
+    limits: fully bound counterions (beta = 1) leave the solution with
+    every surfactant ion, so two species lose translational freedom per
+    monomer and the factor is 2; fully dissociated counterions (beta = 0)
+    stay in solution and the factor is 1, the nonionic value.
+
+    Worked example: SDS, alpha = 0.272 +/- 0.017 (Bales, Messina, Vidal &
+    Peric, J. Phys. Chem. B 105 (2001) 6798-6804, EPR) gives
+    counterion_factor = 2 - 0.272 = 1.728 and, at CMC 8.3 mM and 298.15 K,
+    deltaG_mic = -37.7 kJ/mol, in line with literature values for SDS.
+
+    CORRECTED 2026-10-20: this docstring previously stated (2 - beta) with
+    beta = binding (equivalently 1 + alpha), which is the inverse
+    convention and makes ionic deltaG_mic too weak by roughly 10 kJ/mol
+    for typical surfactants. The error is easy to make because papers use
+    the symbols both ways: e.g. Fu et al., RSC Adv. 9 (2019) 28799, write
+    the slope ratio S2/S1 as "beta" and use (2 - beta), which is correct
+    for their definition. The function itself only multiplies by the
+    factor it is given and was never wrong; callers must pass 1 + beta.
+
+    This is NOT auto-detected from the inputs, because silently assuming
+    nonionic behavior for an ionic surfactant (or vice versa) is exactly
+    the kind of hidden-assumption error this library exists to prevent.
     """
     if not (0.0 < cmc_mole_fraction < 1.0):
         raise ValueError("cmc_mole_fraction must be strictly between 0 and 1")
@@ -272,7 +282,8 @@ def vant_hoff_enthalpy(cmc1_mole_fraction: float, temperature1_K: float, cmc2_mo
 
     counterion_factor: explicit, not guessed -- same convention as
     gibbs_free_energy_micellization's own counterion_factor (1.0 for
-    nonionic, (2-beta)=(1+alpha) for ionic). Added 2026-09-23, real gap
+    nonionic, 1 + beta = 2 - alpha for ionic, beta = binding, alpha =
+    ionization; corrected 2026-10-20). Added 2026-09-23, real gap
     found via GZ-26 in benchmark/groundzero_50: this function
     previously had NO counterion_factor parameter at all (unlike its
     siblings gibbs_free_energy_micellization and vant_hoff_multi_point_fit),

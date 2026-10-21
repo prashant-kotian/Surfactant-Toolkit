@@ -115,6 +115,18 @@ EXCLUSIONS: dict[str, list[tuple[list[str], list[str], str]]] = {
     ],
 }
 
+def _load_corrections():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("corrections", B / "repair_2026-10-20" / "corrections.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# 2026-10-20 corrections (choice-field regrade, chart/typo repair re-runs, counterion-factor re-runs):
+# data and rules live in repair_2026-10-20/corrections.py; every change is logged in the cell.
+CORR = _load_corrections()
+
 NON_Q = {"n_questions", "n_graded", "n_pass", "n_no_json", "pass_pct",
          "n_pass_5models", "summary", "suspects", "suspects_5models",
          "arith_fail_pct", "reason_fail_pct", "arith_fields", "reason_fields",
@@ -262,8 +274,13 @@ def main() -> int:
             ex = list(dict.fromkeys(ex))
             ex_reason = next((r for pats, qids, r in EXCLUSIONS.get(bank, [])
                               if {spec["cond"], f"{spec['cond']}:{model}", "*"} & set(pats)), None)
+            corrections = []
+            if bank == "groundzero" and spec["fmt"] == "V":
+                obj, corrections = CORR.choice_regrade(obj)
+            verdicts, count_only = normalize_cell(obj, spec["fmt"], bank_ids[bank])
+            verdicts, ex, log = CORR.apply(bank, model, spec["cond"], verdicts, obj, ex)
+            corrections += log
             ids = [q for q in bank_ids[bank] if q not in ex]
-            verdicts, count_only = normalize_cell(obj, spec["fmt"], ids)
             graded = [q for q in ids if q in verdicts]
             if not graded:
                 gaps.append(dict(**base, model=model, reason="no gradable records in source"))
@@ -280,6 +297,7 @@ def main() -> int:
                          and spec["fmt"] == "V"),
                 gold_state=verify_gold(bank, obj),
                 count_only=count_only, si_only=bool(spec.get("si_only")),
+                corrections=corrections,
                 note=(spec.get("gap_note")
                       if nm in spec.get("note_for", [nm]) else None),
             )

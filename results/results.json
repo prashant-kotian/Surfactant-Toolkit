@@ -1,30 +1,26 @@
 {
- "generated": "2026-10-19T18:23Z",
+ "generated": "2026-10-21T07:57Z",
  "contract": "machine-graded sources only; report numbers land in gaps",
- "toolkit_state": "7bfe35b431a0-dirty",
+ "toolkit_state": "3276032e4a1d-dirty",
  "gold_sha": {
-  "groundzero": "30173710f4c0",
-  "hard50": "6e0b5e14751f",
-  "extrahard": "f281e77a50e3"
+  "groundzero": "00ffab5b7eeb",
+  "hard50": "6b64deb7a96c",
+  "extrahard": "4b80ae10c042"
  },
  "gold_fix_date": "2026-10-18",
  "cells": {
   "groundzero|Claude|aug": {
-   "n": 43,
-   "passed": 36,
-   "pct": 83.7,
+   "n": 47,
+   "passed": 42,
+   "pct": 89.4,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
-    "GZ-26"
+    "GZ-26",
+    "GZ-16",
+    "GZ-20"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
    "per_q": {
-    "GZ-01": false,
+    "GZ-01": true,
     "GZ-02": true,
     "GZ-03": true,
     "GZ-04": true,
@@ -38,25 +34,29 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
-    "GZ-16": true,
+    "GZ-15": true,
     "GZ-17": false,
     "GZ-18": true,
     "GZ-19": true,
-    "GZ-20": false,
     "GZ-21": true,
     "GZ-22": true,
-    "GZ-23": true,
+    "GZ-23": false,
     "GZ-24": true,
     "GZ-25": true,
     "GZ-27": true,
     "GZ-28": true,
-    "GZ-29": false,
+    "GZ-29": true,
     "GZ-30": true,
     "GZ-31": true,
     "GZ-32": true,
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": true,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -75,19 +75,90 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-01",
+     "field": "isotherm_model",
+     "field_ok": "False->True",
+     "answer": "langmuir",
+     "verdict": "FAIL->PASS"
+    },
+    {
+     "qid": "GZ-20",
+     "field": "isotherm_model",
+     "field_ok": "False->True",
+     "answer": "langmuir",
+     "verdict": "FAIL->PASS"
+    },
+    {
+     "qid": "GZ-29",
+     "field": "selected_model",
+     "field_ok": "False->True",
+     "answer": "frumkin",
+     "verdict": "FAIL->PASS"
+    },
+    {
+     "qid": "GZ-23",
+     "field": "valid_hlb_method",
+     "field_ok": "True->False",
+     "answer": "None gives a trustworthy numeric HLB. Davies is structurally invalid for geminis",
+     "verdict": "PASS->FAIL"
+    },
+    {
+     "qid": "GZ-35",
+     "field": "valid_hlb_method",
+     "field_ok": "None->True",
+     "answer": "Griffin (mass-ratio) method; Davies is structurally invalid for glycolipids. Num",
+     "verdict": "PASS->PASS"
+    },
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    }
+   ],
    "note": null
   },
   "groundzero|ChatGPT|aug": {
-   "n": 43,
-   "passed": 31,
-   "pct": 72.1,
+   "n": 49,
+   "passed": 39,
+   "pct": 79.6,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -106,11 +177,12 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": true,
     "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
     "GZ-19": true,
-    "GZ-20": false,
+    "GZ-20": true,
     "GZ-21": true,
     "GZ-22": true,
     "GZ-23": true,
@@ -118,13 +190,18 @@
     "GZ-25": true,
     "GZ-27": true,
     "GZ-28": true,
-    "GZ-29": false,
+    "GZ-29": true,
     "GZ-30": true,
     "GZ-31": true,
     "GZ-32": true,
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": true,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -143,19 +220,69 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-29",
+     "field": "selected_model",
+     "field_ok": "False->True",
+     "answer": "Frumkin",
+     "verdict": "FAIL->PASS"
+    },
+    {
+     "qid": "GZ-35",
+     "field": "valid_hlb_method",
+     "field_ok": "None->True",
+     "answer": "Griffin mass-ratio method",
+     "verdict": "PASS->PASS"
+    },
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    }
+   ],
    "note": null
   },
   "groundzero|Qwen|unaug": {
-   "n": 43,
-   "passed": 27,
-   "pct": 62.8,
+   "n": 49,
+   "passed": 31,
+   "pct": 63.3,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -174,6 +301,7 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": false,
+    "GZ-15": false,
     "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
@@ -181,7 +309,7 @@
     "GZ-20": false,
     "GZ-21": true,
     "GZ-22": true,
-    "GZ-23": true,
+    "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
     "GZ-27": true,
@@ -193,6 +321,11 @@
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -211,19 +344,83 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-01",
+     "field": "isotherm_model",
+     "field_ok": "False->True",
+     "answer": "Langmuir",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-20",
+     "field": "isotherm_model",
+     "field_ok": "False->True",
+     "answer": "Langmuir",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-23",
+     "field": "valid_hlb_method",
+     "field_ok": "True->False",
+     "answer": "Davies group-contribution method (HLB = 7 + \u03a3 hydrophilic group numbers \u2212 \u03a3 lipo",
+     "verdict": "PASS->FAIL"
+    },
+    {
+     "qid": "GZ-35",
+     "field": "valid_hlb_method",
+     "field_ok": "None->True",
+     "answer": "Griffin",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    }
+   ],
    "note": null
   },
   "groundzero|DeepSeek|unaug": {
-   "n": 42,
-   "passed": 29,
-   "pct": 69.0,
+   "n": 48,
+   "passed": 32,
+   "pct": 66.7,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -242,6 +439,7 @@
     "GZ-12": false,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": false,
     "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
@@ -249,7 +447,7 @@
     "GZ-20": false,
     "GZ-21": true,
     "GZ-22": true,
-    "GZ-23": true,
+    "GZ-23": false,
     "GZ-24": true,
     "GZ-25": false,
     "GZ-27": true,
@@ -261,6 +459,11 @@
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": false,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -278,19 +481,69 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-23",
+     "field": "valid_hlb_method",
+     "field_ok": "True->False",
+     "answer": "Davies group-contribution method (the only classical HLB scheme valid in princip",
+     "verdict": "PASS->FAIL"
+    },
+    {
+     "qid": "GZ-35",
+     "field": "valid_hlb_method",
+     "field_ok": "None->True",
+     "answer": "Griffin method (saponification/ester-value formulation for nonionic sugar/polyol",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    }
+   ],
    "note": null
   },
   "groundzero|ChatGPT|unaug": {
-   "n": 43,
-   "passed": 27,
-   "pct": 62.8,
+   "n": 49,
+   "passed": 31,
+   "pct": 63.3,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -309,6 +562,7 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": false,
     "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
@@ -328,6 +582,11 @@
     "GZ-33": true,
     "GZ-34": false,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": false,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -346,19 +605,55 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    }
+   ],
    "note": null
   },
   "groundzero|Gemini|unaug": {
-   "n": 33,
-   "passed": 10,
-   "pct": 30.3,
+   "n": 40,
+   "passed": 15,
+   "pct": 37.5,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -373,6 +668,8 @@
     "GZ-10": false,
     "GZ-12": false,
     "GZ-14": false,
+    "GZ-15": false,
+    "GZ-16": true,
     "GZ-18": false,
     "GZ-19": true,
     "GZ-20": false,
@@ -387,6 +684,11 @@
     "GZ-32": false,
     "GZ-34": false,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": false,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": false,
     "GZ-42": false,
     "GZ-43": false,
@@ -404,19 +706,55 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "None->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    }
+   ],
    "note": null
   },
   "groundzero|Claude|unaug": {
-   "n": 43,
-   "passed": 27,
-   "pct": 62.8,
+   "n": 49,
+   "passed": 33,
+   "pct": 67.3,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -435,7 +773,8 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
-    "GZ-16": false,
+    "GZ-15": false,
+    "GZ-16": true,
     "GZ-17": false,
     "GZ-18": true,
     "GZ-19": true,
@@ -454,6 +793,11 @@
     "GZ-33": true,
     "GZ-34": false,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -472,19 +816,55 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-15",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    }
+   ],
    "note": "Claude: full GZ-01..50 transcript (located 2026-10-19; supersedes a genuinely truncated GZ-01..10-only Sept-18 capture used through 2026-10-18). Full coverage, n=43 after standard exclusions, same as ChatGPT/Gemini; long-prose fields resolved via the grader's JUDGMENT_RESOLUTIONS table (one rationale per field)"
   },
   "groundzero|Gemini-CLI|unaug": {
-   "n": 43,
-   "passed": 42,
-   "pct": 97.7,
+   "n": 49,
+   "passed": 48,
+   "pct": 98.0,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -503,6 +883,7 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": true,
     "GZ-16": true,
     "GZ-17": true,
     "GZ-18": true,
@@ -522,6 +903,11 @@
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": true,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": true,
     "GZ-43": true,
@@ -540,19 +926,55 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-15",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "groundzero|Gemini-CLI|aug": {
-   "n": 43,
-   "passed": 41,
-   "pct": 95.3,
+   "n": 49,
+   "passed": 47,
+   "pct": 95.9,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -571,6 +993,7 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": true,
     "GZ-16": true,
     "GZ-17": true,
     "GZ-18": true,
@@ -590,6 +1013,11 @@
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": true,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": true,
     "GZ-43": true,
@@ -608,19 +1036,55 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "GZ-15",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "groundzero|DeepSeek|aug": {
-   "n": 40,
-   "passed": 33,
-   "pct": 82.5,
+   "n": 46,
+   "passed": 39,
+   "pct": 84.8,
    "excluded": [
-    "GZ-15",
-    "GZ-36",
-    "GZ-37",
-    "GZ-38",
-    "GZ-39",
-    "GZ-40",
     "GZ-26"
    ],
    "exclude_reason": "question requires image/chart input the harnesses cannot deliver",
@@ -638,6 +1102,7 @@
     "GZ-12": true,
     "GZ-13": true,
     "GZ-14": true,
+    "GZ-15": true,
     "GZ-16": true,
     "GZ-18": true,
     "GZ-19": true,
@@ -656,6 +1121,11 @@
     "GZ-33": true,
     "GZ-34": true,
     "GZ-35": false,
+    "GZ-36": true,
+    "GZ-37": true,
+    "GZ-38": true,
+    "GZ-39": true,
+    "GZ-40": true,
     "GZ-41": true,
     "GZ-42": false,
     "GZ-43": true,
@@ -673,27 +1143,94 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": true,
+   "corrections": [
+    {
+     "qid": "GZ-01",
+     "field": "isotherm_model",
+     "field_ok": "True->False",
+     "answer": "frumkin (BIC-selected over Langmuir)",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-20",
+     "field": "isotherm_model",
+     "field_ok": "True->False",
+     "answer": "frumkin (BIC-selected over Langmuir)",
+     "verdict": "PASS->FAIL"
+    },
+    {
+     "qid": "GZ-29",
+     "field": "selected_model",
+     "field_ok": "True->False",
+     "answer": "langmuir (BIC-selected over Frumkin)",
+     "verdict": "FAIL->FAIL"
+    },
+    {
+     "qid": "GZ-15",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-38",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-39",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-40",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "GZ-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "GZ-20",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    }
+   ],
    "note": null
   },
   "hard50|Claude|aug": {
-   "n": 47,
-   "passed": 45,
-   "pct": 95.7,
+   "n": 40,
+   "passed": 38,
+   "pct": 95.0,
    "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
+    "H-38",
+    "H-02",
+    "H-03",
+    "H-08",
+    "H-16",
+    "H-19",
+    "H-31",
+    "H-46",
+    "H-47",
+    "H-49"
    ],
    "exclude_reason": "image/figure-based questions excluded from all cells",
    "per_q": {
     "H-01": true,
-    "H-02": true,
-    "H-03": true,
     "H-04": true,
     "H-05": true,
     "H-06": false,
     "H-07": true,
-    "H-08": true,
     "H-09": true,
     "H-10": true,
     "H-11": true,
@@ -701,10 +1238,8 @@
     "H-13": true,
     "H-14": true,
     "H-15": true,
-    "H-16": true,
     "H-17": true,
     "H-18": true,
-    "H-19": true,
     "H-20": true,
     "H-21": true,
     "H-22": true,
@@ -716,11 +1251,12 @@
     "H-28": true,
     "H-29": true,
     "H-30": true,
-    "H-31": true,
     "H-32": true,
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -728,10 +1264,7 @@
     "H-43": true,
     "H-44": true,
     "H-45": false,
-    "H-46": true,
-    "H-47": true,
     "H-48": true,
-    "H-49": true,
     "H-50": true
    },
    "harness": "mcp",
@@ -741,18 +1274,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-03",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-08",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-16",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-19",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-31",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-38",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-46",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-47",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-49",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    }
+   ],
    "note": null
   },
   "hard50|ChatGPT|aug": {
-   "n": 47,
-   "passed": 44,
-   "pct": 93.6,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 47,
+   "pct": 94.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -789,6 +1380,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -809,18 +1403,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|Claude|unaug": {
-   "n": 47,
-   "passed": 33,
-   "pct": 70.2,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 36,
+   "pct": 72.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -857,6 +1509,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -877,18 +1532,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "regraded stored answer vs corrected gold",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|ChatGPT|unaug": {
-   "n": 47,
-   "passed": 34,
-   "pct": 72.3,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 36,
+   "pct": 72.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -925,6 +1638,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -933,7 +1649,7 @@
     "H-44": true,
     "H-45": true,
     "H-46": false,
-    "H-47": true,
+    "H-47": false,
     "H-48": true,
     "H-49": true,
     "H-50": false
@@ -945,18 +1661,76 @@
    "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|DeepSeek|unaug": {
-   "n": 47,
-   "passed": 31,
-   "pct": 66.0,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 34,
+   "pct": 68.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -988,11 +1762,14 @@
     "H-28": true,
     "H-29": true,
     "H-30": false,
-    "H-31": false,
+    "H-31": true,
     "H-32": true,
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": false,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -1013,27 +1790,87 @@
    "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|Gemini|unaug": {
    "n": 47,
-   "passed": 29,
-   "pct": 61.7,
+   "passed": 31,
+   "pct": 66.0,
    "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
+    "H-03",
+    "H-08",
+    "H-16"
    ],
    "exclude_reason": "image/figure-based questions excluded from all cells",
    "per_q": {
     "H-01": true,
     "H-02": true,
-    "H-03": false,
     "H-04": false,
     "H-05": false,
     "H-06": false,
     "H-07": false,
-    "H-08": false,
     "H-09": true,
     "H-10": true,
     "H-11": false,
@@ -1041,7 +1878,6 @@
     "H-13": true,
     "H-14": true,
     "H-15": false,
-    "H-16": true,
     "H-17": false,
     "H-18": false,
     "H-19": true,
@@ -1061,6 +1897,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": false,
@@ -1081,18 +1920,76 @@
    "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-08",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-16",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|Qwen|unaug": {
-   "n": 47,
-   "passed": 30,
-   "pct": 63.8,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 33,
+   "pct": 66.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -1124,11 +2021,14 @@
     "H-28": false,
     "H-29": true,
     "H-30": false,
-    "H-31": false,
+    "H-31": true,
     "H-32": true,
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": false,
     "H-39": true,
     "H-40": true,
     "H-41": false,
@@ -1149,18 +2049,76 @@
    "gold_state": "not field-verifiable",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|Gemini-CLI|unaug": {
-   "n": 47,
-   "passed": 46,
-   "pct": 97.9,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 48,
+   "pct": 96.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -1197,6 +2155,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -1204,7 +2165,7 @@
     "H-43": true,
     "H-44": true,
     "H-45": true,
-    "H-46": true,
+    "H-46": false,
     "H-47": true,
     "H-48": true,
     "H-49": true,
@@ -1217,18 +2178,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "regraded stored answer vs corrected gold",
+     "verdict": "True->False"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|Gemini-CLI|aug": {
-   "n": 47,
-   "passed": 47,
+   "n": 50,
+   "passed": 50,
    "pct": 100.0,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -1265,6 +2284,9 @@
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -1285,18 +2307,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "hard50|DeepSeek|aug": {
-   "n": 47,
-   "passed": 44,
-   "pct": 93.6,
-   "excluded": [
-    "H-36",
-    "H-37",
-    "H-38"
-   ],
-   "exclude_reason": "image/figure-based questions excluded from all cells",
+   "n": 50,
+   "passed": 46,
+   "pct": 92.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "H-01": true,
     "H-02": true,
@@ -1328,11 +2408,14 @@
     "H-28": true,
     "H-29": true,
     "H-30": false,
-    "H-31": true,
+    "H-31": false,
     "H-32": true,
     "H-33": true,
     "H-34": true,
     "H-35": true,
+    "H-36": true,
+    "H-37": true,
+    "H-38": true,
     "H-39": true,
     "H-40": true,
     "H-41": true,
@@ -1353,16 +2436,76 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": true,
+   "corrections": [
+    {
+     "qid": "H-36",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-37",
+     "change": "included (original run delivered the chart)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "H-02",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-03",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-08",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-16",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-19",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-31",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
+    },
+    {
+     "qid": "H-38",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "False->True"
+    },
+    {
+     "qid": "H-46",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "H-49",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|ChatGPT|unaug": {
-   "n": 49,
-   "passed": 32,
-   "pct": 65.3,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "n": 50,
+   "passed": 33,
+   "pct": 66.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1382,6 +2525,7 @@
     "X-16": false,
     "X-17": true,
     "X-18": false,
+    "X-19": true,
     "X-20": false,
     "X-21": false,
     "X-22": false,
@@ -1421,16 +2565,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|Claude|unaug": {
-   "n": 49,
+   "n": 50,
    "passed": 33,
-   "pct": 67.3,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "pct": 66.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1450,6 +2609,7 @@
     "X-16": false,
     "X-17": true,
     "X-18": false,
+    "X-19": false,
     "X-20": false,
     "X-21": false,
     "X-22": false,
@@ -1489,16 +2649,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|DeepSeek|unaug": {
-   "n": 49,
+   "n": 50,
    "passed": 28,
-   "pct": 57.1,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "pct": 56.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1518,6 +2693,7 @@
     "X-16": false,
     "X-17": false,
     "X-18": false,
+    "X-19": false,
     "X-20": false,
     "X-21": false,
     "X-22": false,
@@ -1557,16 +2733,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|Qwen|unaug": {
-   "n": 49,
+   "n": 50,
    "passed": 21,
-   "pct": 42.9,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "pct": 42.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": false,
     "X-02": false,
@@ -1586,6 +2777,7 @@
     "X-16": false,
     "X-17": false,
     "X-18": false,
+    "X-19": false,
     "X-20": false,
     "X-21": false,
     "X-22": false,
@@ -1625,14 +2817,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|Gemini|unaug": {
    "n": 49,
-   "passed": 27,
-   "pct": 55.1,
+   "passed": 26,
+   "pct": 53.1,
    "excluded": [
-    "X-19"
+    "X-47"
    ],
    "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
@@ -1654,6 +2863,7 @@
     "X-16": false,
     "X-17": false,
     "X-18": false,
+    "X-19": false,
     "X-20": false,
     "X-21": false,
     "X-22": false,
@@ -1681,7 +2891,6 @@
     "X-44": true,
     "X-45": true,
     "X-46": true,
-    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -1693,14 +2902,32 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "FAIL"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    }
+   ],
    "note": null
   },
   "extrahard|Claude|aug": {
-   "n": 49,
-   "passed": 49,
+   "n": 48,
+   "passed": 48,
    "pct": 100.0,
    "excluded": [
-    "X-19"
+    "X-41",
+    "X-47"
    ],
    "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
@@ -1722,6 +2949,7 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
+    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1743,13 +2971,11 @@
     "X-38": true,
     "X-39": true,
     "X-40": true,
-    "X-41": true,
     "X-42": true,
     "X-43": true,
     "X-44": true,
     "X-45": true,
     "X-46": true,
-    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -1761,16 +2987,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "X-41",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    },
+    {
+     "qid": "X-47",
+     "change": "excluded",
+     "reason": "awaiting gradable re-run on corrected text (not run yet)"
+    }
+   ],
    "note": null
   },
   "extrahard|DeepSeek|aug": {
-   "n": 49,
+   "n": 50,
    "passed": 47,
-   "pct": 95.9,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "pct": 94.0,
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1790,6 +3031,7 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
+    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1817,7 +3059,7 @@
     "X-44": true,
     "X-45": true,
     "X-46": true,
-    "X-47": true,
+    "X-47": false,
     "X-48": true,
     "X-49": false,
     "X-50": true
@@ -1829,16 +3071,31 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->False"
+    }
+   ],
    "note": null
   },
   "extrahard|ChatGPT|aug": {
-   "n": 49,
-   "passed": 49,
+   "n": 50,
+   "passed": 50,
    "pct": 100.0,
-   "excluded": [
-    "X-19"
-   ],
-   "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
+   "excluded": [],
+   "exclude_reason": null,
    "per_q": {
     "X-01": true,
     "X-02": true,
@@ -1858,6 +3115,7 @@
     "X-16": true,
     "X-17": true,
     "X-18": true,
+    "X-19": true,
     "X-20": true,
     "X-21": true,
     "X-22": true,
@@ -1897,14 +3155,33 @@
    "gold_state": "post-fix",
    "count_only": true,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "included (2026-10-20 re-run)",
+     "verdict": "PASS"
+    },
+    {
+     "qid": "X-41",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    },
+    {
+     "qid": "X-47",
+     "change": "replaced by corrected-text re-run",
+     "verdict": "True->True"
+    }
+   ],
    "note": null
   },
   "extrahard|Gemini-CLI|unaug": {
-   "n": 49,
-   "passed": 25,
-   "pct": 51.0,
+   "n": 47,
+   "passed": 23,
+   "pct": 48.9,
    "excluded": [
-    "X-19"
+    "X-19",
+    "X-41",
+    "X-47"
    ],
    "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
@@ -1947,13 +3224,11 @@
     "X-38": true,
     "X-39": false,
     "X-40": false,
-    "X-41": true,
     "X-42": true,
     "X-43": true,
     "X-44": true,
     "X-45": true,
     "X-46": true,
-    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -1965,14 +3240,33 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "stays excluded",
+     "reason": "Gemini-CLI extrahard tier retired; X-19 not re-run"
+    },
+    {
+     "qid": "X-41",
+     "change": "excluded",
+     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+    },
+    {
+     "qid": "X-47",
+     "change": "excluded",
+     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+    }
+   ],
    "note": null
   },
   "extrahard|Gemini-CLI|aug": {
-   "n": 49,
-   "passed": 49,
+   "n": 47,
+   "passed": 47,
    "pct": 100.0,
    "excluded": [
-    "X-19"
+    "X-19",
+    "X-41",
+    "X-47"
    ],
    "exclude_reason": "question body carried a kappa*a typo (1.45 vs 14.5) at run time for the pre-fix packets (fixed in-bank 2026-10-16); excluded from every arm so unaugmented/augmented pairs share one question set",
    "per_q": {
@@ -2015,13 +3309,11 @@
     "X-38": true,
     "X-39": true,
     "X-40": true,
-    "X-41": true,
     "X-42": true,
     "X-43": true,
     "X-44": true,
     "X-45": true,
     "X-46": true,
-    "X-47": true,
     "X-48": true,
     "X-49": true,
     "X-50": true
@@ -2033,6 +3325,23 @@
    "gold_state": "post-fix",
    "count_only": false,
    "si_only": false,
+   "corrections": [
+    {
+     "qid": "X-19",
+     "change": "stays excluded",
+     "reason": "Gemini-CLI extrahard tier retired; X-19 not re-run"
+    },
+    {
+     "qid": "X-41",
+     "change": "excluded",
+     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+    },
+    {
+     "qid": "X-47",
+     "change": "excluded",
+     "reason": "Gemini-CLI extrahard tier retired; not re-run on corrected text"
+    }
+   ],
    "note": null
   }
  },

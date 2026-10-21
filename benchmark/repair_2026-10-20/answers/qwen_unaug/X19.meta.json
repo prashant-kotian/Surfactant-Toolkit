@@ -1,0 +1,10 @@
+{
+ "qid": "X19",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-20T04:37:54+0530",
+ "model_seen": "Qwen3.8-Max (mode switch false)",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-20T04:39:36+0530",
+ "end": "2026-10-20T04:46:15+0530"
+}

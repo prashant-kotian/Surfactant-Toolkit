@@ -1,0 +1,14 @@
+{
+ "qid": "GZ37",
+ "provider": "chatgpt",
+ "condition": "unaug",
+ "start": "2026-10-20T07:01:07+0530",
+ "model_seen": "GPT-5.6 Sol, thinking effort High",
+ "tools_seen": {
+  "surfactant-computation": false
+ },
+ "mcp_seen": "Inactive",
+ "chart": "attached (GZ-37_chart(2).png visible)",
+ "sent": "2026-10-20T07:03:58+0530",
+ "end": "2026-10-20T07:05:28+0530"
+}

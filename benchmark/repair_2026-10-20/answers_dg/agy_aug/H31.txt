@@ -1,0 +1,29 @@
+### Question H31
+
+#### 1. Conversion of Decadic Slope to Natural Logarithm
+The measured slope is decadic: $\frac{d\gamma}{d\log_{10} C} = -9.2\text{ mN/m per decade}$.
+Converting to natural logarithm:
+$$\frac{d\gamma}{d\ln C} = \frac{1}{\ln(10)} \frac{d\gamma}{d\log_{10} C} = \frac{-9.2}{2.302585} = -3.99551\text{ mN/m}$$
+
+#### 2. Gibbs Adsorption Isotherm
+- **Prefactor $n$ used**: **$n = 2$**. Because this is a 1:1 ionic surfactant in water with **NO added electrolyte**, both surfactant ions contribute equally to chemical potential changes ($d\mu = 2 R T d\ln C$).
+- **Maximum surface excess ($\Gamma_\text{max}$)** via `gibbs_surface_excess`:
+  $$\Gamma_\text{max} = -\frac{1}{2 R T} \frac{d\gamma}{d\ln C} = -\frac{-3.99551 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} = 8.05885 \times 10^{-7}\text{ mol/m}^2$$
+- **Minimum area per molecule ($A_\text{min}$)** via `gibbs_area_per_molecule`:
+  $$A_\text{min} = \frac{1}{\Gamma_\text{max} N_A} = \frac{1}{8.05885 \times 10^{-7} \times 6.02214 \times 10^{23}} \times 10^{18} = 2.06052\text{ nm}^2$$
+
+#### 3. Standard Free Energy of Micellization
+With $\text{CMC} = 6.0\text{ mM} = 0.006\text{ M}$, $\alpha = 0.30$, counterion factor $2 - \alpha = 1.70$:
+$$\Delta G^\circ_\text{mic} = (2 - \alpha) R T \ln\left(\frac{\text{CMC}}{55.5}\right) = 1.70 \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.006}{55.5}\right) \times 10^{-3} = -38.4857\text{ kJ/mol}$$
+*(via `gibbs_free_energy_micellization`: $-38.4864\text{ kJ/mol}$)*.
+
+=== H31 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 8.05885e-07,
+  "a_min_nm2": 2.06052,
+  "delta_g_mic_kJ_per_mol": -38.4857
+}
+END OF QUESTION
+
+---

@@ -1026,3 +1026,196 @@ def ward_tordai_adsorption(
             "assumption enters only through the boundary condition."
         ),
     )
+
+# --- Ported 2026-10-21 from the development copy (SurfactantKit dev, adsorption.py) for foam.py ---
+
+# Real threshold, not arbitrary: theta = Kc/(1+Kc) is the Langmuir surface
+# coverage. Above this, the monolayer is >90% saturated -- the regime where
+# a REAL system's own structural/steric effects (finite molecular size,
+# packing constraints the idealized point-particle Langmuir isotherm
+# doesn't model) start dominating, and where E0's own closed form
+# (proportional to K*C, unbounded) is known to diverge unphysically. Found
+# to matter in practice, not just in principle: this project's own already-
+# literature-validated C12E8 isotherm (Ho, Lips & Velikov 2023, PCCP,
+# PMC10132450 -- the same real system behind GZ-08/GZ-29 in
+# benchmark/paper3_groundzero) predicts E0~1985 mN/m at its own real
+# concentration range's upper end (0.08 mM) -- larger than pure water's
+# own 72 mN/m surface tension, a physically implausible number this
+# threshold now flags rather than returning silently.
+GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD = 0.9
+
+
+@dataclass
+class GibbsElasticityResult:
+    elasticity_mN_per_m: float
+    theta: float  # Langmuir surface coverage at this concentration, 0-1
+    warning: str | None = None
+
+
+def gibbs_marangoni_elasticity_langmuir(concentration: float, gamma_max_mol_per_m2: float, K: float, system_type: str, temperature_K: float = 298.15, r_gas: float = 8.314462618) -> GibbsElasticityResult:
+    """Gibbs (Marangoni) surface dilational elasticity E0 = -Gamma*(dgamma/dGamma)_T
+    = Gamma*(dPi/dGamma)_T for a surfactant obeying the Langmuir/Szyszkowski
+    isotherm -- the standard measure of how strongly an adsorbed monolayer
+    resists compression, the real, peer-reviewed physical basis of foam
+    (and thin-film) stability via the Gibbs-Marangoni effect (Georgieva, D.,
+    Cagna, A. & Langevin, D., "Link between surface elasticity and foam
+    stability", Soft Matter 5(10) (2009) 2063-2071, doi:10.1039/b822568k --
+    measured real surface dilational moduli for nonionic surfactants and
+    found foam lifetime correlates with the film's elastic modulus). The
+    general definition E0=Gamma*(dPi/dGamma)_T is itself standard
+    (confirmed across multiple real sources on Langmuir-obeying monolayers,
+    e.g. work on nonionic surfactant monolayer dilational moduli).
+
+    CLOSED-FORM DERIVATION (2026-09-25), not sourced from a secondary
+    formula table: combining this module's own already-cited Langmuir
+    isotherm (Gamma(C) = Gamma_max*K*C/(1+K*C)) with its own already-cited
+    Szyszkowski surface-pressure relation (Pi(C) = gamma0-gamma(C) =
+    n*R*T*Gamma_max*ln(1+K*C), see szyszkowski_surface_tension) via the
+    chain rule E0 = (dPi/dC)/(dGamma/dC) * Gamma gives, after full
+    algebraic simplification:
+
+        E0 = n_factor * R * T * Gamma_max * K * C
+
+    a remarkably clean closed form (verified in tests/test_adsorption.py to
+    exactly match a general numerical finite-difference derivative of
+    szyszkowski_surface_tension/gibbs_gamma_max's own underlying relations,
+    an independent cross-check, not just algebra trusted on its own).
+    Real physical sanity check: at low K*C (dilute monolayer), E0 tends to
+    Pi itself (E0/Pi -> 1 as K*C -> 0), the well-known ideal-2D-gas limiting
+    result; E0 grows without bound as C increases in this idealized
+    isolated-Langmuir-monolayer treatment (a real, disclosed limitation --
+    a genuine foam THIN FILM additionally depends on film thickness via a
+    surfactant-reservoir-depletion effect this single-interface formula
+    does not capture; no primary-sourced closed form for that additional
+    film-thickness dependence could be verified during this module's
+    research pass, so it is deliberately NOT implemented here rather than
+    hardcoding an unverified formula -- see foam.py for where this function
+    is used as the real, defensible foam-stability PROXY it is, not a full
+    film-elasticity model).
+
+    REAL, VERIFIED-IN-PRACTICE LIMIT, added 2026-09-25 via literature
+    validation: theta (Langmuir surface coverage) above
+    GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD (0.9) triggers a
+    non-None `warning` on the returned result -- this is not a theoretical
+    edge case; it was found to trigger at real, in-range concentrations of
+    an already-literature-validated real system (see the module constant's
+    own comment). The elasticity VALUE is still returned (not refused --
+    the formula remains the honest output of the model as specified), but
+    a caller should not treat a high-theta result as a trustworthy absolute
+    foam-stability number, only as a directional/comparative signal at
+    best, per this function's own existing "use comparatively, not
+    absolutely" guidance (see foam.py's foam_stability_elasticity_summary).
+
+    concentration, gamma_max_mol_per_m2, K, system_type, temperature_K, and
+    r_gas all have the same meaning/units as elsewhere in this module
+    (concentration in the same unit K's inverse is defined in, e.g. mM if K
+    is in 1/mM). Returns a GibbsElasticityResult (elasticity_mN_per_m,
+    theta, warning) -- NOT a bare float (changed 2026-09-25 alongside the
+    warning addition, since a bare float couldn't carry a disclosed
+    validity signal).
+    """
+    if concentration < 0:
+        raise ValueError("concentration must be non-negative")
+    if gamma_max_mol_per_m2 <= 0:
+        raise ValueError("gamma_max_mol_per_m2 must be positive")
+    if K < 0:
+        raise ValueError("K must be non-negative")
+    if temperature_K <= 0:
+        raise ValueError("temperature_K must be positive")
+    if system_type not in N_FACTOR_BY_SYSTEM_TYPE:
+        raise ValueError(
+            f"system_type must be one of {sorted(N_FACTOR_BY_SYSTEM_TYPE)}, got {system_type!r} -- "
+            "do not guess; if the surfactant's ionic character or electrolyte condition isn't "
+            "stated, elasticity cannot be computed"
+        )
+    n_factor = N_FACTOR_BY_SYSTEM_TYPE[system_type]
+    elasticity_N_per_m = n_factor * r_gas * temperature_K * gamma_max_mol_per_m2 * K * concentration
+    elasticity_mN_per_m = elasticity_N_per_m * 1000.0  # N/m -> mN/m, matching this module's own unit convention
+    theta = (K * concentration) / (1.0 + K * concentration) if K * concentration > 0 else 0.0
+    warning = None
+    if theta > GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD:
+        warning = (
+            f"theta={theta:.3f} exceeds {GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD} (near-complete "
+            "monolayer saturation) -- the pure single-interface Langmuir elasticity formula is known to "
+            "diverge unphysically in this regime (real monolayers' own steric/structural effects, not "
+            "modeled by the idealized Langmuir isotherm, would cap or reduce elasticity here instead). "
+            "Treat this value as directional/comparative only, not a trustworthy absolute number."
+        )
+    return GibbsElasticityResult(elasticity_mN_per_m=elasticity_mN_per_m, theta=theta, warning=warning)
+
+
+def gibbs_marangoni_elasticity_frumkin(concentration: float, gamma_max_mol_per_m2: float, K: float, a: float, system_type: str, temperature_K: float = 298.15, r_gas: float = 8.314462618) -> GibbsElasticityResult:
+    """Gibbs (Marangoni) surface dilational elasticity for a surfactant
+    obeying the more general Frumkin isotherm (real lateral interaction
+    a != 0) -- see gibbs_marangoni_elasticity_langmuir's docstring for the
+    real physical meaning, citation, and the real high-theta divergence
+    limit (same GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD applies here,
+    same reasoning); this is its Frumkin generalization, the same
+    relationship this module already uses between szyszkowski_surface_
+    tension/frumkin_surface_tension (a=0 is the Langmuir special case,
+    verified exactly there).
+
+    No closed form was hand-derived for the general Frumkin case (theta(C)
+    itself has no closed form here, see frumkin_theta's own docstring, so
+    differentiating it analytically is materially harder and more error-
+    prone than for Langmuir) -- computed instead via a central finite
+    difference on frumkin_theta/frumkin_surface_tension's own already-
+    validated numerics, which is exact in the small-step limit and doesn't
+    risk a hand-algebra mistake. Verified in tests/test_adsorption.py to
+    reduce to gibbs_marangoni_elasticity_langmuir's own closed form at
+    a=0, the same "verify by reduction to a known limit" discipline used
+    throughout this module (e.g. frumkin_surface_tension's own a=0 check
+    against szyszkowski_surface_tension).
+
+    concentration, gamma_max_mol_per_m2, K, a, system_type, temperature_K,
+    r_gas: same meaning as frumkin_surface_tension. Returns a
+    GibbsElasticityResult, not a bare float (see gibbs_marangoni_
+    elasticity_langmuir's docstring for why).
+    """
+    if concentration <= 0:
+        raise ValueError("concentration must be positive (a central finite difference needs room on both sides)")
+    if gamma_max_mol_per_m2 <= 0:
+        raise ValueError("gamma_max_mol_per_m2 must be positive")
+    if K < 0:
+        raise ValueError("K must be non-negative")
+    if temperature_K <= 0:
+        raise ValueError("temperature_K must be positive")
+    if system_type not in N_FACTOR_BY_SYSTEM_TYPE:
+        raise ValueError(
+            f"system_type must be one of {sorted(N_FACTOR_BY_SYSTEM_TYPE)}, got {system_type!r} -- "
+            "do not guess; if the surfactant's ionic character or electrolyte condition isn't "
+            "stated, elasticity cannot be computed"
+        )
+    n_factor = N_FACTOR_BY_SYSTEM_TYPE[system_type]
+
+    h = max(concentration * 1e-5, 1e-12)
+
+    def pi_and_gamma(c: float) -> tuple[float, float]:
+        theta = frumkin_theta(c, K, a)
+        pi_N_per_m = -n_factor * r_gas * temperature_K * gamma_max_mol_per_m2 * (math.log(1.0 - theta) + a * theta * theta)
+        gamma = gamma_max_mol_per_m2 * theta
+        return pi_N_per_m, gamma
+
+    pi_minus, gamma_minus = pi_and_gamma(concentration - h)
+    pi_plus, gamma_plus = pi_and_gamma(concentration + h)
+
+    d_pi = pi_plus - pi_minus
+    d_gamma = gamma_plus - gamma_minus
+    if d_gamma == 0:
+        raise ValueError("surface excess is not changing with concentration here (fully saturated "
+                          "monolayer) -- elasticity is not meaningfully defined at this exact point")
+    dpi_dgamma = d_pi / d_gamma
+
+    theta_here = frumkin_theta(concentration, K, a)
+    gamma_here = gamma_max_mol_per_m2 * theta_here
+    elasticity_N_per_m = gamma_here * dpi_dgamma
+    elasticity_mN_per_m = elasticity_N_per_m * 1000.0  # N/m -> mN/m, matching this module's own unit convention
+    warning = None
+    if theta_here > GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD:
+        warning = (
+            f"theta={theta_here:.3f} exceeds {GIBBS_ELASTICITY_HIGH_THETA_WARNING_THRESHOLD} (near-complete "
+            "monolayer saturation) -- the Frumkin elasticity is known to become numerically unstable/"
+            "unphysical in this regime for the same reason as the Langmuir case (see gibbs_marangoni_"
+            "elasticity_langmuir's own docstring). Treat this value as directional/comparative only."
+        )
+    return GibbsElasticityResult(elasticity_mN_per_m=elasticity_mN_per_m, theta=theta_here, warning=warning)

@@ -60,7 +60,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.562968865098554,
+        "value": -37.67063604302845,
         "rel_tol": 0.05
       }
     },
@@ -70,13 +70,13 @@
       "cmc_from_conductivity_curve",
       "gibbs_free_energy_micellization"
     ],
-    "mcp_version_b_guidance": "break -> beta -> counterion factor (2-beta) -> dG; never assume nonionic factor 1.0",
+    "mcp_version_b_guidance": "break -> beta -> counterion factor (1 + beta) -> dG; never assume nonionic factor 1.0",
     "expected_failure_mechanism": "slope-ratio arithmetic; silently dropping the counterion factor",
     "reference": [
       "procedural-execution 2605.00817",
       "MedMCP-Calc 2601.23049 (33.97% best-model calc accuracy)"
     ],
-    "reference_note": "source: constructed demonstration dataset (forward-generated, true break 5.75 mM, true beta 0.6562); axis: arithmetic-execution (regression + convention chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; Version B: break -> beta -> counterion factor (2-beta) -> dG; expected failure: slope-ratio arithmetic, silently dropping the counterion factor or assuming nonionic (1.0); ref: MedMCP-Calc 2601.23049 calculator-avoidance; procedural-execution 2605.00817",
+    "reference_note": "source: constructed demonstration dataset (forward-generated, true break 5.75 mM, true beta 0.6562); axis: arithmetic-execution (regression + convention chain); Version A: cmc_from_conductivity_curve + gibbs_free_energy_micellization; Version B: break -> beta -> counterion factor (1 + beta) -> dG; expected failure: slope-ratio arithmetic, silently dropping the counterion factor or assuming nonionic (1.0); ref: MedMCP-Calc 2601.23049 calculator-avoidance; procedural-execution 2605.00817",
     "vision_chart": null
   },
   "H-03": {
@@ -108,7 +108,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.7825178518657,
+        "value": -39.71179783942979,
         "rel_tol": 0.05
       }
     },
@@ -166,13 +166,13 @@
     "mcp_version_a_tools": [
       "vant_hoff_multi_point_fit"
     ],
-    "mcp_version_b_guidance": "build dG(T) rows with (2-beta)=1.732 then allow a dCp term; never a two-point shortcut",
+    "mcp_version_b_guidance": "build dG(T) rows with (2-alpha)=1.732 then allow a dCp term; never a two-point shortcut",
     "expected_failure_mechanism": "two-point shortcut; 1/T orientation sign slip (toolkit docstring records this exact bug caught in an unaugmented Claude Opus 4.8 run); entropy-vs-enthalpy misjudgment",
     "reference": [
       "AtmosCoder sign-convention carry-over",
       "GZ-26 (universal FAIL recipe on this data)"
     ],
-    "reference_note": "source: REAL Fu, Fan, Cao & Wang 2019 RSC Adv. 9 28799 Table data for [C12mpy][Br] CMC-vs-T (same 8-point table as GZ-26/28/50/51), beta=0.268 real; axis: arithmetic-execution (8-row multi-point fit with curvature); Version A: vant_hoff_multi_point_fit (returns dH, dS, dCp, dG(T)); Version B: build dG(T) rows with (2-beta), then allow a dCp term; do not use a two-point shortcut; expected failure: two-point substitution, 1/T orientation sign slips (the toolkit's own docstring records this exact sign bug caught in an unaugmented Claude Opus 4.8 pilot), entropy-vs-enthalpy misjudgment; ref: AtmosCoder sign-convention carry-over; GZ-26 (universal FAIL recipe on this data) | 2026-10-18: gold re-derived with reference_temperature_K=298.15 as the question text pins; prior gold values were at the fit default mean-T reference (300.65 K).",
+    "reference_note": "source: REAL Fu, Fan, Cao & Wang 2019 RSC Adv. 9 28799 Table data for [C12mpy][Br] CMC-vs-T (same 8-point table as GZ-26/28/50/51), alpha=0.268 real (Fu's slope ratio, written 'beta' in the paper); axis: arithmetic-execution (8-row multi-point fit with curvature); Version A: vant_hoff_multi_point_fit (returns dH, dS, dCp, dG(T)); Version B: build dG(T) rows with (2-alpha), then allow a dCp term; do not use a two-point shortcut; expected failure: two-point substitution, 1/T orientation sign slips (the toolkit's own docstring records this exact sign bug caught in an unaugmented Claude Opus 4.8 pilot), entropy-vs-enthalpy misjudgment; ref: AtmosCoder sign-convention carry-over; GZ-26 (universal FAIL recipe on this data) | 2026-10-18: gold re-derived with reference_temperature_K=298.15 as the question text pins; prior gold values were at the fit default mean-T reference (300.65 K).",
     "vision_chart": null
   },
   "H-05": {
@@ -340,7 +340,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.562968865098554,
+        "value": -37.67063604302845,
         "rel_tol": 0.06
       }
     },
@@ -692,7 +692,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.10962450899553,
+        "value": -40.45980793396274,
         "rel_tol": 0.05
       },
       "delta_s_mic_J_per_mol_K": {
@@ -815,7 +815,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -28.50377465528527,
+        "value": -37.274166856911506,
         "rel_tol": 0.05
       },
       "delta_s_mic_J_per_mol_K": {
@@ -1343,7 +1343,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -29.430755483126614,
+        "value": -38.48637255485788,
         "rel_tol": 0.05
       }
     },
@@ -1599,7 +1599,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.562968865098554,
+        "value": -37.67063604302845,
         "rel_tol": 0.07
       }
     },
@@ -1928,7 +1928,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -29.953153909017875,
+        "value": -38.641855042931454,
         "rel_tol": 0.06
       }
     },
@@ -1962,7 +1962,7 @@
       },
       "delta_g_mic_kJ_per_mol": {
         "type": "number",
-        "value": -30.562968865098554,
+        "value": -37.67063604302845,
         "rel_tol": 0.06
       },
       "delta_s_mic_J_per_mol_K": {
@@ -1992,13 +1992,13 @@
       "gibbs_a_min",
       "gibbs_free_energy_micellization"
     ],
-    "mcp_version_b_guidance": "Gamma/A_min from the TENSION slope (n=2); dG from the CONDUCTIVITY CMC with (2-beta); dS is null",
+    "mcp_version_b_guidance": "Gamma/A_min from the TENSION slope (n=2); dG from the CONDUCTIVITY CMC with (1 + beta); dS is null",
     "expected_failure_mechanism": "cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS",
     "reference": [
       "GZ refusal + multi-method fusion recipes",
       "MedMCP-Calc"
     ],
-    "reference_note": "source: constructed demonstration pair (same conductivity + tension data as H-02/H-08, fused into a property cascade); axis: reasoning-decision (fusion cascade + genuine dS null) with cross-method factor discipline; Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: Gamma/A_min come from the TENSION slope (n=2, no added salt); dG comes from the CONDUCTIVITY CMC with (2-beta); do not cross the two prefactors; dS is null without a temperature series; expected failure: cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS; ref: GZ refusal + multi-method fusion recipes; MedMCP calc accuracy",
+    "reference_note": "source: constructed demonstration pair (same conductivity + tension data as H-02/H-08, fused into a property cascade); axis: reasoning-decision (fusion cascade + genuine dS null) with cross-method factor discipline; Version A: cmc_from_conductivity_curve + cmc_from_surface_tension_curve + gibbs_gamma_max + gibbs_a_min + gibbs_free_energy_micellization; Version B: Gamma/A_min come from the TENSION slope (n=2, no added salt); dG comes from the CONDUCTIVITY CMC with (1 + beta); do not cross the two prefactors; dS is null without a temperature series; expected failure: cross-contaminating the Gibbs prefactor and the counterion factor; fabricating dS; ref: GZ refusal + multi-method fusion recipes; MedMCP calc accuracy",
     "vision_chart": null
   },
   "H-48": {
@@ -2048,17 +2048,17 @@
     "fields": {
       "delta_g_from_cmc_kJ_per_mol": {
         "type": "number",
-        "value": -27.889847201171435,
+        "value": -37.88809431102534,
         "rel_tol": 0.03
       },
       "delta_s_J_per_mol_K": {
         "type": "number",
-        "value": 76.77292370005513,
+        "value": 110.30720882450225,
         "rel_tol": 0.03
       },
       "delta_g_recomputed_kJ_per_mol": {
         "type": "number",
-        "value": -27.88984720117144,
+        "value": -37.88809431102534,
         "rel_tol": 0.03
       },
       "self_consistent": {
@@ -2072,13 +2072,13 @@
       "gibbs_free_energy_micellization",
       "entropy_micellization"
     ],
-    "mcp_version_b_guidance": "factor (1+alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle",
+    "mcp_version_b_guidance": "factor (2 - alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle",
     "expected_failure_mechanism": "counterion factor forgotten or 2-beta used with alpha; triangle not closing -- report honestly",
     "reference": [
       "GZ thermodynamic-consistency recipes (GZ-28 family)",
       "procedural-execution"
     ],
-    "reference_note": "source: constructed demonstration thermodynamic triangle (cmc 8.0 mM, alpha=0.272, dH=-5.0 kJ/mol stated inputs); axis: arithmetic-execution (triangle closure: dG->dS->dG) ; Version A: gibbs_free_energy_micellization + entropy_micellization; Version B: factor (1+alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle; expected failure: counterion factor forgotten (or 2-beta used with alpha), triangle not closing -- report the mismatch honestly; ref: GZ thermodynamic-consistency recipes (GZ-28 family); procedural-execution",
+    "reference_note": "source: constructed demonstration thermodynamic triangle (cmc 8.0 mM, alpha=0.272, dH=-5.0 kJ/mol stated inputs); axis: arithmetic-execution (triangle closure: dG->dS->dG) ; Version A: gibbs_free_energy_micellization + entropy_micellization; Version B: factor (2 - alpha) with the GIVEN dissociation alpha; dS = (dH-dG)/T; the recomputed dG must close the triangle; expected failure: counterion factor forgotten (or 2-beta used with alpha), triangle not closing -- report the mismatch honestly; ref: GZ thermodynamic-consistency recipes (GZ-28 family); procedural-execution",
     "vision_chart": null
   },
   "H-50": {

@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"gamma_lowest_conc_mN_per_m": 62.2,
+"gamma_plateau_mN_per_m": 27.8,
+"estimated_cmc_mM": 2.5
+}

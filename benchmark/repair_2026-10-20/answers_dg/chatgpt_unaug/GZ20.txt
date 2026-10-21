@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"charge_type": "anionic, monovalent sulfonate sodium salt",
+"cmc_mM": 2.1685,
+"isotherm_model": "Gibbs adsorption from linear surface tension vs ln(concentration); no independently resolvable Langmuir-type isotherm",
+"gamma_max_mol_per_m2": 1.4366e-6,
+"a_min_nm2": 1.1559,
+"delta_g_mic_kJ_per_mol": -40.51
+}

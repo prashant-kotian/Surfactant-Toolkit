@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“slope_sign”: “negative (ln(CMC) decreases as 1000/T increases)”,
+“process_character”: “exothermic”,
+“reasoning”: “The chart shows a negative slope: ln(CMC) decreases as 1000/T increases (temperature decreases). Via the van’t Hoff/Gibbs-Helmholtz relation ΔH°mic = R·d(ln CMC)/d(1/T), a negative slope gives ΔH°mic < 0, so micellization is exothermic. This agrees with the qualitative observation that CMC decreases at lower temperature (micellization more favorable on cooling), which by Le Chatelier indicates a heat-releasing, exothermic process over this temperature range.”
+}

@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“slope_sign”: “negative (ln(CMC) decreases as 1000/T increases)”,
+“process_character”: “exothermic”,
+“reasoning”: “ln(CMC) vs 1/T has a negative slope, so CMC increases with temperature. Because the micellization equilibrium constant scales inversely with CMC, ln(K) vs 1/T has a positive slope; by the van’t Hoff relation d(ln K)/d(1/T) = -dH/R, a positive slope means dH < 0. The surfactant-computation Gibbs-Helmholtz fit of the three chart points gives dH_mic approximately -13.7 kJ/mol, confirming an exothermic process.”
+}

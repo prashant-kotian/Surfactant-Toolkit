@@ -1920,7 +1920,7 @@ Pinned instructions (authoritative):
    omitted (both the value of beta and the formula are pinned):
 
        X = (CMC/1000)/((CMC/1000) + 55.5)
-       deltaG = (2 - beta) * R * T * ln(X),
+       deltaG = (1 + beta) * R * T * ln(X),
        R = 8.314462618 J/(mol K), T = 298.15 K   [kJ/mol]
 
 2. rel_diff = |draft - yours| / |yours| * 100 (percent), where the
@@ -2217,7 +2217,7 @@ lines kappa = a + b*c (LINEAR c); CMC_cond = (a2-a1)/(b1-b2);
 beta = 1 - b_above/b_below.
 TENSION: sort by c; x = log10(c); RSS-minimizing split (>= 3/side) of
 two OLS lines gamma vs x; CMC_tens = 10^((x_last_decl+x_first_plateau)/2).
-deltaG = (2 - beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),
+deltaG = (1 + beta) * R * T * ln(X), X = (CMC_cond/1000)/((CMC_cond/1000)+55.5),
 R = 8.314462618, T = 298.15 K, kJ/mol.
 rel_diff = |CMC_cond - CMC_tens| / ((CMC_cond + CMC_tens)/2) * 100.
 agree = true iff rel_diff <= 3.0.

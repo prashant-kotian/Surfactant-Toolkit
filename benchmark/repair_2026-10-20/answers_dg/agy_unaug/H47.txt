@@ -1,0 +1,35 @@
+### Question H47
+
+#### Principles and Calculations
+1. **Conductivity Analysis**:
+   - Linear fit below CMC ($c \le 5.0\text{ mM}$): $\kappa = 0.640 c + 0.050$ ($S_1 = 0.640\text{ mS/(cm}\cdot\text{mM)}$).
+   - Linear fit above CMC ($c \ge 6.5\text{ mM}$): $\kappa = 0.220 c + 2.465$ ($S_2 = 0.220\text{ mS/(cm}\cdot\text{mM)}$).
+   - Intersection gives $\text{CMC}_{\text{cond}} = 5.750\text{ mM}$.
+   - Degree of counterion binding: $\beta = 1 - \frac{0.220}{0.640} = 0.65625$.
+
+2. **Surface Tension Analysis**:
+   - 1:1 ionic surfactant with no added salt $\implies$ Gibbs prefactor $n = 2$.
+   - Premicellar slope of the declining branch: $\frac{d\gamma}{d\ln c} = -7.01337\text{ mN/m} = -7.01337 \times 10^{-3}\text{ N/m}$.
+   $$\Gamma_{\max} = -\frac{1}{n R T}\frac{d\gamma}{d\ln c} = \frac{7.01337 \times 10^{-3}}{2 \times 8.314462618 \times 298.15} \approx 1.41458 \times 10^{-6}\text{ mol/m}^2$$
+   $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{10^{18}}{6.02214076 \times 10^{23} \times 1.41458 \times 10^{-6}} \approx 1.17387\text{ nm}^2$$
+
+3. **Free Energy of Micellization ($\Delta G^\circ_{\text{mic}}$)**:
+   From conductivity CMC ($5.750\text{ mM}$):
+   $$X = \frac{5.750 \times 10^{-3}}{55.5} \approx 1.036036 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \beta) R T \ln(X) = (1 + 0.65625) \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) \times 10^{-3} \approx -37.6702\text{ kJ/mol}$$
+
+4. **Standard Entropy of Micellization ($\Delta S^\circ_{\text{mic}}$)**:
+   Calculating $\Delta S^\circ_{\text{mic}} = (\Delta H^\circ_{\text{mic}} - \Delta G^\circ_{\text{mic}})/T$ requires the enthalpy of micellization $\Delta H^\circ_{\text{mic}}$, obtainable through calorimetry or CMC temperature dependence. Because only $298.15\text{ K}$ data are provided, $\Delta S^\circ_{\text{mic}}$ is not determinable (`null`).
+
+=== H47 ===
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 1.4146e-06,
+  "a_min_nm2": 1.1739,
+  "delta_g_mic_kJ_per_mol": -37.6702,
+  "delta_s_mic_J_per_mol_K": null,
+  "missing_for_delta_s": "The enthalpy of micellization dH_mic (obtained calorimetrically or from temperature-dependent CMC measurements via a van 't Hoff analysis)."
+}
+END OF QUESTION
+
+---

@@ -1,0 +1,11 @@
+{
+ "qid": "H38",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-20T04:30:36+0530",
+ "model_seen": "Qwen3.8-Max (mode switch false)",
+ "mcp_seen": "Inactive",
+ "chart": "attached (H-38_chart.png visible)",
+ "sent": "2026-10-20T04:32:50+0530",
+ "end": "2026-10-20T04:37:49+0530"
+}

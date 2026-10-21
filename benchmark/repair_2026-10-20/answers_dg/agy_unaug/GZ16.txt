@@ -1,0 +1,45 @@
+### Solution for Question GZ16
+
+#### 1. Compound Classification
+- **SMILES**: `CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]` (Sodium dodecyl sulfate, SDS)
+- **Structure**: A 12-carbon hydrophobic alkyl tail terminating in a sulfate ester headgroup ($-\text{OSO}_3^-$) paired with a sodium counterion ($\text{Na}^+$).
+- **Charge Type**: **anionic** (1:1 ionic surfactant; in water with no added inert electrolyte, the bulk electroneutrality / Gibbs prefactor is $n = 2$).
+
+#### 2. Surface Tension Curve Analysis & CMC Determination
+The experimental concentration–surface tension ($\gamma$ vs $\ln c$ / $\log_{10} c$) data at $296.15\text{ K}$:
+- Below $1.6231\text{ mM}$, the surface tension exhibits a dilute baseline region.
+- Between $3.2462\text{ mM}$ and $6.4923\text{ mM}$, surface tension decreases linearly with $\ln c$:
+  $$\frac{d\gamma}{d\ln c} = -16.8756\text{ mN/m} \quad \left(\frac{d\gamma}{d\log_{10} c} = -38.8566\text{ mN/m per decade}, \; R^2 = 1.000\right)$$
+- Above $12.9847\text{ mM}$, the surface tension enters a flat post-micellar plateau ($\approx 37.4\text{ mN/m}$).
+- Segment regression break-point analysis in logarithmic concentration space yields:
+  $$\log_{10}(\text{CMC}) = \frac{\log_{10}(6.4923) + \log_{10}(12.9847)}{2} \implies \text{CMC} = \sqrt{6.4923 \times 12.9847} \approx 9.1815\text{ mM}$$
+
+#### 3. Pre-CMC Adsorption Parameters
+For an unbuffered 1:1 ionic surfactant with no added inert electrolyte ($n = 2$) at $T = 296.15\text{ K}$:
+- Maximum surface excess ($\Gamma_{\max}$):
+  $$\Gamma_{\max} = -\frac{1}{2 R T}\left(\frac{d\gamma}{d\ln c}\right) = \frac{16.8756 \times 10^{-3}\text{ N/m}}{2 \times 8.3144626\text{ J/(mol}\cdot\text{K)} \times 296.15\text{ K}} \approx 3.4268 \times 10^{-6}\text{ mol/m}^2$$
+- Minimum area per molecule ($A_{\min}$):
+  $$A_{\min} = \frac{1}{N_A \Gamma_{\max}} = \frac{1}{6.02214076 \times 10^{23} \times 3.42675 \times 10^{-6}}\text{ m}^2 \approx 0.4846\text{ nm}^2 \quad (48.46\text{ \AA}^2)$$
+
+#### 4. Thermodynamics of Micellization
+- Given counterion dissociation degree $\alpha = 0.272$:
+  $$X_{\text{cmc}} = \frac{\text{CMC (mol/L)}}{55.5 + \text{CMC (mol/L)}} = \frac{0.0091815}{55.5 + 0.0091815} \approx 1.65406 \times 10^{-4}$$
+  $$\ln(X_{\text{cmc}}) \approx -8.7071$$
+- Applying the specified relation $\Delta G_{\text{mic}}^\circ = (2 - \alpha) R T \ln(X_{\text{cmc}})$:
+  $$\Delta G_{\text{mic}}^\circ = (2 - 0.272) \times 8.3144626\text{ J/(mol}\cdot\text{K)} \times 296.15\text{ K} \times (-8.7071) \approx -37048\text{ J/mol} = -37.048\text{ kJ/mol}$$
+- **Entropy of Micellization ($\Delta S_{\text{mic}}^\circ$)**:
+  Determining $\Delta S_{\text{mic}}^\circ = -\left(\frac{\partial \Delta G_{\text{mic}}^\circ}{\partial T}\right)_p$ requires either temperature-dependent CMC data across multiple temperatures (van 't Hoff analysis) or independent calorimetric enthalpy of micellization ($\Delta H_{\text{mic}}^\circ$). Because data are provided at only a single temperature ($296.15\text{ K}$), $\Delta S_{\text{mic}}$ cannot genuinely be evaluated from the inputs provided and is reported as `null`.
+
+=== GZ16 ===
+FINAL_JSON:
+{
+  "charge_type": "anionic",
+  "cmc_mM": 9.1815,
+  "gamma_max_mol_per_m2": 3.4268e-06,
+  "a_min_nm2": 0.4846,
+  "delta_g_mic_kJ_per_mol": -37.048,
+  "delta_s_mic_J_per_mol_K": null
+}
+END OF QUESTION
+
+---

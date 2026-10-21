@@ -45,7 +45,7 @@ def relerr(gold, got):
     return abs(gold - got) / max(abs(gold), 1e-12)
 
 
-def normalize_detail(path: Path, model: str | None = None) -> dict:
+def normalize_detail(path: Path, model: str | None = None, transform=None) -> dict:
     """Return {qid: list-of-(ok, gold, got) | detail-string | None}.
 
     Multi-model grading JSONs (top-level keys = model names) are narrowed to
@@ -62,6 +62,8 @@ def normalize_detail(path: Path, model: str | None = None) -> dict:
             if name and name.lower() in own:
                 j = j[own[name.lower()]]
                 break
+    if transform is not None:
+        j = transform(j)
     stack = [("", j)]
     while stack:
         prefix, node = stack.pop()
@@ -246,15 +248,31 @@ def main() -> int:
         by_alias_set[it["source_set"]].add(it["alias"])
     rows = Counter()
     detail_src = {}
+    # 2026-10-20 corrections: choice-field regrade applied to the stored records; verdicts set by
+    # re-runs/regrades take their field detail from the corrections layer (not the stale record)
+    import importlib.util
+    _spec = importlib.util.spec_from_file_location("corrections", HERE / "repair_2026-10-20" / "corrections.py")
+    CORR = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(CORR)
     for key, cell in rj["cells"].items():
-        detail_src[key] = normalize_detail(ROOT / cell["source"], key.split("|")[1])
+        bank, model = key.split("|")[0], key.split("|")[1]
+        tf = (lambda j: CORR.choice_regrade(j)[0]) if bank == "groundzero" else None
+        detail_src[key] = normalize_detail(ROOT / cell["source"], model, tf)
     for key, cell in rj["cells"].items():
         setn, model, cond = key.split("|")
         det = detail_src.get(key, {})
+        src = json.loads((ROOT / cell["source"]).read_text(encoding="utf-8"))
+        own = {k.lower(): k for k in src} if isinstance(src, dict) else {}
+        for name in (model.lower(), "antigravity" if model == "Gemini-CLI" else None):
+            if name and name in own and isinstance(src[own[name]], dict):
+                src = src[own[name]]
+                break
         for alias, ok in cell["per_q"].items():
             if ok:
                 continue
-            d = det.get(alias)
+            d = CORR.detail(setn, model, cond, alias, src)
+            if d is None:
+                d = det.get(alias)
             rows[(model, "aug" if cond in ("aug",) else cond, setn, classify(d))] += 1
     for cond, fname in (("unaug", "unaugmented_grade_results.json"), ("aug", "augmented_grade_results.json")):
         d = json.loads((HERE / "source_sets/orig_hard50" / fname).read_text(encoding="utf-8"))

@@ -1,0 +1,31 @@
+### Question H02
+
+#### 1. Conductivity Break-Point Analysis
+The specific conductivity ($\kappa$) versus concentration ($c$) data for a 1:1 ionic surfactant at 298.15 K was analyzed using the two-segment piecewise linear regression model (`cmc_from_conductivity`):
+- **Premicellar slope ($S_1$)**: $0.640\text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}$ ($R^2 = 1.0000$ across $c = 1.0$ to $5.5\text{ mM}$)
+- **Postmicellar slope ($S_2$)**: $0.220\text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}$ ($R^2 = 1.0000$ across $c = 6.0$ to $12.0\text{ mM}$)
+- **Intersection break-point (CMC)**:
+  $$\text{CMC} = \frac{b_2 - b_1}{S_1 - S_2} = 5.750\text{ mM} = 0.00575\text{ mol/L}$$
+
+#### 2. Counterion Binding and Dissociation Degrees
+- **Counterion binding degree ($\beta$)**:
+  $$\beta = 1 - \frac{S_2}{S_1} = 1 - \frac{0.220}{0.640} = 1 - 0.34375 = 0.65625$$
+- **Degree of counterion dissociation ($\alpha$)**:
+  $$\alpha = 1 - \beta = \frac{S_2}{S_1} = 0.34375$$
+
+#### 3. Standard Free Energy of Micellization ($\Delta G^\circ_\text{mic}$)
+Using the mass-action model for a 1:1 ionic surfactant:
+$$\Delta G^\circ_\text{mic} = (1 + \beta) R T \ln X = (1 + 0.65625) \times 8.314462618 \times 298.15 \times \ln\left(\frac{0.00575}{55.5}\right) \times 10^{-3} = -37.6702\text{ kJ/mol}$$
+*(Evaluation via `gibbs_free_energy_micellization` gives $-37.6706\text{ kJ/mol}$ using water molarity $55.508\text{ mol/L}$)*.
+
+=== H02 ===
+FINAL_JSON:
+{
+  "cmc_mM": 5.75,
+  "beta": 0.65625,
+  "alpha": 0.34375,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

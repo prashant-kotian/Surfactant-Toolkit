@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"which_shows_dip_then_rise": "B",
+"which_shows_plain_plateau": "A"
+}

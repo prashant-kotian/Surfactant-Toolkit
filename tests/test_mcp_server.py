@@ -397,7 +397,7 @@ def test_hlb_davies_guo_ecl_tool_matches_manual_formula():
     n_carbons, n_eo = 12, 9
     n_ch2_eff = 0.965 * (n_carbons - 1) - 0.178
     n_eo_eff = 13.45 * math.log(n_eo) - 0.16 * n_eo + 1.26
-    expected = 7.0 + 1.3 * n_eo_eff - 0.475 * n_ch2_eff - 0.475 * 1
+    expected = 7.0 + 0.33 * n_eo_eff - 0.475 * n_ch2_eff - 0.475 * 1   # EO unit 0.33 (corrected 2026-10-20)
 
     out = call("hlb_davies_guo_ecl", {"n_carbons_alkyl": n_carbons, "n_eo": n_eo})
     assert out["hlb"] == pytest.approx(expected)

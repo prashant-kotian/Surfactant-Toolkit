@@ -1,0 +1,34 @@
+### Question H08
+
+#### Principles and Calculations
+1. **Conductivity Measurement**:
+   Linear regression break-point analysis on conductivity:
+   - Premicellar branch ($c \le 5.0\text{ mM}$): $\kappa = 0.640 c + 0.050$
+   - Postmicellar branch ($c \ge 6.5\text{ mM}$): $\kappa = 0.220 c + 2.465$
+   - Intersection: $\text{CMC}_{\text{cond}} = 5.75\text{ mM}$
+   - Counterion binding degree: $\beta = 1 - \frac{0.220}{0.640} = 0.65625$
+
+2. **Surface Tension Measurement**:
+   Piecewise regression identifies the break-point between the declining premicellar branch ($c \le 5.00\text{ mM}$) and the plateau branch ($c \ge 6.60\text{ mM}$):
+   $$\log_{10}(\text{CMC}_{\text{tens}}) = \frac{\log_{10}(5.00) + \log_{10}(6.60)}{2} \implies \text{CMC}_{\text{tens}} = \sqrt{5.00 \times 6.60} \approx 5.74456\text{ mM}$$
+
+3. **Comparison and Agreement**:
+   $$\text{Relative Difference} = \frac{|\text{CMC}_{\text{cond}} - \text{CMC}_{\text{tens}}|}{\text{CMC}_{\text{cond}}} = \frac{|5.750 - 5.74456|}{5.750} \approx 0.0946\% < 2\%$$
+   The two methods agree within 2% relative difference: `true`.
+
+4. **Free Energy of Micellization ($\Delta G^\circ_{\text{mic}}$)**:
+   $$X = \frac{5.75 \times 10^{-3}}{55.5} \approx 1.036036 \times 10^{-4}$$
+   $$\Delta G^\circ_{\text{mic}} = (1 + \beta) R T \ln(X) = (1 + 0.65625) \times 8.314462618 \times 298.15 \times \ln(1.036036 \times 10^{-4}) \times 10^{-3} \approx -37.6702\text{ kJ/mol}$$
+
+=== H08 ===
+FINAL_JSON:
+{
+  "cmc_conductivity_mM": 5.75,
+  "cmc_tensiometry_mM": 5.74456,
+  "agree_within_2pct": true,
+  "beta": 0.65625,
+  "delta_g_mic_kJ_per_mol": -37.6702
+}
+END OF QUESTION
+
+---

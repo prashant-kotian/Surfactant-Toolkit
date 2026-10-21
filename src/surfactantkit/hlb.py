@@ -53,6 +53,7 @@ DAVIES_HYDROPHILIC_GROUPS = {
     "COOH": 2.1,
     "OH_free": 1.9,
     "O_ether": 1.3,
+    "EO_unit": 0.33,     # -CH2CH2O- repeat unit (Davies; Guo, Rong & Ying 2006 Table 1, same value)
     "OH_sorbitan_ring": 0.5,
 }
 
@@ -353,7 +354,7 @@ def hlb_davies_guo_ecl(n_carbons_alkyl: int, n_eo: int, extra_group_counts: dict
     """Guo/Rong/Ying 2006 refinement of Davies' HLB method for a
     NONIONIC polyethoxylated surfactant (e.g. a fatty alcohol
     ethoxylate, R-(OCH2CH2)n-OH): applies Davies' own per-unit weights
-    (O_ether=1.3, CH2=0.475) to the EFFECTIVE (not actual) EO and CH2
+    (EO unit -CH2CH2O- = 0.33, CH2 = 0.475) to the EFFECTIVE (not actual) EO and CH2
     chain lengths from guo_effective_eo_chain_length and
     guo_effective_alkyl_chain_length, which the source paper shows
     fits real HLB data substantially better (224 surfactants, average
@@ -389,7 +390,9 @@ def hlb_davies_guo_ecl(n_carbons_alkyl: int, n_eo: int, extra_group_counts: dict
     n_eo_eff = guo_effective_eo_chain_length(n_eo)
     hlb = (
         7.0
-        + DAVIES_HYDROPHILIC_GROUPS["O_ether"] * n_eo_eff
+        # Guo/Davies group number for the -CH2CH2O- repeat unit is 0.33. Until 2026-10-20 this used
+        # O_ether (1.3), which inflated HLB about fourfold in the EO term (C12E8 gave 37.9).
+        + DAVIES_HYDROPHILIC_GROUPS["EO_unit"] * n_eo_eff
         - DAVIES_LIPOPHILIC_GROUPS["CH2"] * n_ch2_eff
         - DAVIES_LIPOPHILIC_GROUPS["CH3"] * 1
     )

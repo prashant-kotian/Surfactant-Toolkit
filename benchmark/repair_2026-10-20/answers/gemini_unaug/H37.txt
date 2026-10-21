@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "gamma_A": 60.0,
+  "gamma_B": 70.5,
+  "delta_gamma_A_minus_B": -10.5,
+  "larger_K_curve": "A"
+}

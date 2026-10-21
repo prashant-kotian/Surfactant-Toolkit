@@ -1,0 +1,10 @@
+{
+ "qid": "GZ16",
+ "provider": "deepseek",
+ "condition": "aug",
+ "start": "2026-10-21T01:47:05+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "BetterDeepSeek ADDED; SuperAssistant Inactive",
+ "sent": "2026-10-21T01:49:39+0530",
+ "end": "2026-10-21T01:51:22+0530"
+}

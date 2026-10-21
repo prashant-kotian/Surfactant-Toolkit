@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"slope_sign": "negative",
+"process_character": "exothermic",
+"reasoning": "ln(CMC) decreases as 1000/T increases, so the slope is negative. For a CMC-based Gibbs-Helmholtz relation, the slope of ln(CMC) versus 1/T has the same sign as the micellization enthalpy; therefore the negative slope implies a negative micellization enthalpy and hence exothermic micellization."
+}

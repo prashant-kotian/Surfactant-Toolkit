@@ -1,0 +1,1 @@
+FINAL_JSON: {“cmc_cond”: 4.574, “beta”: 0.6552, “deltaG”: -38.58, “cmc_tens”: 4.409, “rel_diff_pct”: 3.67, “agree_3pct”: false}

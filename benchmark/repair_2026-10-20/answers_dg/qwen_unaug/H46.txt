@@ -1,0 +1,9 @@
+FINAL_JSON: {
+"charge_type": "anionic",
+"cmc_mM": 6.0,
+"isotherm_model": "Szyszkowski",
+"condensation_caveat_flagged": false,
+"gamma_max_mol_per_m2": 1.507e-6,
+"a_min_nm2": 1.10,
+"delta_g_mic_kJ_per_mol": -38.2
+}

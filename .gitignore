@@ -5,3 +5,5 @@ __pycache__/
 # harness crash dumps / debug backups (internal working files)
 *.FAILED.txt
 *.RAW.txt
+
+*.egg-info/

@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"deviation_region": "c ≈ 2–3 mM and above; pronounced across the plateau region ≈3–10 mM, where measured surface tension is ~27–28 mN/m but the fitted curve continues decreasing.",
+"deviation_reason": "The fitted pre-CMC isotherm ignores micellization. Near/above the CMC, added surfactant forms micelles, monomer activity and adsorption become approximately constant, and surface tension plateaus; the pre-CMC model instead predicts continuing adsorption and a continuing surface-tension decrease."
+}

@@ -350,7 +350,7 @@ _TOOL_LIST = [
           "to mole fraction internally.",
           {"cmc_M": _num("CMC in mol/L"),
            "temperature_K": _num("temperature in Kelvin"),
-           "counterion_factor": _num("1.0 nonionic; (2-beta) for an ionic surfactant")},
+           "counterion_factor": _num("1.0 nonionic; (1 + beta) for an ionic surfactant, beta = counterion binding (= 2 - alpha, alpha = S2/S1)")},
           ["cmc_M", "temperature_K"], _dg_mic),
     _spec("vant_hoff_enthalpy",
           "Enthalpy of micellization deltaH_mic (kJ/mol) via van't Hoff, from CMC at two temperatures.",
