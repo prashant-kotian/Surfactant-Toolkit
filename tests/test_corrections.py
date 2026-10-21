@@ -37,6 +37,7 @@ def test_choice_rule_leaves_irreproducible_records_alone():
 def test_apply_excludes_stale_counterion_verdicts_without_rerun(monkeypatch):
     monkeypatch.setattr(C, "DG_RES", {})
     monkeypatch.setattr(C, "REPAIR_RES", {})
+    monkeypatch.setattr(C, "FILL_RES", {})
     v, ex, log = C.apply("groundzero", "Qwen", "unaug", {"GZ-16": True, "GZ-20": False, "GZ-01": True}, {}, [])
     assert "GZ-16" not in v and "GZ-16" in ex and "GZ-20" in ex and v["GZ-01"] is True
 
@@ -44,6 +45,7 @@ def test_apply_excludes_stale_counterion_verdicts_without_rerun(monkeypatch):
 def test_apply_uses_reruns_and_original_chart_runs(monkeypatch):
     monkeypatch.setattr(C, "DG_RES", {"deepseek_aug": {"GZ-16": {"verdict": "FAIL"}}})
     monkeypatch.setattr(C, "REPAIR_RES", {"deepseek_aug": {"GZ-36": {"verdict": "PASS"}}})
+    monkeypatch.setattr(C, "FILL_RES", {})                          # isolate from the live net-200 fill results
     base_ex = ["GZ-15", "GZ-36", "GZ-26"]
     v, ex, _ = C.apply("groundzero", "DeepSeek", "aug", {"GZ-15": True, "GZ-16": True, "GZ-36": False}, {}, base_ex)
     assert v["GZ-15"] is True and "GZ-15" not in ex                 # chart delivered in the original run
