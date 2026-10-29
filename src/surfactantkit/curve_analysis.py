@@ -129,8 +129,13 @@ def _best_three_segment_split(log_c: list[float], gamma: list[float], n: int, mi
     best = None
     for split1 in range(min_points_per_segment, n - 2 * min_points_per_segment + 1):
         for split2 in range(split1 + min_points_per_segment, n - min_points_per_segment + 1):
-            _, _, base_rss = _linreg(log_c[:split1], gamma[:split1])
+            base_slope, _, base_rss = _linreg(log_c[:split1], gamma[:split1])
             decline_slope, decline_intercept, decline_rss = _linreg(log_c[split1:split2], gamma[split1:split2])
+            # A baseline steeper than the decline is not a baseline. Without this the search can call the
+            # real decline "baseline" and a slight bend of the plateau "decline" (bug found 2026-10-30 on a
+            # curved catanionic-mixture isotherm with no pre-onset lag: CMC 4x too high).
+            if abs(base_slope) >= abs(decline_slope):
+                continue
             _, _, plateau_rss = _linreg(log_c[split2:], gamma[split2:])
             total_rss = base_rss + decline_rss + plateau_rss
             if best is None or total_rss < best[0]:
@@ -210,13 +215,24 @@ def cmc_from_surface_tension_curve(
     while leaving the AOT case's result exactly as it was before this fix.
 
     method selects the break-point estimator: "rss" (default -- the
-    two-/three-segment BIC selection described above, unchanged),
-    "tangential" (intersection of the steepest premicellar fit with the
-    postmicellar fit -- Rosen's graphical tangent method, deterministic),
-    or "derivative" (midpoint of the steepest |dgamma/dlog10C| adjacent
-    pair). All three return the same result fields; only the `method`
-    string and the break estimate differ. Invalid method -> ValueError
-    naming the allowed values.
+    two-/three-segment BIC selection described above, CMC at the midpoint
+    between the last decline point and the first plateau point),
+    "intersection" (the same segments, CMC where the decline regression
+    line meets the plateau regression line -- the regression-intersection
+    construction, continuous rather than snapped between two measured
+    points), "tangential" (the steepest run of min_points_per_segment
+    consecutive points below the plateau, crossed with the plateau line --
+    Rosen's graphical tangent method, deterministic), or "derivative"
+    (midpoint of the steepest |dgamma/dlog10C| adjacent pair). All return
+    the same result fields; only the `method` string and the break
+    estimate differ (for "tangential" the premicellar fields describe the
+    tangent run). Invalid method -> ValueError naming the allowed values.
+
+    A 3-segment model is only considered when its baseline is flatter
+    than its decline (added 2026-10-30): on a curved isotherm with no
+    pre-onset lag the unconstrained search called the real decline the
+    "baseline" and a slight bend of the plateau the "decline", and won the
+    BIC by a small margin, putting the CMC 4x too high.
     """
     if len(concentrations_mM) != len(surface_tensions_mN_per_m):
         raise ValueError("concentrations and surface tensions must be the same length")
@@ -226,20 +242,31 @@ def cmc_from_surface_tension_curve(
             f"({min_points_per_segment} per segment) to fit a break-point"
         )
     method_choice = method
-    if method_choice not in ("rss", "derivative", "tangential"):
+    if method_choice not in ("rss", "intersection", "derivative", "tangential"):
         raise ValueError(
-            "method must be 'rss', 'derivative', or 'tangential' "
+            "method must be 'rss', 'intersection', 'derivative', or 'tangential' "
             f"(got {method_choice!r})"
         )
     tangential_cmc_log_c = None
     derivative_cmc_log_c = None
+    intersection_cmc_log_c = None
 
     pairs = sorted(zip(concentrations_mM, surface_tensions_mN_per_m))
     log_c = [math.log10(c) for c, _ in pairs]
     gamma = [g for _, g in pairs]
     n = len(pairs)
+    dec_lo = dec_hi = None   # decline window used for the reported slope/R^2, when not [split1:split]
 
-    if method_choice == "rss":
+    def _crossing(slope_a, int_a, slope_b, int_b, what):
+        if abs(slope_a - slope_b) < 1e-12:
+            raise ValueError(
+                f"premicellar and postmicellar fits are parallel (no slope break) for method='{what}' -- "
+                "this data does not show a surface-tension break point; check the input rather than "
+                "trusting this fit"
+            )
+        return (int_b - int_a) / (slope_a - slope_b)
+
+    if method_choice in ("rss", "intersection", "tangential"):
         two_seg = _best_two_segment_split(log_c, gamma, n, min_points_per_segment)
         assert two_seg is not None  # guaranteed by the n >= 2*min_points_per_segment check above
         # 3-segment gets its own, possibly-relaxed minimum -- see this
@@ -267,42 +294,41 @@ def cmc_from_surface_tension_curve(
             split1 = 0
             n_baseline_points = 0
             method = "two-segment linear regression break-point (min total RSS)"
+
+    if method_choice == "intersection":
+        # Regression intersection: the same BIC-selected segments as "rss", but the CMC is where the
+        # decline line meets the plateau line (continuous), not the midpoint between the two
+        # neighbouring measured points.
+        post_s, post_i, _ = _linreg(log_c[split:], gamma[split:])
+        intersection_cmc_log_c = _crossing(decline_slope, decline_intercept, post_s, post_i, "intersection")
+        method = "regression intersection (" + method.split(" break-point")[0] + " decline x plateau, log10C)"
     elif method_choice == "tangential":
-        # Tangential-intersection break (Rosen's graphical tangent method,
-        # made deterministic): scan every valid pre-line [0:j] and keep the
-        # split whose PRE line is steepest (largest |slope|, ties -> last,
-        # i.e. the end of the steepest region where the break sits); on
-        # ideal segmented data that pre-line IS the premicellar segment.
-        # The CMC is the algebraic intersection of that pre-line with the
-        # post-line [j:n], read back in log10-concentration space.
-        best_j = -1
+        # Tangential-intersection break (Rosen's graphical tangent method, made deterministic): the
+        # tangent is the steepest run of min_points_per_segment CONSECUTIVE points below the plateau
+        # found by the "rss" segmentation (ties -> last, the break side); the CMC is where it meets
+        # the plateau line. Fixed 2026-10-30: the earlier version fitted every prefix [0:j] from the
+        # lowest concentration, so on curves with a knee near the solvent value it took the line
+        # through the knee and put the CMC 3-10x too low.
+        best_i = -1
         pre_slope_t = pre_int_t = pre_rss_t = 0.0
-        for j in range(min_points_per_segment, n - min_points_per_segment + 1):
-            s, i_, rss_ = _linreg(log_c[:j], gamma[:j])
+        width = min_points_per_segment
+        for i in range(0, split - width + 1):
+            s, i_, rss_ = _linreg(log_c[i:i + width], gamma[i:i + width])
             # 1e-9 slope tolerance: float noise must not stop a genuine
             # tie from advancing to the LAST (break-side) steepest fit
-            if best_j < 0 or abs(s) >= abs(pre_slope_t) - 1e-9:
-                best_j, pre_slope_t, pre_int_t, pre_rss_t = j, s, i_, rss_
-        if best_j < 0:
+            if best_i < 0 or abs(s) >= abs(pre_slope_t) - 1e-9:
+                best_i, pre_slope_t, pre_int_t, pre_rss_t = i, s, i_, rss_
+        if best_i < 0:
             raise ValueError(
                 "no valid pre/post split range for method='tangential' -- "
                 "need at least 2*min_points_per_segment points"
             )
-        split = best_j
-        split1 = 0
         decline_slope, decline_intercept, decline_rss = pre_slope_t, pre_int_t, pre_rss_t
-        n_baseline_points = 0
+        dec_lo, dec_hi = best_i, best_i + width
         post_slope_t, post_int_t, _ = _linreg(log_c[split:], gamma[split:])
-        denom = pre_slope_t - post_slope_t
-        if abs(denom) < 1e-12:
-            raise ValueError(
-                "premicellar and postmicellar tangential fits are parallel (no slope "
-                "break) -- this data does not show a surface-tension break point; "
-                "check the input rather than trusting this fit"
-            )
-        tangential_cmc_log_c = (post_int_t - pre_int_t) / denom
-        method = "tangential intersection (steepest premicellar fit x postmicellar fit, log10C)"
-    else:  # method_choice == "derivative"
+        tangential_cmc_log_c = _crossing(pre_slope_t, pre_int_t, post_slope_t, post_int_t, "tangential")
+        method = "tangential intersection (steepest premicellar run x postmicellar fit, log10C)"
+    elif method_choice == "derivative":
         # Maximum first-derivative break: the steepest adjacent-point pair
         # of |dgamma/dlog10C|, ties -> LAST (end of the steepest region).
         # Restricted to pairs leaving >=2 points on each side so the shared
@@ -331,7 +357,9 @@ def cmc_from_surface_tension_curve(
         method = ("maximum first-derivative |dgamma/dlog10C| break-point "
                   "(midpoint of steepest adjacent pair)")
 
-    _decline_x, decline_y = log_c[split1:split], gamma[split1:split]
+    if dec_lo is None:
+        dec_lo, dec_hi = split1, split
+    decline_y = gamma[dec_lo:dec_hi]
     mean_y = sum(decline_y) / len(decline_y)
     ss_tot = sum((y - mean_y) ** 2 for y in decline_y)
     r_squared = 1.0 - (decline_rss / ss_tot) if ss_tot > 0 else 1.0
@@ -342,7 +370,9 @@ def cmc_from_surface_tension_curve(
     # point, matching how a break-point is actually read off a real plot
     # (the intersection region between the two branches, not either branch's
     # own last/first raw data point).
-    if tangential_cmc_log_c is not None:
+    if intersection_cmc_log_c is not None:
+        cmc_log_c = intersection_cmc_log_c
+    elif tangential_cmc_log_c is not None:
         cmc_log_c = tangential_cmc_log_c
     elif derivative_cmc_log_c is not None:
         cmc_log_c = derivative_cmc_log_c
@@ -393,9 +423,9 @@ def cmc_from_surface_tension_curve(
         premicellar_slope_mN_per_m_per_log10C=decline_slope,
         gamma_at_cmc_mN_per_m=gamma_at_cmc,
         r_squared_premicellar=r_squared,
-        n_premicellar_points=split - split1,
+        n_premicellar_points=dec_hi - dec_lo,
         n_postmicellar_points=n - split,
-        premicellar_x_min_mM=10 ** log_c[split1],
+        premicellar_x_min_mM=10 ** log_c[dec_lo],
         postmicellar_slope_mN_per_m_per_log10C=post_slope,
         postmicellar_intercept_mN_per_m=post_intercept,
         postmicellar_mean_gamma_mN_per_m=post_mean_y,
@@ -474,9 +504,26 @@ def _fit_szyszkowski(concs: list[float], gammas: list[float], gamma0: float | No
     gamma0: pass a fixed value to fit ONLY a and b with gamma0 pinned.
     Leave None to fit gamma0 freely as well (3 free parameters total).
 
+    The ln(b) search range scales with the data (b*C from 1e-4 at the
+    highest to 1e4 at the lowest concentration, never narrower than the
+    original fixed 1e-4..1e4 per concentration unit), and a 121-point grid
+    brackets the minimum before the golden-section refinement. Fixed
+    2026-10-30: the fixed range pinned b at its 1e4 bound for low-CMC
+    surfactants (geminis, catanionic mixtures, CMC ~0.01 mM) -- 39 of 46
+    fits in one dataset -- leaving those fits unconverged.
+
     Returns (gamma0_used_or_fitted, a, b, r_squared).
     """
     from ._optimize import golden_section_minimize as _golden_section_minimize
+
+    ln_lo = min(math.log(1e-4), math.log(1e-4 / max(concs)))
+    ln_hi = max(math.log(1e4), math.log(1e4 / min(concs)))
+
+    def _minimize_ln_b(f):
+        grid = [ln_lo + i * (ln_hi - ln_lo) / 120 for i in range(121)]
+        vals = [f(x) for x in grid]
+        k = min(range(len(grid)), key=vals.__getitem__)
+        return _golden_section_minimize(f, grid[max(k - 1, 0)], grid[min(k + 1, len(grid) - 1)])
 
     if gamma0 is None:
         def rss_for_ln_b(ln_b: float) -> float:
@@ -485,7 +532,7 @@ def _fit_szyszkowski(concs: list[float], gammas: list[float], gamma0: float | No
             _, _, rss = _linreg(xs, gammas)
             return rss
 
-        ln_b_best = _golden_section_minimize(rss_for_ln_b, math.log(1e-4), math.log(1e4))
+        ln_b_best = _minimize_ln_b(rss_for_ln_b)
         b_fit = math.exp(ln_b_best)
         xs = [math.log(b_fit * c + 1.0) for c in concs]
         slope, intercept, rss = _linreg(xs, gammas)
@@ -500,7 +547,7 @@ def _fit_szyszkowski(concs: list[float], gammas: list[float], gamma0: float | No
             a = sxy / sxx if sxx > 0 else 0.0
             return sum((y - a * x) ** 2 for x, y in zip(xs, ys))
 
-        ln_b_best = _golden_section_minimize(rss_for_ln_b, math.log(1e-4), math.log(1e4))
+        ln_b_best = _minimize_ln_b(rss_for_ln_b)
         b_fit = math.exp(ln_b_best)
         xs = [math.log(b_fit * c + 1.0) for c in concs]
         ys = [gamma0 - g for g in gammas]
@@ -608,6 +655,99 @@ def cmc_via_szyszkowski_deviation(
                "cannot locate a break from this data",
         no_break_found_in_range=True,
     )
+
+
+@dataclass
+class SzyszkowskiIntersectionCmcResult:
+    cmc_mM: float | None            # None when the fitted curve never meets the plateau line in range
+    gamma_at_cmc_mN_per_m: float | None   # plateau line evaluated at that CMC
+    gamma0_fitted_mN_m: float
+    a_fitted_mN_per_m: float        # gamma = gamma0 - a ln(1 + bC)
+    b_fitted_per_mM: float
+    fit_r_squared: float
+    n_points_used_in_fit: int       # every point below the plateau
+    n_plateau_points: int
+    plateau_slope_mN_per_m_per_log10C: float
+    plateau_intercept_mN_per_m: float
+    gamma_max_from_fit_mol_per_m2: float | None   # a / (n R T); None unless system_type is given
+    reason: str
+    method: str = "Szyszkowski nonlinear curve x plateau line (log10C)"
+
+
+def cmc_via_szyszkowski_plateau_intersection(
+    concentrations_mM: list[float],
+    surface_tensions_mN_per_m: list[float],
+    system_type: str | None = None,
+    temperature_K: float = 298.15,
+    min_points_per_segment: int = 3,
+    r_gas: float = 8.314462618,
+) -> SzyszkowskiIntersectionCmcResult:
+    """CMC by the Szyszkowski nonlinear-curve method: fit the Szyszkowski
+    (Langmuir) isotherm gamma = gamma0 - a ln(1 + bC), all three
+    parameters free (_fit_szyszkowski), to every point below the plateau,
+    fit a straight line to the plateau (gamma vs log10 C), and take the
+    CMC where the two meet. gamma_CMC is the plateau line at that CMC.
+
+    The plateau is the post-micellar segment of
+    cmc_from_surface_tension_curve(method="intersection"), so this and the
+    regression-intersection CMC share one definition of the plateau and
+    differ only in how the pre-micellar region is described (curve vs
+    straight line).
+
+    Unlike cmc_via_szyszkowski_deviation (a cross-check that reports the
+    first MEASURED concentration departing from the fit, so it moves in
+    steps of the concentration grid), the CMC here is a continuous root.
+    Returns cmc_mM=None with a reason, never a guess, when the fitted
+    curve does not cross the plateau line inside the measured range.
+
+    system_type (as for gibbs_gamma_max) is only needed for
+    gamma_max_from_fit = a / (n R T); the CMC does not depend on it.
+    """
+    seg = cmc_from_surface_tension_curve(concentrations_mM, surface_tensions_mN_per_m,
+                                         min_points_per_segment=min_points_per_segment,
+                                         method="intersection")
+    pairs = sorted(zip(concentrations_mM, surface_tensions_mN_per_m))
+    n_post = seg.n_postmicellar_points
+    fit_pairs = pairs[: len(pairs) - n_post]
+    p_slope, p_int = seg.postmicellar_slope_mN_per_m_per_log10C, seg.postmicellar_intercept_mN_per_m
+
+    from .adsorption import N_FACTOR_BY_SYSTEM_TYPE
+    if system_type is not None and system_type not in N_FACTOR_BY_SYSTEM_TYPE:
+        raise ValueError(f"system_type must be one of {sorted(N_FACTOR_BY_SYSTEM_TYPE)}, got {system_type!r}")
+
+    def result(cmc, g_cmc, g0, a, b, r2, reason):
+        gmax = (a / (N_FACTOR_BY_SYSTEM_TYPE[system_type] * r_gas * temperature_K * 1000.0)
+                if system_type is not None and a else None)
+        return SzyszkowskiIntersectionCmcResult(
+            cmc_mM=cmc, gamma_at_cmc_mN_per_m=g_cmc, gamma0_fitted_mN_m=g0, a_fitted_mN_per_m=a,
+            b_fitted_per_mM=b, fit_r_squared=r2, n_points_used_in_fit=len(fit_pairs), n_plateau_points=n_post,
+            plateau_slope_mN_per_m_per_log10C=p_slope, plateau_intercept_mN_per_m=p_int,
+            gamma_max_from_fit_mol_per_m2=gmax, reason=reason)
+
+    if len(fit_pairs) < 3:
+        return result(None, None, 0.0, 0.0, 0.0, 0.0,
+                      "fewer than 3 points below the plateau -- cannot fit gamma0, a and b")
+
+    g0, a, b, r2 = _fit_szyszkowski([c for c, _ in fit_pairs], [g for _, g in fit_pairs], gamma0=None)
+
+    def gap(lc: float) -> float:   # Szyszkowski minus plateau line, as a function of log10 C
+        return (g0 - a * math.log(b * 10 ** lc + 1.0)) - (p_slope * lc + p_int)
+
+    lo, hi = math.log10(pairs[0][0]), math.log10(pairs[-1][0])
+    if not (gap(lo) > 0.0 > gap(hi)):
+        return result(None, None, g0, a, b, r2,
+                      "the fitted Szyszkowski curve does not cross the plateau line inside the measured range")
+    for _ in range(200):   # bisection in log10 C: gap is positive below the crossing, negative above
+        mid = (lo + hi) / 2.0
+        if gap(mid) > 0.0:
+            lo = mid
+        else:
+            hi = mid
+        if hi - lo < 1e-13:
+            break
+    lc = (lo + hi) / 2.0
+    return result(10 ** lc, p_slope * lc + p_int, g0, a, b, r2,
+                  "CMC where the fitted Szyszkowski curve meets the plateau regression line")
 
 
 @dataclass

@@ -9,7 +9,7 @@
 - Chain re-run (build_results, build_tables, build_question_set, build_bench200,
   build_figure_data): all exit 0, all figure-data cross-checks pass.
 - Application P3 recomputed (`benchmark/applications/compute_p3.py`).
-- Test suite: 971 passed.
+- Test suite: 982 passed.
 
 ## Previous record (2026-10-27, Windows, Python 3.14)
 

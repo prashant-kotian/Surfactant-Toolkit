@@ -28,6 +28,9 @@ N_FACTOR_BY_SYSTEM_TYPE = {
     "nonionic": 1.0,
     "ionic_excess_electrolyte": 1.0,
     "ionic_no_added_salt": 2.0,
+    # divalent ionic surfactant (m-s-m gemini, or a dianionic head such as glutamate) with two monovalent counterions, no added salt: n = 3
+    # (one surfactant ion + two counterions adsorb as independent species; added 2026-10-30)
+    "divalent_ionic_no_added_salt": 3.0,
 }
 
 
@@ -40,7 +43,9 @@ def gibbs_gamma_max(slope_mn_per_ln_c: float, system_type: str, temperature_k: f
     system_type: one of 'nonionic', 'ionic_excess_electrolyte', or
     'ionic_no_added_salt' -- determines the Gibbs prefactor n (1 for
     nonionic or ionic-with-excess-electrolyte, 2 for a 1:1 ionic
-    surfactant with no added salt). No default and no bare numeric
+    surfactant with no added salt); 'divalent_ionic_no_added_salt' gives n = 3
+    for a divalent ionic surfactant (a dicationic gemini, or a dianion) with two monovalent
+    counterions and no added salt. No default and no bare numeric
     n_factor accepted: whether excess inert electrolyte is present is
     real, system-specific information that must come from the question/
     experiment, not be assumed. IMPORTANT for callers (including LLMs
