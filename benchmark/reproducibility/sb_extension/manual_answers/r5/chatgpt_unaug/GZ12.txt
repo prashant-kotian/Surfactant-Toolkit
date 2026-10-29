@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.0126,
+  "f2_at_x1_0.90": 0.3154,
+  "interaction_model_or_approach": "Thermodynamically consistent three-suffix Margules excess-free-energy model, jointly fitted to ln(f1) and ln(f2).",
+  "notes": "The data indicate favorable, strongly asymmetric nonideality. Predictions assume pure-component micellar standard states and a smooth effective binary phase at unchanged conditions; extrapolation is not uniquely determined by the measurements."
+}

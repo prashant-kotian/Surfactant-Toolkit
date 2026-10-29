@@ -1,0 +1,11 @@
+{
+ "qid": "GZ38",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-23T18:10:15+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+ "chart": "attached (GZ-38_chart.png visible)",
+ "sent": "2026-10-23T18:14:27+0530",
+ "end": "2026-10-23T18:16:20+0530"
+}

@@ -1,0 +1,351 @@
+===============================================================================
+SurfactantKit Toolkit -- Compiled Question Outputs
+Connector used: Surfactant-Computation (MCP)
+Questions covered: Q01-Q34, Q36-Q38  (Q35 was not asked)
+===============================================================================
+
+-------------------------------------------------------------------------------
+Q01 -- Ideal mixed CMC
+Tool: clint_ideal_cmc(alpha1=0.37, cmc1_mM=1.23, cmc2_mM=8.76)
+Returned: cmc_ideal_mM = 2.6829013221782323
+Rounded (4 dp): 2.6829
+ANSWER Q01: 2.6829
+
+-------------------------------------------------------------------------------
+Q02 -- Rubingh micellar mole fraction
+Tool: rubingh_solve(alpha1=0.42, cmc1_mM=1.10, cmc2_mM=9.80, cmc_mix_mM=2.31)
+Returned: micellar_mole_fraction_x1 = 0.8798758375421317 (beta=+0.1671, antagonistic)
+Rounded (4 dp): 0.8799
+ANSWER Q02: 0.8799
+
+-------------------------------------------------------------------------------
+Q03 -- Rubingh beta from a composition series
+Tool: rubingh_beta_regression(alpha1=[0.15,0.30,0.45,0.60,0.75],
+      cmc1_mM=1.13, cmc2_mM=6.71, cmc_mix=[1.5288,1.1467,0.9840,0.9052,0.8813])
+Returned: beta_mean = -3.6999699953235727 (synergistic, r-spread ~1e-4)
+Rounded (5 dp): -3.70000
+ANSWER Q03: -3.70000
+
+-------------------------------------------------------------------------------
+Q04 -- Motomura ideal composition
+Tool: motomura_ideal_composition(alpha1=0.63, cmc1_mM=0.87, cmc2_mM=6.54)
+Returned: x1_ideal = 0.9275342743297088
+Rounded (4 dp): 0.9275
+ANSWER Q04: 0.9275
+
+-------------------------------------------------------------------------------
+Q05 -- Asymmetric Margules activity coefficients
+Tool: asymmetric_margules_activity_coefficients(x1=0.58, w12=4.21, w21=1.87)
+Returned: f1 = 1.3018988336006934, f2 = 3.6338614383162513
+Rounded (4 dp each): (1.3019, 3.6339)
+ANSWER Q05: (1.3019, 3.6339)
+
+-------------------------------------------------------------------------------
+Q06 -- Excess free energy of micelle formation (chained)
+Step 1: asymmetric_margules_activity_coefficients(x1=0.58, w12=4.21, w21=1.87)
+        -> f1=1.3018988336006934, f2=3.6338614383162513
+Step 2: excess_free_energy(f1, f2, temperature_K=308.15, x1=0.58)
+Returned: deltaG_ex_kJ_per_mol = 1.7805122538091054
+Rounded (4 dp): 1.7805
+ANSWER Q06: 1.7805
+
+-------------------------------------------------------------------------------
+Q07 -- Rodenas mole fraction
+Tool: rodenas_x1(alpha1=0.55, dln_cmc_mix_dalpha1=-0.83)
+Returned: micellar_mole_fraction_x1 = 0.755425
+Rounded (4 dp): 0.7554
+ANSWER Q07: 0.7554
+
+-------------------------------------------------------------------------------
+Q08 -- Maeda mixed-micelle free energy
+Tool: maeda_free_energy_of_micellization(beta=-3.4, cmc1_M=1.5e-3, cmc2_M=4.7e-3,
+      temperature_K=298.15, x1_rub=0.61)
+Returned: deltaG_M_kJ_per_mol = -26.976418722699282
+Rounded (3 dp): -26.976
+ANSWER Q08: -26.976
+
+-------------------------------------------------------------------------------
+Q09 -- Rosen monolayer composition
+Tool: rosen_monolayer_solve(alpha1=0.33, c1_sigma_mM=1.41, c2_sigma_mM=6.93,
+      c_mix_sigma_mM=2.87)
+Returned: monolayer_mole_fraction_x1 = 0.6880614433494681 (beta_sigma=-0.2473, synergistic)
+Rounded (4 dp): 0.6881
+ANSWER Q09: 0.6881
+
+-------------------------------------------------------------------------------
+Q10 -- Rubingh activity coefficients
+Tool: rubingh_activity_coefficients(x1=0.58, beta=-4.36)
+Returned: f1 = 0.46342811393310634, f2 = 0.23068456987025748
+Rounded (4 dp each): (0.4634, 0.2307)
+ANSWER Q10: (0.4634, 0.2307)
+
+-------------------------------------------------------------------------------
+Q11 -- Corrin-Harkins salt prediction
+Tool: corrin_harkins_predict(cmc1_mM=12.4, cmc2_mM=8.9, salt_conc1_mM=5.0,
+      salt_conc2_mM=40.0, salt_conc_target_mM=20.0)
+Returned: predicted_cmc_mM = 9.940324592957184, fitted_slope_g = 0.15948762647349257
+Rounded (4 dp each): (9.9403, 0.1595)
+ANSWER Q11: (9.9403, 0.1595)
+
+-------------------------------------------------------------------------------
+Q12 -- Szyszkowski isotherm evaluation
+Tool: szyszkowski_predict_surface_tension(K=1400.0, concentration=0.0042,
+      gamma0_mN_m=72.0, gamma_max_mol_per_m2=4.0e-6,
+      system_type=ionic_excess_electrolyte, temperature_K=298.15)
+Returned: surface_tension_mN_m = 52.8761489417046
+Rounded (4 dp): 52.8761
+ANSWER Q12: 52.8761
+
+-------------------------------------------------------------------------------
+Q13 -- Gibbs maximum surface excess
+Tool: gibbs_surface_excess(slope_mN_per_m_per_lnC=-2.85,
+      system_type=ionic_excess_electrolyte, temperature_K=298.15)
+Returned: gamma_max_mol_per_m2 = 1.1496770480566385e-6  (= 1.1496770... umol/m^2)
+Rounded (4 dp, umol/m^2): 1.1497
+ANSWER Q13: 1.1497
+
+-------------------------------------------------------------------------------
+Q14 -- Minimum area per molecule
+Tool: gibbs_area_per_molecule(gamma_max_mol_per_m2=1.83e-6)
+Returned: a_min_nm2 = 0.9073983973627577
+Rounded (4 dp): 0.9074
+ANSWER Q14: 0.9074
+
+-------------------------------------------------------------------------------
+Q15 -- Frumkin surface coverage (theta)
+Theta is fixed by the Frumkin isotherm K*c = theta/(1-theta)*exp(-2*a*theta),
+independent of gamma0/Gamma_inf. Solved via the toolkit's Frumkin isotherm
+(cross-checked against frumkin_predict_surface_tension's gamma output).
+Inputs: concentration=0.0031, K=14.7, a=1.35
+Result: theta = 0.049508614471477363
+Rounded (4 dp): 0.0495
+ANSWER Q15: 0.0495
+
+-------------------------------------------------------------------------------
+Q16 -- Ward-Tordai adsorption kinetics
+Tool: ward_tordai_adsorption(c0_mol_per_L=0.02, D_m2_per_s=1e-9, t_end_s=1.0,
+      mode=langmuir, gamma_inf_mol_per_m2=3.0e-6, K_d_mol_per_L=1.0e-3)
+Returned: gamma_final_mol_per_m2 = 2.8565961745659097e-6 (= 2.8565961... umol/m^2)
+Rounded (4 dp, umol/m^2): 2.8566
+ANSWER Q16: 2.8566
+
+-------------------------------------------------------------------------------
+Q17 -- Davies HLB with Guo effective-chain correction
+Tool: hlb_davies_guo_ecl(n_carbons_alkyl=12, n_eo=6)
+Returned: hlb = 33.28633931945254
+Rounded (2 dp): 33.29
+ANSWER Q17: 33.29
+
+-------------------------------------------------------------------------------
+Q18 -- Fit k and Cc from an optimal-salinity scan
+Tool: hld_fit_k_and_cc_from_salinity_scan(eacn=[9.4,11.3,13.2],
+      optimal_salinity_pct=[0.9298,1.2504,1.6872], alpha=0.01, delta_T_K=0)
+Returned: k = 0.15680424208107385, cc = 1.5473052419888327 (r^2=0.99999)
+Rounded (4 dp each): (0.1568, 1.5473)
+ANSWER Q18: (0.1568, 1.5473)
+
+-------------------------------------------------------------------------------
+Q19 -- Sourced cationic-quat reference values
+Tool: hld_cationic_quat_reference(surfactant=CTAB)
+Returned: Cc = -5.7, Cc_uncertainty = 0.3
+Formatted (1 dp): -5.7 +/- 0.3
+ANSWER Q19: -5.7 +/- 0.3
+
+-------------------------------------------------------------------------------
+Q20 -- Phase-inversion temperature
+Tool: phase_inversion_temperature(family=nonionic, salinity_pct=2.3, k=0.157,
+      eacn=12.4, cc=1.62, b=0.13, temperature_reference_K=298.15)
+Returned: phase_inversion_temperature_K = 298.6133333333333
+Rounded (2 dp): 298.61
+ANSWER Q20: 298.61
+
+-------------------------------------------------------------------------------
+Q21 -- Optimal salinity
+Tool: hld_optimal_salinity(k=0.158, eacn=11.2, cc=1.55)  [alpha, deltaT default]
+Returned: optimal_salinity_pct = 1.2455783995679939
+Rounded (4 dp): 1.2456
+ANSWER Q21: 1.2456
+
+-------------------------------------------------------------------------------
+Q22 -- Packing parameter and morphology
+Tool: critical_packing_parameter(head_area_A2=41.7, length_A=11.9, volume_A3=248.4)
+Returned: cpp = 0.500574330451605, predicted_morphology = "vesicle/bilayer"
+Rounded cpp (4 dp): 0.5006
+ANSWER Q22: 0.5006, vesicle/bilayer
+
+-------------------------------------------------------------------------------
+Q23 -- Axial ratio from CPP geometry
+Tool: estimate_axial_ratio_from_cpp_geometry(cpp=0.42, aggregation_number=130,
+      n_carbons=16)
+Returned: axial_ratio = 1.3827762513445319
+Rounded (3 dp): 1.383
+ANSWER Q23: 1.383
+
+-------------------------------------------------------------------------------
+Q24 -- Nagarajan a priori CMC
+Tool: nagarajan_cmc_predictor(n_carbons=12, headgroup=alkyl_sulfate, added_salt_M=0.0)
+Returned: log10_cmc_mol_per_L = -2.0394034012492717
+Rounded (4 dp): -2.0394
+ANSWER Q24: -2.0394
+
+-------------------------------------------------------------------------------
+Q25 -- Nagarajan equilibrium area (ionic)
+Tool: nagarajan_equilibrium_area_ionic(cmc_M=8.2e-3, tail_length_A=16.7,
+      headgroup_prefactor_A=24.7)  [temperature, dielectric default]
+Returned: a_e_A2 = 20.21853849586351
+Rounded (3 dp): 20.219
+ANSWER Q25: 20.219
+
+-------------------------------------------------------------------------------
+Q26 -- Ionic strength
+Definition I = 0.5 * sum(c_i * z_i^2) over the supplied ion dict:
+  {1:0.0071, -1:0.0071, 2:0.0023, -2:0.0023, 3:0.0009, -3:0.0009}
+Result: I = 0.0244 mol/L
+Rounded (4 dp): 0.0244
+ANSWER Q26: 0.0244
+
+-------------------------------------------------------------------------------
+Q27 -- Debye screening length
+Tool: debye_screening_length(ionic_strength_M=0.0173, temperature_K=303.15)
+Returned: debye_length_nm = 2.330660037253996
+Rounded (4 dp): 2.3307
+ANSWER Q27: 2.3307
+
+-------------------------------------------------------------------------------
+Q28 -- Zeta potential (Smoluchowski)
+Tool: zeta_potential(electrophoretic_mobility_um_cm_per_Vs=3.15, regime=smoluchowski,
+      viscosity_mPas=0.89)
+Returned: zeta_potential_mV = 40.386458168115546
+Rounded (3 dp): 40.386
+ANSWER Q28: 40.386
+
+-------------------------------------------------------------------------------
+Q29 -- O'Brien-White electrophoretic mobility
+Tool: obrien_white_numerical(zeta_mV=-42.6, kappa_a=8.7)  [defaults otherwise]
+Returned: mu_um_cm_per_Vs = 2.6086167757503445
+Rounded (4 dp): 2.6086
+ANSWER Q29: 2.6086
+
+-------------------------------------------------------------------------------
+Q30 -- Planar Poisson-Boltzmann profile
+Tool: planar_pb_profile(psi0_mV=-68.4, ionic_strength_M=0.01)  [defaults otherwise]
+Returned: sigma_surface_C_m2 = -0.020656750184331163
+4 significant figures (sign kept): -0.02066
+ANSWER Q30: -0.02066
+
+-------------------------------------------------------------------------------
+Q31 -- Gibbs free energy of micellization
+Tool: gibbs_free_energy_micellization(cmc_M=0.0057, temperature_K=303.15,
+      counterion_factor=1.0)
+Returned: deltaG_mic_kJ_per_mol = -23.147973915925515
+Rounded (3 dp): -23.148
+ANSWER Q31: -23.148
+
+-------------------------------------------------------------------------------
+Q32 -- Mass-action free energy of micellization
+Tool: mass_action_free_energy_of_micellization(cmc_M=0.0057, aggregation_number=58,
+      temperature_K=298.15)
+Returned: deltaG_mic_kJ_per_mol = -23.332249479487494
+Rounded (3 dp): -23.332
+ANSWER Q32: -23.332
+
+-------------------------------------------------------------------------------
+Q33 -- Critical micellization degree
+Tool: critical_micellization_degree(aggregation_number=47)  [definition default]
+Returned: alpha_m = 0.08364521429165933
+Rounded (4 dp): 0.0836
+ANSWER Q33: 0.0836
+
+-------------------------------------------------------------------------------
+Q34 -- van 't Hoff enthalpy
+Tool: vant_hoff_enthalpy(cmc1_M=0.0041, cmc2_M=0.0076, temperature1_K=293.15,
+      temperature2_K=313.15)
+Returned: deltaH_mic_kJ_per_mol = -23.55053598539158
+Rounded (2 dp): -23.55
+ANSWER Q34: -23.55
+
+-------------------------------------------------------------------------------
+Q35 -- (not asked in this session)
+
+-------------------------------------------------------------------------------
+Q36 -- CMC from a raw surface-tension curve
+Tool: cmc_from_surface_tension_curve(
+      concentrations_mM=[0.05,0.08,0.13,0.2,0.32,0.5,0.8,1.2,1.9,3.0,4.7,7.5],
+      surface_tensions=[44.31,43.90,43.40,42.75,41.90,40.80,39.50,38.10,37.20,
+                        36.95,36.88,36.85])
+Returned: cmc_mM = 1.5099668870541498, gamma_at_cmc_mN_per_m = 37.558351313527794
+Rounded (3 dp each): 1.510, 37.558
+ANSWER Q36: 1.510, 37.558
+
+-------------------------------------------------------------------------------
+Q37 -- CMC + counterion binding from a conductivity curve
+Tool: cmc_from_conductivity(
+      concentrations_mM=[0.05,0.09,0.15,0.24,0.37,0.55,0.8,1.1,1.5,2.0,2.6,3.3],
+      conductivities=[1.16,1.448,1.88,2.528,3.464,4.76,5.94,7.17,8.81,10.86,
+                      13.3,16.18])
+Returned: cmc_mM = 0.6010254316659062, counterion_binding_degree = 0.4314414190393303
+Rounded: cmc (3 dp) = 0.601, beta_cd (4 dp) = 0.4314
+ANSWER Q37: 0.601, 0.4314
+
+-------------------------------------------------------------------------------
+Q38 -- Isotherm model selection
+Note: no `select_isotherm_model` tool is exposed on the Surfactant-Computation
+connector and the surfactantkit package is not installable in this environment,
+so its Langmuir-vs-Frumkin BIC comparison was reproduced with the connector's own
+`nonlinear_fit_with_errors` (gamma0=72.0, Gamma_inf=5.0e-6,
+system_type=ionic_excess_electrolyte, n=8).
+  Langmuir (Szyszkowski): k=1, RSS = 2.4956e-5  (rmse 0.00176621)
+  Frumkin:                k=2, RSS = 8.2803e-6  (rmse 0.00101737, a~ -0.00158)
+  Standard BIC: BIC = n*ln(RSS/n) + k*ln(n)
+    BIC_Langmuir = -99.343,  BIC_Frumkin = -106.090
+    delta_BIC (margin favouring the winner) = 6.746390
+Selected model: Frumkin (lower BIC)
+Rounded delta_bic (2 dp): 6.75
+*** This answer is a reconstruction, not a direct select_isotherm_model return;
+    the verbatim selected_model string and exact delta_bic convention could not
+    be verified against the installed package. ***
+ANSWER Q38: Frumkin, 6.75
+
+===============================================================================
+FINAL ANSWERS (JSON)
+===============================================================================
+{
+  "Q01": "2.6829",
+  "Q02": "0.8799",
+  "Q03": "-3.70000",
+  "Q04": "0.9275",
+  "Q05": "(1.3019, 3.6339)",
+  "Q06": "1.7805",
+  "Q07": "0.7554",
+  "Q08": "-26.976",
+  "Q09": "0.6881",
+  "Q10": "(0.4634, 0.2307)",
+  "Q11": "(9.9403, 0.1595)",
+  "Q12": "52.8761",
+  "Q13": "1.1497",
+  "Q14": "0.9074",
+  "Q15": "0.0495",
+  "Q16": "2.8566",
+  "Q17": "33.29",
+  "Q18": "(0.1568, 1.5473)",
+  "Q19": "-5.7 +/- 0.3",
+  "Q20": "298.61",
+  "Q21": "1.2456",
+  "Q22": "0.5006, vesicle/bilayer",
+  "Q23": "1.383",
+  "Q24": "-2.0394",
+  "Q25": "20.219",
+  "Q26": "0.0244",
+  "Q27": "2.3307",
+  "Q28": "40.386",
+  "Q29": "2.6086",
+  "Q30": "-0.02066",
+  "Q31": "-23.148",
+  "Q32": "-23.332",
+  "Q33": "0.0836",
+  "Q34": "-23.55",
+  "Q36": "1.510, 37.558",
+  "Q37": "0.601, 0.4314",
+  "Q38": "Frumkin, 6.75"
+}
+===============================================================================

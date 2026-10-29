@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter Margules model",
+"notes": "Synergistic mixing driven by steric relief as the linear Component 2 acts as a spacer for the highly bulky Component 1."
+}

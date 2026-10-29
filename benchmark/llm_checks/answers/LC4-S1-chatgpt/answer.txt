@@ -1,0 +1,144 @@
+Using the printed equation,
+
+Δ
+𝐺
+=
+(
+2
+−
+𝛼
+)
+𝑅
+𝑇
+ln
+⁡
+(
+𝑋
+c
+m
+c
+)
+,
+𝑋
+c
+m
+c
+=
+C
+M
+C
+×
+10
+−
+3
+55.5
+,
+ΔG=(2−α)RTln(X
+cmc
+	​
+
+),X
+cmc
+	​
+
+=
+55.5
+CMC×10
+−3
+	​
+
+,
+
+the mixed-micelle series is
+
+Δ
+𝐺
+(
+𝑇
+)
+=
+(
+−
+40.88010
+,
+
+−
+41.60337
+,
+
+−
+47.80487
+,
+
+−
+52.04766
+)
+
+k
+J
+
+m
+o
+l
+−
+1
+.
+ΔG(T)=(−40.88010,−41.60337,−47.80487,−52.04766) kJmol
+−1
+.
+
+For each successive temperature, applying the finite-difference Gibbs–Helmholtz relation to the
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) series gives:
+
+Δ
+𝐻
+303.15
+=
+−
+19.67747
+,
+Δ
+𝐻
+313.15
+=
+146.39520
+,
+Δ
+𝐻
+323.15
+=
+85.05822
+
+k
+J
+
+m
+o
+l
+−
+1
+.
+ΔH
+303.15
+	​
+
+=−19.67747,ΔH
+313.15
+	​
+
+=146.39520,ΔH
+323.15
+	​
+
+=85.05822 kJmol
+−1
+.
+JSON
+{"dG_293p15_kJ_mol": -40.88010, "dH_303p15_kJ_mol": -19.67747, "dH_313p15_kJ_mol": 146.39520, "dH_323p15_kJ_mol": 85.05822}
+
+FINAL_JSON: {"dG_293p15_kJ_mol": -40.88010, "dH_303p15_kJ_mol": -19.67747, "dH_313p15_kJ_mol": 146.39520, "dH_323p15_kJ_mol": 85.05822}

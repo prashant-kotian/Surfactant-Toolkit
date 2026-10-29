@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment (dn/dc) for AOT in the measurement solvent at 632.8 nm and the experimental temperature. The supplied 0.110 mL/g value belongs to SDS, a different molecule, and cannot be transferred. Obtain dn/dc by measuring AOT solutions in a differential refractometer at 632.8 nm and the same temperature as the SLS experiment, or from a validated AOT-specific literature source."
+}

@@ -1526,7 +1526,7 @@ def vant_hoff_multi_point_fit(cmc_series_M: list[float], temperatures_K: list[fl
 @_tool_guard
 @_shape_no_solution
 def simulate_emulsion_stability(drop_diameters_um: list[float], volume_fractions: list[float], dispersed_density_kg_m3: float, continuous_density_kg_m3: float, viscosity_Pa_s: float, column_height_m: float, coalescence_rate_per_s: float = 0.0, temperature_K: float = 298.15, n_times: int = 50, t_max_s: float = 86400.0) -> dict:
-    """S5 emulsion stability: separated volume fraction vs time from Stokes creaming (exact per-bin travel times) + first-order post-creaming coalescence, plus the standard stability index (area under the stable-fraction curve; larger = more stable) and t50. Args: drop_diameters_um (DSD bins), volume_fractions (weights; normalized internally, raw+normalized both in params), densities kg/m^3, viscosity Pa.s, column_height_m, coalescence_rate_per_s (0 = creaming only), t_max_s sampling window. Piecewise-analytic ODE solution -- no time-stepping error. Caveats in output: dilute Stokes (hindered creaming NOT modeled; flagged when total phi > 0.1), equal densities never separate by gravity, sedimentation case disclosed rather than hidden."""
+    """S5 emulsion stability: separated volume fraction vs time from Stokes creaming (drops of each bin start uniformly distributed over the column, so a bin's creamed share grows as t/t_c up to its travel time t_c = H/v; monodisperse t50 = H/(2v)) + first-order post-creaming coalescence, plus the standard stability index (area under the stable-fraction curve; larger = more stable) and t50. Args: drop_diameters_um (DSD bins), volume_fractions (weights; normalized internally, raw+normalized both in params), densities kg/m^3, viscosity Pa.s, column_height_m, coalescence_rate_per_s (0 = creaming only), t_max_s sampling window. Piecewise-analytic ODE solution -- no time-stepping error. Caveats in output: dilute Stokes (hindered creaming NOT modeled; flagged when total phi > 0.1), equal densities never separate by gravity, sedimentation case disclosed rather than hidden."""
     r = emu.simulate_emulsion_stability(
         drop_diameters_um=drop_diameters_um,
         volume_fractions=volume_fractions,
@@ -2409,11 +2409,15 @@ def dynamic_surface_tension_forward(t_s: list[float], c0_mol_per_L: float,
                                     temperature_K: float = 298.15,
                                     k_off_per_s: float = 0.5,
                                     n_cells: int = 160,
-                                    max_substep_s: float = 0.1) -> dict:
-    """O3: forward dynamic surface tension gamma(t) -- Crank-Nicolson
+                                    max_substep_s: float | None = None,
+                                    rel_step: float = 0.01) -> dict:
+    """O3: forward dynamic surface tension gamma(t) -- implicit FDM
     diffusion to a kinetic Langmuir surface (rate boundary condition;
-    Ward-Tordai with adsorption-desorption kinetics). Positive sorted
-    t_s, D in m^2/s, K in 1/M, gamma_max in mol/m^2, c0 in mol/L.
+    Ward-Tordai with adsorption-desorption kinetics, solved coupled on a
+    stretched grid with Richardson extrapolation); gamma from the surface
+    excess by the Szyszkowski equation of the same Langmuir isotherm.
+    Positive sorted t_s, D in m^2/s, K in 1/M (equilibrium constant;
+    k_a = K*k_off), gamma_max in mol/m^2, c0 in mol/L, k_off in 1/s.
     Returns DynamicSurfaceTensionResult as dict."""
     import dataclasses
     return dataclasses.asdict(dt_mod.dynamic_surface_tension_forward(
@@ -2421,7 +2425,7 @@ def dynamic_surface_tension_forward(t_s: list[float], c0_mol_per_L: float,
         K_per_M=K_per_M, gamma_max_mol_per_m2=gamma_max_mol_per_m2,
         gamma0_mN_per_m=gamma0_mN_per_m, n_factor=n_factor,
         temperature_K=temperature_K, k_off_per_s=k_off_per_s,
-        n_cells=n_cells, max_substep_s=max_substep_s))
+        n_cells=n_cells, max_substep_s=max_substep_s, rel_step=rel_step))
 
 
 @mcp.tool()
@@ -2438,7 +2442,8 @@ def dynamic_surface_tension_ode(t_s: list[float],
                                 fit_D: bool = True,
                                 sigma_mN_per_m: float | None = None,
                                 n_cells: int = 120,
-                                max_substep_s: float = 0.15,
+                                max_substep_s: float | None = None,
+                                rel_step: float = 0.04,
                                 max_nfev: int = 400) -> dict:
     """O3: joint fit of a gamma(t) transient to (D, K, Gamma_max,
     k_off). Read params['log_K_vs_log_Gmax_correlation'] and
@@ -2453,7 +2458,7 @@ def dynamic_surface_tension_ode(t_s: list[float],
         n_factor=n_factor, temperature_K=temperature_K, p0=p0,
         fit_gamma_max=fit_gamma_max, fit_D=fit_D,
         sigma_mN_per_m=sigma_mN_per_m, n_cells=n_cells,
-        max_substep_s=max_substep_s, max_nfev=max_nfev))
+        max_substep_s=max_substep_s, rel_step=rel_step, max_nfev=max_nfev))
 
 
 @mcp.tool()
@@ -2702,7 +2707,7 @@ def propagate_uncertainty_chain(chain: str,
                                 n_samples: int = 10000, ci: float = 0.95,
                                 seed: int = 0) -> dict:
     """I5: Monte Carlo uncertainty propagation along a NAMED formula
-    chain (e.g. CMC -> deltaG -> area, see library docs for keys):
+    chain ('gibbs_dg_from_cmc', 'hydrodynamic_radius' or 'debye_length'):
     each input can be {'value','sigma','dist'} and the result is the
     output distribution's median/CI. Deterministic for a fixed seed.
     Returns UncertaintyPropagationResult as dict."""
@@ -2790,9 +2795,12 @@ def cmc_homologous_series(chain_lengths: list[int], cmc_values: list[float],
     """C2: linear free-energy fit of a homologous-series CMC:
     log10(CMC) = A - B * n_carbon (Klevens/Tanford-type relation).
     B encodes the CH2 transfer free energy (slope) and A the headgroup
-    offset; returns fit diagnostics, per-carbon increment in kT, and
-    optional predictions at predict_at chain lengths with CIs.
-    unit: 'mM' | 'M' | 'molal' of the CMC values you pass.
+    offset; returns fit diagnostics, the multiplicative CMC step per CH2
+    (reduction_factor_per_ch2), and optional predictions at predict_at
+    chain lengths with CIs (points outside the fitted range are flagged
+    as extrapolation).
+    unit: 'mM' | 'uM' | 'M' | 'mol/L' | 'mol/m3' of the CMC values you
+    pass (a label only; keep one unit throughout).
     Returns HomologousSeriesResult as dict."""
     import dataclasses
     return dataclasses.asdict(hom_mod.cmc_homologous_series(

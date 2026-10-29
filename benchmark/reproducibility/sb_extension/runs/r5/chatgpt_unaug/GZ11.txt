@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.4697,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 49.46,
+  "cpp_electrostatic_area": 0.4245,
+  "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+  "comment": "Both the measured-area and electrostatic-area estimates give 1/3 < P <= 1/2, predicting cylindrical/rodlike micelles. The electrostatic area is about 11% larger than the measured area, lowering the CPP but not changing the morphology."
+}

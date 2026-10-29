@@ -1,0 +1,168 @@
+Verification of Rubingh Analysis
+Checking whether the printed interaction values follow from the computed compositions
+
+Checking whether the printed interaction values follow from the computed compositions
+Verification of Rubingh Analysis
+
+This is a self‑contained calculation, so I solved the two Rubingh equations numerically for each pair rather than looking anything up.
+
+Setup
+
+Mixtures are 1:1 by weight, so the bulk mole fractions must be computed from the molecular weights (X₁ = M₂/(M₁+M₂)):
+
+Pair	X₁ (first component)
+P184/P188	8400/11300 = 0.743
+P184/P407	12600/15500 = 0.813
+P188/P407	12600/21000 = 0.600
+
+For each pair I solved the pair of equations simultaneously (eliminating β):
+
+𝑥
+1
+2
+ln
+⁡
+ ⁣
+𝑋
+1
+𝑐
+𝑥
+1
+𝑐
+1
+=
+(
+1
+−
+𝑥
+1
+)
+2
+ln
+⁡
+ ⁣
+𝑋
+2
+𝑐
+(
+1
+−
+𝑥
+1
+)
+𝑐
+2
+,
+𝛽
+=
+ln
+⁡
+ ⁣
+(
+𝑋
+1
+𝑐
+/
+(
+𝑥
+1
+𝑐
+1
+)
+)
+(
+1
+−
+𝑥
+1
+)
+2
+x
+1
+2
+	​
+
+ln
+x
+1
+	​
+
+c
+1
+	​
+
+X
+1
+	​
+
+c
+	​
+
+=(1−x
+1
+	​
+
+)
+2
+ln
+(1−x
+1
+	​
+
+)c
+2
+	​
+
+X
+2
+	​
+
+c
+	​
+
+,β=
+(1−x
+1
+	​
+
+)
+2
+ln(X
+1
+	​
+
+c/(x
+1
+	​
+
+c
+1
+	​
+
+))
+	​
+
+
+(Using X = 0.5 instead of the mole-fraction conversion changes the numbers only slightly and changes none of the conclusions below — e.g. pair 1 gives β ≈ −8.0 rather than −8.7.)
+
+Computed results vs. printed
+Pair	x₁ (computed)	β (computed)	x_M printed	β printed
+P184/P188	≈ 0.495	≈ −8.68	0.40	+3.68
+P184/P407	≈ 0.486	≈ −6.44	0.39	+3.23
+P188/P407	≈ 0.486	≈ −2.57	0.35	+1.72
+
+A valid root in (0,1) exists for all three pairs, so this is not a “no_solution” case.
+
+Does the printed result follow?
+
+No. Two independent problems:
+
+Sign of β is wrong. In every pair the mixed CMC lies below even the lower of the two pure CMCs (0.04 < 0.17; 0.06 < 0.10; 0.07 < 0.10). That is the signature of a strong negative deviation, which in Rubingh’s regular-solution theory forces β < 0. The calculation confirms this (β ≈ −8.7, −6.4, −2.6). The printed values are positive, which would mean antagonism — the opposite of what the data show.
+Internal contradiction in the paper. The text correctly calls the behavior a “negative deviation / synergic effect,” but a negative deviation corresponds to negative β, not the positive β values tabulated. The printed numbers contradict the paper’s own interpretation as well as the data. (The qualitative conclusion “synergism” is actually right; the β values printed to support it are not — and the effect is strong, not “mild,” for the first two pairs.)
+
+The computed x₁ (~0.49 for all three) also does not match the printed x_M (0.40/0.39/0.35).
+
+FINAL_JSON
+
+json
+{"x1_P184_P188": 0.495, "beta_P184_P188": -8.68, "x1_P184_P407": 0.486, "beta_P184_P407": -6.44, "x1_P188_P407": 0.486, "beta_P188_P407": -2.57, "printed_result_follows": false}

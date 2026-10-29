@@ -1,0 +1,128 @@
+GZ-51:
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.07567
+}
+
+GZ-52:
+FINAL_JSON:
+{
+  "selected_mixture_model": "Regular Solution Theory"
+}
+
+GZ-53:
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.70,
+  "delta_s_scenario_b_J_per_mol_K": 101.53
+}
+
+GZ-54:
+FINAL_JSON:
+{
+  "cpp": 0.35215,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+GZ-55:
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "Fitting the data to the ideal Langmuir (Szyszkowski) model, which assumes no lateral interactions, produces systematic deviations. In contrast, the Frumkin equation reduces the residuals to near zero. The derived interaction parameter is strongly positive (alpha ~ 2.0), mathematically confirming a physically meaningful, attractive lateral interaction between the nonionic surfactant tails at the interface."
+}
+
+GZ-56:
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "partially anionic (mixture of anionic and nonionic)"
+}
+
+GZ-57:
+FINAL_JSON:
+{
+  "cmc_mM": 0.913,
+  "gamma_max_mol_per_m2": 3.277e-06,
+  "delta_g_mic_kJ_per_mol": -47.30
+}
+
+GZ-58:
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.136,
+  "f2_at_x1_0.15": 0.885
+}
+
+GZ-59:
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.69,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial molar volume contribution of the ionic trimethylammonium headgroup and bromide counterion in water, which requires empirical parameters for hydration and electrostriction effects, or direct solution density measurements across varying concentrations."
+}
+
+GZ-60:
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 0.91
+}
+
+GZ-61:
+FINAL_JSON:
+{
+  "kappa_a": 1.163,
+  "zeta_potential_mV": -50.29
+}
+
+GZ-62:
+FINAL_JSON:
+{
+  "cmc_mM": 5.99,
+  "counterion_binding_degree": 0.54
+}
+
+GZ-63:
+FINAL_JSON:
+{
+  "aggregation_number": 60,
+  "reasoning": "The plot of ln(I0/I) vs [Q] is perfectly linear for the first four points ([Q] = 0.5 to 2.0 mM), yielding a constant slope of 1.4286 mM^-1. The last two points deviate, typical of instrumental limits at very low fluorescence intensities (<5% of I0), and must be excluded. Using the linear regime's slope: N = slope * (Ct - cmc) = 1.4286 * (50 - 8) = 60."
+}
+
+GZ-64:
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": 0.904,
+  "resolution_method": "Selection of the 15-source average due to its superior statistical weight. This is mathematically validated by calculating the pooled weighted average of all 17 underlying data points, which also converges to 0.904 mM."
+}
+
+GZ-65:
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.422e-06,
+  "a_min_nm2": 0.2237
+}
+
+GZ-66:
+FINAL_JSON:
+{
+  "cpp": 0.425,
+  "morphology": "cylindrical/rodlike micelle",
+  "hlb_davies": 39.9,
+  "consistency_discussion": "The descriptors show a theoretical divergence. The exceptionally high Davies HLB (39.9) classifies the molecule as extremely hydrophilic, a trait normally associated with high interfacial curvature and spherical micellization. Conversely, the CPP (0.425) reflects a more restricted geometry favoring cylindrical micelles. This discrepancy highlights that the empirical Davies method simply sums group constants and overestimates the effective hydrophilicity of the charged group without accounting for physical interfacial realities—like counterion binding and crowding—which restrict the actual headgroup area and increase the packing parameter."
+}
+
+GZ-67:
+FINAL_JSON:
+{
+  "hld_value": -1.02,
+  "winsor_type": "Winsor Type I",
+  "consistency_discussion": "The counterion binding degree (beta = 0.728) leaves a net fractional charge of ~27% on the surfactant headgroups. This unneutralized charge ensures strong hydration and lateral electrostatic repulsion at the interface, maintaining a large effective headgroup area. This physically forces the interface to curve around the oil, stabilizing an oil-in-water (O/W) system. This geometric and electrostatic reality perfectly supports the thermodynamic prediction of a Winsor Type I system derived from the negative HLD value."
+}
+
+GZ-68:
+FINAL_JSON:
+{
+  "cpp": 0.4253,
+  "axial_ratio": 1.1350,
+  "r_h_naive_nm": 2.6375,
+  "r_h_perrin_corrected_nm": 2.6338
+}

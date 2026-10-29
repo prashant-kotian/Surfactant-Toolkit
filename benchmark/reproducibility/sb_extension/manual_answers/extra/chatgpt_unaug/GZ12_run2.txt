@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.315,
+  "interaction_model_or_approach": "Joint thermodynamically consistent two-parameter asymmetric Redlich-Kister fit to ln(f1) and ln(f2)",
+  "notes": "The negative excess Gibbs energy indicates favorable, asymmetric nonideal mixing. The prediction is a short extrapolation beyond the highest measured x1 and is reported to three decimal places."
+}

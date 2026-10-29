@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4696,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 278.8,
+"cpp_electrostatic_area": 0.0753,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The measured headgroup area (44.70 A2) yields P=0.47, borderline cylindrical, while the DH-based electrostatic estimate (278.8 A2) gives P=0.075, firmly spherical. Real SDS forms small spherical micelles, so the electrostatic approach captures the correct morphology qualitatively but vastly overestimates the area because it neglects counterion condensation and finite-size effects. The measured area slightly overestimates P relative to the true spherical geometry, possibly reflecting a value measured in a packed bilayer or crystal context rather than at the curved micelle surface."
+}

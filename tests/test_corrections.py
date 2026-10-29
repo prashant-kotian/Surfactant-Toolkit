@@ -98,3 +98,51 @@ def test_orig_overlay_only_returns_gradable_q_items(monkeypatch):
     monkeypatch.setattr(C, "FILL_RES", {"chatgpt_unaug": {"Q24": {"verdict": "PASS"}, "Q25": {"verdict": "NO_JSON"},
                                                           "GZ-26": {"verdict": "FAIL"}}})
     assert C.orig_overlay("ChatGPT", "unaug") == {"Q24": "PASS"}
+
+def test_orig_regrade_is_inert_until_written_then_overrides(monkeypatch):
+    # nothing written yet (pending augmented re-runs) -> no override for any arm
+    if not (ROOT / "benchmark/repair_2026-10-20/q47_regrade_results.json").exists():
+        assert C.orig_regrade("Claude", "aug") == {}
+    monkeypatch.setattr(C, "Q3_RES", {})   # the 2026-10-28 one-target-per-question results merge last
+    monkeypatch.setattr(C, "Q17_RES", {})
+    monkeypatch.setattr(C, "Q47_RES", {"agy_aug": {"Q47": {"verdict": "PASS", "detail": ""}},
+                                       "claude_unaug": {"Q47": {"verdict": "FAIL",
+                                                                "detail": "part1 got 38.056 vs gold 57.982"}}})
+    assert C.orig_regrade("Gemini", "aug") == {"Q47": ("PASS", "")}
+    assert C.orig_regrade("Claude", "unaug")["Q47"][0] == "FAIL"
+    assert C.orig_regrade("ChatGPT", "aug") == {}
+
+
+def test_orig_regrade_merges_q17_augmented_only(monkeypatch):
+    monkeypatch.setattr(C, "Q3_RES", {})
+    monkeypatch.setattr(C, "Q47_RES", {"claude_aug": {"Q47": {"verdict": "PASS", "detail": ""}}})
+    monkeypatch.setattr(C, "Q17_RES", {"claude_aug": {"Q17": {"verdict": "PASS", "detail": ""}}})
+    assert C.orig_regrade("Claude", "aug") == {"Q47": ("PASS", ""), "Q17": ("PASS", "")}
+    assert "Q17" not in C.orig_regrade("Claude", "unaug")
+
+
+def test_q17_reference_values_per_wording():
+    # unaugmented wording states its own weights (ether O 1.3) -> frozen 33.29; augmented wording
+    # is the release tool's output (EO unit 0.33)
+    spec = importlib.util.spec_from_file_location("q17_regrade", ROOT / "benchmark/repair_2026-10-20/q17_regrade.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.unaugmented_reference() == 33.29
+    assert mod.reference_value() == 9.62
+
+
+def test_q16_q17_q47_one_reference_per_question():
+    # one target per question in both wordings (audit 2026-10-28), computed from the release toolkit
+    spec = importlib.util.spec_from_file_location(
+        "orig_q16_q17_q47_grade", ROOT / "benchmark/repair_2026-10-20/orig_q16_q17_q47_grade.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.references() == {"Q16": (2.8568, 4), "Q17": (9.62, 2), "Q47": (57.93, 2)}
+
+
+def test_orig_regrade_q16_q17_q47_results_take_precedence(monkeypatch):
+    monkeypatch.setattr(C, "Q47_RES", {"claude_unaug": {"Q47": {"verdict": "FAIL", "detail": "old"}}})
+    monkeypatch.setattr(C, "Q17_RES", {})
+    monkeypatch.setattr(C, "Q3_RES", {"claude_unaug": {"Q47": {"verdict": "PASS", "detail": ""},
+                                                        "Q16": {"verdict": "PASS", "detail": ""}}})
+    assert C.orig_regrade("Claude", "unaug") == {"Q47": ("PASS", ""), "Q16": ("PASS", "")}

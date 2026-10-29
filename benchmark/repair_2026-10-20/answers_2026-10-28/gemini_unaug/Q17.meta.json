@@ -1,0 +1,11 @@
+{
+ "qid": "Q17",
+ "provider": "gemini",
+ "condition": "unaug",
+ "start": "2026-10-28T21:08:41+0530",
+ "model_seen": "Gemini 3.1 Pro, thinking High",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-28T21:10:45+0530",
+ "question_variant": "~/repair11/paste_fix_unaug/Q17.md",
+ "end": "2026-10-28T21:15:04+0530"
+}

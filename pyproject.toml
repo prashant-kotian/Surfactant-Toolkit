@@ -29,7 +29,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=7"]
-mcp = ["mcp[cli]>=2.0"]
+mcp = ["mcp[cli]>=1.27,<3"]  # full test suite run on 1.27.2 and 2.3.0
 calc = [
     # computational workers (Phase 1): bootstrap_cmc, poisson_boltzmann,
     # dls_size_distribution need scipy's optimizers/solvers; mc_aggregation
@@ -46,3 +46,9 @@ surfactantkit-mcp = "surfactantkit.mcp_server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# test the working tree, not an installed copy; benchmark/llm_checks/test_score.py
+# is a standalone self-test script (python -X utf8 test_score.py), not a pytest module
+pythonpath = ["src"]
+testpaths = ["tests", "benchmark/literature_checks", "benchmark/reproducibility/sb_extension"]

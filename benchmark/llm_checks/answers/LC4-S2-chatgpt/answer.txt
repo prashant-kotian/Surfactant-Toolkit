@@ -1,0 +1,93 @@
+No. The printed thermodynamic results do not follow from the printed CMC,
+𝛼
+α, and eq. (5).
+
+Using the printed equation gives the
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) series
+
+−
+40.8801
+,
+
+−
+41.6034
+,
+
+−
+47.8049
+,
+
+−
+52.0477
+
+kJ mol
+−
+1
+.
+−40.8801,−41.6034,−47.8049,−52.0477 kJ mol
+−1
+.
+
+Thus at 293.15 K the result is
+−
+40.88
+−40.88 kJ/mol, not the printed
+−
+32.4
+−32.4 kJ/mol, and it is more negative than CPC alone at
+−
+36.1
+−36.1 kJ/mol.
+
+For the three successive temperature intervals, applying the Gibbs–Helmholtz relation as the finite-difference slope
+
+Δ
+𝐻
+≈
+Δ
+(
+𝐺
+/
+𝑇
+)
+Δ
+(
+1
+/
+𝑇
+)
+ΔH≈
+Δ(1/T)
+Δ(G/T)
+	​
+
+
+and assigning each interval value to its upper temperature gives
+−
+19.68
+−19.68,
++
+146.40
++146.40, and
++
+85.06
++85.06 kJ/mol at 303.15, 313.15, and 323.15 K, respectively. These are wholly inconsistent with the printed
+−
+5.2
+,
+−
+6.2
+,
+−
+7.1
+−5.2,−6.2,−7.1 kJ/mol values.
+
+JSON
+{"dG_293p15_kJ_mol": -40.8801, "dH_303p15_kJ_mol": -19.6775, "dH_313p15_kJ_mol": 146.3952, "dH_323p15_kJ_mol": 85.0582, "more_negative_than_CPC": true, "printed_result_follows": false}
+
+FINAL_JSON: {"dG_293p15_kJ_mol": -40.8801, "dH_303p15_kJ_mol": -19.6775, "dH_313p15_kJ_mol": 146.3952, "dH_323p15_kJ_mol": 85.0582, "more_negative_than_CPC": true, "printed_result_follows": false}

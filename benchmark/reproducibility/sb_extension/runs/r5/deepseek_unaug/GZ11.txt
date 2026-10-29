@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.46969,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 2787.04,
+  "cpp_electrostatic_area": 0.007533,
+  "morphology_electrostatic_area": "spherical micelle",
+  "comment": "The measured area predicts rodlike micelles, whereas the CMC-based electrostatic estimate predicts spherical micelles and an implausibly large area; the latter result assumes the dimensionally implied convention a_el = 82.0 times the Debye length because the area-screening equation was not explicitly supplied."
+}

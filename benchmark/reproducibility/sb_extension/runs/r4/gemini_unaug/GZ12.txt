@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "2-parameter Margules model (or first-order Redlich-Kister)",
+"notes": "The system exhibits strongly asymmetric non-ideal mixing, preventing the use of standard 1-parameter regular solution theory. Fitting the activity coefficients to a thermodynamically consistent 2-parameter Margules model accurately captures the synergistic interactions due to structural packing differences."
+}

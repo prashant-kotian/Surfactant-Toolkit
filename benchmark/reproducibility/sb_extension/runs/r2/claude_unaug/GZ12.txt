@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“f1_at_x1_0.90”: 1.013,
+“f2_at_x1_0.90”: 0.315,
+“interaction_model_or_approach”: “Two-parameter sub-regular (three-suffix Margules) solution model; single-parameter Rubingh regular-solution theory fails because beta extracted from f1 and f2 disagree and drift with composition. Fitted A12 = ln f1_inf = -3.57, A21 = ln f2_inf = -0.89; equivalently beta(x1) = -3.57 + 2.68*x1.”,
+“notes”: “Both Margules parameters are negative => net attractive/synergistic mixing despite both surfactants being cationic, likely from aromatic/cation-pi and hydrophobic contacts of component 1’s benzyl/aryl groups, reduced headgroup crowding via its ether spacer, and mixed Cl-/Br- counterions. Interaction is asymmetric and strongest when component 1 is dilute (beta ~ -3.6) and weakest when it dominates (beta ~ -0.9), mean beta ~ -2.2 at equimolar. Two-parameter fit reconstructs all five measured points to within ~0.3%, so the x1=0.90 extrapolation is well constrained. Analysis done from first principles with no external data lookup.”
+}

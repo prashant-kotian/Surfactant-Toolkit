@@ -1,0 +1,39 @@
+Independent computation from the printed data
+Judging whether the printed result holds up overall
+
+Judging whether the printed result holds up overall
+Independent computation from the printed data
+
+(a) ΔG at 298 K from the printed CMC and β.
+With X_cmc = (1.18×10⁻³)/55.5 = 2.126×10⁻⁵, ln X_cmc = −10.759, and (1+β)RT = 1.68 × 8.314462618×10⁻³ × 298 = 4.1626 kJ/mol:
+
+ΔG(298) = 4.1626 × (−10.759) = −44.8 kJ/mol (magnitude 44.8).
+
+This reproduces the printed value exactly, so the ΔG column is internally consistent with the CMC/β data and the stated formula.
+
+(b) ΔH at 298 K from the ΔG(T) series (Gibbs–Helmholtz).
+Fitting the signed ΔG(T) = {−43.9, −44.3, −44.8, −45.2, −44.6, −44.8, −44.6} to a quadratic (centered at 304 K) gives
+ΔG(T) = −44.883 − 0.02624·(T−304) + 0.0024426·(T−304)² kJ/mol (RMS residual ≈ 0.21 kJ/mol).
+
+At 298 K: dΔG/dT = −0.0556 kJ/(mol·K), so
+ΔH = ΔG − T(dΔG/dT) = −44.64 − 298(−0.0556) = ≈ −28 kJ/mol (fit noise alone ≈ ±5 kJ/mol).
+
+Note how method-dependent this is: a straight van’t Hoff line (ΔG/T vs 1/T, constant ΔH) over the same points gives ≈ −39 kJ/mol, and the paper’s own method gives −20.6. A spread of ~20 kJ/mol from identical data.
+
+(c) ΔCp from the same series.
+ΔCp = −T·d²ΔG/dT² = −2rT = −2(0.0024426)(298) = ≈ −1.5 kJ/(mol·K) (fit noise ≈ ±0.6; the curvature coefficient is only ~2.5σ from zero).
+
+Does the printed result follow?
+
+The three quantities again: ΔG(298) ≈ −44.8 kJ/mol, ΔH(298) ≈ −28 kJ/mol, ΔCp ≈ −1.5 kJ/(mol·K).
+
+Only (a) follows cleanly. The van’t Hoff ΔH and ΔCp do not robustly follow from the printed ΔG(T) data, for several reasons:
+
+The data cannot support a second derivative. ΔG varies by <1.3 kJ/mol across the entire 290–323 K range — smaller than the stated 3% (±1.3 kJ/mol) uncertainty on each point. Extracting a slope (ΔH) is already marginal; extracting curvature (ΔCp) from seven near-constant, 3%-noisy points is essentially fitting noise. My best-fit ΔCp = −1.5 ± 0.6, not −2.7, and is statistically consistent with values near the ITC figure (−0.45).
+The large vH/ITC gap is a differentiation artifact, not clearly “different aspects of micellization.” The ITC ΔH is measured directly; the van’t Hoff ΔH is a derivative of nearly-flat ΔG and swings from −20 to −39 kJ/mol depending only on the fit model. A gap produced by differentiating noisy, near-constant data does not warrant the physical interpretation offered.
+The printed Eq. (6) is internally inconsistent. With A=−872.37, B=12.0, C=6909.0, ΔG/T = A+B/T+C/T² evaluates to about −872 at 298 K, whereas the actual ΔG/T values are ≈ −0.15 — off by four orders of magnitude, so these coefficients are not a fit to the printed ΔG data. Worse, the ΔH they imply (ΔH = B + 2C/T ≈ +58 kJ/mol) matches neither the printed dH_vH column (−20.6) nor the data, and the ΔCp they imply (−2C/T² ≈ −0.16) matches neither −2.7 nor −0.45. The printed fit does not reproduce the printed enthalpy column.
+
+So the headline conclusion — a well-determined van’t Hoff ΔCp of −2.7 kJ/(mol·K) differing meaningfully from the ITC −0.45 — is not supported by the printed numbers.
+
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.8, "dH_298_kJ_mol": -28, "dCp_kJ_mol_K": -1.5, "printed_result_follows": "no"}

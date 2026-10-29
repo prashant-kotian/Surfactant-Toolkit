@@ -302,6 +302,8 @@ def hld_nonionic(salinity_pct: float, b: float, k: float, eacn: float, cc: float
     Other parameters: same meaning as hld_ionic; alpha default is
     -0.06 (real, sourced value for ethoxylated nonionics).
     """
+    if salinity_pct < 0:
+        raise ValueError("salinity_pct must not be negative")
     return b * salinity_pct - k * eacn - alpha * delta_T_K + cc
 
 
@@ -319,6 +321,8 @@ def cc_mixing_rule(cc_values: list[float], mole_fractions: list[float]) -> float
         raise ValueError("cc_values and mole_fractions must be the same length")
     if not cc_values:
         raise ValueError("cc_values must not be empty")
+    if any(not 0.0 <= chi <= 1.0 for chi in mole_fractions):
+        raise ValueError("each mole fraction must lie between 0 and 1")
     if abs(sum(mole_fractions) - 1.0) > 1e-6:
         raise ValueError(f"mole_fractions must sum to 1, got {sum(mole_fractions)}")
     return sum(cc * chi for cc, chi in zip(cc_values, mole_fractions))

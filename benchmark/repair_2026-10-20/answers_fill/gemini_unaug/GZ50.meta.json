@@ -2,10 +2,11 @@
  "qid": "GZ50",
  "provider": "gemini web",
  "condition": "unaug",
- "run": "2026-10-21",
- "mode": "manual (run by the author in the browser)",
- "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
- "code_execution_used": true,
- "web_search_attempted": false,
- "note": "answered in the same chat as GZ33; this file keeps only this question's own final answer"
+ "run": "2026-10-26",
+ "mode": "automated runner, new chat for this question only",
+ "settings": "Gemini 3.1 Pro, thinking High, MCP extension off (verified on the page before sending)",
+ "start": "2026-10-26T22:06:08+0530",
+ "sent": "2026-10-26T22:08:27+0530",
+ "end": "2026-10-26T22:12:04+0530",
+ "note": "replaces the 2026-10-21 answer given in the same chat as GZ33 (kept in superseded_shared_chat/)"
 }

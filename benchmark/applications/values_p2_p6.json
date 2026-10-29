@@ -1,0 +1,186 @@
+{
+  "toolkit": "Surfactant-Toolkit",
+  "toolkit_commit": "6ecc465",
+  "src_dirty": true,
+  "T_K": 298.15,
+  "P2": {
+    "C12E8": {
+      "cmc_M": 0.0001,
+      "source": "C12E8 CMC 1.0e-4 M (seven-gold set)",
+      "rows": [
+        {
+          "C_over_CMC": 0.05,
+          "C_M": 5e-06,
+          "monomer": 0.9109769979335546,
+          "dimer": 0.08298790907640316,
+          "trimer": 0.005670005720640341,
+          "n_ge_4": 0.00036508726940188524,
+          "mass_balance_rel_resid": 0.0
+        },
+        {
+          "C_over_CMC": 0.1,
+          "C_M": 1e-05,
+          "monomer": 0.8392021690038396,
+          "dimer": 0.1408520560921498,
+          "trimer": 0.017730502647177394,
+          "n_ge_4": 0.0022152722568332564,
+          "mass_balance_rel_resid": 0.0
+        },
+        {
+          "C_over_CMC": 0.12,
+          "C_M": 1.2e-05,
+          "monomer": 0.8141490951512521,
+          "dimer": 0.15908129979254465,
+          "trimer": 0.023312861330685348,
+          "n_ge_4": 0.0034567437255178532,
+          "mass_balance_rel_resid": 0.0
+        },
+        {
+          "C_over_CMC": 0.25,
+          "C_M": 2.5e-05,
+          "monomer": 0.6862915010152396,
+          "dimer": 0.23549801218287533,
+          "trimer": 0.06060760660015901,
+          "n_ge_4": 0.017602880201726068,
+          "mass_balance_rel_resid": 0.0
+        },
+        {
+          "C_over_CMC": 0.5,
+          "C_M": 5e-05,
+          "monomer": 0.5358983848622453,
+          "dimer": 0.28718707889796324,
+          "trimer": 0.11542731880104355,
+          "n_ge_4": 0.06148721743874768,
+          "mass_balance_rel_resid": 2.220446049250313e-16
+        },
+        {
+          "C_over_CMC": 1.0,
+          "C_M": 0.0001,
+          "monomer": 0.3819660112501051,
+          "dimer": 0.2917960675006308,
+          "trimer": 0.16718427000252353,
+          "n_ge_4": 0.15905365124674017,
+          "mass_balance_rel_resid": 3.3306690738754696e-16
+        },
+        {
+          "C_over_CMC": 2.0,
+          "C_M": 0.0002,
+          "monomer": 0.24999999999999997,
+          "dimer": 0.24999999999999994,
+          "trimer": 0.18749999999999994,
+          "n_ge_4": 0.31249999999999983,
+          "mass_balance_rel_resid": 3.3306690738754696e-16
+        }
+      ],
+      "max_abs_diff_vs_2026-10-05": 5.551115123125783e-17
+    },
+    "SDS": {
+      "cmc_M": 0.0083,
+      "source": "SDS cmc0 8.3 mM (Bales 1998); no counterion equilibrium",
+      "rows": [
+        {
+          "C_over_CMC": 0.05,
+          "C_M": 0.000415,
+          "monomer": 0.9109769979335546,
+          "dimer": 0.08298790907640312,
+          "trimer": 0.005670005720640337,
+          "n_ge_4": 0.00036508726940188486,
+          "mass_balance_rel_resid": 1.1102230246251565e-16
+        },
+        {
+          "C_over_CMC": 0.1,
+          "C_M": 0.00083,
+          "monomer": 0.8392021690038395,
+          "dimer": 0.14085205609214974,
+          "trimer": 0.017730502647177376,
+          "n_ge_4": 0.0022152722568332542,
+          "mass_balance_rel_resid": 1.1102230246251565e-16
+        },
+        {
+          "C_over_CMC": 0.12,
+          "C_M": 0.000996,
+          "monomer": 0.8141490951512521,
+          "dimer": 0.1590812997925446,
+          "trimer": 0.023312861330685348,
+          "n_ge_4": 0.003456743725517852,
+          "mass_balance_rel_resid": 1.1102230246251565e-16
+        },
+        {
+          "C_over_CMC": 0.25,
+          "C_M": 0.002075,
+          "monomer": 0.6862915010152395,
+          "dimer": 0.23549801218287525,
+          "trimer": 0.060607606600158986,
+          "n_ge_4": 0.017602880201726057,
+          "mass_balance_rel_resid": 2.220446049250313e-16
+        },
+        {
+          "C_over_CMC": 0.5,
+          "C_M": 0.00415,
+          "monomer": 0.5358983848622453,
+          "dimer": 0.2871870788979632,
+          "trimer": 0.11542731880104352,
+          "n_ge_4": 0.06148721743874763,
+          "mass_balance_rel_resid": 3.3306690738754696e-16
+        },
+        {
+          "C_over_CMC": 1.0,
+          "C_M": 0.0083,
+          "monomer": 0.38196601125010515,
+          "dimer": 0.2917960675006309,
+          "trimer": 0.16718427000252364,
+          "n_ge_4": 0.1590536512467403,
+          "mass_balance_rel_resid": 0.0
+        },
+        {
+          "C_over_CMC": 2.0,
+          "C_M": 0.0166,
+          "monomer": 0.25000000000000006,
+          "dimer": 0.2500000000000001,
+          "trimer": 0.1875000000000001,
+          "n_ge_4": 0.3125000000000004,
+          "mass_balance_rel_resid": 6.661338147750939e-16
+        }
+      ],
+      "max_abs_diff_vs_2026-10-05": 2.7755575615628914e-17
+    },
+    "MC": {
+      "seed": 0,
+      "free_monomer_fraction": 0.00515045434232087,
+      "converged": true,
+      "old_free_monomer_fraction": 0.00515045434232087
+    }
+  },
+  "P6": {
+    "DDGC": {
+      "T_K": 298.0,
+      "cmc_M": 0.0062,
+      "beta": 0.74,
+      "published_kJ": -28.3,
+      "published_unc": 0.9,
+      "correct_(1+beta)": -39.23076763585831,
+      "inverse_(2-beta)": -28.40848690872498,
+      "old_reference": -28.40848690872498
+    },
+    "SDS": {
+      "cmc_M": 0.0083,
+      "alpha": 0.272,
+      "alpha_unc": 0.017,
+      "rows": {
+        "pseudo-phase, mole fraction, (1 + beta) [correct]": -37.730419737536025,
+        "pseudo-phase, mole fraction, (2 - beta) = (1 + alpha) [inverse]": -27.773781195686247,
+        "mole fraction, factor 1 (counterions ignored)": -21.834733644407425,
+        "mole fraction, factor 2 (full binding)": -43.66946728881485,
+        "molar standard state, (1 + beta)": -20.52504925493573
+      },
+      "unc_from_alpha_kJ": 0.37119047195492627,
+      "spread_kJ": 23.14441803387912,
+      "old_reference_rows": {
+        "mole_frac_f=1.272": -27.773781195686247,
+        "mole_frac_f=1.0": -21.834733644407425,
+        "mole_frac_f=2.0": -43.66946728881485,
+        "molar_base_f=1.272": -15.108716812661022
+      }
+    }
+  }
+}

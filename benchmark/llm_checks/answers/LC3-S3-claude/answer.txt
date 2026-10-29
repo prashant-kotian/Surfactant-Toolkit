@@ -1,0 +1,45 @@
+I'll work through this carefully.
+Checking the tool's output against the hand analysis
+
+Checking the tool's output against the hand analysis
+
+I’ll work through this carefully. This is a Rubingh self-consistency check: given three CMCs and α₁, I need to find whether a single pair (x₁, β) satisfies both component equations simultaneously. Let me verify my hand calculation with the dedicated tool.
+
+Loaded
+surfactant-computation
+Loaded surfactant-computation
+
+The Rubingh equations only involve CMC ratios (C_mix/C₁ and C_mix/C₂), so they’re scale-invariant — I can pass the mg/L values directly and the result is identical to using any consistent unit.
+
+Used surfactant-computation
+
+Used surfactant-computation
+Analysis
+
+Setup. The Rubingh framework requires one pair (x₁, β) to satisfy both component equations at once:
+
+PE65 (comp. 1): β = ln(α₁·C_mix / (x₁·C₁)) / (1−x₁)²
+Oleate (comp. 2): β = ln(α₂·C_mix / (x₂·C₂)) / x₁²
+
+with α₁ = 0.4, C₁ = 33, C₂ = 330, C_mix = 116 (all mg/L). These equations depend only on CMC ratios, so the mass-based values can be used directly.
+
+The two equations never agree. Writing β₁(x₁) from the PE65 equation and β₂(x₁) from the oleate equation:
+
+β₁(x₁) is positive for all x₁ ∈ (0,1), because the argument α₁·C_mix/C₁ = 46.4/33 = 1.41 > 1.
+β₂(x₁) only becomes positive when 1−x₁ < 0.211, i.e. x₁ > 0.789 (argument α₂·C_mix/C₂ = 69.6/330 = 0.211).
+
+In the only region where both are positive (x₁ > 0.789), β₁ runs from ~13 upward while β₂ stays near 0–3, and β₁ > β₂ everywhere up to x₁ → 1. The curves never cross, so no self-consistent root exists. The solver confirms this: status: no_solution for exactly these inputs.
+
+What the printed numbers actually are. At the printed x₁ = 0.84 the two equations give wildly different β:
+
+Equation used	β at x₁ = 0.84
+PE65 (comp. 1) only	≈ 20.1
+Oleate (comp. 2) only	≈ 0.39
+
+The printed β = 21.33 corresponds to the component-1 equation alone (it is reproduced by x₁ ≈ 0.845 in that single equation); it is ~50× larger than what the oleate equation requires at the same x₁. So the printed pair solves one branch, not the coupled system.
+
+On the conclusion. The direction of the effect is qualitatively defensible: the ideal (Clint) CMC is 71.7 mg/L, well below the measured 116 mg/L — a positive deviation consistent with “antagonism.” But the specific quantitative Rubingh output (x₁ = 0.84, β = 21.33) cannot be derived from these three CMCs and α₁ = 0.4, because the regular-solution system has no consistent solution for them.
+
+Verdict: the printed result does not follow from the printed data.
+
+FINAL_JSON: {“x1”: “no_solution”, “beta”: “no_solution”, “printed_result_follows”: “no”}

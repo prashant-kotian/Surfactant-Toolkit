@@ -1,0 +1,113 @@
+{
+ "paper": "Sedlarikova et al., ACS Omega 9 (2024) 23209",
+ "doi": "10.1021/acsomega.3c08917",
+ "mixtures": {
+  "P184/P188": {
+   "cmc_mix_mM": 0.04,
+   "pure_cmc_mM": [
+    0.55,
+    0.17
+   ],
+   "below_both_pure": true,
+   "printed": {
+    "beta": 3.68,
+    "xM": 0.4
+   },
+   "x_0.5": {
+    "alpha1": 0.5,
+    "ideal_cmc_mM": 0.26,
+    "x1": 0.441,
+    "beta": -8.0,
+    "numpy_beta": -8.0,
+    "beta_95": [
+     -10.89,
+     -5.29
+    ]
+   },
+   "one_to_one_by_mass": {
+    "alpha1": 0.743,
+    "ideal_cmc_mM": 0.35,
+    "x1": 0.495,
+    "beta": -8.68,
+    "numpy_beta": -8.68,
+    "beta_95": [
+     -11.5,
+     -6.3
+    ]
+   }
+  },
+  "P184/P407": {
+   "cmc_mix_mM": 0.06,
+   "pure_cmc_mM": [
+    0.55,
+    0.1
+   ],
+   "below_both_pure": true,
+   "printed": {
+    "beta": 3.23,
+    "xM": 0.39
+   },
+   "x_0.5": {
+    "alpha1": 0.5,
+    "ideal_cmc_mM": 0.169,
+    "x1": 0.38,
+    "beta": -5.04,
+    "numpy_beta": -5.04,
+    "beta_95": [
+     -6.72,
+     -3.68
+    ]
+   },
+   "one_to_one_by_mass": {
+    "alpha1": 0.813,
+    "ideal_cmc_mM": 0.299,
+    "x1": 0.486,
+    "beta": -6.44,
+    "numpy_beta": -6.44,
+    "beta_95": [
+     -8.02,
+     -5.21
+    ]
+   }
+  },
+  "P188/P407": {
+   "cmc_mix_mM": 0.07,
+   "pure_cmc_mM": [
+    0.17,
+    0.1
+   ],
+   "below_both_pure": true,
+   "printed": {
+    "beta": 1.72,
+    "xM": 0.35
+   },
+   "x_0.5": {
+    "alpha1": 0.5,
+    "ideal_cmc_mM": 0.126,
+    "x1": 0.44,
+    "beta": -2.42,
+    "numpy_beta": -2.42,
+    "beta_95": [
+     -4.05,
+     -0.54
+    ]
+   },
+   "one_to_one_by_mass": {
+    "alpha1": 0.6,
+    "ideal_cmc_mM": 0.133,
+    "x1": 0.486,
+    "beta": -2.57,
+    "numpy_beta": -2.57,
+    "beta_95": [
+     -4.19,
+     -0.54
+    ]
+   }
+  }
+ },
+ "findings": {
+  "all_mixed_cmc_below_both_pure": true,
+  "recomputed_beta_negative_with_95pct_below_zero": true
+ },
+ "toolkit": "Surfactant-Toolkit"
+}

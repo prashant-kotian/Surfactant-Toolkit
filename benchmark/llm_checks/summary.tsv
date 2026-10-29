@@ -1,0 +1,31 @@
+case	model	stage	keys_correct/keys_total	printed_result_follows	parsed
+LC1	chatgpt	S1	2/3	n/a	yes
+LC1	claude	S1	3/3	n/a	yes
+LC1	chatgpt	S2	2/4	WRONG (no vs cannot_determine)	yes
+LC1	claude	S2	3/4	WRONG (no vs cannot_determine)	yes
+LC1	chatgpt	S3	2/4	WRONG (no vs cannot_determine)	yes
+LC1	claude	S3	3/4	WRONG (no vs cannot_determine)	yes
+LC2	chatgpt	S1	6/6	n/a	yes
+LC2	claude	S1	6/6	n/a	yes
+LC2	chatgpt	S2	7/7	OK	yes
+LC2	claude	S2	7/7	OK	yes
+LC2	chatgpt	S3	7/7	OK	yes
+LC2	claude	S3	7/7	OK	yes
+LC3	chatgpt	S1	2/2	n/a	yes
+LC3	claude	S1	2/2	n/a	yes
+LC3	chatgpt	S2	3/3	OK	yes
+LC3	claude	S2	3/3	OK	yes
+LC3	chatgpt	S3	3/3	OK	yes
+LC3	claude	S3	3/3	OK	yes
+LC4	chatgpt	S1	2/4	n/a	yes
+LC4	claude	S1	4/4	n/a	yes
+LC4	chatgpt	S2	4/6	OK	yes
+LC4	claude	S2	4/6	OK	yes
+LC4	chatgpt	S3	4/6	OK	yes
+LC4	claude	S3	6/6	OK	yes
+LC5	chatgpt	S1	2/2	n/a	yes
+LC5	claude	S1	2/2	n/a	yes
+LC5	chatgpt	S2	3/3	OK	yes
+LC5	claude	S2	3/3	OK	yes
+LC5	chatgpt	S3	3/3	OK	yes
+LC5	claude	S3	3/3	OK	yes

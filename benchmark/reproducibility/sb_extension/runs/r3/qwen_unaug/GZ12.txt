@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.012,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted to five experimental activity-coefficient data points; A12 = -3.56, A21 = -0.89",
+"notes": "Both surfactants are cationic; negative Margules parameters indicate attractive (synergistic) mixing in the micelle. The asymmetry (|A12|>>|A21|) reflects the bulky branched/aromatic architecture of component 1 versus the linear C12 chain of DTAB (component 2). f2 passes through a minimum near x1≈0.78 and rises slightly at higher x1 toward its infinite-dilution value exp(A21)≈0.41."
+}

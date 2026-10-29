@@ -42,7 +42,7 @@ import math
 # example has no computable Davies HLB for exactly this reason -- its
 # own Table 1 leaves that entry blank).
 DAVIES_HYDROPHILIC_GROUPS = {
-    "SO4Na": 38.6,       # -SO4- Na+
+    "SO4Na": 38.7,       # -SO4- Na+ (Davies 1957 table)
     "COOK": 21.1,        # -COO- K+
     "COONa": 19.1,       # -COO- Na+
     "N_tertiary_amine": 9.4,

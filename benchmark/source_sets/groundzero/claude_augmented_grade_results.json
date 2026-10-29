@@ -99,7 +99,7 @@
     "ok": true,
     "kind": "string",
     "gold": "dimeric/gemini (two headgroup units in one molecule)",
-    "model": "dimeric (gemini) cationic surfactant \u2014 bis-quaternary ammonium, 16-6-16 type (two C16 tails, two dimethyl quaternary ammonium heads, C6 spacer, 2 Br- counterions)"
+    "model": "dimeric (gemini) cationic surfactant — bis-quaternary ammonium, 16-6-16 type (two C16 tails, two dimethyl quaternary ammonium heads, C6 spacer, 2 Br- counterions)"
    },
    "hlb": {
     "ok": true,
@@ -134,7 +134,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
-    "model": "High for the anionic (carboxylate) class assignment \u2014 a single free carboxylic acid is the only ionizable group, with no sulfate/sulfonate/phosphate/quaternary/amine present. Overall moderate because the realized charge is genuinely pH-dependent (pKa ~4.5): anionic above ~pH 6, protonated/nonionic below the pKa, and no solution pH was given."
+    "model": "High for the anionic (carboxylate) class assignment — a single free carboxylic acid is the only ionizable group, with no sulfate/sulfonate/phosphate/quaternary/amine present. Overall moderate because the realized charge is genuinely pH-dependent (pKa ~4.5): anionic above ~pH 6, protonated/nonionic below the pKa, and no solution pH was given."
    },
    "charge_type": {
     "ok": true,
@@ -460,31 +460,19 @@
   }
  },
  "GZ-17": {
-  "verdict": "FAIL",
+  "verdict": "PASS",
   "fields": {
-   "gamma_max_mol_per_m2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 2.3656e-06,
-    "model": 2.3655701331208045e-06
-   },
-   "a_min_nm2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.702,
-    "model": 0.7019614611819444
-   },
    "charge_type": {
     "ok": true,
     "kind": "string",
     "gold": "cationic",
     "model": "cationic"
    },
-   "delta_g_mic_kJ_per_mol": {
+   "cmc_mM": {
     "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
+    "kind": "numeric",
+    "gold": 16.37,
+    "model": 16.37
    },
    "delta_s_mic_J_per_mol_K": {
     "ok": true,
@@ -492,11 +480,23 @@
     "gold": null,
     "model": null
    },
-   "cmc_mM": {
-    "ok": false,
+   "gamma_max_mol_per_m2": {
+    "ok": true,
     "kind": "numeric",
-    "gold": 8.185,
-    "model": 16.37
+    "gold": 2.3656e-06,
+    "model": 2.3655701331208045e-06
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.702,
+    "model": 0.7019614611819444
    }
   }
  },
@@ -639,7 +639,7 @@
     "ok": true,
     "kind": "string",
     "gold": "dimeric/gemini (two quaternary-ammonium headgroup units in one molecule)",
-    "model": "dimeric/gemini-type cationic surfactant \u2014 a bis(dodecyldimethylammonium) quaternary-ammonium gemini (12-4-12,2Br\u207b) with two C12 tails, two permanently charged quat heads, and a C4 spacer bridging the nitrogens"
+    "model": "dimeric/gemini-type cationic surfactant — a bis(dodecyldimethylammonium) quaternary-ammonium gemini (12-4-12,2Br⁻) with two C12 tails, two permanently charged quat heads, and a C4 spacer bridging the nitrogens"
    },
    "valid_hlb_method": {
     "ok": true,
@@ -966,7 +966,7 @@
     "ok": true,
     "kind": "string",
     "gold": "bolaform, not a true gemini",
-    "model": "bolaform (bolaamphiphilic) dicationic surfactant \u2014 not a true gemini"
+    "model": "bolaform (bolaamphiphilic) dicationic surfactant — not a true gemini"
    },
    "charge_type": {
     "ok": true,
@@ -1036,7 +1036,7 @@
     "ok": true,
     "kind": "string",
     "gold": "above roughly 2-3 mM (near/above the real CMC)",
-    "model": "At and above the CMC (from the knee/plateau onset upward). Reported qualitatively only \u2014 no image or data was actually attached to this conversation, so a specific numeric concentration cannot be read; re-supply the plot or the c-vs-gamma table for the exact value."
+    "model": "At and above the CMC (from the knee/plateau onset upward). Reported qualitatively only — no image or data was actually attached to this conversation, so a specific numeric concentration cannot be read; re-supply the plot or the c-vs-gamma table for the exact value."
    }
   }
  },
@@ -1085,7 +1085,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "strong agreement -- these two values differ by only ~3.5% relative, well within normal real inter-study variation for this kind of measurement",
-    "model": "Excellent numerical agreement: 0.28 vs 0.29 differ by 0.01 (~3.5% relative), at the level of the last reported digit and well within the typical \u00b10.03-0.05 method-dependent scatter of counterion dissociation degree. The two values are effectively indistinguishable. However, the agreement is shallow rather than strongly corroborative: an independent reference lookup shows this exact pair underlies a DTAB entry rated only 'moderate' confidence, with no stated uncertainties and the primary sources never verified, so mutual consistency does not establish accuracy."
+    "model": "Excellent numerical agreement: 0.28 vs 0.29 differ by 0.01 (~3.5% relative), at the level of the last reported digit and well within the typical ±0.03-0.05 method-dependent scatter of counterion dissociation degree. The two values are effectively indistinguishable. However, the agreement is shallow rather than strongly corroborative: an independent reference lookup shows this exact pair underlies a DTAB entry rated only 'moderate' confidence, with no stated uncertainties and the primary sources never verified, so mutual consistency does not establish accuracy."
    }
   }
  },
@@ -1102,7 +1102,7 @@
     "ok": true,
     "kind": "string",
     "gold": "strong (within ~2%)",
-    "model": "Strong \u2014 the two estimates differ by about 2% (54.5 vs 55.5), well within the combined uncertainty of both methods."
+    "model": "Strong — the two estimates differ by about 2% (54.5 vs 55.5), well within the combined uncertainty of both methods."
    },
    "geometric_n_agg": {
     "ok": true,
@@ -1227,7 +1227,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
-    "model": "\u0394G_mic decreases monotonically (becomes more negative) from -35.18 kJ/mol at 283.15 K to -38.87 kJ/mol at 318.15 K; micellization grows steadily more favorable with temperature, with no turning point."
+    "model": "ΔG_mic decreases monotonically (becomes more negative) from -35.18 kJ/mol at 283.15 K to -38.87 kJ/mol at 318.15 K; micellization grows steadily more favorable with temperature, with no turning point."
    },
    "delta_g_mic_at_318.15K": {
     "ok": true,

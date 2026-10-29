@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“micelle_mw”: 399.99,
+“aggregation_number”: 0.640,
+“physically_valid”: false,
+“why”: “Nagg = Mw/M0 = 400/625 = 0.64, which is less than one. A micelle cannot contain fewer than one monomer, so an aggregation number below unity is physically impossible; the fitted Mw is even smaller than the monomer mass, confirming the result is non-physical.”
+}

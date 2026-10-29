@@ -1,0 +1,8 @@
+{
+ "qid": "H23",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-23T09:27:47+0530",
+ "model_seen": "NOT INCOGNITO",
+ "failed": "model guard: NOT INCOGNITO"
+}

@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The dn/dc of AOT in the same solvent, at the same temperature and at 632.8 nm, measured by differential refractometry using dialyzed AOT solutions (plot refractive index vs concentration and take the slope). Also confirm the CMC/micellar-concentration correction and absolute SLS calibration; the SDS dn/dc value cannot be used for AOT."
+}

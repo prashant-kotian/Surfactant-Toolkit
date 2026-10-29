@@ -1,0 +1,10 @@
+FINAL_JSON: {
+ "tail_volume_A3": 350.2,
+ "critical_length_A": 16.68,
+ "cpp_measured_area": 0.46969,
+ "morphology_measured_area": "cylindrical/rodlike micelle",
+ "electrostatic_headgroup_area_A2": 52.79,
+ "cpp_electrostatic_area": 0.39772,
+ "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+ "comment": "Both approaches predict cylindrical/rodlike micelles. The electrostatic estimate gives a larger effective headgroup area and hence a smaller CPP; the measured-area result is closer to the vesicle/bilayer boundary."
+ }

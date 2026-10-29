@@ -1,0 +1,16 @@
+{
+ "qid": "GZ17",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-24T01:37:39+0530",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "tools_seen": {
+  "surfactant-computation": false,
+  "Claude in Chrome": false,
+  "Research": false,
+  "Memory": false
+ },
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-24T01:39:50+0530",
+ "end": "2026-10-24T01:45:41+0530"
+}

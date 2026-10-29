@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2787,
+"cpp_electrostatic_area": 0.0075,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The bare geometric area yields a CPP of ~0.47 (incorrectly predicting rods). However, factoring in the ~34 Angstrom Debye length yields an enormous effective electrostatic area (~2787 A^2), driving the CPP near zero and correctly predicting the spherical micelles that SDS actually forms in pure water."
+}

@@ -238,3 +238,7 @@ def test_job_status_guards(tmp_path):
         dpd_micelle_cmc_job_status("")
     with pytest.raises(ValueError, match="unknown job_id"):
         dpd_micelle_cmc_job_status("deadbeef0000", jobs_dir=str(tmp_path))
+    # path-like ids are refused before any file is touched
+    for bad in ("../../secret", "..\\x", "DEADBEEF0000", "deadbeef00001"):
+        with pytest.raises(ValueError, match="12-character hex"):
+            dpd_micelle_cmc_job_status(bad, jobs_dir=str(tmp_path))

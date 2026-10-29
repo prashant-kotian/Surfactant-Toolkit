@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.317,
+"interaction_model_or_approach": "Two-parameter Redlich-Kister/Margules excess Gibbs model, gE/RT = x1 x2 [A + B(x1-x2)], fitted to all five activity-coefficient points (A≈-2.23, B≈1.35); thermodynamically consistent via Gibbs-Duhem.",
+"notes": "Negative A indicates net attractive/synergistic interaction; positive B captures asymmetry. The fit reproduces the measured f1 and f2 within rounding. At x1=0.90, f1 is near ideal (slightly >1), while f2 remains strongly reduced (~0.32); f2 passes through a minimum near x1≈0.77 and tends to ~0.42 at infinite dilution of component 2."
+}

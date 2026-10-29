@@ -565,7 +565,7 @@ groundzero|Claude|aug,GZ-13,1
 groundzero|Claude|aug,GZ-14,1
 groundzero|Claude|aug,GZ-15,1
 groundzero|Claude|aug,GZ-16,1
-groundzero|Claude|aug,GZ-17,0
+groundzero|Claude|aug,GZ-17,1
 groundzero|Claude|aug,GZ-18,1
 groundzero|Claude|aug,GZ-19,1
 groundzero|Claude|aug,GZ-20,0
@@ -615,7 +615,7 @@ groundzero|Claude|unaug,GZ-13,1
 groundzero|Claude|unaug,GZ-14,1
 groundzero|Claude|unaug,GZ-15,0
 groundzero|Claude|unaug,GZ-16,1
-groundzero|Claude|unaug,GZ-17,0
+groundzero|Claude|unaug,GZ-17,1
 groundzero|Claude|unaug,GZ-18,1
 groundzero|Claude|unaug,GZ-19,1
 groundzero|Claude|unaug,GZ-20,0
@@ -765,7 +765,7 @@ groundzero|Gemini|aug,GZ-13,1
 groundzero|Gemini|aug,GZ-14,1
 groundzero|Gemini|aug,GZ-15,1
 groundzero|Gemini|aug,GZ-16,1
-groundzero|Gemini|aug,GZ-17,1
+groundzero|Gemini|aug,GZ-17,0
 groundzero|Gemini|aug,GZ-18,1
 groundzero|Gemini|aug,GZ-19,1
 groundzero|Gemini|aug,GZ-20,1
@@ -815,7 +815,7 @@ groundzero|Gemini|unaug,GZ-13,1
 groundzero|Gemini|unaug,GZ-14,0
 groundzero|Gemini|unaug,GZ-15,0
 groundzero|Gemini|unaug,GZ-16,1
-groundzero|Gemini|unaug,GZ-17,0
+groundzero|Gemini|unaug,GZ-17,1
 groundzero|Gemini|unaug,GZ-18,0
 groundzero|Gemini|unaug,GZ-19,1
 groundzero|Gemini|unaug,GZ-20,0

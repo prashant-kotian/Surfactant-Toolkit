@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "2-parameter Margules model",
+"notes": "The standard 1-parameter Regular Solution Theory (Rubingh model) fails because ln(fi)/xj^2 is not constant. Applying an asymmetric 2-parameter Margules model provides a near-perfect fit (A12 = -3.566, A21 = -0.889), capturing the system's structural asymmetry and correctly predicting f1 > 1 at high x1."
+}

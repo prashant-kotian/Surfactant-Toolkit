@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc for AOT itself under the same solvent, temperature, and 632.8 nm optical conditions as the SLS measurement. Obtain it experimentally by differential refractometry from the slope of solution refractive-index increment versus AOT mass concentration; then use it to calculate K, Mw, and Nagg = Mw/332.43."
+}

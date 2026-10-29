@@ -1,0 +1,16 @@
+PAPER DATA (Banjare, Barman, Behera, Khan, Banjare, Pandey, Ghosh, Heliyon 10 (2024) e35598, doi:10.1016/j.heliyon.2024.e35598; Table 3 and eqs (5)-(8), as printed). [C10mim]Cl in pure water at 298.15 K.
+Printed Table 3, water row: Gamma_max = 22.96 umol/m2
+Printed relations: eq (5): A_min = 1/(N_A Gamma_max) with N_A = 6.02214076e23 /mol;
+eq (6): V = 27.4 + 26.9 n_C (A3); eq (7): l = 1.5 + 1.265 n_C (A); eq (8): CPP = V/(A_min l) with
+A_min in A2; n_C = 10 for the C10 chain (text).
+REPORT: (a) A_min implied by the printed Gamma_max (nm2); (b) CPP from the paper's eqs (6)-(8)
+with that A_min (dimensionless).
+
+PAPER RESULT AND CONCLUSION (as printed): across the seven systems Table 3 prints Gamma_max
+of 12-25 umol/m2, A_min of 0.065-0.134 nm2 and CPP of 255-328,; the water row prints A_min = 0.0723 nm2 and CPP = 269.809, from which the paper infers an
+aggregate "shape change from globule to spherical" on moving between solvents.
+QUESTION: does the printed result follow from the printed data? Report the two quantities again,
+and answer printed_result_follows.
+
+FINAL_JSON: {"A_min_nm2": <nm2>, "CPP": <->, "printed_result_follows": <->}
+The SurfactantKit tools are available to you.

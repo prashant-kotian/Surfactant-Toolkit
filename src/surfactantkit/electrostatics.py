@@ -29,6 +29,8 @@ def ionic_strength(concentrations_M: dict[float, float]) -> float:
     """
     if not concentrations_M:
         raise ValueError("concentrations_M must not be empty")
+    if any(c < 0 for c in concentrations_M.values()):
+        raise ValueError("ion concentrations must not be negative")
     return 0.5 * sum(c * (z ** 2) for z, c in concentrations_M.items())
 
 
@@ -67,23 +69,21 @@ def grahame_equation_surface_potential(surface_charge_density_C_per_m2: float, i
 
         psi = (2*k_B*T)/(z*e) * asinh[ sigma / sqrt(8*eps_r*eps0*k_B*T*n0) ]
 
-    n0 is the bulk number density of the electrolyte, computed from
-    ionic_strength_M the same way debye_length does (mol/L -> mol/m^3 ->
-    number density via N_A) -- reuses this module's own existing
-    constants for consistency. Cross-checked against a real, fetched
+    n0 is the bulk number density of the z:z salt. The argument is the
+    ionic strength, and for a symmetric z:z electrolyte I = z^2 * c_salt,
+    so n0 = 1000 * N_A * I / z^2 (mol/L -> mol/m^3 -> number density).
+    For every z the low-potential limit then reduces to
+    sigma = eps_r*eps0*psi/lambda_D with lambda_D = debye_length(I).
+    Cross-checked against a real, fetched
     secondary source (Mchedlov-Petrossyan, Electron. Proc. Mater. 50(2)
     (2014) 71-80, their Eq. (9), the integrated form of this same
     charge-potential relation for the ionic-surfactant adsorption case)
     -- same functional (sinh/asinh) form confirmed independently, not
     guessed.
 
-    Real, sourced use: chains directly with counterion_binding_degree
-    (thermodynamics.py) and a surfactant's own surface excess (Gamma,
-    from gibbs_gamma_max) to build a genuine Gouy-Chapman-corrected
-    Gibbs-isotherm prefactor -- see
-    adsorption.gibbs_gamma_max_gouy_chapman, which chains this function
-    in sequence with existing tools rather than a standalone monolithic
-    Gouy-Chapman solver.
+    Use: a surfactant's surface excess Gamma (from gibbs_gamma_max)
+    gives a charge density sigma = z*F*Gamma, from which this function
+    estimates the potential of the adsorbed ionic monolayer.
     """
     if ionic_strength_M <= 0:
         raise ValueError("ionic_strength_M must be positive")
@@ -91,7 +91,7 @@ def grahame_equation_surface_potential(surface_charge_density_C_per_m2: float, i
         raise ValueError("z must be a positive integer (charge number magnitude)")
     if temperature_K <= 0:
         raise ValueError("temperature_K must be positive")
-    n0_per_m3 = ionic_strength_M * 1000.0 * N_A  # mol/L -> mol/m^3 -> ions/m^3
+    n0_per_m3 = ionic_strength_M * 1000.0 * N_A / z ** 2  # I = z^2 c for a z:z salt; mol/L -> ions/m^3
     denom = math.sqrt(8.0 * rel_permittivity * EPS0 * K_B * temperature_K * n0_per_m3)
     psi_V = (2.0 * K_B * temperature_K) / (z * E_CHARGE) * math.asinh(surface_charge_density_C_per_m2 / denom)
     return psi_V * 1000.0  # V -> mV

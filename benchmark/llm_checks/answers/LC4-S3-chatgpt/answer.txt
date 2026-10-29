@@ -1,0 +1,166 @@
+Using the printed equation exactly,
+
+Δ
+𝐺
+=
+(
+2
+−
+𝛼
+)
+𝑅
+𝑇
+ln
+⁡
+ ⁣
+(
+C
+M
+C
+(
+M
+)
+55.5
+)
+,
+ΔG=(2−α)RTln(
+55.5
+CMC(M)
+	​
+
+),
+
+the recomputed
+Δ
+𝐺
+ΔG series is approximately
+−
+40.880
+,
+
+−
+41.603
+,
+
+−
+47.805
+,
+
+−
+52.048
+−40.880,−41.603,−47.805,−52.048 kJ/mol. Thus the paper’s first listed value,
+−
+32.4
+−32.4 kJ/mol at 293.15 K, does not follow from its printed CMC and
+𝛼
+α.
+
+For enthalpy I used the Gibbs–Helmholtz relation on adjacent points,
+
+Δ
+𝐻
+≈
+Δ
+𝐺
+𝑖
+/
+𝑇
+𝑖
+−
+Δ
+𝐺
+𝑖
+−
+1
+/
+𝑇
+𝑖
+−
+1
+1
+/
+𝑇
+𝑖
+−
+1
+/
+𝑇
+𝑖
+−
+1
+,
+ΔH≈
+1/T
+i
+	​
+
+−1/T
+i−1
+	​
+
+ΔG
+i
+	​
+
+/T
+i
+	​
+
+−ΔG
+i−1
+	​
+
+/T
+i−1
+	​
+
+	​
+
+,
+
+assigning each interval value to its upper temperature. This gives
+−
+19.68
+−19.68,
++
+146.40
++146.40, and
++
+85.06
++85.06 kJ/mol at 303.15, 313.15, and 323.15 K, respectively. These do not support the paper’s uniformly exothermic
+−
+5
+−5 to
+−
+7.1
+−7.1 kJ/mol result.
+
+At 293.15 K,
+−
+40.880
+<
+−
+36.1
+−40.880<−36.1 kJ/mol, so the recomputed mixed-micelle value is more negative than CPC alone. Notably, the paper’s own printed
+−
+32.4
+−32.4 would imply the opposite at that temperature.
+
+JSON
+{
+  "dG_293p15_kJ_mol": -40.8801,
+  "dH_303p15_kJ_mol": -19.6775,
+  "dH_313p15_kJ_mol": 146.3952,
+  "dH_323p15_kJ_mol": 85.0582,
+  "more_negative_than_CPC": true,
+  "printed_result_follows": false
+}
+
+FINAL_JSON: {
+  "dG_293p15_kJ_mol": -40.8801,
+  "dH_303p15_kJ_mol": -19.6775,
+  "dH_313p15_kJ_mol": 146.3952,
+  "dH_323p15_kJ_mol": 85.0582,
+  "more_negative_than_CPC": true,
+  "printed_result_follows": false
+}

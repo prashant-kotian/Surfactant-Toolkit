@@ -1,0 +1,25 @@
+Working through the paper's equations with the printed Gamma_max value.
+Working out the minimum area per molecule from its formula
+
+Working out the minimum area per molecule from its formula
+
+Working through the paper’s equations with the printed Gamma_max value.
+
+(a) A_min from eq (5)
+
+A_min = 1/(N_A · Γ_max), with Γ_max = 22.96 µmol/m² = 22.96×10⁻⁶ mol/m²
+
+N_A · Γ_max = (6.02214076×10²³)(22.96×10⁻⁶) = 1.38268×10¹⁹ m⁻²
+
+A_min = 1/1.38268×10¹⁹ = 7.2323×10⁻²⁰ m² = 7.232 Å² = 0.07232 nm²
+
+(b) CPP from eqs (6)–(8), with n_C = 10
+
+eq (6): V = 27.4 + 26.9(10) = 296.4 Å³
+eq (7): l = 1.5 + 1.265(10) = 14.15 Å
+eq (8): CPP = V/(A_min · l) = 296.4 / (7.2323 × 14.15) = 296.4 / 102.34 = 2.896
+
+The CPP comes out well above 1 because the printed Γ_max (22.96 µmol/m²) is about an order of magnitude larger than the typical few-µmol/m² values seen for such surfactants, which forces an unusually small A_min. Computed strictly as printed, though, the numbers are as above.
+
+
+FINAL_JSON: {"A_min_nm2": 0.07232, "CPP": 2.896}

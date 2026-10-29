@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "AOT (sodium bis(2-ethylhexyl) sulfosuccinate) is the archetypal reverse-micelle and water-in-oil microemulsion surfactant, with a very low HLB and strong intrinsic preference for negative (oil-continuous) curvature. In the Salager HLD framework this requires a negative Cc. The review value of -0.92 has the correct sign and a physically reasonable magnitude for a double-tailed anionic with a small sulfonate headgroup, matching compiled Cc tables. The primary-paper range of +2.4 to +3.5 would imply AOT is highly hydrophilic and favors normal (o/w) curvature, directly contradicting its decades of well-documented w/o behavior; it most likely stems from a sign error, convention mix-up, or fitting artefact."
+}

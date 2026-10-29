@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.469691,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 67.27,
+"cpp_electrostatic_area": 0.312095,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The two approaches give different morphology predictions because the electrostatic model estimates a much larger effective headgroup area (~67.3 A^2) than the independently measured 44.70 A^2. Since CPP is inversely proportional to headgroup area, the measured value gives P~0.470 (rodlike), while the electrostatic estimate gives P~0.312 (spherical), crossing the P=1/3 boundary."
+}

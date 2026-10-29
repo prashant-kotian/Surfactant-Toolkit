@@ -463,6 +463,18 @@
  "GZ-17": {
   "verdict": "FAIL",
   "fields": {
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic"
+   },
+   "cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.37,
+    "model": 16.37
+   },
    "delta_s_mic_J_per_mol_K": {
     "ok": true,
     "kind": "null-check",
@@ -474,18 +486,6 @@
     "kind": "numeric",
     "gold": 2.3656e-06,
     "model": 2.47e-06
-   },
-   "cmc_mM": {
-    "ok": false,
-    "kind": "numeric",
-    "gold": 8.185,
-    "model": 16.37
-   },
-   "charge_type": {
-    "ok": true,
-    "kind": "string",
-    "gold": "cationic",
-    "model": "cationic"
    },
    "delta_g_mic_kJ_per_mol": {
     "ok": false,
@@ -640,19 +640,19 @@
     "ok": true,
     "kind": "string",
     "gold": "cationic",
-    "model": "Cationic (dicationic; two permanent quaternary ammonium charges balanced by two Br\u207b counterions)"
+    "model": "Cationic (dicationic; two permanent quaternary ammonium charges balanced by two Br⁻ counterions)"
    },
    "valid_hlb_method": {
     "ok": true,
     "kind": "string",
     "gold": "griffin (mass-ratio method)",
-    "model": "Davies group-contribution method (HLB = 7 + \u03a3 hydrophilic group numbers \u2212 \u03a3 lipophilic group numbers); Griffin's mass-fraction method is invalid because it was designed for nonionic surfactants and cannot properly account for permanently charged quaternary ammonium head groups"
+    "model": "Davies group-contribution method (HLB = 7 + Σ hydrophilic group numbers − Σ lipophilic group numbers); Griffin's mass-fraction method is invalid because it was designed for nonionic surfactants and cannot properly account for permanently charged quaternary ammonium head groups"
    },
    "structural_family": {
     "ok": true,
     "kind": "string",
     "gold": "dimeric/gemini (two quaternary-ammonium headgroup units in one molecule)",
-    "model": "Bis-quaternary ammonium (gemini/dimeric) surfactant: two N\u207a(CH\u2083)\u2082 head groups linked by a C4 methylene spacer, each bearing a C12 alkyl tail, giving the symmetric Tail\u2013Head\u2013Spacer\u2013Head\u2013Tail architecture characteristic of gemini surfactants"
+    "model": "Bis-quaternary ammonium (gemini/dimeric) surfactant: two N⁺(CH₃)₂ head groups linked by a C4 methylene spacer, each bearing a C12 alkyl tail, giving the symmetric Tail–Head–Spacer–Head–Tail architecture characteristic of gemini surfactants"
    }
   }
  },
@@ -769,7 +769,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "the shape-corrected radius is SMALLER than the naive spherical estimate (Perrin friction factor F_P=1.0014 at this mild elongation, R_eff=R_h,apparent/F_P) -- a real, somewhat counter-intuitive direction: an elongated particle experiences MORE drag than a sphere of the same volume, so a naive Stokes-Einstein calculation (which assumes sphericity) OVERSTATES the true equivalent-sphere size once shape is accounted for.",
-    "model": "smaller \u2013 the prolate shape has a higher friction coefficient than an equal-volume sphere, so the naive spherical Stokes-Einstein model overestimates the hydrodynamic size; correcting for elongation reduces the inferred radius"
+    "model": "smaller – the prolate shape has a higher friction coefficient than an equal-volume sphere, so the naive spherical Stokes-Einstein model overestimates the hydrodynamic size; correcting for elongation reduces the inferred radius"
    },
    "cpp": {
     "ok": true,
@@ -1051,7 +1051,7 @@
    "units_used": {
     "ok": false,
     "kind": "string",
-    "gold": "\u00b5M (as labeled on the chart)",
+    "gold": "µM (as labeled on the chart)",
     "model": "Image not provided"
    },
    "estimated_cmc_value": {

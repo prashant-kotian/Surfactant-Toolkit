@@ -1,0 +1,228 @@
+Using the printed relation
+
+Δ
+𝐺
+𝑇
+=
+𝐴
++
+𝐵
+𝑇
++
+𝐶
+𝑇
+2
+,
+T
+ΔG
+	​
+
+=A+
+T
+B
+	​
+
++
+T
+2
+C
+	​
+
+,
+
+I fit the seven printed
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) values with their stated 3% uncertainties. Then Gibbs–Helmholtz gives
+
+Δ
+𝐻
+=
+𝐵
++
+2
+𝐶
+𝑇
+,
+Δ
+𝐶
+𝑝
+=
+−
+2
+𝐶
+𝑇
+2
+.
+ΔH=B+
+T
+2C
+	​
+
+,ΔC
+p
+	​
+
+=−
+T
+2
+2C
+	​
+
+.
+
+At 298 K, the direct CMC calculation is
+
+(
+1
++
+0.68
+)
+(
+8.314462618
+×
+10
+−
+3
+)
+(
+298
+)
+ln
+⁡
+ ⁣
+(
+1.18
+×
+10
+−
+3
+55.5
+)
+=
+−
+44.7833
+
+k
+J
+
+m
+o
+l
+−
+1
+.
+(1+0.68)(8.314462618×10
+−3
+)(298)ln(
+55.5
+1.18×10
+−3
+	​
+
+)=−44.7833 kJmol
+−1
+.
+
+Thus the formula as stated produces the opposite sign from the printed
++
+44.8
++44.8 kJ/mol.
+
+The weighted fit to the printed
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) values themselves gives approximately
+𝐵
+=
+504.49
+B=504.49 kJ/mol and
+𝐶
+=
+−
+7.1005
+×
+10
+4
+C=−7.1005×10
+4
+ kJ·K/mol, hence
+
+Δ
+𝐻
+298
+=
+27.95
+
+k
+J
+
+m
+o
+l
+−
+1
+,
+Δ
+𝐶
+𝑝
+=
+1.599
+
+k
+J
+
+m
+o
+l
+−
+1
+K
+−
+1
+.
+ΔH
+298
+	​
+
+=27.95 kJmol
+−1
+,ΔC
+p
+	​
+
+=1.599 kJmol
+−1
+K
+−1
+.
+
+Notably, inserting the paper's separately printed
+𝐵
+=
+12.0
+,
+
+𝐶
+=
+6909.0
+B=12.0, C=6909.0 instead would give
+58.37
+58.37 kJ/mol and
+−
+0.1556
+−0.1556 kJ/(mol K), so those printed coefficients are not numerically consistent with a direct fit to the tabulated
+Δ
+𝐺
+ΔG series under the stated Eq. (6) form.
+
+JSON
+{"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.9478, "dCp_kJ_mol_K": 1.59913}
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.9478, "dCp_kJ_mol_K": 1.59913}

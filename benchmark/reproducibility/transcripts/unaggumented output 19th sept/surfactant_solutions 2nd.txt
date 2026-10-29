@@ -1,0 +1,188 @@
+========================================================================
+SURFACTANT & COLLOID PHYSICAL CHEMISTRY — COMPILED SOLUTIONS
+Temperature: 298.15 K throughout
+========================================================================
+Note: Five questions (GZ-61 through GZ-65), compiled below in order.
+========================================================================
+
+
+========================================================================
+GZ-61 — ZETA POTENTIAL OF AN ANIONIC MICELLE (Henry's equation)
+========================================================================
+
+GIVEN
+  Hydrodynamic radius        a   = 2.5 nm
+  1:1 background electrolyte  I  = 20 mM (ionic strength)
+  Temperature                T   = 298.15 K
+  Relative permittivity      eps_r = 78.4
+  Electrophoretic mobility   mu  = 2.7 um*cm/(V*s) = 2.7e-8 m^2/(V*s)
+  Solvent viscosity          eta = 0.8903 mPa*s
+
+STEP 1 — Debye screening (kappa*a)
+  kappa = sqrt( 2 e^2 N_A I / (eps_0 eps_r k_B T) )
+  Debye length kappa^-1 = 2.15 nm
+  kappa*a = 2.5 / 2.15 = 1.16
+
+  -> Intermediate regime (kappa*a ~ 1): neither Smoluchowski
+     (kappa*a >> 1) nor Hueckel (kappa*a << 1) applies.
+     Henry's equation with the Henry function is required.
+
+STEP 2 — Henry's equation
+  mu = (2 eps_0 eps_r zeta) / (3 eta) * f(kappa*a)
+
+  Ohshima closed-form Henry function: f(1.163) = 1.040
+  (close to Hueckel limit of 1, as expected for small kappa*a)
+
+  zeta = 3 eta mu / (2 eps_0 eps_r f(kappa*a)) = 49.95 mV (magnitude)
+
+  Anionic micelle -> migrates toward anode -> zeta is NEGATIVE:
+  zeta ~ -50 mV
+
+  (Blind Smoluchowski would give only ~35 mV, a ~30% underestimate —
+   which is exactly why the Henry correction matters at kappa*a ~ 1.)
+
+RESULT
+  kappa_a            = 1.163
+  zeta_potential_mV  = -49.95
+
+
+========================================================================
+GZ-62 — CMC AND COUNTERION BINDING FROM CONDUCTIVITY
+========================================================================
+
+GIVEN (1:1 ionic surfactant, water, 298.15 K)
+  c (mM):   1.0  2.0  3.0  4.0  5.0  5.5  6.0  6.5  7.0  8.0 10.0 12.0
+  k (mS/cm):0.692 1.327 1.974 2.605 3.260 3.556 3.903 4.0275
+            4.191 4.477 5.072 5.659
+
+METHOD (Williams / conductivity break-point)
+  Below CMC: monomers behave as free 1:1 electrolyte -> steep slope S1.
+  Above CMC: micelles bind counterions -> gentler slope S2.
+  CMC = intersection of the two linear segments.
+  beta = 1 - S2/S1  (counterion binding degree)
+
+TWO-SEGMENT FIT
+  Best break at 6.0 mM (residual SSR = 8e-4, more than 10x smaller
+  than any neighboring split -> break is well-defined).
+    Pre-CMC slope  S1 = 0.641 mS*cm^-1*mM^-1
+    Post-CMC slope S2 = 0.294 mS*cm^-1*mM^-1
+    Intersection (CMC) = 6.00 mM
+    beta = 1 - 0.294/0.641 = 0.54
+
+  (~54% of counterions bound; ionization degree alpha ~ 0.46 —
+   typical for an ionic surfactant of this type.)
+
+RESULT
+  cmc_mM                     = 6.0
+  counterion_binding_degree  = 0.54
+
+
+========================================================================
+GZ-63 — MICELLE AGGREGATION NUMBER (steady-state fluorescence quenching)
+========================================================================
+
+GIVEN
+  Total surfactant Ct = 50 mM,  cmc = 8 mM
+  I0 = 1.00
+  [Q] (mM) / I :  0.5/0.4895  1.0/0.2397  1.5/0.1173
+                  2.0/0.0574  2.5/0.0402  3.0/0.0298
+  Model: ln(I0/I) = N[Q]/(Ct - cmc)  (straight line through origin)
+
+MODEL (Turro-Yekta static quenching)
+  ln(I0/I) = <n> = [Q]/[micelle];  [micelle] = (Ct - cmc)/N
+  slope of ln(I0/I) vs [Q] = N/(Ct - cmc),  Ct - cmc = 42 mM
+
+LINEARITY CHECK  (ratio = ln(I0/I)/[Q])
+  [Q]=0.5  ln(I0/I)=0.7144  ratio=1.4287
+  [Q]=1.0  ln(I0/I)=1.4284  ratio=1.4284
+  [Q]=1.5  ln(I0/I)=2.1430  ratio=1.4287
+  [Q]=2.0  ln(I0/I)=2.8577  ratio=1.4289
+  [Q]=2.5  ln(I0/I)=3.2139  ratio=1.286   <- deviates
+  [Q]=3.0  ln(I0/I)=3.5132  ratio=1.171   <- deviates
+
+  First four points are strictly linear through the origin
+  (slope 1.4287 mM^-1). The last two fall below the line — the
+  expected downward deviation at high quencher loading (<n> >~ 2.9),
+  where the immobile-quencher/Poisson model breaks down. Excluded.
+
+AGGREGATION NUMBER
+  N = slope * (Ct - cmc) = 1.4287 mM^-1 * 42 mM = 60.0
+
+RESULT
+  aggregation_number = 60
+
+
+========================================================================
+GZ-64 — BEST-ESTIMATE CMC OF CTAB IN PURE WATER (reconciling 3 values)
+========================================================================
+
+GIVEN (CTAB, cationic surfactant, pure water, room temperature)
+  0.876 mM  — single-lab conductometric measurement
+  0.904 mM  — literature average across 15 independent sources
+  0.930 mM  — streaming-potential measurement
+
+RESOLUTION
+  The three values are NOT of equal weight, so a naive 3-point mean
+  (which gives 0.903 mM) is methodologically wrong — it treats a
+  15-source average as equal to a single measurement.
+
+  - 0.904 mM is itself an average over 15 independent sources. It
+    already aggregates many labs/methods and averages out the
+    systematic biases any single technique carries -> most robust.
+  - 0.876 mM (conductometry) tends to read slightly LOW (break point
+    located just below the true onset).
+  - 0.930 mM (streaming potential) reads slightly HIGH.
+  - These two single-method values bracket the literature average
+    almost symmetrically:
+        0.904 - 0.876 = 0.028
+        0.930 - 0.904 = 0.026
+    confirming 0.904 sits at the true center, not skewed by an outlier.
+
+  Reliability-weighted best estimate = the literature average itself,
+  corroborated by being centered between the two independent methods.
+
+RESULT
+  best_estimate_cmc_mM = 0.904
+
+
+========================================================================
+GZ-65 — GIBBS ADSORPTION: Gamma_max AND A_min (ionic surfactant + salt)
+========================================================================
+
+GIVEN
+  Anionic surfactant, 0.1 M NaCl background electrolyte, 298.15 K
+  Pre-CMC slope  d(gamma)/d ln c = -18.4 mN/m
+
+GIBBS ADSORPTION ISOTHERM
+  Gamma_max = -(1/(n R T)) * d(gamma)/d ln c
+
+  Prefactor n — the decisive point:
+  With a large EXCESS of background electrolyte (0.1 M NaCl >> pre-CMC
+  surfactant), the counterion (Na+) activity is fixed by the added salt
+  ("swamping electrolyte"). The counterion term drops out, so n = 1
+  (NOT n = 2, which applies to an ionic surfactant with no added salt).
+
+RESULT
+  Gamma_max = 18.4e-3 / (1 * 8.314 * 298.15)
+            = 7.42e-6 mol/m^2
+
+  A_min = 1 / (N_A * Gamma_max)
+        = 1 / (6.022e23 * 7.42e-6)
+        = 2.24e-19 m^2 = 0.224 nm^2
+
+  (If n = 2 were used incorrectly: Gamma_max = 3.71e-6 mol/m^2,
+   A_min = 0.447 nm^2. The added-salt condition is what sets n = 1.)
+
+  gamma_max_mol_per_m2 = 7.4225e-06
+  a_min_nm2            = 0.2237
+
+
+========================================================================
+SUMMARY TABLE
+========================================================================
+  GZ-61  zeta potential      = -49.95 mV   (kappa*a = 1.163)
+  GZ-62  CMC = 6.0 mM,  beta = 0.54
+  GZ-63  aggregation number  = 60
+  GZ-64  CTAB best-estimate CMC = 0.904 mM
+  GZ-65  Gamma_max = 7.42e-6 mol/m^2,  A_min = 0.224 nm^2
+========================================================================

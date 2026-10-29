@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc ≈ -0.92)",
+"reasoning": "The compound is AOT, a double-tailed anionic surfactant with a large packing parameter. Its well-known behavior is reverse-curvature, oil-continuous self-assembly (reverse micelles and w/o microemulsions), so a negative Cc is expected. A positive Cc of 2.4–3.5 would imply strongly normal-curvature, water-continuous behavior, which contradicts AOT's established chemistry. The review value is more consistent with the compound's real behavior; the primary measurement may reflect different reference conditions or an apparent rather than standardized Cc."
+}

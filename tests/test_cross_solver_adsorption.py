@@ -1,17 +1,17 @@
 """Cross-solver validation: Ward-Tordai Volterra integral vs the
-Crank-Nicolson PDE with Langmuir kinetics (dynamic_tension).
+finite-volume PDE with Langmuir kinetics (dynamic_tension).
 
 Two fully independent implementations of the same physics must agree:
 
-* ``ward_tordai_adsorption`` -- sqrt-substituted trapezium quadrature of
-  the Ward-Tordai integral with per-step bisection of c_s against the
+* ``ward_tordai_adsorption`` -- product integration of the Ward-Tordai
+  integral (c_s piecewise linear, exact kernel weights) against the
   *equilibrium* Langmuir boundary condition (mol/L grid, explicit
   L->m^3 x1000 conversion; P1 unit-bug regression is locked in
   tests/test_ward_tordai.py);
-* ``dynamic_surface_tension_forward`` -- 1-D Crank-Nicolson diffusion on
-  a mol/m^3 grid with *kinetic* Langmuir uptake and half-cell mass
-  balance; run with fast kinetics (k_off = 200 1/s) it must relax onto
-  the equilibrium-BC (Ward-Tordai) limit.
+* ``dynamic_surface_tension_forward`` -- implicit 1-D diffusion on a
+  stretched mol/m^3 grid coupled to *kinetic* Langmuir uptake; run with
+  fast kinetics (k_off = 200 1/s) it relaxes onto the equilibrium-BC
+  (Ward-Tordai) limit, and with k_off = 1e6 1/s it must reproduce it.
 
 Any concentration-unit mismatch (the P1 bug class: mol/L vs mol/m^3)
 would show up here as an orders-of-magnitude divergence, not a few
@@ -19,6 +19,8 @@ percent, so this test doubles as an independent unit conversion check
 of both solvers.
 """
 import math
+
+import pytest
 
 from surfactantkit.adsorption import ward_tordai_adsorption
 from surfactantkit.dynamic_tension import dynamic_surface_tension_forward
@@ -56,9 +58,10 @@ def test_surface_excess_agrees_across_solvers() -> None:
 
 def test_tension_curves_agree_across_solvers() -> None:
     wt, pde = _run_both()
-    # map both to gamma(t) with the same Gibbs expression
+    # map the Ward-Tordai excess to gamma(t) with the Szyszkowski equation of state of the
+    # same Langmuir isotherm, as dynamic_surface_tension_forward does
     gamma0, R, T = 72.0, 8.314462618, 298.15
-    gy_wt = [gamma0 - R * T * g * 1e3 for g in wt.gamma_mol_per_m2]
+    gy_wt = [gamma0 + R * T * GINF * math.log(1.0 - g / GINF) * 1e3 for g in wt.gamma_mol_per_m2]
     gy_pde = pde.gamma_mN_per_m
     worst = max(abs(a - b) for a, b in zip(gy_wt, gy_pde))
     assert worst <= 0.15  # mN/m; observed ~0.08 on a ~68 mN/m curve
@@ -78,3 +81,20 @@ def test_subsurface_recovers_on_both_solvers() -> None:
     # both end near (but below) bulk -- supply-limited tail
     assert cs_wt[-1] < C0 and cs_pde[-1] < C0
     assert cs_wt[-1] > 0.95 * C0 and cs_pde[-1] > 0.95 * C0
+
+
+def test_diffusion_controlled_limit_agrees_tightly() -> None:
+    """With quasi-instant kinetics (k_off = 1e6 1/s) the PDE is the
+    local-equilibrium problem the Ward-Tordai integral solves: the two
+    independent methods must agree to ~1e-4, from the dilute (Henry) to the
+    near-saturated case (c0 = 0.02 M, K_d = 1e-3 M: Gamma(1 s) = 2.8568
+    umol/m^2, consistent with the long-time asymptote
+    Gamma_eq - (dGamma/dc_s) Gamma / sqrt(pi D t))."""
+    for c0, t_end in ((1e-5, 5.0), (1e-3, 5.0), (0.02, 1.0)):
+        wt = ward_tordai_adsorption(c0, D, t_end_s=t_end, n_times=12, mode="langmuir",
+                                    gamma_inf_mol_per_m2=GINF, K_d_mol_per_L=KD)
+        pde = dynamic_surface_tension_forward(list(wt.t_s), c0, D, 1.0 / KD, GINF,
+                                              k_off_per_s=1e6)
+        for a, b in zip(wt.gamma_mol_per_m2[2:], pde.surface_excess_mol_per_m2[2:]):
+            assert a == pytest.approx(b, rel=2e-4), (c0, a, b)
+    assert round(wt.gamma_final_mol_per_m2 * 1e6, 4) == 2.8568

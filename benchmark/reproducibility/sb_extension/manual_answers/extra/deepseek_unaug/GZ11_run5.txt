@@ -1,0 +1,10 @@
+FINAL_JSON: {
+ "tail_volume_A3": 350.2,
+ "critical_length_A": 16.68,
+ "cpp_measured_area": 0.4697,
+ "morphology_measured_area": "cylindrical/rodlike micelle",
+ "electrostatic_headgroup_area_A2": 2787.2,
+ "cpp_electrostatic_area": 0.00753,
+ "morphology_electrostatic_area": "spherical micelle",
+ "comment": "Measured area gives P~0.470, predicting cylindrical/rodlike micelles. The electrostatic double-layer estimate at 8 mM CMC gives a much larger effective area (~2787 A^2) and P~0.0075, predicting spherical micelles. The discrepancy shows the simple low-ionic-strength electrostatic area model overestimates headgroup repulsion relative to the measured effective area."
+}

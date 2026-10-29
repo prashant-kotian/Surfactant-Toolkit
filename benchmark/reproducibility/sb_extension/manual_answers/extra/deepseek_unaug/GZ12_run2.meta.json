@@ -1,0 +1,9 @@
+{
+ "qid": "GZ12",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "source": "manual (author, web UI)",
+ "source_file": "SB-012/deepseek.txt",
+ "author_run_number": 2,
+ "file_mtime": 1792771311.238393
+}

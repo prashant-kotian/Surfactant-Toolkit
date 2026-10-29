@@ -1,0 +1,91 @@
+Using the stated 1:1 weight mixtures, the bulk mole fractions
+𝑋
+1
+X
+1
+	​
+
+ are 0.74336, 0.81290, and 0.60000, respectively. Solving the two Rubingh equations gives:
+
+P184/P188:
+𝑥
+1
+=
+0.494820
+x
+1
+	​
+
+=0.494820,
+𝛽
+=
+−
+8.675507
+β=−8.675507
+P184/P407:
+𝑥
+1
+=
+0.486034
+x
+1
+	​
+
+=0.486034,
+𝛽
+=
+−
+6.440170
+β=−6.440170
+P188/P407:
+𝑥
+1
+=
+0.486296
+x
+1
+	​
+
+=0.486296,
+𝛽
+=
+−
+2.566170
+β=−2.566170
+
+Thus the printed values
+𝑥
+𝑀
+=
+(
+0.40
+,
+0.39
+,
+0.35
+)
+x
+M
+	​
+
+=(0.40,0.39,0.35) and especially
+𝛽
+=
+(
++
+3.68
+,
++
+3.23
+,
++
+1.72
+)
+β=(+3.68,+3.23,+1.72) do not follow from the printed molecular weights, preparation method, CMCs, and stated Rubingh equations. The negative calculated
+𝛽
+β values are also the sign convention consistent with synergistic/attractive mixing.
+
+JSON
+{"x1_P184_P188":0.4948200057,"beta_P184_P188":-8.6755071022,"x1_P184_P407":0.4860341976,"beta_P184_P407":-6.4401695366,"x1_P188_P407":0.4862960182,"beta_P188_P407":-2.5661696118,"printed_result_follows":false}
+
+FINAL_JSON: {"x1_P184_P188":0.4948200057,"beta_P184_P188":-8.6755071022,"x1_P184_P407":0.4860341976,"beta_P184_P407":-6.4401695366,"x1_P188_P407":0.4862960182,"beta_P188_P407":-2.5661696118,"printed_result_follows":false}

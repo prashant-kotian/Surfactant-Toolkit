@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The specific refractive index increment (dn/dc) for AOT at 632.8 nm in this solvent is missing. It must be obtained experimentally by preparing AOT solutions at various concentrations and measuring their refractive indices using a differential refractometer to find the slope (dn/dc)."
+}

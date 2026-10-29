@@ -1,0 +1,160 @@
+================================================================================
+GZ-61 to GZ-65 — SOLUTIONS
+================================================================================
+
+
+================================================================================
+GZ-61  — Zeta potential of an anionic micelle
+================================================================================
+
+Given:
+  Hydrodynamic radius a = 2.5 nm
+  1:1 background electrolyte, ionic strength I = 20 mM
+  T = 298.15 K, relative permittivity of water = 78.4
+  Electrophoretic mobility = 2.7 um*cm/(V*s) = 2.7e-8 m^2/(V*s)
+  Solvent viscosity = 0.8903 mPa*s
+
+Step 1 — Debye parameter and kappa*a.
+  For a 1:1 electrolyte, kappa^2 = 2 F^2 I / (er e0 R T), with I = 20 mol/m^3.
+  This gives 1/kappa = 2.15 nm, so
+      kappa*a = 2.5 / 2.15 = 1.16
+  This is the intermediate regime — neither the Huckel limit (kappa*a << 1)
+  nor the Smoluchowski limit (kappa*a >> 1) applies, so the full Henry
+  equation is required:
+      mu = (2 er e0 zeta) / (3 eta) * f(kappa*a)
+
+Step 2 — Henry's function.
+  Ohshima's closed-form approximation gives f(kappa*a = 1.16) = 1.040
+  (close to the Huckel value of 1, as expected for a small particle in a
+  moderately dilute electrolyte).
+
+Step 3 — Solve for zeta.
+      zeta = 3 eta mu / (2 er e0 f) = 50.0 mV in magnitude.
+  Since the micelle is anionic, the zeta potential is negative: zeta = -50 mV.
+
+  (Reference: Smoluchowski alone would give ~35 mV, Huckel ~52 mV; Henry with
+  kappa*a ~ 1.16 correctly sits near the Huckel end.)
+
+FINAL_JSON:
+{
+  "kappa_a": 1.163,
+  "zeta_potential_mV": -50.0
+}
+
+
+================================================================================
+GZ-62  — CMC and counterion binding degree from conductivity
+================================================================================
+
+Method: conductivity (Williams / Frahm) method. Specific conductivity vs
+concentration is bilinear — steep below the CMC (monomers as free ions),
+shallower above (micelles carry charge less efficiently and bind counterions).
+
+Fitting the two linear regimes (both R^2 = 0.9999):
+  Pre-micellar (1-5 mM):    slope S1 = 0.6414 mS/cm per mM
+  Post-micellar (6.5-12 mM): slope S2 = 0.2956 mS/cm per mM
+
+CMC = intersection of the two lines = 5.97 mM
+
+Counterion binding degree (conductivity method):
+  beta = 1 - S2/S1 = 1 - 0.2956/0.6414 = 0.54
+  (~54% of counterions are bound to the micelle surface.)
+
+FINAL_JSON:
+{
+  "cmc_mM": 5.97,
+  "counterion_binding_degree": 0.539
+}
+
+
+================================================================================
+GZ-63  — Micelle aggregation number from fluorescence quenching
+================================================================================
+
+Given:
+  Total surfactant Ct = 50 mM, cmc = 8 mM  ->  micellized surfactant = 42 mM
+  Model (Turro-Yekta): ln(I0/I) = N[Q]/(Ct - cmc), straight line through origin
+  So slope of ln(I0/I) vs [Q] = N/(Ct - cmc).
+
+Point-by-point ln(I0/I) and ratio to [Q]:
+  [Q]=0.5  ln(I0/I)=0.7144  ratio=1.4287
+  [Q]=1.0  ln(I0/I)=1.4284  ratio=1.4284
+  [Q]=1.5  ln(I0/I)=2.1430  ratio=1.4287
+  [Q]=2.0  ln(I0/I)=2.8577  ratio=1.4289
+  [Q]=2.5  ln(I0/I)=3.2139  ratio=1.2856   <- deviates (curvature)
+  [Q]=3.0  ln(I0/I)=3.5132  ratio=1.1711   <- deviates (curvature)
+
+The first four points fall on a perfect line through the origin (slope =
+1.4287 mM^-1); the last two curve downward (simple Poisson model breaks down at
+high quencher occupancy) and are excluded.
+
+  N = slope x (Ct - cmc) = 1.4287 x 42 = 60.0
+
+FINAL_JSON:
+{
+  "aggregation_number": 60.0,
+  "reasoning": "Turro-Yekta model: slope of ln(I0/I) vs [Q] = N/(Ct-cmc). The first four points (Q<=2.0 mM) fall on a perfect line through the origin with slope 1.4287 mM^-1; the last two points curve downward (Poisson model breaks down at high quencher occupancy) and were excluded. N = slope x (Ct-cmc) = 1.4287 x (50-8) = 60.0."
+}
+
+
+================================================================================
+GZ-64  — Best-estimate CMC for CTAB in pure water
+================================================================================
+
+Three reported values:
+  0.876 mM  (single-lab conductometric measurement)
+  0.904 mM  (literature average across 15 independent sources)
+  0.930 mM  (streaming-potential measurement)
+
+Reasoning: the values are not equal in weight. The 0.876 and 0.930 mM figures
+are each one determination by one method and bracket the middle value nearly
+symmetrically. The 0.904 mM value is a meta-average of 15 independent sources,
+so it embeds far more measurements and averages out method/lab systematics — it
+deserves the dominant weight.
+
+The two natural estimators converge:
+  Literature consensus alone:            0.904 mM
+  Unweighted mean of all three:  (0.876+0.904+0.930)/3 = 0.903 mM
+
+They agree to within 0.001 mM, and the single-lab values sit symmetrically
+(-0.028 and +0.026 mM) about the consensus. Result rounds to ~0.90 mM,
+matching the accepted textbook CMC for CTAB in pure water (~0.9-1.0 mM).
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": 0.904,
+  "resolution_method": "Weighted judgment favoring the 0.904 mM value because it is itself an average of 15 independent sources (far more robust than either single-lab measurement), which conveniently coincides with the unweighted mean of all three values (0.903 mM). The two single measurements (0.876 conductometric, 0.930 streaming-potential) bracket it nearly symmetrically, confirming no bias correction is needed. Result rounds to ~0.90 mM, consistent with the accepted literature CMC for CTAB in pure water at room temperature."
+}
+
+
+================================================================================
+GZ-65  — Gamma_max and A_min from Gibbs adsorption isotherm
+================================================================================
+
+Given:
+  Anionic surfactant, 0.1 M NaCl background electrolyte, T = 298.15 K
+  Slope dgamma/d ln(C) in premicellar region = -18.4 mN/m
+
+Gibbs adsorption isotherm:  Gamma_max = -(1/nRT) * (dgamma/d lnC)
+
+Key point — the prefactor n. Although the surfactant is ionic (which would
+normally need n = 2), the solution has a large excess of background electrolyte
+(0.1 M NaCl >> pre-CMC surfactant). The swamping salt fixes the counterion
+activity, so the counterion term drops out and n = 1 applies (the ionic
+surfactant behaves like a nonionic one).
+
+  Gamma_max = 18.4e-3 / (8.314 x 298.15) = 7.42e-6 mol/m^2
+
+  A_min = 1 / (N_A x Gamma_max)
+        = 1 / (6.022e23 x 7.42e-6)
+        = 2.24e-19 m^2 = 0.224 nm^2
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.42e-06,
+  "a_min_nm2": 0.224
+}
+
+================================================================================
+END OF FILE
+================================================================================

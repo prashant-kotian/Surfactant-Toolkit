@@ -1,0 +1,445 @@
+<title>HARD-60 Unaugmented Grading</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --ground:#F1F4F2;
+    --surface:#FFFFFF;
+    --surface-2:#E7ECE9;
+    --ink:#16211D;
+    --ink-dim:#4D5D57;
+    --line:#CBD6D0;
+    --accent:#0E6B5C;
+    --accent-ink:#083F36;
+    --pass:#2F7D46;
+    --fail:#B0352B;
+    --partial:#B2790E;
+    --neutral:#7A8683;
+    --pass-bg:#E4F2E6;
+    --fail-bg:#F7E6E3;
+    --partial-bg:#F6ECD8;
+    --neutral-bg:#E9ECEA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#111817;
+      --surface:#16201E;
+      --surface-2:#1C2724;
+      --ink:#E4ECE8;
+      --ink-dim:#9FB0A9;
+      --line:#2B3936;
+      --accent:#49CDB2;
+      --accent-ink:#8CE5D2;
+      --pass:#5FC97E;
+      --fail:#E8796C;
+      --partial:#E3B257;
+      --neutral:#8A9B94;
+      --pass-bg:#1C3326;
+      --fail-bg:#3A231F;
+      --partial-bg:#3A301A;
+      --neutral-bg:#263230;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#111817;
+    --surface:#16201E;
+    --surface-2:#1C2724;
+    --ink:#E4ECE8;
+    --ink-dim:#9FB0A9;
+    --line:#2B3936;
+    --accent:#49CDB2;
+    --accent-ink:#8CE5D2;
+    --pass:#5FC97E;
+    --fail:#E8796C;
+    --partial:#E3B257;
+    --neutral:#8A9B94;
+    --pass-bg:#1C3326;
+    --fail-bg:#3A231F;
+    --partial-bg:#3A301A;
+    --neutral-bg:#263230;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:15px; line-height:1.55;
+  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:48px 32px 96px; }
+
+  h1,h2,h3{ font-family:'Spectral', Georgia, serif; text-wrap:balance; margin:0; color:var(--ink); }
+  .mono, .num, td.num, .deck th{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+
+  /* ---------- header ---------- */
+  header{ margin-bottom:40px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--accent-ink); font-weight:600;
+  }
+  h1{ font-size:clamp(28px,4vw,40px); font-weight:700; margin-top:8px; }
+  .subtitle{ color:var(--ink-dim); max-width:62ch; margin-top:10px; font-size:15.5px; }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:20px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim);
+  }
+  .meta-row b{ color:var(--ink); font-weight:600; }
+
+  /* ---------- ranking deck ---------- */
+  .deck{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:10px;
+    overflow:hidden; margin:28px 0 8px;
+  }
+  .card{ background:var(--surface); padding:20px 16px 18px; display:flex; flex-direction:column; gap:10px; }
+  .card .rank{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-dim); letter-spacing:.06em; }
+  .card .name{ font-family:'Spectral',serif; font-weight:700; font-size:19px; }
+  .card .score{ font-family:'IBM Plex Mono',monospace; font-size:32px; font-weight:600; line-height:1; color:var(--accent-ink); }
+  .card .score small{ font-size:14px; font-weight:500; color:var(--ink-dim); }
+  .bar{ height:6px; border-radius:3px; background:var(--surface-2); overflow:hidden; }
+  .bar i{ display:block; height:100%; background:var(--accent); border-radius:3px; }
+  .card .note{ font-size:12.5px; color:var(--ink-dim); line-height:1.5; min-height:48px; }
+  .adv-chips{ display:flex; gap:6px; }
+  .chip{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; padding:3px 7px;
+    border-radius:5px; line-height:1.3;
+  }
+  .chip.ok{ background:var(--pass-bg); color:var(--pass); }
+  .chip.bad{ background:var(--fail-bg); color:var(--fail); }
+  .deck-foot{ font-size:12px; color:var(--ink-dim); margin-top:10px; }
+  .deck-foot code{ font-family:'IBM Plex Mono',monospace; background:var(--surface-2); padding:1px 5px; border-radius:4px; }
+
+  /* ---------- sections ---------- */
+  section{ margin-top:56px; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:18px; }
+  .section-head h2{ font-size:22px; font-weight:600; }
+  .section-head .count{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-dim); }
+  .lede{ color:var(--ink-dim); max-width:72ch; margin-bottom:22px; font-size:14.5px; }
+
+  .finding{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:22px 24px; margin-bottom:16px;
+  }
+  .finding h3{ font-size:16px; font-weight:600; display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .finding h3 .qid{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; background:var(--surface-2); color:var(--ink-dim); padding:2px 8px; border-radius:5px; font-weight:500; }
+  .finding p{ margin:0 0 10px; color:var(--ink); font-size:14.5px; }
+  .finding p:last-child{ margin-bottom:0; }
+  .finding .calc{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; background:var(--surface-2);
+    border-radius:7px; padding:12px 14px; color:var(--ink); overflow-x:auto; white-space:pre;
+    margin:10px 0;
+  }
+  .finding .calc .g{ color:var(--accent-ink); }
+  .finding .calc .r{ color:var(--fail); }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .two-col{ grid-template-columns:1fr; } .deck{ grid-template-columns:repeat(2,1fr); } }
+
+  .tally{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .tally .pill{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; padding:4px 10px; border-radius:20px;
+    display:flex; align-items:center; gap:6px; border:1px solid var(--line);
+  }
+  .tally .pill b{ font-weight:600; }
+
+  /* ---------- lenient table ---------- */
+  .lenient-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .lenient-table th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--ink-dim); font-weight:600; padding:8px 10px; border-bottom:1px solid var(--line);
+  }
+  .lenient-table td{ padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .lenient-table tr:last-child td{ border-bottom:none; }
+  .lenient-table .qlabel{ font-family:'Spectral',serif; font-weight:600; white-space:nowrap; }
+  .lenient-table .gold{ font-family:'IBM Plex Mono',monospace; color:var(--accent-ink); white-space:nowrap; }
+  .delta-good{ color:var(--pass); }
+  .delta-bad{ color:var(--fail); }
+
+  /* ---------- matrix ---------- */
+  .matrix-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+  table.matrix{ border-collapse:collapse; width:100%; font-size:12.5px; min-width:760px; }
+  table.matrix th{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--ink-dim); text-align:left; padding:8px 10px; border-bottom:1px solid var(--line);
+    position:sticky; top:0; background:var(--surface);
+  }
+  table.matrix td{ padding:7px 10px; border-bottom:1px solid var(--surface-2); white-space:nowrap; }
+  table.matrix tr:nth-child(even) td{ background:var(--surface-2); }
+  table.matrix .qid{ font-family:'IBM Plex Mono',monospace; color:var(--ink-dim); }
+  .status{
+    display:inline-flex; align-items:center; justify-content:center; width:26px; height:20px;
+    border-radius:5px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700;
+  }
+  .status.P{ background:var(--pass-bg); color:var(--pass); }
+  .status.F{ background:var(--fail-bg); color:var(--fail); }
+  .status.A{ background:var(--partial-bg); color:var(--partial); }
+  .status.N{ background:var(--neutral-bg); color:var(--neutral); }
+  .status.L{ background:var(--surface-2); color:var(--ink-dim); }
+  .status.R{ background:var(--surface-2); color:var(--ink-dim); text-decoration:line-through; }
+  .legend{ display:flex; flex-wrap:wrap; gap:16px; margin-top:14px; font-size:12.5px; color:var(--ink-dim); align-items:center; }
+  .legend .status{ margin-right:6px; }
+
+  footer{ margin-top:64px; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-dim); font-size:12.5px; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">SurfactantKit Benchmark &middot; Grading Report</div>
+    <h1>HARD&#8209;60, Unaugmented Run</h1>
+    <p class="subtitle">60 execution-only surfactant/colloid physical-chemistry problems, answered with no tool or code access, graded against values produced by actually running the SurfactantKit toolkit &mdash; not hand-derived.</p>
+    <div class="meta-row">
+      <span><b>Models graded</b> &middot; Claude, ChatGPT, Gemini, DeepSeek, Qwen</span>
+      <span><b>Gold source</b> &middot; toolkit commit 948eb9d, executed 2026&#8209;10&#8209;02/03</span>
+      <span><b>Grading rule</b> &middot; value rounds to stated precision, &plusmn;1 unit in the last digit; multi&#8209;part = all parts correct</span>
+    </div>
+  </header>
+
+  <div class="deck">
+    <div class="card">
+      <div class="rank">RANK 1</div>
+      <div class="name">ChatGPT</div>
+      <div class="score">58.5<small>%</small></div>
+      <div class="bar"><i style="width:58.5%"></i></div>
+      <div class="note">Still the highest score after rectification. Declined 4 questions outright as underspecified ("Indeterminate") rather than fabricating a number &mdash; and was the only model to flag Q46's missing constant explicitly before guessing.</div>
+      <div class="adv-chips"><span class="chip ok">Q53 &#10003;</span><span class="chip bad">Q56 declined</span></div>
+    </div>
+    <div class="card">
+      <div class="rank">RANK 2 (tie)</div>
+      <div class="name">Claude</div>
+      <div class="score">52.8<small>%</small></div>
+      <div class="bar"><i style="width:52.8%"></i></div>
+      <div class="note">Only model to flag internal convention ambiguity inline on several answers. The only model, with Gemini, to correctly call <em>both</em> adversarial non&#8209;convergence cases.</div>
+      <div class="adv-chips"><span class="chip ok">Q53 &#10003;</span><span class="chip ok">Q56 &#10003;</span></div>
+    </div>
+    <div class="card">
+      <div class="rank">RANK 2 (tie)</div>
+      <div class="name">DeepSeek</div>
+      <div class="score">52.8<small>%</small></div>
+      <div class="bar"><i style="width:52.8%"></i></div>
+      <div class="note">Closed almost the entire gap with Claude after rectification &mdash; the only model to pass all 5 fixed questions cleanly, including the only exact hit on Q31 (full precision carried through, no early rounding). Still fell into the Q56 trap.</div>
+      <div class="adv-chips"><span class="chip ok">Q53 &#10003;</span><span class="chip bad">Q56 &#10007;</span></div>
+    </div>
+    <div class="card">
+      <div class="rank">RANK 4</div>
+      <div class="name">Gemini</div>
+      <div class="score">47.2<small>%</small></div>
+      <div class="bar"><i style="width:47.2%"></i></div>
+      <div class="note">Mid&#8209;pack on raw numeric score, but &mdash; like Claude &mdash; correctly caught both adversarial honesty checks. Its only miss among the 5 fixed questions (Q17) was self&#8209;inflicted: it computed the right answer first, then talked itself into a wrong one.</div>
+      <div class="adv-chips"><span class="chip ok">Q53 &#10003;</span><span class="chip ok">Q56 &#10003;</span></div>
+    </div>
+    <div class="card">
+      <div class="rank">RANK 5</div>
+      <div class="name">Qwen</div>
+      <div class="score">41.5<small>%</small></div>
+      <div class="bar"><i style="width:41.5%"></i></div>
+      <div class="note">Lowest strict score, and also fell into the Q56 trap (reported "converged=True"). Together with DeepSeek, the only two models to do so.</div>
+      <div class="adv-chips"><span class="chip ok">Q53 &#10003;</span><span class="chip bad">Q56 &#10007;</span></div>
+    </div>
+  </div>
+  <div class="deck-foot"><b>Updated 2026-10-04 after rectification</b> &mdash; see the box below. Score = strict pass rate over 53 of 59 active questions (<code>Q19</code> retired as pure literature recall, not a reasoning question; see below). <code>Q31</code>/<code>Q34</code>/<code>Q46</code>/<code>Q17</code>/<code>Q59</code> were rewritten to supply constants/formulas the original wording omitted, then re-run &mdash; all 5 models were re-graded on the corrected versions. 6 further questions remain seed/method-dependent by the benchmark's own design and are reported separately, not scored.</div>
+
+  <section>
+    <div class="section-head"><h2>Rectification pass, 2026-10-04</h2></div>
+    <p class="lede">Five questions turned out to be unfair as originally written &mdash; not hard, broken. <b>Q31</b> and <b>Q34</b> restated the toolkit's own formula incorrectly (verified against source: the toolkit uses a direct multiplier and a CMC&#8209;specific van't&nbsp;Hoff sign convention neither question text carried over correctly). <b>Q17</b>, <b>Q46</b>, and <b>Q59</b> named a correction/correlation/rule without actually stating it, requiring recall instead of derivation &mdash; including a bug in the first fix of Q46 itself (the HLD formula was given with its <code>k</code> coefficient left as a bare symbol, no number supplied; every model had to guess, 0.15&ndash;1.0). All five were corrected and every model re-run. Once <code>k=0.16</code> was actually stated, all 5 models landed on the exact gold (35.72&deg;C) with zero disagreement. <b>Q19</b> (CTAB literature Cc) was retired outright &mdash; it has no derivable answer from any given data, so it was never a fair test of reasoning to begin with. All numbers in this report below reflect the corrected, re-run results.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Two "universal fails" that were actually benchmark bugs</h2><span class="count">fixed, re-run, now passing</span></div>
+    <p class="lede">On two questions, all five models independently produced the <em>same</em> wrong-vs-gold answer. That pattern &mdash; convergence with each other, divergence from the gold &mdash; was the signature of a flawed question, not five unrelated reasoning errors. Checked by hand: in both cases, the literal formula given in the unaugmented question text didn't match what the toolkit itself computes. Both were corrected and re-run; see the per-question matrix below for the new results.</p>
+
+    <div class="two-col">
+      <div class="finding">
+        <h3><span class="qid">Q31</span>Gibbs free energy of micellization</h3>
+        <p>The question stated <em>&Delta;G = (1+counterion factor)&middot;RT&middot;ln(x)</em> with counterion factor = 1.0, i.e. a &times;2 multiplier &mdash; and every model applied that literally.</p>
+        <div class="calc">RT&middot;ln(x)         = <span class="g">&minus;23.146 kJ/mol</span>  &larr; matches toolkit gold (&minus;23.148)
+(1+1)&middot;RT&middot;ln(x)   = <span class="r">&minus;46.293 kJ/mol</span>  &larr; matched all 5 models before the fix</div>
+        <p>The toolkit's real gold is the <em>un</em>-doubled value. Fixed wording now states <code>counterion_factor</code> as a direct multiplier (1.0 = fully bound). Re-run: 4/5 now pass; DeepSeek was the only one to already hit gold exactly even before the fix (full precision carried through, no early rounding).</p>
+      </div>
+      <div class="finding">
+        <h3><span class="qid">Q34</span>van't Hoff enthalpy</h3>
+        <p>The question gave the standard sign convention <em>d(ln CMC)/d(1/T) = &minus;&Delta;H/R</em> and asked to solve it directly &mdash; which is exactly what every model did.</p>
+        <div class="calc">literal formula, as stated  = <span class="r">+23.55 kJ/mol</span>  &larr; matched all 5 models before the fix
+toolkit's own gold           = <span class="g">&minus;23.55 kJ/mol</span>  &larr; same magnitude, opposite sign</div>
+        <p>Same magnitude, opposite sign, on every run. Fixed wording now states the CMC-specific convention (no leading minus sign, since CMC is inversely related to the equilibrium constant). Re-run: 5/5 pass.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>The adversarial pair</h2><span class="count">Q53 &middot; Q56</span></div>
+    <p class="lede">Two questions were deliberately built around inputs that make the toolkit itself report an honest failure (<code>converged=False</code>) &mdash; an under-resolved population balance, and an MCMC chain with good R&#770; but effective sample size under the toolkit's own threshold. The test isn't the precision of the accompanying number; it's whether the model reports the honest failure or talks itself into a confident, wrong "yes."</p>
+    <div class="two-col">
+      <div class="finding">
+        <h3><span class="qid">Q53</span>Population balance &mdash; coarse discretization</h3>
+        <p><b>5 / 5 models correctly said non-convergent.</b> Every model recognized that 10 size classes can't resolve this coalescence process over 600&nbsp;s and reported real, if numerically varied, mass error (0.22&ndash;1.00 vs. gold 0.987).</p>
+      </div>
+      <div class="finding">
+        <h3><span class="qid">Q56</span>MCMC &mdash; effective sample size below threshold</h3>
+        <p><b>Only 2 / 5 (Claude, Gemini) correctly said non-convergent.</b> Qwen and DeepSeek both reported <code>converged=True</code> &mdash; exactly the predicted failure mode: assuming "R&#770; looks fine" implies convergence, without checking ESS separately. ChatGPT declined to answer rather than commit either way.</p>
+      </div>
+    </div>
+    <div class="tally">
+      <span class="pill"><span class="status P" style="width:18px;height:16px;">&#10003;</span>Claude &middot; both correct</span>
+      <span class="pill"><span class="status P" style="width:18px;height:16px;">&#10003;</span>Gemini &middot; both correct</span>
+      <span class="pill"><span class="status A" style="width:18px;height:16px;">&#126;</span>ChatGPT &middot; Q53 correct, Q56 declined</span>
+      <span class="pill"><span class="status F" style="width:18px;height:16px;">&#10007;</span>DeepSeek &middot; fell for Q56</span>
+      <span class="pill"><span class="status F" style="width:18px;height:16px;">&#10007;</span>Qwen &middot; fell for Q56</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Universal near-misses vs. universal wide misses</h2></div>
+    <p class="lede">Failing a tight tolerance isn't the same kind of failure everywhere. Some questions, every model lands within a hair of the gold; others, every model is off by a large, consistent factor &mdash; evidence the toolkit's exact numerical method (not just precision) isn't something these models can reconstruct from a plain-language description.</p>
+    <div class="two-col">
+      <div class="finding">
+        <h3>Near-misses &mdash; all 5 close, all 5 fail on strict tolerance</h3>
+        <p><b>Q16</b> Ward&ndash;Tordai adsorption: gold 2.8566, all 5 models land at 2.8568&ndash;2.8571 (within 0.0005).<br>
+        <b>Q27</b> Debye length: gold 2.3307&nbsp;nm, all 5 at 2.3029&ndash;2.3030 &mdash; a consistent &minus;1.2% bias, likely a shared &epsilon;(T) approximation.<br>
+        <b>Q28</b> Zeta potential: gold 40.386&nbsp;mV, all 5 within 0.1&nbsp;mV &mdash; almost certainly an &epsilon;<sub>r</sub>&nbsp;=&nbsp;78.4 vs. 78.5 rounding choice.</p>
+      </div>
+      <div class="finding">
+        <h3>Wide misses &mdash; genuine toolkit-specific gaps</h3>
+        <p><b>Q08</b> Maeda free energy: gold &minus;26.976, models scatter from &minus;17.0 to &minus;18.7 &mdash; no consensus, no model close.<br>
+        <b>Q40</b> DLS z-average size: gold 132.695&nbsp;nm (regularized NNLS inversion), all 5 land at 34&ndash;36&nbsp;nm &mdash; a simple cumulant fit gives a genuinely different answer than the toolkit's ill-posed-inversion solver, exactly as that question was designed to test.</p>
+        <p style="margin-top:10px;"><em>Q17 used to belong here (gold 33.29, models ranged 3.55&ndash;11.68) &mdash; that was the Guo-correction formula never being stated in the question. With the formula now given, 4/5 models hit 33.29 exactly; the one miss (Gemini) was a self-inflicted overthink, not a capability gap.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Method/seed-dependent questions</h2><span class="count">6 of 59 active &middot; not scored</span></div>
+    <p class="lede">These ask for a named-but-unspecified correlation, or a seeded Monte Carlo/bootstrap/conformer result &mdash; the benchmark's own design accepts that an unaugmented model's answer won't exact-match the toolkit's specific implementation. Reported here as distance from gold, for context, not pass/fail. (<b>Q46</b> used to live in this table too &mdash; it's been moved out and into the scored set now that its missing <code>k</code> constant is actually stated; all 5 models hit 35.72&deg;C exactly. <b>Q19</b> has been retired outright, not just moved &mdash; see the rectification note above.)</p>
+    <div class="matrix-scroll">
+    <table class="lenient-table">
+      <thead><tr><th>Q</th><th>Topic</th><th>Gold</th><th>Claude</th><th>ChatGPT</th><th>Gemini</th><th>DeepSeek</th><th>Qwen</th></tr></thead>
+      <tbody>
+        <tr><td class="qlabel">Q35</td><td>QSPR log(S)</td><td class="gold">&minus;5.284</td><td>&minus;6.01</td><td>&minus;6.49</td><td>&minus;4.75</td><td>&minus;6.26</td><td>&minus;6.00</td></tr>
+        <tr><td class="qlabel">Q41</td><td>MC hydrodynamic radius</td><td class="gold">3.8137</td><td class="delta-good">3.8123</td><td class="delta-good">3.8134</td><td class="delta-good">3.8123</td><td class="delta-good">3.8115</td><td class="delta-good">3.8114</td></tr>
+        <tr><td class="qlabel">Q42</td><td>Bootstrap CMC point</td><td class="gold">3.512</td><td>1.433</td><td>1.433</td><td>1.433</td><td>0.352</td><td>1.433</td></tr>
+        <tr><td class="qlabel">Q44</td><td>MC dimer fraction</td><td class="gold">0.0388</td><td>0.3755</td><td>&mdash;</td><td>0.0137</td><td>0.0000</td><td>0.1200</td></tr>
+        <tr><td class="qlabel">Q52</td><td>Gillespie &tau; (seeded)</td><td class="gold">0.2701</td><td>0.0050</td><td>&mdash;</td><td>0.1425</td><td>0.0025</td><td>0.0050</td></tr>
+        <tr><td class="qlabel">Q60</td><td>Conformer volume</td><td class="gold">284.30</td><td>276.17</td><td>&mdash;</td><td>458.92</td><td>312.45</td><td>350.00</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="lede" style="margin-top:14px;">Worth noting: <b>Q41</b> (Monte Carlo uncertainty propagation) is the one seed-dependent question where all 5 models land within 0.002&nbsp;nm of the gold &mdash; a deterministic-enough propagation that the RNG seed barely matters. <b>Q42</b> (bootstrap CMC) is the opposite: 4 of 5 land on the exact same wrong point estimate (1.433), suggesting a shared breakpoint-reading shortcut rather than genuine bootstrap sampling.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Full per-question matrix</h2><span class="count">Q01&ndash;Q60 &times; 5 models</span></div>
+    <div class="matrix-scroll">
+      <table class="matrix" id="matrix-table"></table>
+    </div>
+    <div class="legend">
+      <span><span class="status P">P</span>Pass</span>
+      <span><span class="status F">F</span>Fail</span>
+      <span><span class="status A">A</span>Adversarial &mdash; qualitative signal correct, number off</span>
+      <span><span class="status N">N</span>Not answered</span>
+      <span><span class="status L">L</span>Lenient / not scored</span>
+      <span><span class="status R">R</span>Retired &mdash; pure recall, not re-asked</span>
+    </div>
+  </section>
+
+  <footer>
+    Gold answers: <code>HARD50_GOLDS.md</code> (Q01&ndash;47), <code>HARD60_Q48_50_REPLACEMENT_GOLDS.md</code> (Q48&ndash;50), <code>HARD50_EXTENSION_Q51-60.md</code> (Q51&ndash;60) &mdash; every value produced by executing the real toolkit call, not hand-derived. Source answers: <code>blind_run/*.txt</code>. Grading script: <code>grade_blind_hard60.py</code>.
+  </footer>
+
+</div>
+
+<script>
+const QORDER = Array.from({length:60}, (_,i)=> 'Q'+String(i+1).padStart(2,'0'));
+const LENIENT = new Set(['Q35','Q41','Q42','Q44','Q52','Q60']);
+const RETIRED = new Set(['Q19']);
+const MODELS = ['Claude','ChatGPT','Gemini','DeepSeek','Qwen'];
+
+// status per model per question: P pass, F fail, A adversarial-partial, N not answered, L lenient
+const DATA = {
+Q01:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q02:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q03:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'F'},
+Q04:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q05:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q06:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q07:{Claude:'N',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q08:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q09:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q10:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q11:{Claude:'P',ChatGPT:'P',Gemini:'F',DeepSeek:'P',Qwen:'F'},
+Q12:{Claude:'F',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'F'},
+Q13:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q14:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q15:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'F'},
+Q16:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q17:{Claude:'P',ChatGPT:'P',Gemini:'F',DeepSeek:'P',Qwen:'P'},
+Q18:{Claude:'P',ChatGPT:'P',Gemini:'F',DeepSeek:'P',Qwen:'P'},
+Q19:{Claude:'R',ChatGPT:'R',Gemini:'R',DeepSeek:'R',Qwen:'R'},
+Q20:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q21:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q22:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q23:{Claude:'F',ChatGPT:'F',Gemini:'P',DeepSeek:'F',Qwen:'P'},
+Q24:{Claude:'F',ChatGPT:'N',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q25:{Claude:'F',ChatGPT:'N',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q26:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q27:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q28:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q29:{Claude:'F',ChatGPT:'N',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q30:{Claude:'P',ChatGPT:'P',Gemini:'F',DeepSeek:'P',Qwen:'P'},
+Q31:{Claude:'F',ChatGPT:'F',Gemini:'P',DeepSeek:'P',Qwen:'F'},
+Q32:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q33:{Claude:'P',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q34:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q35:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+Q36:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q37:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q38:{Claude:'F',ChatGPT:'P',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q39:{Claude:'P',ChatGPT:'F',Gemini:'F',DeepSeek:'P',Qwen:'F'},
+Q40:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q41:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+Q42:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+Q43:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q44:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+Q45:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q46:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q47:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q48:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'F',Qwen:'F'},
+Q49:{Claude:'P',ChatGPT:'P',Gemini:'F',DeepSeek:'P',Qwen:'F'},
+Q50:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q51:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q52:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+Q53:{Claude:'A',ChatGPT:'P',Gemini:'A',DeepSeek:'A',Qwen:'A'},
+Q54:{Claude:'F',ChatGPT:'P',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q55:{Claude:'F',ChatGPT:'F',Gemini:'F',DeepSeek:'F',Qwen:'F'},
+Q56:{Claude:'A',ChatGPT:'N',Gemini:'A',DeepSeek:'F',Qwen:'F'},
+Q57:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'F',Qwen:'F'},
+Q58:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q59:{Claude:'P',ChatGPT:'P',Gemini:'P',DeepSeek:'P',Qwen:'P'},
+Q60:{Claude:'L',ChatGPT:'L',Gemini:'L',DeepSeek:'L',Qwen:'L'},
+};
+
+const topics = {
+Q01:"Ideal mixed CMC",Q02:"Rubingh x1",Q03:"Rubingh β regression",Q04:"Motomura ideal x1",
+Q05:"Margules activity coeffs",Q06:"Excess free energy",Q07:"Rodenas x1",Q08:"Maeda ΔG",
+Q09:"Rosen monolayer x1",Q10:"Rubingh activity coeffs",Q11:"Corrin–Harkins",Q12:"Szyszkowski γ",
+Q13:"Gibbs Γmax",Q14:"Area/molecule",Q15:"Frumkin θ",Q16:"Ward–Tordai Γ",
+Q17:"Davies–Guo HLB",Q18:"HLD k, Cc fit",Q19:"CTAB Cc (lit.)",Q20:"Phase inversion T",
+Q21:"Optimal salinity",Q22:"CPP & morphology",Q23:"Axial ratio",Q24:"A priori CMC (MT)",
+Q25:"Equilibrium area",Q26:"Ionic strength",Q27:"Debye length",Q28:"Zeta (Smoluchowski)",
+Q29:"O'Brien–White μ",Q30:"Planar PB σ",Q31:"ΔG micellization",Q32:"Mass-action ΔG",
+Q33:"Crit. micellization deg.",Q34:"van't Hoff ΔH",Q35:"QSPR log(S)",Q36:"CMC from γ curve",
+Q37:"CMC + β (conductivity)",Q38:"Isotherm model select",Q39:"Szyszkowski K fit",Q40:"DLS z-avg size",
+Q41:"MC uncertainty (seeded)",Q42:"Bootstrap CMC CI",Q43:"Anderson CMC",Q44:"MC dimer fraction",
+Q45:"Column breakthrough t50",Q46:"Cloud point",Q47:"Dynamic γ (Ward–Tordai)",Q48:"Owens–Wendt",
+Q49:"vOCG decomposition",Q50:"Work of adhesion",Q51:"Mass-action monomer",Q52:"Gillespie τ (seeded)",
+Q53:"Pop. balance (adversarial)",Q54:"ODE relaxation",Q55:"Creaming t50",Q56:"MCMC ESS (adversarial)",
+Q57:"Nonlinear fit + SE",Q58:"Homologous CMC extrap.",Q59:"EACN group contrib.",Q60:"Conformer volume (seeded)"
+};
+
+const table = document.getElementById('matrix-table');
+let thead = '<thead><tr><th>Q</th><th>Topic</th>' + MODELS.map(m=>`<th>${m}</th>`).join('') + '</tr></thead>';
+let rows = QORDER.map(q=>{
+  const d = DATA[q];
+  const cells = MODELS.map(m=>`<td><span class="status ${d[m]}">${d[m]}</span></td>`).join('');
+  return `<tr><td class="qid">${q}</td><td>${topics[q]}</td>${cells}</tr>`;
+}).join('');
+table.innerHTML = thead + '<tbody>' + rows + '</tbody>';
+</script>

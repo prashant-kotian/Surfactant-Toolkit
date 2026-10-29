@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 49.44,
+"cpp_electrostatic_area": 0.4247,
+"morphology_electrostatic_area": "cylindrical/rodlike micelle",
+"comment": "Both the measured area (44.70 A2) and the electrostatically derived area (49.44 A2) give packing parameters (0.470 and 0.425) in the 1/3-1/2 window, predicting cylindrical/rodlike micelles. The two routes agree within ~10% in headgroup area and fall in the same morphological band, showing robustness. In reality, SDS near its CMC in pure water forms small quasi-spherical micelles (P near 1/3); the slight overestimate of P here reflects Tanford's fully-extended chain length and the planar DH approximation overestimating curvature effects. SDS sits very close to the sphere-to-rod boundary, and small perturbations (added salt, temperature) can shift the morphology."
+}

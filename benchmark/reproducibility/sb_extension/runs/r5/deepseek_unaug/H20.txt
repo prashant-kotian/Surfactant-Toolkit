@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc for AOT under the exact SLS conditions (same solvent, temperature, 632.8 nm, and micellar state). Obtain it by differential refractometry: measure Δn versus AOT concentration and extrapolate to c=0, or use a validated literature value specifically for AOT under identical conditions. The supplied SDS dn/dc is not transferable."
+}

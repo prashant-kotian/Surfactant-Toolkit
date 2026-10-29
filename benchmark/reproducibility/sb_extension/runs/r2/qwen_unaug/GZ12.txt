@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.318,
+"interaction_model_or_approach": "Two-parameter (three-suffix) Margules excess-Gibbs model fitted to five experimental (x1, f1, f2) data points; A12 = -3.58, A21 = -0.88. Gibbs-Duhem consistency is built into the Margules form.",
+"notes": "Both Margules parameters are negative, indicating strong synergistic (attractive) interaction between the bulky di-tert-octylphenyl ethoxylate benzylammonium surfactant and linear DTAB in the mixed micelle. The large asymmetry (|A12| >> |A21|) reflects the very different molecular shapes. The model reproduces all five measured data points to within ±0.003 in f. Extrapolation from x1=0.808 to 0.90 is short and well within the model's valid range."
+}

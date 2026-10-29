@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.469691,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2788.92,
+"cpp_electrostatic_area": 0.007528,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The measured area predicts rodlike/cylindrical aggregates, whereas the CMC-based Debye-Huckel effective area predicts spherical micelles. The electrostatic construction gives an effective area about 62 times larger than the measured molecular area, showing that the simple CMC-only double-layer model is not quantitatively interchangeable with the measured headgroup area for this system."
+}

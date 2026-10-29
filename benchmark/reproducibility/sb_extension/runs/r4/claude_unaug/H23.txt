@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“delta_h_endpoint_kJ_per_mol”: -3.09,
+“agrees_with_cited_value”: false,
+“reported_value_source”: “Computed by me directly from the first and last rows of the supplied dataset using a two-point van’t Hoff fit (ΔH = R·Δln(CMC)/Δ(1/T)); not taken from the stated -6.2 kJ/mol metadata value.”
+}

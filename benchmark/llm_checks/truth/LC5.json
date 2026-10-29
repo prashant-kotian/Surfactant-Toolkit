@@ -1,0 +1,58 @@
+{
+ "case": "LC5",
+ "stages": {
+  "S1": {
+   "A_min_nm2": {
+    "value": 0.0723,
+    "tol": 0.002,
+    "unit": "nm2",
+    "source": "case5_results.json A_from_printed_Gamma_nm2"
+   },
+   "CPP": {
+    "value": 2.9,
+    "tol": 0.15,
+    "unit": "-",
+    "source": "toolkit critical_packing_parameter(v=296.4 A3, a0=7.23 A2, l=14.15 A) from case5 chain values; value 2.9 computed by the truth generator (not typed)"
+   }
+  },
+  "S2": {
+   "A_min_nm2": {
+    "value": 0.0723,
+    "tol": 0.002,
+    "unit": "nm2",
+    "source": "case5_results.json A_from_printed_Gamma_nm2"
+   },
+   "CPP": {
+    "value": 2.9,
+    "tol": 0.15,
+    "unit": "-",
+    "source": "toolkit critical_packing_parameter(v=296.4 A3, a0=7.23 A2, l=14.15 A) from case5 chain values; value 2.9 computed by the truth generator (not typed)"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  },
+  "S3": {
+   "A_min_nm2": {
+    "value": 0.0723,
+    "tol": 0.002,
+    "unit": "nm2",
+    "source": "case5_results.json A_from_printed_Gamma_nm2"
+   },
+   "CPP": {
+    "value": 2.9,
+    "tol": 0.15,
+    "unit": "-",
+    "source": "toolkit critical_packing_parameter(v=296.4 A3, a0=7.23 A2, l=14.15 A) from case5 chain values; value 2.9 computed by the truth generator (not typed)"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  }
+ },
+ "note": "brief-2c de-coaching pass. CAND4 dropped: under the S1 data-only rule no computable quantity survives (Jang's dead-crude EACN exists only in a garbled table text layer; Yoga's 8.22 is another paper's example and banned from S1/S2); eacn_linear_mixing/hld_* exist in the toolkit but cannot change an outcome with no numeric target; a wording-only test would be phrase-matching, banned by the brief. Stated plainly as the brief requires."
+}

@@ -1,0 +1,93 @@
+Using the 1:1 by-weight preparation, the bulk mole fractions
+𝑋
+1
+X
+1
+	​
+
+ are 0.743363, 0.812903, and 0.600000 for P184/P188, P184/P407, and P188/P407, respectively.
+
+Solving the two Rubingh equations simultaneously gives:
+
+P184/P188:
+𝑥
+1
+=
+0.494820
+x
+1
+	​
+
+=0.494820,
+𝛽
+=
+−
+8.67551
+β=−8.67551
+P184/P407:
+𝑥
+1
+=
+0.486034
+x
+1
+	​
+
+=0.486034,
+𝛽
+=
+−
+6.44017
+β=−6.44017
+P188/P407:
+𝑥
+1
+=
+0.486296
+x
+1
+	​
+
+=0.486296,
+𝛽
+=
+−
+2.56617
+β=−2.56617
+
+Thus, the printed values
+𝑥
+𝑀
+=
+(
+0.40
+,
+0.39
+,
+0.35
+)
+x
+M
+	​
+
+=(0.40,0.39,0.35) and
+𝛽
+=
+(
++
+3.68
+,
++
+3.23
+,
++
+1.72
+)
+β=(+3.68,+3.23,+1.72) do not follow from the printed CMCs, molecular weights, 1:1-by-weight preparation, and the stated Rubingh equations. In particular, the equations give negative, not positive,
+𝛽
+β.
+
+JSON
+{"x1_P184_P188":0.494820,"beta_P184_P188":-8.67551,"x1_P184_P407":0.486034,"beta_P184_P407":-6.44017,"x1_P188_P407":0.486296,"beta_P188_P407":-2.56617,"printed_result_follows":false}
+
+FINAL_JSON: {"x1_P184_P188":0.494820,"beta_P184_P188":-8.67551,"x1_P184_P407":0.486034,"beta_P184_P407":-6.44017,"x1_P188_P407":0.486296,"beta_P188_P407":-2.56617,"printed_result_follows":false}

@@ -1,0 +1,2 @@
+NAME                    TYPE   STATUS   COMMAND/URL
+surfactant-computation  stdio  enabled  python3 -m surfactantkit.mcp_server

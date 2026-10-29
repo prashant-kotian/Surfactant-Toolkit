@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"micelle_mw": 400,
+"aggregation_number": 0.64,
+"physically_valid": false,
+"why": "The aggregation number (0.64) is smaller than one, which is impossible because a micelle must contain at least one monomer; an apparent molar mass below the monomer mass has no physical meaning."
+}

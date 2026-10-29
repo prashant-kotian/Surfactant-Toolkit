@@ -1,0 +1,11 @@
+{
+ "qid": "Q47",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-28T20:26:38+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+ "sent": "2026-10-28T20:29:41+0530",
+ "question_variant": "~/repair11/paste_fix_unaug/Q47.md",
+ "end": "2026-10-28T20:32:42+0530"
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“f1_at_x1_0.90”: 1.013,
+“f2_at_x1_0.90”: 0.316,
+“interaction_model_or_approach”: “Two-parameter Margules (subregular/asymmetric regular-solution) model: ln f1 = x2^2[A12 + 2(A21-A12)x1], ln f2 = x1^2[A21 + 2(A12-A21)x2], with A12 = ln f1-infinity ~= -3.57 and A21 = ln f2-infinity ~= -0.885, fitted from first principles to the measured data.”,
+“notes”: “Single-parameter Rubingh regular-solution theory fails: beta extracted from f1 and f2 disagrees and drifts strongly with composition, so the nonideality is asymmetric. The two-parameter Margules form is Gibbs-Duhem consistent (independent fits of ln f1/x2^2 vs x1 and ln f2/x1^2 vs x2 give matching A12, A21) and reproduces all 10 measured values to within +/-0.002. Interpretation: strong net attractive synergism (both f<1; mean interaction ~ -2.2) despite both surfactants being cationic, driven by hydrophobic/aromatic packing of component 1’s ethoxylated aryl-benzyl group among DTAB chains plus head-group-crowding relief via the ethoxy spacer; attraction is strongest when component 1 is dilute. The model implies f2 has a minimum near x1~0.78 (~0.285) then rises toward exp(A21)~0.41 as x1->1, so f2 at x1=0.90 (0.316) is slightly above the x1=0.808 value, consistent with the data rather than a monotonic extrapolation.”
+}

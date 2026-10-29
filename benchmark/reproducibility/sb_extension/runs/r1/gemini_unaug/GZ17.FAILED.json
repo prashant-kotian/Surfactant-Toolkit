@@ -1,0 +1,8 @@
+{
+ "qid": "GZ17",
+ "provider": "gemini",
+ "condition": "unaug",
+ "start": "2026-10-23T13:43:55+0530",
+ "model_seen": "MODEL NOT CONFIRMED",
+ "failed": "model guard: MODEL NOT CONFIRMED"
+}

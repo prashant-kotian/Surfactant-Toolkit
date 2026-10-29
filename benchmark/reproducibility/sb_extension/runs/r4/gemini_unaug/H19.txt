@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 7.422889391162107e-06,
+"a_min_nm2": 0.22371044395188652,
+"delta_g_mic_kJ_per_mol": -37.27148553787587,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "The enthalpy of micellization (delta H) or the temperature dependence of the CMC (d(CMC)/dT) to determine delta S."
+}

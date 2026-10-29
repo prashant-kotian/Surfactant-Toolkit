@@ -1,0 +1,23 @@
+PAPER DATA (B. Naskar, Colloids Interfaces 9 (2025) 4, doi:10.3390/colloids9010004; Table 1, eqs (6)-(7) and stated uncertainties, as printed). CTAB in water.
+T (K):                    290    293    298    303    308    313    323
+CMC (mM, ITC):             1.33   1.25   1.18   1.19   1.35   1.44   1.60
+beta (counterion):         0.71   0.70   0.68   0.67   0.64   0.63   0.59
+dG (kJ/mol) as printed:    43.9   44.3   44.8   45.2   44.6   44.8   44.6
+Printed eq (6) form: dG/T = A + B/T + C/T^2 with A = -872.37, B = 12.0, C = 6909.0.
+Stated uncertainty on dG: 3 % (Table 1 note a).
+The paper computes dG = (1 + beta) R T ln(X_cmc), X_cmc = CMC in mol/L divided by 55.5 mol/L,
+R = 8.314462618e-3 kJ/(mol K).
+REPORT: (a) dG at 298 K computed from the printed CMC and beta (kJ/mol); (b) the enthalpy of
+micellization at 298 K implied by the printed dG values across the temperature series (kJ/mol);
+(c) the heat-capacity change implied by the same dG(T) series (kJ/(mol K)).
+
+PAPER RESULT AND CONCLUSION (as printed): Table 1 lists the van't Hoff and ITC enthalpy columns
+(dH_vH +2.86, -6.10, -20.6, -34.7, -48.3, -61.4, -86.6; dH_ITC -3.50, -6.02, -8.37, -11.2, -12.0,
+-15.6, -18.7 kJ/mol); the paper states they "showed significant differences" and quotes deltaCp of
+-2.7 kJ/(mol K) from van't Hoff vs -0.45 kJ/(mol K) from ITC, attributing the gap to different
+aspects of micellization measured by the two methods.
+QUESTION: does the printed result follow from the printed data? Report the three quantities again,
+and answer printed_result_follows.
+
+FINAL_JSON: {"dG_298_kJ_mol": <kJ/mol>, "dH_298_kJ_mol": <kJ/mol>, "dCp_kJ_mol_K": <kJ/(mol K)>, "printed_result_follows": <->}
+The SurfactantKit tools are available to you.

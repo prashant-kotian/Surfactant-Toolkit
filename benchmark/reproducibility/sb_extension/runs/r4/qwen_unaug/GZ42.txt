@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), whose two bulky branched C8 tails and compact sulfonate headgroup give it a pronounced wedge shape that overwhelmingly favors negative (reverse, water-in-oil) curvature. AOT is the textbook surfactant for spontaneous reverse micelles and Winsor II systems. A negative Cc around −0.92 is fully consistent with this well-established behavior. A Cc of +2.4 to +3.5 would imply a strong preference for normal (oil-in-water) curvature, which contradicts the compound's molecular geometry and decades of reproducible phase-behavior data. Source 2's value most likely reflects a sign-convention error, a compound misassignment, or a systematic measurement/fitting error in that particular paper."
+}

@@ -1,0 +1,92 @@
+========================================================================
+COMPILED RESULTS: GZ-51 to GZ-68
+========================================================================
+
+GZ-51
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.0757
+}
+
+GZ-52
+FINAL_JSON:
+{
+  "selected_mixture_model": "Regular solution theory"
+}
+
+GZ-53
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.6973,
+  "delta_s_scenario_b_J_per_mol_K": 101.5294
+}
+
+GZ-54
+FINAL_JSON:
+{
+  "cpp": 0.35215,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+GZ-55
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "The surface pressure (Π = γ₀ - γ) exhibits a remarkably linear relationship with ln(C) (R² > 0.999), indicating a nearly constant apparent surface excess (Γ ≈ 2.95 μmol/m², area per molecule ≈ 56 Å²) across this concentration range. The simple independent adsorption model (Langmuir/Szyszkowski isotherm) inherently predicts a concave-down curvature in the Π vs ln(C) plot and fails to fit the data adequately (RMSE ≈ 0.58 mN/m with systematic residuals). In contrast, the Frumkin adsorption isotherm, which incorporates a lateral interaction parameter, fits the data almost perfectly (RMSE < 0.01 mN/m) and yields physically realistic parameters, confirming the presence of genuine attractive surfactant-surfactant lateral interactions at the interface."
+}
+
+GZ-56
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "weakly anionic"
+}
+
+GZ-57
+FINAL_JSON:
+{
+  "cmc_mM": 1.055,
+  "gamma_max_mol_per_m2": 3.515e-6,
+  "delta_g_mic_kJ_per_mol": -46.69
+}
+
+GZ-58
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.1358,
+  "f2_at_x1_0.15": 0.8848
+}
+
+GZ-59
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.69,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The intrinsic volume of the hydrophilic headgroup and the negative electrostriction (hydration) volume of the ionic headgroup, or the experimentally measured total partial molar volume of the surfactant at infinite dilution."
+}
+
+GZ-60
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 0.0
+}
+*Note: The referenced image was not attached, so a genuine estimate could not be made. A placeholder value of 0.0 was provided to satisfy the requested format.*
+
+GZ-61
+FINAL_JSON:
+{
+  "kappa_a": 1.16,
+  "zeta_potential_mV": -41.2
+}
+
+GZ-62
+FINAL_JSON:
+{
+  "cmc_mM": 6.0,
+  "counterion_binding_degree": 0.54
+}
+
+GZ-63
+FINAL_JSON:
+{
+  "aggregation_number": 60,
+  "reasoning": "The relationship ln(I0/I) = (N / (Ct - cmc)) * [Q] dictates a straight line through the origin. Calculating ln(I0/I) for the data shows the first

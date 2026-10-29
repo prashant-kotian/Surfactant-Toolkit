@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“f1_at_x1_0.90”: 1.013,
+“f2_at_x1_0.90”: 0.316,
+“interaction_model_or_approach”: “Two-parameter (three-suffix / sub-regular Margules) mixed-micelle model, GE/RT = x1x2(A21x1 + A12x2), fitted to ln f1 and ln f2; A12 = -3.57, A21 = -0.89. The symmetric one-parameter regular-solution (Rubingh) model was rejected because beta from f1 and f2 disagree strongly.”,
+“notes”: “Strongly synergistic (attractive, negative-deviation) mixing with pronounced asymmetry: component 1 (aromatic/ethoxylated benzyl-dimethylammonium) is far more stabilized when dilute in DTAB (A12~-3.6) than DTAB is when dilute in component 1 (A21~-0.9). Model reproduces all five measured points to ~0.3%. f2 passes a shallow minimum near x1~0.8 and rises toward exp(A21)~0.41 as x1->1, so f2=0.316 at x1=0.90 is consistent with the data trend. Parameters are effective (composition-independent A12,A21); real system may show mild residual curvature.”
+}

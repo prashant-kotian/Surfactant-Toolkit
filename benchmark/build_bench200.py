@@ -79,10 +79,13 @@ def main() -> int:
             model = norm(model)
             na = 0
             fill = CORR.orig_overlay(model, cond)      # net-200 fill re-runs of NOT_ANSWERED items
+            regrade = CORR.orig_regrade(model, cond)   # reference-value change (Q47), any verdict
             for alias, q in md["questions"].items():
                 v = q["verdict"]
                 if v == "NOT_ANSWERED" and alias in fill:
                     v = fill[alias]
+                if alias in regrade:
+                    v = regrade[alias][0]
                 it = alias2sb.get(alias)
                 if it is None:
                     raise SystemExit(f"question_set missing alias {alias}")
@@ -160,9 +163,11 @@ def main() -> int:
 
     # ---------- CLASSIFICATION200.md ----------
     def matrix(title, table, nn):
+        # one column per MODEL_ORDER entry (Gemini U→A is Gemini web → Gemini CLI)
+        head = ["Category", "n"] + [f"{m} U→A" for m in MODEL_ORDER] + ["Lift (core 3)"]
         C = [f"## {title}", "",
-             "| Category | n | Claude U→A | ChatGPT U→A | DeepSeek U→A | Qwen U→A | Gemini U→A | GCLI U→A | Lift (core 3) |",
-             "|---|---|---|---|---|---|---|---|---|---|"]
+             "| " + " | ".join(head) + " |",
+             "|" + "---|" * len(head)]
         concl = []
         for cat, st in table.items():
             row = [f"| {cat} | {nn.get(cat, '')} |"]
@@ -192,6 +197,8 @@ def main() -> int:
             else:
                 concl.append((cat, None, None, 0, None))
             C.append("".join(row) + f" {tot} |")
+        for line in C[2:]:
+            assert line.count("|") == len(head) + 1, f"column count drift: {line}"
         C.append("")
         return C, concl
 

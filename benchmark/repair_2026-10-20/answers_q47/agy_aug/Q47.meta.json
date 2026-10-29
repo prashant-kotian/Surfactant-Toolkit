@@ -1,0 +1,3 @@
+{"qid": "Q47", "provider": "gemini cli (agy)", "condition": "aug", "model": "gemini-3.8-flash-high",
+ "mcp": "surfactant-computation, release toolkit with the dynamic-tension fix, local stdio",
+ "started": "2026-10-25T01:27:49+05:30", "finished": "2026-10-25T01:28:20+05:30", "exit_code": 0}

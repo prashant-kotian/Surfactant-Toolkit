@@ -1,0 +1,231 @@
+No. The printed thermodynamic results are not internally reproduced by the printed data/equations.
+
+At 298 K,
+
+𝑋
+c
+m
+c
+=
+1.18
+×
+10
+−
+3
+55.5
+,
+X
+cmc
+	​
+
+=
+55.5
+1.18×10
+−3
+	​
+
+,
+
+so
+
+Δ
+𝐺
+=
+(
+1
++
+0.68
+)
+𝑅
+𝑇
+ln
+⁡
+𝑋
+c
+m
+c
+=
+−
+44.7833
+
+k
+J
+
+m
+o
+l
+−
+1
+.
+ΔG=(1+0.68)RTlnX
+cmc
+	​
+
+=−44.7833 kJmol
+−1
+.
+
+Thus the stated equation requires −44.8 kJ/mol, whereas the table value is printed as +44.8 kJ/mol.
+
+Using the seven printed positive
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) values and fitting the stated form
+
+Δ
+𝐺
+𝑇
+=
+𝐴
++
+𝐵
+𝑇
++
+𝐶
+𝑇
+2
+,
+T
+ΔG
+	​
+
+=A+
+T
+B
+	​
+
++
+T
+2
+C
+	​
+
+,
+
+gives
+𝐵
+=
+518.72
+B=518.72 and
+𝐶
+=
+−
+7.3172
+×
+10
+4
+C=−7.3172×10
+4
+ in the corresponding units. Gibbs–Helmholtz then gives
+
+Δ
+𝐻
+=
+𝐵
++
+2
+𝐶
+𝑇
+,
+Δ
+𝐶
+𝑝
+=
+−
+2
+𝐶
+𝑇
+2
+,
+ΔH=B+
+T
+2C
+	​
+
+,ΔC
+p
+	​
+
+=−
+T
+2
+2C
+	​
+
+,
+
+so at 298 K:
+
+Δ
+𝐻
+=
++
+27.63
+
+k
+J
+
+m
+o
+l
+−
+1
+,
+Δ
+𝐶
+𝑝
+=
++
+1.648
+
+k
+J
+
+m
+o
+l
+−
+1
+K
+−
+1
+.
+ΔH=+27.63 kJmol
+−1
+,ΔC
+p
+	​
+
+=+1.648 kJmol
+−1
+K
+−1
+.
+
+These do not reproduce the paper's
+−
+20.6
+−20.6 kJ/mol van't Hoff enthalpy or
+−
+2.7
+−2.7 kJ/(mol K) heat-capacity change. Moreover, if the missing minus signs in the printed
+Δ
+𝐺
+ΔG column are treated as a typographical error, the same fit simply changes those two fitted quantities to about −27.63 kJ/mol and −1.648 kJ/(mol K)—still not the quoted values. The stated 3% uncertainty also makes derivative-derived
+𝐻
+H and especially
+𝐶
+𝑝
+C
+p
+	​
+
+ rather poorly constrained.
+
+JSON
+{"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.6329, "dCp_kJ_mol_K": 1.6480, "printed_result_follows": false}
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.6329, "dCp_kJ_mol_K": 1.6480, "printed_result_follows": false}

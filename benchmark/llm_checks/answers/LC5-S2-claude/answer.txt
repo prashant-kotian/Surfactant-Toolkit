@@ -1,0 +1,37 @@
+Verification
+Confirming the packing parameter against the printed figure
+
+Confirming the packing parameter against the printed figure
+Verification
+
+(a) A_min from the printed Γ_max
+
+With eq (5), A_min = 1/(N_A · Γ_max):
+
+Γ_max = 22.96 μmol/m² = 22.96 × 10⁻⁶ mol/m²
+N_A · Γ_max = (6.02214076 × 10²³)(22.96 × 10⁻⁶) = 1.38268 × 10¹⁹ m⁻²
+A_min = 7.2323 × 10⁻²⁰ m² = 7.2323 Ų = 0.0723 nm²
+
+This reproduces the paper’s printed A_min = 0.0723 nm² exactly. So the A_min column is internally consistent.
+
+(b) CPP from eqs (6)–(8), n_C = 10
+
+eq (6): V = 27.4 + 26.9(10) = 296.4 ų
+eq (7): l = 1.5 + 1.265(10) = 14.15 Å
+eq (8): CPP = V / (A_min · l) = 296.4 / (7.2323 × 14.15) = 296.4 / 102.34 = 2.90
+
+(The same value results in any consistent unit system, as it must for a dimensionless ratio.)
+
+Does the printed result follow?
+
+No. The printed CPP = 269.809 (and the whole 255–328 range) cannot be obtained from the paper’s own eqs (6)–(8) with the printed A_min. Those equations yield CPP ≈ 2.90 for the water row — roughly two orders of magnitude smaller than printed, consistent with a units slip in the CPP computation (e.g., mixing nm² for A_min with ų/Å elsewhere).
+
+Two deeper problems:
+
+Physical impossibility. The critical packing parameter is a dimensionless geometric ratio of order unity, with meaningful thresholds (≲1/3 spheres, 1/3–1/2 cylinders, 1/2–1 bilayers/vesicles, >1 inverted). A CPP of ~270 is not a valid packing parameter at all, so it cannot support any statement about aggregate shape.
+The conclusion doesn’t attach. The inferred “globule → spherical” morphology is read off these hundreds-range CPP values. Even the correctly computed value (2.90) sits in the inverted-structure regime (>1), not the spherical/globular regime — so the geometric interpretation isn’t supported by the corrected numbers either. The A_min values are fine; the CPP column and the shape conclusion built on it are not.
+
+So A_min follows from the data, but the CPP and the morphological inference do not.
+
+
+FINAL_JSON: {"A_min_nm2": 0.0723, "CPP": 2.90, "printed_result_follows": "no"}

@@ -1,4 +1,4 @@
-Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ31](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch4.txt#L20) through [GZ40](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch4.txt#L187)), worked through in order.
+Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ31](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch4.txt#L20) through [GZ40](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch4.txt#L187)), worked through in order.
 
 ---
 
@@ -164,7 +164,7 @@ END OF QUESTION
 
 ### Solution for Question GZ36
 
-#### 1. Trend from Chart ([`GZ-36_chart.png`](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-36_chart.png))
+#### 1. Trend from Chart ([`GZ-36_chart.png`](file://~/overnight_run/agy_gs50/GZ-36_chart.png))
 - The x-axis shows $1000 / T\text{ (K}^{-1}\text{)}$ ranging from 2.90 to 3.30.
 - The y-axis shows $\ln(\text{CMC})\text{ (CMC in mM)}$ ranging from +0.10 to -0.50.
 - As $1000/T$ increases from 2.915 to 3.30 (corresponding to decreasing temperature $T$):
@@ -196,7 +196,7 @@ END OF QUESTION
 
 ### Solution for Question GZ37
 
-#### 1. Chart Inspection ([`GZ-37_chart.png`](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-37_chart.png))
+#### 1. Chart Inspection ([`GZ-37_chart.png`](file://~/overnight_run/agy_gs50/GZ-37_chart.png))
 - The plot shows activity coefficients $f$ as a function of the micellar mole fraction of component 1 ($x_1$).
 - **Red curve:** Component 1 activity coefficient ($f_1$).
 - **Blue curve:** Component 2 activity coefficient ($f_2$).
@@ -221,7 +221,7 @@ END OF QUESTION
 
 ### Solution for Question GZ38
 
-#### 1. Chart Inspection ([`GZ-38_chart.png`](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-38_chart.png))
+#### 1. Chart Inspection ([`GZ-38_chart.png`](file://~/overnight_run/agy_gs50/GZ-38_chart.png))
 - **Axis Units:** The horizontal axis is explicitly labeled:
   $$\text{Concentration (\mu M)}$$
 - **Curve Shape:**
@@ -243,7 +243,7 @@ END OF QUESTION
 
 ### Solution for Question GZ39
 
-#### 1. Chart Inspection ([`GZ-39_chart.png`](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-39_chart.png))
+#### 1. Chart Inspection ([`GZ-39_chart.png`](file://~/overnight_run/agy_gs50/GZ-39_chart.png))
 - The chart compares experimental surface-tension data (blue circles) with a fitted pre-CMC adsorption isotherm curve (solid red curve).
 - **Agreement Region:** Below $\sim 1.6\text{ mM}$, the measured data points fall directly on the fitted curve, displaying the characteristic gradual decline and transition to a linear post-saturation drop in surface tension.
 - **Divergence Region:** Above approximately **2 to 3 mM**, the measured data stops declining and levels off into a flat plateau around $\sim 28\text{ mN/m}$, whereas the fitted isotherm curve continues plunging monotonically downward (predicting surface tension dropping to $<18\text{ mN/m}$ at $10\text{ mM}$).
@@ -265,7 +265,7 @@ END OF QUESTION
 
 ### Solution for Question GZ40
 
-#### 1. Chart Inspection ([`GZ-40_chart.png`](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-40_chart.png))
+#### 1. Chart Inspection ([`GZ-40_chart.png`](file://~/overnight_run/agy_gs50/GZ-40_chart.png))
 - The chart displays surface tension vs. concentration for two surfactants:
   - **Surfactant A (blue circles):** Follows the classical tensiometric behavior: a steady decline in surface tension from $70\text{ mN/m}$ down to $\sim 37.9\text{ mN/m}$ at $\sim 13\text{ mM}$, where it transitions smoothly into a flat plateau ($\sim 37.5\text{ mN/m}$ at $26\text{ mM}$ and $\sim 36.8\text{ mN/m}$ at $50\text{ mM}$) with no minimum.
   - **Surfactant B (red squares):** Declines down to a local minimum (dip) of $\approx 32.3\text{ mN/m}$ at $\approx 16\text{ mM}$, followed by a clear rise up to $\approx 36.2\text{ mN/m}$ at $\approx 32\text{ mM}$.

@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.470,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 52.81,
+  "cpp_electrostatic_area": 0.398,
+  "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+  "comment": "Both approaches give 1/3 < P <= 1/2, so both predict cylindrical/rodlike aggregates, and that independent agreement is the main result. The electrostatic area (52.8 A^2) exceeds the measured area (44.7 A^2) by ~18%, lowering P from 0.47 to 0.40: with no added salt the double layer is diffuse (Debye length ~34 A), so modeled headgroup repulsion spreads the heads wider and favors higher curvature. The measured value is tighter because real counterion binding/hydration screen some of that repulsion. Net: a borderline sphere/rod system - measured area sits near the rod-bilayer edge, electrostatic near the sphere-rod edge - and both P values being near boundaries shows the prediction is threshold-sensitive, consistent with SDS forming small near-spherical-to-elongated micelles near its CMC."
+}

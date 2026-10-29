@@ -1,0 +1,195 @@
+Q17
+# HLB Calculation via Davies' Method with Guo–Rong–Ying Correction
+
+## Step 1: Apply the effective-chain-length corrections
+
+**Alkyl tail (CH₂ correction):**
+Actual CH₂ count = 11 (from the C₁₂ tail: 11 CH₂ + 1 CH₃)
+
+$$n_{\text{CH}_2}^{\text{eff}} = 0.965 \times 11 - 0.178 = 10.615 - 0.178 = 10.437$$
+
+The terminal CH₃ remains as 1 group (the correction formula applies to CH₂ count only).
+
+**EO head-group correction:**
+Actual EO count = 6
+
+$$n_{\text{EO}}^{\text{eff}} = 13.45\ln(6) - 0.16(6) + 1.26$$
+
+$$= 13.45 \times 1.79176 - 0.96 + 1.26$$
+
+$$= 24.0992 - 0.96 + 1.26 = 24.3992$$
+
+## Step 2: Compute hydrophilic and lipophilic contributions
+
+**Hydrophilic (ether-oxygen groups):**
+$$\Sigma H = 24.3992 \times 1.3 = 31.7189$$
+
+**Lipophilic (CH₂ + CH₃ groups):**
+$$\Sigma L = (10.437 \times 0.475) + (1 \times 0.475) = 4.9576 + 0.475 = 5.4326$$
+
+## Step 3: Assemble the HLB
+
+$$\text{HLB} = 7 + \Sigma H - \Sigma L = 7 + 31.7189 - 5.4326 = 33.2863$$
+
+## Result
+
+$$\boxed{\text{HLB} = 33.29}$$
+
+FINAL_JSON: {"A": 33.29}
+
+Q31
+
+# Gibbs Free Energy of Micellization
+
+## Given Information
+- CMC = 0.0057 M
+- T = 303.15 K
+- Counterion factor = 1.0 (fully-bound; aggregate behaves as one neutral particle)
+- Formula: ΔG_mic = (counterion factor) × R × T × ln(X_CMC)
+
+## Step 1: Convert CMC to Mole Fraction
+
+For dilute aqueous solutions, the mole fraction of solute is:
+
+$$X_{\text{CMC}} = \frac{\text{CMC}}{55.5} = \frac{0.0057}{55.5} = 1.02703 \times 10^{-4}$$
+
+(where 55.5 mol/L is the molarity of pure water)
+
+## Step 2: Compute ln(X_CMC)
+
+$$\ln(1.02703 \times 10^{-4}) = \ln(1.02703) + \ln(10^{-4})$$
+$$= 0.02667 + (-9.21034) = -9.18367$$
+
+## Step 3: Compute R·T
+
+$$R \cdot T = 8.314 \times 303.15 = 2520.39 \text{ J/mol}$$
+
+## Step 4: Assemble ΔG_mic
+
+$$\Delta G_{\text{mic}} = 1.0 \times 2520.39 \times (-9.18367)$$
+
+$$= -23\,146.4 \text{ J/mol}$$
+
+$$= -23.146 \text{ kJ/mol}$$
+
+## Result
+
+$$\boxed{\Delta G_{\text{mic}} = -23.146 \text{ kJ/mol}}$$
+
+FINAL_JSON: {"A": -23.146}
+
+Q34
+
+# Enthalpy of Micellization from van't Hoff Analysis
+
+## Given Relationship
+$$\frac{d(\ln \text{CMC})}{d(1/T)} = +\frac{\Delta H_{\text{mic}}}{R}$$
+
+(No leading minus sign, as stated, because CMC is inversely related to the micellization equilibrium constant.)
+
+## Two-Point Form
+
+$$\Delta H_{\text{mic}} = R \cdot \frac{\ln(\text{CMC}_2) - \ln(\text{CMC}_1)}{\dfrac{1}{T_2} - \dfrac{1}{T_1}}$$
+
+## Step 1: Compute ln(CMC₂/CMC₁)
+
+$$\ln\!\left(\frac{0.0076}{0.0041}\right) = \ln(1.85366) = 0.61716$$
+
+## Step 2: Compute Δ(1/T)
+
+$$\frac{1}{T_1} = \frac{1}{293.15} = 3.41122 \times 10^{-3} \text{ K}^{-1}$$
+
+$$\frac{1}{T_2} = \frac{1}{313.15} = 3.19336 \times 10^{-3} \text{ K}^{-1}$$
+
+$$\Delta(1/T) = 3.19336\times10^{-3} - 3.41122\times10^{-3} = -2.17865\times10^{-4} \text{ K}^{-1}$$
+
+## Step 3: Compute ΔH_mic
+
+$$\Delta H_{\text{mic}} = 8.314 \times \frac{0.61716}{-2.17865\times10^{-4}}$$
+
+$$= 8.314 \times (-2832.8)$$
+
+$$= -23\,552 \text{ J/mol}$$
+
+$$= -23.55 \text{ kJ/mol}$$
+
+## Result
+
+$$\boxed{\Delta H_{\text{mic}} = -23.55 \text{ kJ/mol}}$$
+
+The negative sign confirms micellization is exothermic over this temperature range, consistent with the CMC increasing with temperature.
+
+FINAL_JSON: {"A": -23.55}
+
+Q46
+
+# Cloud Point via HLD Framework for Nonionic Ethoxylate Surfactant
+
+## Given Parameters
+- HLD = b·S − k·EACN_app + Cc + c_T·(T − 25)
+- b = 0.13 (g/100 mL)⁻¹
+- c_T = 0.06 °C⁻¹
+- EACN_app = 7.3
+- k = 1.0 (standard for this surfactant class, implied by "both sourced constants")
+- Cc = 0.28·SACN + 2.4 − EON
+- SACN = 10, EON = 5, S = 2.5 g/100 mL
+
+## Step 1: Compute Cc (Characteristic Curvature)
+
+$$C_c = 0.28(10) + 2.4 - 5 = 2.8 + 2.4 - 5 = 0.2$$
+
+## Step 2: Evaluate the Constant (T-independent) Terms
+
+$$b \cdot S = 0.13 \times 2.5 = 0.325$$
+
+$$k \cdot \text{EACN}_{\text{app}} = 1.0 \times 7.3 = 7.3$$
+
+Sum of T-independent terms:
+$$0.325 - 7.3 + 0.2 = -6.775$$
+
+## Step 3: Set HLD = 0 and Solve for T (Cloud Point)
+
+$$0 = -6.775 + 0.06\,(T - 25)$$
+
+$$0.06\,(T - 25) = 6.775$$
+
+$$T - 25 = \frac{6.775}{0.06} = 112.9167$$
+
+$$T = 25 + 112.9167 = 137.92 \text{ °C}$$
+
+## Result
+
+$$\boxed{T_{\text{cloud}} = 137.92 \text{ °C}}$$
+
+FINAL_JSON: {"A": 137.92}
+
+
+Q59
+# EACN of Octylbenzene
+
+## Structure Analysis
+
+Octylbenzene (SMILES: c1ccccc1CCCCCCCC) consists of:
+- A benzene (aromatic) ring: 6 carbons
+- One unbranched saturated alkyl side chain: **8 carbons** (–CH₂CH₂CH₂CH₂CH₂CH₂CH₂CH₃)
+- Total molecular carbons: 14
+
+## Applying the Rule
+
+The problem states the group-contribution rule for alkylbenzenes:
+
+> The aromatic ring contributes **0** to the EACN. Only the unbranched saturated side chain determines the EACN, which equals the EACN of an n-alkane with the same number of carbons as that side chain.
+
+Therefore:
+
+$$\text{EACN} = \text{number of carbons in the alkyl side chain} = 8$$
+
+The 6 ring carbons do **not** add to the EACN (they contribute 0), so the total carbon count of 14 is irrelevant.
+
+## Result
+
+$$\boxed{\text{EACN} = 8.0}$$
+
+**Rule applied:** Alkyl side-chain equivalence rule (aromatic ring contributes zero to EACN; EACN equals the carbon number of the n-alkyl side chain).
+
+FINAL_JSON: {"A": 8.0, "B": "alkyl side-chain equivalence rule"}

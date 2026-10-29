@@ -1,0 +1,152 @@
+{
+ "models": {
+  "Claude": {
+   "protocol": "batched",
+   "answers": 90,
+   "missing": 0,
+   "correct": 62,
+   "acceptable": 25,
+   "error": 1,
+   "hallucination": 2,
+   "by_type": {
+    "U": 2
+   },
+   "per_run": [
+    1,
+    0,
+    0,
+    1,
+    0
+   ],
+   "runs_with_hallucination": 2,
+   "stable": 16,
+   "comparable": 18,
+   "inconsistent": 3
+  },
+  "ChatGPT": {
+   "protocol": "fresh",
+   "answers": 77,
+   "missing": 13,
+   "correct": 44,
+   "acceptable": 15,
+   "error": 15,
+   "hallucination": 3,
+   "by_type": {
+    "C": 3
+   },
+   "per_run": [
+    1,
+    0,
+    1,
+    1,
+    0
+   ],
+   "runs_with_hallucination": 3,
+   "stable": 13,
+   "comparable": 18,
+   "inconsistent": 9
+  },
+  "Gemini": {
+   "protocol": "batched",
+   "answers": 89,
+   "missing": 1,
+   "correct": 55,
+   "acceptable": 22,
+   "error": 6,
+   "hallucination": 6,
+   "by_type": {
+    "N": 1,
+    "U": 5
+   },
+   "per_run": [
+    1,
+    2,
+    1,
+    1,
+    1
+   ],
+   "runs_with_hallucination": 5,
+   "stable": 13,
+   "comparable": 18,
+   "inconsistent": 8
+  },
+  "Qwen": {
+   "protocol": "batched",
+   "answers": 82,
+   "missing": 8,
+   "correct": 49,
+   "acceptable": 18,
+   "error": 8,
+   "hallucination": 7,
+   "by_type": {
+    "N": 3,
+    "U": 4
+   },
+   "per_run": [
+    1,
+    2,
+    2,
+    1,
+    1
+   ],
+   "runs_with_hallucination": 5,
+   "stable": 11,
+   "comparable": 18,
+   "inconsistent": 12
+  }
+ },
+ "chart_reads": {
+  "Claude": [
+   1.5,
+   1.8,
+   1.7,
+   1.6,
+   1.5
+  ],
+  "ChatGPT": [],
+  "Gemini": [
+   0.91,
+   -1,
+   1.05,
+   2.1,
+   2.1
+  ],
+  "Qwen": [
+   0.0,
+   1.0,
+   1.0,
+   2.0,
+   2.0
+  ]
+ },
+ "dg_conventions": {
+  "Claude": [
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)"
+  ],
+  "ChatGPT": [
+   "1",
+   "(1+alpha)",
+   "(2-alpha)"
+  ],
+  "Gemini": [
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)",
+   "(2-alpha)"
+  ],
+  "Qwen": [
+   "(2-alpha)",
+   "(1+alpha)",
+   "other",
+   "other",
+   "(2-alpha)"
+  ]
+ },
+ "n_questions": 18,
+ "n_runs": 5
+}

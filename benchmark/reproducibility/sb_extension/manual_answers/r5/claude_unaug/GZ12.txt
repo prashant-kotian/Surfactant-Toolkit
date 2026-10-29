@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.315,
+  "interaction_model_or_approach": "Two-parameter Margules (sub-regular solution) model, gE/RT = x1*x2*(A21*x1 + A12*x2), fit simultaneously to both activity coefficients; A12 = -3.57, A21 = -0.89. Chosen because single-parameter regular-solution (Rubingh) theory fails: beta from f1 and f2 disagree and drift with composition, signaling a strongly asymmetric, net-attractive (negative gE) interaction.",
+  "notes": "Both surfactants are cationic (component 1 = bulky benzyl-dimethylammonium with an octylphenol-ether aromatic tail; component 2 = DTAB, a small linear cationic). gE/RT < 0 at all measured points => synergistic, tail/packing-driven mixing that overcomes like-charge headgroup repulsion. Interaction is highly asymmetric: dilute component 1 is strongly stabilized (f1_inf ~ 0.03) while dilute component 2 only mildly (f2_inf ~ 0.41), hence the need for two Margules parameters rather than one beta. Fit reproduces all 5 measured compositions to RMS ~0.0007 in f; x1=0.90 is only slightly beyond the data range and the prediction is stable under leave-one-out refitting (f1=1.013+/-0.000, f2=0.315+/-0.001). Minor Gibbs-Duhem inconsistency in the raw data is smoothed by the thermodynamically consistent model."
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.315,
+  "interaction_model_or_approach": "Two-parameter Margules excess-free-energy model (asymmetric regular-solution theory): G^E/RT = x1*x2*(A21*x1 + A12*x2), giving ln f1 = x2^2[A12 + 2(A21-A12)x1], ln f2 = x1^2[A21 + 2(A12-A21)x2], fit simultaneously to all data.",
+  "notes": "Single-parameter Rubingh beta is refuted: beta from f1 and from f2 disagree by a near-constant ~2.67 and drift with composition, indicating an asymmetric mixture. Global fit gives A12=-3.57, A21=-0.89 (RMSE 0.0007 in f; R^2=0.99999); parameters from f1-only and f2-only agree to ~1% and Gibbs-Duhem residual ~5e-4, confirming thermodynamic consistency. Both parameters strongly negative => net attractive/synergistic mixing (negative deviation). Strong asymmetry: f1_inf=exp(A12)=0.028, f2_inf=exp(A21)=0.41, reflecting the bulky aromatic/polyether benzyl-ammonium (comp 1) vs simple DTAB (comp 2). At x1=0.90 comp 1 is near-ideal while dilute comp 2 remains stabilized; prediction stable under +/-5% parameter perturbation (f1 1.010-1.015, f2 0.298-0.334)."
+}

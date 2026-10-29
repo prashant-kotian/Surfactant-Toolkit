@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.318,
+"interaction_model_or_approach": "Two-parameter Margules model fitted to ln(f1) and ln(f2) vs. micellar mole fraction; A12 = -3.58, A21 = -0.87",
+"notes": "Strong net attractive interaction (negative Margules parameters) between the bulky di-tert-butylphenyl/benzyl cationic surfactant and DTAB in mixed micelles. The asymmetry (|A12| >> |A21|) reflects the much greater stabilization of the aromatic component when diluted into the DTAB matrix versus the reverse. At x1=0.90, component 1 is nearly ideal while DTAB remains strongly stabilized. Model reproduces all five measured compositions to within experimental uncertainty."
+}

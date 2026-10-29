@@ -12,7 +12,8 @@ columns for provenance; all reporting uses the merged ids and the question
 classification (`skill type` and `subconcept` per question) it carries.
 Question texts are frozen; versions are tracked through the gold files, not
 silent edits. The orig_hard50 grading JSONs are committed frozen inputs from
-the first-release harness; their raw transcripts are not re-committed here.
+the first-release harness; their raw transcripts are in
+`benchmark/transcripts/orig_hard50_first_release/`.
 
 ## Scoring
 
@@ -85,6 +86,15 @@ DeepSeek GZ-04/17/49, orig_hard50 Claude Q07 and ChatGPT Q24/25/29/44) were re-r
 the first-release rule in `orig_hard50_grade.py`, which reproduces all 250 original verdicts). The
 orig_hard50 re-runs use the tool-free question text with a one-line FINAL_JSON answer format.
 
+Four Gemini web fill answers were given two to a chat (GZ-13 with GZ-17, GZ-33 with GZ-50; the paired
+questions are on unrelated topics and share no data). GZ-17 is kept: asked five more times, each in a
+new chat (`benchmark/reproducibility/sb_extension/`), Gemini answered it correctly four times. GZ-13,
+GZ-33 and GZ-50 were asked again on 2026-10-26, each in a new chat with the same settings. GZ-50 answered and its new
+answer replaces the shared-chat one (PASS -> PASS; the old answer is kept in
+`answers_fill/gemini_unaug/superseded_shared_chat/`). GZ-13 (three attempts) and GZ-33 (three
+attempts) returned no answer, only a Gemini server error, so their shared-chat answers are kept;
+each `.meta.json` records this. No verdict changes.
+
 ## Classification
 
 Labels are rule-derived from gold field names, declared failure axes, and
@@ -113,6 +123,102 @@ count-only hard50 unaugmented cells are labelled "not field-verifiable". All
 graders that produce a reported cell now run in REPRODUCE.md section 1, and
 Claude's hard50 unaugmented transcript is committed in-repo
 (`benchmark/source_sets/hard50/claude_unaugmented/`).
+
+GZ-17 / SB-017 (2026-10-23): the gold CMC was 8.185 mM, the raw piecewise
+break-point (`OrchestratorResult.cmc.cmc_mM`), which sits at the geometric mean
+of the 4.09/16.37 mM gap because the three-segment fit accepted a two-point,
+rising "plateau". The toolkit's authoritative value (`OrchestratorResult.cmc_mM`,
+the value the MCP tool returns) flags that plateau and refines it to 16.37 mM;
+the development repository had made this correction on 2026-09-23, and it was
+lost when the release gold was assembled. Gold restored to 16.37 mM (Gamma_max
+and A_min unchanged); `tests/test_benchmark_golds.py` now ties the orchestrated
+GroundZero CMC golds to the authoritative value. Re-graded: Claude unaugmented
+and augmented FAIL->PASS, Gemini web unaugmented FAIL->PASS, Gemini CLI
+augmented (reported 8.19) PASS->FAIL; every other arm still fails GZ-17 on
+another field. Headline: Claude 65.0% / 96.5%, Gemini 51.5% / 98.5%. The
+groundzero cells for Claude and ChatGPT augmented and Qwen and DeepSeek
+unaugmented are read from frozen grading files that no grader in this
+repository writes (`grade_chat_runs.py` grades the same transcripts into
+`grade_results_session_*.json`); their GZ-17 records were replaced by the
+re-graded ones after checking that the model answers are identical.
+
+Toolkit corrections found by the Supporting Information equation checks (2026-10-25):
+- `dynamic_tension.dynamic_surface_tension_forward` / `_ode` converted the surface excess with
+  gamma0 - nRT*Gamma although adsorption follows the Langmuir isotherm, whose equation of state is
+  the Szyszkowski form gamma0 + nRT*Gamma_max*ln(1 - Gamma/Gamma_max); the surface step also
+  overshot under stiff kinetics at low concentration. Both corrected (exact Riccati surface step,
+  Crank-Nicolson substep capped at r = 0.5); tests now tie the long-time limit to
+  `szyszkowski_surface_tension` and the surface excess to the independent Ward-Tordai solver.
+- SB-197 (orig Q47) asks for this tool's gamma at 0.1 s; its reference value moves from 64.441 to
+  57.982 mN/m (`repair_2026-10-20/q47_regrade.py`, recomputed from the toolkit). Unaugmented arms
+  are graded from their stored answers (all still FAIL). Augmented arms were re-run against the
+  corrected tool (2026-10-25/26; answers and meta in `repair_2026-10-20/answers_q47/`): Claude,
+  ChatGPT, DeepSeek and Gemini CLI all answered 57.982 (PASS). `q47_regrade_results.json` is
+  written and applied; every SB-197 verdict is unchanged, so no reported cell moves.
+- `kinetics.aniansson_wall_two_regime` placed the shared factor (1 + sigma^2 a/n) on the wrong
+  side when solving for R; affects only c_total != CMC; no benchmark question or application uses it.
+- `emulsion.simulate_emulsion_stability` counted a size bin as separated only after its full travel
+  time H/v (all drops starting at the bottom); drops now start uniformly distributed, so a bin's
+  creamed share grows as t/t_c and a monodisperse t50 is H/(2v). No benchmark question uses this tool;
+  the application P4 reference value is recomputed (benchmark/applications/compute_p4.py).
+- orig_hard50 reference values checked against the current toolkit (every augmented wording names
+  one tool with its inputs; paper3 si/check_orig_golds.py executes them): 48 of 50 reproduce exactly.
+  SB-197 is the dynamic-tension item above. SB-167 (Q17, hlb_davies_guo_ecl(12, 6)) now returns 9.62
+  (Guo EO-unit weight 0.33 since 2026-10-20) against the reference 33.29. The two wordings define
+  their answers differently: the augmented wording asks for the tool's output, the unaugmented
+  wording states every weight of the calculation itself (ether oxygen 1.3), for which 33.29 is the
+  answer. Reference values are therefore per wording: augmented 9.62 (release toolkit), unaugmented
+  33.29 (recomputed from the stated calculation). Neither wording is changed after the runs.
+  Augmented arms re-run against the current tool (`repair_2026-10-20/answers_q17/<arm>/`) and
+  regraded by `repair_2026-10-20/q17_regrade.py` (-> `q17_regrade_results.json`, applied through
+  `corrections.orig_regrade`) on 2026-10-26: Claude, ChatGPT, DeepSeek and Gemini CLI all answered
+  9.62 (PASS); every SB-167 verdict is unchanged, so no reported cell moves.
+- `orig_hard50/question_bank_unaugmented.txt` added: the unaugmented wording of SB-151..SB-200 used in
+  the first-release runs (from the development repository, HARD60_UNAUGMENTED_QUESTIONS.txt).
+- SDS alpha = 0.272 (J. Phys. Chem. B 105 (2001) 6798) is credited to B. L. Bales alone in
+  `thermodynamics.py` (the returned `source` string) and in the groundzero gold source notes; it was
+  given as a four-author paper. No value changes. The question banks keep their as-run reference notes.
+- `hlb.DAVIES_HYDROPHILIC_GROUPS["SO4Na"]` 38.6 -> 38.7 (Davies 1957). The benchmark questions
+  that use this group state 38.6 in their own text, so no reference value changes.
+
+SB-166, SB-167 and SB-197: one target per question in both wordings (2026-10-28, external audit):
+- `dynamic_tension.dynamic_surface_tension_forward` was not converged at its default settings: the
+  uniform grid was sized from the latest output time only, so early times were under-resolved
+  (SB-197: 57.982 at t = 0.1 s against a converged 57.933 mN/m; up to 0.6 mN/m in other cases).
+  The solver now uses a stretched grid resolving the earliest output time, backward-Euler steps
+  proportional to t with the Langmuir surface kinetics solved in the same implicit step, and
+  Richardson extrapolation; defaults agree with a 4x finer grid and step to about 1e-3 mN/m.
+  `n_cells` keeps its meaning (number of cells); `max_substep_s` is now optional and `rel_step`
+  (default 0.01; 0.04 in the fit) sets the step. The fit wrapper passes both through.
+- `adsorption.ward_tordai_adsorption` (Langmuir mode) held the last solved subsurface concentration
+  over the interval being solved and assumed a clean surface up to the first output time; Gamma was
+  biased by about 1 % at all times and up to 7 % early, independent of the grid. It now uses product
+  integration (c_s piecewise linear on geometric internal nodes, exact kernel weights, closed-form
+  Langmuir closure). It reproduces the exact linear-isotherm solution to 2e-4 and agrees with the
+  finite-difference solver to 2e-4 under diffusion control. `n_sqrt` is now the number of internal
+  nodes; `bisection_tol` is accepted and unused.
+- SB-166 (Q16, Ward-Tordai Gamma at 1 s, c0 = 0.02 M): reference 2.8566 -> 2.8568 umol/m^2 (both
+  solvers; the long-time asymptote Gamma_eq - (dGamma/dc_s) Gamma/sqrt(pi D t) gives 2.85679).
+  Wording unchanged. Unaugmented answers regraded from the stored records (Claude and Gemini web
+  answered 2.8568: FAIL -> PASS); augmented arms re-asked against the corrected tool, all 2.8568.
+- SB-167 (Q17): the unaugmented wording now states the Davies group number of an EO unit (0.33)
+  instead of the ether-oxygen number (1.3), so both wordings have the target 9.62. Unaugmented arms
+  answered the new wording; the augmented answers (9.62, wording unchanged) stand.
+- SB-197 (Q47): both wordings now state every setting (gamma0 72 mN/m, n = 1, T = 298.15 K,
+  k_off = 0.5 1/s; K = 1500 L/mol named as the Langmuir equilibrium constant with k_a = K k_off)
+  and ask for 2 decimals; target 57.93. All arms answered the new wording.
+- Answers and metadata: `repair_2026-10-20/answers_2026-10-28/<arm>/` (prompts of the unaugmented
+  wording in `prompts_unaug/`); graded by `repair_2026-10-20/orig_q16_q17_q47_grade.py` ->
+  `orig_q16_q17_q47_results.json`, applied through `corrections.orig_regrade` ahead of the earlier
+  q17/q47 regrade files. Verdict changes (all unaugmented): Claude SB-166 and SB-197, Gemini web
+  SB-166 and SB-197, ChatGPT and DeepSeek SB-197 FAIL -> PASS. Unchanged: Gemini web SB-167 (9.64),
+  Qwen SB-197 (57.75), every augmented verdict. Gemini web returned no answer to SB-197 in three
+  fresh chats and answered in a later one; one capture that showed the previous chat was discarded.
+- Application P3 (two solvers compared) recomputed: the solvers coincide at 5 s; the remaining early
+  difference (up to 7 % in Gamma at 0.1 mM) is the finite adsorption rate (k_off = 200 1/s) of the
+  finite-difference solver.
+- `build_figure_data.py` now applies the orig_hard50 regrade layer to the grand totals, as
+  `build_bench200.py` does (the earlier regrades changed no verdict, so the omission was silent).
 
 Claude's groundzero-unaugmented row (2026-10-19): the 10-question partial used
 through 2026-10-18 was a different, genuinely truncated Sept-2026 capture; a

@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.470,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 151.2,
+  "cpp_electrostatic_area": 0.139,
+  "morphology_electrostatic_area": "spherical micelle",
+  "comment": "Chain quantities are shared (V=350.2 A^3, l_c=16.68 A). With the compact measured area (44.70 A^2), P=0.470 -> rodlike, near the sphere-rod boundary. With no added salt, ionic strength equals the CMC (0.008 M), giving a Debye length of 3.40 nm; the linearized double-layer optimal area a=82.0*sqrt(3.40 nm)=151.2 A^2, so P=0.139 -> spherical. The ~3.4x area difference flips the predicted morphology. The measured value is a steric packing area that understates the true effective area of a fully ionized sulfate at zero salt, where unscreened long-range repulsion forces large area and high curvature (spheres). This matches real SDS, which forms small near-spherical micelles at its salt-free CMC; adding salt screens repulsion, shrinks a, raises P, and drives the sphere-to-rod transition. Caveat: linearized DH overestimates area at very low salt (high surface potential, nonlinear regime), so 151 A^2 is an upper bound and the true area lies between the two estimates, but both favor more curved aggregates than the bare 44.70 A^2 implies."
+}

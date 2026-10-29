@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“delta_h_endpoint_kJ_per_mol”: -3.09,
+“agrees_with_cited_value”: false,
+“reported_value_source”: “Computed by me from the supplied CMC vs T data via a two-point van’t Hoff fit on the first and last rows (10 and 45 degC, converted to K, slope taken in 1/T); not taken from the stated -6.2 metadata value or any external source.”
+}

@@ -135,6 +135,12 @@ def load(p: Path):
 
 
 def sha(p: Path) -> str:
+    """Content hash. JSON is hashed in canonical form (sorted keys, compact
+    separators) so a grader that rewrites the same data with different
+    whitespace or key order leaves the ledger unchanged."""
+    if p.suffix == ".json":
+        canon = json.dumps(load(p), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        return sha1(canon.encode("utf-8")).hexdigest()[:12]
     return sha1(p.read_bytes()).hexdigest()[:12]
 
 
@@ -144,7 +150,7 @@ def gold_ids(bank: str) -> list[str]:
     return [q for q in items if q not in NON_Q and not str(q).startswith("_")]
 
 
-CORRECTED = {"groundzero": ["GZ-48"], "hard50": ["H-04", "H-26"]}   # 2026-10-18 gold fixes
+CORRECTED = {"groundzero": ["GZ-48", "GZ-17"], "hard50": ["H-04", "H-26"]}   # 2026-10-18 gold fixes; GZ-17 2026-10-23
 
 
 def current_gold(bank: str, q: str) -> dict:
@@ -167,7 +173,7 @@ def verify_gold(bank: str, obj) -> str:
     checked = False
     for q in CORRECTED.get(bank, []):
         rec = obj.get(q) if isinstance(obj, dict) else None
-        if not isinstance(rec, dict):
+        if not isinstance(rec, dict) or rec.get("verdict") == "NO_JSON":   # no answer: no stored gold to check
             continue
         flds = {k: f for k, f in rec.get("fields", {}).items()
                 if isinstance(f, dict) and "gold" in f}

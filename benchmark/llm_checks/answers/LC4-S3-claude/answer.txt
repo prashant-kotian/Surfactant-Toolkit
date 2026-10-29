@@ -1,0 +1,39 @@
+I'll work through this carefully.
+Choosing a derivative scheme to match the printed enthalpy
+
+Choosing a derivative scheme to match the printed enthalpy
+
+I’ll work through this carefully. First let me load the relevant computation tools to get defensible numbers.
+
+Used surfactant-computation
+
+Used surfactant-computation
+(a) ΔG at 293.15 K from eq (5)
+
+Using X_cmc = (0.87×10⁻³)/55.5 = 1.5675×10⁻⁵, ln X_cmc = −11.063, and (2−α) = 1.516:
+
+ΔG(293.15) = 1.516 × (8.314462618×10⁻³ × 293.15) × (−11.063) = −40.88 kJ/mol
+
+The tool confirms −40.880 kJ/mol. This is not the printed Table 4 value of −32.4 kJ/mol — eq (5) applied to the printed CMC and α gives −40.9, a ~8.5 kJ/mol discrepancy. (The other three temperatures reproduce fine: eq (5) gives −41.60, −47.80, −52.05 vs printed −41.5, −47.6, −51.9.)
+
+(b) Enthalpy that follows from the ΔG(T) series
+
+The eq (5) series is ΔG = −40.880, −41.603, −47.805, −52.048 kJ/mol at 293.15/303.15/313.15/323.15 K. Applying Gibbs–Helmholtz pointwise, ΔH = ΔG − T·(dΔG/dT), with dΔG/dT from finite differences (central at the two interior points, backward at the last):
+
+303.15 K: dΔG/dT = −0.3462 → ΔS = +0.346 kJ/mol·K → ΔH ≈ +63.4 kJ/mol
+313.15 K: dΔG/dT = −0.5222 → ΔS = +0.522 kJ/mol·K → ΔH ≈ +115.7 kJ/mol
+323.15 K: dΔG/dT = −0.4243 → ΔS = +0.424 kJ/mol·K → ΔH ≈ +85.1 kJ/mol
+
+Because ΔG steepens markedly with T (driven mostly by (2−α) rising from 1.495 to 1.770 as α falls, not by the nearly-flat CMC), the series forces a large positive ΔS and large positive, endothermic ΔH. The exact numbers are scheme-dependent and scattered (the α series 0.484→0.505→0.332→0.230 is non-monotonic), but the sign and magnitude are robust: tens-of-kJ/mol endothermic.
+
+Does the printed result follow from the printed data?
+
+No. Two independent failures:
+
+ΔG(293.15): eq (5) + printed data gives −40.9 kJ/mol, not the printed −32.4. Note the consequence for the paper’s own conclusion: the printed −32.4 is less negative than CPC-alone (−36.1), so by its own number the mix would be less spontaneous than CPC at 293.15 — contradicting “more spontaneous at every temperature.” The correctly computed −40.9 is more negative than −36.1, so the spontaneity claim only survives once the error is fixed.
+ΔH: the printed enthalpies (−5.0 to −7.1 kJ/mol, “exothermic”) do not follow from the ΔG(T) series. That series implies ΔS ≈ +0.35 to +0.52 kJ/mol·K, whereas the printed ΔS (0.009–0.139) is too small to be −dΔG/dT of its own ΔG column. The printed ΔH/ΔS/ΔG are only self-consistent with each other via ΔH = ΔG + TΔS (they algebraically close, and the 0.009 at 293.15 looks like a typo for ~0.093); but they are not consistent with Gibbs–Helmholtz applied to the ΔG(T) series, which yields large endothermic values. The “exothermic, −5 to −7 kJ/mol” conclusion does not follow.
+
+Reported quantities: ΔG(293.15) = −40.9 kJ/mol (more negative than CPC’s −36.1 → yes); ΔH = +63.4 / +115.7 / +85.1 kJ/mol at 303.15/313.15/323.15 K.
+
+
+FINAL_JSON: {"dG_293p15_kJ_mol": -40.88, "dH_303p15_kJ_mol": 63.4, "dH_313p15_kJ_mol": 115.7, "dH_323p15_kJ_mol": 85.1, "more_negative_than_CPC": true, "printed_result_follows": false}

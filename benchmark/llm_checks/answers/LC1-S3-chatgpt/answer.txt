@@ -1,0 +1,250 @@
+Using the paper’s own formula at 298 K,
+
+𝑋
+c
+m
+c
+=
+0.00118
+55.5
+=
+2.12613
+×
+10
+−
+5
+,
+X
+cmc
+	​
+
+=
+55.5
+0.00118
+	​
+
+=2.12613×10
+−5
+,
+Δ
+𝐺
+=
+(
+1
++
+0.68
+)
+𝑅
+𝑇
+ln
+⁡
+𝑋
+c
+m
+c
+=
+−
+44.7833
+
+k
+J
+
+m
+o
+l
+−
+1
+.
+ΔG=(1+0.68)RTlnX
+cmc
+	​
+
+=
+−44.7833 kJmol
+−1
+	​
+
+.
+
+SurfactantKit independently returns
+−
+44.7834
+−44.7834 kJ/mol. Thus the printed
++
+44.8
++44.8 value has the opposite sign.
+
+For the full printed positive
+Δ
+𝐺
+(
+𝑇
+)
+ΔG(T) series, I fitted the stated Eq. (6),
+
+Δ
+𝐺
+𝑇
+=
+𝐴
++
+𝐵
+𝑇
++
+𝐶
+𝑇
+2
+,
+T
+ΔG
+	​
+
+=A+
+T
+B
+	​
+
++
+T
+2
+C
+	​
+
+,
+
+using the stated 3% uncertainties as weights. Gibbs–Helmholtz then gives
+
+Δ
+𝐻
+=
+𝐵
++
+2
+𝐶
+𝑇
+,
+Δ
+𝐶
+𝑝
+=
+−
+2
+𝐶
+𝑇
+2
+.
+ΔH=B+
+T
+2C
+	​
+
+,ΔC
+p
+	​
+
+=−
+T
+2
+2C
+	​
+
+.
+
+At 298 K this gives
+
+Δ
+𝐻
+298
+=
++
+27.95
+
+k
+J
+
+m
+o
+l
+−
+1
+,
+Δ
+𝐶
+𝑝
+=
++
+1.599
+
+k
+J
+
+m
+o
+l
+−
+1
+K
+−
+1
+.
+ΔH
+298
+	​
+
+=+27.95 kJmol
+−1
+	​
+
+,
+ΔC
+p
+	​
+
+=+1.599 kJmol
+−1
+K
+−1
+	​
+
+.
+
+If the positive table entries are interpreted as magnitudes and their missing minus signs are restored, those last two quantities simply reverse sign:
+−
+27.95
+−27.95 kJ/mol and
+−
+1.599
+−1.599 kJ/(mol K). Neither interpretation reproduces the printed van’t Hoff values
+−
+20.6
+−20.6 kJ/mol and
+−
+2.7
+−2.7 kJ/(mol K). Moreover, the printed Eq. (6) coefficients
+𝐴
+=
+−
+872.37
+,
+
+𝐵
+=
+12.0
+,
+
+𝐶
+=
+6909.0
+A=−872.37, B=12.0, C=6909.0 do not reproduce the tabulated
+Δ
+𝐺
+/
+𝑇
+ΔG/T values either.
+
+So the printed result does not follow from the printed data as given.
+
+JSON
+{"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.9478, "dCp_kJ_mol_K": 1.59913, "printed_result_follows": false}
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.7833, "dH_298_kJ_mol": 27.9478, "dCp_kJ_mol_K": 1.59913, "printed_result_follows": false}

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 7.42248e-6,
+"a_min_nm2": 0.223718,
+"delta_g_mic_kJ_per_mol": -37.2736,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "The enthalpy of micellization (or equivalently temperature-dependent CMC/delta G data sufficient to determine the temperature derivative) is missing."
+}

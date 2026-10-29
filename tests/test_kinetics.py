@@ -216,9 +216,23 @@ def test_aniansson_wall_round_trip_reproduces_tau1_tau2_exactly():
     )
     factor = r.params["shared_factor"]
     tau1_reproduced = (r.sigma ** 2 / r.k_minus_per_s) / factor
-    tau2_reproduced = (r.R_s_per_M * _SDS_CMC_M) / (_SDS_NBAR ** 2 * factor)
+    tau2_reproduced = (r.R_s_per_M * _SDS_CMC_M) * factor / _SDS_NBAR ** 2
     assert tau1_reproduced == pytest.approx(_SDS_TAU1_S, rel=1e-9)
     assert tau2_reproduced == pytest.approx(_SDS_TAU2_S, rel=1e-9)
+
+
+def test_aniansson_wall_inverts_source_equations_above_cmc():
+    """Patist et al. 2002 eqs 3-4 written out independently, at a = 1 (factor != 1):
+    1/tau1 = (k-/sigma^2)(1 + sigma^2 a/n), 1/tau2 = n^2/(CMC R) / (1 + sigma^2 a/n).
+    Forward from known k-, R, then the inversion must recover them."""
+    k_minus, R, cmc, n, sigma, c_tot = 2e7, 50.0, 0.008, 60.0, 10.0, 0.016
+    a = (c_tot - cmc) / cmc
+    fac = 1.0 + sigma ** 2 / n * a
+    tau1 = 1.0 / (k_minus / sigma ** 2 * fac)
+    tau2 = 1.0 / (n ** 2 / (cmc * R) / fac)
+    r = aniansson_wall_two_regime(tau1, tau2, cmc, n, sigma=sigma, c_total_M=c_tot)
+    assert r.k_minus_per_s == pytest.approx(k_minus, rel=1e-12)
+    assert r.R_s_per_M == pytest.approx(R, rel=1e-12)
 
 
 def test_aniansson_wall_default_sigma_is_aniansson_wall_typical_value():

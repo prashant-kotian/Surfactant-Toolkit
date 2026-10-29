@@ -1,0 +1,3 @@
+{"qid": "Q17", "provider": "gemini cli (agy)", "condition": "aug", "model": "gemini-3.8-flash-high",
+ "mcp": "surfactant-computation, release toolkit with the Guo EO-weight fix, local stdio",
+ "started": "2026-10-26T20:36:52+05:30", "finished": "2026-10-26T20:37:27+05:30", "exit_code": 0}

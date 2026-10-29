@@ -1,0 +1,717 @@
+Setup
+Checking whether the printed result matches the input data
+
+Checking whether the printed result matches the input data
+Setup
+
+Label PE65 as component 1 and sodium oleate as component 2:
+
+𝐶
+1
+=
+33
+C
+1
+	​
+
+=33,
+𝐶
+2
+=
+330
+C
+2
+	​
+
+=330,
+𝐶
+12
+=
+116
+C
+12
+	​
+
+=116 (mg/L)
+𝛼
+1
+=
+0.4
+α
+1
+	​
+
+=0.4,
+𝛼
+2
+=
+0.6
+α
+2
+	​
+
+=0.6
+
+Rubingh’s two conditions (with
+𝑥
+2
+=
+1
+−
+𝑥
+1
+x
+2
+	​
+
+=1−x
+1
+	​
+
+):
+
+𝐹
+1
+≡
+ln
+⁡
+ ⁣
+𝛼
+1
+𝐶
+12
+𝑥
+1
+𝐶
+1
+=
+𝛽
+(
+1
+−
+𝑥
+1
+)
+2
+,
+𝐹
+2
+≡
+ln
+⁡
+ ⁣
+𝛼
+2
+𝐶
+12
+𝑥
+2
+𝐶
+2
+=
+𝛽
+
+𝑥
+1
+2
+F
+1
+	​
+
+≡ln
+x
+1
+	​
+
+C
+1
+	​
+
+α
+1
+	​
+
+C
+12
+	​
+
+	​
+
+=β(1−x
+1
+	​
+
+)
+2
+,F
+2
+	​
+
+≡ln
+x
+2
+	​
+
+C
+2
+	​
+
+α
+2
+	​
+
+C
+12
+	​
+
+	​
+
+=βx
+1
+2
+	​
+
+
+Self-consistency (equal
+𝛽
+β) requires
+
+𝑥
+1
+2
+
+ln
+⁡
+ ⁣
+𝛼
+1
+𝐶
+12
+𝑥
+1
+𝐶
+1
+=
+(
+1
+−
+𝑥
+1
+)
+2
+
+ln
+⁡
+ ⁣
+𝛼
+2
+𝐶
+12
+(
+1
+−
+𝑥
+1
+)
+𝐶
+2
+x
+1
+2
+	​
+
+ln
+x
+1
+	​
+
+C
+1
+	​
+
+α
+1
+	​
+
+C
+12
+	​
+
+	​
+
+=(1−x
+1
+	​
+
+)
+2
+ln
+(1−x
+1
+	​
+
+)C
+2
+	​
+
+α
+2
+	​
+
+C
+12
+	​
+
+	​
+
+
+The two constants are
+𝛼
+1
+𝐶
+12
+𝐶
+1
+=
+46.4
+33
+=
+1.4061
+C
+1
+	​
+
+α
+1
+	​
+
+C
+12
+	​
+
+	​
+
+=
+33
+46.4
+	​
+
+=1.4061 and
+𝛼
+2
+𝐶
+12
+𝐶
+2
+=
+69.6
+330
+=
+0.2109
+C
+2
+	​
+
+α
+2
+	​
+
+C
+12
+	​
+
+	​
+
+=
+330
+69.6
+	​
+
+=0.2109.
+
+Does any (x₁, β) satisfy both equations?
+
+Because
+1.4061
+>
+1
+>
+𝑥
+1
+1.4061>1>x
+1
+	​
+
+, the term
+𝐹
+1
+>
+0
+F
+1
+	​
+
+>0 for every
+𝑥
+1
+∈
+(
+0
+,
+1
+)
+x
+1
+	​
+
+∈(0,1), so
+𝛽
+β must be positive. Then equation 2 needs
+𝐹
+2
+>
+0
+F
+2
+	​
+
+>0, which requires
+0.2109
+/
+(
+1
+−
+𝑥
+1
+)
+>
+1
+0.2109/(1−x
+1
+	​
+
+)>1, i.e.
+𝑥
+1
+>
+0.789
+x
+1
+	​
+
+>0.789. So any solution must sit in
+(
+0.789
+,
+
+1
+)
+(0.789,1). Comparing the
+𝛽
+β each equation yields there:
+
+𝑥
+1
+x
+1
+	​
+
+
+𝛽
+β from eq. 1 (
+𝐹
+1
+/
+(
+1
+−
+𝑥
+1
+)
+2
+F
+1
+	​
+
+/(1−x
+1
+	​
+
+)
+2
+)
+𝛽
+β from eq. 2 (
+𝐹
+2
+/
+𝑥
+1
+2
+F
+2
+	​
+
+/x
+1
+2
+	​
+
+)
+0.789	≈ 13.0	≈ 0
+0.84	20.1	0.39
+0.95	157	1.6
+0.99	~2000	3.1
+
+Equation 1 starts at ≈13 and rises toward infinity; equation 2 crawls from 0 up to only a few. They never meet. Equivalently, the consistency function
+𝑔
+(
+𝑥
+1
+)
+=
+𝑥
+1
+2
+𝐹
+1
+−
+(
+1
+−
+𝑥
+1
+)
+2
+𝐹
+2
+g(x
+1
+	​
+
+)=x
+1
+2
+	​
+
+F
+1
+	​
+
+−(1−x
+1
+	​
+
+)
+2
+F
+2
+	​
+
+ stays
+>
+0.34
+>0.34 across the whole interval (the second term peaks at only ≈0.008). No pair
+(
+𝑥
+1
+,
+𝛽
+)
+(x
+1
+	​
+
+,β) solves the system for these numbers.
+
+The reason is physical, not arithmetic: sodium oleate is dilute in the micelle, and its activity equation
+𝐹
+2
+=
+𝛽
+𝑥
+1
+2
+F
+2
+	​
+
+=βx
+1
+2
+	​
+
+ can only “absorb” a large
+𝛽
+β if
+𝛼
+2
+𝐶
+12
+/
+(
+𝑥
+2
+𝐶
+2
+)
+≫
+1
+α
+2
+	​
+
+C
+12
+	​
+
+/(x
+2
+	​
+
+C
+2
+	​
+
+)≫1 — but that ratio is just
+0.211
+/
+𝑥
+2
+0.211/x
+2
+	​
+
+, which cannot reach the values a
+𝛽
+≈
+21
+β≈21 demands without an absurd
+𝑥
+2
+∼
+10
+−
+10
+x
+2
+	​
+
+∼10
+−10
+.
+
+Checking the printed values directly
+
+At the printed
+𝑥
+1
+=
+0.84
+x
+1
+	​
+
+=0.84: equation 1 gives
+𝛽
+=
+0.515
+/
+0.0256
+≈
+20.1
+β=0.515/0.0256≈20.1, while equation 2 gives
+𝛽
+=
+0.276
+/
+0.706
+≈
+0.39
+β=0.276/0.706≈0.39. These are irreconcilable. The printed
+𝛽
+=
+21.33
+β=21.33 is essentially what equation 1 alone yields near
+𝑥
+1
+≈
+0.85
+x
+1
+	​
+
+≈0.85 — it satisfies the PE65 condition while badly violating the oleate condition.
+
+So the printed pair reproduces one of the two equations, not the system. (The qualitative direction is at least right: the measured CMC, 116, exceeds the ideal-mixing value
+1
+/
+(
+𝛼
+1
+/
+𝐶
+1
++
+𝛼
+2
+/
+𝐶
+2
+)
+≈
+72
+1/(α
+1
+	​
+
+/C
+1
+	​
+
++α
+2
+	​
+
+/C
+2
+	​
+
+)≈72 mg/L, so some antagonism is indicated — but the specific
+𝑥
+1
+x
+1
+	​
+
+,
+𝛽
+β do not follow from a consistent Rubingh solve of the mass-based data. A self-consistent solve would require converting the mass CMCs to molar ones, which the printed data don’t permit.)
+
+Answer
+
+From the three printed (mass-based) CMCs and
+𝛼
+1
+α
+1
+	​
+
+, the two Rubingh equations have no common solution, so the printed
+𝑥
+1
+=
+0.84
+x
+1
+	​
+
+=0.84,
+𝛽
+=
+21.33
+β=21.33 do not follow from the printed data.
+
+
+json
+FINAL_JSON: {"x1": "no_solution", "beta": "no_solution", "printed_result_follows": false}

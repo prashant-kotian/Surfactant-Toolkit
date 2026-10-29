@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“micelle_mw”: 400.0,
+“aggregation_number”: 0.64,
+“physically_valid”: false,
+“why”: “Nagg = 0.64 < 1, which is impossible: the fitted micelle mass (400 g/mol) is smaller than one monomer (625 g/mol), so no aggregate can form.”
+}

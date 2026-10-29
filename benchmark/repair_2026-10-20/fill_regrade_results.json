@@ -511,9 +511,9 @@
      "model": "cationic"
     },
     "cmc_mM": {
-     "ok": true,
+     "ok": false,
      "kind": "numeric",
-     "gold": 8.185,
+     "gold": 16.37,
      "model": 8.185
     },
     "delta_g_mic_kJ_per_mol": {
@@ -897,11 +897,12 @@
     "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
     "code_execution_used": true,
     "web_search_attempted": true,
-    "note": "answered in the same chat as GZ17; this file keeps only this question's own final answer"
+    "note": "answered in the same chat as GZ17; this file keeps only this question's own final answer",
+    "new_chat_attempts": "asked again in a new chat on 2026-10-26 (three attempts, same settings): Gemini returned no answer each time (server error), so this answer is kept"
    }
   },
   "GZ-17": {
-   "verdict": "FAIL",
+   "verdict": "PASS",
    "fields": {
     "a_min_nm2": {
      "ok": true,
@@ -916,9 +917,9 @@
      "model": "cationic"
     },
     "cmc_mM": {
-     "ok": false,
+     "ok": true,
      "kind": "numeric",
-     "gold": 8.185,
+     "gold": 16.37,
      "model": 16.37
     },
     "delta_g_mic_kJ_per_mol": {
@@ -1080,7 +1081,8 @@
     "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
     "code_execution_used": true,
     "web_search_attempted": false,
-    "note": "answered in the same chat as GZ50; this file keeps only this question's own final answer"
+    "note": "answered in the same chat as GZ50; this file keeps only this question's own final answer",
+    "new_chat_attempts": "asked again in a new chat on 2026-10-26 (three attempts, same settings): Gemini returned no answer each time (server error), so this answer is kept"
    }
   },
   "GZ-50": {
@@ -1090,34 +1092,35 @@
      "ok": true,
      "kind": "field-rule",
      "gold": -35.18,
-     "model": -35182.2,
+     "model": -35184.1,
      "rationale": "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the shared numeric comparison (author decision 2026-10-21)"
     },
     "delta_g_mic_at_318.15K": {
      "ok": true,
      "kind": "field-rule",
      "gold": -38.87,
-     "model": -38871.5,
+     "model": -38872.8,
      "rationale": "question names no unit; a value given in J/mol (|value| > 1000) is converted to kJ/mol before the shared numeric comparison (author decision 2026-10-21)"
     },
     "trend": {
      "ok": true,
      "kind": "judgment",
      "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
-     "model": "The free energy of micellization becomes monotonically more negative across the entire temperature range.",
-     "rationale": "answer 'monotonically more negative across the entire temperature range' is the gold's trend"
+     "model": "Monotonically decreasing (becoming more negative) as temperature increases.",
+     "rationale": "answer 'monotonically decreasing (becoming more negative) as temperature increases' is the gold's trend (new-chat answer of 2026-10-26)"
     }
    },
    "meta": {
     "qid": "GZ50",
     "provider": "gemini web",
     "condition": "unaug",
-    "run": "2026-10-21",
-    "mode": "manual (run by the author in the browser)",
-    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
-    "code_execution_used": true,
-    "web_search_attempted": false,
-    "note": "answered in the same chat as GZ33; this file keeps only this question's own final answer"
+    "run": "2026-10-26",
+    "mode": "automated runner, new chat for this question only",
+    "settings": "Gemini 3.1 Pro, thinking High, MCP extension off (verified on the page before sending)",
+    "start": "2026-10-26T22:06:08+0530",
+    "sent": "2026-10-26T22:08:27+0530",
+    "end": "2026-10-26T22:12:04+0530",
+    "note": "replaces the 2026-10-21 answer given in the same chat as GZ33 (kept in superseded_shared_chat/)"
    }
   }
  },

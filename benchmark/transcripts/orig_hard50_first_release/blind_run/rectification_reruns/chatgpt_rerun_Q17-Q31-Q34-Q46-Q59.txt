@@ -1,0 +1,63 @@
+Q17
+\[
+\begin{aligned}
+N_{\mathrm{CH_2,eff}} &= 0.965(11)-0.178=10.437\\
+N_{\mathrm{EO,eff}} &= 13.45\ln(6)-0.16(6)+1.26=24.399\\
+\mathrm{HLB} &= 7+1.3(24.399)-0.475(10.437+1)\\
+&=\boxed{33.29}
+\end{aligned}
+\]
+
+Q31
+
+Using \(X_{\mathrm{CMC}}\approx 0.0057/55.5=1.0270\times10^{-4}\):
+
+\[
+\Delta G_{\mathrm{mic}}
+=(1.0)(8.314)(303.15)\ln(1.0270\times10^{-4})
+\]
+
+\[
+\boxed{\Delta G_{\mathrm{mic}}=-23.150\ \text{kJ mol}^{-1}}
+\]
+
+Q34
+
+\[
+\Delta H_{\mathrm{mic}}
+=R\frac{\ln(\mathrm{CMC}_2/\mathrm{CMC}_1)}
+{(1/T_2)-(1/T_1)}
+\]
+
+\[
+=(8.314)\frac{\ln(0.0076/0.0041)}
+{(1/313.15)-(1/293.15)}
+\]
+
+\[
+\boxed{\Delta H_{\mathrm{mic}}=-23.55\ \text{kJ mol}^{-1}}
+\]
+
+Q46
+
+The problem omits the required coefficient \(k\). Assuming the commonly used \(k=0.15\):
+
+\[
+C_c=0.28(10)+2.4-5=0.20
+\]
+
+Set HLD to zero:
+
+\[
+0=0.13(2.5)-0.15(7.3)+0.20+0.06(T-25)
+\]
+
+\[
+\boxed{T=34.50^\circ\mathrm{C}}
+\]
+
+Without specifying \(k\), the result is not uniquely determined.
+
+Q59
+
+**8.0, alkylbenzene side-chain rule**

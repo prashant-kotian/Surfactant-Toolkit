@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.0126,
+"f2_at_x1_0.90": 0.3154,
+"interaction_model_or_approach": "Two-parameter Margules model",
+"notes": "Regular Solution Theory (Rubingh's model) fails due to the structural asymmetry between the bulky Benzethonium component and the linear DTAB. The Margules model accounts for this and fits the experimental data perfectly (R^2 > 0.9999)."
+}

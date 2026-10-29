@@ -1,0 +1,40 @@
+Setup
+Checking the function's values as it approaches the upper end
+
+Checking the function's values as it approaches the upper end
+Setup
+
+Using the Rubingh (regular solution theory) pair with the printed mass-based CMCs:
+
+c₁ = CMC(PE65) = 33 mg/L
+c₂ = CMC(oleate) = 330 mg/L
+c = CMC(mixture) = 116 mg/L
+α₁ = 0.4, α₂ = 0.6
+
+The two equations:
+
+Eq. 1: ln(α₁c / (x₁c₁)) = β(1−x₁)² → ln(1.40606 / x₁) = β(1−x₁)²
+Eq. 2: ln(α₂c / (x₂c₂)) = β·x₁² → ln(0.210909 / (1−x₁)) = β·x₁²
+
+Eliminating β gives the consistency condition F(x₁) = 0:
+
+F(x₁) = x₁²·ln(1.40606/x₁) − (1−x₁)²·ln(0.210909/(1−x₁))
+
+Checking for a root
+
+The first log, ln(1.40606/x₁), is positive for all x₁ ∈ (0,1) (since 1.40606 > 1). For both equations to give the same β, the second log must also be positive, which requires 1−x₁ < 0.210909, i.e. x₁ > 0.789. So any valid solution must lie in that window.
+
+Evaluating F across (0,1):
+
+x₁	0.01	0.2	0.5	0.8	0.9	0.95	0.99	0.999
+F	+1.55	+0.93	+0.47	+0.359	+0.354	+0.350	+0.344	+0.341
+
+F(x₁) is strictly positive everywhere — it approaches +0.341 as x₁→1 and never crosses zero (equivalently, the branch A(x₁)=ln(1.40606/x₁)/(1−x₁)² always exceeds B(x₁)=ln(0.210909/(1−x₁))/x₁²). There is no x₁ making the two β-values equal.
+
+Why
+
+The ideal (Clint) CMC is 1/c_id = 0.4/33 + 0.6/330 ⇒ c_id ≈ 71.7 mg/L. The reported mixture CMC (116 mg/L) lies above the ideal value, i.e. positive deviation. With α₁ = 0.4 and these particular CMC ratios, the two Rubingh relations cannot be satisfied simultaneously by any single (x₁, β): the component-1 balance forces β large and positive while the component-2 balance cannot match it for any x₁ in (0,1).
+
+No pair (x₁, β) solves both equations for these printed numbers.
+
+FINAL_JSON: {“x1”: “no_solution”, “beta”: “no_solution”}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"micelle_mw": 400,
+"aggregation_number": 0.64,
+"physically_valid": false,
+"why": "Aggregation number is smaller than one (Mw < M0); a micelle cannot contain a fraction of a monomer, so the result is impossible."
+}

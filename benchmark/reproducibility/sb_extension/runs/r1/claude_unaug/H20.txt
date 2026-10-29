@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“dn_dc_for_this_compound”: null,
+“sls_aggregation_number”: null,
+“what_is_missing”: “The refractive-index increment dn/dc of AOT in the actual solvent at 632.8 nm and the experimental temperature. The supplied 0.110 mL/g is SDS’s value and is not transferable, since dn/dc is compound-specific (depends on AOT’s own polarizability and partial specific volume). Obtain it by differential refractometry on an AOT concentration series (slope of Delta n vs c) at the same wavelength/temperature/solvent, then use N_agg = 2.49/(dn/dc)^2 from the Debye fit (data give M = 0.006/K, A2 ~ 0).”
+}

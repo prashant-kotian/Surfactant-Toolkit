@@ -4,8 +4,8 @@ data_fitting	3	4	9	44.4	9	9	100.0	55.6
 colloid_electrostatics	12	18	36	50.0	36	36	100.0	50.0
 kinetics_transport	11	17	33	51.5	33	33	100.0	48.5
 micelle_structure	18	30	54	55.6	54	54	100.0	44.4
-adsorption	39	67	117	57.3	105	117	89.7	32.5
 micelle_thermodynamics	5	9	15	60.0	12	15	80.0	20.0
+adsorption	39	72	117	61.5	106	117	90.6	29.1
 cmc_measurement	17	33	51	64.7	48	51	94.1	29.4
 mixed_micelles	43	85	129	65.9	120	129	93.0	27.1
 analysis_synthesis	1	2	3	66.7	2	3	66.7	0.0

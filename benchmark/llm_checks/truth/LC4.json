@@ -1,0 +1,107 @@
+{
+ "case": "LC4",
+ "stages": {
+  "S1": {
+   "dG_293p15_kJ_mol": {
+    "value": -40.9,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case4_results.json findings.dG_293_recomputed"
+   },
+   "dH_303p15_kJ_mol": {
+    "value": 51.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[1]; tol = max(25, |toolkit-numpy|+5) = max(25, |51.0-(61.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_313p15_kJ_mol": {
+    "value": 106.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[2]; tol = max(25, |toolkit-numpy|+5) = max(25, |106.0-(117.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_323p15_kJ_mol": {
+    "value": 160.0,
+    "kind": "sign",
+    "sign": "+",
+    "unit": "kJ/mol",
+    "source": "case4_results.json toolkit 160.0 vs numpy-FD 88.0 kJ/mol - ill-determined; scored on sign only (positive) per brief-2d #4"
+   }
+  },
+  "S2": {
+   "dG_293p15_kJ_mol": {
+    "value": -40.9,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case4_results.json findings.dG_293_recomputed"
+   },
+   "dH_303p15_kJ_mol": {
+    "value": 51.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[1]; tol = max(25, |toolkit-numpy|+5) = max(25, |51.0-(61.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_313p15_kJ_mol": {
+    "value": 106.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[2]; tol = max(25, |toolkit-numpy|+5) = max(25, |106.0-(117.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_323p15_kJ_mol": {
+    "value": 160.0,
+    "kind": "sign",
+    "sign": "+",
+    "unit": "kJ/mol",
+    "source": "case4_results.json toolkit 160.0 vs numpy-FD 88.0 kJ/mol - ill-determined; scored on sign only (positive) per brief-2d #4"
+   },
+   "more_negative_than_CPC": {
+    "value": "yes",
+    "unit": "-",
+    "source": "case4_results.json findings.mixed_vs_cpc_293_recomputed_more_spontaneous (S2/S3 only: the CPC comparison is quoted in S2)"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  },
+  "S3": {
+   "dG_293p15_kJ_mol": {
+    "value": -40.9,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case4_results.json findings.dG_293_recomputed"
+   },
+   "dH_303p15_kJ_mol": {
+    "value": 51.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[1]; tol = max(25, |toolkit-numpy|+5) = max(25, |51.0-(61.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_313p15_kJ_mol": {
+    "value": 106.0,
+    "tol": 25.0,
+    "unit": "kJ/mol",
+    "source": "case4_results.json gibbs_helmholtz_dH.toolkit[2]; tol = max(25, |toolkit-numpy|+5) = max(25, |106.0-(117.0)|+5) = 25 (brief-2d #4)"
+   },
+   "dH_323p15_kJ_mol": {
+    "value": 160.0,
+    "kind": "sign",
+    "sign": "+",
+    "unit": "kJ/mol",
+    "source": "case4_results.json toolkit 160.0 vs numpy-FD 88.0 kJ/mol - ill-determined; scored on sign only (positive) per brief-2d #4"
+   },
+   "more_negative_than_CPC": {
+    "value": "yes",
+    "unit": "-",
+    "source": "case4_results.json findings.mixed_vs_cpc_293_recomputed_more_spontaneous (S2/S3 only: the CPC comparison is quoted in S2)"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  }
+ },
+ "note": "brief-2c de-coaching + brief-d fixes (printed dG/dH rows moved to S2; tol formula + sign-only 323 K from release JSON, brief-d #4). CAND4 dropped (see kit README)"
+}

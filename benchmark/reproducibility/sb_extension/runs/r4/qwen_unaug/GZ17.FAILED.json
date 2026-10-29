@@ -1,0 +1,10 @@
+{
+ "qid": "GZ17",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-24T11:28:14+0530",
+ "model_seen": "Qwen3.8-Max (mode switch false)",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-24T11:30:27+0530",
+ "failed": "USAGE LIMIT reached -- stopping this batch (raw saved)"
+}

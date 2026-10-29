@@ -43,9 +43,11 @@ def test_s5_two_bin_velocity_ratio_is_d_squared():
 
 
 def test_s5_post_creaming_coalescence_matches_explicit_ode_solution():
-    """Single bin, grid aligned so t_cream lands exactly on a sample:
-    F(t_cream) = 0 (separation starts after arrival),
-    F(2*t_cream) = 1 - exp(-k*t_cream) exactly."""
+    """Single bin, drops uniformly distributed at t = 0 (arrival times uniform on
+    [0, t_c]), first-order coalescence after arrival. Integrating
+    (1/t_c) * int_0^u (1 - exp(-k (t - s))) ds, u = min(t, t_c), by hand:
+    F(t_c)   = 1 - (1 - exp(-k t_c)) / (k t_c)
+    F(2 t_c) = 1 - (exp(-k t_c) - exp(-2 k t_c)) / (k t_c)."""
     d_um, drho, eta, H = 10.0, 100.0, 1e-3, 0.01
     v_exact = drho * G_ACCEL_M_S2 * (d_um * 1e-6) ** 2 / (18.0 * eta)
     tc = H / v_exact
@@ -54,14 +56,18 @@ def test_s5_post_creaming_coalescence_matches_explicit_ode_solution():
         [d_um], [1.0], 900.0, 1000.0, eta, H,
         coalescence_rate_per_s=k_coal, n_times=3, t_max_s=2.0 * tc,
     )
+    kt = k_coal * tc
     assert r.times_s[1] == pytest.approx(tc, rel=1e-9)
-    assert r.separated_fraction[1] == pytest.approx(0.0, abs=1e-12)
+    assert r.separated_fraction[0] == pytest.approx(0.0, abs=1e-12)
+    assert r.separated_fraction[1] == pytest.approx(1.0 - (1.0 - math.exp(-kt)) / kt, rel=1e-10)
     assert r.separated_fraction[2] == pytest.approx(
-        1.0 - math.exp(-k_coal * tc), rel=1e-12
-    )
+        1.0 - (math.exp(-kt) - math.exp(-2.0 * kt)) / kt, rel=1e-10)
 
 
-def test_s5_stability_index_grid_converges_to_creaming_time():
+def test_s5_monodisperse_half_creaming_time_is_half_the_travel_time():
+    """Uniform start: the creamed share grows as t/t_c, so t50 = H/(2v), and the
+    stability index int_0^{2 t_c} (1 - F) dt = t_c/2 (trapezoid exact for a
+    piecewise-linear F sampled at its kink)."""
     d_um, drho, eta, H = 10.0, 100.0, 1e-3, 0.01
     v_exact = drho * G_ACCEL_M_S2 * (d_um * 1e-6) ** 2 / (18.0 * eta)
     tc = H / v_exact
@@ -69,11 +75,9 @@ def test_s5_stability_index_grid_converges_to_creaming_time():
         [d_um], [1.0], 900.0, 1000.0, eta, H, n_times=201,
         t_max_s=2.0 * tc,
     )
-    # trapezoid across the unit step is within one grid cell of t_cream
-    dt = r.times_s[1] - r.times_s[0]
-    assert r.stability_index_m2 == pytest.approx(tc, abs=dt)
+    assert r.stability_index_m2 == pytest.approx(tc / 2.0, rel=1e-9)
     assert r.t50_s is not None
-    assert r.t50_s == pytest.approx(tc, abs=dt)
+    assert r.t50_s == pytest.approx(tc / 2.0, rel=1e-9)
     assert r.converged and r.n_iterations == 201
     assert r.method and "piecewise" in r.method.lower() or r.method and "analytic" in r.method.lower() or r.method
     assert r.caveat

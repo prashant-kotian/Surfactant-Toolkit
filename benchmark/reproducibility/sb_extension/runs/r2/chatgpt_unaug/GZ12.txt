@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Thermodynamically consistent two-parameter asymmetric Margules (first-order Redlich-Kister) fit to ln(f1) and ln(f2)",
+"notes": "The interaction is strongly asymmetric and overall favorable (negative excess Gibbs energy). The fitted model reproduces the supplied data closely and predicts a shallow high-x1 maximum in f1 and a minimum followed by recovery in f2."
+}

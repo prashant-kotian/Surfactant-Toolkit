@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.470,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2787.0,
+"cpp_electrostatic_area": 0.0075,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The directly measured structural area ignores long-range electrostatic double-layer repulsion, leading to a CPP of ~0.47 which incorrectly predicts cylindrical micelles. In contrast, incorporating the Debye length yields a massive effective thermodynamic headgroup area that forces the CPP well below 1/3, correctly predicting the spherical micelles observed for SDS in pure water."
+}

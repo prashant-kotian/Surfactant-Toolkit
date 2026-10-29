@@ -1,0 +1,67 @@
+{
+ "paper": "Naskar, Colloids Interfaces 9 (2025) 4",
+ "doi": "10.3390/colloids9010004",
+ "reproduce_dG": {
+  "toolkit": [
+   -43.87,
+   -44.32,
+   -44.78,
+   -45.23,
+   -44.62,
+   -44.79,
+   -44.64
+  ],
+  "max_abs_diff_kJ": 0.04,
+  "printed_sign": "positive in Table 1"
+ },
+ "printed_coefficients": {
+  "dG_kJ_from_ABC": [
+   -253.0,
+   -255.6,
+   -259.9,
+   -264.3,
+   -268.7,
+   -273.0,
+   -281.7
+  ],
+  "dH_kJ_from_BC": [
+   0.06,
+   0.059,
+   0.058,
+   0.058,
+   0.057,
+   0.056,
+   0.055
+  ]
+ },
+ "BC_generating_printed_vH_column": {
+  "B": -872.56,
+  "C": 126938.0
+ },
+ "kirchhoff_fit_298": {
+  "dH_kJ": -28.26,
+  "dCp_kJ_per_mol_K": -1.504,
+  "r2": 0.7,
+  "rms_dG_kJ": 0.209,
+  "numpy_dH_kJ": -28.26,
+  "numpy_dCp": -1.504
+ },
+ "dG_span_kJ": 1.3,
+ "stated_dG_uncertainty_kJ": 1.34,
+ "monte_carlo_3pct": {
+  "dH_298_95": [
+   -79.2,
+   22.2
+  ],
+  "dCp_95": [
+   -7.21,
+   4.02
+  ]
+ },
+ "findings": {
+  "itc_dH_298_inside_interval": true,
+  "itc_dCp_inside_interval": true,
+  "printed_vH_dH_298_inside_interval": true
+ },
+ "toolkit": "Surfactant-Toolkit"
+}

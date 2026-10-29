@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2787.0,
+"cpp_electrostatic_area": 0.00753,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "Measured area gives P≈0.470, just below the cylindrical/spherical boundary, so rodlike micelles are predicted. The CMC-only electrostatic estimate gives an unphysically huge area ≈2.79e3 Å^2 and P≈0.0075, predicting spherical micelles, but that area is not credible for a 12-carbon micelle."
+}

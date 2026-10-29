@@ -1,0 +1,52 @@
+{
+ "case": "LC3",
+ "stages": {
+  "S1": {
+   "x1": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json findings.no_rubingh_solution_any_basis"
+   },
+   "beta": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json mass_basis + molar_basis all null"
+   }
+  },
+  "S2": {
+   "x1": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json findings.no_rubingh_solution_any_basis"
+   },
+   "beta": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json mass_basis + molar_basis all null"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  },
+  "S3": {
+   "x1": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json findings.no_rubingh_solution_any_basis"
+   },
+   "beta": {
+    "value": "no_solution",
+    "unit": "-",
+    "source": "case3_results.json mass_basis + molar_basis all null"
+   },
+   "printed_result_follows": {
+    "value": "no",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  }
+ },
+ "note": "brief-2c de-coaching pass. CAND4 dropped: under the S1 data-only rule no computable quantity survives (Jang's dead-crude EACN exists only in a garbled table text layer; Yoga's 8.22 is another paper's example and banned from S1/S2); eacn_linear_mixing/hld_* exist in the toolkit but cannot change an outcome with no numeric target; a wording-only test would be phrase-matching, banned by the brief. Stated plainly as the brief requires."
+}

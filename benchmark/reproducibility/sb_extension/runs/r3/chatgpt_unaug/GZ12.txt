@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.0126,
+"f2_at_x1_0.90": 0.3154,
+"interaction_model_or_approach": "Two-parameter asymmetric Redlich-Kister excess-Gibbs model fitted simultaneously to ln(f1) and ln(f2), enforcing binary Gibbs-Duhem consistency",
+"notes": "The mixed micelle shows strong favorable but asymmetric nonideal mixing (negative excess Gibbs energy). The model fits the supplied activity coefficients extremely closely; at x1=0.90 it predicts f1 returning toward its pure-component limit of 1 while f2 has passed through a shallow minimum and rises to about 0.315."
+}

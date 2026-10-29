@@ -1,0 +1,38 @@
+{
+ "protocol": "Langmuir, D=1e-9 m2/s, Gamma_inf=3e-6 mol/m2, Kd=1e-3 M, gamma0=72 mN/m, k_off=200 1/s, t_k=5(k/16)^2 s",
+ "per_C0": {
+  "0.0001": {
+   "worst_Gamma_rel": 0.0698481183165236,
+   "worst_gamma_mN_m": 0.035840341342321835,
+   "gamma_final_WT": 71.30590508095668,
+   "gamma_final_PDE": 71.30592261193499,
+   "gamma_eq": 71.29119047935727,
+   "converged": [
+    true,
+    true
+   ]
+  },
+  "0.001": {
+   "worst_Gamma_rel": 0.024905935374843615,
+   "worst_gamma_mN_m": 0.14826377604484264,
+   "gamma_final_WT": 66.88978182884934,
+   "gamma_final_PDE": 66.88981765800499,
+   "gamma_eq": 66.84515377270054,
+   "converged": [
+    true,
+    true
+   ]
+  },
+  "0.01": {
+   "worst_Gamma_rel": 9.209346648364014e-05,
+   "worst_gamma_mN_m": 0.006607280060606513,
+   "gamma_final_WT": 54.181883842764606,
+   "gamma_final_PDE": 54.18188933057924,
+   "gamma_eq": 54.16716197206709,
+   "converged": [
+    true,
+    true
+   ]
+  }
+ }
+}

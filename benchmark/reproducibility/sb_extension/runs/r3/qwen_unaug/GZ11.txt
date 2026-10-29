@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 48.0,
+"cpp_electrostatic_area": 0.4374,
+"morphology_electrostatic_area": "cylindrical/rodlike micelle",
+"comment": "Both the measured-area (P=0.470) and electrostatic (P=0.437) approaches predict cylindrical/rodlike micelles, yet SDS experimentally forms spherical micelles. The electrostatic area (48.0 Å²) is ~7% larger than the measured value (44.70 Å²), as expected for a purely repulsive double-layer estimate. Both P values lie near the 1/3–1/2 boundary, highlighting the sensitivity and known limitations of the simple geometric packing model in this transition region."
+}

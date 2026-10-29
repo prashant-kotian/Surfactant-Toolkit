@@ -711,7 +711,7 @@ def aniansson_wall_two_regime(
         )
 
     k_minus = (sigma ** 2 / tau1_s) / factor
-    R = (n_bar ** 2 * tau2_s * factor) / cmc_M
+    R = (n_bar ** 2 * tau2_s) / (cmc_M * factor)   # 1/tau2 = n^2/(CMC*R) * factor^-1
     k_on_implied = k_minus / cmc_M  # real physical sanity check, not an input
     T_m = n_bar * tau2_s
 

@@ -1,0 +1,7 @@
+FINAL_JSON: {
+“gamma_max_mol_per_m2”: 7.42e-6,
+“a_min_nm2”: 0.224,
+“delta_g_mic_kJ_per_mol”: -37.3,
+“delta_s_mic_J_per_mol_K”: null,
+“missing_for_delta_s”: “Temperature dependence of the CMC (CMC vs T for a van’t Hoff ΔH_mic) or an independently measured ΔH_mic (e.g., ITC calorimetry); with ΔH_mic, ΔS_mic = (ΔH_mic − ΔG_mic)/T.”
+}

@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"delta_h_endpoint_kJ_per_mol": -3.09,
+"agrees_with_cited_value": false,
+"reported_value_source": "Calculated strictly from the first (10°C) and last (45°C) data points using the standard van't Hoff equation, without applying empirical ionic dissociation factors or cherry-picking linear sub-regimes."
+}

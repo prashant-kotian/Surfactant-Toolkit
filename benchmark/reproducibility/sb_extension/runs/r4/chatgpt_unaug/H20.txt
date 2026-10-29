@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc of AOT in the same solvent/system, ideally at the same temperature and 632.8 nm; obtain it experimentally from the slope of solution refractive index versus AOT mass concentration using differential refractometry."
+}

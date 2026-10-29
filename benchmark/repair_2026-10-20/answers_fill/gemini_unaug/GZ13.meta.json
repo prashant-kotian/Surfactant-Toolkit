@@ -7,5 +7,6 @@
  "settings": "Gemini 3.1 Pro, thinking High, MCP extension off",
  "code_execution_used": true,
  "web_search_attempted": true,
- "note": "answered in the same chat as GZ17; this file keeps only this question's own final answer"
+ "note": "answered in the same chat as GZ17; this file keeps only this question's own final answer",
+ "new_chat_attempts": "asked again in a new chat on 2026-10-26 (three attempts, same settings): Gemini returned no answer each time (server error), so this answer is kept"
 }

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter Margules model (first-order Redlich-Kister)",
+"notes": "A 1-parameter regular solution model fails due to high steric asymmetry between the bulky aromatic headgroup of Component 1 and the linear structure of Component 2. The 2-parameter model captures the concentration-dependent interaction perfectly."
+}

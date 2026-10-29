@@ -2,11 +2,18 @@
 
 A computation toolkit for surfactant and interfacial chemistry, with
 **SurfBench-200**, the benchmark used to evaluate large language models with
-and without tool access (Paper 3). This repository is the complete submission
+and without tool access (Paper 3). This repository is the submission
 artifact: the library, its test suite, the full benchmark with recomputed
-reference answers (golds), raw model-answer transcripts, the graders, and the
-results pipeline. Every number reported in the manuscript is regenerated from
-this tree; none is typed by hand.
+reference answers (golds), the graders, the results pipeline, and the raw
+model-answer transcripts. For SB-151..SB-200 the release holds both question
+wordings (`orig_hard50/Q*.md`, augmented; `orig_hard50/question_bank_unaugmented.txt`),
+the first-release transcripts (`benchmark/transcripts/orig_hard50_first_release/`)
+and the frozen grading files of that release (see `DATA_NOTES.md`). Of the 27 graded cells for
+SB-001..SB-150, twelve (all in SB-051..SB-150) record pass or fail per
+question without field-level detail; they are flagged `count_only` in
+`results/results.json`. Every number
+reported in the manuscript is regenerated from this tree; none is typed by
+hand.
 
 ## The benchmark: SurfBench-200
 
@@ -47,7 +54,7 @@ To rename the benchmark, change the `BENCH_NAME` constant in
 ```
 src/surfactantkit/      toolkit library (CMC, mixed micellization, thermodynamics,
                         model selection, adsorption, HLD, QSPR connectors) + MCP server
-tests/                  test suite (832 tests)
+tests/                  test suite (971 tests)
 benchmark/
   question_set.json     the benchmark: 200 ids, skill types, sub-concepts, exclusions
   build_question_set.py assembles question_set.json from the source-set golds
@@ -60,9 +67,14 @@ benchmark/
                         project's first benchmark release
   mcp_harness/          Model Context Protocol harness used for the augmented condition
   transcripts/          raw model answers, one file per run/question
+  applications/         application problems P1..P7: statements, transcripts, toolkit reference values
+  reproducibility/      repeated-answer sets (R-01..R-18 and eleven SurfBench-200 questions x5)
+  literature_checks/    five published results recomputed from their printed values (run_all.py)
   build_results.py      collects the graded cells into results/results.json (+ ledger)
   build_tables.py       renders the per-set diagnostic tables from that JSON
-docs/                   validation-tier audit table (guarded by tests/test_validation_tiers.py)
+docs/                   validation-tier audit table (guarded by tests/test_validation_tiers.py;
+                        tools added after the audit are tiered in validation_tiers.POST_AUDIT_TIERS,
+                        and every MCP tool must resolve to a tier)
 results/                generated: TABLE200.md, CLASSIFICATION200.md, bench200.json,
                         figs_data/*.tsv (paste-ready figure sources),
                         per_question_results_200.csv, tables.md/.tex,
@@ -76,8 +88,15 @@ the grader scripts, and per-run grading JSONs.
 ## Install and run
 
 ```bash
-pip install rdkit "mcp[cli]"         # only external deps (see pyproject extras)
-PYTHONPATH=src python3 -m pytest -q  # 832 passed
+pip install -e ".[mcp,calc,dev]"     # package + MCP server + numpy/scipy + pytest
+python3 -m pytest -q                 # 971 passed
+```
+
+Windows (PowerShell):
+
+```powershell
+pip install -e ".[mcp,calc,dev]"
+python -m pytest -q
 ```
 
 Reproduce the reported numbers (deterministic given the committed transcripts)
@@ -95,6 +114,15 @@ lists the full chain including the graders that regenerate those JSONs.
 `results/per_question_results.csv` must match its committed
 copy byte for byte; see `results/REPRODUCIBILITY.md` for the recorded
 verification.
+
+## MCP server scope
+
+`surfactantkit-mcp` runs locally over stdio with the permissions of the user
+who starts it. `analyze_micelle_trajectory` reads the file path it is given,
+the asynchronous DPD tools write job files (default `.dpd_jobs/`, or
+`$SURFACTANTKIT_DPD_JOBS`), and the simulation tools (`dpd_*`, `brownian_*`,
+`kmc_micelle_kinetics`, `mcmc_posterior_fit`) can run for minutes. Connect it
+only to a client whose tool calls you approve.
 
 ## Data and provenance policy
 

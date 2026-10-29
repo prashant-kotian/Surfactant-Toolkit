@@ -151,8 +151,11 @@ def main() -> int:
         for model, md in d.items():
             model = "Gemini" if model == "Antigravity" else model
             fill = CORR.orig_overlay(model, cond)
+            regrade = CORR.orig_regrade(model, cond)   # reference-value changes, as build_bench200.py
             for alias, q in md["questions"].items():
                 verdict = fill.get(alias, q["verdict"]) if q["verdict"] == "NOT_ANSWERED" else q["verdict"]
+                if alias in regrade:
+                    verdict = regrade[alias][0]
                 if verdict == "NOT_ANSWERED":
                     continue
                 rec[(model, cond)][alias2[alias]["sb"]] = verdict == "PASS"
@@ -247,8 +250,7 @@ def main() -> int:
                 present = [sb for sb in sbs if sb in cell]
                 gradable = len(present)
                 cov = ("not-run" if not present else
-                       ("partial" if setn == "groundzero" and m == "Claude" and c == "unaug"
-                        else "full"))
+                       "partial" if gradable < NOMINAL[setn] else "full")
                 rows.append((m, c, setn, NOMINAL[setn], gradable,
                              NOMINAL[setn] - gradable, cov))
     w("F7_denominators.tsv",
@@ -288,8 +290,13 @@ def main() -> int:
         for model, md in d.items():
             model = "Gemini" if model == "Antigravity" else model
             fill = CORR.orig_overlay(model, cond)
+            regrade = CORR.orig_regrade(model, cond)
             arm = CORR.ARM.get((model, cond))
             for alias, q in md["questions"].items():
+                if alias in regrade:
+                    if regrade[alias][0] == "FAIL":
+                        rows[(model, cond, "orig_hard50", classify(regrade[alias][1]))] += 1
+                    continue
                 if q["verdict"] == "FAIL":
                     rows[(model, cond, "orig_hard50", classify(q.get("detail")))] += 1
                 elif q["verdict"] == "NOT_ANSWERED" and fill.get(alias) == "FAIL":
@@ -299,12 +306,13 @@ def main() -> int:
       ["model", "condition", "source_set", "failure_class", "n_failed_questions"],
       [(a, b, c, d, n) for (a, b, c, d), n in sorted(rows.items())])
 
-    # ---- F9 provenance dates
+    # ---- F9 provenance dates: only the date stamped in the grading file's path
+    # ("-" where the path carries none; per-answer run dates live in the transcripts)
     rows = []
     for key, cell in sorted(rj["cells"].items()):
         mdate = re.search(r"(2026-\d\d-\d\d)", str(cell["source"]))
         rows.append((key, cell["harness"], mdate.group(1) if mdate else "-", cell["source"]))
-    w("F9_provenance_dates.tsv", ["cell", "harness", "date", "source"], rows)
+    w("F9_provenance_dates.tsv", ["cell", "harness", "date_in_source_path", "source"], rows)
 
     # guard: F3 totals reconcile with question_set
     cnt = Counter()

@@ -1,0 +1,295 @@
+Setup
+Checking the mixture compositions against the second equation
+
+Checking the mixture compositions against the second equation
+Setup
+
+For a 1:1 by weight mixture, the bulk (stoichiometric) mole fraction of the first‑listed poloxamer is
+
+𝑋
+1
+=
+𝑀
+2
+𝑀
+1
++
+𝑀
+2
+,
+𝑋
+2
+=
+1
+−
+𝑋
+1
+X
+1
+	​
+
+=
+M
+1
+	​
+
++M
+2
+	​
+
+M
+2
+	​
+
+	​
+
+,X
+2
+	​
+
+=1−X
+1
+	​
+
+
+The two Rubingh relations (with
+𝑥
+2
+=
+1
+−
+𝑥
+1
+x
+2
+	​
+
+=1−x
+1
+	​
+
+, so
+(
+1
+−
+𝑥
+2
+)
+2
+=
+𝑥
+1
+2
+(1−x
+2
+	​
+
+)
+2
+=x
+1
+2
+	​
+
+) are
+
+ln
+⁡
+ ⁣
+𝑋
+1
+𝑐
+𝑥
+1
+𝑐
+1
+=
+𝛽
+(
+1
+−
+𝑥
+1
+)
+2
+,
+ln
+⁡
+ ⁣
+𝑋
+2
+𝑐
+(
+1
+−
+𝑥
+1
+)
+𝑐
+2
+=
+𝛽
+
+𝑥
+1
+2
+ln
+x
+1
+	​
+
+c
+1
+	​
+
+X
+1
+	​
+
+c
+	​
+
+=β(1−x
+1
+	​
+
+)
+2
+,ln
+(1−x
+1
+	​
+
+)c
+2
+	​
+
+X
+2
+	​
+
+c
+	​
+
+=βx
+1
+2
+	​
+
+
+Eliminating
+𝛽
+β gives one transcendental equation in
+𝑥
+1
+x
+1
+	​
+
+; solving it, then back‑substituting, yields
+𝛽
+β.
+
+Inputs computed from the data
+Mixture
+𝑋
+1
+X
+1
+	​
+
+
+𝑋
+2
+X
+2
+	​
+
+
+𝑐
+c
+𝑐
+1
+c
+1
+	​
+
+
+𝑐
+2
+c
+2
+	​
+
+
+P184/P188	8400/11300 = 0.7434	0.2566	0.04	0.55	0.17
+P184/P407	12600/15500 = 0.8129	0.1871	0.06	0.55	0.10
+P188/P407	12600/21000 = 0.6000	0.4000	0.07	0.17	0.10
+Results (numerical root-finding)
+
+P184/P188: root at
+𝑥
+1
+≈
+0.4948
+x
+1
+	​
+
+≈0.4948; both expressions give
+𝛽
+≈
+−
+8.68
+β≈−8.68.
+P184/P407: root at
+𝑥
+1
+≈
+0.4860
+x
+1
+	​
+
+≈0.4860;
+𝛽
+≈
+−
+6.44
+β≈−6.44.
+P188/P407: root at
+𝑥
+1
+≈
+0.4863
+x
+1
+	​
+
+≈0.4863;
+𝛽
+≈
+−
+2.57
+β≈−2.57.
+
+All three yield a valid micelle mole fraction (
+0
+<
+𝑥
+1
+<
+1
+0<x
+1
+	​
+
+<1) with a self‑consistent
+𝛽
+β, so none are “no_solution.” All
+𝛽
+<
+0
+β<0, consistent with the synergistic (attractive) mixed micellization implied by mixed CMCs lying below both pure CMCs. The large negative value for P184/P188 reflects its especially deep CMC depression (0.04 vs. 0.17 and 0.55 mM).
+
+FINAL_JSON: {“x1_P184_P188”: 0.495, “beta_P184_P188”: -8.68, “x1_P184_P407”: 0.486, “beta_P184_P407”: -6.44, “x1_P188_P407”: 0.486, “beta_P188_P407”: -2.57}

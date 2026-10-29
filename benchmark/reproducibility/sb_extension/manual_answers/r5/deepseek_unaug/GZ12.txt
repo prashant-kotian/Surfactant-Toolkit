@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.0126,
+  "f2_at_x1_0.90": 0.3144,
+  "interaction_model_or_approach": "Gibbs-Duhem-consistent two-parameter Margules excess free-energy fit to ln(f1) and ln(f2)",
+  "notes": "Fit parameters A≈-2.232 and B≈1.339; negative A indicates net attractive/synergistic mixed-micelle interaction, with asymmetric composition dependence."
+}

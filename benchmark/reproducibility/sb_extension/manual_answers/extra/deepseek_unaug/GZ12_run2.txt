@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.316,
+  "interaction_model_or_approach": "Two-parameter Margules/Redlich-Kister excess-Gibbs fit constrained by Gibbs-Duhem consistency",
+  "notes": "Single-parameter regular solution theory is inadequate because ln(f1)/x2^2 and ln(f2)/x1^2 vary systematically with composition. The fitted model is asymmetric, with A≈-3.56 and B≈-0.89, indicating net favorable but strongly asymmetric interactions. Values at x1=0.90 are extrapolated from the fitted model."
+}

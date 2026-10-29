@@ -1,0 +1,280 @@
+================================================================================
+GROUNDZERO GZ-51 through GZ-60 — COMPILED OUTPUTS
+================================================================================
+
+
+================================================================================
+GZ-51
+================================================================================
+Compound: 1-dodecyl-3-methylpyridinium bromide
+SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+Task: Enthalpy of micellization between two temperatures.
+
+CMC data:
+  T = 293.15 K, CMC = 9.76 mM
+  T = 303.15 K, CMC = 9.77 mM
+
+Method (van't Hoff / Gibbs-Helmholtz, pseudo-phase):
+  dH_mic = -R T^2 (d ln X_cmc / dT)
+  The mole-fraction factor (1/55.5) is constant and cancels in the derivative.
+
+  Mean T = 298.15 K
+  ln(CMC2/CMC1) = ln(9.77/9.76) = 1.024e-3
+  d ln CMC / dT = 1.024e-3 / 10 K = 1.024e-4 K^-1
+  dH = -(8.314)(298.15^2)(1.024e-4) = -75.7 J/mol ~= -0.076 kJ/mol
+
+The value is essentially zero (very slightly negative) because the CMC barely
+changes over this interval - the two temperatures straddle the CMC minimum.
+(Simplified beta=0 form; no counterion binding degree was supplied.)
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.0757
+}
+
+
+================================================================================
+GZ-52
+================================================================================
+Binary mixed micelle system.
+Component 1: diheptanoyl phosphatidylcholine (DHPC, zwitterionic), CMC = 1.8 mM
+  SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 2: sodium dodecyl sulfate (SDS, anionic), CMC = 8.3 mM
+  SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Task: Which mixing model best describes the data?
+
+Mixed CMC data (alpha2, CMC_mix mM) vs ideal (Clint) prediction and Rubingh fit:
+  a2    CMC_meas   CMC_ideal   x1_mic   beta
+  0.95   3.60        7.03       0.366   -3.22
+  0.90   2.80        6.10       0.436   -3.25
+  0.80   1.80        4.82       0.512   -3.95
+  0.60   1.40        3.40       0.594   -3.93
+  0.20   1.30        2.13       0.743   -3.81
+
+Every measured CMC falls far below the ideal prediction; at low SDS fraction it
+falls below BOTH pure CMCs (1.3-1.4 mM vs 1.8 and 8.3 mM). This is strong
+negative deviation / synergism. Ideal mixing cannot reproduce it. Rubingh's
+regular solution theory gives a consistently negative interaction parameter
+(beta ~ -3.2 to -3.9), reflecting attractive electrostatic interaction between
+the zwitterionic PC headgroup and the anionic dodecyl sulfate.
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "Rubingh regular solution theory (non-ideal mixed micelle model, negative beta)"
+}
+
+
+================================================================================
+GZ-53
+================================================================================
+Real surfactant at 298.15 K; deltaG_mic = -27.271 kJ/mol.
+Task: Entropy of micellization via deltaS = (deltaH - deltaG)/T for two scenarios.
+
+  (a) deltaH = -5.0 kJ/mol:
+      deltaS = (-5.0 - (-27.271))/298.15 = 22.271/298.15
+             = 0.074695 kJ/(mol.K) = 74.70 J/(mol.K)
+
+  (b) deltaH = +3.0 kJ/mol:
+      deltaS = (+3.0 - (-27.271))/298.15 = 30.271/298.15
+             = 0.101529 kJ/(mol.K) = 101.53 J/(mol.K)
+
+Both positive (favorable), consistent with the hydrophobic effect driving
+micellization.
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.70,
+  "delta_s_scenario_b_J_per_mol_K": 101.53
+}
+
+
+================================================================================
+GZ-54
+================================================================================
+Cationic surfactant, 12-carbon tail: dodecyltrimethylammonium bromide (DTAB)
+SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Measured headgroup area a = 59.62 A^2
+Task: Critical packing parameter and predicted morphology.
+
+Tanford relations (n_c = 12):
+  V   = 27.4 + 26.9 * 12 = 350.2 A^3
+  l_c = 1.5 + 1.265 * 12 = 16.68 A
+  P   = V / (a * l_c) = 350.2 / (59.62 * 16.68) = 350.2 / 994.46 = 0.3521
+
+Since 1/3 (0.333) < 0.3521 <= 1/2, morphology = cylindrical/rodlike micelle
+(just past the spherical threshold).
+
+FINAL_JSON:
+{
+  "cpp": 0.3521,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+
+================================================================================
+GZ-55
+================================================================================
+Nonionic surfactant, surface tension vs concentration at 298.15 K; gamma0 = 72.0 mN/m.
+Task: Determine whether there is a genuine, physically meaningful
+surfactant-surfactant lateral interaction at the interface.
+
+Data (c mM, gamma mN/m):
+  0.05, 66.813 | 0.10, 61.992 | 0.20, 56.986 | 0.40, 51.902
+  0.80, 46.782 | 1.30, 43.185 | 1.90, 40.369
+
+Model comparison on the pre-CMC adsorption:
+  - Langmuir / Szyszkowski (no lateral interaction): systematic, S-shaped
+    residuals up to ~1.2 mN/m, RMSE ~ 0.58 mN/m.
+  - Frumkin isotherm (one lateral-interaction term): residuals collapse to
+    ~2e-4 mN/m (RMSE), with a clean interaction parameter K ~ 2.0 (attractive).
+
+A structured misfit for the no-interaction model, a near-exact fit once one
+interaction parameter is added, and a well-defined, physically reasonable value
+(moderate attractive tail cohesion) together indicate a REAL, physically
+meaningful lateral interaction, not fitting noise.
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "A no-interaction Langmuir/Szyszkowski isotherm fits the pi-vs-c data poorly, with systematic S-shaped residuals (RMSE ~0.58 mN/m, up to 1.2 mN/m). Introducing a single Frumkin lateral-interaction term reduces residuals to essentially zero (RMSE ~2e-4 mN/m) and yields a well-defined, physically reasonable attractive interaction parameter (K ~ 2.0). The dramatic, structured improvement from one added parameter-rather than a marginal or noise-level correction-indicates a real, physically meaningful attractive lateral interaction between adsorbed surfactant molecules beyond independent adsorption."
+}
+
+
+================================================================================
+GZ-56
+================================================================================
+Oleic acid (cis-9-octadecenoic acid), pKa ~ 4.8-5.0, aqueous solution at pH 5.0.
+Task: Charge type at this specific pH.
+
+At pH 5.0 the pH essentially equals the pKa. By Henderson-Hasselbalch, when
+pH ~ pKa the molecule is roughly half deprotonated - a near 1:1 mixture of the
+neutral protonated acid (-COOH) and the anionic carboxylate (-COO^-). Its
+charge character is therefore anionic but only partially ionized, not fully
+charged.
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "anionic, partially ionized (~50% deprotonated carboxylate / ~50% neutral COOH, since pH ~ pKa)"
+}
+
+
+================================================================================
+GZ-57
+================================================================================
+CTAB (cetyltrimethylammonium bromide) at 296.85 K.
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Measured counterion dissociation degree alpha = 0.26.
+Task: CMC, pre-CMC adsorption (Gamma_max), free energy of micellization.
+
+Data (c mM, gamma mN/m):
+  0.0165,71.60 | 0.0330,71.56 | 0.0659,70.38 | 0.1319,64.78
+  0.2638,57.34 | 0.5275,46.13 | 1.055,36.41 | 2.11,32.37
+
+CMC: intersection of the steep linear region (dgamma/dlnc ~ -15.1 mN/m) and the
+post-break plateau line (slope ~ -5.8) => CMC ~ 1.03 mM.
+
+Pre-CMC adsorption (Gibbs isotherm, ionic prefactor n = 2):
+  Gamma_max = -(1/nRT)(dgamma/dlnc)
+            = -(-15.1e-3)/(2 * 8.314 * 296.85) = 3.06e-6 mol/m^2
+  A_min = 1/(N_A * Gamma_max) ~ 0.54 nm^2 (~54 A^2) - tightly packed monolayer.
+
+Free energy of micellization (pseudo-phase, counterion factor (2 - alpha)):
+  X_cmc = CMC/55.5 = 1.85e-5
+  dG_mic = (2 - alpha) R T ln X_cmc = (1.74)(8.314)(296.85) ln(1.85e-5)
+         = -46.8 kJ/mol
+
+Convention note: Gamma_max uses Gibbs prefactor n = 2; dG_mic uses the
+(2 - alpha) = (1 + beta) counterion factor - the standard Rosen pairing,
+applied consistently.
+
+FINAL_JSON:
+{
+  "cmc_mM": 1.03,
+  "gamma_max_mol_per_m2": 3.06e-6,
+  "delta_g_mic_kJ_per_mol": -46.8
+}
+
+
+================================================================================
+GZ-58
+================================================================================
+Binary mixed micelle of two cationic surfactants.
+Component 1: bulky aromatic benzyl-ammonium surfactant
+  SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2: DTAB
+  SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Task: Analyze interaction; predict f1, f2 at x1 = 0.15.
+
+Measured (x1, f1, f2):
+  0.305, 0.394, 0.650 | 0.415, 0.630, 0.500 | 0.483, 0.769, 0.426
+  0.626, 0.970, 0.322 | 0.808, 1.028, 0.286
+
+One-parameter (symmetric) regular solution theory FAILS: beta from f1 varies
+-1.93 -> +0.75 and from f2 varies -4.63 -> -1.92; f1 even exceeds 1 at high x1
+while f2 stays <1. The interaction is asymmetric.
+
+Two-parameter (sub-regular / three-suffix Margules) model fits essentially
+exactly (RMSE ~ 0.001):
+  ln f1 = x2^2 [A + 2(B-A) x1]
+  ln f2 = x1^2 [B + 2(A-B) x2]
+  A = ln f1_inf = -3.57 ,  B = ln f2_inf = -0.89
+Both negative => net attractive interaction (synergism), but strongly
+asymmetric.
+
+Prediction at x1 = 0.15 (x2 = 0.85):
+  f1 ~ 0.136 (component 1 dilute -> strongly stabilized, deep negative deviation)
+  f2 ~ 0.885 (component 2 near-pure -> near ideal)
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.136,
+  "f2_at_x1_0.15": 0.885
+}
+
+
+================================================================================
+GZ-59
+================================================================================
+Cationic surfactant, 16-carbon tail (CTAB), monomer molar mass = 364.45 g/mol.
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Task: Analyze partial specific volume (v_bar); state what is missing.
+
+Tanford tail volume (n_c = 16):
+  V = 27.4 + 26.9 * 16 = 457.8 A^3 per molecule
+  Tail molar volume = V * N_A = 457.8e-24 * 6.022e23 = 275.7 cm^3/mol
+
+Only the hydrophobic alkyl-tail volume can be determined. The full-molecule
+partial specific volume v_bar = V_total(molar)/M requires, in addition, the
+partial molar volumes of the trimethylammonium headgroup (-N+(CH3)3) and the
+bromide counterion - including electrostriction/hydration of those charged
+groups. Tanford's relation supplies none of these, so v_bar(full) is left
+undetermined rather than quoting a misleading tail-only value
+(275.7/364.45 ~ 0.756 cm^3/g would understate it).
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.7,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial molar volumes of the non-tail portions of the molecule: the trimethylammonium headgroup (-N+(CH3)3) and the bromide counterion, including their electrostriction/hydration (volume) contributions in water. Tanford's relation gives only the hydrophobic alkyl-tail volume; without headgroup and counterion volume data the full-molecule partial specific volume cannot be computed."
+}
+
+
+================================================================================
+GZ-60
+================================================================================
+Read the CMC from the attached surface-tension-vs-concentration chart (log-x).
+
+The surface tension falls steeply from ~0.016 mM to ~0.6 mM, bends sharply at
+the knee near ~1.5 mM, and levels into a flat plateau (~27-28 mN/m) held through
+4, 6, and 10 mM. The transition (break) point sits at roughly 1.5 mM.
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 1.5
+}
+
+
+================================================================================
+END OF COMPILATION (GZ-51 to GZ-60)
+================================================================================

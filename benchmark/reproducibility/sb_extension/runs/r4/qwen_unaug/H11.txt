@@ -1,0 +1,8 @@
+FINAL_JSON: {
+"n_points_without_solution": 2,
+"alpha1_no_root_1": 0.10,
+"alpha1_no_root_2": 0.50,
+"beta_mean": 0.836,
+"beta_std": 1.633,
+"n_points_used": 3
+}

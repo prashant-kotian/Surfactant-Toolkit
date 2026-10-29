@@ -1,0 +1,14 @@
+{
+ "qid": "Q47",
+ "provider": "chatgpt",
+ "condition": "unaug",
+ "start": "2026-10-28T18:58:27+0530",
+ "model_seen": "GPT-5.6 Sol, thinking effort High",
+ "tools_seen": {
+  "surfactant-computation": false
+ },
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-28T19:01:13+0530",
+ "question_variant": "~/repair11/paste_fix_unaug/Q47.md",
+ "end": "2026-10-28T19:07:32+0530"
+}

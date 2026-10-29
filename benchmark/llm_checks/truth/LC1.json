@@ -1,0 +1,88 @@
+{
+ "case": "LC1",
+ "stages": {
+  "S1": {
+   "dG_298_kJ_mol": {
+    "value": -44.78,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case1_results.json reproduce_dG.toolkit[2]"
+   },
+   "dH_298_kJ_mol": {
+    "value": -28.26,
+    "kind": "interval",
+    "lo": -79.2,
+    "hi": 22.2,
+    "unit": "kJ/mol",
+    "source": "case1_results.json monte_carlo_3pct.dH_298_95 (printed data do not determine dH; any value inside the 95 % MC interval is a sound fit, per brief-2d #3)"
+   },
+   "dCp_kJ_mol_K": {
+    "value": -1.504,
+    "kind": "interval",
+    "lo": -7.21,
+    "hi": 4.02,
+    "unit": "kJ/(mol K)",
+    "source": "case1_results.json monte_carlo_3pct.dCp_95 (same rule)"
+   }
+  },
+  "S2": {
+   "dG_298_kJ_mol": {
+    "value": -44.78,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case1_results.json reproduce_dG.toolkit[2]"
+   },
+   "dH_298_kJ_mol": {
+    "value": -28.26,
+    "kind": "interval",
+    "lo": -79.2,
+    "hi": 22.2,
+    "unit": "kJ/mol",
+    "source": "case1_results.json monte_carlo_3pct.dH_298_95 (printed data do not determine dH; any value inside the 95 % MC interval is a sound fit, per brief-2d #3)"
+   },
+   "dCp_kJ_mol_K": {
+    "value": -1.504,
+    "kind": "interval",
+    "lo": -7.21,
+    "hi": 4.02,
+    "unit": "kJ/(mol K)",
+    "source": "case1_results.json monte_carlo_3pct.dCp_95 (same rule)"
+   },
+   "printed_result_follows": {
+    "value": "cannot_determine",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  },
+  "S3": {
+   "dG_298_kJ_mol": {
+    "value": -44.78,
+    "tol": 0.6,
+    "unit": "kJ/mol",
+    "source": "case1_results.json reproduce_dG.toolkit[2]"
+   },
+   "dH_298_kJ_mol": {
+    "value": -28.26,
+    "kind": "interval",
+    "lo": -79.2,
+    "hi": 22.2,
+    "unit": "kJ/mol",
+    "source": "case1_results.json monte_carlo_3pct.dH_298_95 (printed data do not determine dH; any value inside the 95 % MC interval is a sound fit, per brief-2d #3)"
+   },
+   "dCp_kJ_mol_K": {
+    "value": -1.504,
+    "kind": "interval",
+    "lo": -7.21,
+    "hi": 4.02,
+    "unit": "kJ/(mol K)",
+    "source": "case1_results.json monte_carlo_3pct.dCp_95 (same rule)"
+   },
+   "printed_result_follows": {
+    "value": "cannot_determine",
+    "unit": "-",
+    "source": "release verdict (LC1: 95 % interval contains both directions -> cannot_determine)"
+   }
+  }
+ },
+ "note": "brief-2c de-coaching + brief-d fixes (results-under-test out of S1; kind interval/sign scoring generated from release JSONs). CAND4 dropped (see kit README)"
+}

@@ -1,0 +1,219 @@
+================================================================================
+SDS (SODIUM DODECYL SULFATE) — STRUCTURAL / PHYSICOCHEMICAL ANALYSIS
+Compiled outputs for questions GZ-66, GZ-67, GZ-68
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Reference temperature: 298.15 K
+================================================================================
+
+
+================================================================================
+QUESTION GZ-66 — Critical Packing Parameter, morphology, and Davies HLB
+================================================================================
+
+INPUTS
+  n_c (tail carbons)                 = 12
+  Measured min. area per molecule a0 = 49.37 A^2
+  Tanford tail volume    V  = 27.4 + 26.9*n_c
+  Tanford chain length   lc = 1.5  + 1.265*n_c
+
+CRITICAL PACKING PARAMETER (Israelachvili-Mitchell-Ninham)
+  V   = 27.4 + 26.9*12  = 350.2 A^3
+  lc  = 1.5  + 1.265*12 = 16.68 A
+  CPP = V / (a0 * lc) = 350.2 / (49.37 * 16.68) = 350.2 / 823.49 = 0.425
+
+  Morphology bins: <1/3 spheres; 1/3-1/2 cylinders/rods; 1/2-1 vesicles/
+  flexible bilayers; ~1 planar bilayers; >1 inverted phases.
+  CPP = 0.425 lies in the 1/3-1/2 window ->
+  PREDICTED MORPHOLOGY: cylindrical (rod-like) micelles
+
+DAVIES GROUP-CONTRIBUTION HLB
+  HLB = 7 + sum(hydrophilic) - sum(lipophilic)
+  Hydrophilic: one -OSO3Na sulfate ester salt = 38.6
+  Lipophilic : (11 x -CH2-) + (1 x -CH3) = 12 * 0.475 = 5.7
+  HLB = 7 + 38.6 - 5.7 = 39.9
+  (Very high -> strongly hydrophilic, water-soluble, O/W micelle former.)
+
+CONSISTENCY DISCUSSION
+  The two descriptors are qualitatively consistent: CPP = 0.425 (1/3 < CPP
+  < 1/2) indicates a normal, positive-curvature aggregate former, and Davies
+  HLB = 39.9 indicates an extremely hydrophilic, water-soluble surfactant.
+  Both agree SDS forms normal (Type I, oil-in-water) micellar aggregates with
+  no tendency toward bilayers, vesicles, or inverted phases. The only tension
+  is quantitative: an HLB near 40 implies maximal head hydrophilicity and
+  would naively suggest spherical micelles (CPP < 1/3), whereas the geometric
+  CPP lands in the rod-like window. This gap arises because HLB is a purely
+  additive group count blind to geometry, ionic strength, and counterion
+  condensation, while CPP uses the measured a0 = 49.37 A^2, an area already
+  compressed by Na+ counterion binding; the larger head areas of dilute
+  salt-free SDS (~55-65 A^2) would push CPP back below 1/3 and recover the
+  spheres SDS adopts near its CMC. Thus the descriptors are consistent in
+  kind, differing only on exact curvature, and that difference reflects the
+  condition-dependence the CPP captures but HLB cannot.
+
+  ------------------------------ FINAL_JSON ------------------------------
+  {
+    "cpp": 0.425,
+    "morphology": "cylindrical (rod-like) micelles",
+    "hlb_davies": 39.9,
+    "consistency_discussion": "The two descriptors are qualitatively
+    consistent: CPP = 0.425 (normal positive-curvature aggregate) and Davies
+    HLB = 39.9 (extremely hydrophilic, water-soluble). Both point to normal
+    Type I oil-in-water micelles, no bilayers/vesicles/inverted phases. HLB
+    ~40 would naively imply spheres (CPP<1/3) while CPP lands in the rod-like
+    window; the gap is because HLB is a geometry-blind additive group count
+    whereas CPP uses the measured a0=49.37 A^2, an area compressed by Na+
+    counterion binding (dilute salt-free heads ~55-65 A^2 would give CPP<1/3
+    and spheres). Consistent in kind; differ only on exact curvature, which is
+    the condition-dependence CPP captures and HLB cannot."
+  }
+  ------------------------------------------------------------------------
+
+
+================================================================================
+QUESTION GZ-67 — Hydrophilic-Lipophilic Difference (HLD) and Winsor type
+================================================================================
+
+INPUTS
+  Characteristic curvature   Cc     = -2.63
+  EACN-scaling constant      k      = 0.16 (anionic)
+  Oil: toluene               EACN   = 0
+  Salinity                   S      = 5 (5% NaCl-equivalent)
+  Temperature coefficient    alpha  = 0.01 /K
+  Temperature offset         deltaT = 0 (at 298.15 K reference)
+
+HLD (ionic-surfactant form)
+  HLD = ln(S) - k*EACN - alpha*deltaT + Cc
+      = ln(5) - 0.16*0 - 0.01*0 + (-2.63)
+      = 1.6094 - 2.63
+      = -1.02
+
+  Sign convention: HLD < 0 -> Winsor I; HLD ~ 0 -> Winsor III (optimum);
+  HLD > 0 -> Winsor II.
+  HLD = -1.02 (clearly negative) ->
+  PREDICTED WINSOR TYPE: Winsor I (oil-in-water microemulsion + excess oil)
+
+  At only 5% salinity, SDS/toluene is well below optimum salinity; the strongly
+  hydrophilic Cc dominates. Roughly d(ln S) ~ +1 more salinity is needed to
+  reach the HLD ~ 0 middle-phase (Winsor III) condition.
+
+INDEPENDENT DESCRIPTOR
+  Counterion binding degree  beta = 0.728
+
+CONSISTENCY DISCUSSION
+  beta = 0.728 is consistent with the Winsor I prediction but does not
+  independently confirm it; read carelessly it can even look like a
+  counter-signal. HLD/Cc is a macroscopic phase-behavior parameter that fixes
+  the Winsor boundary; beta is a micelle-scale electrostatic property (fraction
+  of Na+ condensed on the charged palisade layer). They act at different levels
+  of description, so beta cannot by itself place the system on either side of
+  HLD = 0. Physically, a higher beta neutralizes more sulfate charge, shrinks
+  the effective head area, and reduces effective hydrophilicity -> it pushes
+  TOWARD optimum (Winsor III), opposite to the strongly negative Cc that
+  anchors the Type I call. The prediction stays firmly Type I only because at
+  S = 5 the net balance still leaves HLD negative; beta is one microscopic
+  ingredient already folded into that salinity response. A consistent
+  structural reading: beta ~ 0.73 is typical for SDS micelles and reflects
+  well-screened surface charge that permits micellar growth (sphere -> rod)
+  WITHOUT inverting interfacial curvature, i.e. charge condensation occurring
+  within the hydrophilic, water-continuous Winsor I regime rather than a
+  curvature inversion out of it. Net: beta is a necessary-not-sufficient,
+  within-Type-I microstructural indicator compatible with and mechanistically
+  supportive of Winsor I, while the assignment itself rests on the HLD value;
+  the same high counterion binding also signals that added salinity is the
+  lever that would carry the system from Type I toward its Winsor III optimum.
+
+  ------------------------------ FINAL_JSON ------------------------------
+  {
+    "hld_value": -1.02,
+    "winsor_type": "Winsor I",
+    "consistency_discussion": "HLD = ln(5) - 0.16*0 - 0.01*0 + (-2.63) =
+    1.609 - 2.63 = -1.02, clearly negative -> Winsor Type I (oil-in-water
+    microemulsion + excess toluene). At 5% salinity SDS is well below optimum;
+    the strongly negative Cc = -2.63 dominates. beta = 0.728 acts at a
+    different level (micelle electrostatics vs macroscopic phase balance) and
+    cannot by itself locate HLD=0, so it is consistent with but not an
+    independent confirmation of the prediction. A high beta neutralizes head
+    charge and would push toward Winsor III optimum, opposite to Cc; the call
+    stays Type I only because HLD is still negative at S=5. beta ~ 0.73 is
+    typical for SDS and reflects well-screened charge allowing sphere->rod
+    growth without curvature inversion, i.e. condensation within the
+    water-continuous Winsor I regime. Net: a necessary-not-sufficient,
+    within-Type-I indicator supportive of Winsor I; the assignment rests on
+    HLD, and the high beta signals that more salinity would move the system
+    toward its Winsor III optimum."
+  }
+  ------------------------------------------------------------------------
+
+
+================================================================================
+QUESTION GZ-68 — CPP, ellipsoid axial ratio, and shape-corrected R_h
+================================================================================
+
+INPUTS
+  n_c = 12 ; a0 = 49.37 A^2
+  Aggregation number         N = 63
+  Diffusion coefficient      D = 0.093e-5 cm^2/s = 9.3e-11 m^2/s
+  Water viscosity            eta = 0.8903 mPa*s = 0.8903e-3 Pa*s
+  Temperature                T = 298.15 K
+
+CRITICAL PACKING PARAMETER
+  V = 350.2 A^3 ; lc = 16.68 A
+  CPP = 350.2 / (49.37 * 16.68) = 0.425
+
+PROLATE ELLIPSOID AXIAL RATIO (volume conservation)
+  Core volume  V_core = N*V = 63 * 350.2 = 22062.6 A^3
+  Minor semi-axis  b = lc = 16.68 A  (pinned)
+  Major semi-axis  a = 3*V_core / (4*pi*b^2) = 22062.6 / 1165.32 = 18.931 A
+  AXIAL RATIO  p = a/b = 18.931 / 16.68 = 1.135  (slightly prolate)
+
+HYDRODYNAMIC RADII
+  Naive Stokes-Einstein (sphere assumed):
+    R_h = kB*T / (6*pi*eta*D)
+        = (1.380649e-23 * 298.15) / (6*pi * 0.8903e-3 * 9.3e-11)
+        = 4.1159e-21 / 1.5607e-12
+        = 2.6375e-9 m
+    R_h_naive = 2.638 nm
+
+  Perrin translational friction factor (prolate, vs equal-volume sphere):
+    F_P = sqrt(p^2 - 1) / ( p^(1/3) * arccosh(p) )
+        = sqrt(0.2884) / ( 1.1351^(1/3) * arccosh(1.135) )
+        = 0.5371 / (1.0432 * 0.5141)
+        = 1.0014
+
+  Shape-corrected (equal-volume-sphere) hydrodynamic radius:
+    R_h_corrected = R_h_naive / F_P = 2.6375 / 1.0014 = 2.634 nm
+
+  Difference: 0.004 nm (~0.14%). At p = 1.135 the micelle is hydrodynamically
+  almost indistinguishable from a sphere, so the Stokes-Einstein sphere
+  assumption introduces negligible error here. (For reference, the bare
+  hydrocarbon-core equal-volume sphere radius (a*b^2)^(1/3) = 1.74 nm; the
+  larger ~2.6 nm hydrodynamic radius includes the sulfate heads and the
+  hydration/Stern layer that translate with the micelle.)
+
+  ------------------------------ FINAL_JSON ------------------------------
+  {
+    "cpp": 0.425,
+    "axial_ratio": 1.135,
+    "r_h_naive_nm": 2.638,
+    "r_h_perrin_corrected_nm": 2.634
+  }
+  ------------------------------------------------------------------------
+
+
+================================================================================
+SUMMARY TABLE
+================================================================================
+  Quantity                         Value
+  -------------------------------  ------------------------------
+  Tanford tail volume V            350.2 A^3
+  Tanford chain length lc          16.68 A
+  Critical packing parameter CPP   0.425  (rod-like window)
+  Davies HLB                       39.9   (strongly hydrophilic)
+  HLD (toluene, S=5)               -1.02  -> Winsor I
+  Counterion binding beta          0.728
+  Aggregation number N             63
+  Ellipsoid axial ratio p          1.135  (nearly spherical)
+  R_h naive (Stokes-Einstein)      2.638 nm
+  Perrin friction factor F_P       1.0014
+  R_h Perrin-corrected             2.634 nm
+================================================================================

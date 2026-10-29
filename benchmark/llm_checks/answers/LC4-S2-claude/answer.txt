@@ -1,0 +1,36 @@
+Audit of CPC + TX‑114 / Reactive Red 2 thermodynamics
+Assessing whether the computed enthalpy matches the printed conclusion
+
+Assessing whether the computed enthalpy matches the printed conclusion
+Audit of CPC + TX‑114 / Reactive Red 2 thermodynamics
+(a) ΔG at 293.15 K from eq (5)
+
+Using X_cmc = (0.87×10⁻³ mol/L)/55.5 = 1.5676×10⁻⁵, ln X_cmc = −11.0634, (2 − α) = 1.516, RT = 2.4374 kJ/mol:
+
+ΔG = (1.516)(2.4374)(−11.0634) = −40.9 kJ/mol (−40.88)
+
+The printed Table‑4 value at 293.15 K is −32.4 kJ/mol, which does not follow from eq (5) with the printed CMC and α. (The other three printed ΔG values do check out: eq (5) gives −41.6, −47.8, −52.0 vs printed −41.5, −47.6, −51.9.)
+
+Comparison to CPC alone (−36.1 kJ/mol): the correctly computed −40.9 is more negative than −36.1, so the “more spontaneous than CPC alone” claim actually holds for the correct number. Note the irony — the paper’s own printed −32.4 is less negative than −36.1 and would contradict that very conclusion.
+
+(b) Enthalpy from the ΔG(T) series
+
+The only enthalpy route from a ΔG(T) series is ΔS = −d(ΔG)/dT, ΔH = ΔG + TΔS. Using backward differences on the eq‑(5) series (−40.88, −41.60, −47.80, −52.05), which is why only the three later temperatures are obtainable:
+
+T (K)	ΔS = −ΔΔG/ΔT (kJ/mol·K)	ΔH = ΔG + TΔS (kJ/mol)
+303.15	+0.072	−19.7
+313.15	+0.620	+146.4
+323.15	+0.424	+85.1
+
+These bear no resemblance to the printed ΔH (−5.2, −6.2, −7.1 kJ/mol). The erratic α values (0.484, 0.505, 0.332, 0.230) make (2−α) swing, so ΔG(T) is non‑smooth; the implied entropies (72–620 J/mol·K) are physically unreasonable and two of the three enthalpies come out strongly endothermic (positive).
+
+Does the printed result follow?
+
+No.
+
+The printed ΔG(293.15) = −32.4 is arithmetically wrong (eq (5) gives −40.9).
+The printed smooth, exothermic ΔH (−5.0 to −7.1) cannot be derived from the ΔG(T) series — the series yields −19.7, +146.4, +85.1 kJ/mol, mostly endothermic. The printed ΔS/ΔH pairs are internally consistent with each other (ΔG = ΔH − TΔS) but are not the derivative of the stated ΔG(T) data.
+The “exothermic” conclusion is unsupported by these data; the “more spontaneous than CPC alone” conclusion happens to be true only after correcting the ΔG arithmetic.
+
+json
+FINAL_JSON: {"dG_293p15_kJ_mol": -40.9, "dH_303p15_kJ_mol": -19.7, "dH_313p15_kJ_mol": 146.4, "dH_323p15_kJ_mol": 85.1, "more_negative_than_CPC": true, "printed_result_follows": false}

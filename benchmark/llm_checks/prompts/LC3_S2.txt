@@ -1,0 +1,14 @@
+PAPER DATA (Sergeev, Cheremisina, Fedorov, Gorbacheva, Balandinsky, ACS Omega 7 (2022) 3016-3023, doi:10.1021/acsomega.1c06047; text and Table 3, as printed). Sodium oleate + phospholan PE65 in water; mass concentrations.
+CMC(PE65) = 33 mg/L; CMC(sodium oleate) = 330 mg/L; CMC(mixture) = 116 mg/L;
+mixture composition alpha1(PE65) = 0.4.
+The paper evaluates the mixture with the Rubingh framework: ln(X_i c / (x_i c_i)) = beta (1 - x_i)^2
+for each component, with x2 = 1 - x1.
+REPORT: x1 and beta for this mixture from the three printed CMCs and alpha1. If no pair (x1, beta)
+solves these two equations for these numbers, enter "no_solution" for both entries.
+
+PAPER RESULT AND CONCLUSION (as printed): Table 3 prints x1 = 0.84 and beta = 21.33, and the
+abstract states "antagonism in the formation of mixed micelles is observed".
+QUESTION: does the printed result follow from the printed data? Report the two quantities again,
+and answer printed_result_follows.
+
+FINAL_JSON: {"x1": <->, "beta": <->, "printed_result_follows": <->}

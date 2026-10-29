@@ -1,0 +1,9 @@
+{
+ "qid": "GZ12",
+ "provider": "claude",
+ "condition": "unaug",
+ "source": "manual (author, web UI)",
+ "source_file": "SB-012/claude.txt",
+ "author_run_number": 3,
+ "file_mtime": 1792771307.105041
+}

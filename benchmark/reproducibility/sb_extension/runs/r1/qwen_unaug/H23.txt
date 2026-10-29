@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"delta_h_endpoint_kJ_per_mol": 3.09,
+"agrees_with_cited_value": false,
+"reported_value_source": "Computed by my own two-point van't Hoff calculation on the first and last rows of the CMC-vs-T data provided in this question (10 °C / 9.93 mM and 45 °C / 11.47 mM), not taken from the stated metadata value."
+}

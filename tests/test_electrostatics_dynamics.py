@@ -568,22 +568,40 @@ def test_grahame_round_trip_via_forward_sinh_relation():
     assert psi_recovered_mV == pytest.approx(psi_true_V * 1000.0, rel=1e-9)
 
 
-def test_grahame_low_potential_limit_matches_debye_length_capacitance():
+@pytest.mark.parametrize("z", [1, 2, 3])
+def test_grahame_low_potential_limit_matches_debye_length_capacitance(z):
     """Real, derivable cross-check: for small charge density (small
     zePsi/kT), sinh(x)~=x, so the Grahame equation linearizes to
     sigma = eps_r*eps0*psi/lambda_D (the standard linearized Debye-Huckel
     capacitance relation) -- ties this new function back to this
-    project's own already-validated debye_length."""
+    project's own already-validated debye_length. Holds for every z only
+    if ionic strength is converted to salt number density as I/z^2."""
     EPS0 = 8.8541878128e-12
     eps_r, I_M, T = 78.4, 0.01, 298.15
     lambda_D_m = debye_length(I_M, T, eps_r) * 1e-9  # nm -> m
 
     tiny_sigma = 1e-8  # C/m^2, small enough to be deep in the linear regime
-    psi_mV = grahame_equation_surface_potential(tiny_sigma, I_M, 1, T, eps_r)
+    psi_mV = grahame_equation_surface_potential(tiny_sigma, I_M, z, T, eps_r)
     psi_V = psi_mV / 1000.0
 
     expected_sigma = eps_r * EPS0 * psi_V / lambda_D_m
     assert tiny_sigma == pytest.approx(expected_sigma, rel=1e-3)
+
+
+def test_grahame_2_2_salt_from_salt_concentration():
+    """Independent z:z anchor: 0.025 M of a 2:2 salt (I = 0.1 M), sigma =
+    0.01 C/m^2, psi from the Gouy-Chapman relation written in salt
+    concentration, sigma = sqrt(8*eps*kT*c*N_A*1000)*sinh(z*e*psi/2kT)."""
+    import math
+
+    K_B, E_CHARGE, EPS0, N_A = 1.380649e-23, 1.602176634e-19, 8.8541878128e-12, 6.02214076e23
+    eps_r, T, c_salt, z, sigma = 78.4, 298.15, 0.025, 2, 0.01
+    n_salt = c_salt * 1000.0 * N_A
+    psi_V = 2.0 * K_B * T / (z * E_CHARGE) * math.asinh(sigma / math.sqrt(8.0 * eps_r * EPS0 * K_B * T * n_salt))
+    I_M = ionic_strength({2: c_salt, -2: c_salt})
+    assert I_M == pytest.approx(0.1)
+    assert grahame_equation_surface_potential(sigma, I_M, z, T, eps_r) == pytest.approx(psi_V * 1000.0, rel=1e-12)
+    assert psi_V * 1000.0 == pytest.approx(13.2536, abs=1e-3)
 
 
 def test_grahame_rejects_bad_inputs():

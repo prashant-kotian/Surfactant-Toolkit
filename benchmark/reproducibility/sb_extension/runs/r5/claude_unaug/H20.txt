@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“dn_dc_for_this_compound”: null,
+“sls_aggregation_number”: null,
+“what_is_missing”: “The refractive-index increment dn/dc of AOT itself, in the same solvent/wavelength (632.8 nm)/temperature as the scattering. The SDS value (0.110 mL/g) is a different compound’s and cannot be substituted, and dn/dc is not recoverable from the ΔR-vs-c data (it is an independent input inside K, which scales as (dn/dc)^2). Obtain it by differential refractometry: measure Δn vs c for AOT solutions and take the slope. Then K = 4π^2 n^2 (dn/dc)^2/(N_A λ^4), M_w = (ΔR/c)/K = (6.0e-3)/K (data are linear through the origin, so A2 ≈ 0), and Nagg = M_w/332.43.”
+}

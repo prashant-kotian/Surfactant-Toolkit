@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.47,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 52.79,
+"cpp_electrostatic_area": 0.398,
+"morphology_electrostatic_area": "cylindrical/rodlike micelle",
+"comment": "Both headgroup area approaches yield a packing parameter strictly predicting cylindrical/rodlike micelles (P > 1/3). However, SDS famously forms spherical micelles at 8 mM. This highlights a well-known limitation of the rigid Tanford geometric model: assuming the micelle core radius equals the maximum extended chain length overestimates P, failing to account for tail flexibility and real-world disordered core configurations."
+}

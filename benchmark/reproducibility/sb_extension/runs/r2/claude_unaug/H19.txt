@@ -1,0 +1,7 @@
+FINAL_JSON: {
+“gamma_max_mol_per_m2”: 7.42e-6,
+“a_min_nm2”: 0.224,
+“delta_g_mic_kJ_per_mol”: -37.3,
+“delta_s_mic_J_per_mol_K”: null,
+“missing_for_delta_s”: “Temperature dependence of the CMC, d(ln CMC)/dT (or equivalently a calorimetric enthalpy of micellization ΔH_mic, or ΔG_mic at a second temperature); only single-temperature data at 298.15 K were provided.”
+}

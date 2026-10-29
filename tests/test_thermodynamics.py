@@ -107,7 +107,7 @@ def test_gibbs_free_energy_counterion_factor_alpha_beta_identity_physical_limits
 
 def test_gibbs_free_energy_sds_with_bales_2001_counterion_factor():
     """Real worked example for SDS using a properly SOURCED
-    counterion_factor (Bales, Messina, Vidal & Peric, J. Phys. Chem. B
+    counterion_factor (B. L. Bales, J. Phys. Chem. B
     105 (2001) 6798-6804, alpha=0.272+/-0.017, PDF provided by the user
     2026-09-11) instead of an arbitrary illustrative value -- and the
     well-known salt-free SDS cmc0=0.0083 M already cited elsewhere in

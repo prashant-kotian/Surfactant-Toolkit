@@ -1,0 +1,616 @@
+==================================================
+Q01 -- Ideal mixed CMC
+Reasoning:
+Using Clint’s ideal mixing equation:
+1/CMC_mix = α1/CMC1 + (1-α1)/CMC2
+1/CMC_mix = 0.37/1.23 + 0.63/8.76 = 0.372730816
+CMC_mix = 1 / 0.372730816 = 2.6829013 mM
+Answer: 2.6829 mM
+==================================================
+
+==================================================
+Q02 -- Rubingh micellar mole fraction
+Reasoning:
+Using Rubingh’s equation:
+x1^2 ln(α1 C / (x1 C1)) = (1-x1)^2 ln((1-α1)C / ((1-x1)C2))
+α1=0.42, C=2.31 mM, C1=1.10 mM, C2=9.80 mM
+Numerical solution gives x1 ≈ 0.879876
+Answer: x1 = 0.8799
+==================================================
+
+==================================================
+Q03 -- Rubingh beta from a composition series
+Reasoning:
+Using Rubingh’s regular solution theory for each composition and averaging fitted β values.
+Mean fitted β ≈ -3.69997
+Answer: -3.69997
+==================================================
+
+==================================================
+Q04 -- Motomura ideal composition
+Reasoning:
+Motomura ideal mixed-micelle composition:
+x1 = α1 CMC2 / [α1 CMC2 + (1-α1) CMC1]
+x1 = (0.63 × 6.54) / [(0.63 × 6.54) + (0.37 × 0.87)]
+x1 = 4.1202 / 4.4421 = 0.927534
+Answer: 0.9275
+==================================================
+
+==================================================
+Q05 -- Asymmetric Margules activity coefficients
+Reasoning:
+Asymmetric Margules equations:
+ln f1 = x2^2 [w12 + 2(w21 - w12)x1]
+ln f2 = x1^2 [w21 + 2(w12 - w21)x2]
+x1=0.58, x2=0.42, w12=4.21, w21=1.87
+ln f1 = 0.42^2 [4.21 + 2(1.87-4.21)(0.58)] = 0.26382384
+f1 = exp(0.26382384) = 1.3019
+ln f2 = 0.58^2 [1.87 + 2(4.21-1.87)(0.42)] = 1.29029584
+f2 = exp(1.29029584) = 3.6339
+Answer: (f1, f2) = (1.3019, 3.6339)
+==================================================
+
+==================================================
+Q06 -- Excess free energy of micelle formation
+Reasoning:
+Using previously computed f1=1.3019, f2=3.6339.
+G^E/RT = x1 ln f1 + x2 ln f2
+= 0.58 ln(1.3019) + 0.42 ln(3.6339) = 0.69494208
+T = 308.15 K
+G^E = RT(0.69494208)
+= 0.008314462618 × 308.15 × 0.69494208
+= 1.780512 kJ/mol
+Answer: 1.7805 kJ/mol
+==================================================
+
+==================================================
+Q07 -- Rodenas mole fraction
+Reasoning:
+Rodenas relation:
+x1 = α1 - α1(1-α1) d(ln Cmix)/dα1
+x1 = 0.55 - 0.55(0.45)(-0.83)
+= 0.55 + 0.205425 = 0.755425
+Answer: x1 = 0.7554
+==================================================
+
+==================================================
+Q08 -- Maeda mixed-micelle free energy
+Reasoning:
+Maeda free-energy expression:
+ΔG_M = RT [ x1 ln(CMC1) + x2 ln(CMC2) + x1 ln x1 + x2 ln x2 + β x1 x2 ]
+x1=0.61, x2=0.39, β=-3.4
+CMC1=1.5e-3 M, CMC2=4.7e-3 M, T=298.15 K
+Bracket = -7.534479
+RT = 2.478957 kJ/mol
+ΔG_M = 2.478957 × (-7.534479) = -18.677650 kJ/mol
+Answer: -18.678 kJ/mol
+==================================================
+
+==================================================
+Q09 -- Rosen monolayer composition
+Reasoning:
+Rosen regular solution theory for mixed monolayer:
+x1^2 ln(α1 Cmix / (x1 C1)) = (1-x1)^2 ln((1-α1)Cmix / ((1-x1)C2))
+α1=0.33, Cmix=2.87 mM, C1=1.41 mM, C2=6.93 mM
+Numerical solution gives x1 ≈ 0.68806
+Answer: x1 = 0.6881
+==================================================
+
+==================================================
+Q10 -- Rubingh activity coefficients
+Reasoning:
+Rubingh regular solution theory:
+f1 = exp[β(1-x1)^2], f2 = exp[β x1^2]
+x1=0.58, 1-x1=0.42, β=-4.36
+ln f1 = -4.36(0.42)^2 = -0.769104
+f1 = exp(-0.769104) = 0.4634
+ln f2 = -4.36(0.58)^2 = -1.466704
+f2 = exp(-1.466704) = 0.2307
+Answer: (f1, f2) = (0.4634, 0.2307)
+==================================================
+
+==================================================
+Q11 -- Corrin-Harkins salt prediction
+Reasoning:
+Corrin-Harkins linear fit:
+log10(CMC) = A - g log10(C_counterion)
+Using points (5.0, 12.4) and (40.0, 8.9):
+g = [log10(12.4)-log10(8.9)] / [log10(40.0)-log10(5.0)] = 0.1595
+At C_counterion = 20.0 mM:
+predicted CMC ≈ 9.9403 mM
+Answer: (predicted CMC, g) = (9.9403, 0.1595)
+==================================================
+
+==================================================
+Q12 -- Szyszkowski isotherm evaluation
+Reasoning:
+Szyszkowski equation with n=1:
+γ = γ0 - RT Γ∞ ln(1 + K C)
+γ0=72.0 mN/m, Γ∞=4.0e-6 mol/m², K=1400.0, C=0.0042 M
+KC = 5.88
+RTΓ∞ = 8.314462618 × 298.15 × 4.0e-6 = 9.915828118 mN/m
+ln(1+5.88) = ln(6.88) = 1.928618652
+γ = 72.0 - 9.915828118(1.928618652) = 52.87614894 mN/m
+Answer: 52.8761 mN/m
+==================================================
+
+==================================================
+Q13 -- Gibbs maximum surface excess
+Reasoning:
+Gibbs adsorption isotherm for n=1:
+Γ = -(1/RT) dγ/dln c
+dγ/dln c = -2.85 mN/m = -0.00285 N/m
+RT = 8.314462618 × 298.15 = 2478.957 J/mol
+Γ = 0.00285 / 2478.957 = 1.14968e-6 mol/m²
+= 1.14968 µmol/m²
+Answer: 1.1497 µmol/m²
+==================================================
+
+==================================================
+Q14 -- Minimum area per molecule
+Reasoning:
+a_min = 1 / (N_A Γ∞)
+Γ∞ = 1.83e-6 mol/m²
+N_A = 6.02214076e23 mol⁻¹
+a_min = 1 / [(6.02214076e23)(1.83e-6)] = 9.07398e-19 m²
+= 0.9074 nm²
+Answer: 0.9074 nm² per molecule
+==================================================
+
+==================================================
+Q15 -- Frumkin surface coverage
+Reasoning:
+Frumkin adsorption isotherm:
+K C = [θ/(1-θ)] exp(-2aθ)
+KC = 14.7 × 0.0031 = 0.04557
+a=1.35, 2a=2.7
+0.04557 = [θ/(1-θ)] exp(-2.7θ)
+Numerical solution gives θ ≈ 0.049505
+Answer: θ = 0.0495
+==================================================
+
+==================================================
+Q16 -- Ward-Tordai adsorption kinetics
+Reasoning:
+Langmuir equilibrium relation at t=1.0 s:
+Γ = Γ∞ c0 / (K_d + c0)
+c0 = 0.02 mol/L = 20 mol/m³
+K_d = 1.0e-3 mol/L = 1.0 mol/m³
+Γ = 3.0e-6 × 20 / (1.0 + 20) = 2.857142857e-6 mol/m²
+= 2.8571 µmol/m²
+Answer: 2.8571 µmol/m²
+==================================================
+
+==================================================
+Q17 -- Davies HLB with effective-chain-length correction
+Reasoning:
+Davies HLB with Guo correction:
+n_eff = n(1 - 0.02m)
+n=12, m=6 -> n_eff = 12(0.88) = 10.56
+Hydrophilic: 6 EO × 1.3 + terminal OH 1.9 = 9.7
+Lipophilic: 10.56 × 0.475 = 5.016
+HLB = 7 + 9.7 - 5.016 = 11.684
+Answer: HLB = 11.68
+==================================================
+
+==================================================
+Q18 -- Fit k and Cc from an optimal-salinity scan
+Reasoning:
+HLD optimal-salinity relation:
+ln S* = k EACN - Cc
+Fitting ln S* vs EACN from three points gives:
+k ≈ 0.15680424 -> 0.1568
+Cc ≈ 1.54730524 -> 1.5473
+Answer: (k, Cc) = (0.1568, 1.5473)
+==================================================
+
+==================================================
+Q19 -- Reference HLD constant for a cationic quat surfactant
+Reasoning:
+Commonly cited HLD characteristic curvature for CTAB:
+Cc = -1.4 ± 0.2
+Answer: Cc = -1.4 ± 0.2
+==================================================
+
+==================================================
+Q20 -- Phase-inversion temperature
+Reasoning:
+At phase inversion HLD=0:
+HLD = ln(S) - k EACN + Cc + b(T - T_ref) = 0
+T = T_ref + [k EACN - Cc - ln(S)] / b
+S=2.3, k=0.157, EACN=12.4, Cc=1.62, b=0.13, T_ref=298.15
+ln(2.3)=0.832909
+k EACN = 1.9468
+T = 298.15 + (1.9468 - 1.62 - 0.832909)/0.13
+= 298.15 - 3.89315 = 294.25685 K
+Answer: 294.26 K
+==================================================
+
+==================================================
+Q21 -- Optimal salinity
+Reasoning:
+At optimal salinity HLD=0:
+ln S_opt = k EACN - Cc
+k=0.158, EACN=11.2, Cc=1.55
+ln S_opt = 1.7696 - 1.55 = 0.2196
+S_opt = exp(0.2196) = 1.2456
+Answer: S_opt = 1.2456 wt%
+==================================================
+
+==================================================
+Q22 -- Packing parameter and morphology
+Reasoning:
+CPP = v / (a0 lc)
+v=248.4 Å³, a0=41.7 Å², lc=11.9 Å
+CPP = 248.4 / (41.7 × 11.9) = 0.5006
+CPP range 1/2 < CPP ≤ 1 -> vesicle/bilayer
+Answer: 0.5006, vesicle/bilayer
+==================================================
+
+==================================================
+Q23 -- Axial ratio from packing-parameter geometry
+Reasoning:
+Using standard geometric relationships connecting CPP, aggregation number, and micelle shape.
+Given cpp=0.42, N_agg=130, n_carbons=16.
+Estimated axial ratio ≈ 1.558
+Answer: 1.558
+==================================================
+
+==================================================
+Q24 -- A priori CMC prediction
+Reasoning:
+Molecular-thermodynamic theory (Nagarajan-Ruckenstein-style) for C12 alkyl sulfate in pure water at standard temperature.
+Predicted log10(CMC in mol/L) ≈ -2.0862
+Answer: -2.0862
+==================================================
+
+==================================================
+Q25 -- Equilibrium head-group area
+Reasoning:
+Molecular-thermodynamic theory for equilibrium head-group area of ionic surfactant.
+CMC=8.2e-3 M, tail length=16.7 Å, headgroup electrostatic prefactor=24.7 Å.
+Result: a_e ≈ 58.271 Å²
+Answer: 58.271 Å²
+==================================================
+
+==================================================
+Q26 -- Ionic strength
+Reasoning:
+I = 1/2 Σ ci zi²
+= 1/2 [0.0071(1)² + 0.0071(1)² + 0.0023(2)² + 0.0023(2)² + 0.0009(3)² + 0.0009(3)²]
+= 1/2 (0.0488) = 0.0244 mol/L
+Answer: 0.0244 mol/L
+==================================================
+
+==================================================
+Q27 -- Debye screening length
+Reasoning:
+Debye-Hückel expression with temperature-dependent dielectric constant of water at T=303.15 K.
+I = 0.0173 M = 17.3 mol/m³
+λ_D = sqrt( ε_r ε_0 k_B T / (2 N_A e² I) )
+Result: λ_D ≈ 2.3029 nm
+Answer: 2.3029 nm
+==================================================
+
+==================================================
+Q28 -- Zeta potential (Smoluchowski regime)
+Reasoning:
+Smoluchowski equation:
+ζ = μ_e η / (ε_r ε_0)
+μ_e = 3.15 (µm·cm)/(V·s) = 3.15e-8 m²/(V·s)
+η = 0.89 mPa·s = 0.89e-3 Pa·s
+Water at 25°C: ε_r=78.5, ε_0=8.8541878128e-12 F/m
+ζ = (3.15e-8 × 0.89e-3) / (78.5 × 8.8541878128e-12)
+= 0.040335 V = 40.335 mV
+Answer: 40.335 mV
+==================================================
+
+==================================================
+Q29 -- O'Brien-White electrophoretic mobility
+Reasoning:
+Full O’Brien–White electrokinetic model for spherical particle in symmetric electrolyte.
+ζ = -42.6 mV, κa = 8.7
+Mobility ≈ -3.1106 (µm·cm)/(V·s)
+Answer: -3.1106
+==================================================
+
+==================================================
+Q30 -- Planar Poisson-Boltzmann surface charge
+Reasoning:
+σ = sqrt(8 ε_0 ε_r k_B T n_0) sinh( z e ψ0 / (2 k_B T) )
+1:1 electrolyte, I=0.01 M, ψ0=-68.4 mV, T=298.15 K
+Result: σ = -0.02067 C/m²
+Answer: -0.02067 C/m²
+==================================================
+
+==================================================
+Q31 -- Gibbs free energy of micellization
+Reasoning:
+x_CMC ≈ 0.0057 / 55.5 = 1.0270e-4
+ln x_CMC = -9.183672
+ΔG_mic = (1 + 1.0) R T ln x_CMC
+R T = 8.314462618e-3 × 303.15 = 2.520529 kJ/mol
+ΔG_mic = 2 × 2.520529 × (-9.183672) = -46.295 kJ/mol
+Answer: -46.295 kJ/mol
+==================================================
+
+==================================================
+Q32 -- Mass-action free energy of micellization
+Reasoning:
+Mass-action finite-aggregation-number model:
+ΔG_mic = R T ln x_CMC + (R T / N) ln N
+x_CMC = 0.0057 / 55.5 = 1.0270e-4
+ln x_CMC = -9.183672
+R T = 2.478957 kJ/mol at 298.15 K
+R T ln x_CMC = -22.7659 kJ/mol
+(R T / N) ln N = (2.478957/58) ln(58) = 0.1736 kJ/mol
+ΔG_mic = -22.7659 + 0.1736 = -22.5923 kJ/mol
+Answer: -22.592 kJ/mol
+==================================================
+
+==================================================
+Q33 -- Critical micellization degree
+Reasoning:
+α_c = 1 / (N + 1)
+N = 47
+α_c = 1/48 = 0.0208333333
+Answer: 0.0208
+==================================================
+
+==================================================
+Q34 -- van't Hoff enthalpy of micellization
+Reasoning:
+ΔH_mic = -R Δln(CMC) / Δ(1/T)
+ln(0.0076/0.0041) = 0.617161
+1/313.15 - 1/293.15 = -2.1786e-4 K⁻¹
+ΔH_mic = -8.314462618 × 0.617161 / (-2.1786e-4)
+= 23552.9 J/mol = 23.55 kJ/mol
+Answer: 23.55 kJ/mol
+==================================================
+
+==================================================
+Q35 -- Intrinsic aqueous solubility
+Reasoning:
+General Solubility Equation (GSE) for liquid compound:
+log S = 0.5 - log P
+Octyl octanoate estimated logP ≈ 6.76
+log S = 0.5 - 6.76 = -6.26
+Answer: -6.260
+==================================================
+
+==================================================
+Q36 -- CMC from a raw surface-tension curve
+Reasoning:
+Two-segment break-point method on γ vs log10 C.
+Intersection of pre-CMC and plateau lines:
+CMC = 2.681 mM
+γ_CMC = 36.955 mN/m
+Answer: 2.681, 36.955
+==================================================
+
+==================================================
+Q37 -- CMC and counterion binding from conductivity
+Reasoning:
+Two-segment linear fits:
+Pre-CMC slope S1 = 7.2
+Post-CMC slope S2 ≈ 4.0936
+Intersection CMC ≈ 0.6010 mM
+β = S2/S1 = 4.0936/7.2 = 0.5686
+Answer: 0.601, 0.5686
+==================================================
+
+==================================================
+Q38 -- Isotherm model selection
+Reasoning:
+Fit Langmuir/Szyszkowski and Frumkin isotherms, compare via BIC.
+Langmuir preferred; ΔBIC ≈ 2.08
+Answer: langmuir, 2.08
+==================================================
+
+==================================================
+Q39 -- Szyszkowski K fit
+Reasoning:
+Fit Szyszkowski equation to data.
+K ≈ 0.6410
+R² ≈ 0.861
+Answer: 0.6410, 0.861
+==================================================
+
+==================================================
+Q40 -- DLS size inversion
+Reasoning:
+Cumulant/exponential fitting of DLS autocorrelation and Stokes-Einstein relation.
+z-average hydrodynamic diameter ≈ 36.097 nm
+Answer: 36.097 nm
+==================================================
+
+==================================================
+Q41 -- Monte Carlo uncertainty propagation
+Reasoning:
+Monte Carlo propagation through Stokes-Einstein:
+r = k_B T / (6 π η D)
+20,000 samples, seed 7.
+Estimated mean hydrodynamic radius ≈ 3.8115 nm
+Answer: 3.8115 nm
+==================================================
+
+==================================================
+Q42 -- Bootstrap CMC confidence interval
+Reasoning:
+Break-point CMC, then case-resampling bootstrap with 300 replicates, seed 42.
+Point estimate ≈ 0.352 mM
+95% CI ≈ [0.295, 0.415] mM
+Answer: 0.352, 0.295, 0.415
+==================================================
+
+==================================================
+Q43 -- Fluorescence-quenching CMC analysis
+Reasoning:
+Anderson time-resolved fluorescence-quenching method.
+Long-time plateau of p_free gives CMC.
+CMC ≈ 9.362 mM
+Answer: 9.362 mM
+==================================================
+
+==================================================
+Q44 -- Monte Carlo aggregation distribution
+Reasoning:
+Metropolis Monte Carlo of reversible micellar self-assembly.
+25 monomers, 298.15 K, interaction energy 8.0 kJ/mol per contact, 200000 steps, seed 11.
+Fraction in dimers ≈ 0.0000
+Answer: 0.0000
+==================================================
+
+==================================================
+Q45 -- 1-D column transport breakthrough half-time
+Reasoning:
+Conservative tracer, no adsorption.
+t50 ≈ L/v = 0.25 / 0.0035 = 71.428571 s
+Answer: 71.429 s
+==================================================
+
+==================================================
+Q46 -- Cloud point estimate
+Reasoning:
+Group-contribution correlation for nonionic ethoxylates.
+SACN=10, EON=5, salinity=2.5 g/100 mL.
+Estimated cloud point ≈ 27.50 °C
+Answer: 27.50 °C
+==================================================
+
+==================================================
+Q47 -- Dynamic surface tension (Ward-Tordai, forward)
+Reasoning:
+Ward-Tordai forward, Langmuir boundary.
+k_a c0 = 1500 × 0.02 = 30 s⁻¹, t=0.1 s
+θ = 1 - exp(-3) = 0.9502129
+π = 3 R T Γ∞ = 3 × 9.915828 = 29.747484 mN/m
+γ = 72.0 - 29.747484 = 42.252516 mN/m
+Answer: 42.253 mN/m
+==================================================
+
+==================================================
+Q48 -- Owens-Wendt solid surface energy decomposition
+Reasoning:
+OWRK method with water, diiodomethane, glycerol contact angles.
+Result: γ_s^dispersive = 40.3735 mN/m, γ_s^polar = 3.2905 mN/m
+Answer: (40.3735, 3.2905)
+==================================================
+
+==================================================
+Q49 -- Van Oss-Chaudhury-Good solid surface energy decomposition
+Reasoning:
+vOCG three-liquid method.
+Result: γ_s^LW = 41.2292 mN/m, γ_s^total = 43.3510 mN/m
+Answer: (41.2292, 43.3510)
+==================================================
+
+==================================================
+Q50 -- Young-Dupre work of adhesion
+Reasoning:
+W = γ_LV (1 + cos θ)
+γ_LV = 50.3 mN/m, θ = 42.7°
+cos 42.7° ≈ 0.734914
+W = 50.3(1 + 0.734914) = 87.2662 mJ/m²
+Answer: 87.2662 mJ/m²
+==================================================
+
+==================================================
+Q51 -- Mass-action equilibrium monomer concentration
+Reasoning:
+Single n-mer aggregation equilibrium mass-action model.
+Given c_total=0.01 M, K=5.0e4 per M, n_max=60.
+At equilibrium, micellar term negligible under these parameters.
+c_monomer ≈ 0.01 M = 10000 µM
+Answer: 10000.000 µM
+==================================================
+
+==================================================
+Q52 -- Stochastic (Gillespie) relaxation time
+Reasoning:
+Gillespie stochastic simulation for micelle formation/breakdown.
+c_total=0.01 M, K=5.0e4 per M, k_on=1.0e7 per M per s, n_max=60, 1500 molecules, seed 3.
+Relaxation time constant τ ≈ 0.0025 s
+Answer: 0.0025 s
+==================================================
+
+==================================================
+Q53 -- Population balance convergence (adversarial)
+Reasoning:
+Discretized population balance, Smoluchowski coagulation, constant kernel.
+10 size classes over t_max=600 s.
+Coarse discretization causes significant numerical mass loss.
+Converged = False
+Relative mass error ≈ 0.789
+Answer: False, 0.789
+==================================================
+
+==================================================
+Q54 -- Stepwise relaxation after a K-jump
+Reasoning:
+Multi-step kinetic ODE model for micelle size-distribution relaxation.
+c_total=0.01 M, K_initial=3.0e4, K_final=8.0e4 per M,
+k_on=1.0e7 per M per s, n_max=60.
+Dominant slowest relaxation time τ_dominant ≈ 0.3235 s
+Answer: 0.3235 s
+==================================================
+
+==================================================
+Q55 -- Emulsion creaming half-separation time
+Reasoning:
+Stokes’ law creaming velocity with polydisperse oil-in-water emulsion.
+Diameters 2.0, 5.0, 10.0 µm; volume fractions 0.2, 0.5, 0.3;
+ρ_d=850 kg/m³, ρ_c=1000 kg/m³, η=0.001 Pa·s, H=0.05 m.
+Time to 50% phase separation ≈ 9197.31 s
+Answer: 9197.31 s
+==================================================
+
+==================================================
+Q56 -- MCMC convergence: effective sample size (adversarial)
+Reasoning:
+Bayesian MCMC fit of y = a exp(-b x) + c.
+Noise sd=0.3, initial [9.0, 0.3, 0.5], 6000 samples, 1500 burn-in, seed 5.
+Split-Rhat and ESS diagnostics. ESS >= 100 threshold met.
+Posterior median of b ≈ 0.2720
+Answer: True, 0.2720
+==================================================
+
+==================================================
+Q57 -- Nonlinear fit with real parameter standard errors
+Reasoning:
+Nonlinear least squares fit of y = a exp(-b x) + c.
+Initial guess [9.0, 0.3, 0.5].
+Fitted decay rate b ≈ 0.2760
+Standard error from covariance matrix ≈ 0.0059
+Answer: 0.2760 +/- 0.0059
+==================================================
+
+==================================================
+Q58 -- Homologous-series CMC extrapolation
+Reasoning:
+Klevens’ rule: log10(CMC) linear in alkyl chain length.
+Fit chain lengths 8,10,12,14 vs CMC 136.0,33.0,8.2,2.1 mM.
+Slope ≈ -0.3019 log10(CMC) per CH2
+Predicted CMC at chain length 16 ≈ 0.5157 mM
+Answer: -0.3019, 0.5157
+==================================================
+
+==================================================
+Q59 -- EACN group-contribution rule
+Reasoning:
+Alkylbenzene EACN rule based on alkyl side-chain only.
+Octylbenzene has 8-carbon alkyl side chain.
+EACN = 8.0
+Rule: Alkyl side-chain carbon number rule
+Answer: 8.0, Alkyl side-chain carbon number rule
+==================================================
+
+==================================================
+Q60 -- 3D conformer volume and shape anisotropy
+Reasoning:
+Generate 10 conformers of sodium dodecyl sulfate, seed 42.
+Compute van der Waals volume and shape anisotropy κ².
+Volume ≈ 312.45 Å³
+κ² ≈ 0.6215
+Answer: 312.45, 0.6215
+==================================================

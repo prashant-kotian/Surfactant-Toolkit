@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“micelle_mw”: 400.0,
+“aggregation_number”: 0.64,
+“physically_valid”: false,
+“why”: “Aggregation number is less than 1 (0.64), which is physically impossible because the apparent micelle molar mass (400 g/mol) is smaller than the monomer molar mass (625 g/mol); a micelle cannot contain fewer than one monomer.”
+}

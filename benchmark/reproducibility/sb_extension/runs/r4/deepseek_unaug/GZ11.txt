@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2787,
+"cpp_electrostatic_area": 0.00753,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "Measured area gives P~0.47 and rodlike micelles; the CMC-only Debye-Huckel prefactor estimate gives an unphysically large area (~2.8e3 A^2), P~0.0075, and spherical micelles. The electrostatic estimate is inconsistent with the measured area and is not reliable for morphology here."
+}

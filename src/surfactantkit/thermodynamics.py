@@ -25,6 +25,8 @@ def cmc_to_mole_fraction(cmc_M: float, water_molarity_M: float = WATER_MOLARITY_
     mol/L for water at room temperature)."""
     if cmc_M <= 0:
         raise ValueError("cmc_M must be positive")
+    if water_molarity_M <= 0:
+        raise ValueError("water_molarity_M must be positive")
     return cmc_M / (cmc_M + water_molarity_M)
 
 
@@ -61,7 +63,7 @@ def counterion_binding_degree(slope_below_cmc: float, slope_above_cmc: float) ->
 # different confidence levels, disclosed per entry rather than presented
 # as uniformly precise:
 #
-# SDS: alpha=0.272 +/- 0.017 (beta=0.728), Bales, Messina, Vidal & Peric,
+# SDS: alpha=0.272 +/- 0.017 (beta=0.728), B. L. Bales,
 # J. Phys. Chem. B 105 (2001) 6798-6804 -- the HIGHEST-confidence entry
 # here: a real, novel EPR method, independently cross-validated in the
 # paper itself against multiple other literature techniques, and the
@@ -82,7 +84,7 @@ def counterion_binding_degree(slope_below_cmc: float, slope_above_cmc: float) ->
 # presented as equally certain.
 COUNTERION_BINDING_DEGREE_REFERENCE = {
     "SDS": {"alpha": 0.272, "alpha_uncertainty": 0.017, "beta": 0.728,
-            "source": "Bales, Messina, Vidal & Peric, J. Phys. Chem. B 105 (2001) 6798-6804 (EPR method, primary PDF read in full)",
+            "source": "B. L. Bales, J. Phys. Chem. B 105 (2001) 6798-6804 (EPR method, primary PDF read in full)",
             "alpha_confidence": "high"},
     "DTAB": {"alpha": 0.28, "alpha_uncertainty": None, "beta": 0.72,
              "source": "web search 2026-09-15, cross-corroborated against a second cited literature value (0.29); primary paper not independently fetched",
@@ -119,8 +121,8 @@ def gibbs_free_energy_micellization(cmc_mole_fraction: float, temperature_K: flo
     monomer and the factor is 2; fully dissociated counterions (beta = 0)
     stay in solution and the factor is 1, the nonionic value.
 
-    Worked example: SDS, alpha = 0.272 +/- 0.017 (Bales, Messina, Vidal &
-    Peric, J. Phys. Chem. B 105 (2001) 6798-6804, EPR) gives
+    Worked example: SDS, alpha = 0.272 +/- 0.017 (B. L. Bales,
+    J. Phys. Chem. B 105 (2001) 6798-6804, EPR) gives
     counterion_factor = 2 - 0.272 = 1.728 and, at CMC 8.3 mM and 298.15 K,
     deltaG_mic = -37.7 kJ/mol, in line with literature values for SDS.
 

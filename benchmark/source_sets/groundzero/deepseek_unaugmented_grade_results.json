@@ -118,7 +118,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "moderate (carboxylate is pH-sensitive near its own pKa ~4-5, not permanently charged)",
-    "model": "high (~95%) \u2014 single unambiguous COOH, no basic/quaternary/zwitterionic groups present"
+    "model": "high (~95%) — single unambiguous COOH, no basic/quaternary/zwitterionic groups present"
    },
    "charge_type": {
     "ok": true,
@@ -446,29 +446,17 @@
  "GZ-17": {
   "verdict": "FAIL",
   "fields": {
-   "gamma_max_mol_per_m2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 2.3656e-06,
-    "model": 2.38e-06
-   },
-   "a_min_nm2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.702,
-    "model": 0.7
-   },
    "charge_type": {
     "ok": true,
     "kind": "string",
     "gold": "cationic",
     "model": "cationic"
    },
-   "delta_g_mic_kJ_per_mol": {
-    "ok": false,
-    "kind": "null-check",
-    "gold": null,
-    "model": -20.0
+   "cmc_mM": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 16.37,
+    "model": 16.37
    },
    "delta_s_mic_J_per_mol_K": {
     "ok": true,
@@ -476,11 +464,23 @@
     "gold": null,
     "model": null
    },
-   "cmc_mM": {
-    "ok": false,
+   "gamma_max_mol_per_m2": {
+    "ok": true,
     "kind": "numeric",
-    "gold": 8.185,
-    "model": 16.37
+    "gold": 2.3656e-06,
+    "model": 2.38e-06
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": false,
+    "kind": "null-check",
+    "gold": null,
+    "model": -20.0
+   },
+   "a_min_nm2": {
+    "ok": true,
+    "kind": "numeric",
+    "gold": 0.702,
+    "model": 0.7
    }
   }
  },
@@ -759,7 +759,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "the shape-corrected radius is SMALLER than the naive spherical estimate (Perrin friction factor F_P=1.0014 at this mild elongation, R_eff=R_h,apparent/F_P) -- a real, somewhat counter-intuitive direction: an elongated particle experiences MORE drag than a sphere of the same volume, so a naive Stokes-Einstein calculation (which assumes sphericity) OVERSTATES the true equivalent-sphere size once shape is accounted for.",
-    "model": "smaller \u2014 prolate friction factor exceeds 1, so the naive spherical radius overestimates the volume-equivalent hydrodynamic size"
+    "model": "smaller — prolate friction factor exceeds 1, so the naive spherical radius overestimates the volume-equivalent hydrodynamic size"
    },
    "rh_naive_stokes_einstein_nm": {
     "ok": true,
@@ -950,7 +950,7 @@
     "ok": true,
     "kind": "string",
     "gold": "cationic",
-    "model": "cationic/dicationic quaternary ammonium; net-neutral salt with two Br\u2212 counterions"
+    "model": "cationic/dicationic quaternary ammonium; net-neutral salt with two Br− counterions"
    }
   }
  },
@@ -1194,7 +1194,7 @@
     "ok": null,
     "kind": "needs-judgment",
     "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
-    "model": "\u0394G_mic becomes monotonically more negative from -35.18 to -38.87 kJ/mol across 283.15-318.15 K; it does not mirror the U-shaped CMC trend."
+    "model": "ΔG_mic becomes monotonically more negative from -35.18 to -38.87 kJ/mol across 283.15-318.15 K; it does not mirror the U-shaped CMC trend."
    },
    "delta_g_mic_at_318.15K": {
     "ok": true,

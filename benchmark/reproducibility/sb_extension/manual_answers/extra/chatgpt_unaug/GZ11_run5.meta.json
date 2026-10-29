@@ -1,0 +1,9 @@
+{
+ "qid": "GZ11",
+ "provider": "chatgpt",
+ "condition": "unaug",
+ "source": "manual (author, web UI)",
+ "source_file": "sb-011/chatgpt.txt",
+ "author_run_number": 5,
+ "file_mtime": 1792763440.3676112
+}

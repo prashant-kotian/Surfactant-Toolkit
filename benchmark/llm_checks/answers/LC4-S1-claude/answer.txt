@@ -1,0 +1,34 @@
+Method
+Re-verifying the finite-difference enthalpy values
+
+Re-verifying the finite-difference enthalpy values
+Method
+
+eq (5): ΔG = (2 − α)·R·T·ln(X_cmc), with X_cmc = (CMC in mol/L)/55.5.
+
+Enthalpy from the ΔG(T) series via ΔS = −d(ΔG)/dT (finite differences) and ΔH = ΔG + T·ΔS. Interior temperatures use a central difference; the endpoint (323.15 K) uses a backward difference.
+
+(a) ΔG at 293.15 K
+
+CMC = 0.87 mM → X_cmc = 8.70×10⁻⁴/55.5 = 1.5676×10⁻⁵, ln X_cmc = −11.0634
+RT = 8.314462618×10⁻³ × 293.15 = 2.43738 kJ/mol; (2 − α) = 1.516
+
+ΔG = 1.516 × 2.43738 × (−11.0634) = −40.88 kJ/mol
+
+(For reference, the full series: −40.880, −41.603, −47.805, −52.048 kJ/mol at 293.15/303.15/313.15/323.15 K.)
+
+(b) Enthalpy from the ΔG(T) series
+T (K)	scheme	ΔS = −dΔG/dT (kJ·mol⁻¹·K⁻¹)	ΔH = ΔG + TΔS (kJ/mol)
+303.15	central (293.15↔313.15)	+0.34624	+63.36
+313.15	central (303.15↔323.15)	+0.52222	+115.73
+323.15	backward (313.15→323.15)	+0.42428	+85.06
+
+Worked values:
+
+303.15 K: ΔS = −(−47.805 + 40.880)/20 = 0.34624; ΔH = −41.603 + 303.15·0.34624 = +63.36
+313.15 K: ΔS = −(−52.048 + 41.603)/20 = 0.52222; ΔH = −47.805 + 313.15·0.52222 = +115.73
+323.15 K: ΔS = −(−52.048 + 47.805)/10 = 0.42428; ΔH = −52.048 + 323.15·0.42428 = +85.06
+
+The large, scattered ΔH values are a direct consequence of the non-monotonic printed α values (0.484 → 0.505 → 0.332 → 0.230), which make ΔG(T) step unevenly.
+
+FINAL_JSON: {“dG_293p15_kJ_mol”: -40.88, “dH_303p15_kJ_mol”: 63.36, “dH_313p15_kJ_mol”: 115.73, “dH_323p15_kJ_mol”: 85.06}

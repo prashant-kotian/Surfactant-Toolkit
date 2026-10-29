@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc of AOT in the measurement solvent at 632.8 nm and the experimental temperature is not provided and cannot be derived from the scattering data alone (one equation, two unknowns: Mw and dn/dc). The supplied SDS value (0.110 mL/g) belongs to a different compound and must not be substituted. Obtain dn/dc by measuring the refractive index of several AOT solutions with a differential refractometer and taking the slope dn/dc, or by consulting a literature source for AOT in the same solvent, wavelength, and temperature."
+}

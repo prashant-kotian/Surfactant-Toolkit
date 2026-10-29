@@ -1,0 +1,215 @@
+Using the relations exactly as printed:
+
+Γ
+max
+⁡
+=
+22.96
+
+𝜇
+m
+o
+l
+
+m
+−
+2
+=
+22.96
+×
+10
+−
+6
+
+m
+o
+l
+
+m
+−
+2
+Γ
+max
+	​
+
+=22.96 μmolm
+−2
+=22.96×10
+−6
+ molm
+−2
+𝐴
+min
+⁡
+=
+1
+𝑁
+𝐴
+Γ
+max
+⁡
+=
+7.23231
+×
+10
+−
+20
+
+m
+2
+=
+0.0723231
+
+n
+m
+2
+.
+A
+min
+	​
+
+=
+N
+A
+	​
+
+Γ
+max
+	​
+
+1
+	​
+
+=7.23231×10
+−20
+ m
+2
+=0.0723231 nm
+2
+.
+
+For
+𝑛
+𝐶
+=
+10
+n
+C
+	​
+
+=10:
+
+𝑉
+=
+27.4
++
+26.9
+(
+10
+)
+=
+296.4
+
+A
+˚
+3
+,
+𝑙
+=
+1.5
++
+1.265
+(
+10
+)
+=
+14.15
+
+A
+˚
+.
+V=27.4+26.9(10)=296.4
+A
+˚
+3
+,l=1.5+1.265(10)=14.15
+A
+˚
+.
+
+Since
+0.0723231
+
+n
+m
+2
+=
+7.23231
+
+A
+˚
+2
+0.0723231 nm
+2
+=7.23231
+A
+˚
+2
+,
+
+𝐶
+𝑃
+𝑃
+=
+296.4
+(
+7.23231
+)
+(
+14.15
+)
+=
+2.89631.
+CPP=
+(7.23231)(14.15)
+296.4
+	​
+
+=2.89631.
+
+Thus the printed
+𝐴
+min
+⁡
+=
+0.0723
+
+n
+m
+2
+A
+min
+	​
+
+=0.0723 nm
+2
+ is consistent with the printed
+Γ
+max
+⁡
+Γ
+max
+	​
+
+, but the printed
+𝐶
+𝑃
+𝑃
+=
+269.809
+CPP=269.809 does not follow from equations (6)–(8) with consistent units. Consequently, the aggregate-shape conclusion based on those printed CPP values is not supported by the printed calculation.
+
+JSON
+{"A_min_nm2": 0.0723231, "CPP": 2.89631, "printed_result_follows": false}
+
+FINAL_JSON: {"A_min_nm2": 0.0723231, "CPP": 2.89631, "printed_result_follows": false}

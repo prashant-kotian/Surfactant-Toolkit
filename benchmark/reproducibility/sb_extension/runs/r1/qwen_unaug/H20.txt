@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc of AOT in the measurement solvent at 632.8 nm. The supplied 0.110 mL/g value is for SDS (a different compound) and cannot be used. dn/dc must be measured experimentally with a differential refractometer (e.g., Wyatt Optilab or Brice-Phoenix) on AOT solutions in the same solvent at the same wavelength; only then can K be evaluated and Nagg obtained from Mw = (ΔR/c)/K divided by M0."
+}

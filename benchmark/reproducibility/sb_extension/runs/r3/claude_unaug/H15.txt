@@ -1,0 +1,6 @@
+FINAL_JSON: {
+“micelle_mw”: 400.0,
+“aggregation_number”: 0.64,
+“physically_valid”: false,
+“why”: “Nagg = 400/625 = 0.64 is less than one, which is impossible: the apparent aggregate mass is smaller than a single monomer (625 g/mol), so it cannot represent a real micelle.”
+}

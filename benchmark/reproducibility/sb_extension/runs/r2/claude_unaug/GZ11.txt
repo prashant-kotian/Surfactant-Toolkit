@@ -1,0 +1,10 @@
+FINAL_JSON: {
+“tail_volume_A3”: 350.2,
+“critical_length_A”: 16.68,
+“cpp_measured_area”: 0.470,
+“morphology_measured_area”: “cylindrical/rodlike micelle”,
+“electrostatic_headgroup_area_A2”: 52.8,
+“cpp_electrostatic_area”: 0.398,
+“morphology_electrostatic_area”: “cylindrical/rodlike micelle”,
+“comment”: “Tail geometry (V=350.2 A^3, l_c=16.68 A) is fixed. Measured area 44.70 A^2 gives P=0.470; electrostatic double-layer area derived from the CMC (Debye length kappa^-1=34.0 A, then a=sqrt(82.0*kappa^-1)=52.8 A^2) gives P=0.398. Both fall in 1/3<P<=1/2, so both predict cylindrical/rodlike micelles. The electrostatic area is ~18% larger (more headgroup repulsion -> looser packing -> lower P nearer the sphere boundary), while the measured area sits higher, nearer the bilayer boundary. The morphology classification is robust to the method even though the two areas differ.”
+}

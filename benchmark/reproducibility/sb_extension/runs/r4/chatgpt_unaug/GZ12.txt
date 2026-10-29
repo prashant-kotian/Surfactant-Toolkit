@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.0126,
+"f2_at_x1_0.90": 0.3154,
+"interaction_model_or_approach": "Thermodynamically consistent two-parameter asymmetric excess-Gibbs model: gE/RT = x1(1-x1)[A0 + A1(2x1-1)], fitted simultaneously to ln(f1) and ln(f2), with A0=-2.22787 and A1=1.33854.",
+"notes": "The mixed micelle shows strongly favorable but asymmetric nonideal mixing. Component 2 is strongly stabilized in component-1-rich micelles, while f1 becomes slightly greater than unity at high x1. The model reproduces all supplied measurements closely and predicts a shallow minimum in f2 near x1=0.777 before f2 rises toward x1=1."
+}

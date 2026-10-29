@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The specific refractive index increment (dn/dc) for AOT at 632.8 nm is missing. It must be determined experimentally for this specific system using a differential refractometer."
+}

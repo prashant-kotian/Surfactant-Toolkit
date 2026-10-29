@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“dn_dc_for_this_compound”: null,
+“sls_aggregation_number”: null,
+“what_is_missing”: “The refractive-index increment dn/dc of AOT itself at 632.8 nm in the same solvent and temperature. The supplied 0.110 mL/g is SDS’s measured value and cannot be transferred, since dn/dc is compound-specific (set by the molecule’s molar refraction/partial specific volume). Obtain AOT’s dn/dc by measuring solution refractive index vs concentration (above CMC) with a differential refractometer under the experimental conditions, or from an independent partial-specific-volume determination. With dn/dc known, K and hence M_w = (6.0e-3)/K and N_agg = M_w/332.43 follow directly from the already-linear, A2~0 data.”
+}

@@ -1,0 +1,140 @@
+{
+ "reference_value": 57.982,
+ "arms": {
+  "claude_unaug": {
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 38.056 vs gold 57.982",
+    "source": "stored answer (frozen record)",
+    "previous_verdict": "FAIL",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": false,
+      "gold": 57.982,
+      "model": 38.056
+     }
+    }
+   }
+  },
+  "qwen_unaug": {
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 37.952 vs gold 57.982",
+    "source": "stored answer (frozen record)",
+    "previous_verdict": "FAIL",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": false,
+      "gold": 57.982,
+      "model": 37.952
+     }
+    }
+   }
+  },
+  "chatgpt_unaug": {
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 37.949 vs gold 57.982",
+    "source": "stored answer (frozen record)",
+    "previous_verdict": "FAIL",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": false,
+      "gold": 57.982,
+      "model": 37.949
+     }
+    }
+   }
+  },
+  "deepseek_unaug": {
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 42.253 vs gold 57.982",
+    "source": "stored answer (frozen record)",
+    "previous_verdict": "FAIL",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": false,
+      "gold": 57.982,
+      "model": 42.253
+     }
+    }
+   }
+  },
+  "gemini_unaug": {
+   "Q47": {
+    "verdict": "FAIL",
+    "detail": "part1 got 38.856 vs gold 57.982",
+    "source": "stored answer (frozen record)",
+    "previous_verdict": "FAIL",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": false,
+      "gold": 57.982,
+      "model": 38.856
+     }
+    }
+   }
+  },
+  "claude_aug": {
+   "Q47": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q47/claude_aug/Q47.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": true,
+      "gold": 57.982,
+      "model": 57.982
+     }
+    }
+   }
+  },
+  "chatgpt_aug": {
+   "Q47": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q47/chatgpt_aug/Q47.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": true,
+      "gold": 57.982,
+      "model": 57.982
+     }
+    }
+   }
+  },
+  "deepseek_aug": {
+   "Q47": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q47/deepseek_aug/Q47.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": true,
+      "gold": 57.982,
+      "model": 57.982
+     }
+    }
+   }
+  },
+  "agy_aug": {
+   "Q47": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q47/agy_aug/Q47.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "gamma_t0.1": {
+      "ok": true,
+      "gold": 57.982,
+      "model": 57.982
+     }
+    }
+   }
+  }
+ }
+}

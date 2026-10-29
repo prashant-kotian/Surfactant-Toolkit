@@ -1,0 +1,316 @@
+Q01-Q60 COMPILED OUTPUTS
+========================
+
+Conventions
+-----------
+- Natural logarithms are used unless log10 is written explicitly.
+- R = 8.314462618 J mol^-1 K^-1; N_A = 6.02214076e23 mol^-1.
+- Rounded values follow each question's requested precision.
+- "Indeterminate" means the prompt does not define enough of the model or numerical implementation to produce a unique reproducible number. A seed does not fix an unspecified algorithm.
+- Q47 and Q50 were duplicated in the prompt; each is listed once.
+
+Q01 -- Ideal mixed CMC
+Reasoning: Clint's ideal relation is 1/CMCmix = alpha1/CMC1 + (1-alpha1)/CMC2. Thus CMCmix = 1/(0.37/1.23 + 0.63/8.76) = 2.682901 mM.
+Output: 2.6829 mM
+
+Q02 -- Rubingh micellar mole fraction
+Reasoning: Solve x1^2 ln(alpha1*CMCmix/(x1*CMC1)) = (1-x1)^2 ln((1-alpha1)*CMCmix/((1-x1)*CMC2)). The physical root is x1 = 0.87987584.
+Output: 0.8799
+
+Q03 -- Rubingh beta from a composition series
+Reasoning: For each point, solve the Rubingh composition equation and evaluate beta = ln(alpha1*CMCmix/(x1*CMC1))/(1-x1)^2. The five beta values are approximately -3.700006, -3.699955, -3.699880, -3.700088, and -3.699921; their mean is -3.699969995.
+Output: -3.69997
+
+Q04 -- Motomura ideal composition
+Reasoning: For ideal mixed micelles, x1 = (alpha1/CMC1)/[(alpha1/CMC1)+(1-alpha1)/CMC2]. Substitution gives x1 = 0.92753427.
+Output: 0.9275
+
+Q05 -- Asymmetric Margules activity coefficients
+Reasoning: Using ln(f1)=x2^2[w12+2(w21-w12)x1] and ln(f2)=x1^2[w21+2(w12-w21)x2], with x2=0.42, gives ln(f1)=0.26382384 and ln(f2)=1.29029584.
+Output: (1.3019, 3.6339)
+
+Q06 -- Excess free energy of micelle formation
+Reasoning: G^E = RT[x1 ln(f1)+x2 ln(f2)]. At 308.15 K, using the unrounded Q05 coefficients, G^E = 1.780512 kJ/mol.
+Output: 1.7805 kJ/mol
+
+Q07 -- Rodenas mole fraction
+Reasoning: Rodenas' slope relation gives x1 = alpha1 - alpha1(1-alpha1)d(ln CMC)/d(alpha1). Therefore x1 = 0.55 - 0.55(0.45)(-0.83) = 0.755425.
+Output: 0.7554
+
+Q08 -- Maeda mixed-micelle free energy
+Reasoning: Using the common Maeda regular-solution convention, DeltaG_M = RT[x1 ln(x1*CMC1)+(1-x1)ln((1-x1)*CMC2)+beta*x1(1-x1)], with concentrations in mol/L. This gives -18.677653 kJ/mol.
+Output: -18.678 kJ/mol
+
+Q09 -- Rosen monolayer composition
+Reasoning: Apply the Rubingh/Rosen regular-solution composition equation at the selected surface tension, replacing CMC values by c_sigma values. The physical root is x1 = 0.68806144.
+Output: 0.6881
+
+Q10 -- Rubingh activity coefficients
+Reasoning: f1 = exp[beta(1-x1)^2] and f2 = exp[beta*x1^2]. With x1=0.58 and beta=-4.36, f1=0.463428 and f2=0.230685.
+Output: (0.4634, 0.2307)
+
+Q11 -- Corrin-Harkins salt prediction
+Reasoning: Fit log10(CMC)=A-g log10(counterion concentration). The two points give g=0.15948763; interpolation at 20.0 mM gives CMC=9.9403246 mM.
+Output: (9.9403, 0.1595)
+
+Q12 -- Szyszkowski isotherm evaluation
+Reasoning: With excess electrolyte, gamma = gamma0 - RT*Gamma_inf*ln(1+Kc). Converting N/m to mN/m gives gamma = 72.0 - 1000(8.314462618)(298.15)(4.0e-6)ln(1+1400*0.0042) = 52.876149 mN/m.
+Output: 52.8761 mN/m
+
+Q13 -- Gibbs maximum surface excess
+Reasoning: For n=1, Gamma_max = -(1/RT)d(gamma)/d(ln c). Thus Gamma_max = 2.85e-3/[(8.314462618)(298.15)] = 1.149677e-6 mol/m^2.
+Output: 1.1497 micromol/m^2
+
+Q14 -- Minimum area per molecule
+Reasoning: a_min = 1/(N_A*Gamma_inf). Converting m^2 to nm^2 gives 0.9073984 nm^2 per molecule.
+Output: 0.9074 nm^2 per molecule
+
+Q15 -- Frumkin surface coverage
+Reasoning: Using the convention theta/(1-theta)*exp(-2a*theta)=Kc, numerical solution with Kc=14.7(0.0031) gives theta=0.04950861. Other sign/factor conventions for the Frumkin parameter would give a different number.
+Output: 0.0495
+
+Q16 -- Ward-Tordai adsorption kinetics
+Reasoning: The diffusive supply by 1 s exceeds Gamma_inf, so under a quasi-equilibrium Langmuir boundary the coverage is saturation-limited: Gamma = Gamma_inf*c0/(Kd+c0) = 2.8571429 micromol/m^2. A fully kinetic Ward-Tordai result would require separately specified adsorption/desorption rate constants.
+Output: 2.8571 micromol/m^2 (quasi-equilibrium boundary approximation)
+
+Q17 -- Davies HLB with effective-chain-length correction
+Reasoning: The standard Davies count, treating six EO groups as six ether groups (1.3 each), one terminal OH (1.9), and 12 lipophilic carbon groups, gives HLB = 7 + 6(1.3) + 1.9 - 0.475(12) = 11.00. The prompt does not state the equation or citation for the named Guo effective-chain-length correction, so a uniquely corrected value cannot be reproduced.
+Output: 11.00 (standard Davies value; requested Guo correction under-specified)
+
+Q18 -- Fit k and Cc from an optimal-salinity scan
+Reasoning: At HLD=0 with DeltaT=0, ln(S*) = k*EACN - Cc. Linear least squares on ln(salinity) versus EACN gives k=0.15680424 and intercept=-1.54730524, hence Cc=1.54730524.
+Output: (0.1568, 1.5473)
+
+Q19 -- Reference HLD constant for CTAB
+Reasoning: The commonly tabulated HLD characteristic-curvature value for CTAB is Cc=-5.7 with a reported uncertainty of 0.3.
+Output: -5.7 +/- 0.3
+
+Q20 -- Phase-inversion temperature
+Reasoning: With HLD = ln(S)-k*EACN+Cc+b(T-Tref), set HLD=0. T = Tref-[ln(2.3)-0.157(12.4)+1.62]/0.13 = 294.25685 K.
+Output: 294.26 K
+
+Q21 -- Optimal salinity
+Reasoning: At reference conditions, 0=ln(S*)-k*EACN+Cc, so S*=exp(k*EACN-Cc)=exp(0.158(11.2)-1.55)=1.245578 wt%.
+Output: 1.2456 wt%
+
+Q22 -- Packing parameter and morphology
+Reasoning: CPP = 248.4/(41.7*11.9)=0.5005743. This is just above 1/2, placing it in the 1/2<CPP<=1 vesicle/bilayer range.
+Output: 0.5006, vesicle/bilayer
+
+Q23 -- Axial ratio from packing-parameter geometry
+Reasoning: Under a spherocylinder convention, use Tanford v=27.4+26.9n=457.8 A^3 and lc=1.5+1.265n=21.74 A. The cylindrical radius is r=2(CPP)lc=18.2616 A. Solving Nv=pi*r^2*L+(4/3)pi*r^3 and taking axial ratio=(L+2r)/(2r) gives 1.888664. This estimate is shape-model dependent.
+Output: 1.889
+
+Q24 -- A priori CMC prediction
+Reasoning: A Nagarajan-Ruckenstein calculation needs a complete parameter set for tail-transfer, interfacial, packing, headgroup, electrostatic, and standard-state contributions. Tail length and headgroup label alone do not define a unique numerical implementation. For context only, the empirical SDS benchmark CMC near 8.2 mM would have log10(CMC/M)=-2.0862, but that is not an a priori calculation.
+Output: Indeterminate from the supplied model specification
+
+Q25 -- Equilibrium head-group area
+Reasoning: No governing molecular-thermodynamic equation is supplied that maps CMC, tail length, and the stated electrostatic prefactor to a_e. Published models use additional interfacial, packing, electrostatic, dielectric, ionic-strength, and standard-state choices.
+Output: Indeterminate from the supplied model specification
+
+Q26 -- Ionic strength
+Reasoning: I=(1/2)sum(c_i z_i^2). Pairing the equal positive and negative concentrations gives I=0.0071(1^2)+0.0023(2^2)+0.0009(3^2)=0.0244 M.
+Output: 0.0244 mol/L
+
+Q27 -- Debye screening length
+Reasoning: At 303.15 K, the standard water dielectric polynomial gives epsilon_r=76.54535. For a 1:1-equivalent ionic strength, lambda_D=sqrt(epsilon_r*epsilon_0*k_B*T/[2*N_A*e^2*1000*I])=2.3029277 nm.
+Output: 2.3029 nm
+
+Q28 -- Zeta potential, Smoluchowski regime
+Reasoning: Convert mobility 3.15 (micrometer*cm)/(V*s) to 3.15e-8 m^2/(V*s). Then zeta=mu*eta/(epsilon_r*epsilon_0), using standard water epsilon_r=78.3, gives +40.438 mV.
+Output: 40.438 mV
+
+Q29 -- O'Brien-White electrophoretic mobility
+Reasoning: A full O'Brien-White calculation requires electrolyte valence and ion mobilities/diffusivities, particle radius or conductivity data, dielectric/viscosity/temperature values, and a specified numerical solver. Zeta and kappa*a alone do not uniquely fix the mobility outside limiting laws.
+Output: Indeterminate from the supplied model specification
+
+Q30 -- Planar Poisson-Boltzmann surface charge
+Reasoning: The Grahame equation for a 1:1 electrolyte is sigma=sqrt(8*epsilon*epsilon_0*R*T*c_bulk)*sinh(F*psi0/(2RT)), with c_bulk=10 mol/m^3. At 298.15 K and psi0=-68.4 mV, sigma=-0.0206528 C/m^2.
+Output: -0.02065 C/m^2
+
+Q31 -- Gibbs free energy of micellization
+Reasoning: Convert molarity to mole fraction using X_CMC=0.0057/55.5. Then DeltaG_mic=2RT ln(X_CMC)=-46.295430 kJ/mol.
+Output: -46.295 kJ/mol
+
+Q32 -- Mass-action free energy of micellization
+Reasoning: Using the finite-aggregation-number convention DeltaG_mic=(1+1/n)RT ln(X_CMC), with X_CMC=0.0057/55.5 and n=58, gives -23.1579 kJ/mol. Different standard-state conventions can move the small 1/n correction.
+Output: -23.158 kJ/mol
+
+Q33 -- Critical micellization degree
+Reasoning: Under the usual finite-n phase-separation convention, the critical micellization degree is 1-1/n. For n=47, this is 46/47=0.9787234.
+Output: 0.9787
+
+Q34 -- van't Hoff enthalpy of micellization
+Reasoning: The two-point slope is [ln(0.0076)-ln(0.0041)]/[(1/313.15)-(1/293.15)]. From d(ln CMC)/d(1/T)=-DeltaH/R, DeltaH=23.55294 kJ/mol.
+Output: 23.55 kJ/mol
+
+Q35 -- Intrinsic aqueous solubility
+Reasoning: Octyl octanoate was treated as a liquid nonelectrolyte. Using the Valvani-Yalkowsky-Roseman liquid correlation logS=0.515-1.016logP with an estimated logP=6.899 gives logS=-6.494384.
+Output: -6.494 log10(mol/L)
+
+Q36 -- CMC from a raw surface-tension curve
+Reasoning: Continuous two-segment least squares was applied to gamma versus log10(concentration), with a shared breakpoint and independent slopes. The fitted intersection is 2.680603 mM and gamma at the intersection is 36.955110 mN/m.
+Output: 2.681 mM, 36.955 mN/m
+
+Q37 -- CMC and counterion binding from conductivity
+Reasoning: Separate least-squares lines for the six pre-break and six post-break points have slopes 7.200000 and 4.093622. Their intersection is 0.601025 mM and the requested post/pre slope ratio is 0.5685586. Note that some literature defines binding degree as 1 minus this ratio.
+Output: 0.601, 0.5686
+
+Q38 -- Isotherm model selection
+Reasoning: Nonlinear least squares with fixed gamma0 and Gamma_inf gave BIC_Langmuir=-99.3433 and BIC_Frumkin=-106.0897. Lower BIC is preferred; DeltaBIC=BIC_Langmuir-BIC_Frumkin=6.7464.
+Output: frumkin, 6.75
+
+Q39 -- Szyszkowski K fit
+Reasoning: Fit gamma=gamma0-RT*Gamma_inf*ln(1+Kc) by nonlinear least squares, converting mM to M. The fit gives K=640.990669 M^-1 and R^2=0.860548.
+Output: 640.9907, 0.861
+
+Q40 -- DLS size inversion
+Reasoning: A first-cumulant/exponential fit gives decay rate about 5000 s^-1. With standard assumed geometry (633 nm, 90 degrees, water refractive index 1.333) and Stokes-Einstein at 298.15 K with eta=0.89 mPa*s, the z-average diameter is 34.366 nm.
+Output: 34.366 nm
+
+Q41 -- Monte Carlo uncertainty propagation
+Reasoning: Using NumPy's default_rng(7), 20,000 independent normal draws for D, eta, and T were propagated through r=kBT/(6*pi*eta*D), with unit conversion from cm^2/s and mPa*s. The sample mean radius is 3.8133559 nm.
+Output: 3.8134 nm
+
+Q42 -- Bootstrap CMC confidence interval
+Reasoning: A continuous two-segment breakpoint fit in concentration space gives 1.433267 mM. Case-resampling 300 times with NumPy default_rng(42), refitting each sample from the point estimate, gives percentile limits 1.357979 and 1.562434 mM.
+Output: 1.433, 1.358, 1.562
+
+Q43 -- Fluorescence-quenching CMC analysis
+Reasoning: The mean long-time plateau at 270 s is (0.171544+0.203474+0.186726)/3=0.187248. CMC=p_free,infinity*c_tot=0.187248(0.05 M)=0.0093624 M.
+Output: 9.362 mM
+
+Q44 -- Monte Carlo aggregation distribution
+Reasoning: A Metropolis result is not defined by molecule count, temperature, contact energy, steps, and seed alone. The state space/geometry, concentration or volume, contact definition, allowed moves, proposal probabilities, boundary conditions, initialization, and sampling/burn-in rules are missing.
+Output: Indeterminate from the supplied simulation specification
+
+Q45 -- 1-D column transport breakthrough half-time
+Reasoning: For a conservative tracer with a step inlet in a uniform column, the symmetric advection-dispersion solution reaches C/C0=0.5 essentially at the advective travel time L/v. The stated dispersion is tiny, so t50=0.25/0.0035=71.428571 s.
+Output: 71.429 s
+
+Q46 -- Cloud point estimate
+Reasoning: Using the Huibers-Shah-Katritzky ethoxylate correlation gives CP0=187.1log10(EON)-5.78SACN-40.7=32.277 C. Applying the standard HLD-style NaCl depression -(0.13/0.06)S gives 32.277-5.417=26.8606 C.
+Output: 26.86 degrees C
+
+Q47 -- Dynamic surface tension
+Reasoning: By 0.1 s the ideal diffusive supply exceeds Gamma_inf, so the adsorption is saturation-limited in this simplified forward model. With a Szyszkowski/Langmuir equation of state, gamma=72-RT*Gamma_inf*ln(1+Kc)*1000=37.949173 mN/m.
+Output: 37.949 mN/m
+
+Q48 -- Owens-Wendt solid surface energy decomposition
+Reasoning: Linearize gamma_L(1+cos theta)/(2sqrt(gamma_L^d)) = sqrt(gamma_S^d)+sqrt(gamma_S^p)sqrt(gamma_L^p/gamma_L^d) and fit all three liquids. Squaring intercept and slope gives gamma_S^d=39.819959 and gamma_S^p=3.571288 mN/m.
+Output: (39.8200, 3.5713) mN/m
+
+Q49 -- van Oss-Chaudhury-Good decomposition
+Reasoning: Solve the three linear equations gamma_L(1+cos theta)/2 = sqrt(gamma_S^LW*gamma_L^LW)+sqrt(gamma_S^+*gamma_L^-)+sqrt(gamma_S^-*gamma_L^+). The solution gives gamma_S^LW=41.229222 and acid-base contribution 2sqrt(gamma_S^+gamma_S^-)=2.121816, so total=43.351038 mN/m.
+Output: (41.2292, 43.3510) mN/m
+
+Q50 -- Young-Dupre work of adhesion
+Reasoning: W=gamma_LV(1+cos theta)=50.3[1+cos(42.7 degrees)]=87.266204 mJ/m^2.
+Output: 87.2662 mJ/m^2
+
+Q51 -- Mass-action equilibrium monomer concentration
+Reasoning: Interpreting K as the per-addition equilibrium constant, c_total=c1+n*c1(Kc1)^(n-1). With K=5.0e4 M^-1 and n=60, solve 0.01=c1+60c1(Kc1)^59. The root is c1=20.718674 micromolar.
+Output: 20.719 micromolar
+
+Q52 -- Stochastic Gillespie relaxation time
+Reasoning: The prompt does not specify the elementary reaction network, reverse rate construction, volume/concentration mapping for 1500 molecules, initial state, observable used for relaxation, or fitting window. K, k_on, n_max, molecule count, and seed do not uniquely define a Gillespie trajectory or tau.
+Output: Indeterminate from the supplied simulation specification
+
+Q53 -- Population balance convergence
+Reasoning: In a 10-bin constant-kernel discretization, coalescence products above the largest class are discarded. At dimensionless time K*N0*t=600, the retained first moment is about 0.012864 of its initial value, so relative mass error is 1-0.012864=0.987136.
+Output: False, 0.987
+
+Q54 -- Stepwise relaxation after a K-jump
+Reasoning: Under a sequential Becker-Doring implementation with k_off=k_on/K_final=125 s^-1, linearize the 60-species ODEs about the final equilibrium. The least-negative nonzero Jacobian eigenvalue is -0.830973 s^-1, giving tau=1/0.830973=1.203408 s.
+Output: 1.2034 s
+
+Q55 -- Emulsion creaming half-separation time
+Reasoning: Stokes velocities are v_i=(Delta rho)g d_i^2/(18eta). With a uniform-front separation fraction F(t)=sum(phi_i min(v_i*t/H,1)), solve F=0.5 for the three volume-weighted classes. This gives t50=9197.305 s.
+Output: 9197.31 s
+
+Q56 -- MCMC convergence
+Reasoning: Neither posterior nor Markov chain is uniquely defined without priors, sampler/proposal, parameter constraints, number of chains, tuning/adaptation, and initialization per chain. Split-Rhat itself requires multiple independent chains or a specified split-chain construction. Therefore ESS, convergence, and median b cannot be reproduced uniquely from the prompt.
+Output: Indeterminate from the supplied MCMC specification
+
+Q57 -- Nonlinear fit with parameter standard errors
+Reasoning: Nonlinear least squares for y=a exp(-bx)+c gives b=0.27283794. Using the residual-scaled covariance matrix from the fit gives standard error 0.00756902.
+Output: 0.2728 +/- 0.0076
+
+Q58 -- Homologous-series CMC extrapolation
+Reasoning: Least squares of log10(CMC/mM) versus chain length gives slope -0.30193295 per carbon increment. Extrapolating the fitted line to n=16 gives CMC=0.515652 mM.
+Output: -0.3019, 0.5157
+
+Q59 -- EACN group-contribution rule
+Reasoning: Under the classic Cayias-Schechter-Wade alkylbenzene convention, EACN is based on the normal alkyl side-chain length rather than total molecular carbon count. Octylbenzene therefore has EACN=8.0.
+Output: 8.0, Cayias-Schechter-Wade alkylbenzene side-chain rule
+
+Q60 -- 3D conformer volume and shape anisotropy
+Reasoning: The seed and conformer count do not specify the distance-geometry implementation, force field, sodium-ion treatment, conformer selection/weighting, van der Waals radii and volume algorithm, or the exact kappa^2 definition and ensemble averaging. These choices materially affect both requested quantities.
+Output: Indeterminate from the supplied conformer protocol
+
+
+CONSOLIDATED JSON
+-----------------
+{
+  "Q01": {"answer": 2.6829, "units": "mM", "status": "computed"},
+  "Q02": {"answer": 0.8799, "units": null, "status": "computed"},
+  "Q03": {"answer": -3.69997, "units": null, "status": "computed"},
+  "Q04": {"answer": 0.9275, "units": null, "status": "computed"},
+  "Q05": {"answer": [1.3019, 3.6339], "labels": ["f1", "f2"], "status": "computed"},
+  "Q06": {"answer": 1.7805, "units": "kJ/mol", "status": "computed"},
+  "Q07": {"answer": 0.7554, "units": null, "status": "computed"},
+  "Q08": {"answer": -18.678, "units": "kJ/mol", "status": "computed"},
+  "Q09": {"answer": 0.6881, "units": null, "status": "computed"},
+  "Q10": {"answer": [0.4634, 0.2307], "labels": ["f1", "f2"], "status": "computed"},
+  "Q11": {"answer": [9.9403, 0.1595], "labels": ["predicted_cmc_mM", "g"], "status": "computed"},
+  "Q12": {"answer": 52.8761, "units": "mN/m", "status": "computed"},
+  "Q13": {"answer": 1.1497, "units": "micromol/m^2", "status": "computed"},
+  "Q14": {"answer": 0.9074, "units": "nm^2/molecule", "status": "computed"},
+  "Q15": {"answer": 0.0495, "units": null, "status": "computed", "convention": "theta/(1-theta)*exp(-2*a*theta)=K*c"},
+  "Q16": {"answer": 2.8571, "units": "micromol/m^2", "status": "approximation", "convention": "quasi-equilibrium Langmuir boundary"},
+  "Q17": {"answer": 11.00, "units": "HLB", "status": "partial", "note": "standard Davies value; Guo correction equation not specified"},
+  "Q18": {"answer": [0.1568, 1.5473], "labels": ["k", "Cc"], "status": "computed"},
+  "Q19": {"answer": -5.7, "uncertainty": 0.3, "units": null, "status": "reference"},
+  "Q20": {"answer": 294.26, "units": "K", "status": "computed"},
+  "Q21": {"answer": 1.2456, "units": "wt%", "status": "computed"},
+  "Q22": {"answer": 0.5006, "morphology": "vesicle/bilayer", "status": "computed"},
+  "Q23": {"answer": 1.889, "units": null, "status": "model-dependent", "convention": "Tanford spherocylinder"},
+  "Q24": {"answer": null, "status": "indeterminate", "reason": "complete molecular-thermodynamic parameterization absent"},
+  "Q25": {"answer": null, "status": "indeterminate", "reason": "governing headgroup-area equation and parameters absent"},
+  "Q26": {"answer": 0.0244, "units": "mol/L", "status": "computed"},
+  "Q27": {"answer": 2.3029, "units": "nm", "status": "computed"},
+  "Q28": {"answer": 40.438, "units": "mV", "status": "computed"},
+  "Q29": {"answer": null, "status": "indeterminate", "reason": "full electrokinetic inputs and solver absent"},
+  "Q30": {"answer": -0.02065, "units": "C/m^2", "status": "computed"},
+  "Q31": {"answer": -46.295, "units": "kJ/mol", "status": "computed"},
+  "Q32": {"answer": -23.158, "units": "kJ/mol", "status": "computed", "convention": "(1+1/n)RT ln X_CMC"},
+  "Q33": {"answer": 0.9787, "units": null, "status": "computed", "convention": "1-1/n"},
+  "Q34": {"answer": 23.55, "units": "kJ/mol", "status": "computed"},
+  "Q35": {"answer": -6.494, "units": "log10(mol/L)", "status": "estimate", "method": "Valvani-Yalkowsky-Roseman liquid correlation"},
+  "Q36": {"answer": [2.681, 36.955], "labels": ["cmc_mM", "gamma_cmc_mN_per_m"], "status": "computed"},
+  "Q37": {"answer": [0.601, 0.5686], "labels": ["cmc_mM", "post_pre_slope_ratio"], "status": "computed"},
+  "Q38": {"answer": ["frumkin", 6.75], "labels": ["model", "delta_bic"], "status": "computed"},
+  "Q39": {"answer": [640.9907, 0.861], "labels": ["K_M^-1", "r2"], "status": "computed"},
+  "Q40": {"answer": 34.366, "units": "nm", "status": "assumption-dependent"},
+  "Q41": {"answer": 3.8134, "units": "nm", "status": "computed", "rng": "NumPy default_rng(7)"},
+  "Q42": {"answer": [1.433, 1.358, 1.562], "labels": ["point_mM", "low_mM", "high_mM"], "status": "computed"},
+  "Q43": {"answer": 9.362, "units": "mM", "status": "computed"},
+  "Q44": {"answer": null, "status": "indeterminate", "reason": "Metropolis state space and move set absent"},
+  "Q45": {"answer": 71.429, "units": "s", "status": "computed"},
+  "Q46": {"answer": 26.86, "units": "degC", "status": "estimate", "method": "Huibers-Shah-Katritzky plus salinity correction"},
+  "Q47": {"answer": 37.949, "units": "mN/m", "status": "approximation", "convention": "saturation-limited Langmuir/Szyszkowski"},
+  "Q48": {"answer": [39.8200, 3.5713], "labels": ["gamma_s_dispersive", "gamma_s_polar"], "units": "mN/m", "status": "computed"},
+  "Q49": {"answer": [41.2292, 43.3510], "labels": ["gamma_s_lw", "gamma_s_total"], "units": "mN/m", "status": "computed"},
+  "Q50": {"answer": 87.2662, "units": "mJ/m^2", "status": "computed"},
+  "Q51": {"answer": 20.719, "units": "micromolar", "status": "computed", "convention": "per-addition K"},
+  "Q52": {"answer": null, "status": "indeterminate", "reason": "Gillespie reaction network and fitting protocol absent"},
+  "Q53": {"answer": [false, 0.987], "labels": ["converged", "mass_rel_error"], "status": "computed"},
+  "Q54": {"answer": 1.2034, "units": "s", "status": "model-dependent", "convention": "sequential Becker-Doring"},
+  "Q55": {"answer": 9197.31, "units": "s", "status": "computed", "convention": "uniform-front volume-weighted separation"},
+  "Q56": {"answer": null, "status": "indeterminate", "reason": "priors, sampler, chains, tuning, and constraints absent"},
+  "Q57": {"answer": 0.2728, "sd": 0.0076, "status": "computed"},
+  "Q58": {"answer": [-0.3019, 0.5157], "labels": ["slope_log10_CMC_per_carbon", "cmc_16_mM"], "status": "computed"},
+  "Q59": {"answer": 8.0, "rule": "Cayias-Schechter-Wade alkylbenzene side-chain rule", "status": "reference-rule"},
+  "Q60": {"answer": null, "status": "indeterminate", "reason": "conformer, force-field, volume, ion, and anisotropy protocols absent"}
+}

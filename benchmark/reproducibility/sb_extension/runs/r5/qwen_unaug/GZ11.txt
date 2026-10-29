@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 44.5,
+"cpp_electrostatic_area": 0.4718,
+"morphology_electrostatic_area": "cylindrical/rodlike micelle",
+"comment": "Both the measured headgroup area (44.70 Å²) and the electrostatically derived area (~44.5 Å² from the Debye length at 8 mM and the sulfate prefactor of 82.0 Å) yield essentially the same packing parameter (~0.47), placing the aggregate in the cylindrical/rodlike regime. The two independent estimates validate each other. The value sits just below the 1/2 boundary, indicating a geometry that is only mildly elongated rather than strongly rodlike, consistent with the known near-spherical-to-slightly-oblate shape of SDS micelles at the CMC in the absence of added salt."
+}

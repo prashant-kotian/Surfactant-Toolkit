@@ -1,0 +1,10 @@
+FINAL_JSON: {
+“tail_volume_A3”: 350.2,
+“critical_length_A”: 16.68,
+“cpp_measured_area”: 0.470,
+“morphology_measured_area”: “cylindrical/rodlike micelle”,
+“electrostatic_headgroup_area_A2”: 52.8,
+“cpp_electrostatic_area”: 0.398,
+“morphology_electrostatic_area”: “cylindrical/rodlike micelle”,
+“comment”: “Both independent routes to the headgroup area (direct measurement 44.70 A^2 vs electrostatic estimate 52.8 A^2 from the CMC-derived Debye length of 34.0 A) place the surfactant in the same cylindrical/rodlike regime, with CPPs of 0.470 and 0.398 respectively. The electrostatic area is larger, as expected since unscreened repulsion loosens packing, so it pushes P toward the 1/3 spherical boundary while the measured area pushes toward the 1/2 bilayer boundary. The prediction is borderline and sensitive: a slightly larger effective area (~60 A^2) would yield spheres, and real SDS near its CMC without salt actually forms near-spherical micelles, illustrating the Tanford CPP model’s known tendency to over-predict rods for SDS.”
+}

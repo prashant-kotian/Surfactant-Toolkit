@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "The compound is sodium di(2-ethylhexyl) sulfosuccinate (AOT), a branched double-tail anionic surfactant well known to form reverse micelles and water-in-oil microemulsions. That behavior is consistent with a negative characteristic curvature, not a strongly positive one. Source 1's -0.92 agrees with AOT's established oil-continuous/reverse-curvature preference. Source 2's +2.4 to +3.5 would imply strongly normal curvature and is likely condition-dependent, model-dependent, or affected by a different Cc convention/sample."
+}

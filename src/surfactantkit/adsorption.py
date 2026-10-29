@@ -55,6 +55,8 @@ def gibbs_gamma_max(slope_mn_per_ln_c: float, system_type: str, temperature_k: f
             "do not guess; if the surfactant's ionic character or electrolyte condition isn't "
             "stated, Gamma_max cannot be computed"
         )
+    if temperature_k <= 0:
+        raise ValueError("temperature_k must be positive (absolute temperature, K)")
     n_factor = N_FACTOR_BY_SYSTEM_TYPE[system_type]
     slope_n_per_m = slope_mn_per_ln_c / 1000.0
     return (-1.0 * slope_n_per_m) / (n_factor * r_gas * temperature_k)
@@ -797,27 +799,30 @@ def ward_tordai_adsorption(
 ) -> WardTordaiResult:
     """Dynamic surface excess Gamma(t) from the Ward-Tordai equation.
 
-    mode="langmuir": the surface concentration c_s(t) is found stepwise by
-    bisection so diffusion supply matches the Langmuir isotherm
-    Gamma = Gamma_inf*c_s/(K_d + c_s) -- the full dynamic adsorption problem
-    (transient adsorption towards the equilibrium value, no closed form).
+    mode="langmuir": the surface concentration c_s(t) is solved at each
+    node so the diffusion supply matches the Langmuir isotherm
+    Gamma = Gamma_inf*c_s/(K_d + c_s) (local equilibrium at the surface,
+    diffusion control) -- the full dynamic adsorption problem (transient
+    adsorption towards the equilibrium value, no closed form).
 
     mode="fixed_cs": c_s held constant (validate against the exact
     solution Gamma(t) = 2*(c0 - cs)*sqrt(D t / pi) for all t).
 
     Units: concentrations are mol/L (molar), the output Gamma fields are
-    mol/m^2 -- the quadrature carries the explicit 1 L = 1e-3 m^3
+    mol/m^2 -- the integral carries the explicit 1 L = 1e-3 m^3
     conversion (c0 in mol/m^3 = 1000 * c0_mol_per_L), so the supply term
     and the Langmuir isotherm (both mol/m^2) are compared on the SAME
-    footing. Without that factor the diffusion supply in langmuir mode
-    is 1000x starved and c_s(t) transients are quantitatively wrong
-    (regression-locked in tests/test_ward_tordai.py).
+    footing (regression-locked in tests/test_ward_tordai.py).
 
-    Time grid is sqrt-spaced (dense early, where the transient lives).
-    Pure deterministic numerics; no fitting.
-
-    Requires scipy? -- no: trapezium + bisection are closed-form loops
-    (pure Python/math), this worker runs with the zero-dependency core.
+    Numerics: product integration. c_s(tau) is piecewise linear on
+    n_sqrt geometrically spaced internal nodes (from 1e-10 of the first
+    output time, so the fast initial uptake at high c0 is resolved) plus
+    the output times; the 1/sqrt(t - tau) kernel is integrated exactly on
+    each interval, and the Langmuir closure at the new node is a quadratic
+    solved in closed form. Output times are sqrt-spaced,
+    t_k = t_end*(k/n_times)^2. bisection_tol is accepted for backward
+    compatibility and no longer used. Pure deterministic numerics in
+    plain Python (no scipy); no fitting.
     """
     if c0_mol_per_L <= 0:
         raise ValueError("c0_mol_per_L must be positive")
@@ -842,157 +847,72 @@ def ward_tordai_adsorption(
     if mode == "langmuir" and (gamma_inf_mol_per_m2 <= 0 or K_d_mol_per_L <= 0):
         raise ValueError("gamma_inf_mol_per_m2 and K_d_mol_per_L must be positive")
 
-    # 2*sqrt(D/pi) * (c0-cs) has units m * mol/L when c0 is mol/L;
-    # 1 mol/L = 1000 mol/m^3, so the x1000 makes Gamma mol/m^2 (SI),
-    # consistent with gamma_inf_mol_per_m2 and the Langmuir isotherm.
+    # Ward-Tordai: Gamma(t) = P [c0 sqrt(t) - I(t)], I(t) = int_0^t c_s(tau) / (2 sqrt(t - tau)) dtau,
+    # P = 2 sqrt(D/pi) * 1000 (1 mol/L = 1000 mol/m^3, so Gamma is mol/m^2).
     prefactor = 2.0 * math.sqrt(D_m2_per_s / math.pi) * 1000.0
-    # sqrt-spaced time grid: t_k = t_end * (k/N)^2
+    # output times: sqrt-spaced, t_k = t_end * (k/N)^2
     times = [t_end_s * (k / n_times) ** 2 for k in range(1, n_times + 1)]
-    cs_hist: list[float] = []   # c_s at times[k]
-    gamma_hist: list[float] = []
-    t_current: list[float] = [0.0]  # current march time (for the gap ramp)
-    integral_first: float | None = None  # first-node integral (clean IC)
-
-    def cs_at(tau: float, next_cs: float | None = None) -> float:
-        """c_s interpolated in the past.
-
-        For tau beyond the last solved node (the gap between times[-1] and
-        the current t, which the sqrt-substituted quadrature probes) the
-        last solved value is held: ramping the gap to the *trial* value
-        fed trial-dependent supply back into the bisection and excited
-        node-to-node ringing once the supply became SI-correct. The late
-        -time integral overshoot this used to guard against is capped by
-        the Langmuir boundary condition itself (Gamma = langmuir(c_s) is
-        stored), so it can no longer exceed gamma_inf.
-        """
-        n_filled = len(cs_hist)
-        if n_filled == 0:
-            # first step: initial condition below the first time node is a
-            # clean surface, c_s = 0 (surface holds nothing at t = 0+);
-            # the interval [0, t_1] is O(t_end/N^2) so this contributes a
-            # vanishing quadrature error on the sqrt-spaced grid
-            return 0.0
-        if tau <= times[0]:
-            return cs_hist[0]
-        last = n_filled - 1
-        if tau >= times[last]:
-            return cs_hist[last]
-        # binary search bracket within the filled history
-        lo, hi = 0, last
-        while hi - lo > 1:
-            mid = (lo + hi) // 2
-            if times[mid] <= tau:
-                lo = mid
+    # internal grid: n_sqrt geometric nodes from 1e-10 of the first output time (resolves the
+    # fast initial uptake at high c0) up to t_end, merged with the output times
+    t_lo = times[0] * 1e-10
+    ratio = (t_end_s / t_lo) ** (1.0 / n_sqrt)
+    grid = sorted({t_lo * ratio ** k for k in range(n_sqrt)} | set(times))
+    grid = [t for t in grid if t <= t_end_s * (1.0 + 1e-12)]
+    cs_initial = cs_fixed_mol_per_L if mode == "fixed_cs" and cs_fixed_mol_per_L is not None else 0.0
+    node_t = [0.0]           # c_s(0): a clean surface holds nothing, so the subsurface starts
+    node_cs = [cs_initial]   # empty in langmuir mode; fixed_cs holds its value from t = 0+
+    node_g = [0.0]
+    for t_n in grid:
+        # product integration: c_s piecewise linear in tau, the 1/(2 sqrt(t_n - tau)) kernel
+        # integrated exactly on each interval [a, b] (A = sqrt(t_n - a), B = sqrt(t_n - b)):
+        # weight on c_a is (b - a)(A + 2B) / (3 (A + B)^2), on c_b (b - a)(2A + B) / (3 (A + B)^2)
+        # (cancellation-free forms; the weights of every interval sum to sqrt(t_n)). The deficit
+        # c0 - c_s is summed directly, so Gamma never comes from a difference of large numbers.
+        roots = [math.sqrt(t_n - t) for t in node_t] + [0.0]
+        known, w_new = 0.0, 0.0
+        last = len(node_t) - 1
+        for k in range(last + 1):
+            ta = node_t[k]
+            tb = node_t[k + 1] if k < last else t_n
+            A, B = roots[k], roots[k + 1]
+            den = 3.0 * (A + B) ** 2
+            w_a = (tb - ta) * (A + 2.0 * B) / den
+            w_b = (tb - ta) * (2.0 * A + B) / den
+            known += (c0_mol_per_L - node_cs[k]) * w_a
+            if k < last:
+                known += (c0_mol_per_L - node_cs[k + 1]) * w_b
             else:
-                hi = mid
-        t0, t1 = times[lo], times[hi]
-        f = (tau - t0) / (t1 - t0) if t1 > t0 else 0.0
-        return cs_hist[lo] * (1.0 - f) + cs_hist[hi] * f
-
-    def gamma_rhs(cs_now: float, t: float) -> float:
-        """Ward-Tordai integral with current c_s(t_n)=cs_now, past interpolated
-        (gap ramped to cs_now)."""
-        s_max = math.sqrt(t)
-        ds = s_max / n_sqrt
-        # trapezium on s in [0, s_max]; s=0 <-> tau=t (current, unknown c_s),
-        # s=s_max <-> tau=0 (initial condition)
-        total = 0.5 * (c0_mol_per_L - cs_now)
-        for j in range(1, n_sqrt):
-            s = j * ds
-            tau = t - s * s
-            total += c0_mol_per_L - cs_at(tau, next_cs=cs_now)
-        total += 0.5 * (c0_mol_per_L - cs_at(0.0))
-        return prefactor * ds * total
-
-    for t in times:
-        t_current[0] = t
+                w_new = w_b
+        supply = prefactor * (known + c0_mol_per_L * w_new)            # Gamma if c_s(t_n) = 0
+        beta = prefactor * w_new                                       # dGamma/dc_s(t_n)
         if mode == "fixed_cs":
-            # None was rejected in validation above; the explicit guard
-            # keeps the narrowed float type visible to the type checker
-            cs_n = (cs_fixed_mol_per_L if cs_fixed_mol_per_L is not None
-                    else 0.0)
-            g_n = gamma_rhs(cs_n, t)  # same quadrature path (validated below)
-            if integral_first is None:
-                integral_first = g_n
+            cs_n = cs_initial
+        elif supply <= 0.0:
+            cs_n = 0.0
         else:
-            # F(cs) = gamma_rhs(cs) - langmuir(cs): strictly decreasing
-            def F(cs: float) -> float:
-                # F is defined and fully consumed within this same
-                # outer-loop iteration (never stored/escaped), so it
-                # always sees the current `t`; not the stale-closure bug
-                # this rule guards against.
-                g = gamma_rhs(cs, t)  # noqa: B023
-                gl = gamma_inf_mol_per_m2 * cs / (K_d_mol_per_L + cs)
-                return g - gl
-            # Predictor-correcter: the gap ramp endpoint is the unknown, so
-            # iterate bisection until the trial value is a fixed point
-            # (removes the history-lag overshoot at long times).
-            cs_n = cs_hist[-1] if cs_hist else 0.0
-            for _ in range(12):
-                lo_b, hi_b = 0.0, c0_mol_per_L
-                f_lo, f_hi = F(lo_b), F(hi_b)
-                if f_lo < 0:
-                    # even with a dry surface the isotherm exceeds supply --
-                    # root is below the bracket; physically c_s -> 0
-                    cs_new = 0.0
-                elif f_hi > 0:
-                    # No root in [0, c0]: the resolved history still claims
-                    # supply above the monolayer capacity (the sub-grid
-                    # filling transient, t_fill << t_1). Fall back to the
-                    # instantaneous supply balance A(t)*(c0-cs) = langmuir(cs)
-                    # with A = prefactor*sqrt(t) -- a quadratic in c_s whose
-                    # positive root lies in [0, c0] and is monotone in t.
-                    A = prefactor * math.sqrt(t)
-                    b = (K_d_mol_per_L + gamma_inf_mol_per_m2 / A
-                         - c0_mol_per_L)
-                    cs_new = 0.5 * (-b + math.sqrt(b * b + 4.0 * c0_mol_per_L
-                                                    * K_d_mol_per_L))
-                else:
-                    for _ in range(200):
-                        mid = 0.5 * (lo_b + hi_b)
-                        f_mid = F(mid)
-                        if f_mid > 0:
-                            lo_b = mid
-                        else:
-                            hi_b = mid
-                        if hi_b - lo_b <= bisection_tol * max(c0_mol_per_L, 1e-300):
-                            break
-                    cs_new = 0.5 * (lo_b + hi_b)
-                converged_step = abs(cs_new - cs_n) <= 1e-13 * max(c0_mol_per_L, 1e-300) + 1e-18
-                cs_n = cs_new
-                if converged_step:
-                    break
-            # Langmuir boundary condition: Gamma = langmuir(c_s) always --
-            # identical to gamma_rhs at an interior root (to bisection
-            # tolerance), bounded by gamma_inf when the supply-glut
-            # fallback fired. Keeps the stored series BC-consistent so the
-            # supply-glut overshoot cannot leak into gamma.
-            g_n = gamma_inf_mol_per_m2 * cs_n / (K_d_mol_per_L + cs_n)
-            if integral_first is None:
-                # raw integral at the first node, with the clean initial
-                # condition still in force below t_1 (must be evaluated
-                # HERE: later steps see cs_at rewritten below t_1)
-                integral_first = gamma_rhs(cs_n, t)
-        cs_hist.append(cs_n)
-        gamma_hist.append(g_n)
+            # Gamma = supply - beta c = Gamma_inf c / (K_d + c): beta c^2 + bq c - supply K_d = 0,
+            # positive root (stable form)
+            bq = gamma_inf_mol_per_m2 + beta * K_d_mol_per_L - supply
+            cs_n = (2.0 * supply * K_d_mol_per_L
+                    / (bq + math.sqrt(bq * bq + 4.0 * beta * supply * K_d_mol_per_L)))
+        node_t.append(t_n)
+        node_cs.append(cs_n)
+        node_g.append(supply - beta * cs_n)
+    at = {t: (g, c) for t, g, c in zip(node_t, node_g, node_cs)}
+    gamma_hist = [at[t][0] for t in times]
+    cs_hist = [at[t][1] for t in times]
+    t_clean, g_clean = node_t[1], node_g[1]   # earliest internal node: surface still clean there
 
     gamma_eq = None
     if mode == "langmuir":
         gamma_eq = gamma_inf_mol_per_m2 * c0_mol_per_L / (K_d_mol_per_L + c0_mol_per_L)
 
-    # early-time diagnostic: first-node Ward-Tordai integral (with the
-    # solved c_s) vs the clean-surface law 2 c0 sqrt(D t / pi). At the
-    # first sqrt-grid node the surface is still ~clean, so the ratio must
-    # be ~1; it validates the quadrature AND the mol/L -> mol/m^3
-    # conversion (prefactor*sqrt(t)*c0_mol_per_L is exactly the law in
-    # mol/m^2 when c0 is mol/L). The stored langmuir gamma is the BC
-    # value, not the integral, so recompute it here.
-    t_first = times[0]
-    free_law = prefactor * math.sqrt(t_first) * c0_mol_per_L
-    if free_law > 0 and integral_first is not None:
-        early_ratio = integral_first / free_law
-    else:
-        early_ratio = float("nan")
+    # early-time diagnostic: Gamma at the earliest internal node (1e-10 of
+    # the first output time, surface still clean) vs the clean-surface law
+    # 2 c0 sqrt(D t / pi); must be ~1 in langmuir mode (it checks the
+    # integral and the mol/L -> mol/m^3 conversion)
+    free_law = prefactor * math.sqrt(t_clean) * c0_mol_per_L
+    early_ratio = g_clean / free_law if free_law > 0 else float("nan")
 
     monotone = all(gamma_hist[i] <= gamma_hist[i + 1] * (1 + 1e-9)
                    for i in range(len(gamma_hist) - 1))
@@ -1010,9 +930,9 @@ def ward_tordai_adsorption(
         gamma_final_mol_per_m2=gamma_hist[-1],
         early_time_ratio=float(early_ratio),
         converged=bool(monotone and bounds_ok),
-        method="Ward-Tordai with sqrt(t) substitution + trapezium quadrature "
-               f"(n_sqrt={n_sqrt}) + per-step bisection on c_s against the "
-               f"{mode} boundary condition",
+        method="Ward-Tordai by product integration (c_s piecewise linear on "
+               f"{n_sqrt} geometric internal nodes, exact kernel weights) with the "
+               f"{mode} boundary condition solved in closed form at each node",
         params={"c0_mol_per_L": c0_mol_per_L, "D_m2_per_s": D_m2_per_s,
                 "t_end_s": t_end_s, "n_times": n_times, "mode": mode,
                 "gamma_inf_mol_per_m2": gamma_inf_mol_per_m2,

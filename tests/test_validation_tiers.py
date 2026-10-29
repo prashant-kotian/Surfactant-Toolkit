@@ -102,6 +102,51 @@ def test_tools_in_tier_unknown_tier_fails_fast():
         raise AssertionError("unknown tier must raise")
 
 
+def test_aliases_and_post_audit_table_are_well_formed():
+    from surfactantkit.validation_tiers import POST_AUDIT_TIERS, TOOL_ALIASES
+    for alias, target in TOOL_ALIASES.items():
+        assert target in VALIDATION_TIERS, f"alias {alias} -> unknown {target}"
+        assert alias not in VALIDATION_TIERS and alias not in POST_AUDIT_TIERS
+    for name, rec in POST_AUDIT_TIERS.items():
+        assert name not in VALIDATION_TIERS, f"{name} already in the audit table"
+        assert set(rec) == {"tier", "evidence"}
+        assert rec["tier"] in TIER_DEFINITIONS, f"{name}: unknown tier"
+        assert rec["evidence"].strip()
+
+
+def test_every_registered_mcp_tool_has_a_tier():
+    import asyncio
+
+    from surfactantkit.mcp_server import mcp
+    names = {t.name for t in asyncio.run(mcp.list_tools())}
+    assert len(names) >= 120
+    missing = sorted(n for n in names if get_tool_tier(n) is None)
+    assert not missing, f"MCP tools without a validation tier: {missing}"
+
+
+def test_every_benchmark_tool_reference_has_a_tier():
+    """Gold provenance names tools in hard50 `mcp_version_a_tools` and
+    extrahard `tools_A`.  Free-text notes in parentheses are not tool
+    names; a trailing parenthetical qualifier is stripped."""
+    import json
+    missing = set()
+    for f in sorted((_ROOT / "benchmark" / "source_sets").glob("*/gold_answers.json")):
+        data = json.loads(f.read_text(encoding="utf-8"))
+        entries = data.values() if isinstance(data, dict) else data
+        for q in entries:
+            if not isinstance(q, dict):
+                continue
+            for key in ("mcp_version_a_tools", "tools_A"):
+                refs = q.get(key) or []
+                for ref in refs if isinstance(refs, list) else [refs]:
+                    if not isinstance(ref, str) or ref.strip().startswith("("):
+                        continue
+                    name = ref.split("(")[0].strip()
+                    if name and get_tool_tier(name) is None:
+                        missing.add(name)
+    assert not missing, f"benchmark tool references without a tier: {sorted(missing)}"
+
+
 def test_get_tool_tier_exact_and_wildcard_lookup():
     assert get_tool_tier("clint_ideal_cmc") == "T1"
     # audit-table wildcard rows resolve via fnmatch

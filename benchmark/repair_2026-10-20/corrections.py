@@ -76,6 +76,12 @@ def _results(name: str) -> dict:
 REPAIR_RES = _results("repair_grade_results.json")
 DG_RES = _results("dg_regrade_results.json")
 FILL_RES = _results("fill_regrade_results.json")
+# q47_regrade.py / q17_regrade.py write these only once every augmented arm has its re-run answer
+Q47_RES = _results("q47_regrade_results.json").get("arms", {})
+Q17_RES = _results("q17_regrade_results.json").get("arms", {})
+# orig_q16_q17_q47_grade.py (2026-10-28): one target per question for Q16, Q17 and Q47 in both
+# wordings; supersedes the two files above for those questions once written
+Q3_RES = _results("orig_q16_q17_q47_results.json").get("arms", {})
 
 
 def _head(v) -> str:
@@ -213,6 +219,17 @@ def orig_overlay(model: str, cond: str) -> dict:
     arm = ARM.get((model, cond))
     return {q: r["verdict"] for q, r in (FILL_RES.get(arm) or {}).items()
             if q.startswith("Q") and r.get("verdict") in ("PASS", "FAIL")}
+
+
+def orig_regrade(model: str, cond: str) -> dict:
+    """orig_hard50 verdicts replaced after a reference-value change (Q47, q47_regrade.py; Q17,
+    augmented arms only, q17_regrade.py; Q16, Q17 and Q47 on one target per question,
+    orig_q16_q17_q47_grade.py, which takes precedence): {"Q47": ("PASS"|"FAIL", detail), ...}. A question is
+    absent until its regrade results file exists."""
+    arm = ARM.get((model, cond))
+    res = {**(Q47_RES.get(arm) or {}), **(Q17_RES.get(arm) or {}), **(Q3_RES.get(arm) or {})}
+    return {q: (r["verdict"], r.get("detail", "")) for q, r in res.items()
+            if r.get("verdict") in ("PASS", "FAIL")}
 
 
 def detail(bank: str, model: str, cond: str, qid: str, obj) -> list | None:

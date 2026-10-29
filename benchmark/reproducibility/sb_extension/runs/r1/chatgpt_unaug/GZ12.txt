@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Thermodynamically consistent two-parameter Redlich-Kister (asymmetric Margules-equivalent) fit to ln(f1) and ln(f2) simultaneously",
+"notes": "The fitted parameters are A0=-2.22787 and A1=1.33854 for gE/RT=x1(1-x1)[A0+A1(2x1-1)]. The excess Gibbs energy is negative throughout the mixed-composition range, indicating favorable, strongly asymmetric nonideal mixing. Prediction at x1=0.90 is f1=1.01260 and f2=0.31536; rounded values are reported."
+}

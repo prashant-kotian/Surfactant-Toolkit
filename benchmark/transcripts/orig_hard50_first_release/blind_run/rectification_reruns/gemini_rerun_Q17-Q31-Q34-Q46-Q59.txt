@@ -1,0 +1,577 @@
+Q17
+
+```python
+def calc_hlb(actual_ch2, terminal_ch3, actual_eo):
+    eff_ch2 = 0.965 * actual_ch2 - 0.178
+    import math
+    eff_eo = 13.45 * math.log(actual_eo) - 0.16 * actual_eo + 1.26
+    
+    # Assuming Davies HLB = 7 + (eff_eo * 1.3) - (eff_ch2 * 0.475) - (terminal_ch3 * 0.475)
+    # Wait, does the EO unit count as ONE hydrophilic group with weight 1.3?
+    # Davies base = 7. 
+    # Usually Davies HLB = 7 + sum(hydrophilic) - sum(lipophilic)
+    # If the EO unit has weight 1.3, then hydrophilic contribution = eff_eo * 1.3
+    
+    hlb1 = 7 + (eff_eo * 1.3) - (eff_ch2 * 0.475) - (terminal_ch3 * 0.475)
+    
+    # What if "actual CH2 count" means all 12 carbons?
+    eff_ch2_total = 0.965 * (actual_ch2 + terminal_ch3) - 0.178
+    hlb2 = 7 + (eff_eo * 1.3) - (eff_ch2_total * 0.475)
+    
+    print(f"eff_ch2 (11): {eff_ch2}, eff_eo: {eff_eo}")
+    print(f"HLB1 (11 CH2 + 1 CH3): {hlb1}")
+    print(f"HLB2 (12 total as CH2): {hlb2}")
+
+calc_hlb(11, 1, 6)
+
+
+```
+
+```text
+eff_ch2 (11): 10.437, eff_eo: 24.399164861117338
+HLB1 (11 CH2 + 1 CH3): 33.28633931945254
+HLB2 (12 total as CH2): 33.302964319452535
+
+
+```
+
+```python
+import urllib.request
+import urllib.parse
+import json
+
+# Let's search about this paper to see how they calculate HLB
+url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term=Guo+Rong+Ying+2006+effective-chain-length&retmode=json"
+try:
+    response = urllib.request.urlopen(url)
+    data = json.loads(response.read().decode("utf-8"))
+    print(data)
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+```python
+import math
+
+# Approach A: The EO chain gives eff_EO oxygens and 2*eff_EO CH2 groups.
+def calc_A():
+    actual_ch2 = 11
+    terminal_ch3 = 1
+    actual_eo = 6
+    
+    eff_ch2 = 0.965 * actual_ch2 - 0.178
+    eff_eo = 13.45 * math.log(actual_eo) - 0.16 * actual_eo + 1.26
+    
+    # lipophilic from tail
+    lipo_tail = eff_ch2 * 0.475 + terminal_ch3 * 0.475
+    
+    # head group: eff_eo ether oxygens and 2*eff_eo CH2 groups
+    hydro_head = eff_eo * 1.3
+    lipo_head = (2 * eff_eo) * 0.475
+    
+    hlb = 7 + hydro_head - lipo_tail - lipo_head
+    return hlb
+
+# Approach B: eff_eo is just the number of ether oxygens, and the actual CH2s in the head group are NOT corrected? Or corrected? 
+# If the correction is to the "EO head-group chain", maybe the whole unit (-CH2-CH2-O-) is just given the effective count, and we use standard Davies for the unit:
+def calc_B():
+    actual_ch2 = 11
+    terminal_ch3 = 1
+    actual_eo = 6
+    
+    eff_ch2 = 0.965 * actual_ch2 - 0.178
+    eff_eo = 13.45 * math.log(actual_eo) - 0.16 * actual_eo + 1.26
+    
+    # Davies weight for a whole EO group is 0.33 (which is 1.3 - 2*0.475)
+    # The prompt says: "hydrophilic ether-oxygen group weight 1.3; lipophilic CH2 and terminal CH3 group weight 0.475 each"
+    # So weight of an EO unit is 1.3 - 2*0.475 = 0.35
+    hlb = 7 + eff_eo * (1.3 - 2 * 0.475) - (eff_ch2 * 0.475 + terminal_ch3 * 0.475)
+    return hlb
+
+# Approach C: the correction to actual CH2 count applies to ALL CH2 groups in the molecule?
+def calc_C():
+    # 11 from tail + 12 from EO = 23 CH2
+    actual_ch2 = 23
+    eff_ch2 = 0.965 * actual_ch2 - 0.178
+    eff_eo = 13.45 * math.log(6) - 0.16 * 6 + 1.26
+    
+    hlb = 7 + eff_eo * 1.3 - eff_ch2 * 0.475 - 1 * 0.475
+    return hlb
+
+print("A (eff_eo applies to O and its CH2):", calc_A())
+print("B (eff_eo * 0.35):", calc_B())
+print("C (eff_ch2 applies to all CH2):", calc_C())
+
+
+```
+
+```text
+A (eff_eo applies to O and its CH2): 10.107132701391066
+B (eff_eo * 0.35): 10.107132701391073
+C (eff_ch2 applies to all CH2): 27.785839319452535
+
+
+```
+
+```python
+# Let's see if we can find Guo 2006 text
+url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term=Guo+Rong+Ying+2006+Calculation+of+Hydrophile-Lipophile+Balance+for+polyethoxylated"
+try:
+    response = urllib.request.urlopen(url)
+    data = json.loads(response.read().decode("utf-8"))
+    print(data)
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+To determine the HLB value for the surfactant (C12E6) using the modified Davies' method with the Guo, Rong & Ying (2006) effective-chain-length corrections, we evaluate the contributions step-by-step.
+
+**1. Calculate the Effective Counts**
+Based on the surfactant's structure, we have an actual tail count of 11 $CH_2$ groups, 1 terminal $CH_3$ group, and an actual head-group count of 6 EO units.
+
+* **Effective $CH_2$ count (alkyl tail):**
+
+$$\text{Effective } CH_2 = 0.965 \times (11) - 0.178 = 10.437$$
+
+
+* **Effective EO count:**
+
+$$\text{Effective EO} = 13.45 \times \ln(6) - 0.16 \times (6) + 1.26$$
+
+
+$$\text{Effective EO} = 13.45 \times 1.791759 - 0.96 + 1.26$$
+
+
+$$\text{Effective EO} = 24.099165 - 0.96 + 1.26 = 24.399165$$
+
+
+
+**2. Determine the Group Contributions**
+Before applying the Davies weights, we apply these effective counts to the structure.
+
+* **Alkyl Tail (Lipophilic):**
+The tail effectively consists of 10.437 $CH_2$ groups and 1 terminal $CH_3$ group.
+
+$$\text{Tail Contribution} = (10.437 \times 0.475) + (1 \times 0.475) = 4.957575 + 0.475 = 5.432575$$
+
+
+* **EO Head-Group (Hydrophilic and Lipophilic):**
+Each of the effective EO units ($-CH_2-CH_2-O-$) contains 1 ether-oxygen and 2 $CH_2$ groups.
+* *Hydrophilic (Ether-Oxygen) Contribution:* $24.399165 \times 1 \times 1.3 = 31.718915$
+* *Lipophilic ($CH_2$) Contribution:* $24.399165 \times 2 \times 0.475 = 23.179207$
+* *Net Head-Group Contribution:* $31.718915 - 23.179207 = 8.539708$
+
+
+*(Note: This perfectly matches scaling the effective EO count by the net Davies weight of a single EO unit: $1.3 - (2 \times 0.475) = 0.35$. Thus, $24.399165 \times 0.35 = 8.539708$)*
+
+**3. Compute Final HLB**
+Using Davies' base formula ($HLB = 7 + \sum \text{Hydrophilic} - \sum \text{Lipophilic}$):
+
+
+$$HLB = 7 + 8.539708 - 5.432575$$
+
+$$HLB = 10.107133$$
+
+Rounding to two decimal places, the HLB is 10.11.
+
+**Answer:** 10.11
+
+Q31
+
+```python
+import math
+
+R = 8.314462618  # J / (mol K)
+T = 303.15       # K
+cmc_m = 0.0057
+factor = 1.0
+
+def calc_dg(water_conc):
+    x_cmc = cmc_m / (cmc_m + water_conc)
+    dg = factor * R * T * math.log(x_cmc) / 1000
+    return dg
+
+print("Using 55.5:", calc_dg(55.5))
+print("Using 55.55:", calc_dg(55.55))
+print("Using 55.508:", calc_dg(55.508))
+
+
+```
+
+```text
+Using 55.5: -23.147973915925515
+Using 55.55: -23.150243407857847
+Using 55.508: -23.148337171983037
+
+
+```
+
+```python
+x1 = 0.0057 / 55.5
+x2 = 0.0057 / (55.5 + 0.0057)
+x3 = 0.0057 / 55.508
+x4 = 0.0057 / (55.508 + 0.0057)
+
+for x in [x1, x2, x3, x4]:
+    dg = 1.0 * 8.314462618 * 303.15 * math.log(x) / 1000
+    print(round(dg, 3))
+
+
+```
+
+```text
+-23.148
+-23.148
+-23.148
+-23.148
+
+
+```
+
+```python
+c = 0.0057
+options = [55.5, 55.508, 55.555, 55.5+c, 55.508+c, 55.555+c]
+for w in options:
+    X = c / w
+    dg = 1.0 * 8.3144626 * 303.15 * math.log(X) / 1000
+    print(f"w={w:.3f} -> {dg:.3f}")
+
+
+```
+
+```text
+w=55.500 -> -23.148
+w=55.508 -> -23.148
+w=55.555 -> -23.150
+w=55.506 -> -23.148
+w=55.514 -> -23.148
+w=55.561 -> -23.150
+
+
+```
+
+To compute the standard Gibbs free energy of micellization ($\Delta G^\circ_{mic}$), we use the provided equation:
+
+
+$$\Delta G_{mic} = \text{counterion\_factor} \times R \times T \times \ln(X_{CMC})$$
+
+**1. Identify the given parameters:**
+
+* **Counterion factor:** $1.0$ (fully-bound case)
+* **Ideal gas constant ($R$):** $8.31446 \text{ J/(mol K)}$
+* **Temperature ($T$):** $303.15 \text{ K}$
+* **Critical Micelle Concentration (CMC):** $0.0057 \text{ M}$
+
+**2. Convert CMC to mole fraction ($X_{CMC}$):**
+In standard surfactant thermodynamics, the mole fraction of the surfactant in an aqueous solution is calculated by dividing the molar CMC by the molarity of water (commonly approximated as $55.5 \text{ mol/L}$ for dilute solutions).
+
+
+$$X_{CMC} = \frac{\text{CMC}}{\text{Molarity of water} + \text{CMC}}$$
+
+$$X_{CMC} \approx \frac{0.0057}{55.5 + 0.0057} = \frac{0.0057}{55.5057} = 0.000102692$$
+
+
+*(Note: Approximating $X_{CMC}$ simply as $\frac{0.0057}{55.5}$ or using a slightly different water molarity based on standard density yields virtually the exact same final rounded value).*
+
+**3. Calculate the standard Gibbs free energy of micellization:**
+
+
+$$\Delta G_{mic} = 1.0 \times 8.31446 \text{ J/(mol K)} \times 303.15 \text{ K} \times \ln(0.000102692)$$
+
+$$\Delta G_{mic} = 2520.529 \text{ J/mol} \times (-9.18376)$$
+
+$$\Delta G_{mic} = -23147.93 \text{ J/mol}$$
+
+Converting this to kilojoules per mole (dividing by 1000):
+
+
+$$\Delta G_{mic} = -23.148 \text{ kJ/mol}$$
+
+**Answer:** -23.148
+
+
+Q34
+```python
+import math
+R = 8.314462618
+T1 = 293.15
+CMC1 = 0.0041
+T2 = 313.15
+CMC2 = 0.0076
+
+# ln(CMC2/CMC1) = (deltaH / R) * (1/T2 - 1/T1)
+# deltaH = R * ln(CMC2/CMC1) / (1/T2 - 1/T1)
+
+deltaH_J = R * math.log(CMC2/CMC1) / (1/T2 - 1/T1)
+deltaH_kJ = deltaH_J / 1000
+print(f"deltaH_kJ: {deltaH_kJ}")
+print(f"rounded: {round(deltaH_kJ, 2)}")
+
+
+```
+
+```text
+deltaH_kJ: -23.55294242956342
+rounded: -23.55
+
+
+```
+
+To compute the enthalpy of micellization ($\Delta H_{mic}$), we integrate the provided CMC-specific van't Hoff relationship:
+
+$$\frac{d(\ln CMC)}{d(1/T)} = \frac{\Delta H_{mic}}{R}$$
+
+Integrating between the two temperature states yields:
+
+$$\ln\left(\frac{CMC_2}{CMC_1}\right) = \frac{\Delta H_{mic}}{R} \left( \frac{1}{T_2} - \frac{1}{T_1} \right)$$
+
+**1. Identify the given parameters:**
+
+* $CMC_1 = 0.0041 \text{ M}$
+* $T_1 = 293.15 \text{ K}$
+* $CMC_2 = 0.0076 \text{ M}$
+* $T_2 = 313.15 \text{ K}$
+* Ideal gas constant ($R$) $\approx 8.31446 \text{ J/(mol K)}$
+
+**2. Substitute the values into the integrated equation:**
+
+
+$$\ln\left(\frac{0.0076}{0.0041}\right) = \frac{\Delta H_{mic}}{8.31446} \left( \frac{1}{313.15} - \frac{1}{293.15} \right)$$
+
+$$\ln(1.85366) = \frac{\Delta H_{mic}}{8.31446} \left( 0.00319336 - 0.00341122 \right)$$
+
+$$0.61716 = \frac{\Delta H_{mic}}{8.31446} \times (-0.00021786)$$
+
+**3. Solve for $\Delta H_{mic}$:**
+
+
+$$\Delta H_{mic} = \frac{0.61716 \times 8.31446}{-0.00021786}$$
+
+$$\Delta H_{mic} = -23552.94 \text{ J/mol}$$
+
+Converting this to kilojoules per mole (dividing by 1000):
+
+
+$$\Delta H_{mic} = -23.553 \text{ kJ/mol}$$
+
+Rounding to two decimal places, the enthalpy of micellization is $-23.55$.
+
+**Answer:** -23.55
+
+
+Q46
+```python
+import urllib.request
+import urllib.parse
+import json
+
+# Let's search for "apparent EACN of the ethoxylate micelle core"
+url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term=apparent+EACN+of+the+ethoxylate+micelle+core&retmode=json"
+try:
+    response = urllib.request.urlopen(url)
+    data = json.loads(response.read().decode("utf-8"))
+    print(data)
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+```python
+import urllib.request
+import json
+import re
+
+url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term="0.28"+AND+"2.4"+AND+"0.06"+AND+"7.3"&retmode=json'
+try:
+    response = urllib.request.urlopen(url)
+    data = json.loads(response.read().decode("utf-8"))
+    print(data)
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+```python
+import urllib.request
+import json
+import PyPDF2
+import io
+
+url = "https://shareok.org/bitstreams/bd65d2d5-0e8e-4280-8e62-2ed4349a88bc/download"
+try:
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    response = urllib.request.urlopen(req)
+    pdf_file = io.BytesIO(response.read())
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+    text = ""
+    for i in range(len(pdf_reader.pages)):
+        text += pdf_reader.pages[i].extract_text() + "\n"
+    
+    # search for 7.3, 0.13, 0.06, 0.28
+    print("Found 7.3:", "7.3" in text)
+    print("Found 0.28:", "0.28" in text)
+    
+    # extract context around 7.3
+    idx = text.find("7.3")
+    if idx != -1:
+        print(text[max(0, idx-200):min(len(text), idx+200)])
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+To find the cloud point using the Hydrophilic-Lipophilic Deviation (HLD) framework, we set $\text{HLD} = 0$ since the cloud point represents the phase transition boundary in a surfactant-water system (where the micelle core acts as the equivalent "oil" phase).
+
+The given HLD equation for nonionic ethoxylate surfactants is:
+
+
+$$\text{HLD} = b \cdot S - k \cdot \text{EACN}_{\text{app}} + C_c + c_T(T - 25)$$
+
+**1. Identify the given parameters and universal constants:**
+
+* **$S$ (salinity)** = $2.5 \text{ g/100 mL}$
+* **$b$ (salt constant)** = $0.13 \text{ (g/100 mL)}^{-1}$
+* **$k$ (EACN coefficient)** = $0.17$ (This is the universal standard constant for nonionic surfactants in the HLD framework)
+* **$\text{EACN}_{\text{app}}$** = $7.3$
+* **$c_T$ (temperature coefficient)** = $0.06 \text{ }^\circ\text{C}^{-1}$
+* **$\text{SACN}$ (alkyl tail carbons)** = $10$
+* **$\text{EON}$ (ethylene oxide units)** = $5$
+
+**2. Calculate the Characteristic Curvature ($C_c$):**
+
+
+$$C_c = 0.28 \cdot \text{SACN} + 2.4 - \text{EON}$$
+
+$$C_c = 0.28(10) + 2.4 - 5$$
+
+$$C_c = 2.8 + 2.4 - 5 = 0.20$$
+
+**3. Substitute the values into the HLD equation and set it to 0:**
+
+
+$$0 = (0.13 \cdot 2.5) - (0.17 \cdot 7.3) + 0.20 + 0.06(T - 25)$$
+
+$$0 = 0.325 - 1.241 + 0.20 + 0.06(T - 25)$$
+
+$$0 = -0.716 + 0.06(T - 25)$$
+
+**4. Solve for the Temperature ($T$), which is the cloud point:**
+
+
+$$0.06(T - 25) = 0.716$$
+
+$$T - 25 = \frac{0.716}{0.06}$$
+
+$$T - 25 = 11.9333...$$
+
+$$T = 36.9333... \text{ }^\circ\text{C}$$
+
+Rounding to two decimal places, the estimated cloud point is **36.93** $^\circ\text{C}$.
+
+Q59
+
+```python
+import urllib.request
+import urllib.parse
+import json
+import re
+
+url = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=EACN+alkylbenzene&utf8=&format=json"
+try:
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    response = urllib.request.urlopen(req)
+    data = json.loads(response.read().decode("utf-8"))
+    print(data)
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+```python
+import urllib.request
+import json
+import re
+
+# Use Google Custom Search if possible? No, I can't.
+# I'll just write a script to search PubMed for "Cash" and "EACN"
+
+
+```
+
+```python
+import urllib.request
+import urllib.parse
+import json
+import re
+
+# We can query pubmed using esearch with simpler query or Europe PMC API.
+url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EACN+Cash+rule&format=json"
+try:
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    response = urllib.request.urlopen(req)
+    data = json.loads(response.read().decode("utf-8"))
+    print([res['title'] for res in data.get('resultList', {}).get('result', [])])
+except Exception as e:
+    print(e)
+
+
+```
+
+```text
+<urlopen error [Errno -3] Temporary failure in name resolution>
+
+
+```
+
+To compute the Equivalent Alkane Carbon Number (EACN) for octylbenzene based on the provided logic:
+
+1. **Count the side-chain carbons:** The SMILES string `c1ccccc1CCCCCCCC` indicates a benzene ring attached to a fully saturated, unbranched octyl group (8 carbons).
+2. **Apply the rule:** The rule states that the aromatic ring contributes 0 to the EACN, and the side chain contributes a value equal to its carbon count. Thus, the EACN is simply the length of the side chain, which is 8.
+3. **Identify the rule:** In surfactant science and the Hydrophilic-Lipophilic Deviation (HLD) framework, the empirical observation that the benzene ring contributes 0 to the EACN and the overall EACN equals the side-chain carbon number is known as the **Cash rule** (named after Cash et al., 1977).
+
+**Answer:** 8.0, Cash rule
+

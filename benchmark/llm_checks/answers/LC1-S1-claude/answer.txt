@@ -1,0 +1,31 @@
+Part (a): ΔG at 298 K from the printed CMC and β
+Finalized enthalpy and heat capacity values with noted uncertainty
+
+Finalized enthalpy and heat capacity values with noted uncertainty
+Part (a): ΔG at 298 K from the printed CMC and β
+
+Using ΔG = (1 + β)·R·T·ln(X_cmc) with the 298 K row (CMC = 1.18 mM, β = 0.68):
+
+X_cmc = (1.18 × 10⁻³) / 55.5 = 2.1261 × 10⁻⁵, so ln X_cmc = −10.7586
+R·T = 8.314462618 × 10⁻³ × 298 = 2.47771 kJ/mol
+ΔG = 1.68 × 2.47771 × (−10.7586) = −44.78 kJ/mol
+
+This reproduces the printed value (the table lists magnitudes, 44.8), confirming the paper prints |ΔG|.
+
+Parts (b) and (c): ΔH and ΔCp from the ΔG(T) series
+
+Taking the thermodynamically signed series ΔG(T) = −{43.9, 44.3, 44.8, 45.2, 44.6, 44.8, 44.6} kJ/mol and applying Gibbs–Helmholtz, ΔH = −T²·d(ΔG/T)/dT and ΔCp = dΔH/dT. Fitting the seven points to the paper’s own functional form ΔG/T = A + B/T + C/T² (and, as a cross-check, a quadratic ΔG = a + bT + cT²):
+
+ΔH(298 K) ≈ −28 kJ/mol (−27.6 from the ΔG/T form, −28.1 from the quadratic)
+ΔCp ≈ −1.5 kJ/(mol·K) (−1.65 and −1.46 from the two fits)
+
+The two models agree. The implied ΔS(298) = (ΔH − ΔG)/T ≈ (−28 + 44.8)/298 ≈ +56 J/(mol·K), so micellization is entropy-driven at 298 K with an exothermic, strongly T-dependent ΔH — physically consistent.
+
+Two caveats you should weigh
+
+The printed eq (6) coefficients do not fit the table. With A = −872.37, B = 12.0, C = 6909.0, eq (6) gives ΔG/T(298) ≈ −872.3, i.e. ΔG ≈ −2.6 × 10⁵ kJ/mol — off by four orders of magnitude. Refitting the tabulated ΔG instead gives roughly A ≈ 0.8, B ≈ −5.2 × 10², C ≈ 7.3 × 10⁴. I used the refit; the printed A/B/C appear to be a typesetting error and should not be used directly to get ΔH (= B + 2C/T) or ΔCp (= −2C/T²).
+
+The 3% uncertainty dominates the derivatives. ±3% is ±1.3 kJ/mol of scatter on points spaced 5–10 K apart. A first derivative then carries ≈ ±0.2–0.3 kJ/(mol·K), and ΔCp (a second derivative) is barely resolved — its uncertainty is comparable to its value. So the −28 and −1.5 central estimates are real but soft; the non-monotonic ΔG (minimum near 303 K) is what forces such a large curvature, and it is not well constrained by data at this precision.
+
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.8, "dH_298_kJ_mol": -28, "dCp_kJ_mol_K": -1.5}

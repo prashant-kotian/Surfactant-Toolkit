@@ -1,0 +1,2029 @@
+{
+ "models": {
+  "Claude": {
+   "answers": 55,
+   "missing": 0,
+   "correct": 44,
+   "error": 10,
+   "hallucination": 1,
+   "by_type": {
+    "F": 1
+   },
+   "per_run": [
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "stable": 8,
+   "comparable": 11,
+   "runs_with_answers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "pass_and_fail": 1,
+   "pass_and_fail_q": [
+    "SB-017"
+   ],
+   "inconsistent": 6,
+   "app_prompts_denied": 0
+  },
+  "ChatGPT": {
+   "answers": 55,
+   "missing": 0,
+   "correct": 39,
+   "error": 16,
+   "hallucination": 0,
+   "by_type": {},
+   "per_run": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": 8,
+   "comparable": 11,
+   "runs_with_answers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "pass_and_fail": 3,
+   "pass_and_fail_q": [
+    "SB-011",
+    "SB-042",
+    "SB-073"
+   ],
+   "inconsistent": 5,
+   "app_prompts_denied": 0
+  },
+  "DeepSeek": {
+   "answers": 55,
+   "missing": 0,
+   "correct": 37,
+   "error": 17,
+   "hallucination": 1,
+   "by_type": {
+    "F": 1
+   },
+   "per_run": [
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "stable": 8,
+   "comparable": 11,
+   "runs_with_answers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "pass_and_fail": 3,
+   "pass_and_fail_q": [
+    "SB-017",
+    "SB-073",
+    "SB-038"
+   ],
+   "inconsistent": 5,
+   "app_prompts_denied": 0
+  },
+  "Gemini": {
+   "answers": 55,
+   "missing": 0,
+   "correct": 37,
+   "error": 18,
+   "hallucination": 0,
+   "by_type": {},
+   "per_run": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "stable": 8,
+   "comparable": 11,
+   "runs_with_answers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "pass_and_fail": 4,
+   "pass_and_fail_q": [
+    "SB-017",
+    "SB-042",
+    "SB-065",
+    "SB-038"
+   ],
+   "inconsistent": 5,
+   "app_prompts_denied": 0
+  },
+  "Qwen": {
+   "answers": 55,
+   "missing": 0,
+   "correct": 34,
+   "error": 17,
+   "hallucination": 4,
+   "by_type": {
+    "F": 4
+   },
+   "per_run": [
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "stable": 6,
+   "comparable": 11,
+   "runs_with_answers": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "pass_and_fail": 5,
+   "pass_and_fail_q": [
+    "SB-017",
+    "SB-042",
+    "SB-061",
+    "SB-073",
+    "SB-038"
+   ],
+   "inconsistent": 9,
+   "app_prompts_denied": 0
+  }
+ },
+ "pooled": {
+  "Claude": {
+   "answers": 145,
+   "hallucination": 3,
+   "rate": 0.0207
+  },
+  "ChatGPT": {
+   "answers": 132,
+   "hallucination": 3,
+   "rate": 0.0227
+  },
+  "DeepSeek": {
+   "answers": 55,
+   "hallucination": 1,
+   "rate": 0.0182
+  },
+  "Gemini": {
+   "answers": 144,
+   "hallucination": 6,
+   "rate": 0.0417
+  },
+  "Qwen": {
+   "answers": 137,
+   "hallucination": 11,
+   "rate": 0.0803
+  }
+ },
+ "fisher_ext_hallucination": {
+  "Claude vs ChatGPT": 1.0,
+  "Claude vs DeepSeek": 1.0,
+  "Claude vs Gemini": 1.0,
+  "Claude vs Qwen": 0.3634,
+  "ChatGPT vs DeepSeek": 1.0,
+  "ChatGPT vs Gemini": 1.0,
+  "ChatGPT vs Qwen": 0.1182,
+  "DeepSeek vs Gemini": 1.0,
+  "DeepSeek vs Qwen": 0.3634,
+  "Gemini vs Qwen": 0.1182
+ },
+ "fisher_pooled_hallucination": {
+  "Claude vs ChatGPT": 1.0,
+  "Claude vs Gemini": 0.3351,
+  "Claude vs Qwen": 0.0272,
+  "ChatGPT vs Gemini": 0.5044,
+  "ChatGPT vs Qwen": 0.0516,
+  "Gemini vs Qwen": 0.2143
+ },
+ "values": {
+  "GZ17": {
+   "Claude": [
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.4,
+     "gamma_max_mol_per_m2": 2.46e-06,
+     "a_min_nm2": 0.68,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.68,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.68,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 15,
+     "gamma_max_mol_per_m2": 2.4e-06,
+     "a_min_nm2": 0.68,
+     "delta_g_mic_kJ_per_mol": -20.2,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.4,
+     "gamma_max_mol_per_m2": 2.4e-06,
+     "a_min_nm2": 0.68,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    }
+   ],
+   "ChatGPT": [
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 14.8,
+     "gamma_max_mol_per_m2": 2.37e-06,
+     "a_min_nm2": 0.702,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.0,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.0,
+     "gamma_max_mol_per_m2": 2.42e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.5,
+     "gamma_max_mol_per_m2": 2.425e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.4,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    }
+   ],
+   "DeepSeek": [
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.46e-06,
+     "a_min_nm2": 0.676,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic (1:1 quaternary ammonium bromide)",
+     "cmc_mM": 14.8,
+     "gamma_max_mol_per_m2": 2.4e-06,
+     "a_min_nm2": 0.69,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic (1:1 quaternary ammonium bromide)",
+     "cmc_mM": 16.5,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 17.1,
+     "gamma_max_mol_per_m2": 2.4e-06,
+     "a_min_nm2": 0.69,
+     "delta_g_mic_kJ_per_mol": -20.1,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    }
+   ],
+   "Gemini": [
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 12.56,
+     "gamma_max_mol_per_m2": 2.37e-06,
+     "a_min_nm2": 0.702,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.46e-06,
+     "a_min_nm2": 0.676,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.46e-06,
+     "a_min_nm2": 0.675,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.47e-06,
+     "a_min_nm2": 0.67,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.365e-06,
+     "a_min_nm2": 0.702,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    }
+   ],
+   "Qwen": [
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.0,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": -20.1,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.37e-06,
+     "a_min_nm2": 0.7,
+     "delta_g_mic_kJ_per_mol": -10.1,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.47e-06,
+     "a_min_nm2": 0.672,
+     "delta_g_mic_kJ_per_mol": null,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.37,
+     "gamma_max_mol_per_m2": 2.47e-06,
+     "a_min_nm2": 0.672,
+     "delta_g_mic_kJ_per_mol": -40.0,
+     "delta_s_mic_J_per_mol_K": null
+    },
+    {
+     "charge_type": "cationic",
+     "cmc_mM": 16.0,
+     "gamma_max_mol_per_m2": 2.43e-06,
+     "a_min_nm2": 0.685,
+     "delta_g_mic_kJ_per_mol": -40.2,
+     "delta_s_mic_J_per_mol_K": null
+    }
+   ]
+  },
+  "GZ11": {
+   "Claude": [
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 478.1,
+     "cpp_electrostatic_area": 0.0439,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Both routes share V=350.2 A^3 and l_c=16.68 A; only the headgroup area differs. The measured 44.70 A^2 gives P=0.470 (rodlike, just under the 0.5 boundary). The electrostatic route uses I=CMC=8 mM, Debye length ~34.0 A, and a_elec=82.0*sqrt(kappa^-1)=~478 A^2, giving P=0.0439 (strongly spherical). They disagree because they are different quantities: 44.7 A^2 is the steric packing area CPP expects, while 478 A^2 is an inflated double-layer footprint (Debye length >> molecular size at 8 mM salt-free), which over-counts curvature preference when plugged into CPP. CPP is extremely sensitive to a (~10x change in a => ~10x change in P). Physically the truth lies between: electrostatics rightly drives spheres at low ionic strength (real salt-free SDS near its CMC forms small near-spherical micelles and only becomes rodlike when salt screens the charge, shrinking kappa^-1 and the effective area), while the measured area sets the correct steric scale. A consistent model adds steric + electrostatic area contributions rather than taking either extreme; the prefactor is an empirical convention, so 478 A^2 is an effective electrostatic area, not a literal cross-section."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.8,
+     "cpp_electrostatic_area": 0.398,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Tail geometry (V=350.2 A^3, l_c=16.68 A) is fixed. Measured area 44.70 A^2 gives P=0.470; electrostatic double-layer area derived from the CMC (Debye length kappa^-1=34.0 A, then a=sqrt(82.0*kappa^-1)=52.8 A^2) gives P=0.398. Both fall in 1/3<P<=1/2, so both predict cylindrical/rodlike micelles. The electrostatic area is ~18% larger (more headgroup repulsion -> looser packing -> lower P nearer the sphere boundary), while the measured area sits higher, nearer the bilayer boundary. The morphology classification is robust to the method even though the two areas differ."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.8,
+     "cpp_electrostatic_area": 0.398,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both independent routes to the headgroup area (direct measurement 44.70 A^2 vs electrostatic estimate 52.8 A^2 from the CMC-derived Debye length of 34.0 A) place the surfactant in the same cylindrical/rodlike regime, with CPPs of 0.470 and 0.398 respectively. The electrostatic area is larger, as expected since unscreened repulsion loosens packing, so it pushes P toward the 1/3 spherical boundary while the measured area pushes toward the 1/2 bilayer boundary. The prediction is borderline and sensitive: a slightly larger effective area (~60 A^2) would yield spheres, and real SDS near its CMC without salt actually forms near-spherical micelles, illustrating the Tanford CPP model's known tendency to over-predict rods for SDS."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 151.2,
+     "cpp_electrostatic_area": 0.139,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Chain quantities are shared (V=350.2 A^3, l_c=16.68 A). With the compact measured area (44.70 A^2), P=0.470 -> rodlike, near the sphere-rod boundary. With no added salt, ionic strength equals the CMC (0.008 M), giving a Debye length of 3.40 nm; the linearized double-layer optimal area a=82.0*sqrt(3.40 nm)=151.2 A^2, so P=0.139 -> spherical. The ~3.4x area difference flips the predicted morphology. The measured value is a steric packing area that understates the true effective area of a fully ionized sulfate at zero salt, where unscreened long-range repulsion forces large area and high curvature (spheres). This matches real SDS, which forms small near-spherical micelles at its salt-free CMC; adding salt screens repulsion, shrinks a, raises P, and drives the sphere-to-rod transition. Caveat: linearized DH overestimates area at very low salt (high surface potential, nonlinear regime), so 151 A^2 is an upper bound and the true area lies between the two estimates, but both favor more curved aggregates than the bare 44.70 A^2 implies."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.81,
+     "cpp_electrostatic_area": 0.3976,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both the measured head area (44.70 A^2) and the electrostatically derived one (52.81 A^2, from Debye length 34.0 A at I=CMC=8 mM via a=sqrt(82.0*kappa_inv)) place C12 sulfate in the 1/3<P<=1/2 rodlike/cylindrical regime, so the two independent routes agree qualitatively. The electrostatic area is larger because unscreened double-layer repulsion at 8 mM (thick ~34 A diffuse layer) spreads the heads; the smaller measured area (higher P=0.47, right at the sphere/rod-to-worm boundary) reflects counterion binding that Debye-Huckel omits. Net: same morphology class, but the measured value shows the real system sits closer to a morphological transition than pure double-layer theory predicts. CPP is a boundary heuristic, so this is best read as micelles on the spherical-to-rodlike cusp."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.469691,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 67.27,
+     "cpp_electrostatic_area": 0.312095,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The two approaches give different morphology predictions because the electrostatic model estimates a much larger effective headgroup area (~67.3 A^2) than the independently measured 44.70 A^2. Since CPP is inversely proportional to headgroup area, the measured value gives P~0.470 (rodlike), while the electrostatic estimate gives P~0.312 (spherical), crossing the P=1/3 boundary."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.46969,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.81,
+     "cpp_electrostatic_area": 0.39756,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both approaches predict cylindrical/rodlike micelles. The electrostatic estimate gives a headgroup area about 18% larger than the measured 44.70 A^2, lowering the CPP from about 0.470 to 0.398; the measured-area result is consequently closer to the cylindrical-to-bilayer boundary at P = 1/2."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.46969,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.81,
+     "cpp_electrostatic_area": 0.39756,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both approaches predict cylindrical/rodlike micelles. The electrostatic estimate gives a larger effective headgroup area (52.81 A2 versus 44.70 A2 measured), lowering the CPP from about 0.470 to 0.398; nevertheless both values remain between 1/3 and 1/2."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.469691,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2788.92,
+     "cpp_electrostatic_area": 0.007528,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The measured area predicts rodlike/cylindrical aggregates, whereas the CMC-based Debye-Huckel effective area predicts spherical micelles. The electrostatic construction gives an effective area about 62 times larger than the measured molecular area, showing that the simple CMC-only double-layer model is not quantitatively interchangeable with the measured headgroup area for this system."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 49.46,
+     "cpp_electrostatic_area": 0.4245,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both the measured-area and electrostatic-area estimates give 1/3 < P <= 1/2, predicting cylindrical/rodlike micelles. The electrostatic area is about 11% larger than the measured area, lowering the CPP but not changing the morphology."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787.0,
+     "cpp_electrostatic_area": 0.00753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Measured area gives P\u22480.470, just below 1/2, predicting cylindrical/rodlike micelles. The CMC-only electrostatic estimate gives an absurdly large area (~2.79e3 A^2) and P\u22480.0075, predicting spherical micelles; this is unphysical and shows CMC alone cannot replace a measured headgroup area."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787.0,
+     "cpp_electrostatic_area": 0.00753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Measured area gives P\u22480.470, just below the cylindrical/spherical boundary, so rodlike micelles are predicted. The CMC-only electrostatic estimate gives an unphysically huge area \u22482.79e3 \u00c5^2 and P\u22480.0075, predicting spherical micelles, but that area is not credible for a 12-carbon micelle."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787.0,
+     "cpp_electrostatic_area": 0.00753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Measured area gives P~0.470, cylindrical/rodlike. CMC-only Debye-Huckel estimate gives lambda~34 A and a_el~2.79e3 A^2, P~0.0075, spherical. The electrostatic estimate is orders too large and inconsistent; it cannot replace the measured area. Trust measured: cylindrical micelles."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787,
+     "cpp_electrostatic_area": 0.00753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "Measured area gives P~0.47 and rodlike micelles; the CMC-only Debye-Huckel prefactor estimate gives an unphysically large area (~2.8e3 A^2), P~0.0075, and spherical micelles. The electrostatic estimate is inconsistent with the measured area and is not reliable for morphology here."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.46969,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787.04,
+     "cpp_electrostatic_area": 0.007533,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The measured area predicts rodlike micelles, whereas the CMC-based electrostatic estimate predicts spherical micelles and an implausibly large area; the latter result assumes the dimensionally implied convention a_el = 82.0 times the Debye length because the area-screening equation was not explicitly supplied."
+    }
+   ],
+   "Gemini": [
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787,
+     "cpp_electrostatic_area": 0.0075,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The directly measured area ignores headgroup repulsion, wrongly predicting cylinders. The electrostatic approach accounts for the extended double layer at low ionic strength, yielding a massive effective area that correctly predicts the formation of spherical micelles."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 52.79,
+     "cpp_electrostatic_area": 0.398,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both headgroup area approaches yield a packing parameter strictly predicting cylindrical/rodlike micelles (P > 1/3). However, SDS famously forms spherical micelles at 8 mM. This highlights a well-known limitation of the rigid Tanford geometric model: assuming the micelle core radius equals the maximum extended chain length overestimates P, failing to account for tail flexibility and real-world disordered core configurations."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787,
+     "cpp_electrostatic_area": 0.0075,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The bare geometric area yields a CPP of ~0.47 (incorrectly predicting rods). However, factoring in the ~34 Angstrom Debye length yields an enormous effective electrostatic area (~2787 A^2), driving the CPP near zero and correctly predicting the spherical micelles that SDS actually forms in pure water."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2787.0,
+     "cpp_electrostatic_area": 0.0075,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The directly measured structural area ignores long-range electrostatic double-layer repulsion, leading to a CPP of ~0.47 which incorrectly predicts cylindrical micelles. In contrast, incorporating the Debye length yields a massive effective thermodynamic headgroup area that forces the CPP well below 1/3, correctly predicting the spherical micelles observed for SDS in pure water."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.47,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 116.0,
+     "cpp_electrostatic_area": 0.181,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The directly measured area significantly underestimates headgroup repulsion in solution, incorrectly predicting a cylindrical morphology. The electrostatically-derived area accounts for double-layer expansion, correctly reducing the packing parameter to predict the spherical micelles experimentally observed for SDS at its CMC."
+    }
+   ],
+   "Qwen": [
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 49.44,
+     "cpp_electrostatic_area": 0.4247,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both the measured area (44.70 A2) and the electrostatically derived area (49.44 A2) give packing parameters (0.470 and 0.425) in the 1/3-1/2 window, predicting cylindrical/rodlike micelles. The two routes agree within ~10% in headgroup area and fall in the same morphological band, showing robustness. In reality, SDS near its CMC in pure water forms small quasi-spherical micelles (P near 1/3); the slight overestimate of P here reflects Tanford's fully-extended chain length and the planar DH approximation overestimating curvature effects. SDS sits very close to the sphere-to-rod boundary, and small perturbations (added salt, temperature) can shift the morphology."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4696,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 278.8,
+     "cpp_electrostatic_area": 0.0753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The measured headgroup area (44.70 A2) yields P=0.47, borderline cylindrical, while the DH-based electrostatic estimate (278.8 A2) gives P=0.075, firmly spherical. Real SDS forms small spherical micelles, so the electrostatic approach captures the correct morphology qualitatively but vastly overestimates the area because it neglects counterion condensation and finite-size effects. The measured area slightly overestimates P relative to the true spherical geometry, possibly reflecting a value measured in a packed bilayer or crystal context rather than at the curved micelle surface."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 48.0,
+     "cpp_electrostatic_area": 0.4374,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both the measured-area (P=0.470) and electrostatic (P=0.437) approaches predict cylindrical/rodlike micelles, yet SDS experimentally forms spherical micelles. The electrostatic area (48.0 \u00c5\u00b2) is ~7% larger than the measured value (44.70 \u00c5\u00b2), as expected for a purely repulsive double-layer estimate. Both P values lie near the 1/3\u20131/2 boundary, highlighting the sensitivity and known limitations of the simple geometric packing model in this transition region."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 2788.0,
+     "cpp_electrostatic_area": 0.00753,
+     "morphology_electrostatic_area": "spherical micelle",
+     "comment": "The two routes disagree by roughly two orders of magnitude in headgroup area. The Debye-H\u00fcckel estimate at the bulk CMC ionic strength (8 mM, kappa^-1 ~ 34 A) yields an enormous effective area (2788 A^2) and a vanishing CPP (~0.008), predicting spherical micelles. The measured area (44.70 A^2) gives CPP ~ 0.47, in the cylindrical/rodlike regime. SDS at 8 mM without added salt actually forms roughly spherical micelles, so the electrostatic morphology label is qualitatively correct despite the unphysically large area; the measured-area route slightly over-packs the headgroups and would incorrectly predict rodlike aggregates. The discrepancy underscores that bulk Debye-H\u00fcckel theory ignores counterion condensation and the high local ionic strength at the micelle surface, making it a poor quantitative but sometimes qualitatively useful guide."
+    },
+    {
+     "tail_volume_A3": 350.2,
+     "critical_length_A": 16.68,
+     "cpp_measured_area": 0.4697,
+     "morphology_measured_area": "cylindrical/rodlike micelle",
+     "electrostatic_headgroup_area_A2": 44.5,
+     "cpp_electrostatic_area": 0.4718,
+     "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+     "comment": "Both the measured headgroup area (44.70 \u00c5\u00b2) and the electrostatically derived area (~44.5 \u00c5\u00b2 from the Debye length at 8 mM and the sulfate prefactor of 82.0 \u00c5) yield essentially the same packing parameter (~0.47), placing the aggregate in the cylindrical/rodlike regime. The two independent estimates validate each other. The value sits just below the 1/2 boundary, indicating a geometry that is only mildly elongated rather than strongly rodlike, consistent with the known near-spherical-to-slightly-oblate shape of SDS micelles at the CMC in the absence of added salt."
+    }
+   ]
+  },
+  "GZ12": {
+   "Claude": [
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.316,
+     "interaction_model_or_approach": "Two-parameter (three-suffix / sub-regular Margules) mixed-micelle model, GE/RT = x1x2(A21x1 + A12x2), fitted to ln f1 and ln f2; A12 = -3.57, A21 = -0.89. The symmetric one-parameter regular-solution (Rubingh) model was rejected because beta from f1 and f2 disagree strongly.",
+     "notes": "Strongly synergistic (attractive, negative-deviation) mixing with pronounced asymmetry: component 1 (aromatic/ethoxylated benzyl-dimethylammonium) is far more stabilized when dilute in DTAB (A12~-3.6) than DTAB is when dilute in component 1 (A21~-0.9). Model reproduces all five measured points to ~0.3%. f2 passes a shallow minimum near x1~0.8 and rises toward exp(A21)~0.41 as x1->1, so f2=0.316 at x1=0.90 is consistent with the data trend. Parameters are effective (composition-independent A12,A21); real system may show mild residual curvature."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter sub-regular (three-suffix Margules) solution model; single-parameter Rubingh regular-solution theory fails because beta extracted from f1 and f2 disagree and drift with composition. Fitted A12 = ln f1_inf = -3.57, A21 = ln f2_inf = -0.89; equivalently beta(x1) = -3.57 + 2.68*x1.",
+     "notes": "Both Margules parameters are negative => net attractive/synergistic mixing despite both surfactants being cationic, likely from aromatic/cation-pi and hydrophobic contacts of component 1's benzyl/aryl groups, reduced headgroup crowding via its ether spacer, and mixed Cl-/Br- counterions. Interaction is asymmetric and strongest when component 1 is dilute (beta ~ -3.6) and weakest when it dominates (beta ~ -0.9), mean beta ~ -2.2 at equimolar. Two-parameter fit reconstructs all five measured points to within ~0.3%, so the x1=0.90 extrapolation is well constrained. Analysis done from first principles with no external data lookup."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.316,
+     "interaction_model_or_approach": "Two-parameter Margules (subregular/asymmetric regular-solution) model: ln f1 = x2^2[A12 + 2(A21-A12)x1], ln f2 = x1^2[A21 + 2(A12-A21)x2], with A12 = ln f1-infinity ~= -3.57 and A21 = ln f2-infinity ~= -0.885, fitted from first principles to the measured data.",
+     "notes": "Single-parameter Rubingh regular-solution theory fails: beta extracted from f1 and f2 disagrees and drifts strongly with composition, so the nonideality is asymmetric. The two-parameter Margules form is Gibbs-Duhem consistent (independent fits of ln f1/x2^2 vs x1 and ln f2/x1^2 vs x2 give matching A12, A21) and reproduces all 10 measured values to within +/-0.002. Interpretation: strong net attractive synergism (both f<1; mean interaction ~ -2.2) despite both surfactants being cationic, driven by hydrophobic/aromatic packing of component 1's ethoxylated aryl-benzyl group among DTAB chains plus head-group-crowding relief via the ethoxy spacer; attraction is strongest when component 1 is dilute. The model implies f2 has a minimum near x1~0.78 (~0.285) then rises toward exp(A21)~0.41 as x1->1, so f2 at x1=0.90 (0.316) is slightly above the x1=0.808 value, consistent with the data rather than a monotonic extrapolation."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.316,
+     "interaction_model_or_approach": "Two-parameter three-suffix Margules (sub-regular solution) excess-free-energy model, G^E/RT = x1*x2*(A21*x1 + A12*x2), fit to both components simultaneously. Single-parameter Rubingh regular solution theory was tested first and rejected because beta from f1 and f2 disagreed strongly (~ -2 vs ~ -4.6 at the same composition) and drifted with composition.",
+     "notes": "Fitted parameters A12 = -3.565 (= ln f1 at x1->0) and A21 = -0.885 (= ln f2 at x2->0), obtained by two independent linear regressions (ln f1/x2^2 vs x1, and ln f2/x1^2 vs x2) that agreed to within ~0.01, confirming the model. Both parameters negative => net attractive/synergistic mixing of the two cationic surfactants; strong asymmetry reflects large stabilization of the bulky benzyl-dimethyl-ammonium aromatic surfactant (comp 1) when dilute in the DTAB-like comp 2, versus modest stabilization of comp 2 when dilute. At x1=0.90, x2=0.10: ln f1 = +0.0126 (f1=1.013), ln f2 = -1.151 (f2=0.316). Limiting coefficients: f1^inf=0.028, f2^inf=0.413. Assumes RST/Margois temperature and treats the given activity coefficients as exact."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter Margules (sub-regular solution) model, gE/RT = x1*x2*(A21*x1 + A12*x2), fit simultaneously to both activity coefficients; A12 = -3.57, A21 = -0.89. Chosen because single-parameter regular-solution (Rubingh) theory fails: beta from f1 and f2 disagree and drift with composition, signaling a strongly asymmetric, net-attractive (negative gE) interaction.",
+     "notes": "Both surfactants are cationic (component 1 = bulky benzyl-dimethylammonium with an octylphenol-ether aromatic tail; component 2 = DTAB, a small linear cationic). gE/RT < 0 at all measured points => synergistic, tail/packing-driven mixing that overcomes like-charge headgroup repulsion. Interaction is highly asymmetric: dilute component 1 is strongly stabilized (f1_inf ~ 0.03) while dilute component 2 only mildly (f2_inf ~ 0.41), hence the need for two Margules parameters rather than one beta. Fit reproduces all 5 measured compositions to RMS ~0.0007 in f; x1=0.90 is only slightly beyond the data range and the prediction is stable under leave-one-out refitting (f1=1.013+/-0.000, f2=0.315+/-0.001). Minor Gibbs-Duhem inconsistency in the raw data is smoothed by the thermodynamically consistent model."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Thermodynamically consistent two-parameter Redlich-Kister (asymmetric Margules-equivalent) fit to ln(f1) and ln(f2) simultaneously",
+     "notes": "The fitted parameters are A0=-2.22787 and A1=1.33854 for gE/RT=x1(1-x1)[A0+A1(2x1-1)]. The excess Gibbs energy is negative throughout the mixed-composition range, indicating favorable, strongly asymmetric nonideal mixing. Prediction at x1=0.90 is f1=1.01260 and f2=0.31536; rounded values are reported."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Thermodynamically consistent two-parameter asymmetric Margules (first-order Redlich-Kister) fit to ln(f1) and ln(f2)",
+     "notes": "The interaction is strongly asymmetric and overall favorable (negative excess Gibbs energy). The fitted model reproduces the supplied data closely and predicts a shallow high-x1 maximum in f1 and a minimum followed by recovery in f2."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3154,
+     "interaction_model_or_approach": "Two-parameter asymmetric Redlich-Kister excess-Gibbs model fitted simultaneously to ln(f1) and ln(f2), enforcing binary Gibbs-Duhem consistency",
+     "notes": "The mixed micelle shows strong favorable but asymmetric nonideal mixing (negative excess Gibbs energy). The model fits the supplied activity coefficients extremely closely; at x1=0.90 it predicts f1 returning toward its pure-component limit of 1 while f2 has passed through a shallow minimum and rises to about 0.315."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3154,
+     "interaction_model_or_approach": "Thermodynamically consistent two-parameter asymmetric excess-Gibbs model: gE/RT = x1(1-x1)[A0 + A1(2x1-1)], fitted simultaneously to ln(f1) and ln(f2), with A0=-2.22787 and A1=1.33854.",
+     "notes": "The mixed micelle shows strongly favorable but asymmetric nonideal mixing. Component 2 is strongly stabilized in component-1-rich micelles, while f1 becomes slightly greater than unity at high x1. The model reproduces all supplied measurements closely and predicts a shallow minimum in f2 near x1=0.777 before f2 rises toward x1=1."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3154,
+     "interaction_model_or_approach": "Thermodynamically consistent three-suffix Margules excess-free-energy model, jointly fitted to ln(f1) and ln(f2).",
+     "notes": "The data indicate favorable, strongly asymmetric nonideality. Predictions assume pure-component micellar standard states and a smooth effective binary phase at unchanged conditions; extrapolation is not uniquely determined by the measurements."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3144,
+     "interaction_model_or_approach": "Two-parameter Margules asymmetric regular-solution fit to ln f1 and ln f2 with Gibbs-Duhem consistency, extrapolated to x1=0.90",
+     "notes": "Negative Margules parameters indicate net attractive interaction; a single-parameter regular-solution model is inconsistent with the measured f1 and f2. The prediction assumes the fitted two-parameter Margules model remains valid beyond the highest measured composition x1=0.808."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3145,
+     "interaction_model_or_approach": "Two-parameter Margules/Redlich-Kister excess Gibbs model fitted to ln f1 and ln f2 (a=-2.232, b=1.339); single-parameter regular solution was inadequate.",
+     "notes": "Negative excess Gibbs and f<1 indicate favorable nonideal mixing with strong asymmetry. At x1=0.90, f1 is slightly above 1 while f2 is strongly reduced."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.317,
+     "interaction_model_or_approach": "Two-parameter Redlich-Kister/Margules excess Gibbs model, gE/RT = x1 x2 [A + B(x1-x2)], fitted to all five activity-coefficient points (A\u2248-2.23, B\u22481.35); thermodynamically consistent via Gibbs-Duhem.",
+     "notes": "Negative A indicates net attractive/synergistic interaction; positive B captures asymmetry. The fit reproduces the measured f1 and f2 within rounding. At x1=0.90, f1 is near ideal (slightly >1), while f2 remains strongly reduced (~0.32); f2 passes through a minimum near x1\u22480.77 and tends to ~0.42 at infinite dilution of component 2."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter Margules/Redlich-Kister excess Gibbs model constrained by Gibbs-Duhem; A12\u2248-3.57, A21\u2248-0.89",
+     "notes": "One-parameter regular solution theory is inconsistent with the measured f1/f2 pair. The fitted two-parameter model reproduces the five measured points and predicts f1\u22481.013, f2\u22480.315 at x1=0.90."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3144,
+     "interaction_model_or_approach": "Gibbs-Duhem-consistent two-parameter Margules excess free-energy fit to ln(f1) and ln(f2)",
+     "notes": "Fit parameters A\u2248-2.232 and B\u22481.339; negative A indicates net attractive/synergistic mixed-micelle interaction, with asymmetric composition dependence."
+    }
+   ],
+   "Gemini": [
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "2-parameter Margules model",
+     "notes": "The standard 1-parameter Regular Solution Theory (Rubingh model) fails because ln(fi)/xj^2 is not constant. Applying an asymmetric 2-parameter Margules model provides a near-perfect fit (A12 = -3.566, A21 = -0.889), capturing the system's structural asymmetry and correctly predicting f1 > 1 at high x1."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter Margules model",
+     "notes": "Synergistic mixing driven by steric relief as the linear Component 2 acts as a spacer for the highly bulky Component 1."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter Margules model (first-order Redlich-Kister)",
+     "notes": "A 1-parameter regular solution model fails due to high steric asymmetry between the bulky aromatic headgroup of Component 1 and the linear structure of Component 2. The 2-parameter model captures the concentration-dependent interaction perfectly."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "2-parameter Margules model (or first-order Redlich-Kister)",
+     "notes": "The system exhibits strongly asymmetric non-ideal mixing, preventing the use of standard 1-parameter regular solution theory. Fitting the activity coefficients to a thermodynamically consistent 2-parameter Margules model accurately captures the synergistic interactions due to structural packing differences."
+    },
+    {
+     "f1_at_x1_0.90": 1.0126,
+     "f2_at_x1_0.90": 0.3154,
+     "interaction_model_or_approach": "Two-parameter Margules model",
+     "notes": "Regular Solution Theory (Rubingh's model) fails due to the structural asymmetry between the bulky Benzethonium component and the linear DTAB. The Margules model accounts for this and fits the experimental data perfectly (R^2 > 0.9999)."
+    }
+   ],
+   "Qwen": [
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted by simultaneous least-squares to all 10 activity-coefficient data points; parameters A12 = -3.57, A21 = -0.89",
+     "notes": "Component 1 is a bulky tert-octylphenyl\u2013ethylene-glycol\u2013benzyl\u2013dimethylammonium chloride; Component 2 is dodecyltrimethylammonium bromide (DTAB). Both Margules parameters are negative (synergistic/attractive mixing), but the system is highly asymmetric (|A12| >> |A21|), so a one-parameter regular-solution beta is inadequate. f2 passes through a minimum near x1~0.78 and rises toward exp(A21)=0.41 as x1->1."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.318,
+     "interaction_model_or_approach": "Two-parameter (three-suffix) Margules excess-Gibbs model fitted to five experimental (x1, f1, f2) data points; A12 = -3.58, A21 = -0.88. Gibbs-Duhem consistency is built into the Margules form.",
+     "notes": "Both Margules parameters are negative, indicating strong synergistic (attractive) interaction between the bulky di-tert-octylphenyl ethoxylate benzylammonium surfactant and linear DTAB in the mixed micelle. The large asymmetry (|A12| >> |A21|) reflects the very different molecular shapes. The model reproduces all five measured data points to within \u00b10.003 in f. Extrapolation from x1=0.808 to 0.90 is short and well within the model's valid range."
+    },
+    {
+     "f1_at_x1_0.90": 1.012,
+     "f2_at_x1_0.90": 0.315,
+     "interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted to five experimental activity-coefficient data points; A12 = -3.56, A21 = -0.89",
+     "notes": "Both surfactants are cationic; negative Margules parameters indicate attractive (synergistic) mixing in the micelle. The asymmetry (|A12|>>|A21|) reflects the bulky branched/aromatic architecture of component 1 versus the linear C12 chain of DTAB (component 2). f2 passes through a minimum near x1\u22480.78 and rises slightly at higher x1 toward its infinite-dilution value exp(A21)\u22480.41."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.317,
+     "interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted by linearised least-squares regression of ln(f)/x\u00b2 vs. x over all five measured compositions; parameters A12 = -3.57, A21 = -0.88 capture the strongly asymmetric attractive (synergistic) interaction between the bulky aromatic cationic surfactant and DTAB in the mixed micelle.",
+     "notes": "Simple one-parameter RST (single beta) fails due to strong asymmetry. The Margules model reproduces all five data points to within ~0.01 in ln(f). f1 slightly exceeds unity near x1=1 as expected; f2 passes through a minimum near x1~0.77 and rises toward the infinite-dilution value exp(A21)~0.41. Negative A values reflect favorable hydrophobic packing of the di-tert-butylphenyl/benzyl moiety among C12 chains."
+    },
+    {
+     "f1_at_x1_0.90": 1.013,
+     "f2_at_x1_0.90": 0.318,
+     "interaction_model_or_approach": "Two-parameter Margules model fitted to ln(f1) and ln(f2) vs. micellar mole fraction; A12 = -3.58, A21 = -0.87",
+     "notes": "Strong net attractive interaction (negative Margules parameters) between the bulky di-tert-butylphenyl/benzyl cationic surfactant and DTAB in mixed micelles. The asymmetry (|A12| >> |A21|) reflects the much greater stabilization of the aromatic component when diluted into the DTAB matrix versus the reverse. At x1=0.90, component 1 is nearly ideal while DTAB remains strongly stabilized. Model reproduces all five measured compositions to within experimental uncertainty."
+    }
+   ]
+  },
+  "GZ42": {
+   "Claude": [
+    {
+     "more_likely_correct": "Source 2 (Cc \u2248 2.4 to 3.5)",
+     "reasoning": "The compound is AOT / sodium bis(2-ethylhexyl) sulfosuccinate (docusate sodium), a strongly lipophilic, double-branched-tail surfactant with packing parameter >1 that is the textbook reverse (water-in-oil) microemulsion former. In the standard Acosta HLD-NAC convention these values use, lipophilic surfactants have a sizable positive characteristic curvature, and AOT's documented Cc is ~+2 to +3.5, matching Source 2. The -0.92 value is the known Cc of the hydrophilic dihexyl sulfosuccinate analog (SDHS/Aerosol MA), an easily confused near-neighbor; a comparative review is exactly where such a cross-compound mislabeling occurs, whereas a primary paper measuring this exact compound's own behavior is more reliable. A near-zero/slightly-negative Cc is also physically inconsistent with AOT's famously strong reverse-curvature behavior. (Note: the sign convention stated in the question is inverted relative to the real Acosta convention, but this does not change the conclusion.)"
+    },
+    {
+     "more_likely_correct": "Source 2 (Cc in the range 2.4 to 3.5)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate / docusate), the archetypal reverse-micelle, water-in-oil surfactant with a compact sulfosuccinate head, bulky branched double tails, and packing parameter >1 \u2014 a strongly lipophilic surfactant. In the standard HLD/HLD-NAC convention, lipophilic reverse-curvature surfactants have POSITIVE characteristic curvature (literature AOT values ~ +2 to +3), which matches Source 2's 2.4\u20133.5 in both sign and magnitude. (Note: this convention is the opposite of the positive=water-continuous mapping stated in the prompt.) The review's \u22120.92 is a small-magnitude, hydrophilic value that actually corresponds to the close cousin sodium DIHEXYL sulfosuccinate (Aerosol MA), which has linear hexyl tails, is far more hydrophilic, and sits near balanced/slightly-negative curvature \u2014 a classic misattribution between two similarly named sulfosuccinates. Epistemically, a primary paper measuring this exact compound outweighs a review compiling values across many surfactants, where such row-swaps occur; and a negative, water-continuous-favoring Cc is self-contradictory for the most famous W/O reverse-micelle surfactant known."
+    },
+    {
+     "more_likely_correct": "Source 2 (Cc in the range 2.4 to 3.5)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate / docusate), a well-characterized twin-tailed, small-headgroup surfactant with packing parameter >1 that is the textbook lipophilic, reverse-curvature, water-in-oil microemulsion former. In the standard Acosta HLD-NAC convention that corresponds to a positive characteristic curvature, and AOT's literature Cc is indeed about +2 to +3, matching Source 2. The negative value (-0.92) is characteristic of the shorter-tailed, hydrophilic sodium dihexyl sulfosuccinate (Aerosol MA, a hydrophilic linker), a near-identically-named relative that is easily cross-attributed in a multi-surfactant review table. A primary paper measuring this exact compound's own solubilization/interfacial behavior is also more reliable for its parameter than a review compilation prone to such name/attribution mix-ups, and both arguments converge on the positive value."
+    },
+    {
+     "more_likely_correct": "Source 2 (Cc in the range +2.4 to +3.5)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), the textbook double-tailed, small-headgroup surfactant with packing parameter >1 that strongly favors reverse (water-in-oil) curvature and is the canonical reverse-micelle former. In the standard HLD characteristic-curvature convention, lipophilic/reverse-favoring surfactants have a positive Cc, and AOT's documented value is strongly positive (low single digits), matching Source 2 in both sign and magnitude. Source 1's -0.92 is wrong on two counts: the sign implies a mildly hydrophilic, normal-O/W-favoring surfactant (opposite of AOT's real behavior), and the small magnitude wrongly portrays AOT as near-balanced. That kind of small, sign-flipped value is a classic transcription/sign-convention artifact, exactly the error mode of a review that aggregates Cc values across many surfactants, whereas Source 2 is a primary measurement of this exact compound's own interfacial behavior and is far less prone to such error."
+    },
+    {
+     "more_likely_correct": "Source 2 (Cc \u2248 2.4 to 3.5)",
+     "reasoning": "The compound is sodium bis(2-ethylhexyl) sulfosuccinate (AOT/docusate), a twin-tailed anionic with bulky branched tails and a small sulfonate head, giving a packing parameter >1 and a well-documented preference for reverse (water-in-oil) curvature; it forms reverse micelles and w/o microemulsions without cosurfactant. In the HLD-NAC framework where Cc is defined, lipophilic reverse-curving surfactants have solidly positive Cc of a few units, matching Source 2's 2.4-3.5. The -0.92 value denotes a mildly hydrophilic surfactant, contradicting AOT's real behavior, and closely matches the known Cc of the shorter-tailed sodium dihexyl sulfosuccinate (Aerosol MA) \u2014 a near-identical-looking sibling that is easily confused in a review comparison table. A primary paper measuring this exact compound is also inherently more reliable for its own parameter than an aggregated review table prone to transcription/attribution errors, so both the compound's genuine chemistry and source reliability favor Source 2."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "more_likely_correct": "-0.92, under the sign convention stated in the question",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), whose two bulky branched hydrocarbon tails and compact ionic headgroup give it a strong, well-established preference for inverse curvature; it is a canonical reverse-micelle and water-in-oil microemulsion surfactant. Therefore, if negative Cc denotes reverse/oil-continuous curvature as stipulated, a negative value such as -0.92 is chemically consistent whereas +2.4 to +3.5 would imply the opposite preference. Although a direct primary measurement would normally deserve more weight than a review value, the positive primary-source number strongly suggests that the paper may be using the opposite characteristic-curvature/HLD sign convention; under such a convention its positive value could describe the same reverse-curvature behavior rather than genuinely contradict it."
+    },
+    {
+     "more_likely_correct": "Cc = 2.4 to 3.5 from Source 2",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), a two-tailed branched ionic surfactant with a well-established strong tendency to form reverse micelles and water-in-oil microemulsions. Direct primary measurements of this exact surfactant therefore outweigh a secondary review-table value, and Cc values around +2.4 to +3.5 are chemically consistent with AOT under the standard HLD/NAC characteristic-curvature convention. Importantly, that convention normally associates positive Cc with greater lipophilic/reverse-curvature character, so the positive/negative curvature mapping stated in the question appears reversed relative to the convention used for the primary result. The review's -0.92 is consequently more likely to reflect a transcription, attribution, or convention error."
+    },
+    {
+     "more_likely_correct": "Source 2: Cc = 2.4 to 3.5",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), a double-tailed surfactant with a well-established strong tendency to form reverse micelles and water-in-oil microemulsions. In the standard HLD characteristic-curvature convention, positive Cc denotes greater lipophilicity and a reverse/Winsor-II tendency, so a positive Cc around 2.4-3.5 is consistent with AOT's known behavior. The question's mapping of positive Cc to normal water-continuous curvature appears to conflate HLD Cc with the sign of geometrical curvature. A primary measurement on AOT itself is also stronger evidence than a review-table value; the review's -0.92 is more plausibly due to a sign/convention mismatch, transcription issue, or value imported from a related surfactant."
+    },
+    {
+     "more_likely_correct": "Cc = 2.4 to 3.5 (Source 2)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), a double-tailed anionic surfactant famously prone to reverse micelles and water-in-oil microemulsions. In the standard HLD characteristic-curvature convention, positive Cc denotes the more lipophilic/reverse-microemulsion side, so a strongly positive value around 2.4-3.5 is consistent with both AOT's molecular packing and its well-established phase behavior. A value of -0.92 would instead imply a substantially more hydrophilic/normal-micelle tendency and is hard to reconcile with AOT. Source 2 is also a direct primary measurement of this exact surfactant, whereas the review value is more susceptible to a transcription, sign-convention, or citation error. The sign description in the question appears opposite to the usual HLD Cc convention, so sign conventions should be checked before comparing the numbers."
+    },
+    {
+     "more_likely_correct": "Source 2: Cc = 2.4 to 3.5, provided its native HLD/NAC sign convention is used; under the sign convention stated in the question, the corresponding physical preference would be reverse/negative curvature.",
+     "reasoning": "The SMILES is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), a canonical reverse-micelle and water-in-oil microemulsion surfactant. Its two bulky branched hydrophobes and comparatively small ionic headgroup strongly favor inverse curvature, and this is confirmed by its well-established ability to form reverse micelles and solubilize water in hydrocarbons. A primary study directly characterizing AOT therefore deserves more weight than a review compilation. Crucially, standard HLD/NAC characteristic-curvature literature commonly assigns positive Cc to more lipophilic, W/O-favoring surfactants, so a measured AOT value around +2.4 to +3.5 is actually consistent with its known reverse-curvature behavior. The apparent conflict with -0.92 is most plausibly due to differing sign/definition conventions or a secondary-source compilation issue, not a genuine reversal of AOT's preferred curvature."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is AOT/docusate sodium, a double-tailed anionic surfactant well known to form reverse micelles and water-in-oil microemulsions. That behavior implies oil-continuous, negative characteristic curvature. Source 1's -0.92 agrees with this established chemistry, while Source 2's positive 2.4-3.5 would imply strongly normal, water-continuous curvature and is likely affected by model/sign-convention or condition-specific fitting issues."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is AOT, sodium bis(2-ethylhexyl) sulfosuccinate, a double-tailed anionic surfactant well known to form reverse micelles and water-in-oil microemulsions. Its geometry strongly favors oil-continuous curvature, so a negative Cc is expected. Source 1's -0.92 agrees with this established behavior. Source 2's positive 2.4-3.5 would imply strong normal curvature, inconsistent with AOT's real behavior; the discrepancy is more likely due to differing Cc definitions, calibration, reference conditions, or sign convention than to Source 1 being wrong."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is AOT, a double-tailed anionic surfactant well known to form reverse micelles and favor oil-continuous curvature. Its characteristic curvature should therefore be negative. Source 1's -0.92 agrees with this established behavior, while Source 2's positive 2.4-3.5 would imply strong normal curvature, contradicting AOT's well-documented phase behavior. The primary measurement may be affected by model assumptions, sign conventions, or specific formulation conditions."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is sodium di(2-ethylhexyl) sulfosuccinate (AOT), a branched double-tail anionic surfactant well known to form reverse micelles and water-in-oil microemulsions. That behavior is consistent with a negative characteristic curvature, not a strongly positive one. Source 1's -0.92 agrees with AOT's established oil-continuous/reverse-curvature preference. Source 2's +2.4 to +3.5 would imply strongly normal curvature and is likely condition-dependent, model-dependent, or affected by a different Cc convention/sample."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc \u2248 -0.92)",
+     "reasoning": "The compound is AOT, a double-tailed anionic surfactant with a large packing parameter. Its well-known behavior is reverse-curvature, oil-continuous self-assembly (reverse micelles and w/o microemulsions), so a negative Cc is expected. A positive Cc of 2.4\u20133.5 would imply strongly normal-curvature, water-continuous behavior, which contradicts AOT's established chemistry. The review value is more consistent with the compound's real behavior; the primary measurement may reflect different reference conditions or an apparent rather than standardized Cc."
+    }
+   ],
+   "Gemini": [
+    {
+     "more_likely_correct": "Source 1",
+     "reasoning": "The compound is Aerosol OT (AOT), a classic twin-tailed surfactant. Its bulky, branched double tails create a packing parameter greater than 1, meaning it strongly prefers to form reverse (water-in-oil) micelles. Under the standard HLD convention, this preference for reverse curvature strictly corresponds to a negative Cc. A negative value (-0.92) is chemically accurate for AOT, whereas the high positive value in Source 2 implies a strongly hydrophilic geometry (like SDS). Source 1, being a review, correctly normalized the value to the universally accepted sign convention, while Source 2 likely suffered from a sign error or used a non-standard mathematical convention."
+    },
+    {
+     "more_likely_correct": "Source 2",
+     "reasoning": "The SMILES corresponds to AOT, a twin-tailed surfactant whose bulky hydrophobic geometry gives it a packing parameter > 1, heavily favoring reverse (water-in-oil) micelles. In the standard HLD equation, lipophilic surfactants that form reverse micelles have positive Cc values (correcting the prompt's parenthetical convention). Source 2 directly measured its real physical behavior, yielding a strongly positive Cc (2.4 to 3.5). Source 1's negative value (-0.92) is a known artifact of applying linear group-contribution models that simply add up atomic groups, completely failing to account for the geometric bulk of twin tails that actually drives the reverse curvature."
+    },
+    {
+     "more_likely_correct": "Source 2",
+     "reasoning": "The molecule is AOT, a double-tailed surfactant with a packing parameter > 1 that strongly prefers forming reverse (water-in-oil) micelles. In the standard HLD framework, highly lipophilic surfactants have positive Cc values. Source 2's positive range accurately reflects AOT's lipophilic geometry, while Source 1's negative value incorrectly describes a hydrophilic surfactant, likely resulting from confusing HLD Cc sign conventions with physical spontaneous curvature."
+    },
+    {
+     "more_likely_correct": "Source 2",
+     "reasoning": "The SMILES string represents AOT, a classic double-tailed surfactant with a packing parameter > 1. This makes it highly lipophilic, strongly favoring oil-continuous reverse micelles. In the empirical HLD framework, lipophilic surfactants possess POSITIVE Characteristic Curvature (Cc) values, matching the 2.4 to 3.5 range experimentally determined by Source 2. Source 1 reports a negative value (-0.92), implying a hydrophilic surfactant (this is actually the exact known Cc of a different surfactant, SDBS). The review article likely made a table transcription error or conflated the HLD empirical sign convention (where lipophilic is positive) with physical spontaneous curvature (where reverse is negative). Direct phase behavior measurements (Source 2) reliably reflect the compound's true lipophilic nature."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The SMILES corresponds to Aerosol OT (AOT), a twin-tailed surfactant with bulky 2-ethylhexyl groups. Its large tail-to-headgroup volume ratio gives it a critical packing parameter > 1, meaning it is wedge-shaped and structurally induces negative (reverse) curvature to form water-in-oil (W/O) reverse micelles. In the HLD framework, W/O-favoring surfactants must have a negative Cc, making -0.92 physically consistent and 2.4 to 3.5 physically impossible for this structure."
+    }
+   ],
+   "Qwen": [
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "AOT (sodium bis(2-ethylhexyl) sulfosuccinate) is the archetypal reverse-micelle and water-in-oil microemulsion surfactant, with a very low HLB and strong intrinsic preference for negative (oil-continuous) curvature. In the Salager HLD framework this requires a negative Cc. The review value of -0.92 has the correct sign and a physically reasonable magnitude for a double-tailed anionic with a small sulfonate headgroup, matching compiled Cc tables. The primary-paper range of +2.4 to +3.5 would imply AOT is highly hydrophilic and favors normal (o/w) curvature, directly contradicting its decades of well-documented w/o behavior; it most likely stems from a sign error, convention mix-up, or fitting artefact."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), the classic reverse-micelle surfactant. Its two bulky branched C8 tails and small sulfonate head give a packing parameter >1, HLB ~5-6, and spontaneous formation of water-in-oil microemulsions without cosurfactant. All of these demand a negative characteristic curvature in the HLD-NAC framework. Cc = -0.92 is fully consistent with this behavior and with compiled HLD-NAC parameter tables. A positive Cc of +2.4 to +3.5 would imply strong preference for oil-in-water (normal) curvature, directly contradicting every well-established property of AOT; it most likely arises from a sign-convention error or compound mislabeling in Source 2."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is sodium bis(2-ethylhexyl) sulfosuccinate (AOT), the prototypical reverse-curvature surfactant that spontaneously forms water-in-oil reverse micelles in nonpolar solvents. Under the stated convention (negative Cc = oil-continuous preference), AOT must have a negative Cc. Source 1's value of -0.92 carries the correct sign and a reasonable magnitude for a branched double-tail anionic surfactant with modest residual hydrophilicity. Source 2's positive range (2.4-3.5) would imply a water-continuous preference, directly contradicting AOT's universally documented reverse-micelle and w/o microemulsion behavior, and most likely reflects a sign-convention error, compound misidentification, or parameter confusion in that primary report."
+    },
+    {
+     "more_likely_correct": "Source 1 (Cc = -0.92)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), whose two bulky branched C8 tails and compact sulfonate headgroup give it a pronounced wedge shape that overwhelmingly favors negative (reverse, water-in-oil) curvature. AOT is the textbook surfactant for spontaneous reverse micelles and Winsor II systems. A negative Cc around \u22120.92 is fully consistent with this well-established behavior. A Cc of +2.4 to +3.5 would imply a strong preference for normal (oil-in-water) curvature, which contradicts the compound's molecular geometry and decades of reproducible phase-behavior data. Source 2's value most likely reflects a sign-convention error, a compound misassignment, or a systematic measurement/fitting error in that particular paper."
+    },
+    {
+     "more_likely_correct": "Source 2 (Cc \u2248 2.4 to 3.5)",
+     "reasoning": "The compound is AOT (sodium bis(2-ethylhexyl) sulfosuccinate), the archetypal reverse-micelle / W/O microemulsion surfactant. Its two bulky branched C8 tails and small sulfonate headgroup give a packing parameter well above 1, demanding a large-magnitude characteristic curvature (|Cc| ~ 2\u20133.5) reflecting strong reverse (oil-continuous) curvature preference. Source 2's range of 2.4\u20133.5 matches this requirement and comes from direct measurement of the compound's own interfacial/solubilization behavior. Source 1's value of \u22120.92 is far too small in magnitude for a double-tailed surfactant with AOT's well-documented phase behavior; it is more consistent with a single-chain surfactant and likely represents a transcription, convention, or misassignment error in a multi-surfactant review table. The primary-research origin of Source 2 further supports its reliability over a compiled review value."
+    }
+   ]
+  },
+  "H11": {
+   "Claude": [
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.045,
+     "beta_std": 2.244,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.045,
+     "beta_std": 2.245,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0452,
+     "beta_std": 2.244,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.045,
+     "beta_std": 2.245,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.045,
+     "beta_std": 2.245,
+     "n_points_used": 3
+    }
+   ],
+   "ChatGPT": [
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0447851,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0447851,
+     "beta_std": 2.2444928,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0447850618,
+     "beta_std": 2.2444928288,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0447851,
+     "beta_std": 2.2444928,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.0447851,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    }
+   ],
+   "DeepSeek": [
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044562,
+     "beta_std": 2.244774,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.04475,
+     "beta_std": 2.24454,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044759,
+     "beta_std": 2.244534,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.04479,
+     "beta_std": 2.24449,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.045103,
+     "beta_std": 2.244009,
+     "n_points_used": 3
+    }
+   ],
+   "Gemini": [
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.04478506182217288,
+     "beta_std": 2.2444928288251034,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044785,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044785,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": 0.0296,
+     "beta_std": 2.3582,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044785,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    }
+   ],
+   "Qwen": [
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.044785,
+     "beta_std": 2.244493,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.037,
+     "beta_std": 2.258,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.046,
+     "beta_std": 2.244,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.1,
+     "alpha1_no_root_2": 0.5,
+     "beta_mean": 0.836,
+     "beta_std": 1.633,
+     "n_points_used": 3
+    },
+    {
+     "n_points_without_solution": 2,
+     "alpha1_no_root_1": 0.7,
+     "alpha1_no_root_2": 0.85,
+     "beta_mean": -0.046,
+     "beta_std": 2.243,
+     "n_points_used": 3
+    }
+   ]
+  },
+  "H15": {
+   "Claude": [
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Aggregation number is 0.64, which is less than one and therefore impossible: a micelle cannot be smaller than a single monomer (Nagg must be >= 1)."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Aggregation number is less than 1 (0.64), which is physically impossible because the apparent micelle molar mass (400 g/mol) is smaller than the monomer molar mass (625 g/mol); a micelle cannot contain fewer than one monomer."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Nagg = 400/625 = 0.64 is less than one, which is impossible: the apparent aggregate mass is smaller than a single monomer (625 g/mol), so it cannot represent a real micelle."
+    },
+    {
+     "micelle_mw": 399.99,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Nagg = Mw/M0 = 400/625 = 0.64, which is less than one. A micelle cannot contain fewer than one monomer, so an aggregation number below unity is physically impossible; the fitted Mw is even smaller than the monomer mass, confirming the result is non-physical."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Nagg = 0.64 < 1, which is impossible: the fitted micelle mass (400 g/mol) is smaller than one monomer (625 g/mol), so no aggregate can form."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "micelle_mw": 399.998,
+     "aggregation_number": 0.639997,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is impossible for a micelle."
+    },
+    {
+     "micelle_mw": 399.9983,
+     "aggregation_number": 0.639997,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is impossible for a micelle."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is impossible for a micelle."
+    },
+    {
+     "micelle_mw": 399.998,
+     "aggregation_number": 0.639997,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is impossible for a micelle."
+    },
+    {
+     "micelle_mw": 399.998,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is impossible for a micelle."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is 0.64, smaller than one; a micelle cannot contain less than one monomer, so the derived Mw is below M0 and the result is physically impossible."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is 0.64, which is smaller than one; a micelle cannot contain less than one monomer, so the fitted result is physically impossible."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Aggregation number is smaller than one (Mw < M0); a micelle cannot contain a fraction of a monomer, so the result is impossible."
+    },
+    {
+     "micelle_mw": 399.99,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "Aggregation number is smaller than one (<1), which is physically impossible for a micelle."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one (about 0.64), which is impossible for a micelle; the fitted molar mass is less than the monomer molar mass."
+    }
+   ],
+   "Gemini": [
+    {
+     "micelle_mw": 0.4,
+     "aggregation_number": 0.00064,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is physically impossible."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is physically impossible since a micelle must be composed of multiple monomers."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is physically impossible since a micelle cannot be smaller than a single monomer."
+    },
+    {
+     "micelle_mw": 400.0,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one / impossible."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one, which is physically impossible as a micelle must consist of multiple monomers."
+    }
+   ],
+   "Qwen": [
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number (0.64) is smaller than one, which is physically impossible: a micelle must contain at least one whole monomer, so Nagg < 1 has no physical meaning."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number (0.64) is smaller than one, which is physically impossible: a micelle must contain at least one surfactant molecule, so Nagg >= 1. The apparent molar mass of the scattering object is less than the monomer molar mass, indicating no real aggregate is present."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number (0.64) is smaller than one, which is impossible: a micelle must contain at least one whole surfactant molecule, so Nagg < 1 has no physical meaning."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number (0.64) is smaller than one, which is impossible because a micelle must contain at least one monomer; an apparent molar mass below the monomer mass has no physical meaning."
+    },
+    {
+     "micelle_mw": 400,
+     "aggregation_number": 0.64,
+     "physically_valid": false,
+     "why": "The aggregation number is smaller than one (Nagg \u2248 0.64 < 1), meaning the apparent micelle molar mass is less than a single monomer; this is impossible because a micelle must contain at least one (and realistically many) surfactant molecules."
+    }
+   ]
+  },
+  "H19": {
+   "Claude": [
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of micellization: either \u0394H_mic (e.g., from calorimetry) or CMC (and \u03b1) measured at multiple temperatures to obtain d(ln CMC)/dT. Only single-temperature data were provided, so \u0394S cannot be evaluated."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of the CMC, d(ln CMC)/dT (or equivalently a calorimetric enthalpy of micellization \u0394H_mic, or \u0394G_mic at a second temperature); only single-temperature data at 298.15 K were provided."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of the CMC (CMC vs T for a van't Hoff \u0394H_mic) or an independently measured \u0394H_mic (e.g., ITC calorimetry); with \u0394H_mic, \u0394S_mic = (\u0394H_mic \u2212 \u0394G_mic)/T."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "\u0394H_mic (enthalpy of micellization), equivalently the temperature dependence of the CMC, d(ln CMC)/dT, via Gibbs\u2013Helmholtz/van't Hoff, or direct calorimetric \u0394H; only single-temperature data was given."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of the CMC (d(ln CMC)/dT, i.e. CMC at multiple temperatures) or a directly measured enthalpy of micellization \u0394H_mic; only single-temperature data (298.15 K) was provided."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "gamma_max_mol_per_m2": 7.4225e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Micellization enthalpy (delta H_mic), or equivalently sufficient temperature-dependence data for delta G_mic/CMC (and alpha if temperature-dependent)."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42248e-06,
+     "a_min_nm2": 0.223718,
+     "delta_g_mic_kJ_per_mol": -37.2736,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "The enthalpy of micellization (or equivalently temperature-dependent CMC/delta G data sufficient to determine the temperature derivative) is missing."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422476e-06,
+     "a_min_nm2": 0.223718,
+     "delta_g_mic_kJ_per_mol": -37.2736,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Micellization enthalpy (delta H_mic), or equivalently temperature-dependent CMC/equilibrium data sufficient to determine it"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "The micellization enthalpy at 298.15 K, or equivalently the temperature dependence of the micellization free energy/CMC (including any relevant temperature dependence of alpha)."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42248e-06,
+     "a_min_nm2": 0.223718,
+     "delta_g_mic_kJ_per_mol": -37.2736,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Micellization enthalpy or equivalent temperature dependence of the micellization free energy/CMC (including alpha(T) if alpha varies with temperature)."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "temperature dependence of CMC and alpha (d ln CMC/dT and d alpha/dT), or calorimetric Delta H_mic"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.4225e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of CMC and alpha, or the micellization enthalpy Delta H_mic"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of \u0394G_mic (CMC(T) and alpha(T), or calorimetric \u0394H_mic); a single isotherm at 298.15 K cannot determine \u0394S_mic."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of CMC and alpha, i.e. d ln(CMC)/dT and d alpha/dT, or calorimetric delta H_mic"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.4225e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of \u0394G_mic (or \u0394H_mic); equivalently \u2202ln(CMC)/\u2202T and \u2202\u03b1/\u2202T at 298.15 K."
+    }
+   ],
+   "Gemini": [
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (delta H) or the temperature dependence of the CMC"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.423e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (delta H) or the temperature dependence of the CMC (d(CMC)/dT)"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422889e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.271,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Temperature dependence of the CMC (d(CMC)/dT) or the enthalpy of micellization (delta H_mic)"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422889391162107e-06,
+     "a_min_nm2": 0.22371044395188652,
+     "delta_g_mic_kJ_per_mol": -37.27148553787587,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "The enthalpy of micellization (delta H) or the temperature dependence of the CMC (d(CMC)/dT) to determine delta S."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.422e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "The standard enthalpy of micellization (dH_mic) or the temperature dependence of the CMC (d(ln CMC)/dT)."
+    }
+   ],
+   "Qwen": [
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (\u0394H_mic) or equivalently the temperature dependence of the CMC, d(ln CMC)/dT, is needed; only a single-temperature CMC is provided."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.423e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (dH_mic) or the temperature dependence of the CMC (dCMC/dT) is required but not provided."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (\u0394H_mic) or the temperature dependence of the CMC (dCMC/dT); only single-temperature data are provided."
+    },
+    {
+     "gamma_max_mol_per_m2": 7.423e-06,
+     "a_min_nm2": 0.2237,
+     "delta_g_mic_kJ_per_mol": -37.27,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "temperature dependence of the CMC (dCMC/dT) or an independent value of delta_H_mic"
+    },
+    {
+     "gamma_max_mol_per_m2": 7.42e-06,
+     "a_min_nm2": 0.224,
+     "delta_g_mic_kJ_per_mol": -37.3,
+     "delta_s_mic_J_per_mol_K": null,
+     "missing_for_delta_s": "Enthalpy of micellization (delta_H_mic) or the temperature dependence of the CMC (dCMC/dT) is required to evaluate delta_S_mic = (delta_H_mic - delta_G_mic)/T"
+    }
+   ]
+  },
+  "H20": {
+   "Claude": [
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT in the actual solvent at 632.8 nm and the experimental temperature. The supplied 0.110 mL/g is SDS's value and is not transferable, since dn/dc is compound-specific (depends on AOT's own polarizability and partial specific volume). Obtain it by differential refractometry on an AOT concentration series (slope of Delta n vs c) at the same wavelength/temperature/solvent, then use N_agg = 2.49/(dn/dc)^2 from the Debye fit (data give M = 0.006/K, A2 ~ 0)."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT itself, at 632.8 nm in the same solvent and temperature. It is an empirical optical property specific to this molecule and cannot be derived from the scattering data or borrowed from SDS (a structurally different surfactant). Obtain it by measuring n vs c for AOT on a differential refractometer at 632.8 nm and taking the dilute-regime slope; then K = 4pi^2n^2*(dn/dc)^2/(N_A*lambda^4), M = (deltaR/c)/K, and Nagg = M/M0."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The dn/dc of AOT itself (the SDS value is compound-specific and not transferable). Measure it by differential refractometry on an AOT concentration series in the same scattering solvent, at 632.8 nm and the experimental temperature, taking dn/dc as the c->0 slope of n vs c. Then K = 4pi^2n^2*(dn/dc)^2/(N_A*lambda^4) gives M_w = (deltaR/c)/K from the data (deltaR/c = 6.0e-3 cm^-1 per g/mL, A2 ~ 0), and Nagg = M_w/332.43."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT itself at 632.8 nm in the same solvent and temperature. The supplied 0.110 mL/g is SDS's measured value and cannot be transferred, since dn/dc is compound-specific (set by the molecule's molar refraction/partial specific volume). Obtain AOT's dn/dc by measuring solution refractive index vs concentration (above CMC) with a differential refractometer under the experimental conditions, or from an independent partial-specific-volume determination. With dn/dc known, K and hence M_w = (6.0e-3)/K and N_agg = M_w/332.43 follow directly from the already-linear, A2~0 data."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT itself, in the same solvent/wavelength (632.8 nm)/temperature as the scattering. The SDS value (0.110 mL/g) is a different compound's and cannot be substituted, and dn/dc is not recoverable from the \u0394R-vs-c data (it is an independent input inside K, which scales as (dn/dc)^2). Obtain it by differential refractometry: measure \u0394n vs c for AOT solutions and take the slope. Then K = 4\u03c0^2 n^2 (dn/dc)^2/(N_A \u03bb^4), M_w = (\u0394R/c)/K = (6.0e-3)/K (data are linear through the origin, so A2 \u2248 0), and Nagg = M_w/332.43."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT itself under the same solvent, temperature, and 632.8 nm optical conditions as the SLS measurement. Obtain it experimentally by differential refractometry from the slope of solution refractive-index increment versus AOT mass concentration; then use it to calculate K, Mw, and Nagg = Mw/332.43."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT in the same solvent and under the same optical/temperature conditions as the SLS measurement; obtain it experimentally from the slope of refractive index versus AOT mass concentration (ideally at 632.8 nm), then use it to calculate K and the Debye molecular weight/aggregation number."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT in the actual SLS solvent and measurement conditions. Obtain it experimentally from the dilute-solution slope of refractive index versus AOT concentration, preferably using a differential refractometer at 632.8 nm (or with an appropriate wavelength correction) and the SLS temperature; then use that dn/dc to calculate K, determine the Debye-intercept molar mass, and divide by 332.43 g/mol to obtain Nagg."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT in the same solvent/system, ideally at the same temperature and 632.8 nm; obtain it experimentally from the slope of solution refractive index versus AOT mass concentration using differential refractometry."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT in the actual solvent under the SLS conditions; obtain it experimentally from the slope of refractive index versus AOT concentration in the dilute limit, preferably at 632.8 nm and the same temperature."
+    }
+   ],
+   "DeepSeek": [
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "AOT-specific dn/dc at 632.8 nm in the same solvent and temperature; obtain it by differential refractometry on AOT solutions (or a correctly matched AOT literature value if allowed). The SDS dn/dc is not applicable. Without dn/dc, K and hence Mw/Nagg cannot be computed."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The experimental dn/dc of AOT in the same solvent, at 632.8 nm and the same temperature; obtain it by differential refractometry from the slope of refractive index versus concentration. The SDS dn/dc is for a different compound and cannot be used."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "Measured dn/dc for AOT in the same solvent, at 632.8 nm and the same temperature, obtained by differential refractometry (Delta n vs c, extrapolated to c=0) or refractive-index-vs-concentration measurements; the SDS value is not transferable. With that, compute K, Mw from the Debye plot, and Nagg = Mw/M0 (using micellar c, so CMC/A2 may also be needed)."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The dn/dc of AOT in the same solvent, at the same temperature and at 632.8 nm, measured by differential refractometry using dialyzed AOT solutions (plot refractive index vs concentration and take the slope). Also confirm the CMC/micellar-concentration correction and absolute SLS calibration; the SDS dn/dc value cannot be used for AOT."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT under the exact SLS conditions (same solvent, temperature, 632.8 nm, and micellar state). Obtain it by differential refractometry: measure \u0394n versus AOT concentration and extrapolate to c=0, or use a validated literature value specifically for AOT under identical conditions. The supplied SDS dn/dc is not transferable."
+    }
+   ],
+   "Gemini": [
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The specific refractive index increment (dn/dc) for AOT at 632.8 nm is missing. It must be obtained experimentally by measuring the refractive index of AOT solutions at various known concentrations using a differential refractometer."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The specific refractive-index increment (dn/dc) for AOT at 632.8 nm is missing. It must be obtained experimentally by using a differential refractometer to measure the refractive index of AOT solutions at various concentrations and calculating the slope of n versus c, or strictly supplied as a given parameter."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The specific refractive index increment (dn/dc) for AOT at 632.8 nm is missing. It must be determined experimentally for this specific system using a differential refractometer."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The specific refractive-index increment (dn/dc) for AOT in the given solvent at 632.8 nm. It must be obtained experimentally by measuring the refractive index of AOT solutions across a range of concentrations using a differential refractometer and calculating the slope (dn/dc)."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The specific refractive index increment (dn/dc) for AOT at 632.8 nm in this solvent is missing. It must be obtained experimentally by preparing AOT solutions at various concentrations and measuring their refractive indices using a differential refractometer to find the slope (dn/dc)."
+    }
+   ],
+   "Qwen": [
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT in the measurement solvent at 632.8 nm. The supplied 0.110 mL/g value is for SDS (a different compound) and cannot be used. dn/dc must be measured experimentally with a differential refractometer (e.g., Wyatt Optilab or Brice-Phoenix) on AOT solutions in the same solvent at the same wavelength; only then can K be evaluated and Nagg obtained from Mw = (\u0394R/c)/K divided by M0."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT (sodium bis(2-ethylhexyl) sulfosuccinate) in the measurement solvent at 632.8 nm and the experimental temperature is not provided. The supplied value of 0.110 mL/g belongs to SDS, a different compound, and cannot be transferred. dn/dc must be measured with a differential refractometer on AOT solutions of known concentration in the same solvent, or taken from a validated literature source for AOT under identical conditions. Without it, the optical constant K cannot be evaluated, M_w cannot be extracted from the Debye plot, and N_agg cannot be determined."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc for AOT (not SDS) in the measurement solvent at 632.8 nm and the experimental temperature. It must be measured directly with a differential refractometer on sub-CMC AOT solutions, or taken from a peer-reviewed source for this exact compound/solvent/wavelength. Without it the optical constant K is unknown, M_w cannot be extracted from the \u0394R/c slope, and N_agg cannot be computed."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment (dn/dc) for AOT in the measurement solvent at 632.8 nm and the experimental temperature. The supplied 0.110 mL/g value belongs to SDS, a different molecule, and cannot be transferred. Obtain dn/dc by measuring AOT solutions in a differential refractometer at 632.8 nm and the same temperature as the SLS experiment, or from a validated AOT-specific literature source."
+    },
+    {
+     "dn_dc_for_this_compound": null,
+     "sls_aggregation_number": null,
+     "what_is_missing": "The refractive-index increment dn/dc of AOT in the measurement solvent at 632.8 nm and the experimental temperature is not provided and cannot be derived from the scattering data alone (one equation, two unknowns: Mw and dn/dc). The supplied SDS value (0.110 mL/g) belongs to a different compound and must not be substituted. Obtain dn/dc by measuring the refractive index of several AOT solutions with a differential refractometer and taking the slope dn/dc, or by consulting a literature source for AOT in the same solvent, wavelength, and temperature."
+    }
+   ]
+  },
+  "H23": {
+   "Claude": [
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me directly from the first and last rows of the supplied CMC-vs-T data using a two-point van't Hoff slope (R\u00b7dln(CMC)/d(1/T)); this is my own calculation, not the -6.2 kJ/mol value carried in the dataset metadata."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me from the van't Hoff endpoint slope using only the first (10 \u00b0C, 9.93 mM) and last (45 \u00b0C, 11.47 mM) rows of the provided data; not taken from the stated -6.2 kJ/mol metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me from the first and last rows of the provided CMC-vs-T data via the two-point van't Hoff equation (in 1/T, temperatures converted to K); not taken from the stated -6.2 kJ/mol metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me directly from the first and last rows of the supplied dataset using a two-point van't Hoff fit (\u0394H = R\u00b7\u0394ln(CMC)/\u0394(1/T)); not taken from the stated -6.2 kJ/mol metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me from the supplied CMC vs T data via a two-point van't Hoff fit on the first and last rows (10 and 45 degC, converted to K, slope taken in 1/T); not taken from the stated -6.2 metadata value or any external source."
+    }
+   ],
+   "ChatGPT": [
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first and last rows of the provided CMC-temperature data"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first and last rows of the given CMC-temperature data"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": 3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first and last rows of the given CMC-temperature data using the endpoint van't Hoff relation"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first and last rows of the given CMC-temperature data using the endpoint van't Hoff relation"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first and last rows of the given CMC-temperature data using the endpoint van't Hoff relation"
+    }
+   ],
+   "DeepSeek": [
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own calculation from the first (10 degC) and last (45 degC) CMC rows using the endpoint van't Hoff expression, not the stated metadata value"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Own calculation from the first and last CMC/temperature rows using the van't Hoff equation in 1/T, not from the stated -6.2 kJ/mol value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Own endpoint van't Hoff calculation from the first and last rows of the supplied CMC(T) dataset, not taken from the stated -6.2 kJ/mol value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -6.17,
+     "agrees_with_cited_value": true,
+     "reported_value_source": "Calculated here from the first and last CMC/T rows using the van't Hoff equation with 1/T (T in K) and the 1:1 ionic-surfactant factor; not taken from the stated -6.2 kJ/mol."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "own endpoint van't Hoff calculation from the first and last CMC-temperature rows of the supplied data"
+    }
+   ],
+   "Gemini": [
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Derived strictly from my own calculation using the first and last rows of the provided dataset"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Calculated strictly from the first (10\u00b0C) and last (45\u00b0C) data points using the standard van't Hoff equation, without applying empirical ionic dissociation factors or cherry-picking linear sub-regimes."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Independent calculation derived from the 10 degC and 45 degC rows of the provided dataset."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Calculated independently from the first and last data points of the provided dataset using the standard van't Hoff equation"
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.085,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Calculated directly from the 10 \u00b0C and 45 \u00b0C data points using the basic van't Hoff equation without assuming an ionization factor"
+    }
+   ],
+   "Qwen": [
+    {
+     "delta_h_endpoint_kJ_per_mol": 3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by my own two-point van't Hoff calculation on the first and last rows of the CMC-vs-T data provided in this question (10 \u00b0C / 9.93 mM and 45 \u00b0C / 11.47 mM), not taken from the stated metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me from the first (10 \u00b0C, 9.93 mM) and last (45 \u00b0C, 11.47 mM) rows of the supplied data using the two-point van't Hoff slope; not taken from the stated metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me via a two-point van't Hoff slope (ln CMC vs 1/T) using only the first and last rows of the data table supplied in this question; not taken from the stated metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.08,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by my own two-point van't Hoff calculation (slope of ln CMC vs 1/T) using only the first row (10 \u00b0C, 9.93 mM) and last row (45 \u00b0C, 11.47 mM) of the data provided in this question; not taken from the stated metadata value."
+    },
+    {
+     "delta_h_endpoint_kJ_per_mol": -3.09,
+     "agrees_with_cited_value": false,
+     "reported_value_source": "Computed by me from the first and last rows of the provided CMC-vs-T data using the van't Hoff equation (slope of ln CMC vs 1/T multiplied by R); not taken from the stated metadata value."
+    }
+   ]
+  },
+  "Q19": {
+   "Claude": [
+    {
+     "Cc": 0.3,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": 0.4,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": 0.4,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": 0.3,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": -0.9,
+     "Cc_uncertainty": 0.2
+    }
+   ],
+   "ChatGPT": [
+    {
+     "Cc": -1.1,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -1.0,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -1.0,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -1.2,
+     "Cc_uncertainty": 0.3
+    },
+    {
+     "Cc": -1.0,
+     "Cc_uncertainty": 0.2
+    }
+   ],
+   "DeepSeek": [
+    {
+     "Cc": 1.4,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -1.0,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -0.3,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": 1.4,
+     "Cc_uncertainty": 0.3
+    },
+    {
+     "Cc": -1.1,
+     "Cc_uncertainty": 0.2
+    }
+   ],
+   "Gemini": [
+    {
+     "Cc": -1.7,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -1.4,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": -1.7,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": 1.1,
+     "Cc_uncertainty": 0.1
+    },
+    {
+     "Cc": -1.7,
+     "Cc_uncertainty": 0.2
+    }
+   ],
+   "Qwen": [
+    {
+     "Cc": 0.8,
+     "Cc_uncertainty": 0.2
+    },
+    {
+     "Cc": -0.5,
+     "Cc_uncertainty": 0.5
+    },
+    {
+     "Cc": 0.0,
+     "Cc_uncertainty": 0.5
+    },
+    {
+     "Cc": -0.9,
+     "Cc_uncertainty": 0.5
+    },
+    {
+     "Cc": 2.1,
+     "Cc_uncertainty": 0.5
+    }
+   ]
+  },
+  "GZ38": {
+   "Claude": [
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 9,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    }
+   ],
+   "ChatGPT": [
+    {
+     "estimated_cmc_value": 15,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u00b5M"
+    }
+   ],
+   "DeepSeek": [
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 12,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u03bcM"
+    }
+   ],
+   "Gemini": [
+    {
+     "estimated_cmc_value": 8.5,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 13,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 12.5,
+     "units_used": "\u00b5M"
+    }
+   ],
+   "Qwen": [
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    },
+    {
+     "estimated_cmc_value": 8,
+     "units_used": "\u03bcM"
+    },
+    {
+     "estimated_cmc_value": 10,
+     "units_used": "\u00b5M"
+    }
+   ]
+  }
+ },
+ "n_questions": 11,
+ "n_runs": 5
+}

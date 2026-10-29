@@ -1,4 +1,4 @@
-Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ11](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L20) through [GZ20](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L267)), worked through in order.
+Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ11](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L20) through [GZ20](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch2.txt#L267)), worked through in order.
 
 ---
 
@@ -155,7 +155,7 @@ FINAL_JSON:
 
 ### Solution for Question GZ15
 
-#### Direct Chart Reading from [GZ-15_chart.png](file:///home/prashant-kotian/overnight_run/agy_gs50/GZ-15_chart.png):
+#### Direct Chart Reading from [GZ-15_chart.png](file://~/overnight_run/agy_gs50/GZ-15_chart.png):
 1. **Surface Tension at Lowest Concentration Shown:**
    - The leftmost data point sits at $c = 0.01585\text{ mM} \approx 0.016\text{ mM}$ (just past the $10^{-2}$ gridline).
    - Its vertical position is directly read at $\gamma = 62.22\text{ mN/m}$.

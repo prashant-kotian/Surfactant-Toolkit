@@ -1,0 +1,205 @@
+================================================================================
+SDS (Sodium Dodecyl Sulfate) — Compiled Outputs for GZ-66, GZ-67, GZ-68
+SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+Reference temperature: 298.15 K
+================================================================================
+
+
+################################################################################
+# GZ-66 — Critical Packing Parameter, Morphology, and Davies HLB
+################################################################################
+
+CRITICAL PACKING PARAMETER (TANFORD)
+------------------------------------
+For the dodecyl tail, n_c = 12:
+  Tail volume:            V   = 27.4 + 26.9 x 12 = 350.2 A^3
+  Critical chain length:  l_c = 1.5  + 1.265 x 12 = 16.68 A
+  Head area:              a0  = 49.37 A^2 (measured at 298.15 K)
+
+  CPP = V / (a0 * l_c) = 350.2 / (49.37 x 16.68) = 350.2 / 823.49 = 0.425
+
+The standard Israelachvili morphology bins place this value in the range
+1/3 < CPP < 1/2, which predicts CYLINDRICAL (ROD-LIKE) MICELLES — normal
+(positive) curvature aggregates, just past the sphere-to-rod boundary.
+
+HLB (DAVIES GROUP CONTRIBUTION)
+-------------------------------
+  One -OSO3Na headgroup:                          +38.6
+  Eleven -CH2- + one -CH3 = 12 x 0.475 lipophilic = 5.7
+
+  HLB = 7 + 38.6 - 5.7 = 39.9
+
+An HLB of ~40 is characteristic of a very strongly hydrophilic, highly
+water-soluble surfactant — well into the range associated with detergents
+and oil-in-water emulsifiers/solubilizers.
+
+CONSISTENCY OF THE TWO DESCRIPTORS
+----------------------------------
+The two are broadly consistent in their qualitative message but reveal an
+instructive quantitative tension.
+
+Both descriptors agree on the essential point: this is a normal, water-soluble,
+micelle-forming surfactant with an effective headgroup that is large relative to
+its tail. The Davies HLB of ~40 says the molecule strongly favors the aqueous
+phase and forms normal (type I) aggregates rather than inverse structures or
+bilayers, and the CPP of 0.425 sits firmly below 1, i.e. in the positive-
+curvature regime that gives normal micelles rather than lamellar or inverted
+phases. So at the level of "what kind of self-assembly," they point the same way.
+
+The tension is in the degree of curvature. A very high HLB (~40) is usually read
+as favoring the highest-curvature, smallest aggregates — spherical micelles —
+and experimentally SDS near its CMC does form roughly spherical micelles. Yet
+the computed CPP of 0.425 lands in the cylindrical/rod-like bin (needing
+CPP < 1/3 for spheres). The gap arises because the simple Tanford geometry uses
+a fully extended 12-carbon chain and a single measured a0, and it does not
+capture the strong electrostatic head-group repulsion of the ionic sulfate.
+That repulsion increases the effective area per headgroup, which would push the
+true CPP down toward the spherical regime and reconcile it with both the extreme
+HLB and the observed behavior. (Using n_c = 11, the common convention that
+treats the alpha-carbon as part of the interface, would also lower V and drop
+CPP into the spherical range.) In short: consistent in kind, mildly divergent in
+the finer prediction of aggregate shape, with the divergence explained by the
+CPP calculation's neglect of ionic head-group repulsion.
+
+FINAL_JSON:
+{
+  "cpp": 0.425,
+  "morphology": "cylindrical (rod-like) micelles",
+  "hlb_davies": 39.9,
+  "consistency_discussion": "Both descriptors are qualitatively consistent: the very high Davies HLB (~40) marks a strongly hydrophilic, water-soluble surfactant that forms normal (oil-in-water, positive-curvature) aggregates, and the CPP of 0.425 lies well below 1, in the normal-micelle regime rather than the bilayer or inverse range. The tension is quantitative: HLB ~40 (and real SDS behavior near the CMC) implies the highest-curvature spherical micelles, whereas CPP=0.425 falls in the cylindrical/rod-like bin (spheres require CPP<1/3). This gap comes from the Tanford geometry using a fully extended 12-carbon chain and a single a0 while ignoring the strong electrostatic repulsion of the ionic sulfate headgroup, which in reality enlarges the effective head area and lowers the true CPP toward the spherical regime; using n_c=11 would likewise push CPP into the sphere range. So the two structural descriptors agree on the class of self-assembly (hydrophilic, normal micelle-former) and differ only mildly on predicted aggregate shape, a discrepancy fully attributable to the packing model omitting ionic head-group repulsion."
+}
+
+
+################################################################################
+# GZ-67 — Hydrophilic-Lipophilic Difference (HLD), Winsor Type, and Counterion Binding
+################################################################################
+
+HLD CALCULATION
+---------------
+  HLD = ln(S) - k*EACN - alpha*deltaT + Cc
+
+With S = 5, EACN = 0 (toluene), k = 0.16, deltaT = 0, and Cc = -2.63:
+
+  HLD = ln(5) - 0.16(0) - 0.01(0) + (-2.63) = 1.6094 - 2.63 = -1.02
+
+Since HLD < 0, the surfactant is net hydrophilic — it partitions preferentially
+into the aqueous phase and stabilizes an oil-in-water microemulsion in
+equilibrium with excess oil. This is WINSOR TYPE I.
+
+IS beta = 0.728 CONSISTENT WITH THE WINSOR I PREDICTION?
+-------------------------------------------------------
+Yes, and it offers genuine independent molecular-level support, provided one
+reads it carefully.
+
+Both quantities are ultimately governed by the electrostatic state of the
+sulfate headgroup layer, but they are measured on completely different footings:
+HLD is a thermodynamic phase-behavior descriptor built from the characteristic
+curvature Cc and the salinity/temperature/oil terms, while beta comes from a
+separate conductivity- or EPR-type experiment counting the fraction of Na+
+condensed onto the micelle surface. Their agreement is therefore not circular.
+
+The key reading is the residual, not the bound, charge. A binding degree of
+0.728 leaves 1 - beta ~ 0.27 of the counterions dissociated, so the micelle
+surface retains substantial net negative charge. That residual charge sustains
+headgroup-headgroup repulsion, keeps the effective head area large, and
+maintains the high positive spontaneous (interfacial) curvature that defines
+normal micelles — exactly the molecular picture behind a strongly negative Cc
+(-2.63) and an HLD comfortably below zero. So the surfactant remaining net
+hydrophilic (Winsor I) is consistent with a micelle that is highly, but not
+fully, charge-neutralized.
+
+There is a second, subtler layer of support. Adding salt to an ionic surfactant
+does two coupled things: in the HLD equation it raises the ln(S) term, driving
+HLD upward toward the Winsor I -> III -> II sequence, and physically it screens
+the interface and pushes more counterions onto the surface, i.e. it raises beta.
+A beta of 0.728 at 5% NaCl-equivalent salinity is on the high side for SDS
+(near-neutral binding of ~0.6-0.7 in low salt), which is the molecular signature
+of exactly the screening that the ln(S) term is accounting for. The system is
+being pushed toward the optimum-formulation transition — but HLD = -1.02 is
+still clearly negative, not marginal, so it has not crossed over. The
+high-but-not-complete counterion binding mirrors this precisely: strong
+screening, yet enough residual charge to keep the film hydrophilic and the phase
+behavior in Winsor I.
+
+The one caveat worth stating is directional consistency versus quantitative
+coupling. A higher beta, taken alone, reduces headgroup repulsion and would tend
+to make Cc less negative and nudge HLD upward — so beta and hydrophilicity are
+inversely related at the margin. The two descriptors are consistent here not
+because "high beta means more hydrophilic," but because even this elevated beta
+leaves the interface charged enough to sit on the Winsor I side of the
+transition. Both independent measurements therefore converge on the same
+conclusion: a hydrophilic-dominated, normal-micelle-forming surfactant that is
+salt-sensitive and trending toward — but not yet at — its optimum formulation.
+
+FINAL_JSON:
+{
+  "hld_value": -1.02,
+  "winsor_type": "Winsor I",
+  "consistency_discussion": "HLD = ln(5) - 0.16*0 - 0.01*0 + (-2.63) = 1.609 - 2.63 = -1.02 < 0, giving Winsor Type I: a net-hydrophilic surfactant forming an oil-in-water microemulsion with excess oil. The counterion binding degree beta = 0.728 is consistent with and independently supportive of this, since the two are measured on different footings (HLD from characteristic curvature and formulation variables; beta from a separate conductivity/EPR-type experiment). The decisive quantity is the residual charge: beta = 0.728 leaves ~0.27 of counterions dissociated, so the micelle retains substantial net negative charge, sustaining headgroup repulsion, a large effective head area, and the high positive interfacial curvature behind the strongly negative Cc (-2.63) and the clearly negative HLD - i.e. a normal-micelle, Winsor I picture. Additionally, elevated salinity both raises the ln(S) term (pushing HLD toward the Winsor I->III->II sequence) and physically drives more counterions onto the surface (raising beta); a beta of 0.728 at 5% salinity is high for SDS and is the molecular signature of the same screening the ln(S) term captures, yet HLD = -1.02 remains firmly negative, so the system has not crossed the transition. Caveat: at the margin higher beta reduces headgroup repulsion and would make Cc less negative, so beta and hydrophilicity are inversely coupled; the descriptors agree here not because high beta implies more hydrophilic, but because even this elevated binding leaves the interface charged enough to remain on the Winsor I side. Both independent measures converge on a hydrophilic, normal-micelle-forming, salt-sensitive surfactant trending toward but not yet at optimum formulation."
+}
+
+
+################################################################################
+# GZ-68 — CPP, Prolate-Ellipsoid Axial Ratio, and Perrin-Corrected Hydrodynamic Radius
+################################################################################
+
+CRITICAL PACKING PARAMETER
+--------------------------
+With n_c = 12: V = 27.4 + 26.9*12 = 350.2 A^3 and l_c = 1.5 + 1.265*12 = 16.68 A.
+
+  CPP = V / (a0 * l_c) = 350.2 / (49.37 x 16.68) = 0.425
+
+This sits in the 1/3-1/2 range (cylindrical/rod-like packing regime), though as
+discussed for ionic surfactants the real headgroup repulsion pushes the
+effective value toward the spherical range.
+
+AXIAL RATIO OF THE PROLATE CORE
+-------------------------------
+Core volume = N*V = 63 x 350.2 = 22,062.6 A^3. Pinning the minor semi-axis at
+b = l_c = 16.68 A and conserving volume through V_core = (4/3)*pi*a*b^2:
+
+  a = 3*V_core / (4*pi*b^2) = 3(22062.6) / (4*pi*(16.68)^2) = 18.93 A
+
+  axial ratio p = a/b = 18.93 / 16.68 = 1.135
+
+The core is only slightly prolate — nearly spherical. (For reference, the
+equal-volume sphere radius of the core is 17.40 A, just above l_c, which is
+exactly why stretching one axis produces such a small elongation.)
+
+HYDRODYNAMIC RADIUS: NAIVE vs. PERRIN-CORRECTED
+-----------------------------------------------
+Naive Stokes-Einstein (sphere-assumed), with D = 0.093e-5 cm^2/s = 9.30e-11
+m^2/s, eta = 0.8903 mPa*s, T = 298.15 K:
+
+  R_h(naive) = kB*T / (6*pi*eta*D) = 2.638 nm
+
+The Perrin translational friction factor for a prolate ellipsoid,
+F_P = p^(-1/3) * sqrt(p^2 - 1) / ln(p + sqrt(p^2 - 1)), evaluated at p = 1.135:
+
+  F_P = 1.0014
+
+Because the measured friction of the ellipsoid equals that of an equal-volume
+sphere multiplied by F_P, the shape-corrected (true equal-volume) hydrodynamic
+radius is:
+
+  R_h(Perrin) = R_h(naive) / F_P = 2.638 / 1.0014 = 2.634 nm
+
+The correction is negligible — about 0.14%. This is the expected outcome: the
+Perrin factor departs meaningfully from unity only for strongly anisometric
+particles (axial ratios of several or more), and at p = 1.135 the micelle is
+hydrodynamically indistinguishable from a sphere. In other words, the diffusion
+measurement alone cannot "see" this modest elongation; the shape information has
+to come from the independent aggregation number and geometric model, not from
+the friction data.
+
+FINAL_JSON:
+{
+  "cpp": 0.425,
+  "axial_ratio": 1.135,
+  "r_h_naive_nm": 2.638,
+  "r_h_perrin_corrected_nm": 2.634
+}
+
+================================================================================
+End of compiled outputs.
+================================================================================

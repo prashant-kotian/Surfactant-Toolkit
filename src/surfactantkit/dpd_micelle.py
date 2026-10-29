@@ -642,6 +642,11 @@ def dpd_micelle_cmc_job_status(job_id: str,
     if not job_id or not isinstance(job_id, str):
         raise ValueError(f"job_id must be a non-empty string "
                          f"(got {job_id!r})")
+    # ids are uuid4().hex[:12]; anything else could address a file outside
+    # the jobs directory
+    if len(job_id) != 12 or any(ch not in "0123456789abcdef" for ch in job_id):
+        raise ValueError(f"job_id must be the 12-character hex id returned "
+                         f"by submit_dpd_micelle_cmc_job (got {job_id!r})")
     with _JOBS_LOCK:
         rec = dict(_JOBS.get(job_id) or {})
     if not rec:

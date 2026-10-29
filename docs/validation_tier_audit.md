@@ -87,7 +87,7 @@ The benchmark's gold answers come from this toolkit, so every technique's output
 | `zeta_potential_henry` | T1 | Khademi exact round-trip + Serafini raw mobility <0.55 % |
 | `*_relaxation_corrected` (OHW83) | T1† | Primary formula; eq-63 asymptote 1e-4 + Fig. 1/2 shape reproduction — not a blind table match |
 | `gibbs_free_energy_micellization` | T1 | Fu 2019: 0.03 %; Bales SDS worked example |
-| `mass_action_free_energy_of_micellization` | T1 | Rusanov primary PDF; convergence identity to pseudo-phase limit |
+| `mass_action_free_energy_of_micellization` | T2 | Rusanov primary PDF formula; convergence identity to pseudo-phase limit only (no published numeric example of this output reproduced) |
 | `critical_micellization_degree` | T1 | Rusanov worked example exact (0.061/0.091) |
 | `counterion_binding_degree_reference` | T1 | Bales EPR primary; confidence tiers returned |
 | `vant_hoff_enthalpy` | T1†/**T2** | Sign bug found & fixed 2026-09-04; **magnitude = interval average only** — papers' polynomial-derivative ΔH will not match; magnitude figure honestly not re-issued post-fix |

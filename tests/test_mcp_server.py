@@ -388,7 +388,7 @@ def test_hld_fit_k_and_cc_from_salinity_scan_tool_round_trip():
 
 def test_hlb_from_groups_tool_sds_worked_example():
     out = call("hlb_from_groups", {"group_counts": {"SO4Na": 1, "CH2": 11, "CH3": 1}})
-    assert out["hlb"] == pytest.approx(39.9, abs=0.01)
+    assert out["hlb"] == pytest.approx(40.0, abs=0.01)
 
 
 def test_hlb_davies_guo_ecl_tool_matches_manual_formula():

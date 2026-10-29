@@ -1,0 +1,68 @@
+{
+ "case1_ctab_vant_hoff": {
+  "doi": "10.3390/colloids9010004",
+  "paper": "Naskar, Colloids Interfaces 9 (2025) 4",
+  "findings": {
+   "itc_dH_298_inside_interval": true,
+   "itc_dCp_inside_interval": true,
+   "printed_vH_dH_298_inside_interval": true
+  }
+ },
+ "case2_poloxamer_rubingh": {
+  "doi": "10.1021/acsomega.3c08917",
+  "paper": "Sedlarikova et al., ACS Omega 9 (2024) 23209",
+  "findings": {
+   "all_mixed_cmc_below_both_pure": true,
+   "recomputed_beta_negative_with_95pct_below_zero": true
+  }
+ },
+ "case3_oleate_pe65_bound": {
+  "doi": "10.1021/acsomega.1c06047",
+  "paper": "Sergeev et al., ACS Omega 7 (2022) 3016",
+  "findings": {
+   "bound_violated": true,
+   "no_rubingh_solution_any_basis": true,
+   "printed_pair_inconsistent": true
+  }
+ },
+ "case4_cpc_tx114_gibbs_helmholtz": {
+  "doi": "10.3390/molecules28093952",
+  "paper": "Yaqoob et al., Molecules 28 (2023) 3952",
+  "findings": {
+   "dG_293_recomputed": -40.9,
+   "dG_293_printed": -32.4,
+   "dS_293_from_printed_dH_dG": 0.093,
+   "dS_293_printed": 0.009,
+   "mixed_vs_cpc_293_printed_more_spontaneous": false,
+   "mixed_vs_cpc_293_recomputed_more_spontaneous": true,
+   "eq6_reproduces_printed_dH_within_kJ": 1.1,
+   "gh_dH_303_323_kJ": [
+    51.0,
+    106.0,
+    160.0
+   ],
+   "gh_dH_positive_303_323": true,
+   "printed_dH_negative_all_T": true,
+   "dG_change_293_323_printed_vs_alpha_held": [
+    -19.5,
+    -3.9
+   ]
+  }
+ },
+ "case5_dmimcl_des_adsorption": {
+  "doi": "10.1016/j.heliyon.2024.e35598",
+  "paper": "Banjare et al., Heliyon 10 (2024) e35598",
+  "findings": {
+   "printed_A_below_chain_cross_section": true,
+   "printed_CPP_range": [
+    254.838,
+    328.115
+   ],
+   "recovered_CPP_range": [
+    0.14,
+    0.33
+   ],
+   "recovered_all_spherical_le_one_third": true
+  }
+ }
+}

@@ -1,0 +1,46 @@
+I'll work through this verification using the computation tools.
+Judging whether the printed heat-capacity conclusion holds up
+
+Judging whether the printed heat-capacity conclusion holds up
+
+I’ll work through this verification using the computation tools. Let me load what I need.
+
+Used surfactant-computation: Gibbs free energy micellization
+
+Used surfactant-computation: Gibbs free energy micellization
+
+dG(298) = −44.8 kJ/mol, matching the printed value. Let me reproduce the full dG(T) series to confirm the data is internally consistent, then analyze its temperature dependence.
+
+Used surfactant-computation
+
+Used surfactant-computation
+
+All seven dG values reproduce the printed series (−43.9, −44.3, −44.8, −45.2, −44.6, −44.8, −44.6). Now let me get an independent multi-point fit of the temperature dependence, with error bars, to test how well dH and dCp are actually determined.
+
+Used surfactant-computation: Vant hoff multi point fit
+
+Used surfactant-computation: Vant hoff multi point fit
+
+All seven printed dG values reproduce exactly from the CMC and β data, so the data table is internally consistent. Here is what the temperature dependence actually supports.
+
+The three quantities
+
+(a) dG at 298 K. Using dG = (1+β)RT·ln(X_cmc) with CMC = 1.18 mM, β = 0.68, X_cmc = 1.18×10⁻³/55.5:
+
+dG(298) = −44.8 kJ/mol — matches the printed value exactly.
+
+(b) dH at 298 K from the dG(T) series. Applying Gibbs–Helmholtz (dH = dG − T·d(dG)/dT) to the printed series gives a value of order −20 kJ/mol, but it is poorly pinned down: a local central difference at 298 K gives ≈ −18 kJ/mol, a global quadratic fit of dG(T) gives ≈ −28 kJ/mol, and a fit driven by the CMC curvature alone (β held constant) gives ≈ 0 kJ/mol. The paper’s van’t Hoff −20.6 kJ/mol sits inside that spread but is not uniquely determined by the data.
+
+(c) dCp from the dG(T) series. A direct fit of the printed dG(T) curve yields ≈ −1.5 kJ/(mol·K) (−1.3 from the CMC-curvature-only fit, −1.46 from a β-inclusive quadratic). Propagating the authors’ stated ±3% uncertainty on dG (≈ ±1.3 kJ/mol per point) gives a standard error on dCp of roughly ±2.8 kJ/(mol·K).
+
+Does the printed result follow?
+
+The arithmetic of each column is reproducible: regressing the printed dH_vH column against T gives a slope of ≈ −2.7 kJ/(mol·K), and the dH_ITC column gives ≈ −0.46 kJ/(mol·K), so the two quoted dCp numbers do follow from their respective enthalpy columns. But the headline conclusion — that these are “significantly different” heat capacities reflecting different physical aspects — does not follow from the thermodynamic data. Two problems:
+
+The dG(T) series cannot resolve dCp. The entire temperature variation of dG is about 1.3 kJ/mol across the series — essentially one error bar at the stated ±3%. A straightforward fit gives dCp ≈ −1.5 ± 2.8 kJ/(mol·K), a band that comfortably contains the van’t Hoff −2.7, the ITC −0.45, and zero. The data do not distinguish them.
+The large van’t Hoff curvature is an artifact of the assumed β(T). At 298 K the CMC is near its minimum, so d(ln CMC)/dT ≈ 0 and the CMC-only enthalpy is ≈ 0, not −20.6. Almost all of the paper’s dH_vH and its steep slope (hence the −2.7) come from the −RT²·ln(X)·(dβ/dT) term, i.e. from β falling 0.71→0.59. That is a weakly determined quantity, not robust calorimetric information. The directly measured ITC value (−0.45) is the reliable one; the gap is better read as the known unreliability of van’t Hoff micellization enthalpies than as “two methods measuring different aspects.”
+
+So dG(298) follows cleanly; dH(298) is broadly consistent with the paper but loosely determined; and the dCp comparison that the paper’s conclusion rests on is not supported at the stated precision.
+
+
+FINAL_JSON: {"dG_298_kJ_mol": -44.8, "dH_298_kJ_mol": -20, "dCp_kJ_mol_K": -1.5, "printed_result_follows": "no — dG(298) reproduces and the per-column slopes are arithmetically correct, but the dG(T) series only constrains dCp to about -1.5 ± 2.8 kJ/(mol K), which is consistent with both quoted values and with zero; the -2.7 van't Hoff figure is dominated by the uncertain beta(T) term, so the claimed significant vH-vs-ITC difference does not robustly follow"}

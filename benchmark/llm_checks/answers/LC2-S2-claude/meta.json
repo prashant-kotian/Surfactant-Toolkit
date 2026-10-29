@@ -1,0 +1,15 @@
+{
+ "run_id": "LC2-S2-claude",
+ "case": "LC2",
+ "stage": "S2",
+ "model": "claude",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "chat": "Claude incognito chat (no history, no memory)",
+ "mcp": "off",
+ "mcp_seen": "Inactive",
+ "web_search": "off (account setting); no web-search activity in the page",
+ "started": "2026-10-28T00:32:57+0530",
+ "sent": "2026-10-28T00:34:56+0530",
+ "finished": "2026-10-28T00:39:05+0530",
+ "prompt_file": "prompts/LC2_S2.txt"
+}

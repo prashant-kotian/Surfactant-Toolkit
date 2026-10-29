@@ -1,0 +1,7 @@
+FINAL_JSON: {
+"gamma_max_mol_per_m2": 7.422476e-6,
+"a_min_nm2": 0.223718,
+"delta_g_mic_kJ_per_mol": -37.2736,
+"delta_s_mic_J_per_mol_K": null,
+"missing_for_delta_s": "Micellization enthalpy (delta H_mic), or equivalently temperature-dependent CMC/equilibrium data sufficient to determine it"
+}

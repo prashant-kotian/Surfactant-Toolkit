@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted by simultaneous least-squares to all 10 activity-coefficient data points; parameters A12 = -3.57, A21 = -0.89",
+"notes": "Component 1 is a bulky tert-octylphenyl–ethylene-glycol–benzyl–dimethylammonium chloride; Component 2 is dodecyltrimethylammonium bromide (DTAB). Both Margules parameters are negative (synergistic/attractive mixing), but the system is highly asymmetric (|A12| >> |A21|), so a one-parameter regular-solution beta is inadequate. f2 passes through a minimum near x1~0.78 and rises toward exp(A21)=0.41 as x1->1."
+}

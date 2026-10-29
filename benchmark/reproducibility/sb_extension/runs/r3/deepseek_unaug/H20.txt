@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "Measured dn/dc for AOT in the same solvent, at 632.8 nm and the same temperature, obtained by differential refractometry (Delta n vs c, extrapolated to c=0) or refractive-index-vs-concentration measurements; the SDS value is not transferable. With that, compute K, Mw from the Debye plot, and Nagg = Mw/M0 (using micellar c, so CMC/A2 may also be needed)."
+}

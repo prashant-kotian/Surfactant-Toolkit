@@ -142,3 +142,83 @@ def test_fit_errors():
         dynamic_surface_tension_ode(T, y, C0, p0=(1.0, 2.0))
     with pytest.raises(ValueError, match="positive"):
         dynamic_surface_tension_ode(T, y, C0, p0=(-1.0, 500.0, 4e-6, 0.5))
+
+
+# ---------------------------------------------------------------------------
+# equation of state, stability and cross-solver agreement
+# ---------------------------------------------------------------------------
+
+def test_long_time_limit_is_the_szyszkowski_equation():
+    """gamma(t -> long) and gamma_equilibrium must equal the Langmuir isotherm's own
+    equation of state (adsorption.szyszkowski_surface_tension), not gamma0 - nRT Gamma."""
+    from surfactantkit.adsorption import szyszkowski_surface_tension
+    for c0, K, gm in ((1e-4, 1e3, 3e-6), (1e-2, 1e3, 3e-6), (0.02, 1500.0, 4e-6)):
+        r = dynamic_surface_tension_forward([200.0], c0, 1e-9, K, gm, k_off_per_s=200.0)
+        ref = szyszkowski_surface_tension(c0, 72.0, gm, K, "nonionic")
+        assert r.gamma_equilibrium_mN_per_m == pytest.approx(ref, rel=1e-12)
+        assert r.gamma_mN_per_m[-1] == pytest.approx(ref, abs=0.05)
+
+
+def test_uptake_is_monotone_with_fast_kinetics_at_low_concentration():
+    """Stiff surface kinetics (k_off*dt >> 1) at low c0: the coupled half-cell/surface
+    step must not overshoot or empty the surface between output times."""
+    ts = [5.0 * (k / 16) ** 2 for k in range(1, 17)]
+    for c0 in (1e-4, 1e-3, 1e-2):
+        g = dynamic_surface_tension_forward(ts, c0, 1e-9, 1e3, 3e-6,
+                                            k_off_per_s=200.0).surface_excess_mol_per_m2
+        assert all(b >= a - 1e-18 for a, b in itertools.pairwise(g)), (c0, g)
+        assert min(g) > 0.0
+
+
+def test_agrees_with_ward_tordai_in_the_diffusion_limited_regime():
+    """Fast kinetics -> diffusion control: the CN solver and the independent Ward-Tordai
+    quadrature (adsorption.py) must give the same surface excess within 5 %."""
+    from surfactantkit.adsorption import ward_tordai_adsorption
+    for c0, tol in ((1e-4, 0.05), (1e-3, 0.03), (1e-2, 0.005)):
+        wt = ward_tordai_adsorption(c0, 1e-9, t_end_s=5.0, n_times=16, mode="langmuir",
+                                    gamma_inf_mol_per_m2=3e-6, K_d_mol_per_L=1e-3)
+        pde = dynamic_surface_tension_forward(wt.t_s, c0, 1e-9, 1e3, 3e-6, k_off_per_s=1e4)
+        for a, b in zip(pde.surface_excess_mol_per_m2, wt.gamma_mol_per_m2):
+            assert a == pytest.approx(b, rel=tol)
+
+
+# ---- numerical accuracy of the forward solver (stretched grid, coupled implicit step)
+
+_ACC_CASES = [
+    ([0.1, 0.5, 1.0, 3.0, 10.0, 30.0, 100.0], 0.02, 1e-9, 1500.0, 4e-6, 0.5),
+    ([0.1, 1.0, 10.0, 100.0, 200.0], 0.001, 1e-9, 1e3, 3e-6, 200.0),
+    ([0.01, 0.1, 1.0, 10.0, 100.0, 1000.0], 5e-4, 6e-11, 500.0, 4e-6, 0.5),
+]
+
+
+@pytest.mark.parametrize("ts, c0, D, K, gm, koff", _ACC_CASES)
+def test_forward_converged_at_default_settings(ts, c0, D, K, gm, koff):
+    """Default grid and step agree with a 4x finer grid and 4x smaller steps."""
+    base = dynamic_surface_tension_forward(ts, c0, D, K, gm, k_off_per_s=koff)
+    fine = dynamic_surface_tension_forward(ts, c0, D, K, gm, k_off_per_s=koff,
+                                           n_cells=640, rel_step=0.0025)
+    for a, b in zip(base.gamma_mN_per_m, fine.gamma_mN_per_m):
+        assert a == pytest.approx(b, abs=2e-3)
+
+
+@pytest.mark.parametrize("ts, c0, D, K, gm, koff", _ACC_CASES)
+def test_forward_independent_of_requested_times(ts, c0, D, K, gm, koff):
+    """gamma at the first output time does not depend on which later times
+    are also requested (the grid used to be sized from the last one only)."""
+    long = dynamic_surface_tension_forward(ts, c0, D, K, gm, k_off_per_s=koff)
+    short = dynamic_surface_tension_forward(ts[:1], c0, D, K, gm, k_off_per_s=koff)
+    assert long.gamma_mN_per_m[0] == pytest.approx(short.gamma_mN_per_m[0], abs=2e-3)
+
+
+def test_forward_kinetic_limit_matches_analytic_langmuir_uptake():
+    """Fast diffusion: the subsurface stays at c0, so the surface follows
+    dG/dt = k_a c0 (Gmax - G) - k_off G exactly:
+    G(t) = G_eq (1 - exp(-(k_a c0 + k_off) t)), G_eq = Gmax K c0 / (1 + K c0)."""
+    import math
+    c0, K, gm, koff = 1e-3, 800.0, 3e-6, 0.4
+    ts = [0.05, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
+    r = dynamic_surface_tension_forward(ts, c0, 1e-3, K, gm, k_off_per_s=koff)
+    rate = K * koff * c0 + koff
+    g_eq = gm * K * c0 / (1.0 + K * c0)
+    for t, g in zip(ts, r.surface_excess_mol_per_m2):
+        assert g == pytest.approx(g_eq * (1.0 - math.exp(-rate * t)), rel=1e-4)

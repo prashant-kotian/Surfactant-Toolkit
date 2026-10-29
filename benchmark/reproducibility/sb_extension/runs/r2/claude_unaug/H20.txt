@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“dn_dc_for_this_compound”: null,
+“sls_aggregation_number”: null,
+“what_is_missing”: “The refractive-index increment dn/dc for AOT itself, at 632.8 nm in the same solvent and temperature. It is an empirical optical property specific to this molecule and cannot be derived from the scattering data or borrowed from SDS (a structurally different surfactant). Obtain it by measuring n vs c for AOT on a differential refractometer at 632.8 nm and taking the dilute-regime slope; then K = 4pi^2n^2*(dn/dc)^2/(N_A*lambda^4), M = (deltaR/c)/K, and Nagg = M/M0.”
+}

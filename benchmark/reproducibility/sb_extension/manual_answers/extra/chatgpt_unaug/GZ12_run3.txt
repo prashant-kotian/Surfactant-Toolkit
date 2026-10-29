@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.0126,
+  "f2_at_x1_0.90": 0.3154,
+  "interaction_model_or_approach": "Thermodynamically consistent two-term Redlich-Kister excess-Gibbs model, equivalent to an asymmetric three-suffix Margules model, fitted jointly to ln(f1) and ln(f2)",
+  "notes": "Mixing is favorable and strongly asymmetric across the full composition range; the fitted excess-Gibbs interaction term remains negative. Near x1=0.90, f1 is returning toward unity and f2 is rising from its shallow minimum."
+}

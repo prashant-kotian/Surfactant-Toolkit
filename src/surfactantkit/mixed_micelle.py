@@ -190,6 +190,8 @@ def rubingh_beta_regression(
 
 def activity_coefficients(x1: float, beta: float) -> tuple[float, float]:
     """Activity coefficients (f1, f2) from regular solution theory."""
+    if not 0.0 <= x1 <= 1.0:
+        raise ValueError("x1 must lie between 0 and 1")
     f1 = math.exp(beta * (1.0 - x1) ** 2)
     f2 = math.exp(beta * x1 ** 2)
     return f1, f2
@@ -197,6 +199,10 @@ def activity_coefficients(x1: float, beta: float) -> tuple[float, float]:
 
 def excess_free_energy(x1: float, f1: float, f2: float, temperature_k: float) -> float:
     """Excess free energy of micelle formation, kJ/mol."""
+    if not 0.0 <= x1 <= 1.0:
+        raise ValueError("x1 must lie between 0 and 1")
+    if temperature_k <= 0:
+        raise ValueError("temperature_k must be positive (absolute temperature, K)")
     return (R_GAS * temperature_k * (x1 * math.log(f1) + (1.0 - x1) * math.log(f2))) / 1000.0
 
 

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.0126,
+"f2_at_x1_0.90": 0.3144,
+"interaction_model_or_approach": "Two-parameter Margules asymmetric regular-solution fit to ln f1 and ln f2 with Gibbs-Duhem consistency, extrapolated to x1=0.90",
+"notes": "Negative Margules parameters indicate net attractive interaction; a single-parameter regular-solution model is inconsistent with the measured f1 and f2. The prediction assumes the fitted two-parameter Margules model remains valid beyond the highest measured composition x1=0.808."
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.0126,
+"f2_at_x1_0.90": 0.3145,
+"interaction_model_or_approach": "Two-parameter Margules/Redlich-Kister excess Gibbs model fitted to ln f1 and ln f2 (a=-2.232, b=1.339); single-parameter regular solution was inadequate.",
+"notes": "Negative excess Gibbs and f<1 indicate favorable nonideal mixing with strong asymmetry. At x1=0.90, f1 is slightly above 1 while f2 is strongly reduced."
+}

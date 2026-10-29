@@ -1,0 +1,5 @@
+FINAL_JSON: {
+“dn_dc_for_this_compound”: null,
+“sls_aggregation_number”: null,
+“what_is_missing”: “The dn/dc of AOT itself (the SDS value is compound-specific and not transferable). Measure it by differential refractometry on an AOT concentration series in the same scattering solvent, at 632.8 nm and the experimental temperature, taking dn/dc as the c->0 slope of n vs c. Then K = 4pi^2n^2*(dn/dc)^2/(N_A*lambda^4) gives M_w = (deltaR/c)/K from the data (deltaR/c = 6.0e-3 cm^-1 per g/mL, A2 ~ 0), and Nagg = M_w/332.43.”
+}

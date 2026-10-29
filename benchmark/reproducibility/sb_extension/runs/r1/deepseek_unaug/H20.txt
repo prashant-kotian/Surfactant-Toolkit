@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "AOT-specific dn/dc at 632.8 nm in the same solvent and temperature; obtain it by differential refractometry on AOT solutions (or a correctly matched AOT literature value if allowed). The SDS dn/dc is not applicable. Without dn/dc, K and hence Mw/Nagg cannot be computed."
+}

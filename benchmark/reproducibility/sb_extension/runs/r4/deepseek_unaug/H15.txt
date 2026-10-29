@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"micelle_mw": 399.99,
+"aggregation_number": 0.640,
+"physically_valid": false,
+"why": "Aggregation number is smaller than one (<1), which is physically impossible for a micelle."
+}

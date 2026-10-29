@@ -1,7 +1,24 @@
 cff-version: 1.2.0
-title: Surfactant Toolkit and Paper-3 benchmark artifact
-message: If you use this code or the benchmark, please cite the accompanying manuscript.
+title: "Surfactant-Toolkit and the SurfBench-200 benchmark"
+message: "If you use this software or the benchmark, please cite the accompanying manuscript and this software release."
+type: software
 authors:
-  - name: Kotian, Prashant (and co-authors per manuscript)
-repository-code: https://github.com/prashant-kotian/Surfactant-Toolkit
+  - family-names: Kotian
+    given-names: Prashant D.
+    affiliation: "Institute of Chemical Technology, Mumbai"
+    orcid: "https://orcid.org/0000-0002-3256-8464"
+  - family-names: Bhagwat
+    given-names: Sunil S.
+    affiliation: "Institute of Chemical Technology, Mumbai; Indian Institute of Science Education and Research, Pune"
+    orcid: "https://orcid.org/0000-0002-1710-299X"
+repository-code: "https://github.com/prashant-kotian/Surfactant-Toolkit"
 license: MIT
+version: "0.4.0"
+keywords:
+  - surfactant
+  - micellization
+  - benchmark
+  - large language models
+  - Model Context Protocol
+# At release: add date-released, the archive DOI (doi:) and the manuscript as
+# preferred-citation; keep version equal to the package version in pyproject.toml.

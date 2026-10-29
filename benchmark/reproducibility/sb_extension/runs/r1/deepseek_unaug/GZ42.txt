@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "The compound is AOT/docusate sodium, a double-tailed anionic surfactant well known to form reverse micelles and water-in-oil microemulsions. That behavior implies oil-continuous, negative characteristic curvature. Source 1's -0.92 agrees with this established chemistry, while Source 2's positive 2.4-3.5 would imply strongly normal, water-continuous curvature and is likely affected by model/sign-convention or condition-specific fitting issues."
+}

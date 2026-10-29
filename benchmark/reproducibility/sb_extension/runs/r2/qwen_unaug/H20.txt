@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc for AOT (sodium bis(2-ethylhexyl) sulfosuccinate) in the measurement solvent at 632.8 nm and the experimental temperature is not provided. The supplied value of 0.110 mL/g belongs to SDS, a different compound, and cannot be transferred. dn/dc must be measured with a differential refractometer on AOT solutions of known concentration in the same solvent, or taken from a validated literature source for AOT under identical conditions. Without it, the optical constant K cannot be evaluated, M_w cannot be extracted from the Debye plot, and N_agg cannot be determined."
+}

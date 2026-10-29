@@ -1,4 +1,4 @@
-cell	harness	date	source
+cell	harness	date_in_source_path	source
 extrahard|ChatGPT|aug	mcp	2026-10-12	benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_chatgpt.json
 extrahard|ChatGPT|unaug	mcp	-	benchmark/transcripts/extrahard50_unaugmented/grade_results.json
 extrahard|Claude|aug	mcp	2026-10-12	benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json

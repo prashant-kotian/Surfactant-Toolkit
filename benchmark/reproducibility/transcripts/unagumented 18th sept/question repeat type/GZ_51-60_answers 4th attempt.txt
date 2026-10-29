@@ -1,0 +1,238 @@
+================================================================================
+GZ-51 to GZ-60 — Compiled Outputs
+================================================================================
+
+================================================================================
+GZ-51
+================================================================================
+Compound: 1-dodecyl-3-methylpyridinium bromide (cationic surfactant)
+SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+
+Task: Enthalpy of micellization from temperature dependence of CMC.
+
+Method (van't Hoff / Gibbs-Helmholtz, pseudo-phase model):
+  dH_mic = -R*T^2 * d(ln CMC)/dT
+  d ln(CMC)/dT = [ln(9.77) - ln(9.76)] / (303.15 - 293.15) ~ 1.024e-4 K^-1
+  T_mean = 298.15 K
+  dH_mic = -(8.314)(298.15^2)(1.024e-4) ~ -0.076 kJ/mol
+
+Note: CMC barely changes over the 10 K range (9.76 -> 9.77 mM), so micellization
+is essentially athermal here (very slightly negative). This uses the simple
+pseudo-phase model without a counterion-binding prefactor (1+beta); multiply by
+(1+beta) if beta is known.
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.0757
+}
+
+================================================================================
+GZ-52
+================================================================================
+Binary mixed micelle system:
+  Component 1: diheptanoyl phosphatidylcholine (zwitterionic), CMC1 = 1.8 mM
+    SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+  Component 2: sodium dodecyl sulfate / SDS (anionic), CMC2 = 8.3 mM
+    SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Task: Which mixing model best describes the data?
+
+Analysis:
+  Ideal (Clint) predictions vs measured (mM):
+    alpha2=0.95: ideal 7.03, measured 3.60
+    alpha2=0.90: ideal 6.10, measured 2.80
+    alpha2=0.80: ideal 4.82, measured 1.80
+    alpha2=0.60: ideal 3.40, measured 1.40
+    alpha2=0.20: ideal 2.13, measured 1.30
+  Every measured mixed CMC lies far below the ideal prediction -> strong negative
+  deviation (synergism). Ideal mixing fails badly.
+  Rubingh Regular Solution Theory recovers a consistent, strongly attractive
+  interaction parameter beta ~ -3.2 to -4.0 across all compositions -> RST is the
+  appropriate description (physically expected for zwitterionic PC + anionic SDS,
+  attractive choline+/sulfate- electrostatics).
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "Regular Solution Theory"
+}
+
+================================================================================
+GZ-53
+================================================================================
+Real surfactant at 298.15 K, dG_mic = -27.271 kJ/mol.
+Relation: dS = (dH - dG)/T
+
+(a) dH = -5.0 kJ/mol:
+    dS = (-5000 - (-27271))/298.15 = 22271/298.15 ~ 74.70 J/(mol.K)
+(b) dH = +3.0 kJ/mol:
+    dS = (3000 - (-27271))/298.15 = 30271/298.15 ~ 101.53 J/(mol.K)
+
+Both positive -> entropy-driven micellization (release of structured water).
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.6973,
+  "delta_s_scenario_b_J_per_mol_K": 101.5294
+}
+
+================================================================================
+GZ-54
+================================================================================
+Compound: dodecyltrimethylammonium bromide (DTAB), n_c = 12
+SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Independently measured headgroup area a = 59.62 A^2
+
+Tanford relations:
+  V   = 27.4 + 26.9*12 = 350.2 A^3
+  l_c = 1.5 + 1.265*12 = 16.68 A
+  P   = V/(a*l_c) = 350.2/(59.62*16.68) ~ 0.352
+
+Morphology: 1/3 (0.333) < 0.352 <= 1/2 -> cylindrical/rodlike micelle
+(just past the spherical boundary).
+
+FINAL_JSON:
+{
+  "cpp": 0.3522,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+================================================================================
+GZ-55
+================================================================================
+Nonionic surfactant, 298.15 K. Pure-solvent gamma0 = 72.0 mN/m.
+Task: genuine surfactant-surfactant lateral interaction at the interface?
+
+Analysis (Langmuir/Szyszkowski = independent adsorption vs Frumkin = lateral
+interaction):
+  Langmuir-Szyszkowski  pi = a*ln(1+K c): systematic misfit, RMSE ~ 0.58 mN/m
+  Frumkin (adds interaction param aF): fits to ~0.0002 mN/m with
+      a ~ 7.44 (=RT*Gmax), K ~ 5.0, aF ~ 2.0
+
+aF ~ 2.0 is a strong attractive (cohesive) lateral interaction, near the 2D
+condensation threshold. Order-of-magnitude fit improvement (SSE 2.3 -> ~0)
+indicates a genuine physical effect, not overfitting.
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "A Langmuir/Szyszkowski isotherm (independent adsorption, no lateral interaction) leaves a systematic S-shaped misfit (RMSE ~0.58 mN/m), while a Frumkin isotherm fits the data to ~0.0002 mN/m with a large interaction parameter aF ~ 2.0. Because aF ~ 2 is a strong attractive cohesive interaction (near the 2D-condensation threshold) and it produces an order-of-magnitude improvement in the fit, the surfactant-surfactant lateral attraction at the interface is genuine and physically meaningful rather than an artifact of overfitting."
+}
+
+================================================================================
+GZ-56
+================================================================================
+Oleic acid (cis-9-octadecenoic acid), pKa ~ 4.8-5.0, at pH 5.0.
+Task: charge type at this pH.
+
+The ionizable group is -COOH <-> -COO-. At pH 5.0 ~ pKa, Henderson-Hasselbalch
+[A-]/[HA] = 10^(pH-pKa) ~ 1 (roughly 50-60% dissociated). It exists as a near
+50:50 mixture of neutral protonated acid and anionic carboxylate -> partially
+ionized (weakly anionic).
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "Partially ionized (weakly anionic) - a roughly 50:50 mixture of the neutral protonated -COOH form and the anionic -COO- carboxylate form, since pH ~= pKa"
+}
+
+================================================================================
+GZ-57
+================================================================================
+Compound: cetyltrimethylammonium bromide (CTAB), 296.85 K, alpha = 0.26
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+CMC: intersection of steep pre-CMC line with post-CMC line in gamma vs ln c
+     -> CMC ~ 1.03 mM (matches known real CTAB ~1 mM).
+
+Pre-CMC adsorption: linear slope d(gamma)/d(ln c) ~ -15.1 mN/m.
+  Gibbs isotherm, ionic 1:1 surfactant, no added salt (n = 2):
+  Gmax = -(1/2RT)*d(gamma)/d(ln c) ~ 3.06e-6 mol/m^2
+  Minimum area/molecule a = 1/(N_A*Gmax) ~ 54 A^2 (dense Langmuir-type monolayer).
+
+Free energy of micellization (ionic, counterion binding beta = 1-alpha = 0.74):
+  dG_mic = (2 - alpha)*RT*ln(X_cmc), X_cmc = (CMC/1000)/55.5 = 1.85e-5
+  dG_mic = (1.74)(8.314)(296.85)*ln(1.85e-5) ~ -46.8 kJ/mol
+
+FINAL_JSON:
+{
+  "cmc_mM": 1.03,
+  "gamma_max_mol_per_m2": 3.06e-06,
+  "delta_g_mic_kJ_per_mol": -46.8
+}
+
+================================================================================
+GZ-58
+================================================================================
+Binary cationic mixed micelle:
+  Component 1: bulky aromatic benzyl-ether cationic surfactant (benzethonium-like)
+    SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+  Component 2: dodecyltrimethylammonium bromide (DTAB)
+    SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Task: analyze interaction; predict f1, f2 at x1 = 0.15.
+
+Single-parameter RST fails: apparent beta from f1 (-1.93 -> +0.75) and from f2
+(-4.63 -> -1.92) drift with composition and change sign; f1 exceeds 1 at high x1
+while f2 < 1. A symmetric one-parameter model cannot reproduce this.
+
+Two-parameter sub-regular (Margules) solution model fits ~perfectly
+(RMSE ~ 0.0007):
+  ln f1 = x2^2 [A + 2(B-A) x1]
+  ln f2 = x1^2 [B + 2(A-B) x2]
+  A = -3.57, B = -0.89
+Interpretation: net attraction (synergism) but markedly asymmetric - component 1
+feels strong stabilization when dilute (A~-3.6), DTAB feels only mild interaction
+when dilute (B~-0.9), owing to very different molecular sizes/geometries.
+
+Prediction at x1 = 0.15: f1 ~ 0.136, f2 ~ 0.885
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.136,
+  "f2_at_x1_0.15": 0.885
+}
+
+================================================================================
+GZ-59
+================================================================================
+CTAB, 16-carbon tail, monomer molar mass M = 364.45 g/mol.
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Task: analyze partial specific volume (v_bar); state what is missing.
+
+Tanford tail volume (n_c = 16):
+  V = 27.4 + 26.9*16 = 457.8 A^3 per molecule
+  Tail molar volume = 457.8e-24 * 6.022e23 = 275.7 cm^3/mol
+
+Only the hydrophobic alkyl-tail volume is obtainable from Tanford's relation.
+The full-molecule v_bar = V_total(molar)/M additionally requires partial molar
+volumes of the trimethylammonium headgroup (-N+(CH3)3) and the bromide
+counterion, including electrostriction/hydration of these charged groups.
+Tanford supplies none of these, so v_bar(full) is left undetermined rather than
+quoting a misleading tail-only value (275.7/364.45 ~ 0.756 cm^3/g would
+understate it; typical measured CTAB v_bar ~ 0.97 cm^3/g).
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.7,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial molar volumes of the non-tail portions of the molecule: the trimethylammonium headgroup (-N+(CH3)3) and the bromide counterion, including their electrostriction/hydration (volume) contributions in water. Tanford's relation gives only the hydrophobic alkyl-tail volume; without headgroup and counterion volume data the full-molecule partial specific volume cannot be computed."
+}
+
+================================================================================
+GZ-60
+================================================================================
+Task: read CMC directly from the surface-tension-vs-concentration chart
+(log-scale concentration axis).
+
+Reading: surface tension falls steeply and ~linearly (log axis) from ~62 mN/m to
+about 29 mN/m near 1.6 mM, then flattens into a plateau at ~27-28 mN/m (points at
+~4, 6.6, 10 mM). The knee where the declining branch meets the plateau is at
+~1.5-2 mM.
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 1.6
+}
+
+================================================================================
+END OF FILE
+================================================================================

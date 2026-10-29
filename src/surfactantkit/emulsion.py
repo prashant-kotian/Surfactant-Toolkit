@@ -101,8 +101,11 @@ def simulate_emulsion_stability(
     the normalization disclosed in params). densities in kg/m^3,
     viscosity in Pa.s, column_height_m the creaming path length,
     coalescence_rate_per_s the FIRST-ORDER film-drainage/coalescence
-    rate that applies once a bin has reached the top (0 = creaming
-    only). temperature_K is recorded in params (densities/viscosity are
+    rate that applies once a drop has reached the top (0 = creaming
+    only). Drops of every bin start uniformly distributed over the
+    column (dilute batch creaming), so a bin's creamed share grows
+    linearly, t/t_c, until its creaming time t_c = H/v; a monodisperse
+    emulsion therefore reaches F = 0.5 at H/(2v). temperature_K is recorded in params (densities/viscosity are
     given directly, not derived from T). n_times samples over
     [0, t_max_s]. Returns per-bin Stokes velocities and creaming times,
     F(t), t50, d32 of the feed, and the schema block. Guard: ValueError
@@ -149,14 +152,19 @@ def simulate_emulsion_stability(
     times = [t_max_s * i / (n_times - 1) for i in range(n_times)]
 
     def separated_at(t: float) -> float:
+        # drops of each bin start uniformly distributed over the column, so the share that has
+        # reached the top grows linearly, u/tc with u = min(t, tc); with first-order coalescence
+        # after arrival, the separated share is (1/tc) * integral_0^u (1 - exp(-k (t - s))) ds
+        k = coalescence_rate_per_s
         total = 0.0
         for w_i, tc in zip(w, creaming_times):
-            if t < tc:
+            if not math.isfinite(tc) or t <= 0.0:
                 continue
-            if coalescence_rate_per_s > 0:
-                total += w_i * (1.0 - math.exp(-coalescence_rate_per_s * (t - tc)))
+            u = min(t, tc)
+            if k > 0:
+                total += w_i * (u - (math.exp(-k * (t - u)) - math.exp(-k * t)) / k) / tc
             else:
-                total += w_i
+                total += w_i * u / tc
         return total
 
     F = [separated_at(t) for t in times]

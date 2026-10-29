@@ -1,0 +1,10 @@
+{
+ "qid": "H11",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-23T16:44:36+0530",
+ "model_seen": "Qwen3.8-Max (mode switch false)",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-23T16:47:48+0530",
+ "failed": "USAGE LIMIT reached -- stopping this batch (raw saved)"
+}

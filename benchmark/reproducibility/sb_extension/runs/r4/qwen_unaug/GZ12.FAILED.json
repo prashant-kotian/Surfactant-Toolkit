@@ -1,0 +1,10 @@
+{
+ "qid": "GZ12",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-23T16:20:03+0530",
+ "model_seen": "Qwen3.8-Max (mode switch false)",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-23T16:23:12+0530",
+ "failed": "no real FINAL_JSON (raw saved)"
+}

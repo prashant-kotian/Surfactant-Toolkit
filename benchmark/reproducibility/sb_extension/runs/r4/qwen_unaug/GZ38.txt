@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"estimated_cmc_value": 8,
+"units_used": "μM"
+}

@@ -92,12 +92,10 @@ def test_hlb_griffin_matches_real_ethoxylate_series_within_explained_tolerance()
 
 def test_hlb_davies_sds_worked_example():
     """SDS = CH3-(CH2)11-SO4Na: 1 CH3 + 11 CH2 + 1 SO4Na headgroup.
-    HLB = 7 + 38.6 - 12*0.475 = 39.9, consistent with the commonly-cited
-    ballpark of ~40 for SDS (not asserted as an independently-verified
-    literature value here -- this checks the summation logic against
-    the group numbers already verified in hlb.py)."""
+    HLB = 7 + 38.7 - 12*0.475 = 40.0, the value usually quoted for SDS
+    (-SO4Na = 38.7 in Davies 1957, the group table of hlb.py)."""
     hlb = hlb_davies({"SO4Na": 1, "CH2": 11, "CH3": 1})
-    assert hlb == pytest.approx(39.9, abs=0.01)
+    assert hlb == pytest.approx(40.0, abs=0.01)
 
 
 def test_hlb_davies_unknown_group_raises_instead_of_guessing():

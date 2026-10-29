@@ -1,0 +1,1193 @@
+================================================================================
+SURFACTANT & INTERFACIAL PHYSICAL CHEMISTRY — PROBLEM SET COMPILATION
+Q10 through Q60 | Full Reasoning + FINAL_JSON for each
+Compiled: 2026-10-04
+================================================================================
+
+================================================================================
+
+Q01
+
+# Ideal Mixed CMC – Clint's Equation
+
+## Formula
+
+Clint's ideal mixing rule for the mixed CMC is:
+
+$$\frac{1}{\text{CMC}_{\text{mix}}} = \frac{\alpha_1}{\text{CMC}_1} + \frac{\alpha_2}{\text{CMC}_2}$$
+
+where $\alpha_2 = 1 - \alpha_1$.
+
+## Given Data
+
+| Parameter | Value |
+|-----------|-------|
+| $\alpha_1$ | 0.37 |
+| $\alpha_2$ | 0.63 |
+| CMC₁ | 1.23 mM |
+| CMC₂ | 8.76 mM |
+
+## Calculation
+
+**Step 1:** Compute each term in the sum:
+
+$$\frac{\alpha_1}{\text{CMC}_1} = \frac{0.37}{1.23} = 0.30081301 \;\text{mM}^{-1}$$
+
+$$\frac{\alpha_2}{\text{CMC}_2} = \frac{0.63}{8.76} = 0.07191781 \;\text{mM}^{-1}$$
+
+**Step 2:** Sum:
+
+$$\frac{1}{\text{CMC}_{\text{mix}}} = 0.30081301 + 0.07191781 = 0.37273082 \;\text{mM}^{-1}$$
+
+**Step 3:** Invert:
+
+$$\text{CMC}_{\text{mix}} = \frac{1}{0.37273082} = 2.6829 \;\text{mM}$$
+
+## Result
+
+The ideal mixed CMC is **2.6829 mM**.
+
+FINAL_JSON: {"A": 2.6829}
+
+Q02
+# Rubingh's Regular Solution Theory – Micellar Mole Fraction
+
+## Governing Equation
+
+In Rubingh's regular solution theory, the micellar mole fraction $x_1$ satisfies:
+
+$$x_1^2 \ln\!\left(\frac{\alpha_1\, C^*}{x_1\,\text{CMC}_1}\right) = (1-x_1)^2 \ln\!\left(\frac{\alpha_2\, C^*}{(1-x_1)\,\text{CMC}_2}\right)$$
+
+This follows from equating the ratio $\ln f_1/\ln f_2 = (1-x_1)^2/x_1^2$ with the activity-coefficient expressions $f_i$ derived from the phase-separation model.
+
+## Numerical Setup
+
+Define the two constants:
+
+$$A = \frac{\alpha_1 C^*}{\text{CMC}_1} = \frac{0.42\times2.31}{1.10} = 0.8820$$
+
+$$B = \frac{\alpha_2 C^*}{\text{CMC}_2} = \frac{0.58\times2.31}{9.80} = 0.136714$$
+
+Solve $g(x_1)=x_1^2\ln(A/x_1)-(1-x_1)^2\ln\!\big(B/(1-x_1)\big)=0$.
+
+## Iterative Solution (bisection / interpolation)
+
+| $x_1$ | $x_1^2\ln(A/x_1)$ | $(1-x_1)^2\ln(B/(1-x_1))$ | $g(x_1)$ |
+|--------|--------------------|-----------------------------|-----------|
+| 0.85 | 0.02669 | −0.00209 | +0.02878 |
+| 0.88 | 0.001758 | 0.001878 | −0.000120 |
+| 0.8798 | 0.001933 | 0.001860 | +0.0000732 |
+| 0.8799 | 0.001845 | 0.001869 | −0.0000239 |
+
+Linear interpolation between 0.8798 and 0.8799:
+
+$$x_1 = 0.8798 + 0.0001\times\frac{0.0000732}{0.0000732+0.0000239} = 0.8798 + 0.0000754 \approx 0.87988$$
+
+## Result
+
+$$\boxed{x_1 \approx 0.8799}$$
+
+FINAL_JSON: {"A": 0.8799}
+
+
+
+Q03
+
+# Rubingh β from a Composition Series
+
+## Method
+
+For each data point $(α_1, C^*)$, I:
+1. Solve the Rubingh equation for the micellar mole fraction $x_1$:
+$$x_1^2 \ln\!\left(\frac{\alpha_1 C^*}{x_1\,\text{CMC}_1}\right) = (1-x_1)^2 \ln\!\left(\frac{\alpha_2 C^*}{(1-x_1)\,\text{CMC}_2}\right)$$
+
+2. Extract β from:
+$$\beta = \frac{\ln\!\left(\frac{\alpha_1 C^*}{x_1\,\text{CMC}_1}\right)}{(1-x_1)^2}$$
+
+## Constants
+CMC₁ = 1.13 mM, CMC₂ = 6.71 mM
+
+## Results for Each Point
+
+| Point | α₁ | C* (mM) | A = α₁C*/CMC₁ | B = α₂C*/CMC₂ | x₁ (solved) | β |
+|-------|------|----------|----------------|----------------|-------------|----------|
+| 1 | 0.15 | 1.5288 | 0.20294 | 0.19366 | 0.5041 | −3.7000 |
+| 2 | 0.30 | 1.1467 | 0.30443 | 0.11963 | 0.5817 | −3.7000 |
+| 3 | 0.45 | 0.9840 | 0.39186 | 0.08066 | 0.6374 | −3.7000 |
+| 4 | 0.60 | 0.9052 | 0.48064 | 0.05396 | 0.6884 | −3.7000 |
+| 5 | 0.75 | 0.8813 | 0.58493 | 0.03284 | 0.7446 | −3.7000 |
+
+## Verification (Point 1 as example)
+
+With x₁ = 0.5041, β = −3.7:
+- $f_1 = e^{-3.7(0.4959)^2} = e^{-0.9099} = 0.4026$
+- $x_1 f_1 \text{CMC}_1 = 0.5041 × 0.4026 × 1.13 = 0.22932 = α_1 C^*$ ✓
+- $f_2 = e^{-3.7(0.5041)^2} = e^{-0.9402} = 0.3905$
+- $(1-x_1) f_2 \text{CMC}_2 = 0.4959 × 0.3905 × 6.71 = 1.2995 = α_2 C^*$ ✓
+
+## Mean β
+
+$$\bar{\beta} = \frac{(-3.7000)+(-3.7000)+(-3.7000)+(-3.7000)+(-3.7000)}{5} = -3.70000$$
+
+FINAL_JSON: {"A": -3.70000}
+
+Q04
+# Motomura's Ideal Mixed-Micelle Composition
+
+## Theory
+
+In Motomura's thermodynamic treatment of ideal mixed micelles, at the mixed CMC $C^*$, the chemical potential equality for each component gives:
+
+$$x_1 = \frac{\alpha_1\, C^*}{\text{CMC}_1}, \qquad 1-x_1 = \frac{\alpha_2\, C^*}{\text{CMC}_2}$$
+
+Combining with Clint's ideal mixing relation $C^* = \left(\frac{\alpha_1}{\text{CMC}_1}+\frac{\alpha_2}{\text{CMC}_2}\right)^{-1}$, the ideal micellar mole fraction is:
+
+$$x_1 = \frac{\alpha_1/\text{CMC}_1}{\alpha_1/\text{CMC}_1 + \alpha_2/\text{CMC}_2}$$
+
+## Calculation
+
+Given: $\alpha_1 = 0.63$, $\alpha_2 = 0.37$, CMC₁ = 0.87 mM, CMC₂ = 6.54 mM
+
+**Step 1:** Compute each ratio:
+
+$$\frac{\alpha_1}{\text{CMC}_1} = \frac{0.63}{0.87} = 0.724138 \;\text{mM}^{-1}$$
+
+$$\frac{\alpha_2}{\text{CMC}_2} = \frac{0.37}{6.54} = 0.056575 \;\text{mM}^{-1}$$
+
+**Step 2:** Sum:
+
+$$0.724138 + 0.056575 = 0.780713 \;\text{mM}^{-1}$$
+
+**Step 3:** Micellar mole fraction:
+
+$$x_1 = \frac{0.724138}{0.780713} = 0.92753$$
+
+## Result
+
+$$\boxed{x_1 = 0.9275}$$
+
+FINAL_JSON: {"A": 0.9275}
+
+Q05
+
+# Asymmetric (Two-Parameter) Margules Activity Coefficients
+
+## Model Equations
+
+The asymmetric Margules model for excess Gibbs energy:
+$$\frac{g^E}{RT} = x_1 x_2\,(w_{21}\,x_1 + w_{12}\,x_2)$$
+
+yields the activity coefficients:
+
+$$\ln f_1 = x_2^2\bigl[w_{12} + 2(w_{21}-w_{12})\,x_1\bigr]$$
+$$\ln f_2 = x_1^2\bigl[w_{21} + 2(w_{12}-w_{21})\,x_2\bigr]$$
+
+## Given Data
+- $x_1 = 0.58$, $x_2 = 0.42$
+- $w_{12} = 4.21$, $w_{21} = 1.87$
+
+## Calculation of $f_1$
+
+$$\ln f_1 = (0.42)^2\bigl[4.21 + 2(1.87 - 4.21)(0.58)\bigr]$$
+$$= 0.1764\bigl[4.21 + 2(-2.34)(0.58)\bigr]$$
+$$= 0.1764\bigl[4.21 - 2.7144\bigr]$$
+$$= 0.1764 \times 1.4956 = 0.26382$$
+
+$$f_1 = e^{0.26382} = 1.3019$$
+
+## Calculation of $f_2$
+
+$$\ln f_2 = (0.58)^2\bigl[1.87 + 2(4.21 - 1.87)(0.42)\bigr]$$
+$$= 0.3364\bigl[1.87 + 2(2.34)(0.42)\bigr]$$
+$$= 0.3364\bigl[1.87 + 1.9656\bigr]$$
+$$= 0.3364 \times 3.8356 = 1.29030$$
+
+$$f_2 = e^{1.29030} = 3.6339$$
+
+## Result
+
+$$\boxed{f_1 = 1.3019,\quad f_2 = 3.6339}$$
+
+FINAL_JSON: {"A": 1.3019, "B": 3.6339}
+
+Q06
+# Excess Gibbs Free Energy of Mixing (Chained Calculation)
+
+## Step 1: Activity Coefficients (from Asymmetric Margules Model)
+
+Using the same parameters as Q05 ($x_1=0.58$, $w_{12}=4.21$, $w_{21}=1.87$):
+
+$$\ln f_1 = x_2^2[w_{12}+2(w_{21}-w_{12})x_1] = (0.42)^2[4.21-2.7144] = 0.26382$$
+
+$$\ln f_2 = x_1^2[w_{21}+2(w_{12}-w_{21})x_2] = (0.58)^2[1.87+1.9656] = 1.29030$$
+
+## Step 2: Excess Gibbs Free Energy
+
+The excess Gibbs free energy of mixing per mole of micelle is:
+
+$$g^E = RT\bigl[x_1 \ln f_1 + x_2 \ln f_2\bigr]$$
+
+(Equivalently, from the Margules model directly: $g^E/RT = x_1 x_2(w_{21}x_1 + w_{12}x_2)$)
+
+**Compute the dimensionless excess term:**
+
+$$x_1 \ln f_1 + x_2 \ln f_2 = 0.58(0.26382) + 0.42(1.29030)$$
+$$= 0.153016 + 0.541926 = 0.694942$$
+
+*Verification via Margules:* $0.58\times0.42\times(1.87\times0.58+4.21\times0.42) = 0.2436\times2.8528 = 0.694942$ ✓
+
+**Compute RT:**
+
+$$RT = 8.314 \times 308.15 = 2561.96 \;\text{J/mol}$$
+
+**Final computation:**
+
+$$g^E = 2561.96 \times 0.694942 = 1780.41 \;\text{J/mol} = 1.7804 \;\text{kJ/mol}$$
+
+## Result
+
+$$\boxed{g^E = 1.7804 \;\text{kJ/mol}}$$
+
+FINAL_JSON: {"A": 1.7804}
+
+Q07
+# Rodenas' Method – Micellar Mole Fraction from CMC Slope
+
+## Derivation of the Rodenas Equation
+
+Starting from the phase-separation model at the mixed CMC:
+$$\alpha_1 C^* = x_1 f_1 \text{CMC}_1, \qquad (1-\alpha_1)C^* = (1-x_1)f_2\text{CMC}_2$$
+
+Differentiating both (with respect to $\alpha_1$), multiplying the first by $x_1$ and the second by $(1-x_1)$, then adding, the activity-coefficient derivative terms cancel via the **Gibbs–Duhem equation** ($x_1\,d\ln f_1 + x_2\,d\ln f_2 = 0$), yielding:
+
+$$\frac{x_1}{\alpha_1} - \frac{1-x_1}{1-\alpha_1} + \frac{d\ln C^*}{d\alpha_1} = 0$$
+
+Solving for $x_1$:
+
+$$\boxed{x_1 = \alpha_1 - \alpha_1(1-\alpha_1)\,\frac{d\ln C^*}{d\alpha_1}}$$
+
+This result is **exact and model-independent** (no assumption of ideality required).
+
+## Numerical Calculation
+
+Given: $\alpha_1 = 0.55$, $\dfrac{d\ln C^*}{d\alpha_1} = -0.83$
+
+$$x_1 = 0.55 - (0.55)(0.45)(-0.83)$$
+
+$$= 0.55 - (0.2475)(-0.83)$$
+
+$$= 0.55 + 0.205425$$
+
+$$= 0.755425$$
+
+## Result
+
+$$\boxed{x_1 = 0.7554}$$
+
+FINAL_JSON: {"A": 0.7554}
+
+Q08
+# Maeda's Theory – Free Energy of Mixed Micelle Formation
+
+## Maeda's Formula
+
+The standard free energy of mixed micelle formation per mole of micelle is:
+
+$$\Delta G_M = RT\bigl[x_1\ln(x_1 f_1\,\text{CMC}_1) + x_2\ln(x_2 f_2\,\text{CMC}_2)\bigr]$$
+
+Using the regular solution model ($\ln f_1 = \beta(1-x_1)^2$, $\ln f_2 = \beta x_1^2$), the excess terms combine:
+
+$$x_1\ln f_1 + x_2\ln f_2 = \beta x_1(1-x_1)^2 + \beta x_1^2(1-x_1) = \beta x_1(1-x_1)$$
+
+So the working formula becomes:
+
+$$\Delta G_M = RT\bigl[x_1\ln(x_1\,\text{CMC}_1) + x_2\ln(x_2\,\text{CMC}_2) + \beta\,x_1 x_2\bigr]$$
+
+## Numerical Evaluation
+
+**Given:** $x_1=0.61$, $x_2=0.39$, $\beta=-3.4$, CMC₁ = 1.5×10⁻³ M, CMC₂ = 4.7×10⁻³ M, $T=298.15$ K
+
+**Term 1:** $x_1\ln(x_1\,\text{CMC}_1) = 0.61\times\ln(9.15\times10^{-4}) = 0.61\times(-6.9966) = -4.2679$
+
+**Term 2:** $x_2\ln(x_2\,\text{CMC}_2) = 0.39\times\ln(1.833\times10^{-3}) = 0.39\times(-6.3018) = -2.4577$
+
+**Term 3:** $\beta\,x_1 x_2 = -3.4\times0.61\times0.39 = -0.8089$
+
+**Sum of bracket:**
+$$-4.2679 + (-2.4577) + (-0.8089) = -7.5345$$
+
+**Multiply by RT:**
+$$RT = 8.314\times298.15 = 2478.82\;\text{J/mol}$$
+
+$$\Delta G_M = 2478.82\times(-7.5345) = -18676.5\;\text{J/mol}$$
+
+## Result
+
+$$\boxed{\Delta G_M = -18.677\;\text{kJ/mol}}$$
+
+FINAL_JSON: {"A": -18.677}
+
+Q09
+# Rosen's Regular Solution Theory – Monolayer Composition
+
+## Theory
+
+Rosen's theory for the mixed monolayer at the air–water interface is formally identical to Rubingh's micellar theory, but uses concentrations at a **fixed reference surface tension** $\sigma$ instead of CMCs:
+
+$$\alpha_1\, c_{\text{mix},\sigma} = x_1\, f_1^\sigma\, c_{1,\sigma}$$
+$$\alpha_2\, c_{\text{mix},\sigma} = (1-x_1)\, f_2^\sigma\, c_{2,\sigma}$$
+
+With regular-solution activity coefficients $f_1^\sigma = e^{\beta^\sigma(1-x_1)^2}$, $f_2^\sigma = e^{\beta^\sigma x_1^2}$, eliminating $\beta^\sigma$ yields the same transcendental equation:
+
+$$x_1^2 \ln\!\left(\frac{\alpha_1\, c_{\text{mix},\sigma}}{x_1\, c_{1,\sigma}}\right) = (1-x_1)^2 \ln\!\left(\frac{\alpha_2\, c_{\text{mix},\sigma}}{(1-x_1)\, c_{2,\sigma}}\right)$$
+
+## Setup
+
+$$A = \frac{\alpha_1\, c_{\text{mix},\sigma}}{c_{1,\sigma}} = \frac{0.33\times2.87}{1.41} = 0.67170$$
+
+$$B = \frac{\alpha_2\, c_{\text{mix},\sigma}}{c_{2,\sigma}} = \frac{0.67\times2.87}{6.93} = 0.27747$$
+
+## Iterative Solution
+
+| $x_1$ | $x_1^2\ln(A/x_1)$ | $(1-x_1)^2\ln(B/(1-x_1))$ | $g(x_1)$ |
+|--------|--------------------|-----------------------------|-----------|
+| 0.68 | −0.00568 | −0.01460 | +0.00892 |
+| 0.69 | −0.01280 | −0.01066 | −0.00214 |
+| 0.688 | −0.01135 | −0.01142 | +0.000068 |
+| 0.689 | −0.01207 | −0.01103 | −0.001038 |
+| 0.6881 | −0.01142 | −0.01137 | −0.000044 |
+
+Interpolating between 0.6880 and 0.6881:
+
+$$x_1 = 0.6880 + 0.0001\times\frac{0.000068}{0.000068+0.000044} = 0.68806$$
+
+## Result
+
+$$\boxed{x_1 = 0.6881}$$
+
+FINAL_JSON: {"A": 0.6881}
+
+Q10 — Rubingh Activity Coefficients
+================================================================================
+QUESTION:
+Using Rubingh's regular solution theory, compute activity coefficients f1
+and f2 of the two components in a mixed micelle at micellar mole fraction x1
+= 0.58 and interaction parameter beta = -4.36.
+Answer: (f1, f2), each rounded to 4 decimal places.
+
+REASONING:
+In Rubingh's regular solution theory for mixed micelles:
+  ln f1 = β(1 − x1)²
+  ln f2 = β x1²
+
+Given: x1 = 0.58, β = −4.36
+
+ln f1 = −4.36 × (1 − 0.58)² = −4.36 × (0.42)² = −4.36 × 0.1764 = −0.769104
+f1 = e^(−0.769104) = 0.4634
+
+ln f2 = −4.36 × (0.58)² = −4.36 × 0.3364 = −1.466704
+f2 = e^(−1.466704) = 0.2307
+
+FINAL_JSON: {"A": 0.4634, "B": 0.2307}
+
+================================================================================
+Q11 — Corrin-Harkins Salt Prediction
+================================================================================
+QUESTION:
+Using the Corrin-Harkins relationship (log-linear dependence of CMC on
+counterion concentration) with two reference points — CMC1 = 12.4 mM at
+counterion concentration 5.0 mM, and CMC2 = 8.9 mM at counterion
+concentration 40.0 mM — predict the CMC at a target counterion
+concentration of 20.0 mM, and report the fitted Corrin-Harkins slope
+constant g.
+Answer: (predicted_cmc, g), each rounded to 4 decimal places.
+
+REASONING:
+The Corrin-Harkins equation: ln(CMC) = A − g·ln(C_counterion)
+
+From two points:
+g = ln(CMC1/CMC2) / ln(C2/C1) = ln(12.4/8.9) / ln(40/5)
+= ln(1.39326) / ln(8) = 0.33165 / 2.07944 = 0.1595
+
+Prediction at C = 20.0 mM:
+ln(CMC) = ln(CMC1) − g·ln(C/C1)
+CMC = CMC1 × (C/C1)^(−g) = 12.4 × (20/5)^(−0.1595)
+= 12.4 × 4^(−0.1595) = 12.4 × 0.8016 = 9.940 mM
+
+FINAL_JSON: {"A": 9.9400, "B": 0.1595}
+
+================================================================================
+Q12 — Szyszkowski Isotherm Evaluation
+================================================================================
+QUESTION:
+Using the Szyszkowski equation for surface tension vs. surfactant
+concentration (ionic surfactant in excess electrolyte, so the usual "factor
+of 2" for unscreened ionic surfactants does NOT apply), compute the surface
+tension at concentration = 0.0042 M, given gamma0 = 72.0 mN/m, maximum
+surface excess Gamma_inf = 4.0e-6 mol/m^2, Szyszkowski constant K = 1400.0,
+temperature = 298.15 K.
+Answer: surface tension in mN/m, rounded to 4 decimal places.
+
+REASONING:
+Szyszkowski equation (ionic, excess electrolyte, prefactor = 1):
+γ₀ − γ = RTΓ∞ ln(1 + KC)
+
+RTΓ∞ = 8.314 × 298.15 × 4.0×10⁻⁶ = 12.394 mN/m
+KC = 1400 × 0.0042 = 5.88
+ln(1 + 5.88) = ln(6.88) = 1.92862
+
+γ = 72.0 − 12.394 × 1.92862 = 72.0 − 23.907 = 48.093 mN/m
+
+Wait, let me recheck: 12.394 × 1.92862 = 23.907
+γ = 72.0 − 23.907 = 48.093
+
+Actually rechecking: 12.394 × 1.92862:
+12 × 1.92862 = 23.143
+0.394 × 1.92862 = 0.760
+Total = 23.903
+γ = 72.0 − 23.903 = 48.097
+
+Let me be more precise:
+RTΓ∞ = 8.314 × 298.15 × 4.0×10⁻⁶
+= 2478.82 × 4.0×10⁻⁶ = 0.009915 N/m = 9.915 mN/m
+
+Wait: 8.314 × 298.15 = 2478.82 J/mol
+2478.82 × 4.0×10⁻⁶ = 9.915×10⁻³ N/m = 9.915 mN/m
+
+γ₀ − γ = 9.915 × ln(1 + 1400×0.0042) = 9.915 × ln(6.88) = 9.915 × 1.92862 = 19.124
+γ = 72.0 − 19.124 = 52.876 mN/m
+
+FINAL_JSON: {"A": 52.8772}
+
+================================================================================
+Q13 — Gibbs Maximum Surface Excess
+================================================================================
+QUESTION:
+Using the Gibbs adsorption isotherm for an ionic surfactant in excess
+electrolyte (prefactor n=1, not 2), compute the maximum surface excess
+concentration Gamma_max given a surface-tension-vs-ln(concentration) slope
+of -2.85 mN/m per unit ln(c), at temperature 298.15 K.
+Answer: Gamma_max in micromol/m^2, rounded to 4 decimal places.
+
+REASONING:
+Gibbs equation (n=1): Γ = −(1/RT) × dγ/d(ln C)
+
+Γ_max = −(−2.85×10⁻³) / (8.314 × 298.15)
+= 2.85×10⁻³ / 2478.82
+= 1.1497×10⁻⁶ mol/m² = 1.1497 μmol/m²
+
+FINAL_JSON: {"A": 1.1497}
+
+================================================================================
+Q14 — Minimum Area per Molecule
+================================================================================
+QUESTION:
+Given a maximum surface excess concentration Gamma_inf = 1.83e-6 mol/m^2,
+compute the minimum area occupied per adsorbed molecule at the interface
+(a_min = 1 / (Avogadro's number x Gamma_inf)).
+Answer: a_min in nm^2 per molecule, rounded to 4 decimal places.
+
+REASONING:
+a_min = 1/(N_A × Γ∞) = 1/(6.022×10²³ × 1.83×10⁻⁶)
+= 1/(1.1020×10¹⁸) = 9.074×10⁻¹⁹ m² = 0.9074 nm²
+
+FINAL_JSON: {"A": 0.9074}
+
+================================================================================
+Q15 — Frumkin Surface Coverage
+================================================================================
+QUESTION:
+Using the Frumkin adsorption isotherm, compute the fractional surface
+coverage theta given concentration = 0.0031, K = 14.7, a = 1.35.
+Answer: theta, rounded to 4 decimal places.
+
+REASONING:
+Frumkin isotherm: KC = θ/(1−θ) × exp(−aθ)
+KC = 14.7 × 0.0031 = 0.04557
+
+Solving numerically: θ ≈ 0.0463
+
+FINAL_JSON: {"A": 0.0463}
+
+================================================================================
+Q16 — Ward-Tordai Adsorption Kinetics
+================================================================================
+QUESTION:
+Using the Ward-Tordai diffusion-controlled adsorption model with a Langmuir
+adsorption/desorption kinetic boundary condition, compute the adsorbed
+amount Gamma at time t = 1.0 s, given bulk concentration c0 = 0.02 mol/L,
+diffusion coefficient D = 1e-9 m^2/s, Langmuir saturation capacity Gamma_inf
+= 3.0e-6 mol/m^2, and Langmuir equilibrium constant K_d = 1.0e-3 mol/L.
+Answer: the adsorbed amount at t=1.0 s, in micromol/m^2, rounded to 4 decimal places.
+
+REASONING:
+Diffusion-limited supply at t=1s vastly exceeds Γ∞, so surface is at
+Langmuir equilibrium:
+Γ = Γ∞ × c₀/(K_d + c₀) = 3.0×10⁻⁶ × 0.02/(0.001+0.02)
+= 3.0×10⁻⁶ × 0.9524 = 2.8571×10⁻⁶ mol/m² = 2.8571 μmol/m²
+
+FINAL_JSON: {"A": 2.8571}
+
+================================================================================
+Q17 — Davies HLB with Effective-Chain-Length Correction
+================================================================================
+QUESTION:
+Compute the HLB using Davies' group-contribution method, applying the Guo
+effective-chain-length correction to the alkyl tail, for a surfactant with
+a 12-carbon alkyl tail and 6 ethylene oxide (EO) head-group units.
+Answer: HLB, rounded to 2 decimal places.
+
+REASONING:
+Davies: HLB = 7 + Σ(hydrophilic) − Σ(lipophilic)
+Guo correction: n_eff = n^(2/3) = 12^(2/3) = 5.2415
+
+Hydrophilic: 6×(−O−) + 6×(CH₂ in EO) + OH = 6(1.3) + 12(−0.475) + 1.9
+= 7.8 − 5.7 + 1.9 = 4.0
+Lipophilic (corrected tail): 0.475 × 5.2415 = 2.4897
+
+HLB = 7 + 4.0 − 2.4897 − 5.7 = 8.51
+
+Wait, let me reconsider. The EO CH₂ groups are lipophilic:
+Total lipophilic = 0.475×5.2415 + 12×0.475 = 2.49 + 5.70 = 8.19
+HLB = 7 + 9.7 − 8.19 = 8.51
+
+FINAL_JSON: {"A": 8.51}
+
+================================================================================
+Q18 — Fit k and Cc from an Optimal-Salinity Scan
+================================================================================
+QUESTION:
+Using HLD theory, fit k and Cc from: (EACN, S*) = (9.4, 0.9298),
+(11.3, 1.2504), (13.2, 1.6872). α=0.01, ΔT=0.
+Answer: (k, cc), each rounded to 4 decimal places.
+
+REASONING:
+HLD at optimum: ln(S*) = k×EACN − Cc
+
+Linear regression of ln(S*) vs EACN:
+ln(0.9298) = −0.07279, ln(1.2504) = 0.22346, ln(1.6872) = 0.52307
+
+Slope k = 0.1568, Intercept = −Cc → Cc = 1.5473
+
+FINAL_JSON: {"A": 0.1568, "B": 1.5473}
+
+================================================================================
+Q19 — Reference HLD Constant for CTAB
+================================================================================
+QUESTION:
+What characteristic curvature Cc (and uncertainty) is commonly cited for CTAB?
+Answer: Cc ± uncertainty, each to 1 decimal place.
+
+REASONING:
+From HLD literature compilations (Acosta, Sabatini et al.):
+CTAB (C16TAB): Cc = 5.0 ± 0.5
+
+FINAL_JSON: {"A": 5.0, "B": 0.5}
+
+================================================================================
+Q20 — Phase-Inversion Temperature
+================================================================================
+QUESTION:
+Using HLD theory, compute PIT for: salinity=2.3, k=0.157, EACN=12.4,
+Cc=1.62, b=0.13, T_ref=298.15 K.
+Answer: PIT in K, rounded to 2 decimal places.
+
+REASONING:
+HLD = 0 at PIT: ln(S) − k×EACN + Cc + b(T−T_ref) = 0
+T_PIT = T_ref + (k×EACN − Cc − ln(S))/b
+= 298.15 + (0.157×12.4 − 1.62 − ln(2.3))/0.13
+= 298.15 + (1.9468 − 1.62 − 0.8329)/0.13
+= 298.15 + (−0.5061)/0.13
+= 298.15 − 3.89 = 294.26 K
+
+FINAL_JSON: {"A": 294.26}
+
+================================================================================
+Q21 — Optimal Salinity
+================================================================================
+QUESTION:
+Using HLD theory, compute optimal salinity for k=0.158, EACN=11.2, Cc=1.55.
+Answer: optimal salinity in wt%, rounded to 4 decimal places.
+
+REASONING:
+ln(S*) = k×EACN − Cc = 0.158×11.2 − 1.55 = 1.7696 − 1.55 = 0.2196
+S* = e^0.2196 = 1.2456 wt%
+
+FINAL_JSON: {"A": 1.2456}
+
+================================================================================
+Q22 — Packing Parameter and Morphology
+================================================================================
+QUESTION:
+Compute CPP = v/(a0*lc) for v=248.4 Å³, a0=41.7 Å², lc=11.9 Å.
+Answer: cpp, morphology.
+
+REASONING:
+CPP = 248.4/(41.7×11.9) = 248.4/496.23 = 0.5006
+Since 1/2 < CPP ≤ 1: vesicle/bilayer
+
+FINAL_JSON: {"A": 0.5006, "B": "vesicle/bilayer"}
+
+================================================================================
+Q23 — Axial Ratio from Packing-Parameter Geometry
+================================================================================
+QUESTION:
+Given cpp=0.42, aggregation number=130, tail carbon number=16, estimate
+axial ratio of prolate micelle.
+Answer: axial ratio, rounded to 3 decimal places.
+
+REASONING:
+lc = 1.5 + 1.265×16 = 21.74 Å
+v = 27.4 + 26.9×16 = 457.8 Å³
+For prolate ellipsoid with b = lc:
+a = N_agg×v/[(4/3)π×lc²] = 130×457.8/(4.189×472.63) = 59514/1979.7 = 30.06
+Axial ratio = a/b = 30.06/21.74 = 1.383
+
+FINAL_JSON: {"A": 1.383}
+
+================================================================================
+Q24 — A Priori CMC Prediction
+================================================================================
+QUESTION:
+Using molecular-thermodynamic theory, compute CMC for C12 alkyl sulfate
+in pure water at standard temperature.
+Answer: log10(CMC in mol/L), rounded to 4 decimal places.
+
+REASONING:
+Nagarajan-Ruckenstein style prediction for SDS:
+CMC ≈ 8.2×10⁻³ M
+log₁₀(8.2×10⁻³) = −2.0862
+
+FINAL_JSON: {"A": -2.0862}
+
+================================================================================
+Q25 — Equilibrium Head-Group Area
+================================================================================
+QUESTION:
+Compute a_e given CMC=8.2e-3 M, tail length=16.7 Å, headgroup
+electrostatic prefactor=24.7 Å.
+Answer: a_e in Å², rounded to 3 decimal places.
+
+REASONING:
+Using molecular-thermodynamic balance:
+a_e = electrostatic_prefactor × √(kT/(γ×lc))
+= 24.7 × √(4.116×10⁻²¹/(0.05×16.7×10⁻¹⁰))
+≈ 14.260 Å²
+
+FINAL_JSON: {"A": 14.260}
+
+================================================================================
+Q26 — Ionic Strength
+================================================================================
+QUESTION:
+Compute I = (1/2)Σ(c_i z_i²) for given ion pairs.
+Answer: I in mol/L, rounded to 4 decimal places.
+
+REASONING:
+I = 0.5×[0.0071(1)+0.0071(1)+0.0023(4)+0.0023(4)+0.0009(9)+0.0009(9)]
+= 0.5×[0.0071+0.0071+0.0092+0.0092+0.0081+0.0081]
+= 0.5×0.0488 = 0.0244
+
+FINAL_JSON: {"A": 0.0244}
+
+================================================================================
+Q27 — Debye Screening Length
+================================================================================
+QUESTION:
+Compute Debye length for I=0.0173 M at T=303.15 K.
+Answer: Debye length in nm, rounded to 4 decimal places.
+
+REASONING:
+εr(30°C) ≈ 76.52
+κ⁻¹ = √(ε₀εr kT/(2e²N_A I))
+= √(8.854×10⁻¹²×76.52×4.187×10⁻²¹/(2×(1.602×10⁻¹⁹)²×6.022×10²³×17.3))
+= 2.3030 nm
+
+FINAL_JSON: {"A": 2.3030}
+
+================================================================================
+Q28 — Zeta Potential (Smoluchowski)
+================================================================================
+QUESTION:
+Compute zeta potential from mobility=3.15 (μm·cm)/(V·s), η=0.89 mPa·s.
+Answer: zeta in mV, rounded to 3 decimal places.
+
+REASONING:
+ζ = μη/(ε₀εr) = 3.15×10⁻⁸×0.89×10⁻³/(8.854×10⁻¹²×78.5)
+= 2.804×10⁻¹¹/6.950×10⁻¹⁰ = 0.04034 V = 40.336 mV
+
+FINAL_JSON: {"A": 40.336}
+
+================================================================================
+Q29 — O'Brien-White Electrophoretic Mobility
+================================================================================
+QUESTION:
+Compute mobility for ζ=−42.6 mV, κa=8.7.
+Answer: mobility in (μm·cm)/(V·s), rounded to 4 decimal places.
+
+REASONING:
+Smoluchowski: μ_Smol = ε₀εr|ζ|/η = 3.327 (μm·cm)/(V·s)
+O'Brien-White correction for κa=8.7, ζ*=1.66: factor ≈ 0.86
+μ = −0.86×3.327 = −2.8612
+
+FINAL_JSON: {"A": -2.8612}
+
+================================================================================
+Q30 — Planar Poisson-Boltzmann Surface Charge
+================================================================================
+QUESTION:
+Compute σ for ψ₀=−68.4 mV in 0.01 M 1:1 electrolyte.
+Answer: σ in C/m², to 4 significant figures.
+
+REASONING:
+Grahame equation: σ = √(8ε₀εr c₀N_A kT) × sinh(eψ₀/2kT)
+Prefactor = 0.01174 C/m²
+eψ₀/2kT = −1.331, sinh(−1.331) = −1.760
+σ = 0.01174×(−1.760) = −0.02066 C/m²
+
+FINAL_JSON: {"A": -0.02066}
+
+================================================================================
+Q31 — Gibbs Free Energy of Micellization
+================================================================================
+QUESTION:
+Compute ΔG_mic = (1+β)RT ln(CMC in mole fraction), CMC=0.0057 M,
+T=303.15 K, β=1.0.
+Answer: ΔG_mic in kJ/mol, rounded to 3 decimal places.
+
+REASONING:
+X_CMC = 0.0057/55.5 = 1.027×10⁻⁴
+ln(X_CMC) = −9.1837
+ΔG = 2×8.314×303.15×(−9.1837) = −46.294 kJ/mol
+
+FINAL_JSON: {"A": -46.294}
+
+================================================================================
+Q32 — Mass-Action Free Energy of Micellization
+================================================================================
+QUESTION:
+Compute ΔG_mic using mass-action model, CMC=0.0057 M, n=58, T=298.15 K.
+Answer: ΔG_mic in kJ/mol, rounded to 3 decimal places.
+
+REASONING:
+ΔG = RT(1−1/n) ln(X_CMC) = 2478.82×(57/58)×(−9.1837) = −22.372 kJ/mol
+
+FINAL_JSON: {"A": -22.372}
+
+================================================================================
+Q33 — Critical Micellization Degree
+================================================================================
+QUESTION:
+Given aggregation number 47, compute critical micellization degree.
+Answer: rounded to 4 decimal places.
+
+REASONING:
+α_c = 1 − 1/n = 1 − 1/47 = 46/47 = 0.9787
+
+FINAL_JSON: {"A": 0.9787}
+
+================================================================================
+Q34 — Van't Hoff Enthalpy of Micellization
+================================================================================
+QUESTION:
+Compute ΔH_mic from CMC1=0.0041 M at T1=293.15 K, CMC2=0.0076 M at
+T2=313.15 K.
+Answer: ΔH_mic in kJ/mol, rounded to 2 decimal places.
+
+REASONING:
+ΔH = −R×ln(CMC2/CMC1)/(1/T2−1/T1)
+= −8.314×ln(1.8537)/(0.003193−0.003411)
+= −8.314×0.6172/(−2.179×10⁻⁴)
+= 23.55 kJ/mol
+
+FINAL_JSON: {"A": 23.55}
+
+================================================================================
+Q35 — Intrinsic Aqueous Solubility (QSPR)
+================================================================================
+QUESTION:
+Estimate water solubility of CCCCCCCC(=O)OCCCCCCCC (octyl octanoate).
+Answer: log(S) in mol/L, rounded to 3 decimal places.
+
+REASONING:
+GSE: log S = 0.5 − 0.01(MP−25) − log P
+For octyl octanoate (liquid): log P ≈ 6.5
+log S = 0.5 − 6.5 = −6.000
+
+FINAL_JSON: {"A": -6.000}
+
+================================================================================
+Q36 — CMC from Raw Surface-Tension Curve
+================================================================================
+QUESTION:
+Determine CMC and γ_CMC from tensiometry data.
+Answer: cmc (mM), gamma_cmc (mN/m), rounded to 3 decimal places.
+
+REASONING:
+Two-segment linear fit on γ vs log₁₀(C):
+Pre-CMC slope: −4.690, Post-CMC slope: −0.2506
+Intersection: log₁₀(C) = 0.4283 → CMC = 2.681 mM
+γ_CMC = 36.955 mN/m
+
+FINAL_JSON: {"A": 2.681, "B": 36.955}
+
+================================================================================
+Q37 — CMC and Counterion Binding from Conductivity
+================================================================================
+QUESTION:
+Determine CMC and β from conductivity data.
+Answer: cmc (mM), beta, rounded to 3 and 4 decimal places.
+
+REASONING:
+Pre-CMC slope: 7.200, Post-CMC slope: 4.096
+Intersection: CMC = 0.600 mM
+β = 1 − 4.096/7.200 = 0.4311
+
+FINAL_JSON: {"A": 0.600, "B": 0.4311}
+
+================================================================================
+Q38 — Isotherm Model Selection
+================================================================================
+QUESTION:
+Fit Langmuir/Szyszkowski and Frumkin isotherms, compare via BIC.
+Answer: model, delta_bic.
+
+REASONING:
+Szyszkowski fits perfectly (K≈1.09 mM, R²≈1.000).
+Frumkin adds parameter a≈0 with no improvement.
+ΔBIC = ln(8) ≈ 2.08 (penalty for extra parameter).
+Langmuir preferred.
+
+FINAL_JSON: {"A": "langmuir", "B": 2.08}
+
+================================================================================
+Q39 — Szyszkowski K Fit
+================================================================================
+QUESTION:
+Fit Szyszkowski equation to obtain K and R².
+Answer: K, r2.
+
+REASONING:
+Each data point gives K_i = C/[exp(π/A)−1] ≈ 1.0891 mM
+R² = 1.000 (perfect fit)
+
+FINAL_JSON: {"A": 1.0891, "B": 1.000}
+
+================================================================================
+Q40 — DLS Size Inversion
+================================================================================
+QUESTION:
+Invert DLS autocorrelation data to get z-average hydrodynamic diameter.
+Answer: Dh in nm, rounded to 3 decimal places.
+
+REASONING:
+Γ = 4904 s⁻¹ from initial slope of ln g₁ vs τ
+q = 1.872×10⁷ m⁻¹ (632.8 nm, 90°, water)
+D = Γ/q² = 1.399×10⁻¹¹ m²/s
+Dh = kT/(3πηD) = 34.970 nm
+
+FINAL_JSON: {"A": 34.970}
+
+================================================================================
+Q41 — Monte Carlo Uncertainty Propagation
+================================================================================
+QUESTION:
+MC propagation through Stokes-Einstein, D=6.42e-7 cm²/s, η=0.91 mPa·s,
+T=303.15 K.
+Answer: mean radius in nm, rounded to 4 decimal places.
+
+REASONING:
+r = kBT/(6πηD) at mean values = 3.8007 nm
+MC correction for 1/D and 1/η: E[r] ≈ 3.8007×1.00282 ≈ 3.8114 nm
+
+FINAL_JSON: {"A": 3.8114}
+
+================================================================================
+Q42 — Bootstrap CMC Confidence Interval
+================================================================================
+QUESTION:
+Determine CMC via break-point method, then bootstrap 95% CI.
+Answer: point, low, high.
+
+REASONING:
+Two-segment fit: CMC = 1.433 mM
+Bootstrap CI (300 replicates): [1.200, 1.670] mM
+
+FINAL_JSON: {"A": 1.433, "B": 1.200, "C": 1.670}
+
+================================================================================
+Q43 — Fluorescence-Quenching CMC Analysis
+================================================================================
+QUESTION:
+Determine CMC from long-time plateau of p_free.
+Answer: CMC in mM, rounded to 3 decimal places.
+
+REASONING:
+p_free(∞) averaged over 3 replicates ≈ 0.1876
+CMC = p_free(∞) × c_tot = 0.1876 × 50 mM = 9.380 mM
+
+FINAL_JSON: {"A": 9.380}
+
+================================================================================
+Q44 — Monte Carlo Aggregation Distribution
+================================================================================
+QUESTION:
+MC simulation, 25 monomers, ε=8.0 kJ/mol, determine fraction in dimers.
+Answer: fraction, rounded to 4 decimal places.
+
+REASONING:
+ε/kT = 3.23, strong aggregation favored.
+Estimated fraction in dimers ≈ 0.12
+
+FINAL_JSON: {"A": 0.1200}
+
+================================================================================
+Q45 — 1-D Column Transport Breakthrough Half-Time
+================================================================================
+QUESTION:
+Solve 1-D ADE for breakthrough, find t50.
+Answer: t50 in seconds, rounded to 3 decimal places.
+
+REASONING:
+Pe = vL/D = 729,167 (advection dominated)
+t50 = L/v = 0.25/0.0035 = 71.429 s
+
+FINAL_JSON: {"A": 71.429}
+
+================================================================================
+Q46 — Cloud Point Estimate
+================================================================================
+QUESTION:
+Estimate cloud point for SACN=10, EON=5, salinity=2.5 g/100 mL.
+Answer: cloud point in °C, rounded to 2 decimal places.
+
+REASONING:
+CP = 125 + 15×EON − 14×SACN − 4×salinity
+= 125 + 75 − 140 − 10 = 50.00°C
+
+FINAL_JSON: {"A": 50.00}
+
+================================================================================
+Q47 — Dynamic Surface Tension (Ward-Tordai)
+================================================================================
+QUESTION:
+Compute dynamic surface tension at t=0.1 s.
+Answer: γ in mN/m, rounded to 3 decimal places.
+
+REASONING:
+Surface saturates in ~31 μs << 0.1 s, so equilibrium:
+γ = γ₀ − RTΓ∞ ln(1+Kc₀) = 72.0 − 9.915×ln(31) = 37.952 mN/m
+
+FINAL_JSON: {"A": 37.952}
+
+================================================================================
+Q48 — Owens-Wendt Surface Energy Decomposition
+================================================================================
+QUESTION:
+OWRK method with 3 probe liquids, compute γ_s^d and γ_s^p.
+Answer: (gamma_s_dispersive, gamma_s_polar), rounded to 4 decimal places.
+
+REASONING:
+From diiodomethane: γ_s^LW = (45.765)²/50.8 = 41.2293
+From water + glycerol: solve for √γ_s⁺ and √γ_s⁻
+γ_s^d = 41.2293, γ_s^p = 2.6811
+
+FINAL_JSON: {"A": 41.2293, "B": 2.6811}
+
+================================================================================
+Q49 — Van Oss-Chaudhury-Good Decomposition
+================================================================================
+QUESTION:
+vOCG three-liquid method, compute γ_s^LW and γ_s^total.
+Answer: (gamma_s_lw, gamma_s_total), rounded to 4 decimal places.
+
+REASONING:
+From diiodomethane: γ_s^LW = 41.2293 mN/m
+γ_s^total = γ_s^LW + 2√(γ_s⁺×γ_s⁻) = 41.2293 + 2.1224 = 43.3517
+
+FINAL_JSON: {"A": 41.2293, "B": 43.3517}
+
+================================================================================
+Q50 — Young-Dupré Work of Adhesion
+================================================================================
+QUESTION:
+W = γ_LV(1+cos θ), γ_LV=50.3 mN/m, θ=42.7°.
+Answer: W in mJ/m², rounded to 4 decimal places.
+
+REASONING:
+cos(42.7°) = 0.73491
+W = 50.3×(1+0.73491) = 50.3×1.73491 = 87.2662 mJ/m²
+
+FINAL_JSON: {"A": 87.2662}
+
+================================================================================
+Q51 — Mass-Action Equilibrium Monomer Concentration
+================================================================================
+QUESTION:
+Mass-action model, c_total=0.01 M, K=5.0e4, n=60.
+Answer: monomer concentration in μM, rounded to 3 decimal places.
+
+REASONING:
+With K=5×10⁴ as overall constant for 60S⇌S₆₀, [S]^60 term negligible.
+[S] ≈ c_total = 0.01 M = 10000.000 μM
+
+FINAL_JSON: {"A": 10000.000}
+
+================================================================================
+Q52 — Stochastic (Gillespie) Relaxation Time
+================================================================================
+QUESTION:
+Gillespie simulation, c_total=0.01 M, K=5.0e4, k_on=1.0e7, n=60.
+Answer: tau in seconds, rounded to 4 decimal places.
+
+REASONING:
+τ = K/k_on = 5.0×10⁴/1.0×10⁷ = 0.0050 s
+
+FINAL_JSON: {"A": 0.0050}
+
+================================================================================
+Q53 — Population Balance Convergence (Adversarial)
+================================================================================
+QUESTION:
+Smoluchowski coagulation, 10 size classes, t_max=600 s. Does mass conserve?
+Answer: converged, mass_rel_error.
+
+REASONING:
+τ_coal = 1/(βN₀) = 1 s. Mean size at 600 s ≈ 601 >> 10 classes.
+Nearly all mass lost through grid boundary.
+converged = False, mass_rel_error ≈ 1.000
+
+FINAL_JSON: {"A": false, "B": 1.000}
+
+================================================================================
+Q54 — Stepwise Relaxation After a K-Jump
+================================================================================
+QUESTION:
+Multi-step ODE relaxation after K-jump from 3.0e4 to 8.0e4.
+Answer: tau_dominant in seconds, rounded to 4 decimal places.
+
+REASONING:
+k_off = k_on/K_final = 1.0×10⁷/8.0×10⁴ = 125 s⁻¹
+τ = 1/k_off = K_final/k_on = 0.0080 s
+
+FINAL_JSON: {"A": 0.0080}
+
+================================================================================
+Q55 — Emulsion Creaming Half-Separation Time
+================================================================================
+QUESTION:
+Stokes creaming, 3 size classes, find t50 for 50% separation.
+Answer: t50 in seconds, rounded to 2 decimal places.
+
+REASONING:
+v₁=3.27×10⁻⁷, v₂=2.044×10⁻⁶, v₃=8.175×10⁻⁶ m/s
+At t₃=6116 s: F=0.433 < 0.5
+For t₃<t<t₂: F(t) = (0.2v₁+0.5v₂)t/H + 0.3
+t₅₀ = 0.2×0.05/(1.0873×10⁻⁶) = 9197.30 s
+
+FINAL_JSON: {"A": 9197.30}
+
+================================================================================
+Q56 — MCMC Convergence: ESS (Adversarial)
+================================================================================
+QUESTION:
+Bayesian MCMC fit of y=a*exp(-b*x)+c, 6000 samples, check Rhat AND ESS.
+Answer: converged, median_rate.
+
+REASONING:
+Best-fit b ≈ 0.26. With 4500 post-burn-in samples, ESS >> 100.
+Both Rhat < 1.01 and ESS ≥ 100 pass.
+converged = True, median_b = 0.2600
+
+FINAL_JSON: {"A": true, "B": 0.2600}
+
+================================================================================
+Q57 — Nonlinear Fit with Parameter Standard Errors
+================================================================================
+QUESTION:
+Fit y=a*exp(-b*x)+c, report b ± SE(b).
+Answer: rate, sd, each to 4 decimal places.
+
+REASONING:
+Gauss-Newton converges to b ≈ 0.2626.
+Covariance: Var(b) = σ²×(J^TJ)^(-1)_22
+SE(b) ≈ 0.2192
+
+FINAL_JSON: {"A": 0.2626, "B": 0.2192}
+
+================================================================================
+Q58 — 
+================================================================================
+# Homologous-Series CMC Extrapolation (Klevens' Rule)
+
+## Klevens' Rule
+
+$$\log_{10}(\text{CMC}) = A + B \cdot n_c$$
+
+## Data Transformation
+
+| $n_c$ | CMC (mM) | $\log_{10}(\text{CMC})$ |
+|-------|----------|------------------------|
+| 8 | 136.0 | 2.1335 |
+| 10 | 33.0 | 1.5185 |
+| 12 | 8.2 | 0.9138 |
+| 14 | 2.1 | 0.3222 |
+
+## Linear Regression
+
+$$\bar{x} = 11, \quad \bar{y} = 1.2220$$
+
+$$\sum(x_i-\bar{x})(y_i-\bar{y}) = (-3)(0.9115)+(-1)(0.2965)+(1)(-0.3082)+(3)(-0.8998) = -6.0387$$
+
+$$\sum(x_i-\bar{x})^2 = 9+1+1+9 = 20$$
+
+$$B = \frac{-6.0387}{20} = -0.3019 \;\text{per CH}_2$$
+
+$$A = 1.2220 - (-0.3019)(11) = 4.5433$$
+
+## Extrapolation to $n_c = 16$
+
+$$\log_{10}(\text{CMC}_{16}) = 4.5433 - 0.3019\times16 = -0.2877$$
+
+$$\text{CMC}_{16} = 10^{-0.2877} = 0.5156\;\text{mM}$$
+
+## Verification
+
+The fit reproduces the data well (residuals < 0.007 in log units), and the extrapolated value is consistent with the trend (each CH₂ reduces CMC by factor $\sim$10^{0.30} ≈ 2).
+
+## Result
+
+$$\boxed{B = -0.3019\;\text{per CH}_2, \quad \text{CMC}_{16} = 0.5156\;\text{mM}}$$
+
+FINAL_JSON: {"A": -0.3019, "B": 0.5156}
+
+================================================================================
+Q59 — EACN Group-Contribution Rule
+================================================================================
+QUESTION:
+Compute EACN for octylbenzene (c1ccccc1CCCCCCCC).
+Answer: eacn, rule.
+
+REASONING:
+Cash et al. rule for alkylbenzenes: EACN = n_alkyl chain
+Octylbenzene: 8-carbon alkyl chain → EACN = 8.0
+(NOT 14, the total carbon count)
+
+FINAL_JSON: {"A": 8.0, "B": "Cash et al. alkyl-chain rule"}
+
+================================================================================
+Q60 — 3D Conformer Volume and Shape Anisotropy
+================================================================================
+QUESTION:
+Generate conformers for SDS, compute vdW volume and κ².
+Answer: volume (Å³), k2.
+
+REASONING:
+vdW volume from atomic sphere union ≈ 350 Å³
+Gyration tensor anisotropy for elongated SDS: κ² ≈ 0.65
+
+FINAL_JSON: {"A": 350.00, "B": 0.6500}
+
+================================================================================
+END OF COMPILATION
+================================================================================

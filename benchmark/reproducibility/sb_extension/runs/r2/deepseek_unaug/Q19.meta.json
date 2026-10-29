@@ -1,0 +1,10 @@
+{
+ "qid": "Q19",
+ "provider": "deepseek",
+ "condition": "unaug",
+ "start": "2026-10-23T08:16:43+0530",
+ "model_seen": "DeepSeek DeepThink on, Search off (aria-pressed)",
+ "mcp_seen": "BetterDeepSeek NO_SERVER_TO_REMOVE_OR_REF_NOT_FOUND; SuperAssistant Inactive",
+ "sent": "2026-10-23T08:19:55+0530",
+ "end": "2026-10-23T08:22:11+0530"
+}

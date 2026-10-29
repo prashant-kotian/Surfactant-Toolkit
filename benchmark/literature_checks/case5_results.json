@@ -1,0 +1,136 @@
+{
+ "paper": "Banjare et al., Heliyon 10 (2024) e35598",
+ "doi": "10.1016/j.heliyon.2024.e35598",
+ "chain": {
+  "v_A3": 296.4,
+  "l_A": 14.149999999999999,
+  "min_cross_section_nm2": 0.209
+ },
+ "systems": {
+  "water": {
+   "printed": {
+    "Gamma_umol_m2": 22.96,
+    "A_min_nm2": 0.0723,
+    "CPP": 269.809
+   },
+   "A_from_printed_Gamma_nm2": 0.0723,
+   "recovered": {
+    "Gamma_umol_m2": 2.64,
+    "A_min_nm2": 0.63,
+    "CPP": 0.33,
+    "printed_over_recovered_Gamma": 8.7,
+    "check_gamma_cmc": 38.82,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES1 5 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 18.47,
+    "A_min_nm2": 0.089,
+    "CPP": 283.535
+   },
+   "A_from_printed_Gamma_nm2": 0.0899,
+   "recovered": {
+    "Gamma_umol_m2": 1.94,
+    "A_min_nm2": 0.86,
+    "CPP": 0.24,
+    "printed_over_recovered_Gamma": 9.5,
+    "check_gamma_cmc": 37.71,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES1 10 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 12.32,
+    "A_min_nm2": 0.134,
+    "CPP": 254.838
+   },
+   "A_from_printed_Gamma_nm2": 0.1348,
+   "recovered": {
+    "Gamma_umol_m2": 1.14,
+    "A_min_nm2": 1.46,
+    "CPP": 0.14,
+    "printed_over_recovered_Gamma": 10.8,
+    "check_gamma_cmc": 41.68,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES2 5 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 14.21,
+    "A_min_nm2": 0.116,
+    "CPP": 283.38
+   },
+   "A_from_printed_Gamma_nm2": 0.1169,
+   "recovered": {
+    "Gamma_umol_m2": 1.46,
+    "A_min_nm2": 1.13,
+    "CPP": 0.18,
+    "printed_over_recovered_Gamma": 9.7,
+    "check_gamma_cmc": 40.82,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES2 10 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 13.89,
+    "A_min_nm2": 0.119,
+    "CPP": 280.113
+   },
+   "A_from_printed_Gamma_nm2": 0.1195,
+   "recovered": {
+    "Gamma_umol_m2": 1.43,
+    "A_min_nm2": 1.16,
+    "CPP": 0.18,
+    "printed_over_recovered_Gamma": 9.7,
+    "check_gamma_cmc": 38.45,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES3 5 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 25.47,
+    "A_min_nm2": 0.065,
+    "CPP": 328.115
+   },
+   "A_from_printed_Gamma_nm2": 0.0652,
+   "recovered": {
+    "Gamma_umol_m2": 2.32,
+    "A_min_nm2": 0.72,
+    "CPP": 0.29,
+    "printed_over_recovered_Gamma": 11.0,
+    "check_gamma_cmc": 39.21,
+    "check_pi_at_C20": 20.0
+   }
+  },
+  "DES3 10 wt%": {
+   "printed": {
+    "Gamma_umol_m2": 18.67,
+    "A_min_nm2": 0.088,
+    "CPP": 257.967
+   },
+   "A_from_printed_Gamma_nm2": 0.0889,
+   "recovered": {
+    "Gamma_umol_m2": 1.45,
+    "A_min_nm2": 1.14,
+    "CPP": 0.18,
+    "printed_over_recovered_Gamma": 12.9,
+    "check_gamma_cmc": 41.68,
+    "check_pi_at_C20": 20.0
+   }
+  }
+ },
+ "findings": {
+  "printed_A_below_chain_cross_section": true,
+  "printed_CPP_range": [
+   254.838,
+   328.115
+  ],
+  "recovered_CPP_range": [
+   0.14,
+   0.33
+  ],
+  "recovered_all_spherical_le_one_third": true
+ },
+ "toolkit": "Surfactant-Toolkit"
+}

@@ -1,0 +1,8 @@
+{
+ "qid": "GZ11",
+ "provider": "qwen",
+ "condition": "unaug",
+ "start": "2026-10-23T09:39:40+0530",
+ "model_seen": "MODEL NOT CONFIRMED (mode switch {'ok': False, 'error': {'type': 'cli_error', 'message': 'Browser profile \"openclaw\" is not running. Start the browser or open a new tab, then select a current target.'}})",
+ "failed": "model guard: MODEL NOT CONFIRMED (mode switch {'ok': False, 'error': {'type': 'cli_error', 'message': 'Browser profile \"openclaw\" is not running. Start the browser or open a new tab, then select a current target.'}})"
+}

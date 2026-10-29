@@ -469,29 +469,17 @@
  "GZ-17": {
   "verdict": "FAIL",
   "fields": {
-   "gamma_max_mol_per_m2": {
-    "ok": false,
-    "kind": "numeric",
-    "gold": 2.3656e-06,
-    "model": null
-   },
-   "a_min_nm2": {
-    "ok": false,
-    "kind": "numeric",
-    "gold": 0.702,
-    "model": null
-   },
    "charge_type": {
     "ok": false,
     "kind": "string",
     "gold": "cationic",
     "model": "unparseable"
    },
-   "delta_g_mic_kJ_per_mol": {
-    "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
+   "cmc_mM": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 16.37,
+    "model": 8.185
    },
    "delta_s_mic_J_per_mol_K": {
     "ok": true,
@@ -499,11 +487,23 @@
     "gold": null,
     "model": null
    },
-   "cmc_mM": {
-    "ok": true,
+   "gamma_max_mol_per_m2": {
+    "ok": false,
     "kind": "numeric",
-    "gold": 8.185,
-    "model": 8.185
+    "gold": 2.3656e-06,
+    "model": null
+   },
+   "delta_g_mic_kJ_per_mol": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "a_min_nm2": {
+    "ok": false,
+    "kind": "numeric",
+    "gold": 0.702,
+    "model": null
    }
   }
  },
@@ -1066,7 +1066,7 @@
    "units_used": {
     "ok": false,
     "kind": "string",
-    "gold": "\u00b5M (as labeled on the chart)",
+    "gold": "µM (as labeled on the chart)",
     "model": ""
    }
   }

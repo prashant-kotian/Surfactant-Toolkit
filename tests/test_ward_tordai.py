@@ -129,3 +129,18 @@ def test_result_metadata():
     assert "Ward-Tordai" in r.method
     assert r.params["mode"] == "langmuir"
     assert "convective" in r.caveat
+
+
+def test_langmuir_dilute_limit_matches_exact_henry_solution():
+    """Kc << 1 makes the Langmuir boundary linear (Gamma = K_H c_s, K_H = Gamma_inf/K_d),
+    for which diffusion-controlled uptake is exact:
+    Gamma(t) = K_H c0 [1 - exp(t/tau) erfc(sqrt(t/tau))], tau = K_H^2 / D."""
+    from scipy.special import erfcx
+    c0, d, ginf, kd = 1e-8, 1e-9, 3e-6, 1e-3
+    kh = ginf / kd / 1000.0            # m (c in mol/m^3)
+    tau = kh * kh / d
+    r = ward_tordai_adsorption(c0, d, t_end_s=5.0, n_times=16, mode="langmuir",
+                               gamma_inf_mol_per_m2=ginf, K_d_mol_per_L=kd)
+    for t, g in zip(r.t_s, r.gamma_mol_per_m2):
+        exact = kh * c0 * 1000.0 * (1.0 - erfcx(math.sqrt(t / tau)))
+        assert g == pytest.approx(exact, rel=2e-4)

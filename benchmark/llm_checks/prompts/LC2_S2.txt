@@ -1,0 +1,18 @@
+PAPER DATA (Sedlarikova, Janalikova, Egner, Pleva, ACS Omega 9 (2024) 23209-23219, doi:10.1021/acsomega.3c08917; Tables 1-2 and Methods, as printed). Poloxamers in water at 25 C; mixtures were prepared 1:1 by weight (Methods).
+Molecular weights (g/mol, Table 1): P184 2900; P188 8400; P407 12600.
+Pure CMC (mM, Table 2): P184 0.55 +/- 0.01; P188 0.17 +/- 0.05; P407 0.10 +/- 0.01.
+Mixed CMC (mM, Table 2): P184/P188 0.04 +/- 0.01; P184/P407 0.06 +/- 0.01; P188/P407 0.07 +/- 0.01.
+The paper evaluates mixed micellization with the Rubingh framework: for component i,
+ln(X_i c / (x_i c_i)) = beta (1 - x_i)^2, with c the mixed CMC, c_i the pure CMC, x_i the micelle
+mole fraction, X_i the bulk mole fraction, and the two-component relation x2 = 1 - x1.
+REPORT for each of the three mixtures, from the printed CMCs: (a) the micelle mole fraction x1 of
+the first-listed poloxamer (P184, P184, P188) and (b) beta.
+If no pair (x1, beta) solves these two equations for these numbers, enter "no_solution" for both entries.
+
+PAPER RESULT AND CONCLUSION (as printed): Table 2 lists beta = +3.68, +3.23, +1.72 and
+xM = 0.40, 0.39, 0.35 for the three mixtures, and the text reads these as "negative deviations from
+ideal behavior, which indicates a mild synergic effect".
+QUESTION: does the printed result follow from the printed data? Report the six quantities again,
+and answer printed_result_follows.
+
+FINAL_JSON: {"x1_P184_P188": <->, "beta_P184_P188": <->, "x1_P184_P407": <->, "beta_P184_P407": <->, "x1_P188_P407": <->, "beta_P188_P407": <->, "printed_result_follows": <->}

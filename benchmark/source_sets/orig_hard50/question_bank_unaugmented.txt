@@ -1,0 +1,646 @@
+SurfactantKit HARD-60 -- UNAUGMENTED Version
+(no tool names, no API names, no mention of any software/toolkit -- pure
+scientific problem statements, for testing a model's raw/baseline capability
+with NO computational-tool access of any kind.)
+
+Source: rephrased from HARD60_FINAL_QUESTIONS.txt (Q01-50 by arena agent,
+Q51-60 by independent-audit session), 2026-10-03. Same numeric inputs, same
+target quantities, same rounding/precision as the augmented version -- every
+mention of a specific tool, function, package, or "toolkit" has been removed
+and replaced with a plain description of the underlying physics/chemistry
+method, so the question reads as something you'd find in a colloid-science
+problem set, not a software manual.
+
+IMPORTANT SCOPE NOTE -- read before using:
+- This is meant to be run FIRST, before the augmented (tool-using) version,
+  on a model with NO tool/code-execution access and NO knowledge that a
+  "SurfactantKit" or any related computational system exists. Do not mention
+  MCP, tools, APIs, or any toolkit name in the prompt or system message.
+- REVISED 2026-10-03: the original Q48-50 (asking for the exact internal
+  contents of one specific software's tool registry, and the exact verbatim
+  text of its internal error-message strings) had no meaningful unaugmented
+  form -- those were implementation details, not physics. They have been
+  REPLACED (in both this file and the augmented HARD60_FINAL_QUESTIONS.txt,
+  so the two sets stay in exact 1-for-1 correspondence) with three new, real
+  wetting-science questions (Owens-Wendt and van Oss-Chaudhury-Good solid
+  surface-energy decomposition, and Young-Dupre work of adhesion) -- genuine
+  named, published methods a chemistry-trained model can be expected to
+  reason through from first principles, with real literature-tabulated probe
+  -liquid values. All 60 questions are now scoreable in both conditions.
+- A handful of other questions (flagged inline) involve a model-specific
+  numeric convention (e.g. which exact QSPR solubility correlation, which
+  exact cloud-point correlation, which RNG/seeding convention) where even a
+  fully correct unaugmented answer may legitimately differ from the
+  toolkit's own specific implementation. These are still worth asking --
+  they test whether the model produces a *defensible* answer by a *named,
+  real* method -- but don't grade them as strictly as the closed-form ones
+  when comparing against the augmented run's exact-match golds.
+
+ANSWER FORMAT: ANSWER Q01: <value>  (one line per question, Q01 through Q60).
+
+===========================================================================
+
+Q01 -- Ideal mixed CMC
+For a binary ideal mixed surfactant system (Clint's ideal mixing theory),
+with bulk mole fraction alpha1 = 0.37, pure-component CMC1 = 1.23 mM, pure-
+component CMC2 = 8.76 mM, compute the ideal mixed CMC.
+Answer: the value in mM, rounded to 4 decimal places.
+
+Q02 -- Rubingh micellar mole fraction
+Using Rubingh's regular solution theory for mixed micelles, solve for the
+micellar mole fraction x1 of component 1 given: bulk mole fraction alpha1 =
+0.42, experimental mixed CMC = 2.31 mM, pure CMC1 = 1.10 mM, pure CMC2 = 9.80
+mM.
+Answer: x1, rounded to 4 decimal places.
+
+Q03 -- Rubingh beta from a composition series
+Using Rubingh's regular solution theory, fit the interaction parameter beta
+from this composition series (alpha1, mixed CMC in mM): (0.15, 1.5288),
+(0.30, 1.1467), (0.45, 0.9840), (0.60, 0.9052), (0.75, 0.8813), given pure
+CMC1 = 1.13 mM and CMC2 = 6.71 mM.
+Answer: the mean fitted beta, rounded to 5 decimal places.
+
+Q04 -- Motomura ideal composition
+Using Motomura's theory for ideal mixed-micelle composition, compute the
+ideal micellar mole fraction for a binary system with bulk mole fraction
+alpha1 = 0.63, pure CMC1 = 0.87 mM, pure CMC2 = 6.54 mM.
+Answer: the value, rounded to 4 decimal places.
+
+Q05 -- Asymmetric Margules activity coefficients
+Using the asymmetric (two-parameter) Margules model for non-ideal mixing in
+a mixed micelle, compute activity coefficients f1 and f2 at micellar mole
+fraction x1 = 0.58, with Margules interaction parameters w12 = 4.21 and w21
+= 1.87.
+Answer: (f1, f2), each rounded to 4 decimal places.
+
+Q06 -- Excess free energy of micelle formation (chained)
+Using the asymmetric Margules model, first compute activity coefficients f1
+and f2 at x1 = 0.58, w12 = 4.21, w21 = 1.87. Then use f1, f2, x1, and
+temperature T = 308.15 K to compute the excess Gibbs free energy of mixing
+in the micelle.
+Answer: the value in kJ/mol, rounded to 4 decimal places.
+
+Q07 -- Rodenas mole fraction
+Using Rodenas' method (relating micellar composition to the slope of mixed-
+CMC vs. bulk composition), compute the micellar mole fraction x1 given bulk
+mole fraction alpha1 = 0.55 and d(ln cmc_mix)/d(alpha1) = -0.83.
+Answer: x1, rounded to 4 decimal places.
+
+Q08 -- Maeda mixed-micelle free energy
+Using Maeda's theory for the free energy of mixed micelle formation, compute
+deltaG_M given: Rubingh micellar mole fraction x1 = 0.61, interaction
+parameter beta = -3.4, pure CMC1 = 1.5e-3 M, pure CMC2 = 4.7e-3 M,
+temperature = 298.15 K.
+Answer: the value in kJ/mol, rounded to 3 decimal places.
+
+Q09 -- Rosen monolayer composition
+Using Rosen's regular solution theory applied to the mixed surfactant
+monolayer at the air-water interface (NOT the micelle), solve for the
+monolayer mole fraction x1 given: bulk mole fraction alpha1 = 0.33, the
+mixture's concentration at a reference surface tension c_mix,sigma = 2.87
+mM, and the two pure components' concentrations at that same reference
+surface tension c1,sigma = 1.41 mM, c2,sigma = 6.93 mM.
+Answer: x1, rounded to 4 decimal places.
+
+Q10 -- Rubingh activity coefficients
+Using Rubingh's regular solution theory, compute activity coefficients f1
+and f2 of the two components in a mixed micelle at micellar mole fraction x1
+= 0.58 and interaction parameter beta = -4.36.
+Answer: (f1, f2), each rounded to 4 decimal places.
+
+Q11 -- Corrin-Harkins salt prediction
+Using the Corrin-Harkins relationship (log-linear dependence of CMC on
+counterion concentration) with two reference points -- CMC1 = 12.4 mM at
+counterion concentration 5.0 mM, and CMC2 = 8.9 mM at counterion
+concentration 40.0 mM -- predict the CMC at a target counterion
+concentration of 20.0 mM, and report the fitted Corrin-Harkins slope
+constant g.
+Answer: (predicted_cmc, g), each rounded to 4 decimal places.
+
+Q12 -- Szyszkowski isotherm evaluation
+Using the Szyszkowski equation for surface tension vs. surfactant
+concentration (ionic surfactant in excess electrolyte, so the usual "factor
+of 2" for unscreened ionic surfactants does NOT apply), compute the surface
+tension at concentration = 0.0042 M, given gamma0 = 72.0 mN/m, maximum
+surface excess Gamma_inf = 4.0e-6 mol/m^2, Szyszkowski constant K = 1400.0,
+temperature = 298.15 K.
+Answer: surface tension in mN/m, rounded to 4 decimal places.
+
+Q13 -- Gibbs maximum surface excess
+Using the Gibbs adsorption isotherm for an ionic surfactant in excess
+electrolyte (prefactor n=1, not 2), compute the maximum surface excess
+concentration Gamma_max given a surface-tension-vs-ln(concentration) slope
+of -2.85 mN/m per unit ln(c), at temperature 298.15 K.
+Answer: Gamma_max in micromol/m^2, rounded to 4 decimal places.
+
+Q14 -- Minimum area per molecule
+Given a maximum surface excess concentration Gamma_inf = 1.83e-6 mol/m^2,
+compute the minimum area occupied per adsorbed molecule at the interface
+(a_min = 1 / (Avogadro's number x Gamma_inf)).
+Answer: a_min in nm^2 per molecule, rounded to 4 decimal places.
+
+Q15 -- Frumkin surface coverage
+Using the Frumkin adsorption isotherm (which includes a lateral-interaction
+correction beyond simple Langmuir behavior), compute the fractional surface
+coverage theta given concentration = 0.0031 (in units consistent with K),
+Frumkin equilibrium constant K = 14.7, and lateral interaction parameter a =
+1.35.
+Answer: theta, rounded to 4 decimal places.
+
+Q16 -- Ward-Tordai adsorption kinetics
+Using the Ward-Tordai diffusion-controlled adsorption model with a Langmuir
+adsorption/desorption kinetic boundary condition, compute the adsorbed
+amount Gamma at time t = 1.0 s, given bulk concentration c0 = 0.02 mol/L,
+diffusion coefficient D = 1e-9 m^2/s, Langmuir saturation capacity Gamma_inf
+= 3.0e-6 mol/m^2, and Langmuir equilibrium constant K_d = 1.0e-3 mol/L (use
+standard values for any other parameters needed).
+Answer: the adsorbed amount at t=1.0 s, in micromol/m^2, rounded to 4
+decimal places.
+
+Q17 -- Davies HLB with effective-chain-length correction
+Compute the HLB (hydrophilic-lipophilic balance) value using Davies' group-contribution
+method (base value 7; hydrophilic group number 0.33 per -CH2CH2O- (EO) unit; lipophilic
+group number 0.475 per CH2 and per terminal CH3 group), applying the Guo, Rong & Ying (2006)
+effective-chain-length correction to BOTH the alkyl tail and the EO head-group chain before
+applying those Davies group numbers:
+  effective CH2 count = 0.965 * (actual CH2 count) - 0.178
+  effective EO count  = 13.45 * ln(actual EO count) - 0.16 * (actual EO count) + 1.26
+                        (for EO count <= 50)
+for a surfactant with a 12-carbon alkyl tail (11 CH2 groups + 1 terminal CH3) and 6 ethylene
+oxide (EO) head-group units.
+Answer: HLB, rounded to 2 decimal places.
+
+Q18 -- Fit k and Cc from an optimal-salinity scan
+Using Hydrophilic-Lipophilic Deviation (HLD) theory, fit the characteristic
+curvature Cc and the oil-type slope constant k from this optimal-salinity
+scan: (EACN, optimal salinity in g NaCl-equivalent/100 mL) = (9.4, 0.9298),
+(11.3, 1.2504), (13.2, 1.6872). Use standard default values for the
+surfactant/alcohol correction parameter (alpha=0.01) and temperature
+deviation (deltaT=0).
+Answer: (k, cc), each rounded to 4 decimal places.
+
+Q19 -- RETIRED 2026-10-04 from the reasoning-only set.
+[This question asked for a specific measured Cc value for CTAB traceable to
+one named table (Schirone, Tartaro, Gentile & Palazzo, JCIS Open 4 (2021)
+100033, Table 1) -- there is no data given in the prompt it could be derived
+from, so it is pure external-fact recall, not reasoning or computation, and
+does not belong in a set meant to test whether a model can work a problem
+out on its own. Two of the five original unaugmented runs reproduced this
+specific niche value exactly (including its stated uncertainty), which is
+itself a reason to suspect lookup rather than recall -- a different, real
+problem with keeping this question in an unaugmented/no-tools condition.
+Do not re-ask this question in the self-contained reasoning set. If a
+literature-recall category is wanted separately, re-add it there with an
+explicit "you may use outside sources" instruction, not silently inside a
+"no tool access" battery.]
+
+Q20 -- Phase-inversion temperature
+Using HLD theory, compute the phase inversion temperature for a nonionic
+surfactant-oil-water system given: salinity = 2.3 g NaCl/100 mL, oil-type
+slope constant k = 0.157, EACN = 12.4, characteristic curvature Cc = 1.62,
+temperature-sensitivity constant b = 0.13, reference temperature = 298.15 K.
+Answer: phase inversion temperature in K, rounded to 2 decimal places.
+
+Q21 -- Optimal salinity
+Using HLD theory, compute the optimal salinity (weight percent, the salinity
+at which HLD=0) for a system with k = 0.158, EACN = 11.2, characteristic
+curvature Cc = 1.55 (use standard default values for any other parameters).
+Answer: optimal salinity in weight percent, rounded to 4 decimal places.
+
+Q22 -- Packing parameter and morphology
+Compute the critical packing parameter CPP = v / (a0 * lc) for a surfactant
+with hydrophobic tail volume v = 248.4 cubic angstroms, optimal head-group
+area a0 = 41.7 square angstroms, and critical tail length lc = 11.9
+angstroms. State the self-assembly morphology predicted by the standard CPP
+ranges (e.g. spherical micelle for CPP<=1/3, cylindrical/rod micelle for
+1/3<CPP<=1/2, vesicle/bilayer for 1/2<CPP<=1, inverted structures for
+CPP>1).
+Answer: "cpp, morphology" -- cpp rounded to 4 decimal places, morphology
+name given plainly.
+
+Q23 -- Axial ratio from packing-parameter geometry
+Given critical packing parameter cpp = 0.42, aggregation number = 130, and
+tail carbon number n_carbons = 16, estimate the axial ratio (major/minor
+axis) of the resulting rod-like/prolate micelle using standard geometric
+relationships connecting CPP, aggregation number, and micelle shape.
+Answer: axial ratio, rounded to 3 decimal places.
+
+Q24 -- A priori CMC prediction (molecular-thermodynamic theory)
+Using molecular-thermodynamic theory (Nagarajan-Ruckenstein-style a priori
+CMC prediction from tail length and headgroup type, no fitted empirical
+CMC data), compute the CMC for a straight-chain alkyl sulfate surfactant
+with a 12-carbon tail in pure water (no added salt), at standard
+temperature.
+Answer: log10(CMC in mol/L), rounded to 4 decimal places.
+
+Q25 -- Equilibrium head-group area (ionic surfactant)
+Using molecular-thermodynamic theory for the equilibrium head-group area of
+an ionic surfactant at the micelle surface, compute a_e given: CMC = 8.2e-3
+M, tail length = 16.7 angstroms, headgroup electrostatic prefactor = 24.7
+angstroms (use standard default temperature and water dielectric constant).
+Answer: a_e in square angstroms, rounded to 3 decimal places.
+
+Q26 -- Ionic strength
+Compute the ionic strength I = (1/2) * sum(ci * zi^2) of a solution
+containing these charge-number : molar-concentration pairs: {+1: 0.0071,
+-1: 0.0071, +2: 0.0023, -2: 0.0023, +3: 0.0009, -3: 0.0009} (all
+concentrations in mol/L).
+Answer: I in mol/L, rounded to 4 decimal places.
+
+Q27 -- Debye screening length
+Compute the Debye screening length for an aqueous electrolyte with ionic
+strength = 0.0173 M at temperature = 303.15 K, using standard Debye-Huckel
+theory and the temperature-dependent dielectric constant of water.
+Answer: Debye length in nm, rounded to 4 decimal places.
+
+Q28 -- Zeta potential (Smoluchowski regime)
+Using the Smoluchowski equation (valid for kappa*a >> 1, thin double layer,
+no kappa*a correction), compute the zeta potential given an electrophoretic
+mobility of 3.15 (micrometer*cm)/(V*s) and solution viscosity 0.89 mPa*s.
+Answer: zeta potential in mV, rounded to 3 decimal places.
+
+Q29 -- O'Brien-White electrophoretic mobility
+Using the full (O'Brien-White-type) numerical electrokinetic model (not the
+simplified Smoluchowski/Huckel limits), compute the electrophoretic mobility
+corresponding to zeta potential = -42.6 mV and kappa*a = 8.7 (standard
+water/electrolyte properties, standard temperature).
+Answer: mobility in (micrometer*cm)/(V*s), rounded to 4 decimal places.
+
+Q30 -- Planar Poisson-Boltzmann surface charge
+Using the full nonlinear planar Poisson-Boltzmann equation for a charged
+flat interface, compute the surface charge density sigma corresponding to a
+surface potential psi0 = -68.4 mV in a 1:1 electrolyte of ionic strength
+0.01 M at standard temperature.
+Answer: sigma in C/m^2, to 4 significant figures, keeping the sign.
+
+Q31 -- Gibbs free energy of micellization
+[CORRECTED 2026-10-04: the original wording's restated formula and its
+"factor of 2" description of counterion_factor=1.0 do not match this
+project's own toolkit, verified directly against source
+(thermodynamics.py, gibbs_free_energy_micellization): the counterion
+factor is used as a DIRECT multiplier, not "1 plus" a binding factor, and
+a value of 1.0 means the FULLY BOUND case (counterion moves as one package
+with the surfactant, behaving like a single nonionic-style particle) --
+NOT the fully-dissociated "factor of 2" case, which would instead be
+counterion_factor=2.0. All 5 models in the original run followed the
+old (wrong) wording faithfully and were marked wrong for it -- this was a
+benchmark bug, not a model failure.]
+Compute the standard Gibbs free energy of micellization for an ionic
+surfactant (deltaG_mic = counterion_factor * R * T * ln(CMC in mole
+fraction)), given CMC = 0.0057 M, temperature = 303.15 K, and a
+counterion_factor of 1.0 (the fully-bound case: the counterion stays
+associated with the surfactant through micellization, so the aggregate
+behaves thermodynamically like one nonionic-style particle rather than
+two dissociated ones).
+Answer: deltaG_mic in kJ/mol, rounded to 3 decimal places.
+
+Q32 -- Mass-action free energy of micellization
+Using the mass-action (phase-separation-corrected, finite-aggregation-
+number) model for the standard Gibbs free energy of micellization, compute
+deltaG_mic given CMC = 0.0057 M, aggregation number = 58, temperature =
+298.15 K.
+Answer: deltaG_mic in kJ/mol, rounded to 3 decimal places.
+
+Q33 -- Critical micellization degree
+Given an aggregation number of 47, compute the "critical micellization
+degree" using the standard mass-action/phase-separation theory definition
+relating this quantity to the aggregation number.
+Answer: the value, rounded to 4 decimal places.
+
+Q34 -- van't Hoff enthalpy of micellization
+[CORRECTED 2026-10-04: the original wording used the GENERIC equilibrium-
+constant van't Hoff sign convention (d(ln K)/d(1/T) = -deltaH/R). That is
+the wrong convention here: CMC is treated as INVERSELY related to the
+micellization equilibrium constant K (a lower CMC means a MORE favorable,
+larger-K aggregation), so d(ln CMC)/d(1/T) carries the OPPOSITE sign of
+d(ln K)/d(1/T) -- the correct CMC-specific relation (also the one this
+project's own toolkit implements, see thermodynamics.py,
+vant_hoff_enthalpy, and its own documented 2026-09-04 sign-bug fix) is
+d(ln CMC)/d(1/T) = +deltaH_mic/R, with NO leading minus sign. All 5
+models in the original run applied the generic (wrong-for-CMC) sign
+convention faithfully and were marked wrong for it -- this was a
+benchmark bug, not a model failure.]
+Using the CMC-specific van't Hoff relationship (d(ln CMC)/d(1/T) =
++deltaH_mic/R -- note: no leading minus sign, since CMC is inversely
+related to the micellization equilibrium constant, unlike a standard
+K-based van't Hoff analysis), compute the enthalpy of micellization from
+two data points: CMC1 = 0.0041 M at T1 = 293.15 K, CMC2 = 0.0076 M at T2 =
+313.15 K.
+Answer: deltaH_mic in kJ/mol, rounded to 2 decimal places.
+
+Q35 -- Intrinsic aqueous solubility (QSPR estimate)
+Using a standard group-contribution/QSPR correlation for intrinsic aqueous
+solubility (e.g. a General-Solubility-Equation-style approach from logP and
+melting point, or an equivalent published method), estimate the water
+solubility of the compound with SMILES CCCCCCCC(=O)OCCCCCCCC.
+Answer: log(S) in mol/L, rounded to 3 decimal places.
+[NOTE: multiple published QSPR solubility correlations exist with different
+coefficients -- report your best estimate using a named, real method; exact
+match to any one specific implementation is not guaranteed.]
+
+Q36 -- CMC from a raw surface-tension curve
+Given a surface-tension-vs-concentration tensiometry dataset: concentrations
+(mM): 0.05, 0.08, 0.13, 0.2, 0.32, 0.5, 0.8, 1.2, 1.9, 3.0, 4.7, 7.5; surface
+tensions (mN/m): 44.31, 43.90, 43.40, 42.75, 41.90, 40.80, 39.50, 38.10,
+37.20, 36.95, 36.88, 36.85. Determine the CMC (standard two-segment
+break-point method) and the surface tension at the CMC.
+Answer: "cmc, gamma_cmc", each in its stated unit (mM, mN/m), rounded to 3
+decimal places.
+
+Q37 -- CMC and counterion binding from a conductivity curve
+Given a conductivity-vs-concentration dataset: concentrations (mM): 0.05,
+0.09, 0.15, 0.24, 0.37, 0.55, 0.8, 1.1, 1.5, 2.0, 2.6, 3.3; conductivities
+(arbitrary consistent units): 1.16, 1.448, 1.88, 2.528, 3.464, 4.76, 5.94,
+7.17, 8.81, 10.86, 13.3, 16.18. Using the standard two-segment break-point
+method, determine the CMC and the counterion binding degree beta (ratio of
+post-CMC to pre-CMC conductivity slopes).
+Answer: "cmc, beta_cd", cmc to 3 decimal places, beta to 4 decimal places.
+
+Q38 -- Isotherm model selection
+Given a surface-tension-vs-concentration dataset: concentrations (mM): 0.03,
+0.07, 0.16, 0.34, 0.7, 1.4, 2.6, 4.4; surface tensions (mN/m): 71.67, 71.24,
+70.33, 68.69, 65.94, 61.89, 57.05, 52.15; gamma0=72.0 mN/m, Gamma_inf=5.0e-6
+mol/m^2, ionic surfactant with excess electrolyte. Fit both a Langmuir/
+Szyszkowski isotherm and a Frumkin isotherm (with a lateral-interaction
+term) to this data, compare them via the Bayesian Information Criterion
+(BIC), and state which is statistically preferred and by how much.
+Answer: "model, delta_bic" -- model name ("langmuir" or "frumkin"),
+delta_bic to 2 decimal places.
+
+Q39 -- Szyszkowski K fit
+Given a surface-tension-vs-concentration dataset: concentrations (mM): 0.04,
+0.1, 0.23, 0.5, 1.0, 1.9, 3.4, 5.6; surface tensions (mN/m): 71.55, 70.45,
+68.71, 66.18, 63.14, 60.2, 57.99, 56.6; gamma0=72.0 mN/m, Gamma_inf=5.0e-6
+mol/m^2, ionic surfactant with excess electrolyte. Fit the Szyszkowski
+equation to obtain the equilibrium constant K and the fit's R^2.
+Answer: "K, r2" -- K to 4 decimal places, r2 to 3 decimal places.
+
+Q40 -- DLS size inversion
+Given dynamic light scattering data -- delay times tau (s): 0.000005,
+0.00001, 0.00002, 0.00004, 0.00008, 0.00016, 0.00032, 0.00064, 0.00128,
+0.00256, 0.00512, 0.01024; field autocorrelation g1(tau): 0.975776,
+0.952062, 0.906832, 0.824536, 0.690644, 0.499566, 0.300517, 0.158734,
+0.077956, 0.037973, 0.018419, 0.008941 -- invert this (via standard DLS
+cumulant/exponential fitting and the Stokes-Einstein relation, standard
+water viscosity/temperature, standard scattering geometry unless otherwise
+specified) to obtain the z-average hydrodynamic diameter.
+Answer: Dh,z-avg in nm, rounded to 3 decimal places.
+
+Q41 -- Monte Carlo uncertainty propagation
+Using Monte Carlo (random-sampling, not linear) uncertainty propagation
+through the Stokes-Einstein relation for hydrodynamic radius (r = kB*T /
+(6*pi*eta*D)), given: diffusion coefficient D = 6.42e-7 cm^2/s (std. dev.
+3.1e-8), viscosity eta = 0.91 mPa*s (std. dev. 0.02), temperature T = 303.15
+K (std. dev. 0.4), each treated as an independent normal random variable,
+draw 20000 Monte Carlo samples (seed 7) and compute the resulting mean
+hydrodynamic radius.
+Answer: mean radius in nm, rounded to 4 decimal places.
+[NOTE: exact value depends on RNG implementation/seeding convention -- some
+variation vs. any one specific implementation is expected; report your own
+best Monte Carlo estimate.]
+
+Q42 -- Bootstrap CMC confidence interval
+Given x (mM): 0.04, 0.07, 0.11, 0.17, 0.26, 0.39, 0.57, 0.82, 1.15, 1.6, 2.2,
+3.0; y (mN/m): 44.42, 44.28, 44.09, 43.83, 43.44, 42.87, 42.04, 40.88, 39.47,
+38.12, 37.19, 36.65 -- determine the CMC via a standard break-point method,
+then estimate a 95% confidence interval using case-resampling bootstrap with
+300 replicates (seed 42).
+Answer: "point, low, high", each to 3 decimal places.
+[NOTE: exact CI bounds depend on bootstrap RNG implementation; report your
+own best estimate.]
+
+Q43 -- Fluorescence-quenching (Anderson) CMC analysis
+Using Anderson's time-resolved fluorescence-quenching method for CMC
+determination (fraction of free monomer p_free(t) after a concentration
+jump), given times (s): 0, 30, 60, 90, 120, 150, 180, 210, 240, 270, and
+three replicate p_free(t) traces:
+  [0.941236, 0.602154, 0.371052, 0.255418, 0.203617, 0.182154, 0.174483,
+   0.172341, 0.171702, 0.171544]
+  [0.958971, 0.651327, 0.412638, 0.291745, 0.238016, 0.215443, 0.206948,
+   0.204451, 0.203664, 0.203474]
+  [0.947402, 0.619253, 0.389271, 0.271195, 0.218673, 0.197486, 0.189722,
+   0.187548, 0.186887, 0.186726]
+at total surfactant concentration c_tot = 0.05 mol/L, determine the CMC from
+the long-time plateau of p_free.
+Answer: CMC in mM, rounded to 3 decimal places.
+
+Q44 -- Monte Carlo aggregation distribution
+Using a Monte Carlo (Metropolis) simulation of reversible micellar self-
+assembly for 25 surfactant monomers at 298.15 K with pairwise aggregation
+interaction energy 8.0 kJ/mol per contact, run 200000 Monte Carlo steps
+(seed 11), and determine the equilibrium fraction of monomers found in
+dimers (aggregate size n=2).
+Answer: the fraction, rounded to 4 decimal places.
+[NOTE: exact value is implementation/model-convention dependent; report your
+own best simulation estimate.]
+
+Q45 -- 1-D column transport breakthrough half-time
+Using the 1-D advection-dispersion equation (pure conservative tracer, no
+adsorption) for surfactant transport through a packed column, given:
+interstitial velocity = 0.0035 m/s, dispersion coefficient = 1.2e-9 m^2/s,
+column length = 0.25 m, inlet concentration = 5.0 mol/m^3, solve numerically
+for the outlet breakthrough curve and determine the time at which outlet
+concentration reaches 50% of inlet (t50).
+Answer: t50 in seconds, rounded to 3 decimal places.
+
+Q46 -- Cloud point estimate
+[CORRECTED 2026-10-04: the original wording named "a group-contribution
+correlation" without giving it, requiring recall of specific published
+coefficients rather than letting the number be derived from the given
+data. The real correlation (Ghayour 2023 Eq. 1 for the HLD form; Acosta
+2008 Eq. 2 for the Cc group contribution; EACN_app for ethoxylate micelle
+cores from Zarate-Munoz, Boza Troncoso & Acosta, Langmuir 2015) is now
+given in full below.]
+Using the Hydrophilic-Lipophilic Deviation (HLD) framework for nonionic
+ethoxylate surfactants, HLD = b*S - k*EACN_app + Cc + cT*(T - 25 C), with
+b = 0.13 (g NaCl-equivalent/100 mL)^-1, k = 0.16 (dimensionless, the
+sourced midpoint of the conventional 0.15-0.17 range for this surfactant
+class), cT = 0.06 per degree C, and the apparent EACN of the ethoxylate
+micelle core EACN_app = 7.3 (all sourced constants for this surfactant
+class), and with the characteristic
+curvature from the group contribution Cc = 0.28*SACN + 2.4 - EON (SACN =
+alkyl tail carbon number, EON = ethylene oxide unit count), estimate the
+cloud point (the temperature at which HLD = 0, for a surfactant-water
+system with no oil) for a surfactant with SACN = 10 carbons, EON = 5,
+salinity S = 2.5 g/100 mL.
+Answer: cloud point in degrees C, rounded to 2 decimal places.
+
+Q47 -- Dynamic surface tension (Ward-Tordai, forward)
+A freshly formed, initially surfactant-free surface (Gamma = 0 at t = 0) is fed by diffusion
+from a semi-infinite bulk solution of uniform concentration c0 (Ward-Tordai, forward
+direction). Adsorption at the surface follows Langmuir kinetics,
+  dGamma/dt = k_a * c_s * (Gamma_inf - Gamma) - k_off * Gamma,
+where c_s is the concentration just below the surface and the adsorbed amount is supplied by
+the diffusive flux, D * (dc/dx at the surface) = dGamma/dt. The surface tension follows the
+Szyszkowski equation of state consistent with this isotherm,
+  gamma = gamma0 + n * R * T * Gamma_inf * ln(1 - Gamma/Gamma_inf).
+Data: c0 = 0.02 mol/L; D = 1.0e-9 m^2/s; Gamma_inf = 4.0e-6 mol/m^2; Langmuir equilibrium
+adsorption constant K = 1500 L/mol; desorption rate constant k_off = 0.5 1/s; adsorption rate
+constant k_a = K * k_off = 750 L/(mol s); gamma0 = 72.0 mN/m; n = 1; T = 298.15 K;
+R = 8.314462618 J/(mol K).
+Compute the dynamic surface tension at t = 0.1 s.
+Answer: surface tension at t = 0.1 s, in mN/m, rounded to 2 decimal places.
+
+Q48 -- Owens-Wendt solid surface energy decomposition
+Using the Owens-Wendt (OWRK) method for decomposing a solid surface's total
+surface energy into dispersive and polar components from contact-angle
+measurements with probe liquids of known dispersive/polar surface-tension
+components, given three probe liquids measured on the same solid surface
+(contact angle in degrees; dispersive, polar components in mN/m): water
+(contact angle=78.3; dispersive=21.8, polar=51.0), diiodomethane (contact
+angle=36.7; dispersive=50.8, polar=0.0), glycerol (contact angle=65.1;
+dispersive=34.0, polar=30.0), compute the solid's dispersive and polar
+surface-energy components.
+Answer: "(gamma_s_dispersive, gamma_s_polar)", each in mN/m, rounded to 4
+decimal places.
+
+Q49 -- Van Oss-Chaudhury-Good solid surface energy decomposition
+Using the van Oss-Chaudhury-Good (vOCG) three-liquid method for decomposing
+a solid surface's total surface energy into a Lifshitz-van der Waals (LW)
+component and Lewis acid/base components, given the same solid surface as
+Q48, with three probe liquids (contact angle in degrees; LW, acid, base
+components in mN/m): water (contact angle=78.3; LW=21.8, acid=25.5,
+base=25.5), diiodomethane (contact angle=36.7; LW=50.8, acid=0.0, base=0.0),
+glycerol (contact angle=65.1; LW=34.0, acid=3.92, base=57.4), compute the
+solid's LW component and its total surface energy.
+Answer: "(gamma_s_lw, gamma_s_total)", each in mN/m, rounded to 4 decimal
+places.
+
+Q50 -- Young-Dupre work of adhesion
+Using Young-Dupre theory, compute the work of adhesion between a liquid and
+a solid surface, given liquid-vapor surface tension gamma_LV = 50.3 mN/m and
+an equilibrium contact angle of 42.7 degrees (W = gamma_LV * (1 +
+cos(theta))).
+Answer: the work of adhesion in mJ/m^2 (numerically = mN/m), rounded to 4
+decimal places.
+
+===========================================================================
+Q51-Q60 -- Extension
+===========================================================================
+
+Q51 -- Mass-action equilibrium monomer concentration
+Using the mass-action equilibrium model for micellization (single n-mer
+aggregation equilibrium), compute the free monomer concentration at
+equilibrium, given: total surfactant concentration c_total = 0.01 M,
+equilibrium constant K = 5.0e4 per M, aggregation number n_max = 60 (solve
+the resulting equilibrium numerically).
+Answer: monomer concentration in micromolar (uM), rounded to 3 decimal
+places.
+
+Q52 -- Stochastic (Gillespie) relaxation time
+Using a Gillespie stochastic simulation algorithm for micelle formation/
+breakdown kinetics (single n-mer aggregation equilibrium), given: total
+surfactant concentration c_total = 0.01 M, equilibrium constant K = 5.0e4
+per M, monomer association rate constant k_on = 1.0e7 per M per s,
+aggregation number n_max = 60, simulating 1500 molecules (seed 3), determine
+the relaxation time constant tau from the time-evolution toward equilibrium.
+Answer: tau in seconds, rounded to 4 decimal places.
+[NOTE: exact value is seed/implementation dependent; report your own best
+stochastic-simulation estimate.]
+
+Q53 -- Population balance convergence (adversarial)
+Using a discretized population balance equation (Smoluchowski coagulation,
+constant coalescence kernel) for emulsion droplet coalescence, starting from
+a monodisperse population of 1e15 droplets/m^3 (all in the smallest of 10
+discrete size classes, all others zero), coalescence kernel strength 1e-15,
+simulated over 20 time points up to t_max=600s: with only 10 size classes
+resolving the coalescence process over this time horizon, does the
+simulation conserve total droplet mass to good accuracy, or does it show
+significant numerical mass loss from coarse discretization? State whether
+the simulation converges (mass conserved) and estimate the relative mass
+error.
+Answer: "converged, mass_rel_error" (True/False and a number to 3 decimal
+places).
+[This tests whether you recognize that a 10-class resolution is genuinely
+inadequate here and will show honest, disclosed non-convergence -- not
+whether you can force a falsely "clean" result.]
+
+Q54 -- Stepwise relaxation after a K-jump
+Using a multi-step kinetic ODE model for micelle size-distribution
+relaxation (single n-mer aggregation equilibrium) after a sudden jump in the
+equilibrium constant, given: total surfactant concentration c_total = 0.01
+M, initial equilibrium constant K_initial = 3.0e4 per M, final equilibrium
+constant K_final = 8.0e4 per M, monomer association rate constant k_on =
+1.0e7 per M per s, aggregation number n_max = 60, integrate numerically and
+determine the dominant (slowest) relaxation time constant toward the new
+equilibrium.
+Answer: tau_dominant in seconds, rounded to 4 decimal places.
+
+Q55 -- Emulsion creaming half-separation time
+Using Stokes' law creaming velocity with a simple settling/separation model
+for a polydisperse oil-in-water emulsion, given three droplet size classes
+(diameters 2.0, 5.0, 10.0 um; volume fractions 0.2, 0.5, 0.3), dispersed-
+phase density 850 kg/m^3, continuous-phase density 1000 kg/m^3, continuous-
+phase viscosity 0.001 Pa.s, column height 0.05 m (ignore droplet-droplet
+coalescence), determine the time to reach 50% phase separation.
+Answer: t50 in seconds, rounded to 2 decimal places.
+
+Q56 -- MCMC convergence: effective sample size (adversarial)
+Using Bayesian MCMC parameter estimation to fit an exponential-decay model
+y = a*exp(-b*x) + c to x = [0,1,2,3,4,5,6,7,8,9], y = [10.2, 7.8, 6.1, 4.9,
+3.7, 3.1, 2.4, 2.0, 1.6, 1.4], assuming observation noise std. dev. 0.3 and
+initial guess [a,b,c] = [9.0, 0.3, 0.5], run 6000 total samples with 1500
+burn-in (seed 5). Evaluate standard convergence diagnostics (BOTH split-Rhat
+AND effective sample size -- not Rhat alone) and report whether the chain is
+judged converged by a standard ESS>=100 threshold, together with the
+posterior median of the decay-rate parameter b.
+Answer: "converged, median_rate" (True/False, and median of b to 4 decimal
+places).
+[This specifically tests whether you check effective sample size in
+addition to Rhat -- a chain can have excellent Rhat while still badly
+failing an ESS threshold, which is the case here; do not assume "Rhat looks
+fine" implies convergence.]
+
+Q57 -- Nonlinear fit with real parameter standard errors
+Fit the exponential-decay model y = a*exp(-b*x) + c (nonlinear least
+squares) to x = [0,1,2,3,4,5,6,7,8,9], y = [10.2, 7.8, 6.1, 4.9, 3.7, 3.1,
+2.4, 2.0, 1.6, 1.4], initial guess [a,b,c] = [9.0, 0.3, 0.5], and report the
+fitted decay-rate parameter b along with its standard error from the
+covariance matrix of the fit.
+Answer: "rate +/- sd", each rounded to 4 decimal places.
+
+Q58 -- Homologous-series CMC extrapolation
+Using Klevens' rule (log10(CMC) linear in alkyl chain length for a
+homologous series), fit a line to chain lengths 8, 10, 12, 14 (carbons) vs.
+CMC values 136.0, 33.0, 8.2, 2.1 (mM), and extrapolate to predict the CMC at
+chain length 16 (outside the fitted range of 8-14 -- a genuine
+extrapolation, not interpolation).
+Answer: "slope, cmc_16" -- fitted slope in log10(CMC) per CH2 group, and
+predicted CMC at chain length 16 in mM, each rounded to 4 decimal places.
+
+Q59 -- EACN group-contribution rule
+[CORRECTED 2026-10-04: the original wording said a rule exists without
+stating it, requiring the solver to recall which specific rule applies --
+that's a fact-recall step, not reasoning from given data. The rule
+(Queste, Salager, Strey & Aubry 2007: an alkylbenzene gives the same
+interfacial tension as an n-alkane with the same number of carbons as its
+side chain -- the aromatic ring itself contributes 0 to the EACN) is now
+stated directly below.]
+Compute the Equivalent Alkane Carbon Number (EACN) for octylbenzene (SMILES:
+c1ccccc1CCCCCCCC), using the rule that an alkylbenzene with one unbranched
+saturated side chain has the same EACN as an n-alkane with the same number
+of carbons as that side chain alone -- the aromatic ring itself contributes
+0 to the EACN (so the molecule's total carbon count of 14 is NOT the
+answer; only the 8-carbon side chain counts).
+Answer: "eacn, rule" -- EACN rounded to 1 decimal place, and the name of the
+group-contribution rule applied.
+
+Q60 -- 3D conformer volume and shape anisotropy
+Generate a set of 3D conformers (e.g. 10 conformers via standard distance-
+geometry/force-field conformer generation, seed 42) for sodium dodecyl
+sulfate (SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]), and from the ensemble
+compute (a) the van der Waals volume and (b) a shape-anisotropy parameter
+(e.g. derived from the molecule's principal moments of inertia/gyration
+tensor, such as kappa^2).
+Answer: "volume, k2" -- volume in cubic angstroms rounded to 2 decimal
+places, anisotropy parameter rounded to 4 decimal places.
+[NOTE: exact values depend on the conformer-generation method/force field
+and random seed -- report your own best estimate using a standard
+cheminformatics approach (e.g. RDKit ETKDG embedding + MMFF/UFF
+optimization).]
+
+===========================================================================
+End of HARD-60 unaugmented question set. All 60 questions (Q01-60) are
+scoreable in both this unaugmented version and the augmented
+HARD60_FINAL_QUESTIONS.txt version.
+===========================================================================

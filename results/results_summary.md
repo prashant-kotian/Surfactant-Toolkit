@@ -10,9 +10,9 @@
 | extrahard | Gemini | 27/50 | 54.0 | post-fix | yes | benchmark/transcripts/extrahard50_unaugmented/grade_results.json |
 | extrahard | Qwen | 21/50 | 42.0 | post-fix | yes | benchmark/transcripts/extrahard50_unaugmented/grade_results.json |
 | groundzero | ChatGPT | 32/50 | 64.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
-| groundzero | Claude | 34/50 | 68.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
+| groundzero | Claude | 35/50 | 70.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | DeepSeek | 34/50 | 68.0 | post-fix |  | benchmark/source_sets/groundzero/deepseek_unaugmented_grade_results.json |
-| groundzero | Gemini | 20/50 | 40.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
+| groundzero | Gemini | 21/50 | 42.0 | post-fix |  | benchmark/source_sets/groundzero/unaugmented_2026-09-21/grade_results.json |
 | groundzero | Qwen | 32/50 | 64.0 | post-fix |  | benchmark/source_sets/groundzero/qwen_unaugmented_grade_results.json |
 | hard50 | ChatGPT | 36/50 | 72.0 | not field-verifiable | yes | benchmark/source_sets/hard50/unaugmented_grade_stats.json |
 | hard50 | Claude | 36/50 | 72.0 | post-fix |  | benchmark/source_sets/hard50/claude_unaugmented_grade_results.json |
@@ -29,9 +29,9 @@
 | extrahard | DeepSeek | 47/50 | 94.0 | post-fix | yes | benchmark/source_sets/extrahard/augmented_runs_2026-10-12/grade_results_augmented.json |
 | extrahard | Gemini | 50/50 | 100.0 | post-fix |  | benchmark/source_sets/extrahard/antigravity_augmented_grade_results.json |
 | groundzero | ChatGPT | 40/50 | 80.0 | post-fix |  | benchmark/source_sets/groundzero/chatgpt_augmented_grade_results.json |
-| groundzero | Claude | 44/50 | 88.0 | post-fix |  | benchmark/source_sets/groundzero/claude_augmented_grade_results.json |
+| groundzero | Claude | 45/50 | 90.0 | post-fix |  | benchmark/source_sets/groundzero/claude_augmented_grade_results.json |
 | groundzero | DeepSeek | 42/50 | 84.0 | post-fix |  | benchmark/source_sets/groundzero/deepseek_augmented_grade_results.json |
-| groundzero | Gemini | 48/50 | 96.0 | post-fix |  | benchmark/source_sets/groundzero/antigravity_augmented_grade_results.json |
+| groundzero | Gemini | 47/50 | 94.0 | post-fix |  | benchmark/source_sets/groundzero/antigravity_augmented_grade_results.json |
 | hard50 | ChatGPT | 47/50 | 94.0 | post-fix |  | benchmark/source_sets/hard50/chatgpt_augmented_grade_results.json |
 | hard50 | Claude | 48/50 | 96.0 | post-fix |  | benchmark/source_sets/hard50/claude_augmented_grade_results.json |
 | hard50 | DeepSeek | 46/50 | 92.0 | post-fix |  | benchmark/source_sets/hard50/deepseek_augmented_grade_results.json |

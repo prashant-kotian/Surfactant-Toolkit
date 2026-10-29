@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.317,
+"interaction_model_or_approach": "Two-parameter (three-suffix) Margules model fitted by linearised least-squares regression of ln(f)/x² vs. x over all five measured compositions; parameters A12 = -3.57, A21 = -0.88 capture the strongly asymmetric attractive (synergistic) interaction between the bulky aromatic cationic surfactant and DTAB in the mixed micelle.",
+"notes": "Simple one-parameter RST (single beta) fails due to strong asymmetry. The Margules model reproduces all five data points to within ~0.01 in ln(f). f1 slightly exceeds unity near x1=1 as expected; f2 passes through a minimum near x1~0.77 and rises toward the infinite-dilution value exp(A21)~0.41. Negative A values reflect favorable hydrophobic packing of the di-tert-butylphenyl/benzyl moiety among C12 chains."
+}

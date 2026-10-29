@@ -468,31 +468,19 @@
   }
  },
  "GZ-17": {
-  "verdict": "PASS",
+  "verdict": "FAIL",
   "fields": {
-   "delta_s_mic_J_per_mol_K": {
+   "gamma_max_mol_per_m2": {
     "ok": true,
-    "kind": "null-check",
-    "gold": null,
-    "model": null
+    "kind": "numeric",
+    "gold": 2.3656e-06,
+    "model": 2.37e-06
    },
    "cmc_mM": {
-    "ok": true,
+    "ok": false,
     "kind": "numeric",
-    "gold": 8.185,
+    "gold": 16.37,
     "model": 8.19
-   },
-   "charge_type": {
-    "ok": true,
-    "kind": "string",
-    "gold": "cationic",
-    "model": "cationic"
-   },
-   "a_min_nm2": {
-    "ok": true,
-    "kind": "numeric",
-    "gold": 0.702,
-    "model": 0.702
    },
    "delta_g_mic_kJ_per_mol": {
     "ok": true,
@@ -500,11 +488,23 @@
     "gold": null,
     "model": null
    },
-   "gamma_max_mol_per_m2": {
+   "delta_s_mic_J_per_mol_K": {
+    "ok": true,
+    "kind": "null-check",
+    "gold": null,
+    "model": null
+   },
+   "a_min_nm2": {
     "ok": true,
     "kind": "numeric",
-    "gold": 2.3656e-06,
-    "model": 2.37e-06
+    "gold": 0.702,
+    "model": 0.702
+   },
+   "charge_type": {
+    "ok": true,
+    "kind": "string",
+    "gold": "cationic",
+    "model": "cationic"
    }
   }
  },
@@ -1065,8 +1065,8 @@
    "units_used": {
     "ok": true,
     "kind": "string",
-    "gold": "\u00b5M (as labeled on the chart)",
-    "model": "\u00b5M (as labeled on the chart)"
+    "gold": "µM (as labeled on the chart)",
+    "model": "µM (as labeled on the chart)"
    },
    "estimated_cmc_value": {
     "ok": true,
@@ -1296,7 +1296,7 @@
     "ok": true,
     "kind": "judgment",
     "gold": "monotonically more negative (more favorable) as temperature increases across the ENTIRE real range, despite CMC itself being non-monotonic (a real minimum near 298.15K)",
-    "model": "Monotonically more negative (more favorable) as temperature increases across the entire 283.15\u2013318.15 K range, despite the CMC itself exhibiting a non-monotonic U-shaped curve with a minimum near 298.15 K.",
+    "model": "Monotonically more negative (more favorable) as temperature increases across the entire 283.15–318.15 K range, despite the CMC itself exhibiting a non-monotonic U-shaped curve with a minimum near 298.15 K.",
     "rationale": "matches gold's monotonic-despite-non-monotonic-CMC claim essentially verbatim"
    },
    "delta_g_mic_at_318.15K": {

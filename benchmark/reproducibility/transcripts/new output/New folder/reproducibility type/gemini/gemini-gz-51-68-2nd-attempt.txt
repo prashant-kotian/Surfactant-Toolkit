@@ -1,0 +1,133 @@
+==================================================
+SURFACTANT THERMODYNAMICS & PHYSICAL CHEMISTRY
+COMPILATION: GZ-51 TO GZ-68
+==================================================
+
+### GZ-51
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.07567
+}
+
+### GZ-52
+FINAL_JSON:
+{
+  "selected_mixture_model": "regular solution"
+}
+
+### GZ-53
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.69730001677009,
+  "delta_s_scenario_b_J_per_mol_K": 101.52943149421434
+}
+
+### GZ-54
+FINAL_JSON:
+{
+  "cpp": 0.3521503595,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+### GZ-55
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "The surface tension data cannot be accurately described by the ideal Langmuir-Szyszkowski equation, which assumes independent adsorption. Instead, it perfectly fits the Frumkin equation of state with a lateral interaction parameter beta = 4.0."
+}
+
+### GZ-56
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "anionic/nonionic"
+}
+
+### GZ-57
+FINAL_JSON:
+{
+  "cmc_mM": 0.913,
+  "gamma_max_mol_per_m2": 3.277e-6,
+  "delta_g_mic_kJ_per_mol": -47.30
+}
+
+### GZ-58
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.135377,
+  "f2_at_x1_0.15": 0.884666
+}
+
+### GZ-59
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.69,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial molar volume contributions of the trimethylammonium headgroup and the bromide counterion in aqueous solution."
+}
+
+### GZ-60
+FINAL_JSON:
+{
+  "estimated_cmc_mM": -1
+}
+
+### GZ-61
+FINAL_JSON:
+{
+  "kappa_a": 1.16296,
+  "zeta_potential_mV": -50.29
+}
+
+### GZ-62
+FINAL_JSON:
+{
+  "cmc_mM": 6.0,
+  "counterion_binding_degree": 0.54
+}
+
+### GZ-63
+FINAL_JSON:
+{
+  "aggregation_number": 60,
+  "reasoning": "Substituting the micellized surfactant concentration and intensity values into the equation yields N = 60."
+}
+
+### GZ-64
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": 0.904,
+  "resolution_method": "Selected the literature average of 0.904 mM because an ensemble average of 15 independent sources carries significantly higher statistical weight."
+}
+
+### GZ-65
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.4225e-6,
+  "a_min_nm2": 0.2237
+}
+
+### GZ-66
+FINAL_JSON:
+{
+  "cpp": 0.42526,
+  "morphology": "cylindrical/rodlike micelle",
+  "hlb_davies": 39.9,
+  "consistency_discussion": "Yes, they are highly consistent. Both parameters independently point to normal micellar structures."
+}
+
+### GZ-67
+FINAL_JSON:
+{
+  "hld_value": -1.02056,
+  "winsor_type": "Winsor Type I",
+  "consistency_discussion": "The counterion binding degree (beta = 0.728) is highly consistent with the HLD prediction."
+}
+
+### GZ-68
+FINAL_JSON:
+{
+  "cpp": 0.4253,
+  "axial_ratio": 3.587,
+  "r_h_naive_nm": 2.637,
+  "r_h_perrin_corrected_nm": 2.007
+}

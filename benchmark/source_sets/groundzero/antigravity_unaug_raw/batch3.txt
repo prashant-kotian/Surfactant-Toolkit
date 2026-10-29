@@ -1,4 +1,4 @@
-Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ21](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch3.txt#L20) through [GZ30](file:///home/prashant-kotian/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch3.txt#L285)), worked through in order.
+Here are the comprehensive first-principles analyses and solutions for all 10 challenge questions ([GZ21](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch3.txt#L20) through [GZ30](file://~/overnight_run/agy_gs50/agy_batches/gs50_unaug_batch3.txt#L285)), worked through in order.
 
 ---
 

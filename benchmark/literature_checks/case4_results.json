@@ -1,0 +1,89 @@
+{
+ "paper": "Yaqoob et al., Molecules 28 (2023) 3952",
+ "doi": "10.3390/molecules28093952",
+ "dG_recomputed": [
+  -40.9,
+  -41.6,
+  -47.8,
+  -52.0
+ ],
+ "dG_printed": [
+  -32.4,
+  -41.5,
+  -47.6,
+  -51.9
+ ],
+ "reproduce_dH_eq6": {
+  "dH": [
+   -4.2,
+   -4.5,
+   -5.3,
+   -6.0
+  ],
+  "printed": [
+   -5.0,
+   -5.2,
+   -6.2,
+   -7.1
+  ]
+ },
+ "dS_from_printed_dH_dG": [
+  0.093,
+  0.12,
+  0.132,
+  0.139
+ ],
+ "dS_printed": [
+  0.009,
+  0.12,
+  0.132,
+  0.139
+ ],
+ "dG_alpha_held_at_mean": [
+  -43.5,
+  -44.9,
+  -46.2,
+  -47.4
+ ],
+ "gibbs_helmholtz_dH": {
+  "toolkit": [
+   -3.0,
+   51.0,
+   106.0,
+   160.0
+  ],
+  "numpy_finite_difference": [
+   -19.0,
+   61.0,
+   117.0,
+   88.0
+  ],
+  "alpha_held_at_mean_toolkit": [
+   -0.7,
+   -3.6,
+   -6.5,
+   -9.4
+  ]
+ },
+ "findings": {
+  "dG_293_recomputed": -40.9,
+  "dG_293_printed": -32.4,
+  "dS_293_from_printed_dH_dG": 0.093,
+  "dS_293_printed": 0.009,
+  "mixed_vs_cpc_293_printed_more_spontaneous": false,
+  "mixed_vs_cpc_293_recomputed_more_spontaneous": true,
+  "eq6_reproduces_printed_dH_within_kJ": 1.1,
+  "gh_dH_303_323_kJ": [
+   51.0,
+   106.0,
+   160.0
+  ],
+  "gh_dH_positive_303_323": true,
+  "printed_dH_negative_all_T": true,
+  "dG_change_293_323_printed_vs_alpha_held": [
+   -19.5,
+   -3.9
+  ]
+ },
+ "toolkit": "Surfactant-Toolkit"
+}

@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.4697,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 52.79,
+  "cpp_electrostatic_area": 0.3977,
+  "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+  "comment": "n_c=12 (SDS). Both the measured area (44.70 A^2, P=0.470) and the electrostatic estimate (52.79 A^2, P=0.398) give cylindrical/rodlike micelles. The electrostatic area is larger because the unscreened Debye length (~34 A at 8 mM, 1:1 electrolyte) swells headgroup repulsion; this lowers P toward the spherical boundary (1/3), consistent with electrostatic repulsion favoring higher curvature. Both agree on morphology, a robust cross-check; added salt would screen repulsion, shrink the area, raise P, and drive the classic sphere-to-rod growth of SDS."
+}

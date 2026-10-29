@@ -1,0 +1,17 @@
+{
+ "qid": "Q47",
+ "provider": "claude",
+ "condition": "unaug",
+ "start": "2026-10-28T18:38:22+0530",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "tools_seen": {
+  "surfactant-computation": false,
+  "Claude in Chrome": false,
+  "Research": false,
+  "Memory": false
+ },
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-28T18:40:22+0530",
+ "question_variant": "~/repair11/paste_fix_unaug/Q47.md",
+ "end": "2026-10-28T18:53:21+0530"
+}

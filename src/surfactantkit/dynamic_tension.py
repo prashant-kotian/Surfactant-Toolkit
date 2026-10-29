@@ -1,12 +1,14 @@
 """Dynamic surface tension from a diffusion-boundary-layer FDM, jointly
 fitted to gamma(t) data (Phase 2 worker O3).
 
-Forward model: 1D diffusion toward an adsorbing planar interface solved
-by Crank-Nicolson on a uniform grid sized from the diffusion length
-(L = 4*sqrt(D*t_max), reservoir Dirichlet at the far end), with the
-Langmuir isotherm applied algebraically at the surface cell after each
-diffusion step (operator splitting, disclosed), and
-gamma(t) = gamma0 - n_factor*R*T*Gamma(c_s(t)).
+Forward model: 1D diffusion toward an adsorbing planar interface on a
+geometrically stretched finite-volume grid (first cell resolving the
+diffusion length of the earliest output time, extent 6 diffusion lengths
+of the latest, reservoir Dirichlet at the far end), with the Langmuir
+adsorption kinetics solved in the same backward-Euler step (no operator
+splitting), Richardson extrapolation to second order, and the Szyszkowski
+equation of state that belongs to the Langmuir isotherm:
+gamma(t) = gamma0 + n_factor*R*T*Gamma_max*ln(1 - Gamma(t)/Gamma_max).
 
 This is the FDM dual of adsorption.ward_tordai_adsorption (Volterra
 quadrature + bisection): two independent implementations of the same
@@ -64,18 +66,26 @@ def dynamic_surface_tension_forward(
     temperature_K: float = 298.15,
     k_off_per_s: float = 0.5,
     n_cells: int = 160,
-    max_substep_s: float = 0.1,
+    max_substep_s: float | None = None,
+    rel_step: float = 0.01,
 ) -> DynamicSurfaceTensionResult:
-    """FDM forward gamma(t): Crank-Nicolson diffusion + Langmuir KINETIC
-    surface (Ward-Tordai with a rate boundary condition).
+    """FDM forward gamma(t): diffusion toward the interface coupled implicitly
+    to Langmuir KINETIC adsorption (Ward-Tordai with a rate boundary condition).
 
-    t_s: output times (must be positive and sorted); the solver substeps
-    internally with dt <= max_substep_s (Crank-Nicolson has no diffusion
-    stability limit; this bounds splitting/curvature error instead).
-    D in m^2/s, K in 1/M (k_a = K*k_off), Gamma_max in mol/m^2, c0 in
-    mol/L, k_off in 1/s (desorption rate -- the adsorption-barrier
-    timescale; with k_off >= 1e4 the surface is quasi-equilibrium and
-    everything happens at diffusion-limited speed).
+    t_s: output times (must be positive and sorted). D in m^2/s, K in 1/M
+    (k_a = K*k_off), Gamma_max in mol/m^2, c0 in mol/L, k_off in 1/s
+    (desorption rate -- the adsorption-barrier timescale; with k_off >= 1e4
+    the surface is quasi-equilibrium and everything happens at
+    diffusion-limited speed).
+
+    Numerics: n_cells finite volumes on a geometrically stretched grid whose
+    first cell resolves the diffusion length of the EARLIEST output time and
+    whose extent covers 6 diffusion lengths of the latest; backward-Euler
+    steps of rel_step * t (optionally capped at max_substep_s), with the
+    surface kinetics solved in the same implicit step (Newton on the surface
+    node, no operator splitting), and Richardson extrapolation over a
+    half-step run (second order). Default settings agree with a 4x finer
+    grid and 4x smaller steps to about 1e-3 mN/m.
 
     Why kinetics: for small surfactants the diffusion-only monolayer
     saturation time is ~ns (Gamma_max/c0)^2/D -- invisible on any
@@ -99,113 +109,123 @@ def dynamic_surface_tension_forward(
         raise ValueError("n_factor must be 1.0 or 2.0 (Gibbs prefactor)")
     if n_cells < 40:
         raise ValueError("n_cells must be >= 40")
-    if max_substep_s <= 0:
+    if max_substep_s is not None and max_substep_s <= 0:
         raise ValueError("max_substep_s must be positive")
+    if not 0.0 < rel_step <= 0.2:
+        raise ValueError("rel_step must be in (0, 0.2]")
     if k_off_per_s <= 0:
         raise ValueError("k_off_per_s must be positive")
     k_a = K_per_M * k_off_per_s  # 1/(M s)
+    k_a_si = k_a / 1000.0        # m^3/(mol s): dG/dt = k_a_si c (Gmax - G) - k_off G
 
-    t_end = float(t_s[-1])
-    # domain sized from the FASTEST diffusion expected in the fit window
-    L = 4.0 * math.sqrt(D_m2_per_s * t_end) + 1e-12
+    t_min, t_end = float(t_s[0]), float(t_s[-1])
+    D = D_m2_per_s
+    gmax = gamma_max_mol_per_m2
+
+    # stretched grid: h_0 = sqrt(D t_min)/20 (or uniform when that is coarser
+    # than L/n), h_j = h_0 q^j with sum = L = 6 sqrt(D t_end)
+    L = 6.0 * math.sqrt(D * t_end)
     M = n_cells
-    dx = L / M
-    # concentrations internal in mol/m^3, D in m^2/s, Gamma mol/m^2
-    c_bulk = c0_mol_per_L * 1000.0
-    c = np.full(M + 1, c_bulk, dtype=float)
-    c[-1] = c_bulk
-
-    # CN matrices: (I - dt/2 * A) c_new = (I + dt/2 * A) c_old
-    # interior + node0 (half-cell: dc0/dt = 2D(c1-c0)/dx^2)
-    def build(dt: float):
-        ab = np.zeros((3, M + 1))  # banded (l=1,u=1)
-        # row 0: half-cell; r = D*dt/(2*dx^2) (D included -- the discrete
-        # diffusion number controlling both CN stability-free coefficients)
-        r = D_m2_per_s * dt / (2.0 * dx * dx)
-        # (I - dt/2 A): diag0 = 1 + 2*r ; super0 = -2*r   [A: dc0 = 2D(c1-c0)/dx2]
-        # (I + dt/2 A): rhs diag0' = 1 - 2*r ; super0' = +2*r
-        # rows 1..M-1: diag = 1 + 2*r ; sub/super = -r
-        # row M: Dirichlet -> identity
-        diag = np.ones(M + 1)
-        sub = np.zeros(M)
-        sup = np.zeros(M)
-        diag[0] = 1.0 + 2.0 * r
-        sup[0] = -2.0 * r
-        for j in range(1, M):
-            diag[j] = 1.0 + 2.0 * r
-            sub[j - 1] = -r
-            sup[j] = -r
-        diag[M] = 1.0
-        sub[M - 1] = 0.0
-        # banded storage rows: ab[0,1:] = super, ab[1,:] = diag, ab[2,:-1] = sub
-        ab[0, 1:] = sup
-        ab[1, :] = diag
-        ab[2, :-1] = sub
-        # rhs matrix application done explicitly (symmetric A)
-        return ab, r
-
-    def apply_rhs(c_old, r):
-        out = np.empty_like(c_old)
-        # row0: (1 - 2r) c0 + 2r c1
-        out[0] = (1.0 - 2.0 * r) * c_old[0] + 2.0 * r * c_old[1]
-        out[1:M] = ((1.0 - 2.0 * r) * c_old[1:M]
-                    + r * c_old[0:M - 1] + r * c_old[2:M + 1])
-        out[M] = c_old[M]
-        return out
-
-    # gamma from the actual SURFACE STATE (kinetic Gamma), NOT the
-    # isotherm at instantaneous cs -- during transients they differ by the
-    # very kinetics this model exists to describe
-    gamma_out: list[float] = []
-    g_out: list[float] = []
-    cs_out: list[float] = []
-    surf_state = 0.0  # Gamma as STATE: starts clean
-    t_prev = 0.0
-    for t_req in t_s:
-        while t_prev < t_req - 1e-15:
-            dt = min(max_substep_s, t_req - t_prev)
-            ab, r = build(dt)
-            rhs = apply_rhs(c, r)
-            c_new = solve_banded((1, 1), ab, rhs)
-            # Langmuir KINETIC surface step (exact linear ODE over dt with
-            # cs held), mass-conserving: the half-cell pays for uptake; the
-            # positive cap (dG <= half-cell inventory) keeps the surface from
-            # taking what diffusion has not delivered (rarely binding now --
-            # kinetics rate-limit uptake, the cap is a guard).
-            half_cell = 0.5 * dx
-            cs_M = max(c_new[0], 0.0) / 1000.0
-            B = k_a * cs_M + k_off_per_s
-            g_eq = gamma_max_mol_per_m2 * (k_a * cs_M / B)
-            g_new = g_eq + (surf_state - g_eq) * math.exp(-B * dt)
-            dG = g_new - surf_state
-            if dG > 0.0:
-                available = max(c_new[0], 0.0) * half_cell
-                dG = min(dG, available)
+    h0 = min(math.sqrt(D * t_min) / 20.0, L / M)
+    if h0 * M >= L * (1.0 - 1e-12):
+        h = np.full(M, L / M)
+    else:
+        lo, hi = 1.0 + 1e-12, 2.0
+        for _ in range(200):
+            q = 0.5 * (lo + hi)
+            if h0 * (q ** M - 1.0) / (q - 1.0) < L:
+                lo = q
             else:
-                dG = max(dG, -surf_state)
-            c_new[0] = max(c_new[0] - dG / half_cell, 0.0)
-            surf_state += dG
-            c_new[M] = c_bulk
-            c = c_new
-            t_prev += dt
-        gamma_out.append(float(gamma0_mN_per_m - n_factor * _R_GAS
-                                * temperature_K * surf_state * 1e3))
-        g_out.append(float(surf_state))
-        cs_out.append(float(c[0] / 1000.0))
+                hi = q
+        h = h0 * q ** np.arange(M)
+    vol = np.empty(M + 1)                # control volume of each node (m)
+    vol[0] = 0.5 * h[0]
+    vol[1:M] = 0.5 * (h[:-1] + h[1:])
+    vol[M] = 1.0                          # Dirichlet reservoir row
+    c_bulk = c0_mol_per_L * 1000.0        # mol/m^3
+    cap = float("inf") if max_substep_s is None else float(max_substep_s)
 
-    # equilibrium reference: gamma at the bulk isotherm value
-    G_eq = gamma_max_mol_per_m2 * (K_per_M * c0_mol_per_L
-                                   / (1.0 + K_per_M * c0_mol_per_L))
-    gam_eq = gamma0_mN_per_m - n_factor * _R_GAS * temperature_K * G_eq * 1e3
+    # time steps: geometric (rel_step * t), started at t_min * 1e-4, hitting
+    # every output time exactly; None marks an output
+    coarse: list = []
+    t_now = 0.0
+    for t_req in t_s:
+        while t_now < t_req * (1.0 - 1e-14):
+            dt = min(max(rel_step * t_now, t_min * 1e-4), cap, t_req - t_now)
+            coarse.append(dt)
+            t_now += dt
+        coarse.append(None)
+    fine: list = []
+    for dt in coarse:
+        fine += [None] if dt is None else [0.5 * dt, 0.5 * dt]
+
+    def integrate(seq):
+        """Backward Euler on (V + dt A) c_new = V c_old with the surface flux
+        dGamma/dt taken out of node 0 inside the same implicit step."""
+        c = np.full(M + 1, c_bulk)
+        surf = 0.0
+        g_rec, cs_rec = [], []
+        mats: dict = {}
+        for dt in seq:
+            if dt is None:
+                g_rec.append(surf)
+                cs_rec.append(float(c[0]))
+                continue
+            ab0 = mats.get(dt)
+            if ab0 is None:
+                ab0 = np.zeros((3, M + 1))        # banded (l=1, u=1)
+                diag = vol.copy()
+                cond = dt * D / h                 # link j <-> j+1
+                diag[:M] += cond
+                diag[1:M] += cond[:M - 1]
+                ab0[0, 1:] = -cond                # row j, column j+1
+                ab0[2, :M - 1] = -cond[:M - 1]    # row j+1, column j (not the reservoir row)
+                diag[M] = 1.0
+                ab0[1] = diag
+                mats[dt] = ab0
+            rhs0 = vol * c
+            rhs0[M] = c_bulk
+            cs = float(c[0])
+            for _ in range(50):
+                # implicit Langmuir step at subsurface cs: G_new(cs) and dG_new/dcs
+                den = 1.0 + dt * k_a_si * cs + dt * k_off_per_s
+                g_new = (surf + dt * k_a_si * gmax * cs) / den
+                dg = dt * k_a_si * (gmax - g_new) / den
+                ab = ab0.copy()
+                ab[1, 0] += dg
+                rhs = rhs0.copy()
+                rhs[0] -= g_new - dg * cs - surf
+                c_new = solve_banded((1, 1), ab, rhs)
+                done = abs(c_new[0] - cs) <= 1e-12 * c_bulk + 1e-15
+                cs = float(c_new[0])
+                if done:
+                    break
+            c = c_new
+            surf = (surf + dt * k_a_si * gmax * cs) / (1.0 + dt * k_a_si * cs + dt * k_off_per_s)
+        return np.array(g_rec), np.array(cs_rec)
+
+    g_c, cs_c = integrate(coarse)
+    g_f, cs_f = integrate(fine)
+    g_out = np.clip(2.0 * g_f - g_c, 0.0, gmax * (1.0 - 1e-15))   # Richardson (BE is first order)
+    cs_out = np.maximum(2.0 * cs_f - cs_c, 0.0)
+    # Szyszkowski (Langmuir) equation of state, the one consistent with
+    # the Langmuir kinetics above; gamma from the kinetic surface STATE,
+    # not the isotherm at the instantaneous subsurface concentration
+    gamma_out = [float(gamma0_mN_per_m + n_factor * _R_GAS * temperature_K
+                       * gmax * math.log(1.0 - g / gmax) * 1e3) for g in g_out]
+
+    # equilibrium reference: Szyszkowski at the bulk concentration
+    gam_eq = gamma0_mN_per_m - (n_factor * _R_GAS * temperature_K * gamma_max_mol_per_m2
+                                * math.log(1.0 + K_per_M * c0_mol_per_L) * 1e3)
 
     return DynamicSurfaceTensionResult(
         gamma_mN_per_m=gamma_out,
         t_s=[float(v) for v in t_s],
-        surface_excess_mol_per_m2=g_out,
-        subsurface_M=cs_out,
+        surface_excess_mol_per_m2=[float(v) for v in g_out],
+        subsurface_M=[float(v) / 1000.0 for v in cs_out],
         gamma_equilibrium_mN_per_m=float(gam_eq),
         converged=True,
-        method="crank-nicolson + algebraic langmuir split (FDM)",
+        method="implicit FDM (stretched grid, coupled Langmuir kinetics, Richardson)",
         params={
             "c0_mol_per_L": c0_mol_per_L,
             "D_m2_per_s": D_m2_per_s,
@@ -213,17 +233,18 @@ def dynamic_surface_tension_forward(
             "gamma_max_mol_per_m2": gamma_max_mol_per_m2,
             "n_cells": n_cells,
             "domain_length_m": L,
+            "first_cell_m": float(h[0]),
+            "rel_step": rel_step,
             "max_substep_s": max_substep_s,
+            "n_steps": sum(1 for v in coarse if v is not None),
             "k_off_per_s": k_off_per_s,
             "k_a_per_M_s": k_a,
-            "solver": "scipy.linalg.solve_banded tridiagonal per step",
+            "solver": "scipy.linalg.solve_banded tridiagonal per Newton iteration",
         },
         caveat=(
             "Langmuir kinetics with a single k_off (no adsorption barrier "
-            "distribution, no reorientation); operator splitting is first "
-            "order in the surface update (halving max_substep_s changes "
-            "early-time gamma by O(dt)); far boundary is a Dirichlet "
-            "reservoir at 4 diffusion lengths"
+            "distribution, no reorientation); far boundary is a Dirichlet "
+            "reservoir at 6 diffusion lengths of the latest output time"
         ),
     )
 
@@ -271,7 +292,8 @@ def dynamic_surface_tension_ode(
     fit_D: bool = True,
     sigma_mN_per_m: float | None = None,
     n_cells: int = 120,
-    max_substep_s: float = 0.15,
+    max_substep_s: float | None = None,
+    rel_step: float = 0.04,
     max_nfev: int = 400,
 ) -> DynamicSurfaceTensionFitResult:
     """Joint fit of dynamic surface tension gamma(t) -> D, K, Gamma_max,
@@ -343,7 +365,7 @@ def dynamic_surface_tension_ode(
         res = dynamic_surface_tension_forward(
             t_arr, c0_mol_per_L, D, K, Gm, gamma0_mN_per_m,
             n_factor, temperature_K, k_off_per_s=k_off,
-            n_cells=n_cells, max_substep_s=max_substep_s)
+            n_cells=n_cells, max_substep_s=max_substep_s, rel_step=rel_step)
         return np.asarray(res.gamma_mN_per_m, dtype=float)
 
     x0 = np.log([p0[i] for i in free_idx])
@@ -425,7 +447,7 @@ def dynamic_surface_tension_ode(
         n_points=len(y_arr),
         converged=bool(sol.success),
         n_iterations=int(sol.nfev),
-        method="joint LM on log-params over CN-FDM forward (scipy least_squares)",
+        method="joint LM on log-params over the implicit FDM forward (scipy least_squares)",
         params={
             "c0_mol_per_L": c0_mol_per_L,
             "gamma0_mN_per_m": gamma0_mN_per_m,

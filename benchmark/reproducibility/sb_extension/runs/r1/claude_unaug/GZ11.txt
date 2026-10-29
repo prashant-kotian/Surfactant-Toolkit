@@ -1,0 +1,10 @@
+FINAL_JSON: {
+“tail_volume_A3”: 350.2,
+“critical_length_A”: 16.68,
+“cpp_measured_area”: 0.470,
+“morphology_measured_area”: “cylindrical/rodlike micelle”,
+“electrostatic_headgroup_area_A2”: 478.1,
+“cpp_electrostatic_area”: 0.0439,
+“morphology_electrostatic_area”: “spherical micelle”,
+“comment”: “Both routes share V=350.2 A^3 and l_c=16.68 A; only the headgroup area differs. The measured 44.70 A^2 gives P=0.470 (rodlike, just under the 0.5 boundary). The electrostatic route uses I=CMC=8 mM, Debye length ~34.0 A, and a_elec=82.0*sqrt(kappa^-1)=~478 A^2, giving P=0.0439 (strongly spherical). They disagree because they are different quantities: 44.7 A^2 is the steric packing area CPP expects, while 478 A^2 is an inflated double-layer footprint (Debye length >> molecular size at 8 mM salt-free), which over-counts curvature preference when plugged into CPP. CPP is extremely sensitive to a (~10x change in a => ~10x change in P). Physically the truth lies between: electrostatics rightly drives spheres at low ionic strength (real salt-free SDS near its CMC forms small near-spherical micelles and only becomes rodlike when salt screens the charge, shrinking kappa^-1 and the effective area), while the measured area sets the correct steric scale. A consistent model adds steric + electrostatic area contributions rather than taking either extreme; the prefactor is an empirical convention, so 478 A^2 is an effective electrostatic area, not a literal cross-section.”
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+"f1_at_x1_0.90": 1.013,
+"f2_at_x1_0.90": 0.315,
+"interaction_model_or_approach": "Two-parameter Margules/Redlich-Kister excess Gibbs model constrained by Gibbs-Duhem; A12≈-3.57, A21≈-0.89",
+"notes": "One-parameter regular solution theory is inconsistent with the measured f1/f2 pair. The fitted two-parameter model reproduces the five measured points and predicts f1≈1.013, f2≈0.315 at x1=0.90."
+}

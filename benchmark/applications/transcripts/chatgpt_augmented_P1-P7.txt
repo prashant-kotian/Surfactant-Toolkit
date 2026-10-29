@@ -1,0 +1,1059 @@
+PROBLEM: 1
+
+The best defensible predictions are below, but with one important limitation: I found no published sodium dodecyl **sulfate** dataset using exactly 6% w/v SDS and 16% w/v n-butanol. The closest applicable sulfate study used 4.29 wt% SDS and several n-butanol concentrations. Therefore these are conditional predictions: they assume balanced salinity transfers primarily through the surfactant/alcohol ratio, despite the change in total amphiphile concentration and concentration basis.
+
+| Oil | Predicted \(S^*\), g NaCl/100 mL aqueous formulation | Input/model uncertainty range | 25 °C audit |
+|---|---:|---:|---|
+| n-Hexane | **3.7** | **3.4–4.1** | Attainable; liquid |
+| n-Heptane | **4.2** | **3.9–4.5** | Attainable; liquid |
+| n-Tetradecane | **9.7** | **8.5–10.5** | Attainable; liquid |
+| n-Hexadecane | **12.3** | **10.1–13.3** | Attainable; liquid at 25 °C |
+| Ethyl palmitate | **4.1** | **3.4–5.1** | Salinity attainable, but equilibrium oil state at exactly 25 °C is questionable |
+
+These ranges do **not** include the presently unquantifiable systematic error from transferring a 4.29 wt% SDS model to 6% w/v SDS. The proposed scans below test that transfer directly.
+
+## Calculation and provenance
+
+Gasimli et al. measured 120 phase scans for sodium dodecyl sulfate/n-butanol/brine with C7, C8, C10, and C12 n-alkanes at WOR = 1, fitting balanced salinity from the crossing of inverse oil- and water-solubilization curves. Their formulation space included 4.29 wt% SDS, 8.58–17.16 wt% n-butanol, 21–60 °C, and alcohol fractions encompassing the present formulation. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0927775726002463?utm_source=chatgpt.com)
+
+Their fitted model is
+
+\[
+\begin{aligned}
+\ln S^*={}&-0.248E-0.039T-9.357C_A
++0.004ET+0.518EC_A\\
+&+0.057TC_A-0.006ETC_A+7.339 ,
+\end{aligned}
+\]
+
+where \(S^*\) is in g NaCl/100 mL, \(E\) is EACN, \(T\) is °C, and \(C_A\) is the alcohol mass fraction in the surfactant-plus-alcohol pseudocomponent. The reported RMSE is 0.038 in \(\ln S^*\). [eme.psu.edu](https://www.eme.psu.edu/sites/eme/files/documents/Poster%20Contest%202025/Nijat_Gasimli_Poster.pdf?utm_source=chatgpt.com)
+
+For the requested formulation I derived
+
+\[
+C_A=\frac{16}{16+6}=0.7273.
+\]
+
+At 25 °C, the model reduces approximately to
+
+\[
+\ln S^*=0.595+0.1196E.
+\]
+
+Inputs were:
+
+- n-Alkanes: \(E=\) carbon number, giving 6, 7, 14, and 16. This is the definition used for pure n-alkanes in the source study. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0927775726002463?utm_source=chatgpt.com)
+- Ethyl palmitate: measured EACN = **6.8**. Ontiveros et al. also report that its melting point is near 25 °C and that measurements below melting can be interrupted by crystallization rather than reaching full equilibrium. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0021979713003585?utm_source=chatgpt.com)
+
+The intervals combine:
+
+- approximately ±2 model RMSE in \(\ln S^*\);
+- the paper’s observed local alkane-number slope range, 0.09–0.12, for extrapolation outside C7–C12;
+- EACN = 6–8 for ethyl palmitate, encompassing the measured 6.8 and the ester group-contribution estimate.
+
+They should be treated as screening intervals, not formal 95% confidence intervals: coefficient covariance and replicate-level data were not published.
+
+## Important identity check
+
+A superficially exact-looking 2026 study reports “6% SDS + 16% n-butanol,” but its chemical is sodium dodecyl **sulfonate**, CAS 2386-53-0—not sodium dodecyl **sulfate**, CAS 151-21-3. [mdpi.com](https://www.mdpi.com/2227-9717/14/17/2693?utm_source=chatgpt.com)
+
+I did not use those salinities. Alkyl sulfate and sulfonate hydrophilicity slopes are materially different, so substituting that dataset would not be chemically defensible. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8234877/?utm_source=chatgpt.com)
+
+## Physical-attainability audit
+
+Saturated aqueous NaCl at 25 °C is about 26.43 mass%, with saturated-brine density about 1.202 g/mL. That corresponds to roughly
+
+\[
+0.2643(1.202)(100)=31.8\ \mathrm{g\ NaCl/100\,mL}
+\]
+
+of saturated solution. [Wiley Online Library](https://onlinelibrary.wiley.com/doi/10.1155/2018/4849639?utm_source=chatgpt.com)
+
+All predicted intervals are far below this pure-brine ceiling. SDS and n-butanol can change the actual salt-solubility and liquid-crystal boundaries, so each salinity needs an oil-free formulation blank, but none of the targets is intrinsically excluded by NaCl solubility.
+
+Ethyl palmitate is the exception in another sense: reported melting points cluster around 24–26 °C. [fao.org](https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-flav/details/en/c/544/?utm_source=chatgpt.com) At exactly 25 °C it may be partly crystalline or metastable. Thus:
+
+- its predicted **salinity** is attainable;
+- a reproducible equilibrium Winsor-III state at exactly 25 °C is **not guaranteed**;
+- crystals persisting after equilibration falsify the premise that it is a single liquid oil phase at that temperature.
+
+## One falsifying phase scan per oil
+
+Prepare every aqueous composition independently at 25 °C. Per 100.00 mL final aqueous formulation:
+
+- 6.000 g sodium dodecyl sulfate, CAS 151-21-3;
+- 16.000 g n-butanol;
+- the specified NaCl mass;
+- water q.s. to exactly 100.00 mL.
+
+Do not add differing salt masses to equal volumes of one stock without restoring final volume: that would no longer be a w/v comparison.
+
+Use sealed, graduated glass tubes with PTFE-lined caps, containing 5.00 mL aqueous formulation and 5.00 mL oil. Minimize headspace for hexane and heptane and record sealed-tube masses before and after equilibration.
+
+Recommended single-rack salinity grids, in g NaCl/100 mL:
+
+| Oil | Scan points |
+|---|---|
+| n-Hexane | 1, 2.5, 3.0, 3.3, 3.5, 3.7, 3.9, 4.1, 4.3, 4.6, 5.0, 8 |
+| n-Heptane | 2, 3.0, 3.4, 3.7, 3.9, 4.1, 4.3, 4.5, 4.7, 5.0, 5.5, 8 |
+| n-Tetradecane | 4, 6, 7, 8, 8.5, 9.0, 9.5, 9.8, 10.1, 10.5, 11, 12, 16 |
+| n-Hexadecane | 6, 8, 9, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14.5, 16, 20 |
+| Ethyl palmitate | 1, 2.5, 3.0, 3.4, 3.7, 4.0, 4.3, 4.6, 5.0, 5.5, 6.0, 8 |
+
+For each salinity, prepare an oil-free aqueous blank to reveal SDS, NaCl, or liquid-crystal precipitation.
+
+Equilibrate at \(25.0\pm0.2\ ^\circ\mathrm C\), mix end-over-end, then allow to stand until phase volumes are unchanged in two readings 24 hours apart, with at least 48 hours total settling. Inspect with crossed polarizers if possible.
+
+For each Winsor-III tube calculate
+
+\[
+\sigma_o=\frac{V_{o,\mathrm{solubilized}}}{V_s},
+\qquad
+\sigma_w=\frac{V_{w,\mathrm{solubilized}}}{V_s},
+\]
+
+and interpolate the crossing of \(1/\sigma_o\) and \(1/\sigma_w\) versus salinity. That crossing—not merely the widest middle phase—is the balanced salinity used in the source study and in the predictions. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0927775726002463?utm_source=chatgpt.com)
+
+A prediction is falsified if:
+
+- the measured crossing lies outside its tabulated interval;
+- no Winsor-I → III → II progression occurs across the bracketing sentinels;
+- solids or birefringent surfactant phases prevent a fluid three-phase equilibrium; or
+- for ethyl palmitate, oil crystals persist at 25 °C.
+
+The resulting scans will also provide the missing experimental test of whether the 4.29 wt% → 6% w/v SDS transfer assumption is valid.
+
+PROBLEM: P2
+A unique monomer/dimer/trimer census cannot be extracted from a CMC measurement. CMC and the above-CMC aggregation number constrain large-micelle formation, but do not determine the individual equilibrium constants \(K_2,K_3,\ldots\). I therefore report two explicitly model-conditional calculations:
+
+- **C: cooperative \(N\)-mer mass action**, which reproduces a sharp CMC and monomer plateau but contains no dimers or trimers.
+- **S: stepwise/isodesmic association**, which permits sub-CMC oligomers but produces a diffuse CMC and is best regarded as an upper-envelope estimate of small aggregation.
+
+“Mass fraction” below means fraction of the **surfactant mass**, not fraction of the total solution.
+
+## Literature inputs
+
+| Quantity | C12E8 | SDS |
+|---|---:|---:|
+| CMC in pure water, 25 °C | **0.088 mM** | **8.2 mM** |
+| Experimental uncertainty/source spread | about ±5%; values near 0.08–0.11 mM occur | commonly about 8.0–8.3 mM |
+| Micellar aggregation number \(N\) | **123**, with reported values about 90–123 | **62** |
+| Ionic character | Nonionic | Anionic; micelle ionization fraction about 0.3 |
+
+The 88 μM and 8.2 mM CMC values are reported for pure water at 25 °C; the C12E8 CMC was obtained from surface tension and the SDS value from conductivity, with typical experimental CMC error below 5%. [scielo.br](https://www.scielo.br/j/rbcf/a/rRkpxPs38qXZb5rx5YN66TP/?lang=en\&utm_source=chatgpt.com) C12E8 aggregation numbers of about 123 in water—and roughly 90–120 under buffered saline conditions—are compiled from experimental detergent data. [cdn.moleculardimensions.com](https://cdn.moleculardimensions.com/public/1632/Anatrace-Detergents-Brochure.pdf?utm_source=chatgpt.com) SDS has the conventional \(N\approx62\) and appreciable Na⁺ binding. [en.wikipedia.org](https://en.wikipedia.org/wiki/Sodium_dodecyl_sulfate?utm_source=chatgpt.com)
+
+Thus the requested total concentrations are:
+
+- C12E8: 4.40, 8.80, 10.56, 22.0, 44.0, 88.0 and 176 μM.
+- SDS: 0.410, 0.820, 0.984, 2.05, 4.10, 8.20 and 16.4 mM.
+
+## Stepwise oligomer model: numerical census
+
+The model is
+
+\[
+c_n=K^{n-1}c_1^n,\qquad
+c_T=\sum_{n=1}^{N_{\max}}n c_n .
+\]
+
+I derived
+
+\[
+K=\frac{0.542791}{\mathrm{CMC}},
+\]
+
+by requiring the inflection of aggregation degree versus \(\ln c_T\) to occur at the experimental CMC. The resulting constants are:
+
+- C12E8: \(K=6.168\times10^3\ \mathrm{M^{-1}}\), \(N_{\max}=123\);
+- SDS: \(K=66.19\ \mathrm{M^{-1}}\), \(N_{\max}=62\).
+
+This equal-step-\(K\) assumption is the model’s substantive—not measured—parameterization. Mass-action treatments and the dependence of the CMC definition on the aggregate distribution are discussed by Rusanov. [ACS Publications](https://pubs.acs.org/doi/10.1021/la503770a?utm_source=chatgpt.com)
+
+Because the model is scaled by each CMC, the predicted mass fractions are numerically the same for both surfactants:
+
+| \(c_T/\mathrm{CMC}\) | Monomer, % | Dimer, % | Trimer, % | \(n\ge4\), % | Free C12E8, μM | Free SDS, mM |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.05 | 94.91 | 4.89 | 0.189 | 0.0067 | 4.18 | 0.389 |
+| 0.10 | 90.42 | 8.88 | 0.654 | 0.0456 | 7.96 | 0.741 |
+| 0.12 | 88.77 | 10.27 | 0.890 | 0.0740 | 9.37 | 0.873 |
+| 0.25 | 79.57 | 17.18 | 2.783 | 0.463 | 17.51 | 1.631 |
+| 0.50 | 66.96 | 24.34 | 6.633 | 2.073 | 29.46 | 2.745 |
+| 1.00 | 51.73 | 29.05 | 12.23 | 6.99 | 45.52 | 4.242 |
+| 2.00 | 36.48 | 28.89 | 17.16 | 17.46 | 64.20 | 5.983 |
+
+These are predictions, not measured populations.
+
+## Cooperative-micelle model: alternative census
+
+Here only monomers and \(N\)-mers are allowed:
+
+\[
+c_T=c_1+N K_Nc_1^N .
+\]
+
+I calibrated \(K_N\) to the measured CMC using the logarithmic-concentration curvature definition of the CMC. The calculated micellized fractions at the CMC are 0.0827 for \(N=123\) and 0.1127 for \(N=62\). These numbers were calculated from the mass-action curvature equations, not fitted to population data.
+
+Dimers and trimers are exactly zero **by construction**:
+
+| \(c_T/\mathrm{CMC}\) | C12E8 monomer / \(n\ge4\), % | Free C12E8, μM | SDS monomer / \(n\ge4\), % | Free SDS, mM |
+|---:|---:|---:|---:|---:|
+| 0.05 | 100.00 / ≈0 | 4.40 | 100.00 / ≈0 | 0.410 |
+| 0.10 | 100.00 / ≈0 | 8.80 | 100.00 / ≈0 | 0.820 |
+| 0.12 | 100.00 / ≈0 | 10.56 | 100.00 / ≈0 | 0.984 |
+| 0.25 | 100.00 / ≈0 | 22.00 | 100.00 / ≈0 | 2.050 |
+| 0.50 | 100.00 / ≈0 | 44.00 | 100.00 / ≈0 | 4.100 |
+| 1.00 | 91.73 / 8.27 | 80.72 | 88.73 / 11.27 | 7.276 |
+| 2.00 | 46.83 / 53.17 | 82.42 | 46.01 / 53.99 | 7.546 |
+
+Using \(N=90\), rather than 123, for C12E8 changes \(n\ge4\) only from 8.27 to 9.54% at the CMC and from 53.17 to 53.54% at \(2\,\mathrm{CMC}\). Aggregation-number uncertainty is therefore much smaller than the disagreement between the two model structures.
+
+## Which numbers are most credible?
+
+For **free monomer and total micellization near and above the CMC**, I trust the cooperative model more. At \(2\,\mathrm{CMC}\) it gives free-monomer concentrations of 0.94 and 0.92 CMC, consistent with the experimentally observed near-plateau, while roughly half the surfactant is micellized. The stepwise model instead has free monomer at 0.73 CMC and only 17.5% in \(n\ge4\), despite experimental micelles containing roughly 62–123 molecules.
+
+For **dimers and trimers below the CMC**, neither endpoint is a measurement:
+
+- the cooperative model’s zero is a lower endpoint imposed by its reaction scheme;
+- the stepwise table is a plausible upper envelope, because it assigns the full CMC-derived association energy to every addition step.
+
+Hence, at \(0.5\,\mathrm{CMC}\), for example, the defensible model spread is approximately:
+
+- monomer: **67–100%**;
+- dimer: **0–24%**;
+- trimer: **0–6.6%**;
+- \(n\ge4\): **approximately 0–2.1%**.
+
+Species-resolved \(K_2\) and \(K_3\) measurements would be required to narrow that range.
+
+## Independent checks and experimental evidence
+
+1. **Conservation.** Every row obeys
+
+\[
+f_1+f_2+f_3+f_{n\ge4}=1.
+\]
+
+For example, the independent mass-action solver at \(2\,\mathrm{CMC}\) SDS returned \(c_1=5.98266\) mM and \(\sum n c_n=16.4000\) mM, exactly reproducing the imposed total.
+
+2. **Alternative large-micelle calculation.** Changing the C12E8 aggregation number across its literature range barely alters the cooperative result, as quantified above.
+
+3. **Experimental sub-CMC evidence.** Pulsed-field-gradient NMR found a marked decrease in SDS self-diffusion in the premicellar region; the authors explicitly analysed the data using monomer, dimer and micelle populations. This demonstrates that “100% monomer” is not exact, although the accessible report does not publish enough numerical equilibrium constants to reconstruct a unique census. [Springer Nature Link](https://link.springer.com/article/10.1134/S1061933X07040059?utm_source=chatgpt.com)
+
+4. **Why tensiometry cannot provide the census.** Surface tension reports interfacial adsorption and a breakpoint. It does not independently determine \(K_2\), \(K_3\), and the higher association constants; many bulk distributions can therefore reproduce the same breakpoint.
+
+## What transfers to ionic SDS?
+
+Mass conservation and a general mass-action description remain valid. The equal-\(K\) stepwise model does **not** transfer quantitatively because SDS association includes:
+
+- size-dependent electrostatic head-group repulsion;
+- diffuse-layer screening;
+- Na⁺ binding that changes with aggregate size and concentration;
+- strong salt dependence of both CMC and aggregation number.
+
+Modern molecular-thermodynamic treatments therefore include counterion distributions and electrostatic free energy explicitly. [Langmuir](https://pubs.acs.org/doi/abs/10.1021/la501008x?utm_source=chatgpt.com)
+
+Consequently, the SDS stepwise values should be regarded only as a numerical sensitivity scenario. The cooperative table is the better estimate of its gross monomer–micelle partition, while the NMR result establishes that its true sub-CMC dimer fraction is probably nonzero but cannot be calculated uniquely from the published CMC and \(N\) alone.
+
+
+
+
+Problem 3
+
+The central prediction is that 0.1 and 1 mM SDS approach equilibrium gradually, while 10 mM adsorbs almost completely before 0.1 s. The 10 mM result is the least reliable: it lies above the CMC, and published bubble-pressure data indicate slower micelle-mediated dynamics than this diffusion-only model predicts.
+
+## Model
+
+I solved the planar Ward–Tordai equation from an initially clean interface,
+
+\[
+\Gamma(t)=2c_b\sqrt{\frac{Dt}{\pi}}
+-\sqrt{\frac{D}{\pi}}\int_0^t\frac{c_s(\tau)}{\sqrt{t-\tau}}\,d\tau ,
+\]
+
+coupled at every timestep to the corrected Frumkin isotherm and equation of state:
+
+\[
+(bA_i)c_s=\frac{\theta}{1-\theta}e^{-2a\theta},
+\qquad
+\gamma=\gamma_0+RT\Gamma_\infty
+\left[\ln(1-\theta)+a\theta^2\right],
+\quad
+\theta=\Gamma/\Gamma_\infty .
+\]
+
+This is a diffusion-controlled, local-interfacial-equilibrium model: no unsourced adsorption/desorption rate constant was introduced. Kinoshita et al. used the same Ward–Tordai/Frumkin framework and ionic-activity correction for SDS. [PubMed](https://pubmed.ncbi.nlm.nih.gov/28623702/?utm_source=chatgpt.com)
+
+For 10 mM total SDS I used an 8.0 mM monomer reservoir, with the excess assigned to micelles. This is explicitly an approximation: published results show that above the CMC micelles can modify monomer adsorption rates even though monomers dominate formation of the interfacial layer. [researchgate.net](https://www.researchgate.net/publication/317153002_Adsorption_of_ionic_surfactants_at_microscopic_air-water_interfaces_using_the_Micropipette_interfacial_area-expansion_method_Measurement_of_the_diffusion_coefficient_and_renormalization_of_the_mean_io?utm_source=chatgpt.com)
+
+## Parameters and provenance
+
+| Parameter | Central value | Provenance and uncertainty |
+|---|---:|---|
+| \(T\) | 298.15 K | Problem specification |
+| Clean-water \(\gamma_0\) | 72.8 mN/m | Problem specification |
+| \(D_{20}\) | \((5.3\pm0.3)\times10^{-10}\) m²/s | Kinoshita et al., experimentally inferred after ionic-activity correction |
+| \(D_{25}\) | \((6.07\pm0.35)\times10^{-10}\) m²/s | Derived from \(D_{20}\) using \(D\propto T/\eta\); IAPWS gives \(\eta_{20}=1.00157\) and \(\eta_{25}=0.89000\) mPa·s. I included the IAPWS 1% viscosity uncertainty. [iapws.org](https://www.iapws.org/relguide/LiquidWater.pdf?utm_source=chatgpt.com) |
+| \(\Gamma_\infty\) | \(7.0\times10^{-6}\) mol/m² | Corrected Frumkin fit of Kinoshita et al.; sensitivity interval \(5.1\)–\(7.759\times10^{-6}\) mol/m² spans published alternative fits/methods. [researchgate.net](https://www.researchgate.net/publication/317153002_Adsorption_of_ionic_surfactants_at_microscopic_air-water_interfaces_using_the_Micropipette_interfacial_area-expansion_method_Measurement_of_the_diffusion_coefficient_and_renormalization_of_the_mean_io?utm_source=chatgpt.com) |
+| Frumkin \(b\) | 0.63 m³/mol | Ideal-ionic-activity fit |
+| Ionic factor \(A_i\) | 0.29 | Kinoshita et al. |
+| Effective \(bA_i\) | 0.1827 m³/mol | Derived product; sensitivity 0.180–0.183 |
+| Frumkin \(a\) | 1.45 | Published fit; held fixed because no parameter uncertainty was reported |
+| CMC | \(8.00\pm0.17\) mM | Independent surface-tension determination at 25 °C. [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0021979718313341?utm_source=chatgpt.com) |
+| \(R\) | 8.314462618 J mol⁻¹ K⁻¹ | Exact SI molar gas constant |
+
+The reported brackets below are a literature/model sensitivity envelope, not a 95% confidence interval. They combine the \(D_{25}\) and CMC ranges with the published spread in \(\Gamma_\infty\) and corrected adsorption constant. They do not include an unknown uncertainty in \(a\), convection, impurities, or structural error from omitted micelle-breakdown kinetics.
+
+## Predictions
+
+Brackets are sensitivity ranges. Surface excess is in \(\mu\mathrm{mol\,m^{-2}}\).
+
+| SDS total (mM) | \(t\) (s) | \(\gamma(t)\), mN/m | \(\Gamma(t)\), µmol/m² |
+|---:|---:|---:|---:|
+| 0.1 | 0.1 | 72.508 [72.479, 72.585] | 0.120 [0.088, 0.132] |
+| 0.1 | 1 | 72.487 [72.454, 72.574] | 0.128 [0.093, 0.142] |
+| 0.1 | 10 | 72.480 [72.445, 72.570] | 0.131 [0.094, 0.146] |
+| 0.1 | 100 | 72.478 [72.443, 72.569] | 0.132 [0.095, 0.147] |
+| 0.1 | 1000 | 72.478 [72.442, 72.569] | 0.132 [0.095, 0.147] |
+| 1 | 0.1 | 69.504 [69.191, 70.324] | 1.669 [1.265, 1.821] |
+| 1 | 1 | 69.040 [68.646, 70.066] | 1.982 [1.441, 2.188] |
+| 1 | 10 | 68.867 [68.438, 69.974] | 2.106 [1.506, 2.336] |
+| 1 | 100 | 68.810 [68.370, 69.945] | 2.147 [1.527, 2.386] |
+| 1 | 1000 | 68.792 [68.348, 69.935] | 2.161 [1.534, 2.402] |
+| 10 | 0.1 | 41.420 [37.669, 50.194] | 6.695 [4.873, 7.428] |
+| 10 | 1 | 40.698 [36.819, 49.796] | 6.710 [4.881, 7.444] |
+| 10 | 10 | 40.476 [36.559, 49.673] | 6.714 [4.883, 7.449] |
+| 10 | 100 | 40.406 [36.478, 49.634] | 6.715 [4.884, 7.451] |
+| 10 | 1000 | 40.385 [36.452, 49.622] | 6.715 [4.884, 7.451] |
+
+At 1000 s, \(\Gamma\) is within 0.10%, 0.28%, and 0.003% of the calculated equilibrium value for 0.1, 1, and 10 mM respectively.
+
+## Numerical validation
+
+Three checks were performed:
+
+| Check | Result |
+|---|---|
+| Ward–Tordai integral residual | Maximum absolute residual \(5.1\times10^{-19}\) mol/m² for sub-CMC cases and \(3.0\times10^{-18}\) mol/m² at 10 mM |
+| Mesh convergence, 4000 vs 8000 \(\sqrt t\)-steps | Maximum changes in the five reported \(\gamma\) values: \(4.4\times10^{-6}\), \(1.77\times10^{-4}\), and \(7.24\times10^{-4}\) mN/m for 0.1, 1, and 10 mM |
+| 8000 vs 16000 steps at 10 mM | Maximum difference \(1.02\times10^{-4}\) mN/m |
+| Independent Langmuir-limit solver | Surface-excess difference 3.21% at 0.1 s, 1.14% at 1 s, 0.37% at 10 s, 0.12% at 100 s, and 0.038% at 1000 s |
+
+The independent calculation used the attached Surfactant-Computation Ward–Tordai solver after setting \(a=0\), so both implementations reduced to the same Langmuir boundary condition. The largest difference is confined to the earliest point and reflects different early-time quadratures.
+
+## Comparison with experiment
+
+- As an equilibrium/EOS check, published 24 °C values at 0.5, 5, and 15 mM are 70.1, 49.3, and 39.0 mN/m. The corresponding model equilibria are 71.05, 48.10, and 40.37 mN/m—differences of +0.95, −1.20, and +1.37 mN/m. [mdpi.com](https://www.mdpi.com/2075-163X/9/12/743?utm_source=chatgpt.com)
+
+- Kinoshita et al.’s 20 °C dynamic measurements cover 2.5–100 mM and show the expected long-time \(t^{-1/2}\) behavior and approach to equilibrium over seconds. That supports the model form, although their experiment started from an expanded, already adsorbed interface rather than a completely clean one. [researchgate.net](https://www.researchgate.net/publication/317153002_Adsorption_of_ionic_surfactants_at_microscopic_air-water_interfaces_using_the_Micropipette_interfacial_area-expansion_method_Measurement_of_the_diffusion_coefficient_and_renormalization_of_the_mean_io?utm_source=chatgpt.com)
+
+- A maximum-bubble-pressure study provides the more relevant newly created-interface experiment. Visual reading of its water-only 20 mM curve gives approximately 57, 44, and 33 mN/m at 0.1, 1, and 10 s. By comparison, the present 10 mM prediction is 41.4, 40.7, and 40.5 mN/m. Thus the model is roughly 16 mN/m too low at 0.1 s and 7–8 mN/m too high by 10 s relative to that closest published plot. The concentrations and temperatures are not identical, so these are approximate rather than point-for-point residuals, but the disagreement is too large to ignore. The likely missing physics is above-CMC micelle dissociation/transport and possibly an electrostatic adsorption barrier. [researchgate.net](https://www.researchgate.net/publication/337436986_Study_of_surface_properties_of_aqueous_solutions_of_sodium_dodecyl_sulfate_in_the_presence_of_hydrochloric_acid_and_heavy_metal_ions?utm_source=chatgpt.com)
+
+- SDS purity is another major experimental variable: dodecanol can accelerate the decline in surface tension. Kinoshita et al. explicitly recrystallized their SDS and found no significant change over hundreds of seconds, which is one reason I trusted their parameterization. [researchgate.net](https://www.researchgate.net/publication/317153002_Adsorption_of_ionic_surfactants_at_microscopic_air-water_interfaces_using_the_Micropipette_interfacial_area-expansion_method_Measurement_of_the_diffusion_coefficient_and_renormalization_of_the_mean_io?utm_source=chatgpt.com)
+
+Consequently, I would treat the 0.1 and 1 mM curves as defensible Ward–Tordai/Frumkin extrapolations, but the 10 mM curve only as a diffusion-controlled limiting prediction. Its equilibrium value is plausible; its sub-second kinetics are not well validated.
+
+Files:
+
+- :chatgpt-content-reference{index="10"}[Full 81-point curves and sensitivity bands](sandbox:/workspace/scratch/0f7bd97cd605/sds_dynamic_surface_tension_25C.csv)
+- :chatgpt-content-reference{index="11"}[Reproducible numerical model](sandbox:/workspace/scratch/0f7bd97cd605/sds_dynamic_model.py)
+
+Problem 4
+
+## Result
+
+The emulsion should cream in **seconds to minutes**, despite retaining essentially the same droplet-size distribution for a month.
+
+My best estimate for a 10 cm column at 25 °C is:
+
+\[
+\boxed{t_{50}=11.7\ {\rm s}}
+\]
+
+for a representative lognormal distribution. The uncertainty attributable to the distribution width alone is **10.5–13.3 s**; including the documented range of plausible paraffin-oil densities gives **8.8–16.3 s**. The remaining drag-correlation systematic is approximately ±3%.
+
+“Separated fraction” below means the fraction of the original oil volume that has crossed into the upper cream region, equivalently the clarified-height fraction in the ideal one-dimensional plug-creaming model. It does not mean a layer of neat, water-free oil.
+
+### Paper identified
+
+The paper is H. Murasiewicz and K. Illienko, *Liquid-liquid two phase-system stabilized by Tween 40 and 80 surfactants: multiparametric study*, **Polish Journal of Chemical Technology 26(1), 51–63 (2024)**, DOI [10.2478/pjct-2024-0006](https://doi.org/10.2478/pjct-2024-0006). [reference-global.com](https://reference-global.com/article/10.2478/pjct-2024-0006?utm_source=chatgpt.com)
+
+One correction to the problem statement: it was prepared in a **1 L baffled stirred vessel with a standard Rushton turbine**, not a rotor–stator high-shear mixer. The condition corresponding to \(d_{32}=235\,\mu{\rm m}\) was **5 vol% liquid paraffin, 0.0075 mM Tween 80, 330 rpm**. [researchgate.net](https://www.researchgate.net/publication/379563347_Liquid-liquid_two_phase-system_stabilized_by_tween_40_and_80_surfactants_multiparametric_study?utm_source=chatgpt.com)
+
+## Model
+
+For each droplet diameter \(d\), I solved the rigid-sphere force balance using the finite-Reynolds-number Schiller–Naumann correlation,
+
+\[
+C_D=\frac{24}{Re}\left(1+0.15Re^{0.687}\right),
+\qquad
+\frac{\pi d^3}{6}\Delta\rho g
+ =\frac12 C_D\rho_w\frac{\pi d^2}{4}u_\infty^2.
+\]
+
+This correlation has about ±5% drag accuracy below \(Re=1000\); here the hindered terminal Reynolds number at \(d_{32}\) is only 0.89. [Cambridge Core](https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/enhanced-settling-and-dispersion-of-inertial-particles-in-surface-waves/676E76A21C80FA7D92207B4A59335EC6?utm_source=chatgpt.com)
+
+The 5% dispersed fraction was included through
+
+\[
+u(d)=u_\infty(d)(1-\phi)^{4.48},
+\]
+
+giving a hindrance multiplier of 0.7947. The exponent \(4.48\pm0.04\) is the experimentally consolidated Richardson–Zaki value for non-Brownian low-Re suspensions. [arxiv.org](https://arxiv.org/abs/1710.09314?utm_source=chatgpt.com)
+
+For an initially uniform column,
+
+\[
+\boxed{F(t)=\int q_3(d)\min\left[\frac{u(d)t}{H},1\right]\,{\rm d}d}
+\]
+
+where \(q_3(d)\) is the oil-volume distribution and \(H=0.10\) m.
+
+The paper describes its distributions as right-skewed, approximately lognormal, with Tween-80 SPAN values between 0.592 and 1.335. It does not provide a machine-readable SPAN specifically for the 330 rpm curve. [researchgate.net](https://www.researchgate.net/publication/379563347_Liquid-liquid_two_phase-system_stabilized_by_tween_40_and_80_surfactants_multiparametric_study?utm_source=chatgpt.com) I therefore used:
+
+- central assumption: lognormal, SPAN = 1.000;
+- width sensitivity: SPAN = 0.592 and 1.335;
+- all cases constrained to the measured \(d_{32}=235\,\mu{\rm m}\).
+
+For a lognormal number distribution,
+
+\[
+\sigma_{\ln d}=\frac{\operatorname{asinh}({\rm SPAN}/2)}{1.2815516},
+\qquad
+\mu_{\ln d}=\ln d_{32}-2.5\sigma_{\ln d}^2.
+\]
+
+## Separation timeline
+
+### Characteristic times
+
+| Distribution at fixed \(d_{32}\) | \(t_{10}\) | \(t_{50}\) | \(t_{90}\) | \(t_{99}\) |
+|---|---:|---:|---:|---:|
+| Monodisperse | 2.94 s | 14.72 s | 26.49 s | 29.14 s |
+| Lognormal, SPAN 0.592 | 2.64 s | 13.26 s | 30.47 s | 52.42 s |
+| Lognormal, SPAN 1.000 | 2.22 s | **11.68 s** | 35.91 s | 83.96 s |
+| Lognormal, SPAN 1.335 | 1.86 s | 10.47 s | 40.63 s | 120.19 s |
+
+A broad distribution separates more rapidly initially because its large-droplet tail rises quickly, but takes longer to finish because of its small-droplet tail.
+
+### Full central curve
+
+| Time | Central \(F(t)\), SPAN 1.0 | Width-only range, SPAN 0.592–1.335 |
+|---:|---:|---:|
+| 0 s | 0.000 | 0.000 |
+| 5 s | 0.226 | 0.190–0.266 |
+| 10 s | 0.438 | 0.379–0.484 |
+| 15 s | 0.605 | 0.561–0.630 |
+| 20 s | 0.722 | 0.714–0.727 |
+| 30 s | 0.857 | 0.839–0.895 |
+| 45 s | 0.940 | 0.916–0.978 |
+| 60 s | 0.972 | 0.951–0.995 |
+| 90 s | 0.992 | 0.980–0.9997 |
+| 120 s | 0.9972 | 0.990–0.99997 |
+| 180 s | 0.9995 | 0.9967–1.000 |
+| 300 s | 0.99996 | 0.99934–1.000 |
+
+Thus the model predicts a plainly visible clarified region within about five seconds, half clarification at roughly 12 seconds, and practically complete macroscopic creaming in two to five minutes.
+
+The machine-readable curves and reproducible calculation are here:
+
+- :chatgpt-content-reference{index="12"}[creaming_separation_curves.csv](sandbox:/workspace/scratch/0f7bd97cd605/creaming_separation_curves.csv)
+- :chatgpt-content-reference{index="13"}[emulsion_creaming_model.py](sandbox:/workspace/scratch/0f7bd97cd605/emulsion_creaming_model.py)
+
+## Effect of replacing the DSD by \(d_{32}\)
+
+The common monodisperse approximation is materially wrong here:
+
+- central \(t_{50}\): 14.72 instead of 11.68 s, a **26.0% overestimate**;
+- across the paper’s Tween-80 SPAN range: the overestimate is **11.0–40.6%**;
+- maximum error in the full curve is 11.1–16.5 percentage points, occurring near 29 s;
+- at 29.4 s the monodisperse model declares 100% separation, while the central distribution model predicts only about 85%.
+
+So \(d_{32}\) alone is inadequate for predicting the late tail of creaming.
+
+## Physical-property uncertainty
+
+I evaluated the IAPWS water formulations at 298.15 K and atmospheric pressure, obtaining
+
+\[
+\rho_w=997.047\ {\rm kg\,m^{-3}},\qquad
+\mu_w=0.89002\ {\rm mPa\,s}.
+\] :chatgpt-content-reference{index="5"}
+
+
+The paper identifies the oil only as Merck liquid paraffin, CAS 8042-47-5; it does not give a catalogue number. Merck’s light-liquid grade has density 0.85 g cm\(^{-3}\), while the pharmacopoeial specification permits relative density 0.818–0.880 at 25 °C. :chatgpt-content-reference{index="6"} This missing exact grade is the largest property uncertainty.
+
+For the central SPAN = 1 curve:
+
+| Oil density | \(t_{50}\) |
+|---:|---:|
+| 818 kg m\(^{-3}\) | 9.82 s |
+| 850 kg m\(^{-3}\), central | 11.68 s |
+| 880 kg m\(^{-3}\) | 14.32 s |
+
+Combining density and paper-wide SPAN extremes gives 8.81–16.30 s.
+
+The paper gives the paraffin viscosity as 32 mPa s. :chatgpt-content-reference{index="7"} It hardly affects the result: the viscosity ratio is about 36, and the paper itself argues that the surfactant-covered droplets act approximately as rigid spheres. :chatgpt-content-reference{index="8"}
+
+## Coalescence-rate constraint
+
+I define the constant Smoluchowski kernel \(K\) by
+
+\[
+\frac{{\rm d}N}{{\rm d}t}=-\frac{K}{2}N^2,
+\qquad
+N(t)=\frac{N_0}{1+KN_0t/2}.
+\]
+
+For a volume-conserving, self-preserving distribution,
+
+\[
+\frac{d_{32}(t)}{d_{32}(0)}
+ \simeq\left(1+\frac{KN_0t}{2}\right)^{1/3}.
+\]
+
+For the paper’s lognormal SPAN range, the initial number concentration derived from \(\phi=0.05\) and \(d_{32}=235\,\mu{\rm m}\) is
+
+\[
+N_0=(8.60\times10^9)-(1.50\times10^{10})\ {\rm m^{-3}}.
+\]
+
+The Mastersizer reproducibility was better than 1%, while the reported standard deviations ranged up to 10 μm; the authors found no meaningful \(d_{32}\) or DSD change after a month. [researchgate.net](https://www.researchgate.net/publication/379563347_Liquid-liquid_two_phase-system_stabilized_by_tween_40_and_80_surfactants_multiparametric_study?utm_source=chatgpt.com) Therefore:
+
+| Nondetection threshold after 30 d | Derived upper bound on \(K\) |
+|---|---:|
+| 1% in \(d_{32}\), 2.35 μm | \(K<2.72\times10^{-18}\ {\rm m^3\,s^{-1}}\) |
+| Worst reported SD, 10 μm | \(\boxed{K<1.20\times10^{-17}\ {\rm m^3\,s^{-1}}}\) |
+| Conservative \(2\sigma\), 20 μm | \(K<2.49\times10^{-17}\ {\rm m^3\,s^{-1}}\) |
+
+The boxed value is my operational upper bound. It is conditional on the constant-kernel, no-breakup model; it is not a directly measured rate constant.
+
+Across \(K=0\) to \(1.20\times10^{-17}\ {\rm m^3\,s^{-1}}\), the predicted \(t_{50}\) changes by only about **3 μs**. Even the conservative \(2\sigma\) bound changes it by less than 10 μs. Gravitational separation is therefore complete far too quickly for the month-scale coalescence bound to matter.
+
+This resolves the apparent contradiction: **unchanged droplet size means resistance to coalescence, not resistance to creaming**. Indeed, the paper’s apparatus figure explicitly shows phase separation after stopping the impeller. [researchgate.net](https://www.researchgate.net/publication/379563347_Liquid-liquid_two_phase-system_stabilized_by_tween_40_and_80_surfactants_multiparametric_study?utm_source=chatgpt.com)
+
+## Input audit
+
+| Input | Status |
+|---|---|
+| 5 vol% oil, 0.0075 mM Tween 80, 330 rpm, \(d_{32}=235\,\mu{\rm m}\) | Measured/reported in paper |
+| Approximate lognormal form; Tween-80 SPAN 0.592–1.335 | Measured/reported in paper |
+| Oil viscosity 32 mPa s | Reported in paper |
+| Month-long lack of meaningful DSD change; instrument precision | Reported in paper |
+| Water density and viscosity | Evaluated from IAPWS literature formulations |
+| Paraffin density 850 kg m\(^{-3}\), range 818–880 | Sourced from CAS-matched Merck specifications |
+| Schiller–Naumann drag law and accuracy | Literature-sourced |
+| Richardson–Zaki exponent \(4.48\pm0.04\) | Literature-sourced |
+| SPAN = 1.000 central value | Assumed; range is tested explicitly |
+| Wide column, negligible wall effects | Assumed |
+| Initially uniform emulsion; no convection, flocculation or yield stress | Assumed |
+| Instantaneous capture of droplets reaching the top boundary | Assumed |
+| \(F(t)\), characteristic times and coalescence bounds | Derived |
+
+## Single falsification experiment
+
+Prepare the exact paper formulation using fresh Tween-80 solution and the paper’s 60 min, 330 rpm Rushton-turbine procedure. Immediately transfer it—within roughly two seconds—to a transparent 10.0 cm-high column at \(25.0\pm0.2^\circ{\rm C}\). Use an internal diameter of at least 25 mm to suppress wall effects.
+
+Record the column at ≥30 frames s\(^{-1}\), backlit, and extract the clarified lower-layer height \(h_c(t)\). Compare
+
+\[
+F_{\rm obs}(t)=h_c(t)/10.0{\rm\,cm}
+\]
+
+at 5, 10, 15, 30, 60 and 120 s. Simultaneously measure the initial volume DSD and oil density; inserting those two measured inputs removes the largest present uncertainties.
+
+The prediction is falsified if, after inserting the measured DSD and density:
+
+- \(t_{50}\) differs by more than 20%, or
+- \(|F_{\rm obs}-F_{\rm model}|>0.10\) at any of the prescribed times.
+
+A measured \(t_{50}\) of minutes or hours would decisively show that an omitted mechanism—most likely flocculation into a space-spanning network, a yield stress, wall adhesion, or strong counter-current hydrodynamic coupling—invalidates the independent-droplet creaming model.
+
+Problem 5
+
+## Basis and interpretation
+
+Cloud point is a temperature, so I interpret “in water at 25 °C” as using the standard HLD reference temperature \(T_\mathrm{ref}=25^\circ\mathrm C\). Because cloud point depends on concentration, the numerical results below are specifically for a **1 wt% aqueous solution of a pure, monodisperse alkyl ethoxylate**. That is the concentration basis of the published cloud-point correlation. [ACS Publications](https://pubs.acs.org/doi/10.1021/acs.langmuir.5b03064?utm_source=chatgpt.com)
+
+I used the nonionic HLD equation
+
+\[
+\mathrm{HLD}=bS-k\,\mathrm{EACN}+c_T(T-25)+C_c,
+\]
+
+with a phase balance or cloud point assigned by \(\mathrm{HLD}=0\):
+
+\[
+T=25-\frac{bS-k\,\mathrm{EACN}+C_c}{c_T}.
+\]
+
+For pure linear \( \mathrm{C_iE_j} \) ethoxylates,
+
+\[
+C_c=2.4+0.28i-j.
+\]
+
+That group-contribution expression is published for linear alkyl ethoxylates. [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1359029420300509?utm_source=chatgpt.com)
+
+For cloud-point calculations, the micellar hydrocarbon-like environment is represented by the published apparent \(\mathrm{EACN}_{\rm mic}=7.3\). The other method constants are \(b=0.13\), \(c_T=0.060\ {\rm ^\circ C^{-1}}\), and \(k=0.16\), with the literature range \(k=0.15\)–0.17. Salinity \(S\) is in g NaCl/100 mL. [api.pageplace.de](https://api.pageplace.de/preview/DT0400.9780128214824_A62364940/preview-9780128214824_A62364940.pdf?utm_source=chatgpt.com)
+
+## 1. Predicted cloud points
+
+| Surfactant/system | Derived \(C_c\) | Predicted CP (°C) | Input-parameter band (°C) | Conservative decision band (°C) |
+|---|---:|---:|---:|---:|
+| C12E5, water | +0.76 | **31.8** | 30.6–33.0 | **25.6–38.0** |
+| C12E6, water | −0.24 | **48.5** | 47.3–49.7 | **42.3–54.7** |
+| C12E8, water | −2.24 | **81.8** | 80.6–83.0 | **75.6–88.0** |
+| C10E6, water | −0.80 | **57.8** | 56.6–59.0 | **51.6–64.0** |
+| C8E6, water | −1.36 | **67.1** | 65.9–68.4 | **60.9–73.4** |
+| C12E6 + 1 g NaCl/100 mL | −0.24 | **46.3** | 45.1–47.5 | **40.1–52.5** |
+
+The input-parameter interval propagates the published \(k=0.15\)–0.17 range. No defensible uncertainties were published for every coefficient of the \(C_c\) group contribution, \(b\), or \(c_T\), so I have not invented distributions for them.
+
+The original pure-ethoxylate method reports predictions typically within about **5 °C** for compounds with up to eight EO groups. [ACS Publications](https://pubs.acs.org/doi/10.1021/acs.langmuir.5b03064?utm_source=chatgpt.com) The decision band therefore adds that ±5 °C empirical model discrepancy to the endpoint parameter range. It is deliberately conservative and is not a statistical 95% confidence interval.
+
+The model predicts that 1 g NaCl/100 mL lowers the C12E6 cloud point by
+
+\[
+\Delta T=-\frac{bS}{c_T}
+=-\frac{0.13(1)}{0.060}
+=-2.17^\circ\mathrm C.
+\]
+
+## 2. C12E5 phase-inversion temperatures
+
+For pure n-alkanes, EACN equals the alkane carbon number, hence EACN = 6 for n-hexane and 8 for n-octane. [mdpi.com](https://www.mdpi.com/2673-8015/2/4/19?utm_source=chatgpt.com) At \(S=0.01\) g NaCl/100 mL:
+
+| Oil | EACN | Predicted PIT (°C) | \(k=0.15\)–0.17 band (°C) | Conservative transferred band (°C) |
+|---|---:|---:|---:|---:|
+| n-Hexane | 6 | **28.3** | 27.3–29.3 | **22.3–34.3** |
+| n-Octane | 8 | **33.6** | 32.3–35.0 | **27.3–40.0** |
+
+The 0.01 g/100 mL salt correction is only \(-0.022^\circ\mathrm C\); it is negligible compared with model uncertainty.
+
+The last column transfers the cloud-point method’s ±5 °C empirical discrepancy to PIT as a purchasing-risk allowance. It should not be interpreted as a separately validated PIT confidence interval.
+
+## 3. Held-out validation
+
+A published C12E5/n-octane/water measurement attributed to Strey and co-workers gives a PIT of **32.6 °C**. [Wiley Online Library](https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70010?utm_source=chatgpt.com) I did not use that temperature to calculate or tune the result.
+
+\[
+\begin{aligned}
+T_{\rm predicted}&=33.65^\circ\mathrm C,\\
+T_{\rm observed}&=32.6^\circ\mathrm C,\\
+\text{residual }(P-O)&=\mathbf{+1.05^\circ\mathrm C}.
+\end{aligned}
+\]
+
+Thus the held-out residual is comfortably inside the method’s stated approximately ±5 °C cloud-point accuracy. It is also consistent with independently published C12E5/octane/water phase diagrams that place the balanced-temperature region in the low-to-mid 30s °C. [research.kek.jp](https://research.kek.jp/people/seto/PDF/PRE63-041402.pdf?utm_source=chatgpt.com)
+
+## Provenance audit
+
+| Quantity | Value | Classification |
+|---|---:|---|
+| HLD form and \(T_\mathrm{ref}\) | equation above; 25 °C | Method |
+| \(C_c=2.4+0.28i-j\) | — | Method correlation |
+| \(b\), NaCl | 0.13 per g/100 mL | Method constant |
+| \(c_T\) | +0.060 °C⁻¹ | Method constant |
+| \(k\) | 0.16; range 0.15–0.17 | Method constant and sourced range |
+| Apparent micellar EACN | 7.3 | Cloud-point method constant |
+| n-Hexane/n-octane EACN | 6/8 | System input derived from alkane identity |
+| Alkyl and EO counts | From C12E5, etc. | System identity |
+| Salinities | 0, 1, or 0.01 g/100 mL | User-specified input |
+| \(C_c\) values in tables | Calculated from molecular identity | Derived |
+| Temperatures and bands | Calculated from HLD=0 | Predictions, not measurements |
+
+## Where not to trust these numbers
+
+Do not use these predictions without experimental confirmation for:
+
+- Commercial ethoxylates having broad EO or alkyl-chain distributions; their cloud behavior can differ substantially from a pure \(C_iE_j\) compound. [pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/26467232/?utm_source=chatgpt.com)
+- Concentrations materially different from 1 wt%, especially near concentration-dependent phase boundaries.
+- More than eight EO units—C12E8 is already at the published method boundary.
+- Mixed surfactants, cosurfactants, alcohols, electrolytes other than ordinary NaCl, or very high salinity.
+- Systems where crystallization, lamellar/liquid-crystalline phases, or kinetic emulsification obscure the equilibrium transition.
+- Predicting phase-region widths, emulsion stability, or required formulation time: HLD predicts balance, not those quantities. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC11857855/?utm_source=chatgpt.com)
+
+For purchasing decisions, I would treat the bold conservative bands—not the one-decimal central values—as the actionable result.
+
+Problem 6
+
+## Notation and standard states
+
+To avoid the literature’s \(\alpha/\beta\) ambiguity, I use:
+
+- \(\alpha\): fraction of counterions dissociated from the micelle.
+- \(b=1-\alpha\): fraction bound to the micelle.
+
+At 298 K,
+
+\[
+RT=(8.314462618)(298)=2.47771\ \mathrm{kJ\,mol^{-1}}.
+\]
+
+Thermodynamic logarithms must contain a dimensionless activity; changing from \(c/c^\circ\) to mole fraction changes the numerical standard Gibbs energy because it changes the standard state. [activity (A00115)](https://goldbook.iupac.org/terms/view/A00115?utm_source=chatgpt.com)
+
+For aqueous SDS,
+
+\[
+c_{\rm cmc}/c^\circ=0.0083,
+\]
+
+and, using the published water concentration \(55.345\ \mathrm{mol\,L^{-1}}\) at 25 °C, [ACS Publications](https://pubs.acs.org/doi/10.1021/acs.chemrev.7b00259?utm_source=chatgpt.com)
+
+\[
+x_{\rm cmc}=
+\frac{0.0083}{55.345+0.0083}
+=1.49946\times10^{-4}.
+\]
+
+For the EPR result,
+
+\[
+\alpha=0.272\pm0.017,\qquad b=0.728\mp0.017.
+\]
+
+The EPR paper explicitly reports \(\alpha=0.272\pm0.017\) for SDS micelles with aggregation numbers below about 110. [ACS Publications](https://pubs.acs.org/jpcbfk/article/105/29/6798/3572805/A-Definition-of-the-Degree-of-Ionization-of-a?utm_source=chatgpt.com)
+
+## 1. Reproducing Bouchal et al.
+
+Bouchal et al. report for dodecylguanidinium chloride:
+
+\[
+m_{\rm cmc}=0.0062\pm0.0003\ \mathrm{mol\,kg^{-1}},\quad
+\beta=0.74\pm0.01,
+\quad
+\Delta G^\circ_{\rm mic}=-28.3\pm0.9\ \mathrm{kJ\,mol^{-1}},
+\]
+
+where their \(\beta\) is described as the counterion-binding degree. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4783955/?utm_source=chatgpt.com)
+
+Converting the molality to mole fraction using \(55.5085\) mol water per kilogram,
+
+\[
+x_{\rm cmc}
+=\frac{0.0062}{55.5085+0.0062}
+=1.11682\times10^{-4},
+\]
+
+so
+
+\[
+RT\ln x_{\rm cmc}
+=(2.47771)\ln(1.11682\times10^{-4})
+=-22.5488\ \mathrm{kJ\,mol^{-1}}.
+\]
+
+### What reproduces their number
+
+Using
+
+\[
+\boxed{\Delta G^\circ_{\rm mic}
+=(2-\beta)RT\ln x_{\rm cmc}}
+\]
+
+gives
+
+\[
+(2-0.74)(-22.5488)
+=\boxed{-28.409\ \mathrm{kJ\,mol^{-1}}},
+\]
+
+only \(-0.11\ \mathrm{kJ\,mol^{-1}}\) from their reported \(-28.3\).
+
+Equivalently, because the dissociation degree is \(\alpha=1-\beta=0.26\),
+
+\[
+(2-\beta)=(1+\alpha).
+\]
+
+Thus their numerical value uses the **mole-fraction pseudo-phase convention with the multiplier \(1+\) counterion dissociation**, not \(1+\) binding.
+
+### Internal inconsistency in the paper
+
+The paper prints
+
+\[
+\Delta G^\circ_{\rm mic}=RT(1+\beta)\ln x_{\rm cmc}.
+\]
+
+With \(\beta=0.74\), that expression gives
+
+\[
+(1+0.74)(-22.5488)
+=\boxed{-39.23\ \mathrm{kJ\,mol^{-1}}},
+\]
+
+which does not reproduce the table. Therefore, the table and printed equation cannot both use \(\beta\) as the binding degree. The table’s \(-28.3\) is consistent with \((2-\beta)\), or with reinterpreting the multiplier’s variable as the dissociation degree.
+
+Direct propagation of the quoted \(m_{\rm cmc}\) and \(\beta\) uncertainties through the reproducing equation gives approximately
+
+\[
+-28.41\pm0.27\ \mathrm{kJ\,mol^{-1}}
+\]
+
+by quadrature, smaller than the paper’s reported ±0.9 kJ/mol. The extra uncertainty is therefore not recoverable from the two tabulated input errors alone.
+
+## 2. SDS under the substantiated conventions
+
+The principal published pseudo-phase formulas are:
+
+\[
+\Delta G^\circ_{\rm mic}=RT\ln x_{\rm cmc}
+\]
+
+for the one-species/uncorrected transfer convention, [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC3296042/?utm_source=chatgpt.com) and
+
+\[
+\Delta G^\circ_{\rm mic}
+=(1+b)RT\ln x_{\rm cmc}
+=(2-\alpha)RT\ln x_{\rm cmc}
+\]
+
+when \(b\) is binding and \(\alpha\) is dissociation. Both notations appear in the literature. [rsc.org](https://www.rsc.org/suppdata/c5/cp/c5cp02642c/c5cp02642c1.pdf?utm_source=chatgpt.com) Some applied papers instead put a molar concentration divided by \(1\ \mathrm M\) inside the logarithm. [electrochemsci.org](https://www.electrochemsci.org/papers/vol11/111210978.pdf?utm_source=chatgpt.com)
+
+Only the stated \(\alpha\) uncertainty is propagated below; no uncertainty was supplied for the SDS CMC.
+
+| Convention and standard state | Formula | SDS \(\Delta G^\circ_{\rm mic}\) (kJ/mol) |
+|---|---|---:|
+| Mole fraction, no counterion correction | \(RT\ln x_{\rm cmc}\) | **−21.82** |
+| Mole fraction, Bouchal-table convention | \((1+\alpha)RT\ln x_{\rm cmc}\) | **−27.75 ± 0.37** |
+| Mole fraction, ionic pseudo-phase; binding counted | \((1+b)RT\ln x=(2-\alpha)RT\ln x\) | **−37.70 ± 0.37** |
+| Mole fraction, complete binding limit | \(2RT\ln x_{\rm cmc}\) | **−43.63** |
+| 1-M concentration, no counterion correction | \(RT\ln(c_{\rm cmc}/1\,\mathrm M)\) | **−11.87** |
+| 1-M concentration, Bouchal-table multiplier | \((1+\alpha)RT\ln(c_{\rm cmc}/1\,\mathrm M)\) | **−15.10 ± 0.20** |
+| 1-M concentration, ionic pseudo-phase | \((2-\alpha)RT\ln(c_{\rm cmc}/1\,\mathrm M)\) | **−20.51 ± 0.20** |
+| 1-M concentration, complete binding limit | \(2RT\ln(c_{\rm cmc}/1\,\mathrm M)\) | **−23.74** |
+
+“Complete binding” is a limiting counterion assumption, not an inference from the supplied EPR measurement.
+
+### Finite-aggregation-number mass-action convention
+
+Phillips’ finite-\(N\) mass-action expression, extended to bound counterions, is
+
+\[
+\Delta G^\circ_{\rm mic}=
+-\frac{RT}{N}\ln\!\left[
+\frac{1}{a_+^{\,bN}}
+\frac{N-2}{N^2(2N-1)}
+\left(
+a_{\rm cmc}\frac{2N^2-N}{2N^2-2}
+\right)^{1-N}
+\right].
+\]
+
+The formula and its large-\(N\) pseudo-phase limit are documented in the mass-action treatment originating with Phillips. [Wikipedia](https://en.wikipedia.org/wiki/Thermodynamics_of_micellization?utm_source=chatgpt.com)
+
+Using the commonly reported SDS aggregation number \(N=62\) at the CMC, [ACS Publications](https://pubs.acs.org/doi/10.1021/ja00486a062?utm_source=chatgpt.com) \(b=0.728\), and \(a_+=a_{\rm cmc}\) at zero added salt gives:
+
+| Mass-action activity scale | Result (kJ/mol) |
+|---|---:|
+| Mole fraction | **−37.01 ± 0.37** |
+| 1-M concentration | **−19.98 ± 0.20** |
+
+The finite-\(N\) correction relative to the corresponding ionic pseudo-phase values is only \(+0.69\) kJ/mol on the mole-fraction scale and \(+0.53\) kJ/mol on the molarity scale. Uncertainty in \(N\) is not included because the cited \(N=62\) source does not provide one.
+
+Using \(\log_{10}\) with a factor 2.303 is not a separate convention: it is algebraically identical to using \(\ln\).
+
+## 3. Spread and literature prevalence
+
+Across all tabulated, literature-substantiated standard-state and counterion conventions:
+
+\[
+\boxed{
+\Delta G^\circ_{\rm mic}=-11.87\ \text{to}\ -43.63\ \mathrm{kJ\,mol^{-1}}
+}
+\]
+
+—a total spread of
+
+\[
+\boxed{31.76\ \mathrm{kJ\,mol^{-1}}}.
+\]
+
+Restricting the comparison to conventions that actually use the supplied EPR ionization result gives \(-15.10\) to \(-37.70\) kJ/mol, still a **22.60 kJ/mol spread**.
+
+In the literature surveyed here, the predominant applied-surfactant convention is:
+
+\[
+\boxed{
+\Delta G^\circ_{\rm mic,x}
+=(1+b)RT\ln x_{\rm cmc}
+=(2-\alpha)RT\ln x_{\rm cmc}
+}
+\]
+
+—that is, mole-fraction standard state plus an explicit counterion correction. Examples use either \(1+b\), where \(b\) denotes binding, or \(2-\alpha\), where \(\alpha\) denotes dissociation. [rsc.org](https://www.rsc.org/suppdata/c5/cp/c5cp02642c/c5cp02642c1.pdf?utm_source=chatgpt.com) Direct-molarity formulas occur, particularly in applied corrosion/surfmer literature, but are a minority in this survey. [electrochemsci.org](https://www.electrochemsci.org/papers/vol11/111210978.pdf?utm_source=chatgpt.com)
+
+For SDS, the most directly comparable value under that predominant convention is therefore:
+
+\[
+\boxed{\Delta G^\circ_{\rm mic,x}
+=-37.70\pm0.37\ \mathrm{kJ\,mol^{-1}}}
+\]
+
+conditional on the supplied CMC, with uncertainty from EPR \(\alpha\) alone.
+
+**Recommendation:** Report \(\boxed{\Delta G^\circ_{\rm mic,x}=(2-\alpha)RT\ln x_{\rm cmc}}\), explicitly defining \(\alpha\) as counterion dissociation and reporting \(x_{\rm cmc}\), CMC and \(\alpha\) alongside it, because this is the predominant convention surveyed and eliminates both the hidden standard-state shift and the binding-versus-dissociation ambiguity.
+
+Problem 7
+## 1. Prediction frozen before looking up C16 data
+
+For the molecule requested—sodium hexadecyl sulfate, normally abbreviated **SHS** rather than STS—I predict the intrinsic micellization threshold at 25 °C to be
+
+\[
+\boxed{\mathrm{CMC}_{\mathrm{pred}}=5.31\times10^{-4}\ {\rm mol\,L^{-1}}}
+\]
+
+with a deliberately conservative, pre-validation uncertainty interval
+
+\[
+\boxed{2.65\times10^{-4}\ \text{to}\ 1.06\times10^{-3}\ {\rm mol\,L^{-1}}}
+\]
+
+or **0.531 mM, with a factor-of-two interval of 0.265–1.06 mM**.
+
+Terminology matters here: STS conventionally means sodium **tetradecyl** sulfate, whereas sodium hexadecyl sulfate is SHS or sodium cetyl sulfate. [trc.nist.gov](https://trc.nist.gov/ThermoML/10.1021/je050139v.html?utm_source=chatgpt.com)
+
+### Prediction method
+
+I used the Klevens homolog relation
+
+\[
+\log_{10}\!\left(\frac{\mathrm{CMC}}{\mathrm{mol\,L^{-1}}}\right)=A-Bn_C ,
+\]
+
+a standard semi-empirical relationship for members of one surfactant homologous series. [sciencedirect.com](https://www.sciencedirect.com/org/science/article/pii/S2046206923003728?utm_source=chatgpt.com)
+
+Only shorter sodium alkyl sulfates were used to determine \(A\) and \(B\):
+
+| Calibration compound | \(n_C\) | Literature CMC |
+|---|---:|---:|
+| Sodium octyl sulfate | 8 | 0.130 M |
+| Sodium dodecyl sulfate | 12 | 0.00830 M |
+| Sodium tetradecyl sulfate | 14 | 0.00210 M |
+
+These homolog-series values are reported for water near room temperature. [en.wikipedia.org](https://en.wikipedia.org/wiki/Critical_micelle_concentration?utm_source=chatgpt.com)
+
+Unweighted regression gives
+
+\[
+A=1.50294,\qquad B=0.29863,
+\]
+
+and hence, without using any C16 datum,
+
+\[
+\log_{10}\mathrm{CMC}_{C16}
+ =1.50294-0.29863(16)
+ =-3.27521,
+\]
+
+\[
+\mathrm{CMC}_{C16}=10^{-3.27521}
+=5.306\times10^{-4}\ {\rm M}.
+\]
+
+The fitted slope corresponds to a tail contribution
+
+\[
+2.303RTB=1.70\ {\rm kJ\,mol^{-1}}
+\]
+
+per added methylene at 298 K, a physically reasonable magnitude for transferring hydrocarbon surface from water into a micellar core.
+
+The factor-of-two interval, \(\pm0.301\) log decade, was assigned *before validation*. It represents approximately one carbon-equivalent uncertainty in the homolog extrapolation and covers deviations caused by counterion binding, activity coefficients, aggregation-number changes, and experimental CMC definitions. It is a model uncertainty, not a statistical 95% confidence interval.
+
+---
+
+## 2. Validation completed before the C16 literature search
+
+I then applied the frozen equation to sodium alkyl sulfates that were not used in the fit:
+
+| Validation compound | Measured CMC | Predicted CMC | Relative error | Log error |
+|---|---:|---:|---:|---:|
+| Sodium hexyl sulfate, C6 | \(0.460\pm0.006\) M | 0.514 M | +11.8% | +0.048 decade |
+| Sodium nonyl sulfate, C9 | ≈0.060 M | 0.06535 M | +8.9% | +0.037 decade |
+| Sodium decyl sulfate, C10 | ≈0.0330 M | 0.03285 M | −0.4% | −0.002 decade |
+
+The C6 value comes from experimental work reporting \(460\pm6\) mM. [Soft Matter (RSC Publishing)](https://pubs.rsc.org/en/content/articlehtml/2012/sm/c1sm06787g?utm_source=chatgpt.com) The C9 water value is from a capillary-electrophoresis homolog-series study. [Request PDF](https://www.researchgate.net/publication/11091397_Determination_of_CMC_of_sodium_glucocorticides_hemisuccinates_by_CE?utm_source=chatgpt.com) Independent room-temperature measurements place sodium decyl sulfate near 33 mM. [acp.copernicus.org](https://acp.copernicus.org/articles/25/14301/2025/?utm_source=chatgpt.com)
+
+Validation statistics were:
+
+- Mean absolute percentage error: **7.0%**
+- Log-RMSE: **0.035 decade**
+- Multiplicative RMSE: **1.08×**
+- Largest validation error: **11.8%**
+
+Thus the predeclared factor-of-two uncertainty looked conservative on C6–C10. The subsequent C16 result shows why short-chain interpolation performance can nevertheless underestimate long-chain solid-phase effects.
+
+Chronology note: the numerical prediction and validation table were frozen before the targeted SHS search. A broad validation search incidentally returned a vendor-style snippet mentioning C16; it was neither opened nor used in fitting or revising the prediction.
+
+---
+
+## 3. Post-prediction held-out comparison
+
+Only after freezing the preceding result did I search specifically for sodium hexadecyl sulfate.
+
+Kumar and Kaur measured SHS in water at 298.15 K using conductivity and fluorescence and reported:
+
+| Held-out method | Reported apparent CMC |
+|---|---:|
+| Conductivity | \(0.2173\pm0.0001\) mM |
+| Fluorescence | 0.2154 mM |
+| Mean of the two | **0.2164 mM** |
+
+The study, temperatures, and experimental methods are described in the paper, and the tabulated pure-water values are explicit. [Lookchem](https://www.lookchem.com/FreePDFArticle_85100-78-3_78613630.htm?utm_source=chatgpt.com)
+
+Comparison with the frozen prediction:
+
+\[
+\frac{0.5306}{0.2164}=2.45,
+\]
+
+so my prediction is:
+
+- **0.314 mM too high**
+- **+145% relative error**
+- **0.390 log decade high**
+- a **factor of 2.45** above the held-out experimental break.
+
+The measured value is also just outside the predeclared factor-two interval: 0.216 mM versus its 0.265 mM lower bound. Therefore the uncertainty interval failed, albeit by only about 23% at its lower edge.
+
+### Critical physical qualification
+
+Sodium C16 sulfate has a reported Krafft temperature around **45 °C**, substantially above 25 °C. [citeseerx.ist.psu.edu](https://citeseerx.ist.psu.edu/document?doi=1c854cee6dd2eccde352a8e5de05d2ebff45e64d\&repid=rep1\&type=pdf\&utm_source=chatgpt.com) Below the Krafft temperature, the equilibrium solubility is normally insufficient to reach a stable micellar phase: hydrated surfactant crystals or precipitate pre-empt equilibrium micellization.
+
+Consequently:
+
+- **0.531 mM is best interpreted as an extrapolated intrinsic/metastable micellization threshold**, assuming the dissolved micellar branch remains accessible.
+- At strict equilibrium in pure water at 25 °C, SHS may have **no operational equilibrium CMC** in the ordinary sense; the relevant quantity is first its monomer solubility.
+- The published 0.216 mM break is properly called an **apparent CMC under the authors’ preparation and measurement protocol**. It might represent metastable micelles, sub-Krafft aggregates, a solid–aggregate transition, or sensitivity to small amounts of electrolyte or homolog impurity.
+
+The remarkably small quoted instrumental uncertainty does not cover these systematic thermodynamic questions.
+
+---
+
+## 4. Molecular assumptions and likely failure modes
+
+The prediction assumes:
+
+1. A pure, linear sodium alkyl sulfate with exactly 16 carbons and the same sulfate headgroup chemistry as the calibration homologues.
+2. An approximately constant free-energy increment per added methylene.
+3. Similar sodium counterion binding and headgroup electrostatics across the homologous series.
+4. Pure water, negligible background electrolyte, and concentration expressed on a comparable molar/activity standard.
+5. Access to an equilibrium or reproducible metastable micellar branch.
+6. No competing crystalline or hydrated-solid phase.
+
+It fails or becomes method-dependent when:
+
+- **Krafft precipitation intervenes**, as it does at 25 °C for sufficiently pure SHS.
+- The solution is heated to dissolve the material and then cooled, creating protocol-dependent supersaturation.
+- Trace NaCl or especially Ca²⁺/Mg²⁺ changes screening, surface activity, or precipitation; classic SHS surface-tension work found strong sensitivity even to small electrolyte concentrations. [ConnectSci](https://connectsci.au/ch/article-pdf/12/1/1/37150/ch9590001.pdf?utm_source=chatgpt.com)
+- The sample contains C14/C18 homologues, hexadecanol, or inorganic salt. Some commercial “sodium cetyl sulfate” materials are explicitly sold as mixed cetyl/stearyl sulfate rather than a pure C16 compound. [1120-01-0 - TCI Chemicals](https://www.tcichemicals.com/OP/en/p/H0080?utm_source=chatgpt.com)
+- Different methods identify different transitions—conductivity slope break, fluorescence polarity change, surface tension, scattering, or onset of turbidity.
+- Chain-length-dependent aggregation number, micelle shape, counterion condensation, or nonideal monomer activity invalidates a constant \(A-Bn_C\) extrapolation.
+
+**Bottom line:** the blind homolog prediction is \(5.31\times10^{-4}\) M, but the held-out apparent experimental value is about \(2.16\times10^{-4}\) M. More importantly, because 25 °C lies below the SHS Krafft temperature, neither should be quoted as an unqualified equilibrium CMC without reporting sample history, dissolved concentration, solid-phase observations, and the measurement criterion.
+
+

@@ -1,0 +1,66 @@
+{
+ "reference_value": 9.62,
+ "unaugmented_reference_value": 33.29,
+ "arms": {
+  "claude_aug": {
+   "Q17": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q17/claude_aug/Q17.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "hlb": {
+      "ok": true,
+      "gold": 9.62,
+      "model": 9.62
+     }
+    }
+   }
+  },
+  "chatgpt_aug": {
+   "Q17": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q17/chatgpt_aug/Q17.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "hlb": {
+      "ok": true,
+      "gold": 9.62,
+      "model": 9.62
+     }
+    }
+   }
+  },
+  "deepseek_aug": {
+   "Q17": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q17/deepseek_aug/Q17.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "hlb": {
+      "ok": true,
+      "gold": 9.62,
+      "model": 9.62
+     }
+    }
+   }
+  },
+  "agy_aug": {
+   "Q17": {
+    "verdict": "PASS",
+    "detail": "",
+    "source": "answers_q17/agy_aug/Q17.txt",
+    "previous_verdict": "PASS",
+    "fields": {
+     "hlb": {
+      "ok": true,
+      "gold": 9.62,
+      "model": 9.62
+     }
+    }
+   }
+  }
+ }
+}

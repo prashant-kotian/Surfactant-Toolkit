@@ -1,0 +1,51 @@
+{
+ "paper": "Sergeev et al., ACS Omega 7 (2022) 3016",
+ "doi": "10.1021/acsomega.1c06047",
+ "bound": {
+  "pe65_monomer_at_mixed_cmc_mg_L": 46.400000000000006,
+  "pe65_cmc_mg_L": 33.0,
+  "max_allowed_mixed_cmc_mg_L": 82.5,
+  "violated": true
+ },
+ "mass_basis": {
+  "ideal_cmc_mg_L": 71.7,
+  "toolkit_rubingh_x1": null
+ },
+ "molar_basis_by_pe65_mw": {
+  "300": {
+   "alpha1": 0.403,
+   "toolkit_rubingh_x1": null
+  },
+  "400": {
+   "alpha1": 0.337,
+   "toolkit_rubingh_x1": null
+  },
+  "500": {
+   "alpha1": 0.289,
+   "toolkit_rubingh_x1": null
+  },
+  "600": {
+   "alpha1": 0.253,
+   "toolkit_rubingh_x1": null
+  },
+  "800": {
+   "alpha1": 0.202,
+   "toolkit_rubingh_x1": null
+  },
+  "1000": {
+   "alpha1": 0.169,
+   "toolkit_rubingh_x1": null
+  }
+ },
+ "printed_pair_in_rubingh": {
+  "beta_from_eq1": 20.12,
+  "beta_from_eq2": 0.39,
+  "printed_beta": 21.33
+ },
+ "findings": {
+  "bound_violated": true,
+  "no_rubingh_solution_any_basis": true,
+  "printed_pair_inconsistent": true
+ },
+ "toolkit": "Surfactant-Toolkit"
+}

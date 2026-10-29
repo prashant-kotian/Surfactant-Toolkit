@@ -1,0 +1,4 @@
+FINAL_JSON: {
+"more_likely_correct": "Source 1 (Cc = -0.92)",
+"reasoning": "The compound is sodium bis(2-ethylhexyl) sulfosuccinate (AOT), the prototypical reverse-curvature surfactant that spontaneously forms water-in-oil reverse micelles in nonpolar solvents. Under the stated convention (negative Cc = oil-continuous preference), AOT must have a negative Cc. Source 1's value of -0.92 carries the correct sign and a reasonable magnitude for a branched double-tail anionic surfactant with modest residual hydrophilicity. Source 2's positive range (2.4-3.5) would imply a water-continuous preference, directly contradicting AOT's universally documented reverse-micelle and w/o microemulsion behavior, and most likely reflects a sign-convention error, compound misidentification, or parameter confusion in that primary report."
+}

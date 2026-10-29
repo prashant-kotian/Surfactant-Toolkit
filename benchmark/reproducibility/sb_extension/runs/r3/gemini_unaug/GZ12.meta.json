@@ -1,0 +1,10 @@
+{
+ "qid": "GZ12",
+ "provider": "gemini",
+ "condition": "unaug",
+ "start": "2026-10-23T23:39:12+0530",
+ "model_seen": "Gemini 3.1 Pro, thinking High",
+ "mcp_seen": "Inactive",
+ "sent": "2026-10-23T23:41:14+0530",
+ "end": "2026-10-23T23:44:09+0530"
+}

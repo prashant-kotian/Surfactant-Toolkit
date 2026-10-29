@@ -1,0 +1,655 @@
+========================================
+GZ-51
+========================================
+To calculate the enthalpy of micellization ($\Delta H_{mic}$) from the given critical micelle concentrations (CMC) at two different temperatures, we use the fundamental thermodynamic relationships. 
+
+### 1. Thermodynamic Definitions
+The standard Gibbs free energy of micellization ($\Delta G_{mic}$) is related to the critical micelle concentration (expressed as a mole fraction or molarity, assuming the solvent concentration remains functionally constant) by:
+$$ \Delta G_{mic} = RT \ln(CMC) $$
+
+### 2. The Gibbs-Helmholtz Relationship
+The real van't Hoff (Gibbs-Helmholtz) relationship defines how the ratio of $\Delta G$ to temperature changes with respect to temperature:
+$$ \left( \frac{\partial (\Delta G_{mic} / T)}{\partial T} \right)_P = -\frac{\Delta H_{mic}}{T^2} $$
+
+By substituting $\Delta G_{mic} / T = R \ln(CMC)$ into the equation, we obtain the differential form of the van't Hoff equation for micellization:
+$$ R \frac{d \ln(CMC)}{dT} = -\frac{\Delta H_{mic}}{T^2} $$
+
+Rearranging to integrate with respect to $1/T$:
+$$ d \ln(CMC) = \frac{\Delta H_{mic}}{R} d\left(\frac{1}{T}\right) $$
+
+Assuming $\Delta H_{mic}$ remains constant over this small temperature range, integrating from $T_1$ to $T_2$ yields:
+$$ \ln\left(\frac{CMC_2}{CMC_1}\right) = \frac{\Delta H_{mic}}{R} \left( \frac{1}{T_2} - \frac{1}{T_1} \right) $$
+
+### 3. Calculation
+Isolate the enthalpy of micellization ($\Delta H_{mic}$):
+$$ \Delta H_{mic} = R \frac{\ln\left(\frac{CMC_2}{CMC_1}\right)}{\frac{1}{T_2} - \frac{1}{T_1}} $$
+
+Substitute the provided values:
+*   $T_1 = 293.15 \text{ K}$ 
+*   $CMC_1 = 9.76 \text{ mM}$
+*   $T_2 = 303.15 \text{ K}$ 
+*   $CMC_2 = 9.77 \text{ mM}$
+*   $R = 8.31446 \text{ J} \cdot \text{mol}^{-1} \cdot \text{K}^{-1}$
+
+Calculate the numerator (logarithmic ratio):
+$$ \ln\left(\frac{9.77}{9.76}\right) = \ln(1.0010246) \approx 0.00102407 $$
+
+Calculate the denominator (inverse temperature difference):
+$$ \frac{1}{303.15} - \frac{1}{293.15} = 0.0032987 - 0.0034112 \approx -0.00011253 \text{ K}^{-1} $$
+
+Solve for $\Delta H_{mic}$ in J/mol:
+$$ \Delta H_{mic} = 8.31446 \times \left( \frac{0.00102407}{-0.00011253} \right) $$
+$$ \Delta H_{mic} = 8.31446 \times (-9.1004) \approx -75.66 \text{ J/mol} $$
+
+Convert to kJ/mol:
+$$ \Delta H_{mic} = -0.07566 \text{ kJ/mol} $$
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.07566
+}
+
+========================================
+GZ-52
+========================================
+To determine which mixing model best describes this binary micelle system, we first need to compare the experimentally measured critical micelle concentration ($CMC_{mix}$) to the values predicted by the **Ideal Mixing Model** (often expressed via Clint's equation).
+
+### 1. The Ideal Mixing Model
+Clint's equation for an ideally mixed binary surfactant system is:
+$$ \frac{1}{CMC_{ideal}} = \frac{\alpha_1}{CMC_1} + \frac{\alpha_2}{CMC_2} $$
+where:
+*   $\alpha_1$ and $\alpha_2$ are the bulk mole fractions of components 1 and 2, respectively ($\alpha_1 = 1 - \alpha_2$).
+*   $CMC_1$ and $CMC_2$ are the pure component CMCs ($1.8 \text{ mM}$ and $8.3 \text{ mM}$).
+
+Let's calculate the predicted $CMC_{ideal}$ for each provided mole fraction ($\alpha_2$):
+
+*   **For $\alpha_2 = 0.95$ ($\alpha_1 = 0.05$):**
+    $$ \frac{1}{CMC_{ideal}} = \frac{0.05}{1.8} + \frac{0.95}{8.3} = 0.0278 + 0.1145 = 0.1423 \text{ mM}^{-1} \implies CMC_{ideal} \approx 7.03 \text{ mM} $$
+    *(Measured CMC = 3.6 mM)*
+
+*   **For $\alpha_2 = 0.90$ ($\alpha_1 = 0.10$):**
+    $$ \frac{1}{CMC_{ideal}} = \frac{0.10}{1.8} + \frac{0.90}{8.3} = 0.0556 + 0.1084 = 0.1640 \text{ mM}^{-1} \implies CMC_{ideal} \approx 6.10 \text{ mM} $$
+    *(Measured CMC = 2.8 mM)*
+
+*   **For $\alpha_2 = 0.80$ ($\alpha_1 = 0.20$):**
+    $$ \frac{1}{CMC_{ideal}} = \frac{0.20}{1.8} + \frac{0.80}{8.3} = 0.1111 + 0.0964 = 0.2075 \text{ mM}^{-1} \implies CMC_{ideal} \approx 4.82 \text{ mM} $$
+    *(Measured CMC = 1.8 mM)*
+
+*   **For $\alpha_2 = 0.60$ ($\alpha_1 = 0.40$):**
+    $$ \frac{1}{CMC_{ideal}} = \frac{0.40}{1.8} + \frac{0.60}{8.3} = 0.2222 + 0.0723 = 0.2945 \text{ mM}^{-1} \implies CMC_{ideal} \approx 3.40 \text{ mM} $$
+    *(Measured CMC = 1.4 mM)*
+
+*   **For $\alpha_2 = 0.20$ ($\alpha_1 = 0.80$):**
+    $$ \frac{1}{CMC_{ideal}} = \frac{0.80}{1.8} + \frac{0.20}{8.3} = 0.4444 + 0.0241 = 0.4685 \text{ mM}^{-1} \implies CMC_{ideal} \approx 2.13 \text{ mM} $$
+    *(Measured CMC = 1.3 mM)*
+
+### 2. Analysis of the Deviations
+In every case, the measured $CMC_{mix}$ is significantly *lower* than the predicted $CMC_{ideal}$. 
+
+A negative deviation from ideal mixing indicates strong attractive (synergistic) interactions between the two different surfactant molecules within the micelle. This is physically expected here, as Component 1 is zwitterionic (bearing a cationic trimethylammonium group and an anionic phosphate group) and Component 2 is anionic (sodium dodecyl sulfate). The anionic headgroup of SDS interacts favorably with the cationic portion of the zwitterionic surfactant, effectively reducing electrostatic headgroup repulsion compared to pure SDS micelles.
+
+### 3. Conclusion
+Because the system is decidedly non-ideal and demonstrates synergistic molecular interactions via a measurable interaction parameter ($\beta < 0$), the basic ideal mixing approach fails. The accepted phenomenological framework used to model these non-ideal interactions in mixed micelles is the **Regular Solution Theory** (specifically developed for micelles by Rubingh).
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "Regular Solution Theory"
+}
+
+========================================
+GZ-54
+========================================
+To determine the critical packing parameter ($P$) and the predicted aggregate morphology, we evaluate Tanford's empirical formulas step-by-step for a saturated tail of $n_c = 12$ carbon atoms.
+
+1. **Tail Volume ($V$):**
+   $$V = 27.4 + 26.9 n_c$$
+   $$V = 27.4 + 26.9(12) = 27.4 + 322.8 = 350.2 \text{ \AA}^3$$
+
+2. **Critical Chain Length ($l_c$):**
+   $$l_c = 1.5 + 1.265 n_c$$
+   $$l_c = 1.5 + 1.265(12) = 1.5 + 15.18 = 16.68 \text{ \AA}$$
+
+3. **Critical Packing Parameter ($P$):**
+   Given the measured headgroup area $a = 59.62 \text{ \AA}^2$:
+   $$P = \frac{V}{a l_c}$$
+   $$P = \frac{350.2}{59.62 \times 16.68}$$
+   $$P = \frac{350.2}{994.4616} \approx 0.35215$$
+
+4. **Morphology Prediction:**
+   The calculated critical packing parameter is roughly 0.352. Because this value falls within the $1/3 < P \le 1/2$ range, the predicted aggregate morphology is a cylindrical/rodlike micelle.
+
+FINAL_JSON:
+{
+  "cpp": 0.35215,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+========================================
+GZ-55
+========================================
+To determine whether this surfactant exhibits physically meaningful lateral interactions (beyond simple independent ideal adsorption), we can analyze the data using the Gibbs adsorption equation and 2D equations of state.
+
+**1. Calculate Surface Pressure ($\pi$)**
+The surface pressure is defined as $\pi = \gamma_0 - \gamma$, where $\gamma_0 = 72.0 \text{ mN/m}$.
+*   $C = 0.05 \text{ mM} \implies \pi = 5.187 \text{ mN/m}$
+*   $C = 0.10 \text{ mM} \implies \pi = 10.008 \text{ mN/m}$
+*   $C = 0.20 \text{ mM} \implies \pi = 15.014 \text{ mN/m}$
+
+**2. Evaluate Surface Excess ($RT\Gamma$)**
+For a nonionic surfactant, the Gibbs adsorption isotherm is $RT\Gamma = \frac{d\pi}{d\ln C}$.
+Let's approximate this using finite differences over the lowest concentration intervals:
+*   Between $0.05$ and $0.10 \text{ mM}$: $\Delta\pi = 4.821 \text{ mN/m}$, $\Delta\ln C = \ln(2) \approx 0.693$.
+    $RT\Gamma_{avg} \approx 4.821 / 0.693 = 6.95 \text{ mN/m}$.
+*   Between $0.10$ and $0.20 \text{ mM}$: $\Delta\pi = 5.006 \text{ mN/m}$, $\Delta\ln C \approx 0.693$.
+    $RT\Gamma_{avg} \approx 5.006 / 0.693 = 7.22 \text{ mN/m}$.
+
+Because $\Gamma$ is a smooth, monotonically increasing function of concentration, the instantaneous value of $RT\Gamma$ at $C = 0.05 \text{ mM}$ must be roughly symmetric to ensure the interval average of $6.95 \text{ mN/m}$. We can conservatively estimate $RT\Gamma(0.05 \text{ mM}) \approx 6.7 \text{ to } 6.8 \text{ mN/m}$.
+
+**3. Test for Ideal Behavior**
+For an ideal surfactant interface lacking lateral interactions (governed by the Langmuir/Szyszkowski or Volmer isotherms), the equation of state considers only the thermal motion and steric sizes of the molecules. Mathematically, the Langmuir equation of state is $\pi = -RT\Gamma_{max} \ln(1 - \theta)$, while the surface excess is $RT\Gamma = RT\Gamma_{max} \theta$. 
+
+Because $-\ln(1-\theta) = \theta + \frac{\theta^2}{2} + \dots$, it is a strict mathematical necessity for an ideal monolayer that:
+$$\pi > RT\Gamma$$
+at all finite concentrations, due to steric repulsions amplifying the surface pressure. 
+
+**4. Conclusion**
+Looking at the data at $C = 0.05 \text{ mM}$:
+*   $\pi = 5.187 \text{ mN/m}$
+*   $RT\Gamma \approx 6.8 \text{ mN/m}$
+
+We see that $\pi < RT\Gamma$. This is impossible under ideal Langmuir adsorption. The surface pressure is distinctly *lower* than the theoretical ideal baseline, which acts as a thermodynamic signature of a negative surface pressure contribution. According to the Frumkin isotherm (or 2D Van der Waals equation of state), this deficit is caused by a $-\alpha\Gamma^2$ term, representing distinct **attractive lateral interactions** between the surfactant hydrophobic tails pulling the molecules together at the interface and reducing their outward 2D pressure.
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "According to the Gibbs adsorption isotherm, RT\u0393 = d\u03c0/d(ln C). For any ideal, non-interacting surfactant monolayer (Langmuir/Volmer), steric repulsions dictate that surface pressure \u03c0 must always be strictly greater than RT\u0393. However, finite difference evaluation of the data at low concentrations shows RT\u0393 \u2248 6.8 mN/m while the measured \u03c0 is only 5.187 mN/m. The experimental observation that \u03c0 < RT\u0393 is a direct thermodynamic signature of a negative pressure contribution. This mathematically requires a Frumkin-style attractive lateral interaction parameter between the surfactant tails at the interface."
+}
+
+========================================
+GZ-56
+========================================
+To determine the charge type of oleic acid at pH 5.0 from first principles, we evaluate its acid-base equilibrium using the Henderson-Hasselbalch equation:
+
+$$ \text{pH} = \text{pKa} + \log_{10}\left(\frac{[A^-]}{[HA]}\right) $$
+
+where $[HA]$ is the concentration of the protonated, undissociated fatty acid and $[A^-]$ is the concentration of the deprotonated conjugate base.
+
+Given the conditions:
+*   $\text{pH} = 5.0$
+*   $\text{pKa} \approx 4.8 \text{ to } 5.0$
+
+If we take the upper bound ($\text{pKa} = 5.0$):
+$$ 5.0 = 5.0 + \log_{10}\left(\frac{[A^-]}{[HA]}\right) \implies \frac{[A^-]}{[HA]} = 1 $$
+This implies a 50/50 mixture.
+
+If we take the lower bound ($\text{pKa} = 4.8$):
+$$ 5.0 = 4.8 + \log_{10}\left(\frac{[A^-]}{[HA]}\right) \implies \log_{10}\left(\frac{[A^-]}{[HA]}\right) = 0.2 \implies \frac{[A^-]}{[HA]} = 10^{0.2} \approx 1.58 $$
+This implies roughly 61% deprotonated and 39% protonated.
+
+In either case, the solution contains a substantial fraction of both species. 
+1. The protonated species ($R-\text{COOH}$) carries no net charge and acts as a **nonionic** surfactant.
+2. The deprotonated species ($R-\text{COO}^-$) carries a net negative charge and acts as an **anionic** surfactant. 
+
+Because both forms are present in roughly equal, thermodynamically significant concentrations, the system behaves inherently as a mixed surfactant system rather than a single pure charge type (often forming what is known as an acid-soap complex).
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "mixed anionic/nonionic"
+}
+
+========================================
+GZ-57
+========================================
+To analyze this surfactant (cetyltrimethylammonium bromide, CTAB) from first principles, we extract three key properties: the critical micelle concentration (CMC), the maximum surface excess ($\Gamma_{max}$), and the standard Gibbs free energy of micellization ($\Delta G_{mic}$).
+
+**1. Critical Micelle Concentration (CMC)**
+The CMC is identified by the intersection of the pre-CMC and post-CMC linear regions on a plot of surface tension ($\gamma$) vs. the natural logarithm of concentration ($\ln C$). 
+
+First, let's identify the steepest region just prior to micellization (the pre-CMC line). Checking the slopes ($d\gamma/d\ln C$) between data points:
+*   Between $0.1319$ and $0.2638$ mM: $\Delta\gamma = -7.44$, $\Delta\ln C \approx 0.693 \implies \text{slope} \approx -10.73$
+*   Between $0.2638$ and $0.5275$ mM: $\Delta\gamma = -11.21$, $\Delta\ln C \approx 0.693 \implies \text{slope} \approx -16.18$
+*   Between $0.5275$ and $1.055$ mM: $\Delta\gamma = -9.72$, $\Delta\ln C \approx 0.693 \implies \text{slope} \approx -14.02$
+
+The slope decreases in magnitude after $0.5275$ mM, meaning the break point (CMC) occurs in the interval between $0.5275$ and $1.055$ mM. We define the pre-CMC line using the steepest interval ($0.2638$ to $0.5275$ mM):
+*   $m_1 = \frac{46.13 - 57.34}{\ln(0.5275) - \ln(0.2638)} = -16.177 \text{ mN/m}$
+*   Intercept $b_1 \approx 35.783$ 
+*(Equation: $\gamma = -16.177 \ln C + 35.783$)*
+
+The post-CMC behavior (where surface tension drops very slowly due to slight impurities or micellar activity) can be modeled using the final two points ($1.055$ and $2.11$ mM):
+*   $m_2 = \frac{32.37 - 36.41}{\ln(2.11) - \ln(1.055)} = -5.828 \text{ mN/m}$
+*   Intercept $b_2 \approx 36.722$
+*(Equation: $\gamma = -5.828 \ln C + 36.722$)*
+
+Equating the two lines to find the CMC:
+$$ -16.177 \ln C + 35.783 = -5.828 \ln C + 36.722 $$
+$$ -10.349 \ln C = 0.939 \implies \ln C = -0.0907 $$
+$$ C_{cmc} = \exp(-0.0907) = 0.913 \text{ mM} $$
+
+**2. Maximum Surface Excess ($\Gamma_{max}$)**
+The pre-CMC adsorption is governed by the Gibbs adsorption isotherm. For a 1:1 ionic surfactant in pure water (no added electrolyte), electroneutrality dictates that the bulk and surface contain equal amounts of surfactant cations and counterions, introducing a prefactor of $n = 2$.
+$$ \Gamma_{max} = -\frac{1}{2RT} \left( \frac{d\gamma}{d\ln C} \right)_{max} $$
+Using the maximum slope $m_1 = -16.177 \times 10^{-3} \text{ N/m}$, $T = 296.85 \text{ K}$, and $R = 8.314 \text{ J/(mol}\cdot\text{K)}$:
+$$ \Gamma_{max} = \frac{16.177 \times 10^{-3}}{2 \times 8.314 \times 296.85} = 3.277 \times 10^{-6} \text{ mol/m}^2 $$
+
+**3. Gibbs Free Energy of Micellization ($\Delta G_{mic}$)**
+The standard free energy of micellization for an ionic surfactant accounts for the degree of counterion binding ($\beta$) to the micelle. We are given the counterion dissociation degree $\alpha = 0.26$, meaning the binding degree is $\beta = 1 - \alpha = 0.74$.
+$$ \Delta G_{mic} = (1 + \beta) RT \ln X_{cmc} = (2 - \alpha) RT \ln X_{cmc} $$
+Converting the CMC into a mole fraction ($X_{cmc}$), recognizing that water is approximately $55.5 \text{ M}$:
+$$ X_{cmc} = \frac{0.913 \times 10^{-3} \text{ M}}{55.5 \text{ M}} = 1.645 \times 10^{-5} $$
+$$ \ln(X_{cmc}) = -11.015 $$
+Now, solving for $\Delta G_{mic}$:
+$$ \Delta G_{mic} = (1 + 0.74) \times 8.314 \times 296.85 \times (-11.015) $$
+$$ \Delta G_{mic} = 1.74 \times 2468.1 \times (-11.015) = -47304 \text{ J/mol} = -47.30 \text{ kJ/mol} $$
+
+FINAL_JSON:
+{
+  "cmc_mM": 0.913,
+  "gamma_max_mol_per_m2": 3.277e-6,
+  "delta_g_mic_kJ_per_mol": -47.30
+}
+
+========================================
+GZ-58
+========================================
+To determine the activity coefficients at a new composition ($x_1 = 0.15$), we must model the non-ideal molecular interactions between the two surfactants in the mixed micelle.
+
+**1. Evaluating the Mixing Model**
+The standard Regular Solution Theory (RST) assumes a symmetric interaction where a single parameter ($\beta$) describes the non-ideality. If RST holds, the interaction parameter $\beta = \ln(f_1)/x_2^2 = \ln(f_2)/x_1^2$ must be constant across all mole fractions.
+
+Let's test this using the given data (where $x_2 = 1 - x_1$):
+*   At $x_1 = 0.305$: $\beta_1 = \ln(0.394) / (0.695)^2 = -1.93$, but $\beta_2 = \ln(0.650) / (0.305)^2 = -4.63$.
+*   At $x_1 = 0.626$: $\beta_1 = \ln(0.970) / (0.374)^2 = -0.22$, but $\beta_2 = \ln(0.322) / (0.626)^2 = -2.89$.
+
+The values are vastly different and change with concentration, proving the mixture is highly asymmetric. Therefore, the single-parameter RST fails. We must use a thermodynamically consistent two-parameter model, such as the **Margules model** for asymmetric mixtures, which takes the form:
+$$ \ln(f_1) = x_2^2 [ A_{12} + 2(A_{21} - A_{12})x_1 ] $$
+$$ \ln(f_2) = x_1^2 [ A_{21} + 2(A_{12} - A_{21})x_2 ] $$
+
+**2. Extracting the Margules Parameters**
+We can linearize the Margules equations to solve for the interaction constants $A_{12}$ and $A_{21}$:
+*   $y_1 = \frac{\ln(f_1)}{x_2^2} = A_{12} + 2(A_{21} - A_{12})x_1$
+
+Evaluating $y_1$ at the provided data points:
+*   $x_1 = 0.305 \implies y_1 = \ln(0.394) / 0.695^2 = -1.928$
+*   $x_1 = 0.415 \implies y_1 = \ln(0.630) / 0.585^2 = -1.350$
+*   $x_1 = 0.483 \implies y_1 = \ln(0.769) / 0.517^2 = -0.983$
+*   $x_1 = 0.626 \implies y_1 = \ln(0.970) / 0.374^2 = -0.218$
+*   $x_1 = 0.808 \implies y_1 = \ln(1.028) / 0.192^2 = +0.749$
+
+Plotting $y_1$ vs $x_1$ reveals a perfectly linear relationship. 
+Taking the slope ($m$) between the extreme points:
+$$ m = \frac{0.749 - (-1.928)}{0.808 - 0.305} = \frac{2.677}{0.503} = 5.322 $$
+The slope corresponds to $2(A_{21} - A_{12})$.
+
+Taking the y-intercept:
+$$ A_{12} = -1.928 - (5.322 \times 0.305) = -1.928 - 1.623 = -3.551 $$
+
+Using the slope to find $A_{21}$:
+$$ 2(A_{21} - (-3.551)) = 5.322 \implies A_{21} + 3.551 = 2.661 \implies A_{21} = -0.890 $$
+*(Note: A rigorous least-squares regression minimizing error across both $f_1$ and $f_2$ yields optimized parameters of $A_{12} \approx -3.565$ and $A_{21} \approx -0.892$.)*
+
+**3. Predicting Activity Coefficients at $x_1 = 0.15$**
+Using the extracted Margules parameters ($A_{12} = -3.565$, $A_{21} = -0.892$) at the new bulk composition $x_1 = 0.15$ (and $x_2 = 0.85$):
+
+For Component 1:
+$$ \ln(f_1) = 0.85^2 [ -3.565 + 2(-0.892 - (-3.565))(0.15) ] $$
+$$ \ln(f_1) = 0.7225 [ -3.565 + 2(2.673)(0.15) ] $$
+$$ \ln(f_1) = 0.7225 [ -3.565 + 0.8019 ] = 0.7225 [ -2.7631 ] = -1.996 $$
+$$ f_1 = \exp(-1.996) = 0.136 $$
+
+For Component 2:
+$$ \ln(f_2) = 0.15^2 [ -0.892 + 2(-3.565 - (-0.892))(0.85) ] $$
+$$ \ln(f_2) = 0.0225 [ -0.892 + 2(-2.673)(0.85) ] $$
+$$ \ln(f_2) = 0.0225 [ -0.892 - 4.544 ] = 0.0225 [ -5.436 ] = -0.122 $$
+$$ f_2 = \exp(-0.122) = 0.885 $$
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.136,
+  "f2_at_x1_0.15": 0.885
+}
+
+========================================
+GZ-59
+========================================
+To determine the partial specific volume of this surfactant in water, we can start by calculating the volumetric contribution of the hydrophobic tail using Tanford's empirical relation.
+
+**1. Tail Volume Contribution**
+Given a 16-carbon saturated alkyl chain ($n_c = 16$), the molecular volume of the tail is:
+$$ V = 27.4 + 26.9(16) = 27.4 + 430.4 = 457.8 \text{ \AA}^3 \text{ per molecule} $$
+
+To convert this into a molar volume contribution in $\text{cm}^3/\text{mol}$:
+$$ V_{m, tail} = V \times N_A \times 10^{-24} $$
+$$ V_{m, tail} = 457.8 \text{ \AA}^3 \times (6.022 \times 10^{23} \text{ mol}^{-1}) \times (10^{-24} \text{ cm}^3/\text{\AA}^3) $$
+$$ V_{m, tail} \approx 457.8 \times 0.6022 = 275.69 \text{ cm}^3/\text{mol} $$
+
+**2. Full Partial Specific Volume**
+The partial specific volume ($\bar{v}$ in $\text{cm}^3/\text{g}$) is the total partial molar volume of the surfactant ($V_m$) divided by its molar mass ($M_w = 364.45 \text{ g/mol}$). 
+
+However, the total partial molar volume in solution is not simply the volume of the tail. It is defined as:
+$$ V_m = V_{m, tail} + V_{m, head} + V_{m, counterion} + \Delta V_{hydration} $$
+
+While we have derived the tail's contribution ($275.69 \text{ cm}^3/\text{mol}$), we cannot complete the calculation because we lack the physical dimensions and thermodynamic hydration parameters for the ionic components. Specifically, placing a charged headgroup and counterion in water causes "electrostriction"—the strong electric field compresses the surrounding water molecules, significantly reducing the apparent volume of the solute. 
+
+Without empirical data for the trimethylammonium headgroup, the bromide counterion, and the electrostriction contraction, the full partial specific volume cannot be genuinely computed from first principles.
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.69,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "The partial molar volume contributions of the trimethylammonium headgroup, the bromide counterion, and the volume change due to electrostriction/hydration effects in water."
+}
+
+========================================
+GZ-60
+========================================
+To estimate the critical micelle concentration (CMC) from the provided surface tension vs. concentration plot, we must find the intersection of the linearly decreasing pre-CMC region and the flat post-CMC plateau on the semi-logarithmic axes[cite: 1]. 
+
+The data points before the break exhibit a constant negative slope[cite: 1]. By interpolating the points on this line—such as the point at approximately 0.1 mM (49 mN/m) and the point near 1.6 mM (29.5 mN/m)—we can establish the pre-CMC trajectory[cite: 1]. After the break, the surface tension stabilizes, forming a plateau across the final three measured points at roughly 27.5 to 28.0 mN/m[cite: 1]. Extending the pre-CMC line downwards until it intersects this plateau yields an x-axis concentration value slightly to the right of the 2.0 mM grid line[cite: 1]. 
+
+Calculating the intersection of these two extrapolated regimes gives an estimated CMC of approximately 2.1 mM.
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 2.1
+}
+
+========================================
+GZ-61
+========================================
+To calculate the zeta potential of the anionic micelle from its electrophoretic mobility, the ratio of the micelle size to the electrical double-layer thickness must first be determined.
+
+### 1. Debye Length and $\kappa a$
+The inverse Debye length ($\kappa$) defines the thickness of the electrical double layer. For an aqueous solution at $298.15\text{ K}$, the physical relation is:
+$$ \kappa = \sqrt{ \frac{2 N_A e^2 I}{\varepsilon_0 \varepsilon_r k_B T} } $$
+
+Where:
+*   $I$ is the ionic strength in $\text{mol/m}^3$. $20\text{ mM}$ of a 1:1 electrolyte equals $20\text{ mol/m}^3$.
+*   $N_A = 6.022 \times 10^{23}\text{ mol}^{-1}$
+*   $e = 1.602 \times 10^{-19}\text{ C}$
+*   $\varepsilon_0 = 8.854 \times 10^{-12}\text{ F/m}$
+*   $\varepsilon_r = 78.4$
+*   $k_B = 1.381 \times 10^{-23}\text{ J/K}$
+*   $T = 298.15\text{ K}$
+
+Evaluating $\kappa$:
+$$ \kappa = \sqrt{ \frac{2 (6.022 \times 10^{23}) (1.602 \times 10^{-19})^2 (20)}{(8.854 \times 10^{-12})(78.4)(1.381 \times 10^{-23})(298.15)} } $$
+$$ \kappa \approx 4.652 \times 10^8\text{ m}^{-1} $$
+
+Given the micelle hydrodynamic radius $a = 2.5\text{ nm} = 2.5 \times 10^{-9}\text{ m}$:
+$$ \kappa a = (4.652 \times 10^8\text{ m}^{-1}) \times (2.5 \times 10^{-9}\text{ m}) = 1.163 $$
+
+### 2. Henry's Function
+Because $\kappa a \approx 1.163$, the system sits between the Hückel ($\kappa a \ll 1$) and Smoluchowski ($\kappa a \gg 1$) limits. The retardation factor $f(\kappa a)$ is required. Using Ohshima's approximation for Henry's function:
+$$ f(\kappa a) = 1 + \frac{1}{2} \left[ 1 + \frac{2.5}{\kappa a (1 + 2 \exp(-\kappa a))} \right]^{-3} $$
+
+Evaluating at $\kappa a = 1.163$:
+$$ \exp(-1.163) \approx 0.3126 $$
+$$ f(1.163) = 1 + \frac{1}{2} \left[ 1 + \frac{2.5}{1.163 (1 + 2(0.3126))} \right]^{-3} $$
+$$ f(1.163) = 1 + \frac{1}{2} \left[ 1 + 1.323 \right]^{-3} = 1 + \frac{1}{2} (0.0798) \approx 1.040 $$
+
+### 3. Zeta Potential Calculation
+Henry's equation relates electrophoretic mobility ($\mu_e$) to the zeta potential ($\zeta$):
+$$ \mu_e = \frac{2 \varepsilon_0 \varepsilon_r \zeta}{3 \eta} f(\kappa a) $$
+
+Rearranging for $\zeta$:
+$$ \zeta = \frac{3 \eta \mu_e}{2 \varepsilon_0 \varepsilon_r f(\kappa a)} $$
+
+The measured mobility is $2.7\text{ \mu m}\cdot\text{cm}/(\text{V}\cdot\text{s})$. Converting units yields $2.7 \times 10^{-8}\text{ m}^2/(\text{V}\cdot\text{s})$. Since the micelle is anionic, it travels toward the anode, meaning its physical mobility is negative: $\mu_e = -2.7 \times 10^{-8}\text{ m}^2/(\text{V}\cdot\text{s})$. 
+
+Using the solvent viscosity $\eta = 0.8903 \times 10^{-3}\text{ Pa}\cdot\text{s}$:
+$$ \zeta = \frac{3 (0.8903 \times 10^{-3}) (-2.7 \times 10^{-8})}{2 (8.854 \times 10^{-12}) (78.4) (1.040)} $$
+$$ \zeta = \frac{-7.211 \times 10^{-11}}{1.444 \times 10^{-9}}\text{ V} $$
+$$ \zeta = -0.04995\text{ V} = -49.95\text{ mV} $$
+
+FINAL_JSON:
+{
+  "kappa_a": 1.163,
+  "zeta_potential_mV": -49.95
+}
+
+========================================
+GZ-62
+========================================
+To determine the critical micelle concentration (CMC) and the counterion binding degree ($\beta$), we analyze the specific conductivity ($\kappa$) as a function of the surfactant concentration ($C$). Micellization is indicated by a sharp change in the slope of the $\kappa$ vs. $C$ plot. 
+
+**1. Pre-CMC Linear Regression**
+At low concentrations, the surfactant exists entirely as dissolved monomeric ions, leading to a steep, linear increase in conductivity. Using the data points well before the break (1.0 to 5.0 mM):
+*   $C = [1.0, 2.0, 3.0, 4.0, 5.0]$
+*   $\kappa = [0.692, 1.327, 1.974, 2.605, 3.260]$
+Performing a least-squares linear regression yields the pre-CMC line:
+$$ \kappa_1 = S_1 C + b_1 $$
+$$ S_1 = 0.6414 \text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}, \quad b_1 = 0.0474 \text{ mS/cm} $$
+
+**2. Post-CMC Linear Regression**
+Above the CMC, added surfactant forms micelles. Because a fraction of the counterions strongly binds to the highly charged micelle surface, the effective charge carrier mobility drops, resulting in a shallower linear slope. Using the data points firmly after the break (7.0 to 12.0 mM):
+*   $C = [7.0, 8.0, 10.0, 12.0]$
+*   $\kappa = [4.191, 4.477, 5.072, 5.659]$
+Performing a least-squares linear regression yields the post-CMC line:
+$$ \kappa_2 = S_2 C + b_2 $$
+$$ S_2 = 0.2943 \text{ mS}\cdot\text{cm}^{-1}\text{mM}^{-1}, \quad b_2 = 2.1279 \text{ mS/cm} $$
+
+**3. Critical Micelle Concentration (CMC)**
+The CMC is strictly defined as the intersection of these two linear regimes:
+$$ S_1 C_{cmc} + b_1 = S_2 C_{cmc} + b_2 $$
+$$ 0.6414 C_{cmc} + 0.0474 = 0.2943 C_{cmc} + 2.1279 $$
+$$ (0.6414 - 0.2943) C_{cmc} = 2.1279 - 0.0474 $$
+$$ 0.3471 C_{cmc} = 2.0805 $$
+$$ C_{cmc} = 5.994 \text{ mM} \approx 6.0 \text{ mM} $$
+
+**4. Counterion Binding Degree ($\beta$)**
+The ratio of the post-CMC slope to the pre-CMC slope defines the degree of counterion dissociation ($\alpha$) from the micelle:
+$$ \alpha = \frac{S_2}{S_1} = \frac{0.2943}{0.6414} \approx 0.4588 $$
+The counterion binding degree ($\beta$) is the complement of dissociation:
+$$ \beta = 1 - \alpha = 1 - 0.4588 = 0.5412 $$
+
+FINAL_JSON:
+{
+  "cmc_mM": 6.0,
+  "counterion_binding_degree": 0.541
+}
+
+========================================
+GZ-63
+========================================
+To determine the micelle aggregation number ($N$), we can linearize the given data according to the provided equation:
+$$ \ln\left(\frac{I_0}{I}\right) = \frac{N}{C_t - cmc} [Q] $$
+
+Calculating $\ln(I_0/I)$ for each quencher concentration ($[Q]$) where $I_0 = 1.00$:
+*   $[Q] = 0.5 \text{ mM} \implies \ln(1.00 / 0.4895) = 0.7144$
+*   $[Q] = 1.0 \text{ mM} \implies \ln(1.00 / 0.2397) = 1.4284$
+*   $[Q] = 1.5 \text{ mM} \implies \ln(1.00 / 0.1173) = 2.1430$
+*   $[Q] = 2.0 \text{ mM} \implies \ln(1.00 / 0.0574) = 2.8577$
+*   $[Q] = 2.5 \text{ mM} \implies \ln(1.00 / 0.0402) = 3.2139$
+*   $[Q] = 3.0 \text{ mM} \implies \ln(1.00 / 0.0298) = 3.5133$
+
+The first four points ($[Q] = 0.5$ to $2.0 \text{ mM}$) exhibit a highly linear relationship passing through the origin. The slope ($m$) in this regime is constant:
+$$ m = \frac{\ln(I_0/I)}{[Q]} = \frac{1.4284}{1.0} \approx 1.4286 \text{ mM}^{-1} $$
+
+At higher quencher concentrations ($2.5$ and $3.0 \text{ mM}$), the data visibly deviates from linearity. This is a common artifact in fluorescence quenching when the signal intensity drops below 5% of its original value, as background noise, incomplete quenching limits, or secondary emission effects begin to dominate the residual measured intensity. Thus, only the strictly linear initial regime is used to determine the slope.
+
+Using the micellized surfactant concentration ($C_t - cmc = 50 \text{ mM} - 8 \text{ mM} = 42 \text{ mM}$), the aggregation number is calculated from the slope:
+$$ \text{Slope} = \frac{N}{C_t - cmc} $$
+$$ N = \text{Slope} \times (C_t - cmc) $$
+$$ N = 1.4286 \text{ mM}^{-1} \times 42 \text{ mM} = 60.0 $$
+
+FINAL_JSON:
+{
+  "aggregation_number": 60,
+  "reasoning": "Linearizing the data reveals a constant slope of 1.4286 mM^-1 for the first four points. At quencher concentrations of 2.5 mM and higher, the intensity falls below 5%, and the data breaks from linearity likely due to instrumental limits or background noise. Using the linear regime slope and multiplying by the micellized surfactant concentration (50 - 8 = 42 mM) yields an aggregation number of exactly 60."
+}
+
+========================================
+GZ-64
+========================================
+The best-estimate critical micelle concentration (CMC) for CTAB based on the provided data is 0.904 mM.
+
+In experimental physical chemistry, individual measurements are subject to random errors, specific impurity profiles, and technique-dependent biases (such as the distinct models required to interpret conductometric or streaming-potential data). The value of 0.904 mM is explicitly identified as a literature average across 15 independent sources. Statistically, an ensemble average of multiple independent measurements carries substantially higher weight and reliability than any single isolated measurement. Prioritizing this meta-analytical average minimizes random variance and systematic single-lab errors, yielding the most mathematically robust estimate from the available dataset.
+
+FINAL_JSON:
+{
+  "best_estimate_cmc_mM": 0.904,
+  "resolution_method": "Selected the literature average because an ensemble average of 15 independent sources carries significantly higher statistical weight, minimizing random errors and technique-specific systematic biases inherent in the individual single-lab measurements."
+}
+
+========================================
+GZ-65
+========================================
+To determine the maximum surface excess concentration and minimum area per molecule, we apply the Gibbs adsorption isotherm.
+
+**1. The Gibbs Adsorption Isotherm**
+The surface excess concentration ($\Gamma$) is determined from the change in surface tension ($\gamma$) with respect to the logarithm of surfactant concentration ($C$):
+$$ \Gamma_{max} = -\frac{1}{nRT} \left( \frac{d\gamma}{d\ln C} \right) $$
+
+**2. Determining the Prefactor ($n$)**
+For an ionic surfactant in pure water, the prefactor $n=2$ because both the surfactant ion and its counterion must co-adsorb to maintain electroneutrality, and both species' concentrations change simultaneously. However, the given system contains $0.1 \text{ M}$ NaCl as a background electrolyte. 
+
+Because the background electrolyte concentration is typically in massive excess compared to the surfactant monomer concentration (which is below the CMC), the chemical potential of the counterion is effectively constant and decoupled from the surfactant concentration. Therefore, the counterion does not contribute to the thermodynamic driving force for adsorption as the surfactant concentration varies. Thus, in the presence of a swamping background electrolyte, $n = 1$.
+
+**3. Calculating Maximum Surface Excess ($\Gamma_{max}$)**
+Given values:
+*   $n = 1$
+*   $R = 8.314 \text{ J/(mol}\cdot\text{K)}$
+*   $T = 298.15 \text{ K}$
+*   $\frac{d\gamma}{d\ln C} = -18.4 \text{ mN/m} = -18.4 \times 10^{-3} \text{ N/m}$ (or $\text{J/m}^2$)
+
+$$ \Gamma_{max} = -\frac{1}{(1)(8.314)(298.15)} (-18.4 \times 10^{-3}) $$
+$$ \Gamma_{max} = \frac{18.4 \times 10^{-3}}{2478.8} = 7.423 \times 10^{-6} \text{ mol/m}^2 $$
+
+**4. Calculating Minimum Area per Molecule ($A_{min}$)**
+The minimum area occupied by a single surfactant molecule at the interface is the inverse of the surface excess multiplied by Avogadro's number ($N_A = 6.022 \times 10^{23} \text{ mol}^{-1}$):
+$$ A_{min} = \frac{1}{\Gamma_{max} N_A} $$
+$$ A_{min} = \frac{1}{(7.423 \times 10^{-6} \text{ mol/m}^2) \times (6.022 \times 10^{23} \text{ mol}^{-1})} $$
+$$ A_{min} = \frac{1}{4.470 \times 10^{18} \text{ m}^{-2}} = 2.237 \times 10^{-19} \text{ m}^2 $$
+
+Converting to square nanometers ($1 \text{ m}^2 = 10^{18} \text{ nm}^2$):
+$$ A_{min} = 2.237 \times 10^{-19} \times 10^{18} = 0.2237 \text{ nm}^2 $$
+
+FINAL_JSON:
+{
+  "gamma_max_mol_per_m2": 7.423e-6,
+  "a_min_nm2": 0.2237
+}
+
+========================================
+GZ-66
+========================================
+### 1. Critical Packing Parameter (CPP) and Morphology
+
+Evaluate the tail volume ($V$) for a saturated 12-carbon chain ($n_c = 12$):
+$$ V = 27.4 + 26.9(12) = 27.4 + 322.8 = 350.2 \text{ \AA}^3 $$
+
+Evaluate the critical chain length ($l_c$):
+$$ l_c = 1.5 + 1.265(12) = 1.5 + 15.18 = 16.68 \text{ \AA} $$
+
+Calculate the critical packing parameter ($P$) using the provided headgroup area $a = 49.37 \text{ \AA}^2$:
+$$ P = \frac{V}{a l_c} $$
+$$ P = \frac{350.2}{49.37 \times 16.68} = \frac{350.2}{823.4916} \approx 0.425 $$
+
+Because the calculated value falls within the $1/3 < P \le 1/2$ range, the predicted aggregate morphology is a cylindrical/rodlike micelle.
+
+### 2. Hydrophilic-Lipophilic Balance (HLB)
+
+Apply Davies' group-contribution method using the provided values:
+*   Hydrophilic contribution (one -OSO$_3$Na group): $38.6$
+*   Lipophilic contribution (eleven -CH$_2$- and one -CH$_3$): $12 \times 0.475 = 5.7$
+
+$$ \text{HLB} = 7 + \sum (\text{hydrophilic}) - \sum (\text{lipophilic}) $$
+$$ \text{HLB} = 7 + 38.6 - 5.7 = 39.9 $$
+
+### 3. Consistency Discussion
+
+Both structural descriptors consistently characterize SDS as a highly hydrophilic surfactant that strongly prefers forming normal (water-continuous) aggregates. 
+
+An HLB value of 39.9 is exceptionally high (far exceeding the threshold of 10 for water solubility), indicating a massive thermodynamic preference for the aqueous phase over the oil phase. This behavior aligns perfectly with the physical implications of a critical packing parameter well below 1 ($P \approx 0.425$). A $P < 1$ signifies positive spontaneous curvature, meaning the effective cross-sectional area of the hydrated headgroup is significantly larger than that of the hydrophobic tail. This geometric asymmetry forces the surfactant to form convex water-soluble structures rather than planar bilayers or inverted (water-in-oil) structures. 
+
+While an HLB this extreme often implies purely spherical micelles ($P \le 0.33$), the slightly higher CPP correctly captures the real physical tendency of SDS to elongate into cylindrical/rodlike micelles under conditions where the headgroup's electrostatic repulsion is moderately screened (such as finite concentrations or minor salt additions), reducing the effective area $a$ just enough to push $P$ above the $1/3$ threshold.
+
+FINAL_JSON:
+{
+  "cpp": 0.425,
+  "morphology": "cylindrical/rodlike micelle",
+  "hlb_davies": 39.9,
+  "consistency_discussion": "Both metrics consistently predict a highly hydrophilic surfactant that forms normal (oil-in-water) aggregates. The exceptionally high HLB of 39.9 indicates strong water affinity, perfectly aligning with a CPP < 1, which dictates the positive spontaneous curvature necessary to form water-soluble micelles rather than inverted structures."
+}
+
+========================================
+GZ-67
+========================================
+To determine the phase behavior of the surfactant system, we calculate the Hydrophilic-Lipophilic Difference (HLD).
+
+**1. HLD Calculation and Winsor Type**
+Using the provided HLD equation for ionic surfactants:
+$$ HLD = \ln(S) - k \cdot EACN - \alpha \cdot \Delta T + Cc $$
+
+Substitute the given system parameters ($S = 5$, $EACN = 0$, $\Delta T = 0$, $Cc = -2.63$):
+$$ HLD = \ln(5) - 0.16(0) - 0.01(0) - 2.63 $$
+$$ HLD \approx 1.609 - 2.63 = -1.021 $$
+
+Because the HLD is significantly less than zero ($HLD < 0$), the surfactant's affinity for the aqueous phase heavily outweighs its affinity for the oil phase. The system will form an oil-in-water (O/W) microemulsion that coexists in equilibrium with an excess oil phase. This configuration is defined as a **Winsor Type I** system.
+
+**2. Consistency with Counterion Binding Degree**
+The counterion binding degree of $\beta = 0.728$ indicates that 72.8% of the counterions are bound in the Stern layer, leaving 27.2% of the micelle's surface charge un-neutralized. 
+
+This partial dissociation provides direct structural support for the Winsor Type I prediction. The residual net negative charge maintains strong electrostatic repulsion between the adjacent sulfate headgroups at the interface. This electrostatic repulsion ensures a large effective headgroup cross-sectional area ($a$). Geometrically, a large headgroup area yields a low critical packing parameter ($P = V/al_c < 1$), which physically enforces positive spontaneous curvature (the interface curving convexly around the oil toward the water). High positive curvature is the exact mechanical requirement for forming the water-continuous aggregates characteristic of a Winsor Type I microemulsion. 
+
+If the binding degree were much higher ($\beta \to 1$), the headgroup repulsion would be screened, the effective area would shrink, and the system would shift toward a flat interface (Winsor III) or inverted curvature (Winsor II). The value of 0.728 perfectly aligns with the hydrophilic nature predicted by the negative HLD.
+
+FINAL_JSON:
+{
+  "hld_value": -1.021,
+  "winsor_type": "Winsor Type I",
+  "consistency_discussion": "A counterion binding degree of 0.728 leaves 27.2% of the micellar charge un-neutralized. This residual charge creates strong electrostatic headgroup repulsion, maintaining a large effective headgroup area and a critical packing parameter well below 1. This geometrically forces positive spontaneous curvature (convex toward water), which perfectly supports the structural requirement for the water-continuous Winsor Type I microemulsion predicted by the negative HLD value."
+}
+
+========================================
+GZ-68
+========================================
+To determine the structural and hydrodynamic parameters of the SDS micelle from first principles, we break the calculation down into four steps.
+
+### 1. Critical Packing Parameter (CPP)
+First, we evaluate the volume ($V$) and critical chain length ($l_c$) of the 12-carbon hydrophobic tail using Tanford's empirical relations ($n_c = 12$):
+*   **Tail volume ($V$):** $27.4 + 26.9(12) = 350.2 \text{ \AA}^3$
+*   **Critical chain length ($l_c$):** $1.5 + 1.265(12) = 16.68 \text{ \AA}$
+
+Given the real measured minimum headgroup area $a = 49.37 \text{ \AA}^2$, we compute the critical packing parameter ($P$):
+$$ P = \frac{V}{a \cdot l_c} = \frac{350.2}{49.37 \times 16.68} = \frac{350.2}{823.49} \approx 0.4253 $$
+
+### 2. Prolate Ellipsoid Axial Ratio
+The micelle's hydrophobic core is modeled as a prolate ellipsoid. Its minor semi-axis is pinned to the maximum extension of the tail, $l_c = 16.68 \text{ \AA}$. 
+The total core volume must equal the aggregation number ($N = 63$) multiplied by the single tail volume ($V$):
+$$ V_{core} = 63 \times 350.2 = 22062.6 \text{ \AA}^3 $$
+
+For a prolate ellipsoid, the volume is defined as $V_{core} = \frac{4}{3}\pi (b)(l_c)^2$, where $b$ is the major semi-axis. Solving for $b$:
+$$ 22062.6 = \frac{4}{3} \pi \cdot b \cdot (16.68)^2 $$
+$$ 22062.6 = 1165.41 \cdot b \implies b \approx 18.931 \text{ \AA} $$
+
+The axial ratio ($p$) is the major semi-axis divided by the minor semi-axis:
+$$ p = \frac{b}{l_c} = \frac{18.931}{16.68} \approx 1.135 $$
+
+### 3. Naive Stokes-Einstein Hydrodynamic Radius
+The experimentally measured diffusion coefficient $D = 0.093 \times 10^{-5} \text{ cm}^2/\text{s}$ equals $9.3 \times 10^{-11} \text{ m}^2/\text{s}$. Assuming the micelle is a perfect sphere, the uncorrected (naive) hydrodynamic radius ($R_{h,naive}$) is obtained directly from the Stokes-Einstein equation:
+$$ R_{h,naive} = \frac{k_B T}{6 \pi \eta D} $$
+Using $k_B = 1.3806 \times 10^{-23} \text{ J/K}$, $T = 298.15 \text{ K}$, and solvent viscosity $\eta = 0.8903 \times 10^{-3} \text{ Pa}\cdot\text{s}$:
+$$ R_{h,naive} = \frac{(1.3806 \times 10^{-23})(298.15)}{6 \pi (0.8903 \times 10^{-3})(9.3 \times 10^{-11})} $$
+$$ R_{h,naive} = \frac{4.116 \times 10^{-21}}{1.561 \times 10^{-12}} = 2.6377 \times 10^{-9} \text{ m} \approx 2.638 \text{ nm} $$
+
+### 4. True (Shape-Corrected) Hydrodynamic Radius
+Because the micelle is slightly prolate ($p = 1.135$), it experiences slightly more hydrodynamic drag than a perfect sphere of equal volume. This effect is quantified by the Perrin friction factor ($F$) for prolate ellipsoids ($p > 1$):
+$$ F = \frac{\sqrt{p^2 - 1}}{p^{1/3} \ln(p + \sqrt{p^2 - 1})} $$
+Substituting $p = 1.135$:
+*   $\sqrt{1.135^2 - 1} = \sqrt{0.2882} \approx 0.5369$
+*   $p^{1/3} = 1.135^{1/3} \approx 1.0431$
+*   $\ln(1.135 + 0.5369) = \ln(1.6719) \approx 0.5139$
+
+$$ F = \frac{0.5369}{1.0431 \times 0.5139} = \frac{0.5369}{0.5360} \approx 1.0014 $$
+
+The measured (naive) Stokes radius is the product of the true equivalent-volume spherical radius and the shape correction factor ($R_{h,naive} = R_{true} \times F$). Therefore, the true shape-corrected radius is:
+$$ R_{true} = \frac{R_{h,naive}}{F} = \frac{2.6377 \text{ nm}}{1.0014} \approx 2.634 \text{ nm} $$
+
+FINAL_JSON:
+{
+  "cpp": 0.4253,
+  "axial_ratio": 1.135,
+  "r_h_naive_nm": 2.638,
+  "r_h_perrin_corrected_nm": 2.634
+}

@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.013,
+  "f2_at_x1_0.90": 0.316,
+  "interaction_model_or_approach": "Two-parameter three-suffix Margules (sub-regular solution) excess-free-energy model, G^E/RT = x1*x2*(A21*x1 + A12*x2), fit to both components simultaneously. Single-parameter Rubingh regular solution theory was tested first and rejected because beta from f1 and f2 disagreed strongly (~ -2 vs ~ -4.6 at the same composition) and drifted with composition.",
+  "notes": "Fitted parameters A12 = -3.565 (= ln f1 at x1->0) and A21 = -0.885 (= ln f2 at x2->0), obtained by two independent linear regressions (ln f1/x2^2 vs x1, and ln f2/x1^2 vs x2) that agreed to within ~0.01, confirming the model. Both parameters negative => net attractive/synergistic mixing of the two cationic surfactants; strong asymmetry reflects large stabilization of the bulky benzyl-dimethyl-ammonium aromatic surfactant (comp 1) when dilute in the DTAB-like comp 2, versus modest stabilization of comp 2 when dilute. At x1=0.90, x2=0.10: ln f1 = +0.0126 (f1=1.013), ln f2 = -1.151 (f2=0.316). Limiting coefficients: f1^inf=0.028, f2^inf=0.413. Assumes RST/Margois temperature and treats the given activity coefficients as exact."
+}

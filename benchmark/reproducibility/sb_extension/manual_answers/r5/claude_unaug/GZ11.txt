@@ -1,0 +1,10 @@
+FINAL_JSON: {
+  "tail_volume_A3": 350.2,
+  "critical_length_A": 16.68,
+  "cpp_measured_area": 0.4697,
+  "morphology_measured_area": "cylindrical/rodlike micelle",
+  "electrostatic_headgroup_area_A2": 52.81,
+  "cpp_electrostatic_area": 0.3976,
+  "morphology_electrostatic_area": "cylindrical/rodlike micelle",
+  "comment": "Both the measured head area (44.70 A^2) and the electrostatically derived one (52.81 A^2, from Debye length 34.0 A at I=CMC=8 mM via a=sqrt(82.0*kappa_inv)) place C12 sulfate in the 1/3<P<=1/2 rodlike/cylindrical regime, so the two independent routes agree qualitatively. The electrostatic area is larger because unscreened double-layer repulsion at 8 mM (thick ~34 A diffuse layer) spreads the heads; the smaller measured area (higher P=0.47, right at the sphere/rod-to-worm boundary) reflects counterion binding that Debye-Huckel omits. Net: same morphology class, but the measured value shows the real system sits closer to a morphological transition than pure double-layer theory predicts. CPP is a boundary heuristic, so this is best read as micelles on the spherical-to-rodlike cusp."
+}

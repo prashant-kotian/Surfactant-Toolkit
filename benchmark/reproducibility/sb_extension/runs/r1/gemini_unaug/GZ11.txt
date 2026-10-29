@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.470,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2787,
+"cpp_electrostatic_area": 0.0075,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The directly measured area ignores headgroup repulsion, wrongly predicting cylinders. The electrostatic approach accounts for the extended double layer at low ionic strength, yielding a massive effective area that correctly predicts the formation of spherical micelles."
+}

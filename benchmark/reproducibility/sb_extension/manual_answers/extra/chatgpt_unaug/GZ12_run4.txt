@@ -1,0 +1,6 @@
+FINAL_JSON: {
+  "f1_at_x1_0.90": 1.0126,
+  "f2_at_x1_0.90": 0.3150,
+  "interaction_model_or_approach": "two-parameter Margules/Redlich-Kister excess-Gibbs fit constrained by Gibbs-Duhem",
+  "notes": "The interaction is strongly negative and asymmetric; a single regular-solution beta is not adequate. Fit: gE/RT=x1(1-x1)(a+b*x1), a=-3.57044, b=2.68025; extrapolated to x1=0.90."
+}

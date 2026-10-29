@@ -1,0 +1,20 @@
+PAPER DATA (Yaqoob, Shaukat, Alonaizan, Ullah, Khan, Nazar, Abd Ur Rahman, Molecules 28 (2023) 3952, doi:10.3390/molecules28093952; Table 4 and eq (5), as printed). CPC + TX-114 mixed micelles with Reactive Red 2.
+T (K):        293.15  303.15  313.15  323.15
+CMC (mM):     0.87    0.89    0.92    0.98
+alpha:        0.484   0.505   0.332   0.230
+Printed eq (5): dG = (2 - alpha) R T ln(X_cmc), X_cmc = CMC in mol/L divided by 55.5 mol/L,
+R = 8.314462618e-3 kJ/(mol K).
+CPC alone at 293.15 K: printed dG = -36.1 kJ/mol.
+REPORT: (a) dG at 293.15 K computed from the printed CMC and alpha via eq (5) (kJ/mol);
+(b) the enthalpy at 303.15, 313.15 and 323.15 K that follows from the dG(T) series of this system
+(kJ/mol, one value per temperature).
+
+PAPER RESULT AND CONCLUSION (as printed): Table 4 prints dG (kJ/mol) = -32.4, -41.5, -47.6, -51.9
+and dH (kJ/mol) = -5.0, -5.2, -6.2, -7.1 across the four temperatures, plus dS = 0.009, 0.120,
+0.132, 0.139 kJ/(mol K), and the paper concludes that mixed micellization is exothermic (dH -5.0
+to -7.1 kJ/mol) and more spontaneous than in CPC alone at every temperature.
+QUESTION: does the printed result follow from the printed data? Report the four quantities again,
+including whether your computed dG at 293.15 K is more negative than the CPC-alone value, and
+answer printed_result_follows.
+
+FINAL_JSON: {"dG_293p15_kJ_mol": <kJ/mol>, "dH_303p15_kJ_mol": <kJ/mol>, "dH_313p15_kJ_mol": <kJ/mol>, "dH_323p15_kJ_mol": <kJ/mol>, "more_negative_than_CPC": <->, "printed_result_follows": <->}

@@ -1,0 +1,222 @@
+================================================================================
+GZ-51 to GZ-60  -  SURFACTANT / MICELLIZATION PROBLEM SET
+Compiled solutions with final JSON answers
+================================================================================
+
+
+================================================================================
+GZ-51  -  Enthalpy of micellization (van't Hoff)
+================================================================================
+Compound: 1-dodecyl-3-methylpyridinium bromide
+SMILES: CCCCCCCCCCCC[N+]1=CC=CC(=C1)C.[Br-]
+CMC data:  T = 293.15 K, CMC = 9.76 mM ;  T = 303.15 K, CMC = 9.77 mM
+
+Method: dH_mic = -R T^2 * d(ln X_cmc)/dT  (mole-fraction conversion cancels in derivative)
+  d ln(CMC)/dT = ln(9.77/9.76)/10 = 1.024e-4 /K
+  T_avg = 298.15 K, R = 8.314 J/mol/K
+  dH = -(8.314)(298.15^2)(1.024e-4) = -75.7 J/mol = -0.0757 kJ/mol
+
+Interpretation: CMC is essentially flat over the 10 K interval -> enthalpy ~ 0,
+slightly negative; micellization here is entropy-driven.
+
+FINAL_JSON:
+{
+  "delta_h_kJ_per_mol": -0.0757
+}
+
+
+================================================================================
+GZ-52  -  Best mixing model for a binary mixed micelle
+================================================================================
+Component 1: diheptanoyl phosphatidylcholine (zwitterionic), pure CMC = 1.8 mM
+  SMILES: CCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCC
+Component 2: sodium dodecyl sulfate / SDS (anionic), pure CMC = 8.3 mM
+  SMILES: CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+]
+
+Ideal (Clint) prediction  1/CMC_ideal = a1/CMC1 + a2/CMC2 :
+  a2=0.95 -> ideal 7.03 mM, measured 3.6
+  a2=0.90 -> ideal 6.10 mM, measured 2.8
+  a2=0.80 -> ideal 4.82 mM, measured 1.8
+  a2=0.60 -> ideal 3.40 mM, measured 1.4
+  a2=0.20 -> ideal 2.13 mM, measured 1.3
+
+Every measured mixed CMC lies well below the ideal value: large, systematic
+negative deviation across the whole composition range -> rules out ideal mixing.
+Rubingh's regular solution theory fits with a consistently negative beta
+(attractive/synergistic interaction between anionic sulfate and zwitterionic PC).
+
+FINAL_JSON:
+{
+  "selected_mixture_model": "Regular Solution Theory (Rubingh non-ideal mixing)"
+}
+
+
+================================================================================
+GZ-53  -  Entropy of micellization from dG = dH - T dS
+================================================================================
+dG = -27.271 kJ/mol, T = 298.15 K ;  dS = (dH - dG)/T
+
+(a) dH = -5.0 kJ/mol -> dS = (-5.0 + 27.271)/298.15 * 1000 = 74.70 J/mol/K
+(b) dH = +3.0 kJ/mol -> dS = (+3.0 + 27.271)/298.15 * 1000 = 101.53 J/mol/K
+
+Both large and positive -> entropy-driven (hydrophobic effect).
+
+FINAL_JSON:
+{
+  "delta_s_scenario_a_J_per_mol_K": 74.698,
+  "delta_s_scenario_b_J_per_mol_K": 101.529
+}
+
+
+================================================================================
+GZ-54  -  Critical packing parameter and morphology (Tanford)
+================================================================================
+Compound: dodecyltrimethylammonium bromide (DTAB), n_c = 12
+SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Measured head-group area a = 59.62 A^2
+
+  V   = 27.4 + 26.9*12 = 350.2 A^3
+  l_c = 1.5 + 1.265*12 = 16.68 A
+  P   = V/(a*l_c) = 350.2/(59.62*16.68) = 350.2/994.46 = 0.352
+
+Since 1/3 (0.333) < 0.352 <= 1/2 -> cylindrical/rodlike micelle.
+
+FINAL_JSON:
+{
+  "cpp": 0.3522,
+  "morphology": "cylindrical/rodlike micelle"
+}
+
+
+================================================================================
+GZ-55  -  Genuine lateral interaction at the interface? (Frumkin vs Langmuir)
+================================================================================
+Nonionic surfactant, 298.15 K, gamma_0 = 72.0 mN/m.
+
+Gibbs surface excess from local slope: Gamma = -(1/RT) d gamma/d ln c.
+-d gamma/d ln c (~ RT*Gamma, mN/m) is already large at the lowest c and only
+creeps to a plateau:
+  0.05-0.10 mM : 6.96   (theta ~ 0.94)
+  0.20-0.40 mM : 7.34   (theta ~ 0.99)
+  1.30-1.90 mM : 7.42   (theta ~ 1.00)
+=> interface essentially saturated (theta ~ 0.93-1.0) across the whole pre-CMC
+range; Gamma_max ~ 3.0e-6 mol/m^2 (~55 A^2/molecule).
+
+Diagnostic: at c = 0.05 mM coverage is ~0.93 but pi is only 5.19 mN/m, whereas
+Langmuir/Szyszkowski pi = -RT*Gamma_max*ln(1-theta) demands ~20 mN/m. A single
+Langmuir isotherm cannot fit both the low-c pressure and the near-constant slope.
+The Frumkin equation of state pi = -RT*Gamma_max[ln(1-theta) + beta*theta^2] fits
+self-consistently with a strong ATTRACTIVE beta ~ 2.3 (near the 2-D condensation
+threshold of 2). => Real, physically meaningful lateral cohesion.
+
+FINAL_JSON:
+{
+  "physically_meaningful_interaction": "yes",
+  "reasoning": "Gibbs analysis shows the interface is already near-saturated (theta~0.93) at the lowest concentration yet the surface pressure is only ~5 mN/m, far below the ~20 mN/m a Langmuir/Szyszkowski independent-adsorption model requires at that coverage; a single Langmuir isotherm cannot fit both the low-c pressure and the near-constant Gibbs slope. The Frumkin equation of state fits self-consistently with a strong attractive lateral-interaction parameter beta ~ 2.3 (near the 2-D condensation threshold of 2), confirming a real, physically meaningful surfactant-surfactant cohesion at the interface rather than simple independent adsorption."
+}
+
+
+================================================================================
+GZ-56  -  Charge type of oleic acid at pH 5.0
+================================================================================
+Oleic acid (cis-9-octadecenoic acid), pKa ~ 4.8-5.0 in water, at pH 5.0.
+pH ~ pKa -> Henderson-Hasselbalch gives ~50% deprotonated: an equilibrium mixture
+of neutral protonated oleic acid (-COOH) and anionic oleate (-COO-). The only
+ionizable group is the carboxyl, so the charged form is anionic (partially ionized).
+
+FINAL_JSON:
+{
+  "charge_type_at_ph5": "anionic (partially ionized ~50%: an equilibrium mixture of neutral protonated oleic acid and anionic oleate carboxylate, since pH ~ pKa)"
+}
+
+
+================================================================================
+GZ-57  -  CTAB: CMC, Gamma_max, and free energy of micellization
+================================================================================
+Compound: cetyltrimethylammonium bromide (CTAB), C16 cationic, 296.85 K
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+Counterion dissociation degree alpha = 0.26 (=> binding beta = 0.74)
+
+CMC: gamma vs ln c is flat (~71.6 mN/m) up to ~0.066 mM, falls steeply
+(slope ~ -15 mN/m per ln unit) through 0.13-1.0 mM, then breaks to a shallow
+post-CMC slope (~ -5.8). Line intersection -> CMC ~ 0.97 mM (lit. ~0.98 mM).
+
+Gamma_max (1:1 ionic, no salt, prefactor n = 2), max slope ~ -15.1 mN/m,
+RT = 2468 J/mol:
+  Gamma_max = 15.1e-3/(2*2468) = 3.06e-6 mol/m^2  (~54 A^2/molecule)
+
+dG_mic = (2 - alpha) RT ln X_cmc,  X_cmc = CMC/55.5 = 1.75e-5:
+  = 1.74 * 2468 * (-10.95) = -47.0 kJ/mol
+
+FINAL_JSON:
+{
+  "cmc_mM": 0.97,
+  "gamma_max_mol_per_m2": 3.06e-6,
+  "delta_g_mic_kJ_per_mol": -47.0
+}
+
+
+================================================================================
+GZ-58  -  Binary cationic mixed micelle: interaction + predict f1,f2 at x1=0.15
+================================================================================
+Component 1 SMILES: CC(C)(C)CC(C)(C)C1=CC=C(C=C1)OCCOCC[N+](C)(C)CC2=CC=CC=C2.[Cl-]
+Component 2 SMILES: CCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Symmetric regular-solution theory (single beta) FAILS (beta from f1 and f2 differ
+by >2x and f1 exceeds 1 at high x1 while f2 stays << 1) -> asymmetric system.
+
+Two-parameter Margules (sub-regular solution) fits ~perfectly:
+  ln f1 = x2^2 [A + 2(B-A) x1]
+  ln f2 = x1^2 [B + 2(A-B) x2]
+Regression: A = ln f1^inf = -3.557,  B = ln f2^inf = -0.892 (both R^2 ~ 1).
+Both negative -> attractive/synergistic but strongly asymmetric (interaction much
+stronger when component 1 is dilute).
+
+Prediction at x1 = 0.15 (x2 = 0.85):
+  ln f1 = 0.7225*(-2.758) = -1.992 -> f1 = 0.136
+  ln f2 = 0.0225*(-5.423) = -0.122 -> f2 = 0.885
+
+FINAL_JSON:
+{
+  "f1_at_x1_0.15": 0.136,
+  "f2_at_x1_0.15": 0.885
+}
+
+
+================================================================================
+GZ-59  -  Partial specific volume analysis (Tanford tail only)
+================================================================================
+Compound: cetyltrimethylammonium bromide (CTAB), n_c = 16, M = 364.45 g/mol
+SMILES: CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-]
+
+Tail volume (Tanford): V = 27.4 + 26.9*16 = 457.8 A^3/molecule
+Molar volume: 457.8 * 6.022e23 * 1e-24 = 275.7 cm^3/mol  (tail contribution only)
+
+Full v_bar = V_molecule(molar)/M CANNOT be genuinely determined: Tanford's
+relation covers only the alkyl tail, not the -N+(CH3)3 head group or the Br-
+counterion (both part of the 364.45 g/mol monomer). Dividing tail-only volume by
+full mass would be physically wrong.
+
+FINAL_JSON:
+{
+  "tail_molar_volume_contribution_cm3_per_mol": 275.7,
+  "v_bar_full_cm3_per_g": null,
+  "missing_information": "Tanford's relation gives only the alkyl-tail volume (457.8 A^3 = 275.7 cm3/mol). To compute the full partial specific volume in water, the partial molar volumes (or group-contribution volumes) of the trimethylammonium head group [-N+(CH3)3] and the bromide counterion [Br-] are still required, ideally from real density/dilatometric measurements. Without them, only the tail contribution can be genuinely determined, not the whole-molecule v_bar."
+}
+
+
+================================================================================
+GZ-60  -  Read CMC from surface-tension-vs-concentration chart
+================================================================================
+Surface tension declines steeply (log axis) from ~0.016 mM to ~1.6 mM (last steep
+point ~29 mN/m), then flattens to a plateau (~27.5-28 mN/m) from ~4 mM onward.
+The break between decline and plateau -> CMC ~ 1.5-2 mM.
+
+FINAL_JSON:
+{
+  "estimated_cmc_mM": 1.7
+}
+
+================================================================================
+END OF FILE
+================================================================================

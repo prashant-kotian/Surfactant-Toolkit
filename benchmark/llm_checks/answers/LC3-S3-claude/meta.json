@@ -1,0 +1,16 @@
+{
+ "run_id": "LC3-S3-claude",
+ "case": "LC3",
+ "stage": "S3",
+ "model": "claude",
+ "model_seen": "Claude Opus 4.8, effort High, incognito",
+ "chat": "Claude incognito chat (no history, no memory)",
+ "mcp": "on",
+ "mcp_seen": "Active",
+ "web_search": "off (account setting); no web-search activity in the page",
+ "started": "2026-10-28T01:31:09+0530",
+ "sent": "2026-10-28T01:33:14+0530",
+ "finished": "2026-10-28T01:37:33+0530",
+ "prompt_file": "prompts/LC3_S3.txt",
+ "toolkit_calls_seen_in_page": 2
+}

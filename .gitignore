@@ -7,3 +7,13 @@ __pycache__/
 *.RAW.txt
 
 *.egg-info/
+build/
+dist/
+
+# local secrets (API keys for the MCP harness) and runtime job files
+.env
+.env.*
+!.env.example
+.dpd_jobs/
+.venv/
+venv/

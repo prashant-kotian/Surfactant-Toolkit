@@ -1,0 +1,10 @@
+FINAL_JSON: {
+"tail_volume_A3": 350.2,
+"critical_length_A": 16.68,
+"cpp_measured_area": 0.4697,
+"morphology_measured_area": "cylindrical/rodlike micelle",
+"electrostatic_headgroup_area_A2": 2788.0,
+"cpp_electrostatic_area": 0.00753,
+"morphology_electrostatic_area": "spherical micelle",
+"comment": "The two routes disagree by roughly two orders of magnitude in headgroup area. The Debye-Hückel estimate at the bulk CMC ionic strength (8 mM, kappa^-1 ~ 34 A) yields an enormous effective area (2788 A^2) and a vanishing CPP (~0.008), predicting spherical micelles. The measured area (44.70 A^2) gives CPP ~ 0.47, in the cylindrical/rodlike regime. SDS at 8 mM without added salt actually forms roughly spherical micelles, so the electrostatic morphology label is qualitatively correct despite the unphysically large area; the measured-area route slightly over-packs the headgroups and would incorrectly predict rodlike aggregates. The discrepancy underscores that bulk Debye-Hückel theory ignores counterion condensation and the high local ionic strength at the micelle surface, making it a poor quantitative but sometimes qualitatively useful guide."
+}

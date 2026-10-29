@@ -1,0 +1,5 @@
+FINAL_JSON: {
+"dn_dc_for_this_compound": null,
+"sls_aggregation_number": null,
+"what_is_missing": "The refractive-index increment dn/dc for AOT (not SDS) in the measurement solvent at 632.8 nm and the experimental temperature. It must be measured directly with a differential refractometer on sub-CMC AOT solutions, or taken from a peer-reviewed source for this exact compound/solvent/wavelength. Without it the optical constant K is unknown, M_w cannot be extracted from the ΔR/c slope, and N_agg cannot be computed."
+}

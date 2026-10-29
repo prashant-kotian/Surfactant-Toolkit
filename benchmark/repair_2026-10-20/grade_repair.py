@@ -146,7 +146,8 @@ JUDGMENTS: dict[tuple[str, str, str], tuple[bool, str]] = {
     ("gemini_unaug", "GZ-27", "direction_of_correction"): (
         True, "answer 'smaller, because non-spherical shape increases drag' is the gold's direction (SMALLER) and reason"),
     ("gemini_unaug", "GZ-50", "trend"): (
-        True, "answer 'monotonically more negative across the entire temperature range' is the gold's trend"),
+        True, "answer 'monotonically decreasing (becoming more negative) as temperature increases' is the gold's "
+              "trend (new-chat answer of 2026-10-26)"),
     ("gemini_unaug", "GZ-39", "deviation_reason"): (True, _GZ39_REASON),
     ("gemini_unaug", "GZ-39", "deviation_region"): (
         True, _GZ39_REGION + " ('concentrations above ~2-3 mM', the gold's own range)"),
