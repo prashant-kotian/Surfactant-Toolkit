@@ -12,6 +12,11 @@ repository-code: "https://github.com/prashant-kotian/Surfactant-Toolkit"
 license: MIT
 version: "0.4.0"
 date-released: "2026-10-31"
+doi: "10.5281/zenodo.23841833"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23841834"
+    description: "Release v1.2.0, the version used in the accompanying manuscript"
 keywords:
   - surfactant
   - micellization
