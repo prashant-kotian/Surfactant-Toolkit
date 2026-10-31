@@ -2,7 +2,7 @@
 
 A computation toolkit for surfactant and interfacial chemistry, with
 **SurfBench-200**, the benchmark used to evaluate large language models with
-and without tool access (Paper 3). This repository is the submission
+and without tool access (the accompanying manuscript). This repository is the submission
 artifact: the library, its test suite, the full benchmark with recomputed
 reference answers (golds), the graders, the results pipeline, and the raw
 model-answer transcripts. For SB-151..SB-200 the release holds both question
