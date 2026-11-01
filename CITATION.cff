@@ -10,8 +10,8 @@ authors:
     orcid: "https://orcid.org/0000-0002-3256-8464"
 repository-code: "https://github.com/prashant-kotian/Surfactant-Toolkit"
 license: MIT
-version: "0.4.0"
-date-released: "2026-10-31"
+version: "1.3.0"
+date-released: "2026-11-02"
 doi: "10.5281/zenodo.23841833"
 identifiers:
   - type: doi

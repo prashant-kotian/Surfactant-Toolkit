@@ -144,7 +144,7 @@ def test_version_matches_current_capability_state():
     # bumped 0.3.0 -> 0.4.0 alongside this session's Tier 0/1 additions,
     # matching this project's own established bump-on-feature-addition
     # convention (0.1.0 -> 0.2.0 -> 0.3.0 in prior commits)
-    assert surfactantkit.__version__ == "0.4.0"
+    assert surfactantkit.__version__ == "1.3.0"
 
 
 def test_pyproject_version_matches_init_version():

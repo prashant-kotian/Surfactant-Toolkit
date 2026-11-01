@@ -223,7 +223,7 @@ from .wetting import (
     work_of_adhesion,
 )
 
-__version__ = "0.4.0"
+__version__ = "1.3.0"
 
 __all__ = [
     "BootstrapCMCResult",
