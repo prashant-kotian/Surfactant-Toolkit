@@ -85,7 +85,7 @@ Each regenerates its committed output; see the README in each folder.
 ## 2. Test suite
 
 ```bash
-python3 -m pytest -q        # 971 passed (tests the working tree under src/)
+python3 -m pytest -q        # 982 passed (tests the working tree under src/)
 python3 -X utf8 benchmark/llm_checks/test_score.py   # scorer self-test: SELF-TEST: PASS
 ```
 
