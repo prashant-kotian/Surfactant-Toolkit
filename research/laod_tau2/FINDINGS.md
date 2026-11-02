@@ -444,3 +444,77 @@ that argument, and a robust criterion needs an independent handle — e.g. the *
 (a compositional process has no reason to sit at ωτ₂ ≈ 1) or the *strain-amplitude* signature
 (dimer expulsion should saturate differently from desorption). Recorded as a caveat so the paper
 does not lean on a number the model itself produced.
+
+---
+
+# 11. RECOVERY UNCERTAINTY — the answer, and the constraint that actually matters
+
+Design tested: C₁₂E₈, c = 1.5×CMC (0.106 mM, capacity 47.5), τ₂ = 4.0 s, ε = 0.20,
+σ = 0.05 mN/m, sweep over the usable window. `study_recovery_uncertainty.py`,
+`recovery_uncertainty.json`.
+
+## 11.1 Headline numbers
+
+| ω (rad/s) | lag (°) | Δlag per e-fold of τ₂ | relSE (Δ-method) |
+|---|---|---|---|
+| 3.00 | 77.2 | 6.0° | 0.011 |
+| 4.00 | 74.5 | 8.9° | 0.006 |
+| 5.00 | 71.6 | 11.2° | 0.004 |
+| 6.28 | 67.9 | 13.3° | 0.003 |
+
+Joint least squares: **1-parameter τ₂ = 4.000 s, relSE = 0.002**; 2-parameter
+τ₂ = 4.000 s, relSE = 0.030, **capacity relSE = 0.00, correlation = 1.00**.
+
+Two conclusions that hold regardless of the caveat below:
+- **At one concentration the (τ₂, capacity) pair is perfectly degenerate (corr = 1.00).** A
+  two-parameter inversion is meaningless from a single concentration; capacity must come from the
+  equilibrium closure, or a concentration series must break it. This is the same degeneracy the
+  earlier studies found, now quantified exactly.
+- The phase lag is a strong observable: **13° per e-fold of τ₂** at ω = 6.28.
+
+## 11.2 The constraint that actually governs the experiment: frames per cycle
+
+The paragraph above assumes the waveform is sampled densely. A tensiometer records *frames*, and
+the sub-0.1° uncertainties are achievable only if there are enough frames per cycle. Degrading the
+sampling honestly:
+
+| frames/cycle | lag estimate | scatter (sd) |
+|---|---|---|
+| **1** | **164°, 266°, 194°, 254°** (true ≈ 68°) | **~90°** |
+| 2 | 82° | 43° |
+| 5 | 67.9° | 0.33° |
+| 20 | 67.9° | 0.18° |
+
+**At one frame per cycle the phase estimate is not merely imprecise, it is wrong** — it depends on
+where the samples happen to fall and returned 164–266° in four phase offsets. My first pass
+reported relSE = 0.045 at ω = 6.28 by luck of the sampling phase; that number is withdrawn.
+
+So the design requirement is **≥5 frames per cycle**, and the achievable precision follows:
+
+| camera | usable ω for 5 frames/cycle | relSE at that ω |
+|---|---|---|
+| **5 fps** | 6.28 rad/s (1 Hz) | **≈ 0.025** |
+| 1 fps | 1.26 rad/s (0.2 Hz) | ≈ 0.5–0.8 (unusable as a precision method) |
+
+**This is the binding constraint on the whole project, and it is an instrument question, not a
+theory question.** Everything else — concentration window, bandwidth, observable choice — is now
+settled. The one thing nobody has established is the frame rate a PAT-1M uses *during oscillatory
+measurements*, which is not the same as the 1 s profile interval quoted for its dynamic-tension
+mode. If it is ≥5 fps at 1 Hz, the method delivers τ₂ to ~2.5%. If it is 1 fps, the method cannot
+be done on that instrument at any frequency, and needs a faster camera or a capillary-pressure
+tensiometer.
+
+## 11.3 Status of the paper's claims
+
+| Claim | Status |
+|---|---|
+| Forward model validated against LVDT, two independent codes | **solid** |
+| Phase lag is the operative observable; I₂/I₁ is not | **solid** |
+| Operational window ~1.2–3× CMC (optimum 1.5×) | **computed for C₁₂E₈; generality untested** |
+| τ₂ recoverable to ~2.5% | **conditional on ≥5 frames/cycle** |
+| (τ₂, capacity) separable from one concentration | **NO — corr = 1.00; needs a concentration series** |
+| Method transfers to SDS/CTAB | **untested; isotherms now supplied** |
+| Czakaj criterion (compositional vs kinetic) | **needs an independent signature, not the model's 0.11 ceiling** |
+
+The manuscript can be drafted around the first four rows. The fifth is a required addition:
+**a concentration series is not optional for the two-parameter problem.**
