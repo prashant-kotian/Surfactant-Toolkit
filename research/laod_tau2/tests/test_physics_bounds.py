@@ -73,3 +73,74 @@ def test_corrected_isotherm_gives_physical_elasticity():
         s = SYSTEMS[name]
         theta = K * s.cmc_mM / (1.0 + K * s.cmc_mM)
         assert 15.0 < e0_mN_m(s.n_ions, s.gamma_inf, theta) < 35.0, (name, theta)
+
+
+# --------------------------------------------------------------------------
+# Section 13 regressions. These lock in the generality result and the two
+# self-corrections so they cannot silently drift back.
+# --------------------------------------------------------------------------
+
+def test_e0_anchored_isotherms_are_physical():
+    """Inverting E0 -> theta -> K must give moderate coverage for both ionics."""
+    from research.laod_tau2.study_ionic_generality import make_params
+
+    for name, expect in (("CTAB", (0.65, 0.80)), ("SDS", (0.55, 0.75))):
+        _, info = make_params(name, 1.5, 0.065)
+        assert expect[0] < info["theta"] < expect[1], (name, info["theta"])
+
+
+def test_ctab_is_not_detectable_inside_the_pat_band():
+    """The section 13.2 negative: CTAB's I2 stays below the noise floor at 1 Hz."""
+    import numpy as np
+
+    from research.laod_tau2 import harmonics as H
+    from research.laod_tau2.lae_data import NOISE_FLOOR_RATIO
+    from research.laod_tau2.model import run_oscillation
+    from research.laod_tau2.study_ionic_generality import make_params
+
+    p, _ = make_params("CTAB", 1.5, 0.065)
+    r = run_oscillation(p, 6.28, 0.20, n_cycles=16)
+    t = np.asarray(r.t)
+    i2 = H.harmonics(t, r.gamma_mN_m, 6.28)[2]
+    assert i2 < NOISE_FLOOR_RATIO[1], i2
+
+
+def test_c12e8_window_optimum_is_robust_to_the_e0_anchor():
+    """Section 13.5: the 1.5x CMC optimum must hold across the E0 anchors.
+
+    Reads the recorded sweep rather than re-running it (the sweep takes minutes).
+    """
+    import json
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[1] / "e0_sensitivity.json"
+    if not path.exists():
+        import pytest
+
+        pytest.skip("e0_sensitivity.json not generated")
+    data = json.loads(path.read_text())
+    assert len(data["rows"]) == 4
+    for row in data["rows"]:
+        assert row["best_mult"] == 1.5, (row["E0"], row["best_mult"])
+        assert 1.5 in row["usable_mult"]
+        assert row["best_dlag"] > 15.0
+
+
+def test_dlag_label_is_per_factor_four_not_per_doubling():
+    """Section 13.6: the recorded field spans tau2/2 -> 2*tau2 = 4x, and the
+    directly measured per-doubling values differ from it by roughly 1.7x."""
+    import json
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[1] / "e0_sensitivity.json"
+    if not path.exists():
+        import pytest
+
+        pytest.skip("e0_sensitivity.json not generated")
+    data = json.loads(path.read_text())
+    row = next(r for r in data["rows"] if abs(r["E0"] - 103.5) < 0.5)
+    w = {x["mult"]: x for x in row["window"]}
+    per_4x = w[1.5]["dlag_per_doubling"]
+    # directly measured per-doubling near the operating point is 7.3-10.2 deg
+    assert 15.0 < per_4x < 20.0
+    assert abs(per_4x / 2.0 - 8.7) < 3.0

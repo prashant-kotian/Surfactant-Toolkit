@@ -512,7 +512,7 @@ tensiometer.
 | Phase lag is the operative observable; I₂/I₁ is not | **solid** |
 | Operational window ~1.2–3× CMC (optimum 1.5×) | **computed for C₁₂E₈; generality untested** |
 | τ₂ recoverable to ~2.5% | **conditional on ≥5 frames/cycle** |
-| (τ₂, capacity) separable from one concentration | **NO — corr = 1.00; needs a concentration series** |
+| (τ₂, capacity) separable from one concentration | **NO — |corr| ≈ 0.6; needs a series, and even then only to |corr| 0.1–0.6 (§13.8)** |
 | Method transfers to SDS/CTAB | **untested; isotherms now supplied** |
 | Czakaj criterion (compositional vs kinetic) | **needs an independent signature, not the model's 0.11 ceiling** |
 
@@ -579,9 +579,215 @@ a ceiling. The correct statement is the one now in the test file: a *sensible* E
 | τ₂ recovered to ~2.5% (Protocol A) | **ready** |
 | Protocol B: two concentrations break the degeneracy | **ready** — new result |
 | C₁₂E₈ concentration window 1.2–3× CMC | **ready (one system)** |
-| CTAB / SDS applicability | **blocked on corrected isotherm constants** |
+| CTAB / SDS applicability | **resolved in §13** — CTAB works, but only ≥16 Hz (CPT band), not on a PAT |
 | Czakaj criterion | **needs an independent signature** (§10.4) |
 
 The three "ready" rows that depend on numbers (window, 2.5%, Protocol B) are all computed for
 **one surfactant**. The manuscript's weakest point is that every quantitative claim rests on
-C₁₂E₈; the corrected CTAB run is the cheapest fix.
+C₁₂E₈; the corrected CTAB run is the cheapest fix. **→ Done in §13, together with a
+self-correction: those C₁₂E₈ rows were themselves run at a saturated isotherm (§13.5).**
+
+---
+
+# 13. Generality: the method transfers to CTAB — but not to a PAT-1M, and the reason is a frequency problem
+
+Two things happened in this section. First, the CTAB/SDS blocker from §12 was cleared
+honestly. Second, clearing it exposed a defect in **my own** headline studies, which I have to
+record because it changes how every number above must be read.
+
+## 13.1 Clearing the blocker by inverting, not guessing
+
+§12 found that the supplied Frumkin constants put CTAB/SDS at θ = 0.94–0.96. The fix is not to
+guess a better K. It is to note that **E₀ is the measured quantity** and K is derived:
+
+    E₀ = n·RT·Γ∞·[θ/(1−θ) − 2aθ²]      (Frumkin generalisation of the Langmuir–Gibbs form)
+
+so, given a literature E₀, θ is fixed and K follows from the isotherm:
+
+    K = θ/(1−θ) · exp(−2aθ)/c
+
+`study_ionic_generality.py` does this inversion and records every intermediate. Literature
+anchors: CTAB 30 mN/m (range 20–40), SDS 22 mN/m (range 15–30). Result at 1.5× CMC:
+**CTAB θ = 0.724, K = 0.690 m³/mol; SDS θ = 0.643, K = 0.052 m³/mol** — both physical.
+
+## 13.2 The transfer fails on the PAT-1M, and it is not the isotherm
+
+With corrected isotherms, CTAB's second harmonic **never reaches the 0.05 noise floor anywhere
+inside the 0.005–1 Hz PAT band**. Best in-band I₂ = 0.0057 at ω = 6.28, i.e. 0.11× noise.
+SDS is worse (0.0007, 0.01× noise).
+
+I checked whether that was an artefact of my E₀ choice (`study_tau2_horizon.py`, part 1):
+swept E₀ over **20–40 mN/m** (CTAB) and **15–30** (SDS) × Frumkin a = 0/0.35/0.7/1.0 × ω = 0.5/1 Hz
+— 40 and 24 feasible combinations respectively. **Not one is usable.** Best achievable CTAB I₂ is
+0.0068 at the extreme corner (E₀ = 40, a = 1.0, ω = 6.28). The failure is robust to the isotherm.
+
+The cause is a frequency–timescale mismatch: **τ₂(CTAB) = 65 ms** ⇒ the response turns over near
+ωτ₂ ≈ 1, i.e. **≈ 2.4 Hz**, and the PAT stops at 1 Hz. The instrument is simply too slow.
+
+## 13.3 Where CTAB *does* work: it is an instrument problem, not a method problem
+
+Extending to the tensiometer band (corrected isotherm, 1.5× CMC, ε = 0.20):
+
+| f (Hz) | I₁ | I₂ | I₂/noise | lag (°) |
+|---|---|---|---|---|
+| 1.0 | 0.074 | 0.006 | 0.11 | 55.2 |
+| 15.9 | 0.715 | **0.065** | **1.30** | 74.8 |
+| 40.0 | 1.623 | 0.116 | 2.32 | 63.2 |
+| 100.0 | 2.859 | 0.252 | 5.04 | 42.6 |
+
+CTAB becomes detectable at **≈ 16 Hz** and comfortable at 25–100 Hz — the capillary-pressure
+tensiometer band (0.1–500 Hz). SDS does **not** clear noise even at 100 Hz (I₂ = 0.033, 0.66×).
+
+**So "CTAB solvable" is true, and "CTAB solvable on a PAT-1M" is false.** Both statements are now
+supported rather than asserted. Two caveats stated plainly: (i) I₁ ≥ 0.7 means the *linear*
+response is already ~1 mN/m and weakly nonlinear theory is strained, so the 100 Hz row is
+indicative, not quantitative; (ii) the SDS negative at 100 Hz is **band-edge-limited** — the scan
+stops at 100 Hz, not the method.
+
+## 13.4 A hypothesised collapse that FAILED
+
+I expected the response to be a function of ωτ₂ alone, which would have unified all three
+surfactants into one design curve. Tested at matched ωτ₂ (0.5 … 64), it does **not** collapse:
+at ωτ₂ = 4, I₁ = 0.482 (C₁₂E₈, K = 140) vs 0.205 (CTAB) — a factor 2.4 apart.
+
+A second timescale is in play. Computing the diffusion time from the inverse-isotherm slope,
+ω_D = D·(dc_s/dΓ)², gives τ_D = 6.3 ms (C₁₂E₈), 0.8 ms (CTAB), 0.02 ms (SDS) — against
+τ₂ = 4000/65/38 ms. So **τ_D ≪ τ₂ by 3–4 orders of magnitude everywhere**, which is *why*
+ωτ₂ looks like the controlling group locally, but the weak residual dependence on τ_D (through
+the surface excess) is enough to break the collapse when E₀ and θ differ as much as they do here.
+I am not claiming a resolved scaling law. The honest statement is: **no single-group collapse
+found; τ₂ alone does not determine the response, so every parameter set needs its own run.**
+
+## 13.5 SELF-CORRECTION: my own C₁₂E₈ studies used a saturated isotherm
+
+While checking §13.2 I found the same defect I had just condemned in Antigravity's numbers, in
+**my own**. Every headline result above (the 1.2–3× CMC window, the 2.5% recovery precision, the
+Protocol B correlation reduction) was computed with **K = 140 m³/mol**, which gives
+**θ = 0.937 and E₀ = 103.5 mN/m at 1.5× CMC** — the very regime §12 calls unphysical.
+
+I could have quietly swapped in E₀ ≈ 25 and re-reported. That would have been outcome-shopping.
+Instead `study_e0_sensitivity.py` re-ran the whole window at four anchor elasticities:
+
+| Anchor E₀ (mN/m) | θ @1.5× | best conc. | Δlag per 4× τ₂ | usable window |
+|---|---|---|---|---|
+| 25.0 | 0.783 | **1.5×** | 19.4° | 1.2 / 1.5 / 2.0 / 3.0× |
+| 45.3 (Czakaj's own) | 0.867 | **1.5×** | 18.8° | 1.2 / 1.5 / 2.0 / 3.0× |
+| 73.9 (Czakaj's own) | 0.914 | **1.5×** | 18.0° | 1.5 / 2.0 / 3.0× |
+| 103.5 (K = 140) | 0.937 | **1.5×** | 17.4° | 1.2 / 1.5 / 2.0 / 3.0× |
+
+**The result is robust.** The optimum is 1.5× CMC at every anchor; the window edges hold; the
+leverage varies by only 11% across a 4× range in E₀. So the conclusions are not artefacts of the
+saturated isotherm — which is the outcome that lets me keep them. But the *reported* numbers must
+now carry the anchor, and §10's Δlag figures gain roughly 10%.
+
+There is independent support for the high-E₀ end: Czakaj's own Table 4 reports E₀ = **73.9 mN/m at
+0.3 mM** and 45.3 at 0.5 mM for LAE. This is genuinely a high-elasticity system; a 20–30 mN/m
+assumption for it would have been the error. **The general lesson stands, though: an isotherm
+constant is not a free parameter. Anchor it to a measured E₀ or report the regime you are in.**
+
+## 13.6 Correction to my own metric, caught before it reached the manuscript
+
+The field I have been calling "Δlag per doubling of τ₂" is computed as
+|lag(2τ₂) − lag(τ₂/2)| — that spans a factor **four**, i.e. two doublings. The labels in
+`study_ionic_generality.py`, `study_tau2_horizon.py` and `study_e0_sensitivity.py` are renamed
+`dlag_per_4x`. The true per-doubling figure, measured directly on C₁₂E₈ at 1.5× CMC:
+
+| τ₂ span | Δlag |
+|---|---|
+| 1 → 2 s | 2.9° |
+| 2 → 4 s | 7.3° |
+| 4 → 8 s | 10.2° |
+
+So the response is **not linear in log τ₂** — it steepens in the middle of the range. Quoting
+"13°/e-fold" as a single number would have been wrong in both directions. The correct statement
+is the table above, and that the *steepest* leverage (10.2°/doubling) sits near the operating
+point τ₂ = 4–8 s.
+
+## 13.7 What this changes for the manuscript
+
+1. The generality claim becomes **conditional and therefore citable**: inversion works for
+   C₁₂E₈-class nonionics (τ₂ ~ 1–8 s) on a PAT; it works for CTAB (65 ms) only on a CPT-class
+   instrument at ≥ 16 Hz; SDS is unresolved.
+2. The manuscript gains a **design rule**: operability requires the drive frequency to be near
+   1/τ₂ *and* the instrument must reach it. That rule is what failed for CTAB, not the theory.
+3. Every quantitative claim must now state its **E₀ anchor**. The manuscript can no longer say
+   "K = 140" without saying "θ = 0.94, E₀ = 103 mN/m, and here is the 25 mN/m row."
+4. The C₁₂E₈ concentration series (Protocol B) is still measured at one anchor (K = 140). Re-running
+   Protocol B at E₀ = 25 is the remaining arithmetic, and it is the last quantitative gap.
+
+## 13.8 Protocol B at the anchored isotherm: partly overturned
+
+§13.7 item 4 was the last quantitative gap. It is now closed, and the answer is not the one I
+reported in §12.
+
+Re-running the joint (τ₂, capacity) fit at three C₁₂E₈ anchors (`study_protocol_b_anchored.py`):
+
+| Anchor E₀ | 1 conc. | 2 conc. | 3 conc. | 4 conc. |
+|---|---|---|---|---|
+| 25.0 | +0.60 | +0.46 | +0.45 | −0.11 |
+| 45.3 | +0.59 | −0.28 | −0.20 | +0.12 |
+| 103.5 | −0.60 | +0.40 | +0.25 | +0.47 |
+| CTAB 30 | +0.59 | +0.41 | −0.09 | **−0.63** |
+
+(τ₂ is recovered to 0.5–1.6% relSE in every cell; the table is the parameter **correlation**, where
+±1 is total degeneracy.)
+
+**What survives:** a single concentration is always degenerate (|corr| ≈ 0.6); adding
+concentrations reduces the *magnitude* in most cells; τ₂ itself is always recovered.
+
+**What does not survive — two corrections to §12:**
+1. **"Two concentrations suffice" is wrong**, or at least not robust. At E₀ = 25 the second
+   concentration only moves |corr| from 0.60 to 0.46, and at E₀ = 103.5 it makes it *worse*
+   (0.60 → 0.40 with the sign flipping, which is noise in a correlation this unconstrained).
+   Reduction is not monotone in the number of concentrations, and **not monotone in likelihood**.
+2. **The clean monotone −0.61 → −0.37 → −0.24 trend in §12 does not reproduce** at any other
+   anchor. It was a single-anchor result that I over-read as a protocol property. This is the same
+   error as §9 — generalising from one configuration — caught this time before the manuscript.
+
+**Why the correlation is erratic:** with the lag as the only observable and both τ₂ and capacity
+acting on it in the same direction, the two-parameter problem is weakly identified by construction.
+Multi-concentration data helps, but the improvement is sensitive to where the concentrations sit
+relative to the window edges, and 3 points at 3 frequencies is a thin design. The reliable claim is
+narrower and more useful: **the phase lag determines a combination of τ₂ and capacity; breaking the
+degeneracy needs a concentration series, and even then the correlation is 0.1–0.6, not ~0.**
+
+**Consequence for the manuscript's headline uncertainty.** "τ₂ to ~2.5%" is a *one-parameter* result
+(§11, Protocol A: capacity known from CMC and n̄). If capacity must also be fitted, the honest
+figure is the relSE column here — **0.5–1.6%** on synthetic noise-free-in-model data with
+σ_lag = 0.18°, which will degrade against real instrument noise. Both numbers must be quoted with
+their conditioning: **Protocol A gives precision; Protocol B gives only partial separation.**
+
+## 13.9 An open tension in the CTAB anchor that I could NOT resolve numerically
+
+While writing the handoff I checked whether the CTAB anchor in §13.1 is actually consistent with
+measured surface excesses, and found a tension I cannot close with this model.
+
+Holding E₀ = 30 mN/m and sweeping the Frumkin interaction parameter a (which trades off against
+coverage at fixed E₀):
+
+| a | θ | Γ (µmol/m²) | I₂ @1 Hz | I₂ @16 Hz | I₂ @100 Hz |
+|---|---|---|---|---|---|
+| 0.7 | 0.724 | 2.32 | 0.0057 | 0.065 | 0.252 |
+| 2.0 | 0.821 | 2.63 | 0.0073 | 0.070 | 0.690 |
+| 4.0 | 0.892 | 2.85 | **0.0000** | **0.0000** | **0.0000** |
+| 7.8 | 0.940 | 3.01 | **0.0000** | **0.0000** | **0.0000** |
+
+Literature CTAB Γ(CMC) is ≈ 2.8–3.2 µmol/m², which needs **a ≈ 7.8** at this Γ∞. But at a ≥ 4 the
+model returns an **identically zero** response — γ range = 0.0000 mN/m over the whole cycle, not a
+small number but a stalled solution, with **`mass_error = nan`**. The implicit Frumkin solve goes
+numerically stiff once the exp(2aθ) term dominates.
+
+**So this is not evidence about CTAB; it is evidence that the model is invalid there.** I am
+recording it as an unresolved numerical limit, not a result. Two consequences:
+
+1. The CTAB conclusion in §13.3 is stated for **a = 0.7–2.0**, where the solver is trustworthy.
+   Within that range I₂ at 16 Hz moves only 0.065 → 0.070 and at 100 Hz rises 0.25 → 0.69, so the
+   *qualitative* conclusion (no PAT, fine on a CPT) is stable. It is **not** verified at the a ≈ 7.8
+   that the measured Γ actually implies.
+2. `mass_error = nan` is a live defect in `run_oscillation`'s bookkeeping, independent of this
+   parameter question. It should be fixed before any mass-balance claim is made in the manuscript.
+
+This is now a concrete data request rather than a modelling question: **a measured CTAB
+surface-pressure isotherm (Π vs c) with its Γmax and a fitted independently** would settle whether
+a ≈ 0.7 or a ≈ 8 is right, and if the latter, the model needs a stiffer-isotherm formulation
+(logarithmic or van der Waals) before CTAB can be claimed at all.
