@@ -296,3 +296,67 @@ extracted.**
 
 Until the model reproduces 0.31 / 0.43 for LAE, **no τ₂ inversion on real data is meaningful** —
 which is precisely why Option 2 (inverse fitting on the Czakaj points) must not be run yet.
+
+---
+
+# 9. The LAE peak at the CMC rules out micellar buffering — and with it the paper's premise
+
+Antigravity supplied Table 4 and the amplitude convention. Two checks, both easy, and together
+they decide the question. This is the most important entry in this file.
+
+## 9.1 The model cannot be parameterised to fit LAE, and the reason is diagnostic
+
+Table 4 at c = 1.0 mM gives **E₀ = 12.6 mN/m, ν_D = 0.06 Hz**. Those are *two equations*, and the
+state has more than two unknowns, so they do not pin (Γ∞, K, D). Sweeping the one free parameter
+(coverage θ₀, with E₀ and ν_D held at their measured values) shows the model's I₂/I₁ at ε = 0.07,
+0.1 Hz lies between **0.032 and 0.106 for every coverage from 0.1 to 0.95** — against a measured
+**0.4327**. The model cannot reach the observation by any choice of parameters.
+
+So my earlier "guessed parameters" diagnosis was wrong. It was not the substitution of K and Γ∞
+that caused the factor-of-ten gap; the *structure* of the model caps I₂/I₁ near 0.1 at this
+amplitude.
+
+## 9.2 The measured peak sits at the CMC, where the micellar reservoir is empty
+
+Czakaj's Fig. 7 at 0.1 Hz: 0.039 (0.2 mM), 0.019 (0.5), 0.222 (0.8), **0.433 (1.0 = CMC)**,
+0.359 (1.5). The maximum is **at the CMC**, and it *declines* above it.
+
+- At c = CMC the total concentration equals the CMC, so the micellar capacity is **zero**.
+  A zero-capacity state cannot be the most nonlinear one if micellar buffering is the cause.
+- Above the CMC the capacity grows with c, so a buffering mechanism predicts a **monotone rise**.
+  The data show a peak and a decline.
+- Quantitatively: the reservoir moves I₂/I₁ by ~8% across a 4000-fold capacity range in my model;
+  the data move **23-fold** across a 3-fold concentration range. The mechanism is off by two
+  orders of magnitude in *sensitivity*, not merely in scale.
+
+Czakaj et al. attribute the effect to interfacial reorganisation and heterodimer (LAE–dodecanoate /
+LAE–LAS) formation — a **compositional** nonlinearity, with the micelles as a secondary actor. Their
+attribution is consistent with their own data; mine is not.
+
+## 9.3 Consequence for the project
+
+**The τ₂-from-harmonics premise is falsified at the mechanism level.** The observable is dominated
+by composition-dependent interfacial reorganisation, not by the slow micellar relaxation time, so
+inverting it for τ₂ would be attributing a compositional effect to a kinetic one — exactly the
+error the method was supposed to avoid.
+
+Options, in order of honesty:
+
+1. **Drop the τ₂ paper.** Report the negative result: *"the second-harmonic ratio of oscillatory
+   dilatational rheology near the CMC is dominated by interfacial compositional reorganisation,
+   not by micellar relaxation; it is therefore not a τ₂ probe."* This is a real, useful,
+   publishable-in-a-letter finding, and it is now supported by two independent arguments (§9.2).
+2. **Re-scope to what the model CAN do:** the phase lag and I₂/I₁ as a *linear-viscoelastic
+   consistency test* (Eq. 1 reproduced across their five concentrations) — a validation paper for
+   SurfactantKit's LVDT/Frumkin machinery, not a discovery.
+3. **Attack composition explicitly** — a multicomponent Frumkin model with an explicit
+   heterodimer equilibrium. That is a different, larger project, and it is where the real physics
+   of this system lives.
+
+What is **not** an option: proceeding to Option 2 of Antigravity's list (inverse fitting τ₂ on
+Fig. 7). The forward model cannot reproduce the data, and the data's shape contradicts the
+mechanism. Any τ₂ extracted would be an artefact.
+
+**Verified in scratch, worth repeating:** both attacks on LAE fail — the ratio is undefined for a
+vanishing fundamental near the CMC (a second harmonic appears without a prior fundamental, which
+itself indicates a discontinuity, i.e. reorganisation rather than smooth desorption).
