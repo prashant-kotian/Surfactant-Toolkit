@@ -61,6 +61,7 @@ class ModelParams:
     gamma0: float = 72.0
     n_factor: float = 1.0
     temperature_K: float = 298.15
+    frumkin_a: float = 0.0       # lateral interaction; 0 = Langmuir
     capacity: float = 0.0        # C_m (dimensionless)
     tau2: float = 1.0            # s
     n_cells: int = 96
@@ -77,18 +78,40 @@ class ModelParams:
         return self.gamma_inf * self.theta0
 
     def isotherm(self, c_s: float) -> float:
-        return self.gamma_inf * self.K * c_s / (1.0 + self.K * c_s)
+        """Langmuir if frumkin_a == 0, else the Frumkin isotherm (implicit)."""
+        if self.frumkin_a == 0.0:
+            return self.gamma_inf * self.K * c_s / (1.0 + self.K * c_s)
+        th = self.theta0
+        for _ in range(80):                      # Newton on ln(1-theta)
+            f = math.log(self.K * c_s) - math.log(th / (1 - th)) + 2 * self.frumkin_a * th
+            df = 1.0 / (th * (1 - th)) + 2 * self.frumkin_a
+            th = min(max(th - f / df, 1e-12), 1 - 1e-12)
+        return self.gamma_inf * th
+
+    def _cs_of_gamma(self, G: float) -> float:
+        """Inverse isotherm: subsurface concentration from surface excess."""
+        th = min(max(G / self.gamma_inf, 1e-12), 1.0 - 1e-12)
+        return th / (1.0 - th) * math.exp(-2.0 * self.frumkin_a * th) / self.K
 
     def dgamma_dcs(self, c_s: float) -> float:
-        return self.gamma_inf * self.K / (1.0 + self.K * c_s) ** 2
+        """d gamma / d c_s at the interface, for either isotherm."""
+        if self.frumkin_a == 0.0:
+            return self.gamma_inf * self.K / (1.0 + self.K * c_s) ** 2
+        th = self.isotherm(c_s) / self.gamma_inf
+        th = min(max(th, 1e-12), 1.0 - 1e-12)
+        dgam_dth = self.n_factor * R_GAS * self.temperature_K * self.gamma_inf * 1e3 * (
+            -1.0 / (1.0 - th) + 2.0 * self.frumkin_a * th
+        )
+        dcs_dth = c_s * (1.0 / (th * (1.0 - th)) - 2.0 * self.frumkin_a)
+        return dgam_dth / dcs_dth if dcs_dth != 0 else float("inf")
 
     def surface_tension(self, gamma_s):
         import numpy as np
 
         g = np.minimum(np.asarray(gamma_s, dtype=float), self.gamma_inf * (1.0 - 1e-12))
-        return self.gamma0 + (
-            self.n_factor * R_GAS * self.temperature_K * self.gamma_inf * 1e3 * np.log1p(-g / self.gamma_inf)
-        )
+        th = np.maximum(g / self.gamma_inf, 1e-12)
+        rt = self.n_factor * R_GAS * self.temperature_K * self.gamma_inf * 1e3
+        return self.gamma0 + rt * (np.log1p(-th) + self.frumkin_a * th * th)
 
 
 @dataclass
@@ -160,8 +183,8 @@ def run_oscillation(
     y0 = np.concatenate([[G_eq], np.full(n_int, c10), np.full(n_int, M0)])
 
     def subsurface(G):
-        """Inverse Langmuir: cs(Gamma), guarded away from full coverage."""
-        return G / (K * max(Ginf - G, 1e-12 * Ginf))
+        """Inverse isotherm: cs(Gamma), guarded away from full coverage."""
+        return p._cs_of_gamma(G)
 
     def rhs(t, y):
         G = y[iG]

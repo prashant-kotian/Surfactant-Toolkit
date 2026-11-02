@@ -266,3 +266,49 @@ The Scilab/Python parity result is unaffected and remains a genuine, citable val
 (two independent codes, ≤0.25%, both reproducing LVDT to 4–5 significant figures). It is worth
 keeping even if the τ₂ paper is abandoned — it is a sound methods-validation result in its own
 right, and `film.py`/`Π(h)` work (§3.3 of the original proposal) is unaffected by this finding.
+
+---
+
+# ADDENDUM 3 — my §6 verdict is withdrawn; your τ₂ values fixed it
+
+**Do not act on Addendum 2.** I used τ₂ values that were wrong by up to 800× (C₁₂E₈: I had
+1–10 ms; the literature says 4.0 s). With your corrected table:
+
+- C₁₂E₈ at **2×CMC**, ω ≥ 3 rad/s: **I₂ clears the noise floor** (0.077 and 0.151 mN/m vs 0.05)
+  and the lag is 79–88°. The method is not dead for C₁₂E₈.
+- At **10×CMC** (capacity 855) it still fails — I₂ ≤ 0.012 mN/m. So the measurement must be made
+  near the CMC, not far above it. That is a real, reportable constraint.
+
+## One problem your data also exposes, which we must fix before any fitting
+
+Your Fig. 7 extraction at 2×CMC gives I₂/I₁ = 0.3126 (0.01 Hz) and 0.4327 (0.1 Hz) at ~7 % area
+amplitude. **My model gives 0.034** — 10× too small. I checked amplitude (would need ε ≈ 0.6, not
+credible) and Frumkin interactions (implemented; no effect: 0.0338). The model reproduces their
+frequency *trend* (1.32 vs measured 1.38) but not the magnitude.
+
+Cause is almost certainly my **guessed LAE parameters** (K = 5 m³/mol, Γ∞ = 3.2e-6 → θ = 0.909,
+a saturated stiff monolayer).
+
+**Therefore, Option 2 must wait.** Fitting τ₂ to data the forward model cannot reproduce would
+produce a confident wrong number — the exact failure mode we have already hit twice.
+
+## What I need next, in order
+
+1. **Table 4 in machine-readable form** — (concentration, ε₀ [mN/m], ν_D [Hz]) for all five
+   concentrations, at both frequencies if they differ. A Lucassen–van den Tempel fit to those
+   gives E₀, D and the isotherm slope, i.e. the real K and Γ∞. I will do the fit; I just need the
+   numbers verbatim, not a summary.
+2. **Confirm the amplitude convention**: "less than 10 % of its volume" — is the plotted I₂/I₁
+   computed from Δσ/ΔA of the *fundamental* only, and is the y-axis a ratio of amplitudes or of
+   power? Their equation (2) suggests amplitudes; the Fig. 7 axis label would settle it.
+3. **Whether Fig. 7 has error bars** — if the points are single measurements, my recovery
+   uncertainty estimates must include their scatter.
+
+## On your three options
+
+- **Option 1 (real-capacity simulations):** partly done — see the table above; results are in
+  `FINDINGS.md` §7. Worth repeating only once LAE is properly parameterised.
+- **Option 2 (inverse fit on Fig. 7):** **hold** until the forward model reproduces 0.31/0.43.
+- **Option 3 (standby for the mining report):** moot — the report is written
+  (`research/laod_tau2/DATA_MINING_LIST.md`) and its priorities have changed: the LAE Table 4
+  values are now the single most valuable item.

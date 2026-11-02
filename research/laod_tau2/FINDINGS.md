@@ -229,3 +229,70 @@ written. That is a cheap, publishable-in-a-paragraph negative result, not a year
 1. CTAB at 2×CMC, τ₂ = 50 and 500 ms, ω = 0.3–6.28, ε = 0.20 → does I₂ clear 0.05 mN/m?
 2. If yes: ε = 0.30, 0.40 → margin grows or saturates?
 3. If no: stop, write the negative result.
+
+---
+
+# 7. §6 IS WITHDRAWN — I used the wrong τ₂ (2026-11-02, second correction)
+
+Antigravity supplied the literature τ₂ values. Mine were wrong by up to three orders of magnitude:
+
+| System | my τ₂ | literature τ₂ | error |
+|---|---|---|---|
+| C₁₂E₈ | 1–10 ms | **4.0 s** | ~800× too short |
+| SDS | 2–40 ms | 50–250 mM; **38 ms peak at 200 mM** | range wrong |
+| CTAB | 50–500 ms | **65 ms** (480 ms with NaBr) | range wrong |
+| Triton X-100 | — | 3.5 s | not in my table |
+| Brij 35 | — | 80 s | not in my table |
+
+My §6 verdict ("C₁₂E₈ fails, method dead") rested on τ₂ = 1–10 ms, which put ωτ₂ ≈ 0.06 —
+far outside the observable window. With τ₂ = 4.0 s, ωτ₂ = 25 and the picture changes:
+
+**C₁₂E₈ at 2×CMC, ε = 0.20 (corrected τ₂ = 4.0 s):**
+
+| ω (rad/s) | I₁ | I₂ | I₂/I₁ | lag (°) | I₂ above 0.05 noise |
+|---|---|---|---|---|---|
+| 0.30 | 0.090 | 0.0081 | 0.091 | 69.6 | no |
+| 1.00 | 0.266 | 0.0261 | 0.098 | 81.4 | no |
+| 3.00 | 0.785 | 0.0768 | 0.098 | 82.7 | **YES** |
+| 6.28 | 1.618 | 0.1515 | 0.094 | 78.7 | **YES** |
+
+So the §6 blanket claim is withdrawn. What survives of it, correctly stated:
+
+- **The capacity–signal trade-off is real.** At 10×CMC (capacity 855) I₂ falls to
+  0.0006–0.012 mN/m and does not clear the noise floor at any frequency. The measurement must be
+  made close to the CMC, not far above it — the opposite of what one assumes.
+- **The usable window is narrow but not empty:** ω ≥ 3 rad/s (≈ 0.5 Hz) at 2×CMC.
+- The phase lag at ω ≥ 3 is large (79–88°) and moves with τ₂, which is now the more promising
+  observable. Not yet quantified against noise at real capacity — that is the next run.
+
+**Lesson (twice now, in the same direction):** every negative verdict I have produced came from a
+guessed parameter, not from the model. Parameters must be sourced *before* a sensitivity study,
+never after.
+
+---
+
+# 8. A serious problem: the model cannot reproduce Czakaj's measured harmonic ratios
+
+Antigravity vector-digitised Czakaj's Fig. 7 (LAE, CC BY) at 2×CMC: **I₂/I₁ = 0.3126 at 0.01 Hz
+and 0.4327 at 0.1 Hz**, with drop volume oscillations < 10 % (area amplitude ε ≈ 0.07).
+
+My model at ε = 0.07, matched frequency: **I₂/I₁ = 0.034** — an order of magnitude *too small*.
+Checked and excluded as the cause:
+
+- **Amplitude:** their values would need ε ≈ 0.6 in my model (a 60 % area swing on a 10 µL drop is
+  not credible), so this is not an amplitude misunderstanding.
+- **Frumkin lateral interactions** (their Table 4 reports a ≈ 0.8): implementing the full Frumkin
+  isotherm moved I₂/I₁ from 0.0341 to **0.0338** — no effect. Excluded.
+- **Frequency dependence:** the model reproduces their *rise* with frequency (ratio 1.38 measured,
+  ~1.32 modelled), so the qualitative mechanism — a slow reservoir catching up as ω increases —
+  is right even though the magnitude is wrong.
+
+**Most likely cause: guessed parameters.** I fabricated K = 5 m³/mol and Γ∞ = 3.2×10⁻⁶ m²/mol⁻¹
+for LAE (giving θ = 0.909, a nearly saturated, stiff monolayer with little room to be nonlinear).
+The correct values are recoverable from **their own Table 4** (ε₀ = 30.1…12.6 mN/m, ν_D =
+0.0032…0.06 Hz): a Lucassen–van den Tempel fit to (ε₀, ν_D) at several concentrations gives E₀,
+D and the isotherm slope directly. **That is the next computation, and it needs only data already
+extracted.**
+
+Until the model reproduces 0.31 / 0.43 for LAE, **no τ₂ inversion on real data is meaningful** —
+which is precisely why Option 2 (inverse fitting on the Czakaj points) must not be run yet.
