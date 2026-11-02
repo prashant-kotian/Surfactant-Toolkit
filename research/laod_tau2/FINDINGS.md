@@ -910,3 +910,51 @@ measurement uncertainty* — which supports the same conclusion but is a weaker,
 - §4.5 adds the caveat that at ε = 0.20, δ is a projection of a nonlinear waveform, not a linear
   transfer-function phase — so it is an operational observable calibrated by the model, not a
   material property.
+
+# 16. §5–§6 inputs verified: ε² law holds, and an earlier caveat of mine was wrong
+
+## 16.1 I₂ ∝ ε² is confirmed over the working range (supplied input)
+
+Antigravity's justification for ε = 0.20 is a 9.5× amplification from ε = 0.065. Measured, at
+1.5 × CMC and ω = 6.28:
+
+| ε | I₂ | local slope d ln I₂/d ln ε | δ (°) |
+|---|---|---|---|
+| 0.03 | 0.00424 | — | 67.97 |
+| 0.065 | 0.01984 | 2.00 | 67.97 |
+| 0.10 | 0.04678 | 1.99 | 67.96 |
+| 0.20 | 0.18274 | 1.95 | 67.92 |
+| 0.30 | 0.39114 | 1.84 | 67.80 |
+
+Amplification ε 0.065 → 0.20: **9.21×** measured vs 9.5× predicted. The law holds to 1.95–2.00
+across the working range and saturates mildly to 1.84 at ε = 0.30. At ε = 0.065 the operating-point
+I₂ is 0.0198, i.e. **below** the 0.05 noise floor, so the small-amplitude protocol would fail
+detectability outright.
+
+## 16.2 CORRECTION: δ does not trade against strain amplitude
+
+I wrote in §4.5 that reducing ε to restore linear-theory validity would destroy the τ₂ sensitivity,
+"intrinsic rather than a defect". Wrong. δ is constant to **0.17°** across ε = 0.03–0.30. The
+nonlinearity that produces I₂ is not what produces the phase lag, so amplitude buys detectability at
+zero cost in invertibility. §4.5 in the manuscript is rewritten. This is a better result than the
+one I had claimed and I should have measured it before asserting the trade-off existed.
+
+## 16.3 δ > 45° is a reservoir screen, but it is NOT an invertibility test
+
+CTAB at 1 Hz sits at δ = 55.2° — above the diffusion ceiling, so a reservoir is detected — while its
+I₂ = 0.0057 is 8.8× below the noise floor, so τ₂ cannot be inverted from that measurement. The
+ceiling establishes *presence*, not *sufficiency*. §6.4 states this asymmetry explicitly because it
+is exactly the kind of half-true diagnostic that gets over-cited.
+
+## 16.4 The design rule is conservative by ~2× in frequency
+
+Eq. (13) with Ω ∈ [1, 30] puts CTAB's operable band at 2.4–73 Hz, i.e. a CPT at 10 Hz should work.
+The direct scan does not clear the noise floor until ~16 Hz (Ω = 6.5). The rule is therefore
+conservative by roughly a factor of two. I have quoted both rather than tuning Ω until they agreed.
+
+## 16.5 The LVDT ceiling check on Czakaj's own fit
+
+Computing δ from Czakaj's Table 4 (E₀, ν_D) pairs at 0.01/0.1/1 Hz gives 6.4–32.4° across all
+concentrations — every value below the 45° ceiling, as it must be, since the LVDT form is
+diffusion-only by construction. This confirms the ceiling is a property of the model class and not of
+my implementation.

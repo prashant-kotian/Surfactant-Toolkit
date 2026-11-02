@@ -202,10 +202,18 @@ carries substantial power above the second harmonic. Two consequences:
    regime, which is the point — but it also means the analysis cannot be validated against linear
    LVDT theory beyond the C_m = 0 limit of §2.6, where we obtained 0.48° agreement.
 
-An experimenter wishing to use δ as a *material* quantity should reduce ε until the harmonics are
-negligible, at which point the τ₂ sensitivity vanishes along with the nonlinearity. The method
-therefore buys its sensitivity by operating where linear theory does not apply, and this tension is
-intrinsic rather than a defect of the present implementation.
+An experimenter wishing to use δ as a *material* quantity would reduce ε until the harmonics are
+negligible. We tested what that costs and did not find a penalty in δ: over ε = 0.03–0.30 the loss
+angle is constant to 0.17° (67.97° at ε = 0.03, 67.92° at ε = 0.20). The reason is that in this
+system the nonlinearity is small in the fundamental (I₂/I₁ ≈ 0.07) and the C_m ≠ 0 response is
+already far from linear theory at *every* ε we can measure; the curved isotherm trajectory that
+produces I₂ is not what produces the phase lag.
+
+The trade-off that does bind is therefore **not** δ versus linearity, and we correct an earlier
+draft that claimed it was. The binding constraint is signal-to-noise on I₂ for the *detectability*
+criterion: I₂ scales as ε² while δ does not depend on ε, so ε is set by how far I₂ must be lifted
+above the noise floor, and δ is then estimated from a waveform that happens to be nonlinear. This is
+a more favourable situation than we first supposed, and §5 quantifies it.
 
 ### 4.6 Summary of the two criteria
 
