@@ -958,3 +958,59 @@ Computing δ from Czakaj's Table 4 (E₀, ν_D) pairs at 0.01/0.1/1 Hz gives 6.4
 concentrations — every value below the 45° ceiling, as it must be, since the LVDT form is
 diffusion-only by construction. This confirms the ceiling is a property of the model class and not of
 my implementation.
+
+# 17. §7: the degeneracy has a mechanistic explanation, and accuracy is systematic
+
+## 17.1 Why corr(τ₂, C_m) = 0.997 — the two lever arms are equal and opposite
+
+Measured at 1.5 × CMC, ω = 6.28:
+
+    ∂δ/∂ln C_m  = +14.06° per e-fold
+    ∂δ/∂ln τ₂   = −13.29° per e-fold
+
+A larger reservoir raises δ; a faster reservoir lowers it, with almost identical magnitude. The
+correlation of 0.997 (recovery_uncertainty.json) is therefore not a numerical accident but the
+direct consequence of two near-cancelling derivative columns. This is the clearest statement of why
+the single-concentration two-parameter problem cannot be solved by better measurement: the
+information is not in the observable.
+
+## 17.2 Accuracy is set by n̄, one-for-one, and dominates by 44×
+
+Because Protocol A takes C_m from n̄ and δ responds to C_m at 14.06°/e-fold:
+
+| n̄ error | δ bias | τ₂ bias |
+|---|---|---|
+| 5% | 0.69° | 5.2% |
+| 10% | 1.34° | 10.1% |
+| 20% | 2.56° | 19.3% |
+
+A 10% n̄ error gives a 10.1% **systematic** τ₂ bias, **44× the 0.23% statistical relSE**. This
+replaces the earlier "τ₂ to 0.2%" headline with "0.2% statistical, 1:1 systematic in n̄". I regard
+this as the most important caveat in the paper and it was missing until §7 was drafted.
+
+## 17.3 Self-correction: the supplied Bond-number argument is wrong
+
+Antigravity supplied Bo < 0.15 for 1.0–1.5 mm OD tips, γ = 30–72 mN/m. Computing
+Bo = ΔρgR²/γ with R = tip radius:
+
+| OD (mm) | Bo at γ = 30 | at 45 | at 72 |
+|---|---|---|---|
+| 1.0 | 0.082 | 0.054 | 0.034 |
+| 1.2 | 0.118 | 0.078 | 0.049 |
+| 1.5 | **0.184** | 0.123 | 0.077 |
+
+**Bo = 0.184 at the stated worst corner**, so the claim fails at OD 1.5 mm and γ = 30; Bo = 0.15
+corresponds to OD ≈ 1.35 mm. More fundamentally, the Bond number is a *static* gravity-versus-
+capillarity ratio and does not govern oscillatory detachability, which depends on contact-line
+pinning and dynamic contact angle. I have removed the Bond-number argument from §5.7 and cite the
+empirical large-amplitude stability work (Loglio 2001, Kotsmar 2012) for the result instead.
+
+## 17.4 Provenance audit
+
+- **Commit `85e1218` in Surfactant-Toolkit does not exist.** GitHub API: "No commit found for SHA".
+  No such object on any local ref. The manuscript is at `a92c123`, `a88bd29`, `34aedd3`.
+- `f73fa80` in surfactant-dynamics-sim resolves and contains the synthesis .docx/.pdf.
+- The synthesis doc is **consistent** with the corrected §4 and §7 (ε² slopes, Protocol B
+  non-monotonicity). Two items in it still need fixing: the Bond-number sentence (§17.3) and the
+  CTAB/SDS "2.4 to 73 Hz" head-frequency, which is the design-rule estimate while the measured
+  noise-floor crossing is ≈ 16 Hz.
