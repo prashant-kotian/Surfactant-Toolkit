@@ -299,7 +299,12 @@ which is precisely why Option 2 (inverse fitting on the Czakaj points) must not 
 
 ---
 
-# 9. The LAE peak at the CMC rules out micellar buffering — and with it the paper's premise
+# 9. [WITHDRAWN — see §10] The LAE peak at the CMC: a conclusion I over-generalised
+
+> **This section's headline claim is withdrawn.** LAE is a multicomponent, hydrolysing system
+> (Czakaj et al.'s own title), so failing to fit it says nothing definitive about pure systems.
+> The *observations* in 9.1/9.2 stand as facts about LAE; the *conclusion* does not. §10 has the
+> corrected analysis.
 
 Antigravity supplied Table 4 and the amplitude convention. Two checks, both easy, and together
 they decide the question. This is the most important entry in this file.
@@ -360,3 +365,82 @@ mechanism. Any τ₂ extracted would be an artefact.
 **Verified in scratch, worth repeating:** both attacks on LAE fail — the ratio is undefined for a
 vanishing fundamental near the CMC (a second harmonic appears without a prior fundamental, which
 itself indicates a discontinuity, i.e. reorganisation rather than smooth desorption).
+
+---
+
+# 10. §9 IS WITHDRAWN, AGAIN — and this time the method survives, with a quantified window
+
+Antigravity's rebuttal was right on the substantive point: **LAE is an inherently multicomponent
+system** (their own title), hydrolysing to LAS/dodecanoate, forming heterodimers. Testing a
+single-component micellar model against it is a category error, and my §9 conclusion ("the τ₂
+premise is falsified at the mechanism level") over-generalised from that one system to all systems.
+Withdrawn.
+
+But two of the claims built on it were assertions I had not tested. I tested them.
+
+## 10.1 Detectable is not invertible — and I had only shown the first
+
+I₂ clearing a noise floor does not mean it responds to τ₂. Both must hold **at the same frequency**.
+At C₁₂E₈, 2×CMC, capacity 95, ε = 0.20, noise 0.05 mN/m and 2° phase:
+
+| ω | ωτ₂ | I₂ | detect I₂? | Δlag per 2× τ₂ | sensitive? |
+|---|---|---|---|---|---|
+| 0.10 | 0.2–0.4 | 0.003 | no | 5.2–8.3° | yes (but unmeasurable) |
+| 0.50 | 1–2 | 0.010 | no | 5.6–8.9° | yes (but unmeasurable) |
+| 1.00 | 2–4 | 0.019 | no | 2.1–5.5° | yes (but unmeasurable) |
+| 3.00 | 6–12 | 0.055 | yes | 0.2–2.8° | marginal |
+| **6.28** | **12–25** | **0.113–0.152** | **yes** | **3.3–7.0°** | **yes** |
+
+There is a genuine sweet spot at ω ≈ 6.28 rad/s, and it exists because the lag leverage peaks at
+ωτ₂ ≈ 1 while the amplitude keeps growing with ω. **I₂/I₁ is nearly useless** (moves 0.004 on
+doubling τ₂) — the phase lag is the operative observable, as suspected, but only at the top of the
+instrument window. My §7 statement that the lag was "not yet quantified against noise" is now
+resolved in the method's favour.
+
+## 10.2 The concentration window is narrower than claimed, and lopsided
+
+Sweeping concentration at ω = 6.28, τ₂ = 4 s:
+
+| c/CMC | capacity | I₂ | lag | Δlag (4→8 s) | usable? |
+|---|---|---|---|---|---|
+| 1.0 | 0 | 0.129 | 32.4° | **0.00** | detect yes, **no sensitivity** |
+| 1.2 | 19 | 0.052 | 50.4° | 7.5° | yes |
+| 1.5 | 48 | 0.183 | 67.9° | 10.2° | yes (best) |
+| 2.0 | 95 | 0.152 | 78.7° | 7.0° | yes |
+| 3.0 | 190 | 0.080 | 84.3° | 3.4° | yes |
+| 5.0 | 380 | 0.035 | 86.8° | 1.4° | **no** (below noise) |
+| 10.0 | 855 | 0.012 | 88.0° | 0.3° | no |
+
+**The window is ~1.2–3× CMC, centred near 1.5×, and it shuts abruptly between 3× and 5×.** Note the
+shape is *not* monotone: I₂ is largest at 1.5×, not at the lowest capacity, because at exactly 1×
+the monolayer is compressed enough that the reservoir is empty and the lag is nearly τ₂-independent.
+Antigravity's "1.5–3×" is a good first guess; the measurement says 1.2–3× with an optimum at 1.5×,
+and gives the reason it fails on both sides.
+
+## 10.3 What survives, and what the paper actually is
+
+**Survives:** a validated forward model; a two-code parity result; a quantified operational window in
+both frequency and concentration; and a computed sensitivity of the phase lag to τ₂ for a real
+nonionic system.
+
+**Does not survive:** any claim that LAOD harmonics are a general τ₂ probe. The operable window is
+narrow, and the observable is the phase lag rather than the harmonic ratio.
+
+**Still untested, and the biggest remaining objection:** with an optimized design (ω = 6.28,
+c = 1.5×CMC, ε = 0.20, the lag as observable), how precise is a recovered τ₂? That is a single
+least-squares run and it decides whether the paper's headline is "τ₂ to ±30%" or "τ₂ only to a
+factor of two". It must be run before the manuscript's abstract is written — everything else is
+now in place for it.
+
+**Also unresolved:** whether the 1.2–3× window is generic or specific to C₁₂E₈'s τ₂/capacity
+combination. It should be repeatable in one session for SDS and CTAB once their isotherms exist.
+
+## 10.4 On LAE, one correction to the rebuttal
+
+The "Czakaj criterion" as phrased ("I₂/I₁ > 0.2 near the CMC implies compositional reorganisation")
+is supported by the evidence only weakly, because **the model cannot produce I₂/I₁ > 0.11 for any
+coverage, single- or multi-component, at ε = 0.07**. So the model's ceiling does most of the work in
+that argument, and a robust criterion needs an independent handle — e.g. the *frequency* signature
+(a compositional process has no reason to sit at ωτ₂ ≈ 1) or the *strain-amplitude* signature
+(dimer expulsion should saturate differently from desorption). Recorded as a caveat so the paper
+does not lean on a number the model itself produced.
