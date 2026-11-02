@@ -75,10 +75,11 @@ We therefore separate two criteria and insist on both:
 - **Detectability.** The second-harmonic amplitude I₂ exceeds the instrumental noise floor. This is
   necessary but weak — it says the nonlinearity exists, not that it encodes τ₂.
 - **Invertibility.** The observable *changes* with τ₂ by an amount large compared with its
-  uncertainty. A detectable nonlinearity that is insensitive to τ₂ is useless for inversion, and
-  the harmonic-ratio observable turns out to be almost exactly that: across a factor of two in τ₂
-  at fixed concentration and frequency, I₂/I₁ moves by roughly 0.004, which is an order of
-  magnitude below the noise.
+  uncertainty. A detectable nonlinearity whose sensitivity to τ₂ falls below its own uncertainty is
+  useless for inversion, and the harmonic ratio is very nearly that: across a doubling of τ₂ at
+  fixed concentration and frequency, I₂/I₁ moves by 0.007–0.019 against a noise floor of 0.025–0.05
+  on the ratio itself. The signal is real but not resolvable — a weaker and more defensible claim
+  than calling it blind.
 
 The observable that does carry τ₂ is not the amplitude ratio but the **phase lag**. This is
 counter-intuitive — phase is usually regarded as the noisier measurement — and it is the pivot on
@@ -122,7 +123,9 @@ because the two modes are reported in the same methods sections.
    two-compartment boundary-layer formulation in which the bulk reservoir never loses what the
    surface gains.
 2. The **detectable-versus-invertible** distinction (§1.3), together with the demonstration that
-   the harmonic ratio is effectively τ₂-blind and the phase lag carries the information.
+   the harmonic ratio's sensitivity to τ₂ sits below its own noise while the phase lag carries the
+   information, and that in the LAOD regime the phase is dominated by higher harmonics rather than
+   by the fundamental.
 3. A measured **concentration inversion window** for C₁₂E₈, 1.2–3.0 × CMC with an interior optimum
    at 1.5 × CMC, and a demonstration that the optimum is invariant under a fourfold change in the
    assumed limiting elasticity E₀ — i.e. that the window is a property of the transport problem and
@@ -151,7 +154,7 @@ complexity rather than as a falsification of the micellar mechanism.
 
 ---
 
-## §2. Model Formulation
+## §2. Coupled Reaction–Diffusion Model with Langmuir Interfacial Kinetics
 
 ### 2.1 Geometry, state variables, and what is conserved
 
@@ -292,24 +295,24 @@ defines the harmonics I_k = √(a_k² + b_k²). We report:
 
       φ = phase(A) − phase(γ),   positive when γ peaks *after* A.   (12)
 
-**Sign convention (open item).** In the linear limit, a diffusion-controlled soluble monolayer
-must give φ → 0 as ω → ∞ (insoluble limit: the surface excess cannot follow the area, so γ responds
-elastically and in phase) and φ → 90° as ω → 0 (fully relaxed, dissipative response). The model
-reproduces both trends, returning 8.4° at ω = 60 rad/s and 41° at ω = 0.031 rad/s in the
-no-micelle limit. Note that this convention places both limits in (0°, 90°) and never permits a lag
-above 90°.
+**Sign convention (resolved).** We define the **loss angle** δ as the lag of γ behind A, positive
+when γ peaks after A. In the linear limit a diffusion-controlled soluble monolayer must give δ → 0
+as ω → ∞ (insoluble limit: the surface excess cannot follow the area, so γ responds elastically and
+in phase) and δ → 45° as ω → 0. Under the tabulated LVDT modulus
+ε(ω) = ε₀(1+ξ+iξ)/(1+2ξ+2ξ²) with ξ = √(ν_D/2ν), the loss angle is δ = arctan[ξ/(1+ξ)], which is
+bounded by 45° as ξ → ∞. The model's harmonic definition reproduces this expression identically.
 
-The LVDT complex modulus as usually tabulated, ε(ω) = ε₀(1+ξ+iξ)/(1+2ξ+2ξ²) with ξ = √(ν_D/2ν),
-is expressed as a complex amplitude whose argument is not the lag under our convention: we obtain
-−arg ε ≈ +32° where the model gives +18.8° for nominally the same physical situation, and the sign
-of the discrepancy is convention, not physics. Sign-level agreement must therefore be pinned to the
-instrument's own reference channel before any overlay of model and literature is attempted. We flag
-this as an open item rather than resolving it by assertion.
+We verified the correspondence rather than assuming it. With C_m = 0 and ν_D computed
+self-consistently from the isotherm, ν_D = D(∂c_s/∂Γ)²/2π = 0.500 Hz for C₁₂E₈ at 0.5 × CMC, model
+and LVDT agree to **0.48° at worst over 0.002–20 Hz** (e.g. 18.78° vs 18.43° at 1 Hz). An earlier
+apparent 32°-vs-18.8° discrepancy was an artefact of comparing against a ν_D imported from an
+unrelated system; it is not a convention conflict, and no offset correction is applied anywhere in
+this paper.
 
-A useful diagnostic follows from the LVDT form itself: |arg ε| is **bounded** by arctan(1/√2) ≈
-35.3° for every (E₀, ν_D, ν) — we verified a maximum of 32.4° over a wide parameter grid. A measured
-phase lag far outside that range is therefore a categorical signature that the response is not
-diffusion-controlled, which is the role the lag plays in §4.
+**This 45° ceiling is the central diagnostic of the paper.** As §4 shows, a solution containing
+micelles routinely produces δ **above** 45° — up to 80° for C₁₂E₈ — which is impossible for any
+diffusion-only monolayer at any frequency. The excess above 45° is therefore a *categorical*
+signature of a micellar reservoir, and its magnitude is what carries τ₂.
 
 ### 2.7 Numerical method and what has been verified
 

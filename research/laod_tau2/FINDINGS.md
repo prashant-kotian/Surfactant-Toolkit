@@ -839,3 +839,74 @@ It was an unimplemented diagnostic. Now implemented as the relative drift of
 **Lesson worth carrying into the manuscript:** the flat-γ symptom had two candidate explanations
 and I picked the more flattering one (a fundamental solver limitation) over the mundane one (a sign
 error). A response of *exactly* zero should always be treated as a bug until proven otherwise.
+
+# 15. The loss angle: 45° ceiling verified, and the reservoir raises it (sign corrected)
+
+Drafting §3–§4 required pinning the phase observable. Two of my own earlier statements were wrong,
+and one of the agreed narrative was wrong; all three are corrected here.
+
+## 15.1 The "sign convention conflict" was my artefact — there is no conflict
+
+I previously reported model 18.8° vs LVDT 32° and read it as a convention mismatch. The cause was
+that I fed LVDT a ν_D = 0.0032 Hz borrowed from the LAE dataset while modelling a *different*
+system. Computing ν_D self-consistently as ν_D = D(∂c_s/∂Γ)²/2π gives **0.500 Hz** for C₁₂E₈ at
+0.5 × CMC, and then:
+
+| f (Hz) | model δ | LVDT arctan[ξ/(1+ξ)] |
+|---|---|---|
+| 0.002 | 42.56 | 42.55 |
+| 0.05 | 34.68 | 34.64 |
+| 1.0 | 18.78 | 18.43 |
+| 20.0 | 6.16 | 5.74 |
+
+**Maximum disagreement 0.48° over 0.002–20 Hz.** The conventions agree to within the model's own
+resolution. No offset correction is applied anywhere.
+
+## 15.2 The ceiling is 45°, not 35°
+
+I wrote arctan(1/√2) ≈ 35.3° in the §2 draft. Wrong. δ = arctan[ξ/(1+ξ)] → **45°** as ξ → ∞, and
+→ 0 as ξ → 0. The derived bound I quoted was the maximum of a different functional form. Since the
+45° ceiling is the paper's central categorical diagnostic (§4.1), this mattered.
+
+## 15.3 The reservoir RAISES the loss angle — the intuitive story has the wrong sign
+
+The agreed working narrative was that micellar exchange damps δ toward the elastic limit (32.4° →
+18.8°), and that this depression is the primary signature. Direct computation at 1.5 × CMC:
+
+| f (Hz) | δ (C_m = 0) | δ (C_m = 47.5) | shift |
+|---|---|---|---|
+| 0.01 | 44.28 | 51.81 | +7.5 |
+| 0.05 | 43.40 | 69.62 | +26.2 |
+| 0.20 | 41.83 | 79.98 | **+38.2** |
+| 1.00 | 37.91 | 67.91 | +30.0 |
+
+The reservoir **increases** δ, pushing it far above the 45° diffusion-only ceiling. That is the
+correct signature, and it is a stronger claim than the one it replaces: δ > 45° is impossible for
+any diffusion-only monolayer at any frequency, whereas a "depressed" δ is merely a different value.
+
+Physical reading: the micelles are a **lagging source term**, not an elastic element. They deliver
+surfactant late in the cycle when the subsurface is depleted, putting γ further behind the drive.
+Modelling the reservoir as added elasticity gets the sign of the effect wrong.
+
+## 15.4 The peak is at ωτ₂ ≈ 3, not 1
+
+The shift is non-monotone in both frequency and τ₂ (at ω = 6.28: +14.4° at τ₂ = 0.05 s, +38.8° at
+0.5 s, +8.7° at 20 s), peaking at intermediate ωτ₂ of order a few. I record this as an observation,
+not a derived result — I did not solve for the optimum. It matters operationally: sensitivity has a
+maximum in τ₂ as well as in concentration.
+
+## 15.5 I₂/I₁ is not "blind", just unresolvable
+
+I claimed the ratio moves ~0.004 per doubling. It moves **0.007–0.019** (0.0882 → 0.0315 over a 16×
+τ₂ range). Against a noise floor of 0.025–0.05 on the ratio, the τ₂-induced change is *below the
+measurement uncertainty* — which supports the same conclusion but is a weaker, defensible claim.
+"Sensitivity below its own noise" is the correct phrasing; "blind" was not.
+
+## 15.6 Consequences for the manuscript
+
+- §2 retitled to "Coupled Reaction–Diffusion Model with Langmuir Interfacial Kinetics".
+- §2.6 now derives the 45° ceiling and reports the 0.48° verification.
+- §4 reverses the sign of the reservoir effect relative to the agreed outline.
+- §4.5 adds the caveat that at ε = 0.20, δ is a projection of a nonlinear waveform, not a linear
+  transfer-function phase — so it is an operational observable calibrated by the model, not a
+  material property.
