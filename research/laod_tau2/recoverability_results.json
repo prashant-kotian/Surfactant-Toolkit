@@ -1,0 +1,50 @@
+{
+  "eps=0.10 (1 Hz instrument, safe amplitude)|0.01": {
+    "tau2": 0.00010000000004568605,
+    "capacity": 4.999999998034094,
+    "tau2_rel_se": 1362.5866992634137,
+    "capacity_rel_se": 33.88159430067772,
+    "corr_tau2_capacity": -0.773683936298994,
+    "cost": 366.6461927743631
+  },
+  "eps=0.10 (1 Hz instrument, safe amplitude)|0.1": {
+    "tau2": 0.009364239080182014,
+    "capacity": 4.999999999989985,
+    "tau2_rel_se": 20.65502685799219,
+    "capacity_rel_se": 35.88354933534873,
+    "corr_tau2_capacity": -0.8942091930203053,
+    "cost": 365.77269042934034
+  },
+  "eps=0.10 (1 Hz instrument, safe amplitude)|1.0": {
+    "tau2": 0.00540288093696643,
+    "capacity": 4.999643641132646,
+    "tau2_rel_se": 30.480524799026675,
+    "capacity_rel_se": 34.43920426210575,
+    "corr_tau2_capacity": -0.8537739103818669,
+    "cost": 360.1294811723075
+  },
+  "eps=0.30 (low-frequency instrument, deep strain)|0.01": {
+    "tau2": 0.009999891982488499,
+    "capacity": 0.1999998855215299,
+    "tau2_rel_se": 15.281084325823207,
+    "capacity_rel_se": 7.728983034229469,
+    "corr_tau2_capacity": -0.6733504820420588,
+    "cost": 30.2658110725386
+  },
+  "eps=0.30 (low-frequency instrument, deep strain)|0.1": {
+    "tau2": 0.0001494999999999986,
+    "capacity": 0.3989772958205565,
+    "tau2_rel_se": 26.61384387781263,
+    "capacity_rel_se": 4.733561294227557,
+    "corr_tau2_capacity": -0.07513484868298305,
+    "cost": 30.87111595382555
+  },
+  "eps=0.30 (low-frequency instrument, deep strain)|1.0": {
+    "tau2": 0.009999997058708802,
+    "capacity": 0.19999999973397026,
+    "tau2_rel_se": 16.91855982147575,
+    "capacity_rel_se": 8.553770485387064,
+    "corr_tau2_capacity": -0.7208779170033001,
+    "cost": 32.64034419150408
+  }
+}
