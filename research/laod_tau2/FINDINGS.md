@@ -1144,3 +1144,79 @@ depends on the capacity model.**
 
 This must go into the manuscript. It is the one place where an external reviewer found a load-bearing
 claim resting on an unvalidated auxiliary model.
+
+# 19. Optimisation pass: a scaling collapse I had wrongly ruled out, and 3x free precision
+
+## 19.1 CORRECTION: delta DOES collapse on omega*tau2 — my §13.4 was testing the wrong observable
+
+In §13.4 I compared I1 at matched Ω across C₁₂E₈ and CTAB, found a 2.4x discrepancy, and concluded
+"no single-group collapse; every parameter set needs its own run". **That was wrong**, and the error
+was the choice of observable: I1 ≈ ε·E0 is dominated by the equation of state, so of course it
+differs between systems with different E0. The kinetic observable is δ.
+
+δ at matched Ω, capacity = 47.5, ε = 0.20, three E0 anchors spanning 25–103.5 mN/m:
+
+| Ω | E0=25 | E0=45.3 | E0=103.5 | spread |
+|---|---|---|---|---|
+| 0.5 | 57.41 | 57.61 | 57.82 | **0.41°** |
+| 1 | 65.90 | 66.25 | 66.60 | **0.70°** |
+| 2 | 73.64 | 74.29 | 74.95 | **1.31°** |
+| 4 | 76.94 | 78.19 | 79.48 | **2.54°** |
+| 8 | 74.57 | 76.96 | 79.47 | 4.90° |
+| 16 | 65.69 | 69.83 | 74.46 | 8.77° |
+| 32 | 50.75 | 56.38 | 63.30 | 12.55° |
+
+**δ is almost independent of E0 for Ω ≲ 8** (spread < 3° across a 4x range in E0), and the
+dependence only opens up above Ω ≈ 16. So there IS a collapse, in the operative observable, over
+precisely the range where the method is used.
+
+This changes the paper: the design rule in eq. (13) can be presented as a **collapse-supported
+dimensionless design chart** rather than a heuristic fitted to three systems. It is still
+capacity-dependent (that is the second axis), but the E0 axis largely drops out.
+
+## 19.2 The operating frequency is not optimal: 1.6 Hz beats 1 Hz by 2.5x
+
+The paper uses ω = 6.28 (1.00 Hz) because that is the assumed top of the PAT band. The lever arm
+peaks higher:
+
+| f (Hz) | lag (°) | slope (deg/e-fold) | frames/cycle at 25 fps |
+|---|---|---|---|
+| 0.50 | 76.85 | 6.45 | 50 |
+| 1.00 | 67.89 | 13.27 | 25 |
+| **1.59** | 58.52 | **15.43** | 15.7 |
+| 2.50 | 48.54 | 13.46 | 10.0 |
+| 3.98 | 39.50 | 9.07 | 6.3 |
+
+The optimum is near **1.6 Hz**, where the lever arm is 16% larger than at 1 Hz — and critically, the
+lag at 1.6 Hz is 58.5°, still above the 45° ceiling, so the diagnostic survives. Frames/cycle at
+25 fps is 15.7, well above the ≥5 requirement.
+
+## 19.3 Free precision: the analysis only ever used 4 cycles
+
+`run_oscillation` returns **only the last 4 cycles** of a 26-cycle run. Every uncertainty figure in
+this work was therefore computed from 4 cycles, and "retain ≥12 cycles" in the protocol was never
+actually honoured by the analysis.
+
+Phase noise falls as 1/√N as expected:
+
+| cycles fitted | SD of lag |
+|---|---|
+| 4 | 0.0460° |
+| 8 | 0.0311° |
+| 12 | 0.0260° |
+
+**Combined optimisation** (12 cycles + ω = 10.0 rad/s):
+
+| configuration | relSE |
+|---|---|
+| paper (4 cycles, ω = 6.28) | 0.327% empirical |
+| 12 cycles, ω = 6.28 | 0.176% |
+| **12 cycles, ω = 10.0** | **0.106%** |
+
+A 3.1x improvement in precision at zero experimental cost — it is entirely an analysis choice.
+
+## 19.4 What optimisation cannot fix
+
+The 31x systematic dominance of n̄ remains untouched by any of this: improving the statistical error
+by 3x makes the systematic problem *relatively worse* (n̄ dominance rises from 31x to ~95x). The
+precision gain is real but it is not the binding constraint.
