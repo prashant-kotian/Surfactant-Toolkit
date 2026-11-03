@@ -1,0 +1,901 @@
+{
+  "strain": 0.2,
+  "noise": 0.05,
+  "i2_min": 0.05,
+  "dlag_min": 3.0,
+  "frames_min": 5.0,
+  "isotherm_artefact_check": {
+    "CTAB": {
+      "rows": [
+        {
+          "E0": 20.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5576416777498384,
+          "I2": 0.0022288704817461525,
+          "dlag_per_doubling": 7.94291159458561,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5576416777498384,
+          "I2": 0.00344031479540012,
+          "dlag_per_doubling": 13.307441902988899,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.4983759419513616,
+          "I2": 0.0025909079036431863,
+          "dlag_per_doubling": 7.9323286302637825,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.4983759419513616,
+          "I2": 0.003998925599300184,
+          "dlag_per_doubling": 13.281398593310087,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.42718591573225884,
+          "I2": 0.002999217343464918,
+          "dlag_per_doubling": 7.920625076457043,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.42718591573225884,
+          "I2": 0.004628761056223823,
+          "dlag_per_doubling": 13.251981046257981,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.3579098406578123,
+          "I2": 0.003361283611912975,
+          "dlag_per_doubling": 7.910323918171912,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 20.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.3579098406578123,
+          "I2": 0.005186982422279795,
+          "dlag_per_doubling": 13.22576087464347,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.6117655985026371,
+          "I2": 0.0026801450376604365,
+          "dlag_per_doubling": 7.944944721159288,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.6117655985026371,
+          "I2": 0.004135573150864808,
+          "dlag_per_doubling": 13.313501988668179,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5427274187161231,
+          "I2": 0.0030333307398405416,
+          "dlag_per_doubling": 7.9362896566620975,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5427274187161231,
+          "I2": 0.004680260156244699,
+          "dlag_per_doubling": 13.292926334239667,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.46020042011793605,
+          "I2": 0.0034046242630487262,
+          "dlag_per_doubling": 7.927237624830639,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.46020042011793605,
+          "I2": 0.005252685232445,
+          "dlag_per_doubling": 13.271167374453967,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.38146437995073307,
+          "I2": 0.0037176061288186017,
+          "dlag_per_doubling": 7.919587215710294,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 25.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.38146437995073307,
+          "I2": 0.005734980937186004,
+          "dlag_per_doubling": 13.252665039959652,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.6540889006474596,
+          "I2": 0.0030615836498642892,
+          "dlag_per_doubling": 7.947400225766671,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.6540889006474596,
+          "I2": 0.004722917815065604,
+          "dlag_per_doubling": 13.320766998474141,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5784556114783124,
+          "I2": 0.0033938716107295257,
+          "dlag_per_doubling": 7.940255901307637,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5784556114783124,
+          "I2": 0.005235181133577943,
+          "dlag_per_doubling": 13.304413862025854,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.4878277799310808,
+          "I2": 0.0037271363865949707,
+          "dlag_per_doubling": 7.9330060996640555,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.4878277799310808,
+          "I2": 0.0057487913947555916,
+          "dlag_per_doubling": 13.287836670421541,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.40195647306072096,
+          "I2": 0.003999572843645179,
+          "dlag_per_doubling": 7.926994538291922,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.40195647306072096,
+          "I2": 0.006168446372793718,
+          "dlag_per_doubling": 13.27410580700132,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.6880915438455752,
+          "I2": 0.0033861238301315325,
+          "dlag_per_doubling": 7.949923285118075,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.6880915438455752,
+          "I2": 0.005222425641151563,
+          "dlag_per_doubling": 13.328204876497125,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.6081546167885232,
+          "I2": 0.0036934231378372897,
+          "dlag_per_doubling": 7.943938443776005,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.6081546167885232,
+          "I2": 0.005696015921272098,
+          "dlag_per_doubling": 13.315055072609482,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5116954118200873,
+          "I2": 0.003991710447944824,
+          "dlag_per_doubling": 7.937951588007991,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5116954118200873,
+          "I2": 0.006155609240194141,
+          "dlag_per_doubling": 13.302073956295942,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.42028228786665006,
+          "I2": 0.004230732011831019,
+          "dlag_per_doubling": 7.933016418742909,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 35.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.42028228786665006,
+          "I2": 0.006523725981693938,
+          "dlag_per_doubling": 13.291482127198265,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.7160076488906035,
+          "I2": 0.003664591793356898,
+          "dlag_per_doubling": 7.952362237262037,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.7160076488906035,
+          "I2": 0.005650852476242119,
+          "dlag_per_doubling": 13.335383042601848,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.6334036111013799,
+          "I2": 0.003946478361645914,
+          "dlag_per_doubling": 7.947269405889472,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.6334036111013799,
+          "I2": 0.006085198446484841,
+          "dlag_per_doubling": 13.324662378868197,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5327497652174175,
+          "I2": 0.004213785406116515,
+          "dlag_per_doubling": 7.942194792468058,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5327497652174175,
+          "I2": 0.006496976426229666,
+          "dlag_per_doubling": 13.31425158802358,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.43695608896796834,
+          "I2": 0.004425079258801828,
+          "dlag_per_doubling": 7.938002853571959,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 40.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.43695608896796834,
+          "I2": 0.006822342614268783,
+          "dlag_per_doubling": 13.305827443870555,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        }
+      ],
+      "n_feasible": 40,
+      "best_I2": 0.006822342614268783,
+      "best_case": {
+        "E0": 40.0,
+        "a": 1.0,
+        "omega": 6.28,
+        "feasible": true,
+        "theta": 0.43695608896796834,
+        "I2": 0.006822342614268783,
+        "dlag_per_doubling": 13.305827443870555,
+        "frames_per_cycle": 25.01268036297606,
+        "usable": false
+      },
+      "any_usable": false
+    },
+    "SDS": {
+      "rows": [
+        {
+          "E0": 15.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.43686099284318236,
+          "I2": 0.00022868253321002576,
+          "dlag_per_doubling": 4.837822672917582,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.43686099284318236,
+          "I2": 0.000335690703708063,
+          "dlag_per_doubling": 9.018530372656187,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.40108646280278903,
+          "I2": 0.0002804547565229768,
+          "dlag_per_doubling": 4.835350712417949,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.40108646280278903,
+          "I2": 0.0004116393113595901,
+          "dlag_per_doubling": 9.013873646456943,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.35721322620843327,
+          "I2": 0.00035119296593924787,
+          "dlag_per_doubling": 4.832548298028428,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.35721322620843327,
+          "I2": 0.0005154019483508925,
+          "dlag_per_doubling": 9.008210575733074,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.3106830345745636,
+          "I2": 0.0004259251531109598,
+          "dlag_per_doubling": 4.82994903663996,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 15.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.3106830345745636,
+          "I2": 0.0006250140042390757,
+          "dlag_per_doubling": 9.002662198351004,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5322254678882303,
+          "I2": 0.0003393530655020845,
+          "dlag_per_doubling": 4.837787126756325,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5322254678882303,
+          "I2": 0.000498109384364193,
+          "dlag_per_doubling": 9.018425216180447,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.4778551625219594,
+          "I2": 0.0003995047352400033,
+          "dlag_per_doubling": 4.835485481163175,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.4778551625219594,
+          "I2": 0.0005863263167909371,
+          "dlag_per_doubling": 9.014319784071404,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.4122591996018177,
+          "I2": 0.00046992472727753207,
+          "dlag_per_doubling": 4.833094251076602,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.4122591996018177,
+          "I2": 0.0006895898644586695,
+          "dlag_per_doubling": 9.009865116371031,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.34756242918056884,
+          "I2": 0.0005342443774046608,
+          "dlag_per_doubling": 4.8310616426212505,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 22.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.34756242918056884,
+          "I2": 0.0007838925940162536,
+          "dlag_per_doubling": 9.005975254061696,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.608076905169157,
+          "I2": 0.0004428970624155454,
+          "dlag_per_doubling": 4.8379659730615,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.608076905169157,
+          "I2": 0.000650049201640574,
+          "dlag_per_doubling": 9.018980216048192,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.35,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.5396648138153738,
+          "I2": 0.0005023686365534071,
+          "dlag_per_doubling": 4.83592802572997,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.35,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.5396648138153738,
+          "I2": 0.0007372458701440192,
+          "dlag_per_doubling": 9.015536956825372,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.7,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.45787975657066304,
+          "I2": 0.0005652064714114066,
+          "dlag_per_doubling": 4.833855843527203,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 0.7,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.45787975657066304,
+          "I2": 0.0008293577141061954,
+          "dlag_per_doubling": 9.011995250695634,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 1.0,
+          "omega": 3.14,
+          "feasible": true,
+          "theta": 0.3797765772240997,
+          "I2": 0.0006183774395941713,
+          "dlag_per_doubling": 4.8321357291712275,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "E0": 30.0,
+          "a": 1.0,
+          "omega": 6.28,
+          "feasible": true,
+          "theta": 0.3797765772240997,
+          "I2": 0.0009072810201277174,
+          "dlag_per_doubling": 9.00902407802107,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        }
+      ],
+      "n_feasible": 24,
+      "best_I2": 0.0009072810201277174,
+      "best_case": {
+        "E0": 30.0,
+        "a": 1.0,
+        "omega": 6.28,
+        "feasible": true,
+        "theta": 0.3797765772240997,
+        "I2": 0.0009072810201277174,
+        "dlag_per_doubling": 9.00902407802107,
+        "frames_per_cycle": 25.01268036297606,
+        "usable": false
+      },
+      "any_usable": false
+    }
+  },
+  "tau2_horizon": {
+    "3.14": {
+      "rows": [
+        {
+          "tau2": 0.01,
+          "I2": 0.019895383799704718,
+          "dlag_per_doubling": 1.267683516987688,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 0.02,
+          "I2": 0.01996008371658899,
+          "dlag_per_doubling": 2.520131137665544,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 0.05,
+          "I2": 0.020386120288502382,
+          "dlag_per_doubling": 6.063941433152252,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 0.1,
+          "I2": 0.021728805426897445,
+          "dlag_per_doubling": 10.77644283392641,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 0.2,
+          "I2": 0.02556588466975309,
+          "dlag_per_doubling": 15.391336378815254,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 0.5,
+          "I2": 0.036787465000023764,
+          "dlag_per_doubling": 13.486171609259202,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 1.0,
+          "I2": 0.04974427396017278,
+          "dlag_per_doubling": 5.582274383183517,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": false
+        },
+        {
+          "tau2": 2.0,
+          "I2": 0.06437945129884665,
+          "dlag_per_doubling": 3.4822889751084745,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": true
+        },
+        {
+          "tau2": 4.0,
+          "I2": 0.07520635761155312,
+          "dlag_per_doubling": 12.01495478477716,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": true
+        },
+        {
+          "tau2": 8.0,
+          "I2": 0.07627627522967845,
+          "dlag_per_doubling": 18.333788379362147,
+          "frames_per_cycle": 50.02536072595212,
+          "usable": true
+        }
+      ],
+      "tau2_min_usable": 2.0
+    },
+    "6.28": {
+      "rows": [
+        {
+          "tau2": 0.01,
+          "I2": 0.02671094730794385,
+          "dlag_per_doubling": 2.4786138973454968,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "tau2": 0.02,
+          "I2": 0.02702884729520005,
+          "dlag_per_doubling": 4.844332073319947,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "tau2": 0.05,
+          "I2": 0.02905035184599392,
+          "dlag_per_doubling": 10.558685438750501,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "tau2": 0.1,
+          "I2": 0.03417300509102964,
+          "dlag_per_doubling": 14.964749331251596,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "tau2": 0.2,
+          "I2": 0.04436707749193036,
+          "dlag_per_doubling": 14.313050427459018,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": false
+        },
+        {
+          "tau2": 0.5,
+          "I2": 0.06382570762685083,
+          "dlag_per_doubling": 4.260461159013005,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": true
+        },
+        {
+          "tau2": 1.0,
+          "I2": 0.07714476273991035,
+          "dlag_per_doubling": 5.196271499966315,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": true
+        },
+        {
+          "tau2": 2.0,
+          "I2": 0.08059018244225101,
+          "dlag_per_doubling": 13.740364584317376,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": true
+        },
+        {
+          "tau2": 4.0,
+          "I2": 0.0785616152185389,
+          "dlag_per_doubling": 19.268054304529585,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": true
+        },
+        {
+          "tau2": 8.0,
+          "I2": 0.09289365947789373,
+          "dlag_per_doubling": 18.5578657555875,
+          "frames_per_cycle": 25.01268036297606,
+          "usable": true
+        }
+      ],
+      "tau2_min_usable": 0.5
+    }
+  }
+}
