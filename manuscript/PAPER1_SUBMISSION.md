@@ -2,13 +2,11 @@
 
 **Paper 1 of 2 — the C₁₂E₈ foundation paper**
 
-*Unified manuscript draft, assembled from `manuscript/PAPER1_*.md` at commit `dd48f4c` plus the
-citations resolved in round 5. Body text is reproduced verbatim from the section drafts; no number
-has been retyped. Editorial notes are confined to the Appendix and are not part of the paper.*
+*Manuscript for submission.*
 
 ---
 
-## Scope statement for co-authors
+## Scope
 
 This paper is restricted to the nonionic surfactant C₁₂E₈ on a profile-analysis tensiometer
 (PAT-1M, 0.005–1.0 Hz) with a Langmuir surface equation of state (a = 0). Every quantitative claim
@@ -909,13 +907,11 @@ anchors and for CTAB as well as C₁₂E₈. **The correlation between τ₂ and
 0.1, does not decrease monotonically with the number of concentrations, and in one of three anchors
 gets worse when a second concentration is added** (0.60 → 0.40, with a sign change).
 
-*Why we report this rather than presenting the protocol as a recipe:* an earlier version of our own
-analysis found a clean monotone improvement from one to four concentrations at a single isotherm
-anchor (−0.61 → −0.37 → −0.24) and we nearly published it as a property of the method. Re-running at
-other anchors showed it was an artefact of that anchor. A protocol whose conditioning is
-misreported is worse than no protocol, and the correct statement is that **multi-concentration data
-partially breaks the degeneracy, by an amount that depends on where the concentrations sit relative
-to the window edges and cannot be predicted from the number of points alone.**
+The correlation is also anchor-dependent rather than a fixed property of the protocol: the same
+concentration series gave a clean monotone improvement (−0.61 → −0.37 → −0.24) at one isotherm
+anchor and a non-monotone sequence at another. We therefore state the result as **multi-concentration
+data partially breaks the degeneracy, by an amount that depends on where the concentrations sit
+relative to the window edges and which cannot be predicted from the number of points alone.**
 
 *Practical guidance:* four to five points spanning 1.2–2.5 × CMC is a reasonable design, but a
 two-point fit should be regarded as under-determined and should not be reported as a joint
@@ -1038,95 +1034,3 @@ these are flagged rather than silently corrected.
 
 
 ---
-
-# Appendix (editorial — not part of the manuscript)
-
-This appendix replaces the per-section "items needing your decision" blocks that accompanied the
-drafts. Nothing here belongs in the typeset paper; it is the resolved record so that the typeset
-pass can be checked against it.
-
-## A.1 Number provenance
-
-Every quantitative claim in §3–§7 traces to a committed artifact:
-
-| claim | source |
-|---|---|
-| window 1.2–3.0× CMC, optimum 1.5× | `e0_sensitivity.json` |
-| E₀ invariance over 25–103.5 mN/m | `e0_sensitivity.json` |
-| δ vs frequency, Cₘ on/off (§4.2) | computed in FINDINGS §15.3 |
-| 45° ceiling, 0.48° LVDT agreement | FINDINGS §15.1–15.2 |
-| I₂/I₁ 0.007–0.019 per doubling | computed from K = 140 sweep |
-| ≥ 5 frames/cycle | FINDINGS §11 |
-| ε² law, 9.21× amplification | FINDINGS §16.1 |
-| 0.23% relSE, MC scatter 0.033° | `recovery_uncertainty.json` |
-| corr = 0.997, 2-parameter relSE 3.0% | `recovery_uncertainty.json` |
-| Protocol B non-monotonicity | `protocol_b_anchored.json` |
-| ∂δ/∂ln Cₘ and ∂δ/∂ln τ₂ | FINDINGS §17.1 |
-| n̄ propagation table | FINDINGS §17.2 |
-| CTAB/SDS bands, 16 Hz crossing | `ionic_generality.json` + manual extension |
-| Bond number refutation | FINDINGS §17.3 |
-
-## A.2 Corrections made to supplied material
-
-1. **Loss-angle sign.** The supplied narrative had the reservoir *depressing* δ (32.4° → 18.8°) and
-   called that depression the signature. Computation gives the opposite: the reservoir *raises* δ to
-   68–80°, above the 45° diffusion ceiling. The structure was kept; the sign was reversed. Endorsed.
-2. **LVDT "convention conflict."** Not a conflict. With ν_D computed self-consistently the agreement
-   is 0.48°. The earlier 18.8°-vs-32° gap was our own parameter borrowing.
-3. **45° vs 35°.** The ceiling is 45°, not arctan(1/√2) ≈ 35.3°.
-4. **"I₂/I₁ is blind"** → "unresolvable": it moves 0.007–0.019 against a 0.025–0.05 noise floor.
-5. **"Two concentrations suffice"** — retracted; the correlation is not monotone in the number of
-   concentrations.
-6. **"Large amplitude trades linearity against τ₂ sensitivity"** — false; δ is constant to 0.17°
-   over ε = 0.03–0.30.
-7. **Bond number** — removed; Bo = 0.184 at the stated worst corner (OD 1.5 mm, γ = 30 mN/m), and
-   Bo does not govern oscillatory detachment.
-8. **Frumkin "numerical stiffness at a ≥ 4"** — false; it was a wrong-sign residual in the
-   isotherm solver. Fixed.
-
-## A.3 Multiplicity note (statistical)
-
-The manuscript reports several derived figures from a family of model sweeps. Two deserve explicit
-labelling because they were selected *after* inspection rather than pre-registered:
-
-- **ωτ₂ ≈ 3 sensitivity maximum (§4.2, §6.1).** Located by scanning, not derived. No scaling
-  collapse exists; at matched ωτ₂, CTAB and C₁₂E₈ differ in amplitude by 2.4×. Presented as an
-  observation.
-- **The 13.3° per e-fold lever arm at ω = 6.28 (§5.6, §7.2).** This is the largest of four
-  frequencies scanned (5.99, 8.89, 11.16, 13.26 at ω = 3/4/5/6.28). Operating at the top of the
-  instrument band because the lever arm is largest there is legitimate, but the reported precision
-  is the best of the four, not a typical value. Report as "0.23% at ω = 6.28 rad/s" rather than
-  "0.23%" without the qualifier.
-
-## A.4 Provenance audit (final)
-
-Verified via the GitHub API on 2025-11-03 against the user's stated commits:
-
-| commit | repo | status |
-|---|---|---|
-| `f73fa80` | surfactant-dynamics-sim | **resolves** |
-| `e9da2d0` | surfactant-dynamics-sim | **resolves** |
-| `caa1f57` | Surfactant-Toolkit (public) | **does not exist** |
-| `85e1218` | Surfactant-Toolkit (public) | **does not exist** |
-| `27691b1` | Surfactant-Toolkit `main` | **is** the frozen public tip, as stated |
-
-Both `85e1218` and `caa1f57` were described as internal-mirror commits. Neither is a public artifact,
-so neither should be cited in the manuscript or in any preprint announcement. The manuscript text
-lives on `arena/fa2f9ecf-surfactant-toolkit` at `a92c123`, `a88bd29`, `34aedd3`, `dd48f4c`.
-
-**I cannot verify the current `.docx`/`.pdf`.** I have no access to the internal SurfactantKit
-mirror. The synthesis documents I *can* see (`f73fa80`) were consistent with the corrected §4/§7 and
-carried the two errors since fixed (Bond number; the "2.4 to 73 Hz" head frequency). If `e9da2d0`
-applied those fixes, good; if `caa1f57` is where the fixes actually live, then the public-facing
-record still needs them.
-
-## A.5 What is not verified
-
-- **Refs 4, 5, 7** (Stadler 2016, Risse 2025, Kotsmar 2012) are cited from supplied descriptions.
-  We have not read them. They are cited only for the specific property named in the reference list.
-- **The 25–50 fps acquisition rate** is a manufacturer sensor specification, not a figure from
-  Miller et al. 2004. The text attributes it correctly; the reference is cited for instrumentation
-  principles only.
-- **No formatting spec exists in this repository.** `MANUSCRIPT_FORMATTING_SPEC.md` is not present
-  on any branch of `Surfactant-Toolkit`, so this draft is plain Markdown with no journal-specific
-  typesetting applied. The typesetting pass must supply the spec.
