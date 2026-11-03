@@ -24,8 +24,17 @@ Two corrections that the crude closure ignores, both applied here:
 2. **The CMC edge.** The closure gives C_m = n_bar*(m-1) with m = c_tot/CMC,
    which is LINEAR in (c_tot-CMC). The exact derivative goes to zero at the CMC
    (both phi and dc_mic/dc1 do). The closure therefore *overestimates* C_m just
-   above the CMC and is only reliable for c_tot >~ 1.5x CMC. Every result in
-   this study is run at c_tot >= 2x CMC for that reason.
+   above the CMC and is only reliable for c_tot >~ 1.5x CMC.
+
+   CORRECTION 2026-11-03: this note used to claim "every result in this study is
+   run at c_tot >= 2x CMC". That is false. The concentration-window studies
+   (study_e0_sensitivity.py, study_ionic_generality.py) run at 1.0-10x CMC and
+   report an optimum at 1.5x, inside the zone this note calls unreliable. An
+   external review caught the contradiction. A capacity-perturbation sweep
+   (FINDINGS 18.8) shows the *window* survives a x0.5-2.0 capacity error but the
+   *optimum location* moves from 1.5x to 1.2x if capacity is overstated by 50%.
+   The closure overstates in the direction that favours 1.5x, so the operating
+   point is defensible but not proven.
 
 Ionic note: for SDS and CTAB the micelle is charged and the monomer is
 partly counterion-condensed, so the effective C_m derived from n_bar is an
@@ -76,13 +85,26 @@ class SurfactantSystem:
         notes.append(f"volume correction {100 * (1 / (1 - phi) - 1):.4f}%")
         return "; ".join(notes)
 
-    def to_model(self, c_total_mM: float, c_m_tau: float = 1.0):
-        """ModelParams for the LAOD forward model (SI units)."""
+    def to_model(self, c_total_mM: float, c_m_tau: float = 1.0, K: float | None = None):
+        """ModelParams for the LAOD forward model (SI units).
+
+        K must be supplied. An earlier version passed K=None with a comment saying it
+        would be "set below" -- it never was, and the returned object raised
+        TypeError on first use (theta0 divides by K). An external review flagged this
+        as a runtime trap; it is now a hard error with an actionable message.
+        """
         from .model import ModelParams
 
+        if K is None:
+            raise ValueError(
+                f"{self.name}: the adsorption constant K must be supplied. "
+                f"Anchor it to a measured E0 (see study_ionic_generality.K_from_theta) "
+                f"rather than guessing: an unanchored K lands the monolayer in the "
+                f"saturated regime (FINDINGS 12)."
+            )
         return ModelParams(
             c0=c_total_mM,                 # mol/m^3 == mM
-            K=None,                        # set below from the isotherm
+            K=K,                           # must be anchored to a measured E0
             gamma_inf=self.gamma_inf,
             D=self.D,
             capacity=self.capacity(c_total_mM),

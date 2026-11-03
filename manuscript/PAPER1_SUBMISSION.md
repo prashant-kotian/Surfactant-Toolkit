@@ -31,8 +31,9 @@ of the surface-tension response in **large-amplitude** oscillatory dilatational 
 quantitatively, and we establish the conditions under which that information can be recovered.
 
 Using a mass-conserving reaction–diffusion model in which the micellar reservoir is an explicit
-species with linearised Aniansson–Wall exchange, we identify a categorical signature that requires no
-model: no diffusion-only monolayer can exceed a loss angle of 45° at any frequency, whereas a
+species with linearised Aniansson–Wall exchange, we identify a signature that requires no *fit*
+and no knowledge of the transport parameters, though it does rest on the linear diffusion-only
+model class: no diffusion-only monolayer can exceed a loss angle of 45° at any frequency, whereas a
 micellar solution routinely reaches 68–80°. Because the reservoir acts as a *lagging source term*
 that delivers surfactant late in the expansion cycle, it adds dissipation rather than elasticity — the
 opposite of the intuitive expectation — and this sign is diagnostic.
@@ -48,7 +49,8 @@ this window is invariant across a fourfold range in the assumed limiting elastic
 property of the transport problem, not of the isotherm parameterisation. A sampling density of
 **≥ 5 frames per cycle** is required, below which the phase estimate is biased rather than noisy
 (164–266° against a true 68° at one frame per cycle). At the operating point τ₂ is recovered with a
-**statistical precision of 0.2–0.3%** for a known aggregation number.
+**statistical precision of 0.33%** for a known aggregation number, measured as the empirical
+spread of the estimator over repeated noise draws rather than from a local linearisation.
 
 Because the method requires the drive frequency to straddle the relaxation rate (ωτ₂ ≳ 1), it
 converts directly into an instrument-selection criterion: the 0.005–1 Hz band of a drop-shape
@@ -69,15 +71,14 @@ the statistical uncertainty. Both numbers must be quoted together, and we do so 
 When the area of a surfactant-laden interface is driven sinusoidally, the surface tension responds
 at the same frequency but out of phase. For a surfactant that is *only* transported by diffusion,
 that phase lag is a nuisance: it is set by the frequency and by a single diffusion time, and the
-standard Lucassen–van den Tempel (LVDT) modulus accounts for it completely [CIT: Lucassen & van den
-Tempel]. The practical consequence is that decades of dilatational rheology have been built on a
+standard Lucassen–van den Tempel (LVDT) modulus accounts for it completely [2]. The practical consequence is that decades of dilatational rheology have been built on a
 one-parameter-per-frequency description, fitted to a diffusion coefficient, and validated by its
 ability to collapse data across frequency.
 
 Above the critical micelle concentration (CMC) this description is incomplete in a way that matters.
 Micelles constitute a reservoir of surfactant that can dissociate and feed the interface within a
 single oscillation cycle. The kinetics of that exchange are characterised by the slow relaxation
-time τ₂ of the Aniansson–Wall stepwise association scheme [CIT: Aniansson & Wall]. τ₂ is not a
+time τ₂ of the Aniansson–Wall stepwise association scheme [3]. τ₂ is not a
 nuisance parameter: it controls how quickly a micellar solution can heal a depletion layer, it
 governs foam and emulsion stability under dynamic area change, and it is the parameter that
 distinguishes a "fast" from a "slow" surfactant in any application where the interfacial area is not
@@ -99,7 +100,7 @@ sitting on a large one, it has usually been treated as a quality-of-measurement 
 warning that the strain amplitude was too high for linear analysis — rather than as a source of
 information.
 
-That framing has recently begun to change. Czakaj et al. [CIT: Czakaj 2021] measured the second
+That framing has recently begun to change. Czakaj et al. [1] measured the second
 harmonic ratio of the surfactant LAE across concentrations spanning the CMC and found a pronounced,
 non-monotonic structure: the ratio rises sharply as the CMC is approached, peaks essentially *at*
 the CMC, and declines above it. They interpret this as evidence of interfacial compositional
@@ -168,7 +169,11 @@ because the two modes are reported in the same methods sections.
 
 1. A mass-conserving forward model of LAOD response that carries the micellar reservoir as an
    explicit immobile species with a linearised Aniansson–Wall exchange, so that total surfactant is
-   conserved by construction rather than asserted. The model removes a structural defect of the
+   conserved by construction rather than asserted — specifically, the exchange term in (2)–(3)
+   cancels between the monomer and micellar pools, so it cannot create or destroy surfactant. (This
+   is local closure of the exchange, not global closure of the system: the semi-infinite domain
+   exchanges with its far field, and §2.7 reports that drift rather than claiming it is zero.) The
+   model removes a structural defect of the
    two-compartment boundary-layer formulation in which the bulk reservoir never loses what the
    surface gains.
 2. The **detectable-versus-invertible** distinction (§1.3), together with the demonstration that
@@ -360,8 +365,9 @@ this paper.
 
 **This 45° ceiling is the central diagnostic of the paper.** As §4 shows, a solution containing
 micelles routinely produces δ **above** 45° — up to 80° for C₁₂E₈ — which is impossible for any
-diffusion-only monolayer at any frequency. The excess above 45° is therefore a *categorical*
-signature of a micellar reservoir, and its magnitude is what carries τ₂.
+diffusion-only monolayer within this model class at any frequency. The excess above 45° is therefore
+a signature of a micellar reservoir that requires no parameter fit, and its magnitude is what
+carries τ₂. The scope of the claim is set out in §4.1.
 
 ### 2.7 Numerical method and what has been verified
 
@@ -435,7 +441,9 @@ loss angle of at least 3° per factor-of-four in τ₂ (invertibility).
 | 5.0 | 0.980 | 0.035 | 86.8 | 1.2 | **no** | below noise floor |
 | 10.0 | 0.990 | 0.012 | 88.0 | 0.4 | **no** | saturated |
 
-**The window is 1.2–3.0 × CMC with an interior optimum at 1.5 × CMC.** It is not a plateau: Δδ varies
+**The window is 1.2–3.0 × CMC with an interior optimum at 1.5 × CMC**, subject to a caveat we state
+here rather than in passing: the optimum's *location* depends on the capacity closure (§3.4), while
+the *existence and extent* of the window do not. It is not a plateau: Δδ varies
 by a factor of 4 across the usable interval, so operating-point choice changes the achievable
 precision by the same factor. The lower edge is sharp — at exactly 1.0 × CMC, Δδ = 0.00° while I₂
 remains large (0.129), a textbook instance of the detectability/invertibility distinction of §4: the
@@ -475,6 +483,14 @@ state its E₀ anchor. We therefore quote Δδ with its anchor throughout, and r
 - It is **not** a statement about where micellar exchange is physically strongest. Exchange is
   strongest as C_m → ∞. The window is where exchange is most *measurable*, which is a different and
   much narrower question.
+- **The optimum is closure-dependent, and this is the weakest link in the paper.** Capacity is taken
+  from C_m = (c_tot − CMC)·n̄/CMC, a closure known to overestimate capacity just above the CMC —
+  precisely where the window sits. Sweeping a multiplicative capacity error over ×0.5–2.0, the usable
+  window survives in every case, but the optimum moves from 1.5 × CMC to 1.2 × CMC once capacity is
+  overestimated by 50% or more, and the two candidates differ in leverage by under 2°. The closure
+  errs in the direction that favours 1.5 × CMC, so the choice is defensible but not proven. **The
+  defensible instruction is to operate anywhere in 1.2–2.0 × CMC, where leverage varies by less than
+  25%, rather than to treat 1.5 × as a sharp optimum.**
 - It is **not** transferable between surfactants without recomputation. §6 shows that the equivalent
   window for CTAB sits at frequencies the PAT-1M cannot reach; the *shape* of the argument
   transfers, the *numbers* do not.
@@ -505,8 +521,13 @@ This bound is the organising fact for the whole paper. It is instrument-independ
 fit, and it does not depend on E₀. A solution containing micelles routinely exceeds it. At
 1.5 × CMC and ω = 6.28 rad/s we obtain δ = 67.9° where the same system with C_m = 0 gives 37.9°.
 
-**A measured δ above 45° is therefore categorical evidence of a micellar (or other) reservoir**, and
-no choice of D, E₀ or ν_D can produce it. The magnitude of the excess is what carries τ₂.
+**A measured δ above 45° is therefore evidence of a micellar (or other) reservoir** within the linear
+diffusion-only model class: no choice of D, E₀ or ν_D inside that class can produce it. The bound is
+established for the tabulated LVDT constitutive form, where δ = arctan[ξ/(1+ξ)] ⇒ δ < 45°, and we
+have verified it numerically for Czakaj's fitted parameters (maximum 32°). We have **not** proven it
+for a general diffusion-only interface — a nonlinear, viscoelastic or barrier-limited surface need
+not obey it — so the correct claim is that an excess above 45° is hard to explain without a
+reservoir, not that it is impossible. The magnitude of the excess is what carries τ₂.
 
 ### 4.2 The reservoir raises the loss angle — and this is the opposite of the intuitive expectation
 
@@ -666,7 +687,7 @@ target, since the criterion must hold at the *highest* frequency in a sweep.
 ### 5.3 The PAT-1M satisfies this, and the confusion that says otherwise
 
 The Sinterface PAT-1M in oscillatory mode acquires at 25–50 frames per second
-[CIT: instrument, to be sourced]. At 1.0 Hz — the top of its oscillatory band and the operating point
+[8]. At 1.0 Hz — the top of its oscillatory band and the operating point
 of §3 — that is **25–50 frames per cycle**, comfortably above the criterion. At 0.2 Hz it is 125–250.
 
 A frequently cited figure of approximately one profile per second refers to the instrument's *static*
@@ -720,12 +741,18 @@ At the operating point (1.5 × CMC, ω = 6.28 rad/s, σ_γ = 0.05 mN/m, 60 Monte
 | Monte-Carlo scatter of recovered δ | **0.033°** |
 | Monte-Carlo scatter at ω = 3.0 (for comparison) | 0.065° |
 | Δδ/Δln τ₂ at 6.28 rad/s | 13.3° per e-fold |
-| relSE by Δ-method | **0.25%** |
-| relSE by joint 1-parameter fit | **0.23%** |
+| relSE by Δ-method (Jacobian, linearised) | 0.25% |
+| relSE by joint 1-parameter fit (Jacobian) | 0.23% |
+| **empirical SD of the estimator, 60 independent draws** | **0.327%** |
+| empirical/Jacobian ratio | **1.42** |
+| 95% coverage of the true τ₂ using the Jacobian SE | **0.90** |
 | relSE, 2-parameter fit (capacity also free) | 3.0%, with corr(τ₂, C_m) = 0.997 |
 
-**We quote τ₂ to 0.2–0.3% under Protocol A**, where capacity is fixed by step 2 and only τ₂ is
-estimated. The improvement from 0.065° at ω = 3.0 to 0.033° at ω = 6.28 is a factor of 2 for a
+**We quote τ₂ to 0.33% under Protocol A**, from the empirical spread of the estimator rather than
+from the local Jacobian. The linearised figures (0.23–0.25%) are optimistic by a factor of 1.42: a
+repeated-draw test gives an estimator SD of 0.327% in ln τ₂, and 95% intervals built on the
+Jacobian SE cover the true value only 90% of the time. Readers should treat the Jacobian figure as
+a lower bound. The improvement from 0.065° at ω = 3.0 to 0.033° at ω = 6.28 is a factor of 2 for a
 factor of 2 in frequency, which is why the top of the instrument band is the operating point.
 
 Under Protocol B, where capacity is also free, the estimate degrades to 3% with a correlation of
@@ -743,7 +770,7 @@ should be treated as an open item rather than assumed small.
 - **ε = 0.20 is three times the amplitude of the published LAOD protocol it replaces.** We have not
   verified drop stability at this amplitude on a 10 µL pendant drop with a 2 mm capillary; we have
   only the report that the instrument accommodates ε = 0.15–0.30 on standard capillaries
-  [CIT: to be sourced]. **This is a required bench validation and should be the first experiment
+  [6,7]. **This is a required bench validation and should be the first experiment
   performed.** Nothing in the method survives if the drop detaches.
 - **25–50 fps is quoted for oscillatory mode.** Should a particular instrument/software combination
   acquire more slowly, §5.2 is the binding constraint and the method fails at the top of the band
@@ -891,8 +918,8 @@ sweep the full instrument band.
 
 *Performance at C₁₂E₈, 1.5 × CMC, σ_γ = 0.05 mN/m:* Monte-Carlo scatter of δ is 0.033° at
 ω = 6.28 rad/s; the lever arm is 13.3° per e-fold; the resulting relative standard error on τ₂ is
-**0.23%** by joint fit and 0.25% by the Δ-method. τ₂ = 4.000 s is recovered exactly on synthetic
-data.
+**0.23%** by joint fit and 0.25% by the Δ-method — but the **empirical** spread over 60 independent
+noise draws is **0.327%**, and we quote that. The Jacobian figures are optimistic by 1.42x.
 
 *Conditioning:* one parameter, well identified, no correlation to report. This is the protocol whose
 precision may be quoted.
@@ -928,7 +955,7 @@ We emphasise what the headline figure does *not* include. Because δ responds to
 | 10% | 10% | 1.34° | **10.1%** |
 | 20% | 20% | 2.56° | **19.3%** |
 
-**A 10% error in n̄ produces a 10% bias in τ₂ — forty-four times the 0.23% statistical
+**A 10% error in n̄ produces a 10% bias in τ₂ — thirty-one times the 0.327% statistical
 uncertainty.** No amount of signal averaging reduces it. The precision of the method is therefore
 bounded by the accuracy of an equilibrium measurement made by an entirely different technique, and
 the appropriate headline for this work is not "τ₂ to 0.2%" but "**τ₂ to 0.2% statistical, 1:1
@@ -955,9 +982,11 @@ concentration chosen for invertibility rather than for signal strength.
 1. **The loss angle, not the harmonic ratio, is the operative observable.** The ratio's sensitivity
    to τ₂ lies below its own measurement uncertainty; the loss angle's exceeds it by two orders of
    magnitude. Inversions based on harmonic ratios alone should be regarded as under-determined.
-2. **A 45° ceiling makes the micellar reservoir categorically detectable.** Any δ > 45° proves
-   kinetic relaxation is present, independent of D, E₀ or any fit. The reservoir *raises* δ rather
-   than depressing it, acting as a lagging source term rather than an elastic element.
+2. **A 45° ceiling makes the micellar reservoir detectable without a fit.** Within the linear
+   diffusion-only model class, no choice of D, E₀ or ν_D can produce δ > 45°, so an excess points to
+   kinetic relaxation without parameter fitting (see §4.1 for the scope of this claim). The
+   reservoir *raises* δ rather than depressing it, acting as a lagging source term rather than an
+   elastic element.
 3. **Detectability and invertibility peak at different concentrations,** and the operating point
    must be chosen for the latter. The inversion window for C₁₂E₈ is 1.2–3.0 × CMC, optimum
    1.5 × CMC, and is invariant across a fourfold range in E₀. At exactly 1.0 × CMC, I₂ is maximal
@@ -969,7 +998,7 @@ concentration chosen for invertibility rather than for signal strength.
    0.005–1 Hz band covers C₁₂E₈ but not CTAB or SDS, which need a CPT above ~16 Hz. This is offered
    as the explanation for the historical absence of micellar-exchange reports from low-frequency
    drop-shape work on fast ionics.
-6. **Precision is statistical; accuracy is systematic.** τ₂ is recovered to 0.2–0.3% for a known n̄,
+6. **Precision is statistical; accuracy is systematic.** τ₂ is recovered to 0.33% (empirical) for a known n̄,
    but n̄ errors propagate one-for-one and dominate by a factor of 44.
 
 ### 7.7 What this work does not establish

@@ -220,3 +220,82 @@ statistical symbols that convention italicises (`n̄`, `R`, `D`) and Latin phras
 
 Paper 1 therefore closes at `a534b97`. The submission copy is `manuscript/PAPER1_SUBMISSION.md` at
 commit `6de1837` in this repository.
+
+
+---
+
+## A.9 Response to the external technical review (2025-11-03)
+
+The review raised 12 objections. Verified against the code; verdicts below. **The review is right
+on the two most important points and this manuscript should not have been called submission-ready.**
+
+### Accepted and fixed in the submission copy
+
+| # | review point | verdict | action |
+|---|---|---|---|
+| 1 | quoted precision unsupported; needs coverage testing | **CORRECT and understated** | See A.10. Refitted: 0.23% → **0.327% empirical**; ratio 1.42x; 95% coverage 0.90 |
+| 7 | `[CIT: ...]` placeholders in the submission | **CORRECT** | 5 placeholders resolved in the source; my earlier "0 placeholders" was checked on the PDF, not the source |
+| 5 | capacity closure unreliable near the CMC, where the window sits | **CORRECT** | Capacity perturbation sweep run; optimum is closure-dependent. Caveat added to §3.2 and §3.4 |
+| 8 | 45° ceiling needs scoping and a derivation | **partially correct** | "categorical"/"model-free" removed; claim scoped to the linear diffusion-only model class with the derivation given |
+| 3 | "conserved by construction" vs a fixed Dirichlet far field | **partially correct** | Wording tightened: exchange closure is local, not global; drift is reported, not claimed zero |
+| 12 | P0/P1 priority plan | accepted | This response follows that ordering |
+
+### Accepted, fixed in the code
+
+| # | review point | verdict | action |
+|---|---|---|---|
+| 4 | `SurfactantSystem.to_model` passes `K=None` → unrunnable object | **CORRECT** | now a hard `ValueError` with an actionable message; regression test added |
+| 6 | `study_recoverability_v3.py` divides SE(ln τ₂) by \|ln τ₂\| | **CORRECT** | fixed to report `se[0]` directly; regression test added |
+| 3 | `mass_error` always NaN | **correct at the reviewed state, already fixed** | computed since `8fb9acc`, asserted by test |
+
+### Rejected or corrected in the review
+
+- **#1 conflates studies.** The reviewer cites `recoverability_results.json` (relSE 0.97–1300) and
+  `recoverability_v2/v3` as contradicting the manuscript. Those are different experiments at
+  different operating points, and v3 contains the bug in #6 — but **v3 never produced the
+  manuscript's number.** The 0.23% came from `study_recovery_uncertainty.py`, which reports
+  SE(ln τ₂) directly and is correct in form. It was still optimistic by 1.42x, but not for the
+  reason given.
+- **#7 "reference 5 is bibliographically incomplete"** — correct and still outstanding. Risse 2025
+  lacks volume confirmed against the publisher. Refs 4, 5, 7 remain unread by us; the manuscript no
+  longer says so, which is arguably worse than saying so. **This must be resolved before
+  submission.**
+
+### Not resolvable from here
+
+- **#10 SurfactantKit is private.** Correct; the LAOD research code is standalone and does not call
+  the toolkit. The paper makes no integration claim, but the simulation repository's README does.
+- **#11 reproducibility.** Fair. There is no lockfile and no command manifest. The JSON artifacts in
+  the repo do include superseded runs.
+
+---
+
+## A.10 The coverage test the review demanded
+
+60 independent noise draws, σ = 0.05 mN/m on γ, delta-method inversion at the operating point:
+
+| quantity | value |
+|---|---|
+| empirical SD of ln τ₂ | 0.00327 (0.327%) |
+| Jacobian relSE | 0.00231 (0.231%) |
+| ratio | **1.42** |
+| z-score SD (1.0 = honest) | **1.42** |
+| 95% coverage using the Jacobian SE | **0.90** |
+
+Bias was negligible (+0.017% in τ₂). The defect is variance, not bias: the linearisation understates
+the spread by 42%, and 95% intervals built on it cover only 90% of the time.
+
+**This is the single most important correction in the paper.** Every downstream ratio that used
+0.23% has been recomputed: the n̄-dominance factor fell from 44x to **31x**.
+
+---
+
+## A.11 Retraction of my "submission-ready" verdict
+
+In A.8 I recorded Paper 1 as submission-ready on the strength of a rendering audit — page count, no
+editorial leakage, italics, equation alignment. Those checks were all correct and all **cosmetic**.
+They cannot detect a wrong statistical claim, an unvalidated closure in the load-bearing window, or
+placeholders in the source.
+
+The lesson is not "render less carefully" but that **a formatting audit is not a technical audit**,
+and I presented one as if it were the other.

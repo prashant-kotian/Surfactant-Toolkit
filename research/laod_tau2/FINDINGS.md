@@ -1014,3 +1014,133 @@ empirical large-amplitude stability work (Loglio 2001, Kotsmar 2012) for the res
   non-monotonicity). Two items in it still need fixing: the Bond-number sentence (§17.3) and the
   CTAB/SDS "2.4 to 73 Hz" head-frequency, which is the design-rule estimate while the measured
   noise-floor crossing is ≈ 16 Hz.
+
+# 18. External review (Paper 1): what it got right, what it got wrong, and the coverage test
+
+An independent technical review of Paper 1 arrived 2026-11-03. Every claim was checked against the
+code. Result: **the most important objection is correct and understated**, several others are
+already fixed, and one is about code that never produced a published number.
+
+## 18.1 CORRECT AND SERIOUS — the quoted precision is optimistic by ~1.4x
+
+Reviewer's objection (#1) is that the reported 0.23% is a Jacobian/linearisation figure that was not
+validated against the actual spread of the estimator. I ran the missing test
+(`coverage_test.json`, 60 independent noise draws, N(0, 0.05 mN/m) on gamma, inversion by the delta
+method at the operating point):
+
+| quantity | value |
+|---|---|
+| empirical SD of ln τ₂ | **0.00327** (0.327%) |
+| reported (Jacobian) relSE | 0.00231 (0.231%) |
+| ratio empirical/reported | **1.42** |
+| z-score sd using the reported SE | **1.42** (1.0 = honest) |
+| 95% coverage of the true τ₂ using the reported SE | **0.90** (0.95 = nominal) |
+
+So the honest precision at this operating point is **0.33%, not 0.23%**, and the quoted figure is
+too optimistic by 42%. The linearisation understates the spread; part of the discrepancy is that the
+Jacobian covariance was floored at the MC-measured lag noise rather than derived from the full
+residual structure.
+
+**This must change in the manuscript.** "0.2–0.3% statistical precision" survives as a range, but
+"0.23%" specifically should become "0.33%, empirical, N = 60" or be quoted as a 95% interval. The
+reviewer is right that a synthetic-data precision figure must be validated by coverage, not asserted
+from a local Jacobian.
+
+## 18.2 CORRECT — [CIT:] placeholders really are in the submission source
+
+I claimed 0 placeholders in §A.8. **That was wrong.** `PAPER1_SUBMISSION.md` contains 5 live
+`[CIT: ...]` tokens at lines 72, 80, 102, 669, 746. They do **not** appear in the rendered PDF
+because the build script substitutes them, so my earlier PDF-based check passed. The rendered
+substitutions are correct ([2], [3], [1], [8], [6,7]).
+
+But this is a fragile design: the *source* is not submission-ready and the substitution list lives
+only in the build script, outside version control of the manuscript. The placeholders must be
+resolved in the source.
+
+## 18.3 CORRECT but already fixed — mass_error and the K=None adapter
+
+The reviewer inspected the frozen public repo at a state where:
+- `mass_error` was hard-coded `float("nan")` (line 244) — **fixed in 8fb9acc**; now computed, and
+  `tests/test_physics_bounds.py::test_mass_is_conserved_at_the_working_point` asserts it is finite
+  and < 1e-2.
+- `SurfactantSystem.to_model` passed `K=None` — **still true**. `to_model` is not currently used by
+  any published result (all studies construct `ModelParams` directly), but it is a live trap. Should
+  raise rather than silently produce an unrunnable object.
+
+The reviewer is also right that **`mass_error` monitors drift, not conservation**, because the
+far-end Dirichlet condition is a legitimate source/sink. The manuscript's "conserved by
+construction" refers to the *exchange term* cancelling between monomer and micellar pools, which is
+true; it does not claim global closure. The wording should be tightened to say exactly that.
+
+## 18.4 The reviewer conflated two different studies
+
+Objection #1 cites "recoverability_results.json relative SEs of 0.97 to 1300" and
+"recoverability_v2.json large two-parameter uncertainty" as evidence against the manuscript number.
+Those are different experiments at different operating points, and #6 identifies a genuine bug in
+`study_recoverability_v3.py`:
+
+    rel = float(se[0]/abs(sol.x[0]))      # divides SE(ln tau2) by ln(tau2)
+
+That is mathematically wrong for a relative SE and makes the result scale-dependent — correct.
+**But v3 is not the study that produced the manuscript's number.** The manuscript figure comes from
+`study_recovery_uncertainty.py`, line 88, which reports `se[0]` directly as SE(ln τ₂); for small
+errors that *is* the relative SE of τ₂, and it is correct. The 0.23% is not the v3 artefact.
+
+So: the bug is real, v3's maps should be rebuilt, and it did not contaminate Paper 1 — but I cannot
+prove that to a reviewer without the coverage test in §18.1, which is why that test matters more
+than the argument.
+
+## 18.5 The 45 degree ceiling (objection #8) — partially conceded
+
+The reviewer asks for a derivation with stated assumptions and a counterexample search. The claim in
+the paper is that the *tabulated LVDT form* has |arg ε| < 45°, which is a statement about a specific
+constitutive model (linear, diffusion-only, no barrier), not about all diffusion-only transport. For
+a nonlinear or viscoelastic interface the bound need not hold.
+
+I verified the bound analytically for the LVDT form (δ = arctan[ξ/(1+ξ)] → 45°) and numerically for
+Czakaj's fitted parameters (max 32°). I have **not** proven it for a general diffusion-only
+interface, and the manuscript language "categorical" and "model-free" overclaims. It should read
+"within the linear diffusion-only model class".
+
+## 18.6 Objection #5 (capacity near the CMC) is a real tension I have not resolved
+
+`systems.py` states the closure C_m = n̄(m−1) *overestimates* C_m near the CMC, and the manuscript
+places the operating window at 1.2–3.0× CMC starting just above that regime. The window edges were
+located with the same closure, so an error in the closure could move them. I have not tested the
+window against an alternative capacity model. This is the strongest surviving technical objection to
+the *window* claim specifically, as opposed to the precision claim.
+
+## 18.7 What the review did not establish
+
+- It could not access the SurfactantKit mirror, so its objections there are about inaccessibility,
+  not about defects. Fair.
+- Its claim that the research code "does not call the toolkit" is correct and worth stating in the
+  paper: the LAOD study is standalone.
+
+## 18.8 Objection #5 tested: the optimum is capacity-dependent, the window is not
+
+The review's strongest surviving technical objection is that the inversion window sits just above
+the CMC, where the capacity closure C_m = n̄(m−1) is documented to *overestimate* capacity. I swept a
+multiplicative error on capacity (×0.5 to ×2.0) across the concentration window at ω = 6.28:
+
+| capacity scale | optimum (by Δδ, I₂ above noise) |
+|---|---|
+| ×0.50 | **1.5× CMC** (Δδ 18.4°) |
+| ×0.75 | **1.5× CMC** (18.6°) |
+| ×1.00 (closure) | **1.5× CMC** (17.5°) |
+| ×1.50 | **1.2× CMC** (19.3°) |
+| ×2.00 | **1.2× CMC** (19.4°) |
+
+So: **the usable window 1.2–3.0× CMC survives** a factor-of-2 capacity error in every case tested,
+but **the location of the optimum is not pinned** — it moves from 1.5× to 1.2× once capacity is
+overestimated by ≥50%, and the two candidates are within 2° of each other in leverage.
+
+There is a partial defence and it is not a proof. The closure *overestimates* C_m just above the CMC,
+i.e. true capacity is *lower* than assumed, which is the direction that keeps the optimum at 1.5×.
+But the magnitude of that overestimate is not quantified anywhere in this work, so "1.5× is the
+optimum" cannot be asserted independently of the closure. The defensible statement is: **operate
+somewhere in 1.2–2.0× CMC; the leverage varies by <25% across that interval and the precise optimum
+depends on the capacity model.**
+
+This must go into the manuscript. It is the one place where an external reviewer found a load-bearing
+claim resting on an unvalidated auxiliary model.

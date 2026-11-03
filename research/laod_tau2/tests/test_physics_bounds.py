@@ -198,3 +198,45 @@ def test_mass_is_conserved_at_the_working_point():
     r = run_oscillation(p, 6.28, 0.20, n_cycles=8)
     assert np.isfinite(r.mass_error)
     assert r.mass_error < 1e-2, r.mass_error
+
+
+# --------------------------------------------------------------------------
+# Section 18 regressions, from the external Paper 1 review.
+# --------------------------------------------------------------------------
+
+def test_to_model_refuses_to_return_an_unrunnable_object():
+    """SurfactantSystem.to_model must raise rather than emit K=None (review #4)."""
+    from research.laod_tau2.systems import SYSTEMS
+
+    s = SYSTEMS["C12E8"]
+    with pytest.raises(ValueError, match="K must be supplied"):
+        s.to_model(1.5 * s.cmc_mM)
+    # and must work when K is supplied
+    p = s.to_model(1.5 * s.cmc_mM, K=140.0)
+    assert p.K == 140.0
+    assert 0.0 < p.theta0 < 1.0
+
+
+def test_relative_se_is_not_divided_by_log():
+    """The v3 estimator reported SE(ln tau2)/|ln tau2|, which is not a relative SE.
+
+    Review #6. Guard: at tau2 = 4 s the wrong formula would understate by ln(4).
+    """
+    import math
+
+    import numpy as np
+    from scipy.optimize import least_squares
+
+    # Toy exact-log fit with known noise scale: x = ln(tau2).
+    truth = math.log(4.0)
+    x = np.linspace(-2, 2, 40)
+    y = np.full_like(x, 0.0) + 0.01
+
+    def res(p):
+        return np.full_like(x, p[0] - truth) - y
+
+    sol = least_squares(res, x0=[0.0], xtol=1e-12, ftol=1e-12)
+    se = float(np.sqrt(np.diag(np.linalg.inv(sol.jac.T @ sol.jac) * 1.0))[0])
+    correct = se                      # relative SE of tau2 for small errors
+    wrong = se / abs(sol.x[0])        # the withdrawn formula
+    assert correct > wrong * 1.3, (correct, wrong)

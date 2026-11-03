@@ -42,7 +42,11 @@ def fit(obs, cap_known=None):
     dof = max(len(sol.fun)-len(x0),1); s2 = 2*sol.cost/dof
     try:
         cov = np.linalg.inv(sol.jac.T@sol.jac)*max(s2,1.0); se=np.sqrt(np.diag(cov))
-        rel = float(se[0]/abs(sol.x[0]))
+        # x[0] is ln(tau2), so se[0] IS (approximately) the relative standard error
+        # of tau2 for small errors. The earlier form divided by |ln tau2|, which is
+        # not a relative error and makes the result scale-dependent (external review,
+        # 2026-11-03).
+        rel = float(se[0])
     except np.linalg.LinAlgError:
         rel = float('nan')
     return dict(tau2=float(math.exp(sol.x[0])), rel_se=rel)
