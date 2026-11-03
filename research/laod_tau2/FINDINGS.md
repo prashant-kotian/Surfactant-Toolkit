@@ -1220,3 +1220,84 @@ A 3.1x improvement in precision at zero experimental cost — it is entirely an 
 The 31x systematic dominance of n̄ remains untouched by any of this: improving the statistical error
 by 3x makes the systematic problem *relatively worse* (n̄ dominance rises from 31x to ~95x). The
 precision gain is real but it is not the binding constraint.
+
+# 20. The forbidden region: a zero-sensitivity locus that is universal across capacity
+
+## 20.1 The two-axis map, and the E0 collapse it confirms and bounds
+
+`study_collapse.py` swept ωτ₂ ∈ [0.25, 64] × C_m ∈ [2, 200], each cell run at three E₀ anchors.
+δ at the middle anchor (E₀ = 45.3):
+
+| C_m \ Ω | 0.25 | 0.5 | 1 | 2 | 4 | 8 | 16 | 32 | 64 |
+|---|---|---|---|---|---|---|---|---|---|
+| 2 | 48.7 | 52.1 | 55.9 | 55.9 | 50.4 | 43.5 | 37.9 | 33.3 | 29.3 |
+| 10 | 50.9 | 56.2 | 63.5 | 69.0 | 68.3 | 60.2 | 48.4 | 38.3 | 31.0 |
+| 47.5 | 51.6 | 57.6 | 66.2 | 74.3 | 78.2 | 77.0 | 69.8 | 56.4 | 41.0 |
+| 200 | 51.9 | 58.1 | 67.1 | 75.8 | 81.2 | 82.9 | 81.1 | 75.0 | 62.4 |
+
+**E₀ spread (worst corner 14.2°):** the collapse is excellent at small Ω and at large capacity, and
+degrades as Ω grows: spread falls from ~1° at Ω ≤ 2 to 14° at Ω = 64. The clean statement is that
+δ = f(Ω, C_m) **approximately, with E₀ independence holding for Ω ≲ 8**; beyond that E₀ re-enters.
+This supersedes the flat "no collapse" of §13.4 and the over-broad "collapses" of §19.1.
+
+## 20.2 The main result: δ is NOT monotone in τ₂, and the sensitivity passes through zero
+
+The lever arm is non-monotone in Ω because δ has a maximum. Fine scan at C_m = 20:
+
+| Ω | 2.0 | 2.5 | 3.0 | 3.5 | **4.0** | 4.5 | 5.0 | 6.0 | 8.0 |
+|---|---|---|---|---|---|---|---|---|---|
+| δ | 72.12 | 73.39 | 73.97 | **74.11** | 73.97 | 73.64 | 73.18 | 72.00 | 69.15 |
+| lever | 7.89 | 5.45 | 3.32 | 1.46 | **0.17** | 1.62 | 2.93 | 5.18 | 8.61 |
+
+δ peaks near Ω ≈ 3.5 and the lever arm passes through **zero** at Ω = 4. Past the peak the *signed*
+lever is negative: a longer τ₂ gives a *smaller* lag, because the micellar response is already too
+slow to matter and the system relaxes back toward the diffusion-less limit.
+
+**This is a universal structural feature, not an accident of one parameter set.** The null locus
+across capacity (`study_forbidden_region.py`), every one with a verified sign change either side:
+
+| C_m | Ω_null | min lever (deg/e-fold) | sign flip |
+|---|---|---|---|
+| 2 | 1.5 | 0.90 | **YES** |
+| 5 | 2.5 | 1.63 | **YES** |
+| 10 | 3.0 | 0.20 | **YES** |
+| 20 | 4.0 | 0.17 | **YES** |
+| 47.5 | 6.0 | 0.58 | **YES** |
+| 85 | 8.0 | 0.90 | **YES** |
+| 200 | 10.0 | 0.07 | **YES** |
+
+The null locus moves to higher Ω as capacity grows, roughly as C_m^0.4, and the minimum lever is
+**0.07–1.63 deg/e-fold** against a signal of 13 deg/e-fold — a factor of 8–190 loss of sensitivity
+on a curve that is, in every other respect, well above the noise floor.
+
+## 20.3 Why this matters more than the precision improvement
+
+On the null locus an experimenter gets a measurement that is high-amplitude, well above the noise
+floor, precisely determined, and **completely uninformative about τ₂** — and one that will still
+return a confident-looking τ₂ from a bounded least-squares fit, because the cost surface has a flat
+direction there.
+
+Worse, the sign flip means the inversion is **non-monotone**: a local optimiser initialised on the
+wrong branch will walk to the wrong side of the peak and report a plausible τ₂ with a small error
+bar. The earlier recovery studies used a bounded `least_squares` from a start point; they happened
+to land correctly because the seeds were close, but nothing in the method guarantees it.
+
+**Two consequences for the protocol:**
+1. Operation must avoid the null locus, which means choosing Ω away from where δ is stationary in Ω.
+   The paper's C₁₂E₈ operating point is Ω = 6.28 × 4 = 25.1, safely past the null at Ω = 6.0 for
+   C_m = 47.5 — but this was luck, not design, and a system with C_m ≈ 200 would have its null at
+   Ω ≈ 10, uncomfortably near Ω = 25.
+2. Inversion must use a **global or multi-start** search, and must report which branch it landed on.
+   A single bounded local fit is not a valid estimator for this problem.
+
+## 20.4 The design chart, restated honestly
+
+The chart has three regions, not two:
+
+- **Ω ≲ 1**: reservoir tracks quasi-statically; lever small but positive.
+- **Ω ≈ Ω_null(C_m)**: the forbidden region — δ stationary, sensitivity zero, sign flips.
+- **Ω ≫ Ω_null**: sensitivity large but *negative*; lag falls as τ₂ grows. Inversion from this branch
+  is perfectly usable provided the estimator knows which branch it is on.
+
+The paper's previous framing — "operate at high Ω for maximum lever arm" — is right on the
+magnitude and silently wrong on the sign.

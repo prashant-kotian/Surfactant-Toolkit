@@ -202,8 +202,17 @@ def run_oscillation(
     n_per_cycle: int = 320,
     rtol: float = 1e-7,
     atol: float = 1e-11,
+    n_return_cycles: int = 4,
 ) -> OscillationResult:
-    """Integrate the oscillating-area response; return the last 4 cycles."""
+    """Integrate the oscillating-area response; return the last `n_return_cycles`.
+
+    n_return_cycles defaults to 4, which reproduces every number published before
+    2026-11-03 bit-for-bit. Raising it is free precision: phase noise on the Fourier
+    fit falls as 1/sqrt(N), measured 0.046 deg at 4 cycles and 0.026 deg at 12
+    (FINDINGS 19.3). Prior to this parameter the function silently returned 4 cycles
+    whatever the caller asked for, so the protocol's "retain >= 12 cycles" was never
+    honoured by the analysis.
+    """
     import numpy as np
     from scipy.integrate import solve_ivp
 
@@ -283,7 +292,8 @@ def run_oscillation(
         raise ValueError("n_cycles must be >= 5: the last 4 cycles are returned as the steady state")
     T_per = 2.0 * math.pi / omega
     t_end = n_cycles * T_per
-    t_eval = np.linspace(t_end - 4.0 * T_per, t_end, 4 * n_per_cycle)
+    t_eval = np.linspace(t_end - n_return_cycles * T_per, t_end,
+                         n_return_cycles * n_per_cycle)
 
     def total_surfactant(y):
         return float(np.sum(dV * y[1 : 1 + n_int]) + np.sum(dV * y[iM : iM + n_int]) + y[iG])
