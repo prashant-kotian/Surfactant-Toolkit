@@ -1778,3 +1778,96 @@ is independent of our capacity problem.
 2. **Rerun the window and null-locus studies at C_m = 1**, not 47.5. Expect much weaker leverage.
 3. **The 45° screen still works** — it only needs φ > 45°, which C_m ≈ 0.8–1 already exceeds.
 4. **Do not quote 68–80° as our predicted range** until the capacity is settled.
+
+# 27. Fitting the model to Fainerman's measured φ(f): the closure is 2–3 orders too high
+
+`study_fainerman_fit.py` → `fainerman_fit.json`. First fit of this model to *external measured*
+data (C₁₄EO₈, 30 µmol/L = 4.3× cmc, Fainerman 2008 Fig. 5, six points digitised from a 700 dpi
+render, ±1°).
+
+## 27.1 FIRST, A RETRACTION: the capacity closure is NOT buggy
+
+Mid-work I believed the closure C_m = n̄(m−1) contained a spurious factor n̄ and checked it by
+explicit mass action. My first check differentiated the **micelle count** instead of the
+**surfactant in micelles**, which is off by exactly n̄. Redone correctly:
+
+| m | dM/dc₁ numeric | n̄(m−1) | (m−1) |
+|---|---|---|---|
+| 1.5 | 48.52 | 47.50 | 0.50 |
+| 2.0 | 95.00 | 95.00 | 1.00 |
+
+With M = n K_m c₁^n, dM/dc₁ = n·M/c₁ = n̄(m−1). **The closure is correct**, and the model's
+convention (M0 = C_m·c₀, slope multiplying the monomer perturbation) is consistent with it.
+No code change was warranted and none was made. Recorded because I had already started editing.
+
+So the closure is mathematically right and still disagrees with experiment by 2–3 orders of
+magnitude. That is a physics problem, not an algebra problem.
+
+## 27.2 The fit
+
+Fixed: D, Γ∞, strain 0.20. Scanned: C_m ∈ [0.1, 313], τ₂ ∈ [0.5, 20] s, E₀ ∈ {35, 45.3, 55}.
+
+| | value |
+|---|---|
+| best C_m | **0.5** |
+| best τ₂ | 20 s (**at the upper bound — unidentifiable**) |
+| best E₀ | 35 mN/m |
+| RMSE | **5.97°** over 6 points |
+| closure C_m at 4.3× cmc | **312** |
+
+Residuals at the optimum:
+
+| f (Hz) | 0.005 | 0.010 | 0.020 | 0.050 | 0.100 | 0.200 |
+|---|---|---|---|---|---|---|
+| observed | 46.5 | 50.5 | 52.0 | 48.5 | 41.0 | 32.5 |
+| model | 49.3 | 50.1 | 48.6 | 45.7 | 44.1 | 42.8 |
+| residual | +2.8 | −0.4 | −3.4 | −2.8 | +3.1 | **+10.3** |
+
+## 27.3 Three conclusions, in order of severity
+
+**(a) The capacity closure is wrong by ~600×.** It predicts C_m = 312 at 4.3× cmc; the measured
+φ(f) is consistent with C_m ≈ 0.5. This independently reproduces §26's estimate of C_m ≈ 0.8 from a
+single point, now from the full curve shape. The closure has been the basis of every concentration
+in this project.
+
+**(b) τ₂ is not identifiable at the capacity the data implies.** The fit drives τ₂ to its upper
+bound and the residual barely changes — so this external dataset contains essentially no
+information about τ₂. That is not a failure of the fit; it is the *predicted* behaviour. §20.2
+found the sensitivity lever collapses at small capacity (0.90°/e-fold at C_m = 2, and worse below).
+
+**(c) The model shape is wrong at the top of the band.** It over-predicts φ at 0.2 Hz by 10° and
+cannot reproduce the measured decline. At 100–500 µmol/L Fainerman measures 90–100°, which our
+model cannot approach at any capacity (it saturates near 78–80°). So our reservoir is too weak at
+high concentration in one direction while the closure makes it far too strong in another — a
+one-parameter linear reservoir cannot span this range.
+
+## 27.4 What this means for the paper
+
+**The central claim is in trouble, and the trouble is self-consistent.**
+
+Our own §20.2 says τ₂ sensitivity collapses at small capacity. The external data says real micellar
+systems sit at small effective capacity (O(1), not O(300)). Therefore **real systems sit exactly
+where our theory says inversion is impossible.** The method is sound and the target regime is
+empty.
+
+This is a genuinely useful negative result — arguably more valuable than the positive claim would
+have been — but it is not the paper that is currently drafted. Three honest options:
+
+1. **Reframe as a negative/bounding result**: "why micellar relaxation times are not recoverable
+   from LAOD in the accessible window, and what would have to change." Needs the capacity error
+   understood, not hand-waved.
+2. **Find the operating regime where it does work**: requires larger effective C_m, i.e. much
+   higher concentration or a surfactant with slower τ₂ relative to ω. The D* analysis says high β
+   helps only marginally.
+3. **Abandon τ₂ inversion**, keep the D* refutation (§26.1) and the 45° screen as the contribution.
+
+Option 1 is the strongest and the most defensible. Option 3 is the safest.
+
+## 27.5 Caveats that must travel with §27
+
+- Six digitised points, two parameters, ±1° reading error: RMSE 6° is barely above the noise, so
+  the fit is weak. It establishes *order of magnitude*, nothing finer.
+- C₁₄EO₈ data applied to a C₁₂E₈ parameter set. Both CₙE₈, but this is a transfer assumption.
+- Our strain is fixed at 0.20 while Fainerman oscillated at small amplitude; at ε = 0.2 our model
+  is already in its mildly nonlinear regime.
+- A single-concentration fit cannot separate C_m from the isotherm parameters.
