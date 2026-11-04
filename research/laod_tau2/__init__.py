@@ -9,6 +9,13 @@ into `src/surfactantkit/`:
     higher-harmonic content of a large-amplitude oscillatory dilatational
     (LAOD) surface-tension response?
 
+CORRECTION 2026-11-04: an audit note claimed `src/surfactantkit` is private and not
+in the public repository, and that these scripts therefore cannot run. Both are false.
+The library IS in this repository (`src/surfactantkit/`, 36 modules, tracked) and the
+repository is public. More importantly, none of this research package imports it —
+the scripts below depend only on numpy/scipy and the modules inside this directory,
+so they run from a plain checkout with no extra install. See FINDINGS 28.
+
 Everything here is written so that it can be *disproved*: the analytic
 anchors in `tests/test_anchors.py` are run first, and if they fail the
 forward model is wrong and no downstream claim means anything.

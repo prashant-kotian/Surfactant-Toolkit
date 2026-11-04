@@ -1871,3 +1871,44 @@ Option 1 is the strongest and the most defensible. Option 3 is the safest.
 - Our strain is fixed at 0.20 while Fainerman oscillated at small amplitude; at ε = 0.2 our model
   is already in its mildly nonlinear regime.
 - A single-concentration fit cannot separate C_m from the isotherm parameters.
+
+# 28. The audit package was incomplete and its reproduction note was false
+
+The user pointed out that this repository is the same open repository that contains the library.
+Checked, and they are right. Two corrections to the audit package sent to Drive:
+
+## 28.1 `src/surfactantkit` is public and in this repo
+
+`src/surfactantkit/` contains 36 modules, all tracked by git, in the public repository
+github.com/prashant-kotian/Surfactant-Toolkit. The statement "SurfactantKit is private and not in
+this package — this is a known limitation flagged by an earlier external review and is still
+unresolved" was carried forward from an earlier review response without re-checking it, and it is
+false. The reviewer's item 10 ("SurfactantKit private/unauditable") is not merely resolved — it was
+never true of this repository.
+
+## 28.2 The research package does not import the library at all
+
+Grep across `research/laod_tau2/*.py` for `surfactantkit`: **zero imports**. The only occurrence is
+the prose in `__init__.py`. Every script depends on numpy, scipy, json, math, pathlib and sibling
+modules inside `research/laod_tau2/`.
+
+Verified by cloning the public repo to a clean directory and running the suite with nothing but
+numpy/scipy/pytest installed:
+
+    36 modules in src/surfactantkit/
+    33 passed, 1 skipped in 9.48s
+
+So the package was fully reproducible all along, and the caveat I attached to it was both wrong and
+unnecessarily damaging — it told an auditor the work could not be checked when it could.
+
+## 28.3 Why this matters beyond the two errors
+
+This is the same failure mode as the `[CIT:]` placeholder incident (§18): a claim about the state of
+the repository, made from memory of an earlier finding rather than re-checked against the repository
+itself. Item 10 of the external review was recorded as "still outstanding" in §A.9 and propagated
+through the manuscript limit section, the data acquisition list and the audit orientation note
+without anyone running `ls src/`.
+
+Rule adopted: **any statement about what the repository does or does not contain must be produced by
+a command run in the repository, not recalled.** The audit package has been rebuilt accordingly and
+the false caveat removed.
