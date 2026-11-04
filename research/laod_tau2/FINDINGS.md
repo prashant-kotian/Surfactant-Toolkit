@@ -1301,3 +1301,70 @@ The chart has three regions, not two:
 
 The paper's previous framing — "operate at high Ω for maximum lever arm" — is right on the
 magnitude and silently wrong on the sign.
+
+# 21. §19.1 AND §20.1 ARE WRONG about the collapse: δ is not a function of ωτ₂ alone
+
+Building the blind-inversion table exposed this. I had claimed (§19.1, restated in §20.1) that
+**δ = f(ωτ₂, C_m)**, i.e. that the response collapses onto Ω = ωτ₂. It does not. The tests that
+supported it all varied τ₂ **at fixed ω** and never varied ω at fixed Ω.
+
+## 21.1 The falsifying test
+
+Matching Ω by splitting it between ω and τ₂, at C_m = 47.5, K anchored to E₀ = 45.3:
+
+| Ω | ω=1 | ω=2 | ω=6.28 | ω=10 | spread |
+|---|---|---|---|---|---|
+| 6.28 | 78.76 | 77.51 | 74.23 | 72.27 | **6.5°** |
+| 12.56 | 76.28 | 74.55 | 70.01 | 67.32 | **9.0°** |
+| 25.12 | 69.66 | 67.41 | 61.63 | 58.35 | **11.3°** |
+
+So at fixed Ω = 25.12 the lag ranges 58.4–69.7° depending only on how the product is split. A
+collapse on ωτ₂ would require these to be equal.
+
+## 21.2 It is not a numerical artefact
+
+Convergence at Ω = 25.12: δ = 58.347 / 58.346 / 58.346 / 58.346° for n_per_cycle = 80/160/320/640,
+and 69.663 / 69.661 / 69.661 / 69.660° at ω = 1. Grid-converged to 0.001°. The ω dependence is real.
+
+## 21.3 The second controlling group is ωτ_D
+
+The missing ingredient is the diffusion time. For this system τ_D = 24.15 ms, so the splits above
+carry ωτ_D = 0.024, 0.048, 0.152, 0.242 respectively. Both Ω and ωτ_D move δ, in the same direction:
+
+- at fixed ωτ_D = 0.152, δ falls 74.2 → 70.0 → 61.6° as Ω goes 6.3 → 12.6 → 25.1
+- at fixed Ω = 25.12, δ falls 69.7 → 67.4 → 61.6 → 58.4° as ωτ_D goes 0.024 → 0.242
+
+So δ is (at least) a **three-group** function, δ = f(ωτ₂, ωτ_D, C_m), plausibly reducible to
+(ωτ₂, Da, C_m) with Da = τ₂/τ_D.
+
+## 21.4 What survives, what dies
+
+**Dies:**
+- "eq. (13) becomes a master chart" and the §19.1 claim of a dimensionless design chart in ωτ₂.
+- The §20.1 two-axis map, since its horizontal axis is not a complete similarity variable. The null
+  locus positions in §20.2 were all computed at one frequency and therefore remain valid *for that
+  frequency*, but not as universal coordinates.
+- The blind-inversion table I built on this assumption is invalid; it is not used.
+
+**Survives:**
+- **E₀-independence at fixed frequency** (§19.1's actual measurement). Across E₀ = 25–103.5 the
+  spread was 0.41–2.54° for Ω ≤ 4. That is a real and useful robustness result, and it is what §3.3
+  of the manuscript relies on.
+- The non-monotonicity of δ in τ₂ and the zero-sensitivity locus (§20.2) — these are statements
+  about varying τ₂ at fixed ω, which is exactly what an experimenter does.
+- Every manuscript number, since all of them are at a single frequency.
+
+## 21.5 The honest statement about the design rule
+
+For **one system** (fixed D, K, hence fixed τ_D), δ = f(ωτ₂, C_m) is a useful two-parameter
+description and the design chart works. Across systems with different transport parameters, a third
+group is required. The paper's §6 horizon argument moves between systems, so **it needs the third
+group and currently does not have it.**
+
+## 21.6 Process note
+
+This is the third time I have over-extended a single-axis sweep into a general claim: §9
+(one surfactant → mechanism), §13.4 (wrong observable → "no collapse"), and now §19–20 (fixed ω →
+"collapse on ωτ₂"). The common failure is that all the supporting runs held one variable fixed and I
+generalised as though it had been varied. A collapse claim must be tested by varying **every**
+independent route to the same similarity variable, not one of them.
