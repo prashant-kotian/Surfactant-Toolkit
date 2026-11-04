@@ -1486,3 +1486,75 @@ quiescent adsorption, no phase angle, no modulus.
 The honest validation story becomes: signature externally confirmed (2008), design window testable
 on Triton/C₁₄EO₈ series, τ₂ inversion still ours and still unvalidated. That is a real improvement on
 "model talking to itself" but it does not replace the measured C₁₂E₈ sweep.
+
+# 24. Literature survey: two 2026 papers occupy ground we thought was ours
+
+Fourteen Crossref API queries across five literature clusters. Full survey, DOI list and gap analysis
+in `LITERATURE_SURVEY_AND_GAP_ANALYSIS.md` at repo root. Only the findings that change what we may
+claim are recorded here.
+
+## 24.1 A 2026 paper pre-empts part of §20–22
+
+Al-Sou'od, K. A.; Ghanem, R. "Protocol-Induced False Identifiability in Dynamic Surface Tension and
+Dilational Measurements of Surfactant Interfaces." *J. Surfactants Deterg.*, online 23 Aug 2026,
+doi:10.1002/jsde.70095.
+
+Their abstract reports: relaxation modes generated as **artifacts of unmeasured protocol variation**
+(area forcing, baseline drift); nested entropy-constrained model hierarchy M0/M1/M2; synthetic
+recovery with median absolute relative error **0.34–2.02%**; AICc-based model discrimination against
+nuisance protocol models; "locked cross-protocol prediction" as the validation standard; and
+reanalysis of a **digitised published** relaxation trace.
+
+Compare our §22: median 0.23–0.66% recovery on synthetic data, multi-start, relSE gate. Their numbers
+are comparable and their methodological apparatus is more developed. The headline "an estimator can
+return an identifiable-looking answer that is not real" is **not new as of Aug 2026**.
+
+**Possible distinction, not yet verified:** their false identifiability is *protocol-induced*
+(instrument/sampling artefacts). Ours is *physical* — a null locus present in the forward map for any
+diffusion-plus-reservoir system at zero instrument error, whose location scales with C_m and across
+which the sensitivity changes sign (§20.2). That is a different mechanism. Whether they cover it is
+unknown from the abstract alone and decides the fate of our §20–22 novelty.
+
+## 24.2 A second 2026 paper by the same group overlaps our modelling and metrology framing
+
+Al-Sou'od, K. A. "Entropy-Regulated Dynamics of Surface Tension: Coupling Langmuir Kinetics with
+High-Precision Tensiometry." *J. Phys. Chem. B* **2026**, *130*, 1730–1742, doi:10.1021/acs.jpcb.5c07514.
+Its reference list includes JCGM 100:2008 (GUM), ISO 5725-2 and ISO/IEC 17025 — a formal metrological
+treatment. Our uncertainty story is a Jacobian SE plus a coverage test (§18.1, §22.3). Against GUM/ISO
+practice, reporting "0.106% precision" reads as naive regardless of whether the number is right.
+
+## 24.3 The 45° ceiling is a 1972 corollary, not a new bound
+
+No paper states it as a theorem. It follows in two lines from LvT: tan φ = ξ/(1+ξ), ξ = √(ω_D/2ω), so
+φ → 45° as ω → 0. Presentation must therefore be "implicit in Lucassen–van den Tempel 1972 and van den
+Tempel & Lucassen-Reynders 1983; used here as a screen". Cite and derive; do not claim. This is
+consistent with the scope we already adopted but now has a citation behind it.
+
+## 24.4 Bibliography corrections found
+
+- ref 5 (Risse) is **Adv. Colloid Interface Sci. 2025, 345, 103625**, not 325/103050.
+  doi:10.1016/j.cis.2025.103625. Reviewer item 7 ("ref 5 incomplete") is thereby resolved.
+- ref 4: the automated-dilational-modulus system in *Meas. Sci. Technol.* 2016 is **27, 065301**
+  (doi:10.1088/0957-0233/27/6/065301), not 27, 045301.
+- ref 6 (Loglio 2001) as cited does not match; the nonionic dilational paper at *Colloids Surf. A*
+  **186** (2001) 63–72 is Lucassen-Reynders, Cagna & Lucassen, doi:10.1016/s0927-7757(01)00483-6.
+- ref 3's correct DOI is 10.1021/j100603a016; the τ₁/τ₂ two-timescale derivation is properly
+  Aniansson, *Ber. Bunsenges. Phys. Chem.* **1978**, *82*, 981, doi:10.1002/bbpc.19780820961.
+
+## 24.5 tau2 = 4 s has no traced source
+
+Five rounds of work are calibrated to τ₂(C₁₂E₈) = 4 s and the survey could not locate the primary
+measurement. Either trace it or the paper must state it is an assumed illustrative value. This is more
+serious than the external reviewer's item 2, which merely noted it was "a literature benchmark".
+
+## 24.6 What survives
+
+τ₂ inversion from **large-amplitude** oscillatory dilatational data remains unclaimed: the LAOD
+literature is proteins and particles, the micellar dilational literature is small-amplitude linear
+analysis with Joos / Danov–Kralchevsky kinetics, and the intersection is empty across all fourteen
+queries. The combination (explicit reservoir + LAOD + formal identifiability + instrument horizon) is
+also unclaimed as a package. That is a narrower claim than the draft makes, and a more defensible one.
+
+Also newly identified as necessary and previously uncited: Danov & Kralchevsky's two-part mass
+transport theory (doi:10.1016/j.cis.2005.09.002, .09.003), which is the correct theoretical baseline
+for a micellar reservoir and is nowhere in our reference list.
