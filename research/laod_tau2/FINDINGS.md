@@ -1368,3 +1368,65 @@ This is the third time I have over-extended a single-axis sweep into a general c
 "collapse on ωτ₂"). The common failure is that all the supporting runs held one variable fixed and I
 generalised as though it had been varied. A collapse claim must be tested by varying **every**
 independent route to the same similarity variable, not one of them.
+
+# 22. Blind inversion: the estimator self-diagnoses its own failures
+
+`study_blind_inversion.py`. 7 truths × 10 noise realisations = 70 trials per configuration.
+Data generated from the solver, fits run blind against a table that was validated against the
+solver to **0.000°** at off-grid points, so no similarity assumption enters (see §21).
+
+## 22.1 Headline
+
+| protocol | wrong (>50%) | confidently wrong | at bound | median \|err\| on success |
+|---|---|---|---|---|
+| A local (bounded LS from τ₂=0.3) | **20/70** | 0 | 10 | 0.24% |
+| A multistart (7 starts) | **0/70** | 0 | 0 | 0.23% |
+| B local | **10/70** | 0 | 10 | 0.66% |
+| B multistart | **0/70** | 0 | 0 | 0.56% |
+
+Multi-start eliminates every failure, in both protocols, at the cost of 7× the fit time and no
+extra experiment. Median accuracy on success is 0.23–0.66%, consistent with the 0.33% headline.
+
+## 22.2 The failures are confined to slow reservoirs
+
+Every local failure is at τ₂ = 4 s or 25 s; every trial with τ₂ ≤ 2 s converged:
+
+| τ₂ | Ω at 6.28 | A local | B local |
+|---|---|---|---|
+| 0.5 | 3.1 | 0/10 | 0/10 |
+| 1.0 | 6.3 | 0/10 | 0/10 |
+| 2.0 | 12.6 | 0/10 | 0/10 |
+| 4.0 | 25.1 | **10/10** | 0/10 |
+| 25.0 | 157 | **10/10** | **10/10** |
+
+The naive start τ₂ = 0.3 s is on the fast branch, and for a slow reservoir Ω ≳ 25 the cost surface is
+flat enough that it never leaves. This is the §20.2 null locus showing up exactly where predicted.
+
+## 22.3 I WAS WRONG about the dangerous failure mode — the estimator flags it
+
+§20.3 asserted that on the null locus a local fit would "return a confident-looking τ₂ from a bounded
+least-squares fit, because the cost surface has a flat direction there". **That is not what happens.**
+
+| | relSE on failures | relSE on successes | ratio |
+|---|---|---|---|
+| A local | 1.06 (range 0.87–1.24) | 0.005 | **~200×** |
+| B local | 37.4 | 0.004 | **~9000×** |
+
+**100% of wrong fits reported relSE ≥ 0.1**; indeed all of them reported 87–124% or worse. The
+Jacobian-propagated uncertainty blows up on the flat branch, exactly as it should, and a bounded
+least-squares returns the correct diagnosis (ten also hit a bound).
+
+So the failure is **not silent** — it is *loudly self-reported*. The risk is not that the method
+lies; it is that a user ignores the error bar, or that a pipeline computes uncertainty from the
+noise level alone rather than from the Jacobian. §20.3 overstated this. Corrected.
+
+## 22.4 What the protocol should actually say
+
+1. **Use multi-start, always.** It converts 29% failures into 0% for free.
+2. **Gate on relSE < 0.1** as an acceptance criterion. In this trial that criterion had perfect
+   discrimination (0 false accepts, 0 false rejects across 70 trials).
+3. **Distrust any single-start result for τ₂ ≳ 4 s at ω ≈ 6 rad/s.** That is the domain where the
+   flat branch is reachable from a generic start.
+
+Item 2 is the genuinely useful addition: the method comes with a built-in validity check, and the
+paper should state it as a deliverable rather than leave it implicit.
