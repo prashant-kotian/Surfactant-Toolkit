@@ -1430,3 +1430,59 @@ noise level alone rather than from the Jacobian. §20.3 overstated this. Correct
 
 Item 2 is the genuinely useful addition: the method comes with a built-in validity check, and the
 paper should state it as a deliverable rather than leave it implicit.
+
+# 23. External data search: the >45° signature was already published in 2008
+
+Searched for open experimental datasets capable of validating the model. Full acquisition list in
+`DATA_ACQUISITION_LIST.md` at repo root. The important findings, including two that affect the paper's
+claims rather than its validation:
+
+## 23.1 There is no open dataset that validates tau2 inversion
+
+No published LAOD (large-amplitude oscillatory dilatational) dataset exists for ANY micellar
+surfactant. The LAOD + Lissajous / general-stress-decomposition literature is on proteins (WPI, pea
+albumin, β-casein, Escin) and nanoparticles. No Zenodo/figshare deposit of raw γ(t) traces from any
+oscillating-bubble study was found; the field shares fitted E and φ, not waveforms.
+
+So the central claim remains unvalidated by construction, not by oversight. §7.7's statement stands.
+
+## 23.2 But delta > 45° in a micellar nonionic is ALREADY PUBLISHED
+
+Fainerman, V. B.; Petkov, J. T.; Miller, R. *Langmuir* **2008**, *24*, 6447–6452,
+doi:10.1021/la704058y. C₁₄EO₈, buoyant bubble profile analysis, CMC (7 µM) up to **70 × CMC**:
+"With increasing C₁₄EO₈ concentration the viscoelasticity modulus decreases and the phase angle
+increases. At the highest surfactant concentrations, the **phase angle was more than 45°**."
+
+This is our signature, externally measured, eighteen years earlier. Two consequences:
+
+**(a) It is the strongest corroboration available, and it is free.** The >45° behaviour is not a
+forward-model artefact. This should be cited as independent support, and it is more valuable than
+another ten internal runs.
+
+**(b) It constrains novelty.** The paper must not present "micellar nonionics exceed 45°" as new.
+What is new is the screen with explicit model-class scope, the τ₂ inversion, and the null locus.
+This independently confirms the user's round-13 instruction to narrow novelty to τ₂ inversion.
+
+**(c) There is a physical disagreement worth stating.** Fainerman analyses the same behaviour with
+Joos fast-micellar-kinetics; we model the reservoir as a *lagging* source term. Different mechanisms,
+same observable. That contrast is more interesting than either paper alone and should be a paragraph
+in §5, not a footnote.
+
+## 23.3 Closest usable datasets
+
+| source | system | what it gives | validates |
+|---|---|---|---|
+| Fainerman 2008 (paywalled) | C₁₄EO₈, CMC→70× | modulus AND **phase angle** vs f | δ > 45° externally |
+| Fainerman 2021, *Colloids Interfaces* 5, 39 (**open**) | C₁₄EO₈, several c | **modulus vs frequency sweeps** (Fig. 12), D, model params | Protocol B on real data |
+| Mys 2009 *Colloids Surf. A* (paywalled) | 5 Tritons, CMC→10× | modulus + phase angle vs f | E₀-independence multi-system |
+| DST-SurfDB, Zenodo 21118257 (open) | 233 surfactants | dynamic γ(t), dγ/dln t only | D/K cross-check; **no oscillatory** |
+| Reichert et al., OSTI 1140848 | C₁₂E₈ 6.0 µM (**sub-CMC**) | E* vs ω, 12.5% amplitude | methods only; not micellar |
+
+DST-SurfDB is the only large open dataset found and it **cannot test this paper's claim** — it is
+quiescent adsorption, no phase angle, no modulus.
+
+## 23.4 Consequence for the paper
+
+The honest validation story becomes: signature externally confirmed (2008), design window testable
+on Triton/C₁₄EO₈ series, τ₂ inversion still ours and still unvalidated. That is a real improvement on
+"model talking to itself" but it does not replace the measured C₁₂E₈ sweep.
