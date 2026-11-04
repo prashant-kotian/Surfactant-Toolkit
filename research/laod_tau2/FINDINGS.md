@@ -1912,3 +1912,178 @@ without anyone running `ls src/`.
 Rule adopted: **any statement about what the repository does or does not contain must be produced by
 a command run in the repository, not recalled.** The audit package has been rebuilt accordingly and
 the false caveat removed.
+
+# 29. External audit (Codex, 5 Nov 2026): six P0 findings, five of them confirmed here
+
+An external audit was commissioned. It is far more damaging than §18, and unlike §18 most of it
+reproduces. I re-verified every claim that would change the verdict. **Five of six P0 items are
+confirmed; the sixth is confirmed in substance with a corrected number.** Details and my own
+reproductions below.
+
+## 29.1 P0 CONFIRMED — tau2 is not the relaxation time
+
+Audit: with diffusion off, dc/dt = (M − C_m c)/τ and dM/dt = (C_m c − M)/τ have Jacobian eigenvalues
+0 and −(1+C_m)/τ, so the closed two-pool disturbance relaxes with **τ/(1+C_m)**, not τ.
+
+Verified by integrating the two-pool ODE directly (pure decay mode, C_m = 47.5, τ = 4 s):
+
+| t (s) | numeric ratio | exp(−(1+C_m)t/τ) | exp(−t/τ) |
+|---|---|---|---|
+| 0.02 | 0.7846637 | 0.7846637 | 0.9950125 |
+| 0.05 | 0.5453923 | 0.5453923 | 0.9875778 |
+| 0.10 | 0.2974527 | 0.2974527 | 0.9753099 |
+| 0.20 | 0.0884781 | 0.0884781 | 0.9512294 |
+
+Agreement to 7 decimal places. **The quantity we call τ₂ relaxes ~48× faster than the number we
+report.** Every statement in the manuscript of the form "τ₂ = 4 s" is wrong by this factor unless
+the model is redefined. This is a two-line Jacobian that I never wrote down in twenty-eight rounds.
+
+The audit's fix: either rename the coefficient τ_exchange, or if τ_slow is intended use
+(1+C_m)τ_slow in the denominator. **The latter is a rescaling that does not change any fit** — it
+merely relabels the number — so no result is numerically rescued by it. What changes is whether the
+fitted 4 s is comparable to anything measured in the literature. It is not, as currently defined.
+
+## 29.2 P0 CONFIRMED — inventory confused with susceptibility
+
+`model.py:227`: `M0 = p.capacity * p.c0`. But C_m = dM_eq/dc is a *derivative*. For the monodisperse
+closure M_eq ∝ c^n and C_m = n·M_eq/c, so the correct inventory is **M_eq = C_m·c/n**. At 1.5× CMC
+(n̄ = 95) the code stores M₀ = 5.059 against a physical micellized inventory of 0.0355 mol/m³ — a
+**142× inflation**.
+
+The audit concedes that constant offsets cancel in the linear perturbation dynamics, so phase
+predictions are unaffected. That is correct and I confirmed the algebra. The damage is elsewhere:
+(a) the mass-error metric is normalised by an inventory ~48× too large, so the 2.19e-03 balance is
+flattered by that factor; (b) positivity/depletion diagnostics are meaningless; (c) it props up the
+fiction that the reservoir is a large buffer when it is a thin one.
+
+## 29.3 P0 CONFIRMED — total concentration used as monomer concentration
+
+`systems.py:106`: `c0=c_total_mM`. The transport variable c is *monomer*. Above the CMC this makes
+the Langmuir coverage rise with total concentration while separately adding a reservoir — two
+equilibrium conventions at once.
+
+Measured effect with the real solver at 1 Hz, C_m = 47.5, τ = 4 s, E₀ anchored at 45.3:
+
+| c₀ used | lag (deg) |
+|---|---|
+| total = 0.1065 (current) | 66.57 |
+| pinned monomer = 0.0710 | 62.63 |
+
+**3.94° — larger than the entire Δδ = 17.4° spread I claimed across the 1.0→3.0× CMC window, and
+certainly larger than the differences between adjacent concentrations.** The audit obtained 67.98 vs
+60.74 (7.2°) with different K/h choices. Either way the concentration axis of the headline figure is
+contaminated by a modelling error of the same size as the effect being reported.
+
+## 29.4 P0 CONFIRMED — large amplitude is not needed
+
+| strain | lag at 1 Hz (deg) |
+|---|---|
+| 0.002 | 74.2664 |
+| 0.020 | 74.2668 |
+| 0.200 | 74.3042 |
+
+**0.038° across a hundredfold strain change.** The audit's independent numbers agree (67.976 vs
+67.946). The entire physical content of the paper is in the *linear* response; seeking it in higher
+harmonics is unnecessary.
+
+§4.5 of the manuscript already conceded amplitude independence while the title, abstract and
+detection criterion insisted on LAOD. I noted the concession and never followed it to its
+conclusion. **This removes the paper's subject matter.** A paper titled around large-amplitude
+oscillation cannot stand when its own model says large amplitude adds 0.04°.
+
+## 29.5 P0 CONFIRMED — the §27 fit is not archived
+
+`fainerman_fit.json` records capacity **1.0**, τ₂ = 20 s, E₀ **fixed at 45.3**, SSE 193.18,
+rmse 6.9495. §27 reports capacity **0.5**, E₀ = **35**, SSE 142.5, rmse 5.97. The 0.5/E₀=35 result
+came from an ad-hoc script in `/tmp` that was neither committed nor preserved.
+
+**The headline "~600× discrepancy" is therefore not a reproducible archived result.** The archived
+grid gives C_m = 1.0, i.e. a ~312× discrepancy — still fatal to the closure, but the number in §27
+cannot be regenerated from the repository. This is precisely the class of error I flagged in §28 and
+then committed again in the same round.
+
+## 29.6 P1 CONFIRMED — SSE was normalised as a residual SD
+
+sqrt(193.18/6) = **5.674°** (RMS residual over six points); the archived 6.9495 = sqrt(SSE/4) is a
+residual standard deviation after two fitted parameters. These are different quantities and §27
+quoted the larger one. With σ = 1° digitisation, χ² = 193 on 4 dof, reduced χ² = 48. The audit's
+conclusion stands: this is a **severe lack of fit**, not the "barely above noise" I described.
+
+## 29.7 P1 CONFIRMED — the five-frame rule is false
+
+Rank of the 9-coefficient design matrix (constant + 4 harmonics = 9 columns):
+
+| samples/cycle | cycles | rank |
+|---|---|---|
+| 5 | 1 | **5** |
+| 5 | 4 | **5** |
+| 9 | 1 | 9 |
+| 9 | 4 | 9 |
+
+Repeating cycles adds no rank — phase-locked samples revisit the same phases. A 4-harmonic fit needs
+**9 distinct phases per cycle, not 5**. The user-locked "≥5 frames/cycle" claim is an artefact of the
+fundamental-only fit and is wrong for the harmonic fit the method actually uses.
+
+## 29.8 P1 CONFIRMED — phase convention mislabelled
+
+`lag_deg` returns **330°** for a response genuinely delayed by 30°. It subtracts in the reverse order
+and maps into [0,360). Confirmed on a synthetic delayed cosine. Every "lag" number in the paper is
+therefore an advance under the stated convention, wrapped into the wrong branch. δ = φ_γ − φ_area ≥ 0
+(the user-approved convention) needs φ_γ computed against the same sign convention as the area
+forcing; the current code does not do that.
+
+## 29.9 P1 CONFIRMED — Rusdi aggregation numbers are ×1000, and the CMC is wrong
+
+Rusdi Table 1 column header reads literally **"Aggregation number /×1000"**. So 1.34 → 1340,
+1.74 → 1740, 3.60 → 3600. FINDINGS §24 lists these as 1.34/3.60 — **off by a factor of 1000**, and
+n̄ = 95 for C₁₂E₈ was never in that paper anyway (C₁₄/C₁₆/C₁₈ only).
+
+Worse for the fit: **C₁₄E₈ CMC = 1.81×10⁻⁵ mol/dm³ = 18.1 µmol/L at 298.2 K**, not the 7 µmol/L
+hardcoded in `study_fainerman_fit.py`. Fainerman's 30 µmol/L is therefore **1.66× CMC, not 4.29×**.
+The fit was run at the wrong concentration relative to its own CMC.
+
+## 29.10 P1 CONFIRMED — internal numerical contradictions
+
+- Line 62: "a 10% error in n̄ produces a 10% bias in τ₂ — **forty-four times**"; line 958:
+  "**thirty-one times**". 10/0.327 = 30.6. So "31" is right and "44" is a stale leftover.
+- Abstract/§7.4 quote 0.2% statistical precision while §6.2 adopts 0.327% empirically.
+- §7.1 wording reverses the sign of ∂δ/∂ln τ₂ mid-paragraph.
+
+## 29.11 The analytic transfer function (audit §2.5) is correct and useful
+
+With B(ω) = 1 + C_m/(1+iωτ), q² = iωB/D, E = E₀·iω/(iω + Dq/h):
+
+| f (Hz) | numeric | analytic | diff |
+|---|---|---|---|
+| 0.05 | 69.9584 | 69.9494 | 0.0090 |
+| 0.20 | 81.2202 | 81.2185 | 0.0017 |
+| 1.00 | 74.2664 | 74.2656 | 0.0008 |
+| 5.00 | 52.9531 | 52.9520 | 0.0011 |
+
+Magnitudes agree to ~0.01°. This is a genuine contribution to the project: it makes profile
+likelihoods cheap enough to be routine, and it removes the need for the PDE solver in most
+identifiability work.
+
+## 29.12 Where I disagree or refine
+
+- **§6.4 test suite.** On this sandbox (Python 3.11.2, NumPy 2.4.6, matplotlib 3.11.2, PyMuPDF 2.1)
+  **35 pass, 0 fail**. On the audit's stack (Python 3.14, NumPy 2.4.2) two digitizer tests fail with
+  8.51% median error and inverted tick exponents. So the digitizer is version-fragile, not wrong —
+  but I must stop reporting "33 passed, 1 skipped" as a clean bill: the skip *was* hiding two tests
+  that only run when matplotlib and pymupdf are installed.
+- **3.5 "one local sensitivity zero is not a global impossibility theorem".** Correct as a general
+  principle and I accept it; it does not, however, rescue any specific number in the manuscript.
+- The audit did not do an exhaustive literature search and says so; §5.4's novelty criticism (keyword
+  absence is not a gap) stands unanswered.
+
+## 29.13 Verdict
+
+The audit's summary is fairer than my own last two rounds: *both* the positive narrative (manuscript)
+and my negative one (§27) outran the evidence. But it is also harsher than I had understood, because
+§29.1 and §29.4 are not "results need revision" findings — they remove the paper's physical premise
+(τ₂ was never the relaxation time) and its subject (large amplitude adds 0.04°).
+
+The correct sequence is now the audit's stages 1–4, not option 1/2/3 from §27. Stage 1 is a
+**re-derivation**, not a reframing: define the kinetic time correctly, separate c_eq from c_total and
+M_eq from dM_eq/dc, adopt the analytic transfer function as the reference, fix the phase convention,
+and rebuild the claims ledger from zero. Nothing in the current manuscript survives stage 1 intact.
