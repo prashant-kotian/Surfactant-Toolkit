@@ -140,7 +140,10 @@ def test_dlag_label_is_per_factor_four_not_per_doubling():
     data = json.loads(path.read_text())
     row = next(r for r in data["rows"] if abs(r["E0"] - 103.5) < 0.5)
     w = {x["mult"]: x for x in row["window"]}
-    per_4x = w[1.5]["dlag_per_doubling"]
+    # field is dlag_per_4x (the span is tau2/2 -> 2*tau2 = 4x, as the docstring
+    # says); it was renamed from dlag_per_doubling in FINDINGS 13.6 and this
+    # test kept the old key until 2026-11-05.
+    per_4x = w[1.5]["dlag_per_4x"]
     # directly measured per-doubling near the operating point is 7.3-10.2 deg
     assert 15.0 < per_4x < 20.0
     assert abs(per_4x / 2.0 - 8.7) < 3.0
@@ -197,7 +200,13 @@ def test_mass_is_conserved_at_the_working_point():
                     capacity=s.capacity(c), tau2=4.0, temperature_K=298.15)
     r = run_oscillation(p, 6.28, 0.20, n_cycles=8)
     assert np.isfinite(r.mass_error)
-    assert r.mass_error < 1e-2, r.mass_error
+    # UPDATED 2026-11-05 (FINDINGS 30.3). mass_error is no longer the endpoint
+    # drift of an unweighted sum divided by an inflated inventory; it is the
+    # residual of the actual control-volume identity, normalised by the
+    # surfactant exchanged. The old metric read ~2e-3; the honest one is ~2e-2
+    # because the far-boundary flux and the Gamma*dlnA/dt area term are now
+    # accounted for rather than ignored.
+    assert r.mass_error < 5e-2, r.mass_error
 
 
 # --------------------------------------------------------------------------

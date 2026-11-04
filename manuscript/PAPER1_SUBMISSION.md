@@ -1,4 +1,10 @@
-# Direct Inversion of Micellar Relaxation Kinetics from Large-Amplitude Oscillatory Dilatational Surface Rheology: Theory, Bandwidth Limits, and Robust Parameter Identification for Model Nonionic Surfactants
+# Identifiability of Micellar Reservoir Kinetics from Oscillatory Interfacial Rheology: A Model-Based Study with a Corrected Phase Convention and an Analytic Reference
+
+**Provisional title.** The external audit of 5 November 2026 recommended exactly this neutral
+framing, and the analysis now supports it: §3.6 shows the phase content of this model is
+amplitude-independent to 0.04°, so a title built on *large-amplitude* rheology would misdescribe the
+mechanism. A more specific title is only defensible once the kinetic parameter has been mapped to a
+physical relaxation time (§3.2) and validated externally (§7.7).
 
 **Paper 1 of 2 — the C₁₂E₈ foundation paper**
 
@@ -26,29 +32,41 @@ The kinetics of micellar exchange at a surfactant-laden interface are carried by
 Aniansson–Wall relaxation time τ₂, a parameter that governs the response of foams and emulsions to
 any non-steady area change. It is nevertheless almost invisible to conventional dilatational
 rheology: in the linear regime the micellar reservoir competes with diffusion, and the two
-contributions cannot be separated from a single frequency response. Here we show that the phase lag
-of the surface-tension response in **large-amplitude** oscillatory dilatational rheology carries τ₂
-quantitatively, and we establish the conditions under which that information can be recovered.
+contributions cannot be separated from a single frequency response. Here we show that the phase of the
+surface-tension response in oscillatory dilatational rheology carries τ₂ quantitatively, and we
+establish the conditions under which that information can be recovered. The information is carried
+by the **fundamental** response: an earlier draft attributed it to large-amplitude forcing and to
+higher harmonics, but the model's phase is amplitude-independent to 0.04° between ε = 0.002 and
+ε = 0.20 (§3.6, FINDINGS 30.2). Large amplitude affects signal-to-noise, not mechanism.
 
 Using a mass-conserving reaction–diffusion model in which the micellar reservoir is an explicit
-species with linearised Aniansson–Wall exchange, we identify a signature that requires no *fit*
-and no knowledge of the transport parameters, though it does rest on the linear diffusion-only
-model class: no diffusion-only monolayer can exceed a loss angle of 45° at any frequency, whereas a
-micellar solution routinely reaches 68–80°. Because the reservoir acts as a *lagging source term*
-that delivers surfactant late in the expansion cycle, it adds dissipation rather than elasticity — the
-opposite of the intuitive expectation — and this sign is diagnostic.
+species with linearised Aniansson–Wall exchange, we re-derive a signature that requires no *fit*
+and no knowledge of the transport parameters, though it rests entirely on the planar linear
+diffusion-only model class: no such monolayer can exceed a loss angle of 45° at any frequency,
+whereas a micellar solution reaches 68–80° in this model. **This 45° ceiling is not new.** It is
+stated explicitly by Fainerman et al. (Langmuir 2008, 24, 6447, p. 6451), who also list finite fast
+kinetics, finite slow kinetics, spherical geometry and measurement error as alternative explanations
+for its violation. Our contribution is a consistency check and a model in that class, not a
+parameter-free proof of micellar kinetics. The reservoir acts as a *lagging source
+term* that delivers surfactant late in the expansion cycle, so it adds dissipation rather than
+elasticity. **This sign is not, however, diagnostic between mechanisms.** Fainerman attributes the
+same >45° excess to Joos *fast* dissociation, and both a lagging reservoir and fast kinetics predict
+a phase above 45°; the observation therefore discriminates against the planar diffusion-only
+baseline, not between the mechanisms that violate it (FINDINGS 25.2).
 
 We then separate **detectability** from **invertibility** and show they peak at different
 concentrations. The second harmonic I₂ is maximal at the CMC, where the micellar reservoir is empty
 and its sensitivity to τ₂ is exactly zero. The operative observable is instead the loss angle,
 whose sensitivity exceeds its measurement uncertainty by two orders of magnitude where the harmonic
 ratio's does not: across a doubling of τ₂ the ratio moves 0.007–0.019 against a noise floor of
-0.025–0.05. For the model nonionic surfactant C₁₂E₈ on a profile-analysis tensiometer we measure a
-concentration inversion window of **1.2–3.0 × CMC with an interior optimum at 1.5 × CMC**, and show
-this window is invariant across a fourfold range in the assumed limiting elasticity — it is a
-property of the transport problem, not of the isotherm parameterisation. A sampling density of
-**≥ 5 frames per cycle** is required, below which the phase estimate is biased rather than noisy
-(164–266° against a true 68° at one frame per cycle). At the operating point τ₂ is recovered with a
+0.025–0.05. For the model nonionic surfactant C₁₂E₈ on a profile-analysis tensiometer we compute a
+concentration window of **1.2–3.0 × CMC with an interior optimum at 1.5 × CMC**, invariant across a
+fourfold range in the assumed limiting elasticity. These are *computed* sweeps, not measurements:
+the window is derived from a capacity closure that the external comparison now contradicts by an
+order of magnitude (§7.7), and it should be read as a property of this model, not of C₁₂E₈. A
+sampling density of **≥ 9 frames per cycle** is required for the four-harmonic fit: the previously
+stated ≥ 5 is the requirement for a fundamental-only fit, and at 5 samples per cycle the
+nine-coefficient design matrix has rank 5 even after many cycles (FINDINGS 30.5). At the operating point τ₂ is recovered with a
 **statistical precision of 0.33%** for a known aggregation number, measured as the empirical
 spread of the estimator over repeated noise draws rather than from a local linearisation.
 
@@ -59,8 +77,10 @@ capillary-pressure tensiometer above ≈ 16 Hz. This explains, without invoking 
 why low-frequency drop-shape analysis has not reported micellar exchange in fast ionic surfactants.
 
 **The precision figure is statistical.** Accuracy is limited by systematic error in the aggregation
-number, which propagates one-for-one: a 10% error in n̄ produces a 10% bias in τ₂, forty-four times
-the statistical uncertainty. Both numbers must be quoted together, and we do so throughout.
+number, which propagates one-for-one: a 10% error in n̄ produces a 10% bias in τ₂, thirty-one times
+the 0.327% statistical uncertainty (10/0.327 = 30.6). Both numbers must be quoted together, and we
+do so throughout. An earlier draft said "forty-four times" in §1.3 and "thirty-one times" in §7.4;
+the two disagreed and only the latter is consistent with the quoted statistics (FINDINGS 30.12).
 
 ---
 
@@ -189,7 +209,9 @@ because the two modes are reported in the same methods sections.
 5. **Two inversion protocols with stated conditioning**: a one-parameter fit (Protocol A), in which
    capacity is fixed by the independent CMC/aggregation-number closure and only τ₂ is estimated,
    and a multi-concentration regression (Protocol B), in which τ₂ and a capacity scale are fitted
-   jointly. Protocol A gives τ₂ to ≈ 0.2 % on synthetic data and is the headline result.
+   jointly. Protocol A recovers τ₂ with an estimator SD of 0.327 % on synthetic data (60 draws) and is
+   the headline result; 0.2 % was an earlier Jacobian estimate that the repeated-draw test showed to be
+   1.42× optimistic (FINDINGS 18.1), and it is no longer quoted as the precision.
    **Protocol B is reported as a partial negative:** it recovers τ₂ to 0.5–1.6 % but the τ₂–capacity
    correlation remains between 0.1 and 0.6, does *not* fall monotonically with the number of
    concentrations, and in one of three isotherm anchors gets worse when a second concentration is
@@ -260,7 +282,12 @@ A model containing capacity without τ₂, or τ₂ without capacity, cannot sep
 from "fast reservoir"; this is the central deficiency of the prototype formulation this work
 replaces.
 
-Boundary conditions are no-flux for micelles at the interface (micellar diffusion is neglected; the
+Boundary conditions are no-flux for micelles at the interface. **Micellar diffusion is neglected, and
+that neglect is bounded rather than dismissed:** for two locally-equilibrated diffusing pools the
+admittance carries sqrt(1 + (C_m/n)(D_m/D)), so with D_m/D ≈ 0.25 the immobile approximation
+under-predicts transport by 1.06× at 1.5 × CMC but 1.22× at 4 × CMC and 1.58× at 10 × CMC
+(FINDINGS 30.14, following audit item 2.6). It is therefore defensible at the operating point and
+indefensible wherever the external comparison is made. The
 micelles are much larger and slower than monomers and matter only at the highest frequencies) and
 Dirichlet c = c₀ at the far boundary, which is placed at L = 8√(D/ω_min) so that the outer boundary
 never sees the oscillation.
@@ -278,11 +305,22 @@ concentration c_s ≡ c(0⁺,t), so that
 holds instantaneously. Equation (5) is algebraic, and how it is used numerically is the single most
 important implementation decision in the model.
 
-**Writing c_s as the differential state — the "obvious" choice — is wrong.** If c_s is integrated
-alongside the bulk, the interface satisfies Γ = Γ(c_s) at every instant by construction and is
-therefore infinitely compressible: the model then reports an elasticity of order 1/E₀ and no
-nonlinearity. The correct formulation carries Γ as the differential state and obtains c_s
-*algebraically* by inverting (5). All results in this paper use the inverted form.
+For an invertible isotherm the surface balance can equivalently be written with c_s as the
+differential state,
+
+    Γ′(c_s) dc_s/dt = j − Γ(c_s) dlnA/dt,                       (5a)
+
+since Γ′ = dΓ/dc_s is nonzero and finite. Equation (5) and equation (5a) are the same equation
+under a change of variable, and either may be integrated: carrying Γ as the differential state and
+obtaining c_s algebraically from the inverse of (5) is a *numerical convenience*, not a
+requirement.
+
+An earlier version of this manuscript asserted that integrating c_s directly makes the interface
+"infinitely compressible" and collapses the elasticity to order 1/E₀. **That claim is wrong and has
+been removed.** It confused the state variable with the interfacial storage term: what goes wrong in
+a naive c_s formulation is not the choice of variable but omitting the Γ′(c_s) factor in (5a), i.e.
+dropping part of the storage. We retain the inverted form because it is well conditioned here, and
+we verify the two formulations agree (Section 3.6).
 
 ### 2.4 Equation of state
 
@@ -855,7 +893,7 @@ kinetic relaxation is present. The converse is weaker but useful: **a measured �
 prove the absence of a reservoir, only that the drive frequency was too low to see it.**
 
 This asymmetry is worth stating carefully, because it is the trap §6.2 describes. At 1 Hz, CTAB
-sits at δ = 55.2° — above the ceiling, so a reservoir would be detected — yet its I₂ is nine times
+sits at |δ| = 55.2° — above the ceiling, so a reservoir would be detected — yet its I₂ is nine times
 below the noise floor, so τ₂ could *not* be inverted. The ceiling tells you a reservoir is there;
 it does not tell you the measurement carries enough information to quantify it. Detectability and
 invertibility again diverge, and this time across instruments rather than across concentrations.
@@ -894,10 +932,16 @@ Before presenting the protocols it is worth stating exactly why two of them are 
 1.5 × CMC operating point the loss angle responds to the two reservoir parameters with
 almost identical lever arms and opposite signs:
 
-    ∂δ/∂ln C_m  = +14.1° per e-fold                                       (14)
-    ∂δ/∂ln τ₂   = −13.3° per e-fold                                       (15)
+    |∂δ/∂ln C_m|  = 14.0° per e-fold                                      (14)
+    |∂δ/∂ln τ₂|   = 13.3° per e-fold                                      (15)
 
-A larger reservoir *raises* δ; a faster reservoir *lowers* it. A single-frequency measurement
+Both magnitudes were re-derived from the analytic transfer function after the phase-convention
+correction of §3.6; the earlier draft quoted 14.1° and 13.3° with explicit signs. **The signs depend
+on the δ convention and, above the resonance ωτ₂ ≈ 3, on which side of the maximum in δ(τ₂) the
+measurement sits** — δ is non-monotone in τ₂ there (§6.3, FINDINGS 20.2). We therefore quote
+magnitudes only. The physically robust statement is: increasing the reservoir capacity increases
+|δ| by about 14° per e-fold, and increasing τ₂ changes |δ| by a comparable amount in the opposite
+direction on the low-frequency branch. A single-frequency measurement
 therefore sees only a weighted difference, and the correlation between the two fitted parameters is
 0.997 — not as a numerical accident, but as a direct consequence of (14)–(15). This is why the
 second-harmonic ratio is useless for the two-parameter problem regardless of how precisely it is

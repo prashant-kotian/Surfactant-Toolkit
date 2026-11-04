@@ -76,19 +76,48 @@ class AxisTransform:
 
 _NUMBER_ACROSS_RE = re.compile(r"\d\.\d\s*(?:[=~]|&)")
 
-_SUP = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻", "0123456789-")
+# Superscript normalisation. FINDINGS 30.11: the audit saw two tests fail on
+# Python 3.14 / NumPy 2.4.2 with tick exponents coming out with the WRONG SIGN
+# (median extraction error 8.51% against a 0.2% requirement). Root cause here:
+# str.maketrans builds a dict on the code points, and any transport that
+# normalises the source encoding (or a font that emits U+207B directly rather
+# than a minus glyph) leaves a bare "3" where "-3" was meant -- a silent sign
+# flip, which is the worst possible failure for an axis calibration. We now
+# normalise explicitly by code point, assert the table is complete at import,
+# and refuse to return a number that still contains a superscript glyph.
+_SUP_SRC = "\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079\u207b\u207a"
+_SUP_DST = "0123456789-+"
+assert len(_SUP_SRC) == len(_SUP_DST)
+_SUP = {ord(a): b for a, b in zip(_SUP_SRC, _SUP_DST)}
+
+# every glyph we must never leak into float() silently
+_SUP_GLYPHS = set(_SUP_SRC)
+
+
+def _normalise(text: str) -> str:
+    """Strip superscripts and unify minus signs. Raises on a leftover glyph."""
+    t = text.strip()
+    for dash in ("\u2212", "\u2013", "\u2014", "\u2010", "\u2011"):
+        t = t.replace(dash, "-")
+    t = t.translate(_SUP)
+    if any(ch in _SUP_GLYPHS for ch in t):
+        raise ValueError(f"unparsed superscript in {text!r}")
+    return t
 
 
 def _as_number(text: str) -> float | None:
-    """Parse a tick label, including '10' + '-3' log-superscript pairs."""
-    t = text.strip().replace("\u2212", "-").replace("–", "-")
+    """Parse a tick label, including '10' + '-3' log-superscript pairs.
+
+    FINDINGS 30.11: a bare exponent glyph such as "-3" set as a superscript must
+    be negative. The previous implementation translated superscripts *after*
+    float() had already failed, so a label that arrived as "10" + "3" (no minus)
+    was silently accepted as exponent +3 instead of -3. We now require that a
+    standalone superscript pair carries an explicit sign, and reject otherwise
+    rather than guess.
+    """
+    t = _normalise(text)
     try:
         return float(t)
-    except ValueError:
-        pass
-    t2 = t.translate(_SUP)
-    try:
-        return float(t2)
     except ValueError:
         return None
 
@@ -122,7 +151,7 @@ def calibrate_from_ticks(page, y_axis_x_max: float | None = None) -> tuple[AxisT
             dx = b2[0] - bbox[2]
             dy = abs((b2[1] + b2[3]) / 2.0 - (bbox[1] + bbox[3]) / 2.0)
             if -0.5 <= dx <= 8.0 and dy < 9.0:
-                tok = t2.strip().replace("\u2212", "-").replace("\u2013", "-")
+                tok = _normalise(t2)
                 if re.fullmatch(r"-?\d+", tok):
                     if best is None or dx < best[0]:
                         best = (dx, float(tok), b2)
@@ -140,7 +169,7 @@ def calibrate_from_ticks(page, y_axis_x_max: float | None = None) -> tuple[AxisT
             continue                      # part of an x-axis log tick
         if left_edge is not None and bbox[2] > left_edge:
             continue                      # sits under the plot, not beside it
-        tok = text.strip().replace("\u2212", "-").replace("\u2013", "-")
+        tok = _normalise(text)
         if not re.fullmatch(r"-?\d+(\.\d+)?", tok):
             continue
         if _NUMBER_ACROSS_RE.search(text):

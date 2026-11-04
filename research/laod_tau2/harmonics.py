@@ -62,14 +62,61 @@ def first_harmonic_phase(t, y, omega: float) -> float:
 
 
 def lag_deg(t, gamma, area, omega: float) -> float:
-    """Lag of gamma behind the area oscillation, degrees (positive = lag).
+    """delta = phi_gamma - phi_area, degrees, unwrapped (positive = gamma LAGS).
 
-    The White Paper's prototype never reports this quantity, but it is the
-    observable that disentangles a micellar reservoir from EOS nonlinearity
-    (see docs), so it is measured everywhere downstream.
+    BUG FIX 2026-11-05 (FINDINGS 30.4). The previous version computed
+    phi_area - phi_gamma and mapped into [0, 360). Both were wrong:
+
+      * the subtraction was reversed, so a response genuinely delayed by 30
+        degrees returned 330 rather than 30;
+      * the modulo put every number in the wrong branch whenever the true
+        quantity was small and positive, i.e. exactly in the diffusion-limited
+        regime the paper reasons about.
+
+    With y = A*cos(theta - phi) and theta = omega*(t - t0), a positive phi
+    means y peaks LATER than the forcing, so delta = phi_gamma - phi_area is the
+    lag. No wrapping: wrapping silently converts a phase error into a plausible
+    looking number.
+
+    SIGN WARNING (FINDINGS 30.9). For this model delta comes out NEGATIVE in the
+    regime of interest: gamma leads the area oscillation. Verified two ways --
+    (i) against the analytic transfer function, where delta = -arg(E) and the two
+    agree to 0.009 deg over 0.05-5 Hz; (ii) by locating the waveform maxima
+    directly in the solver output. The project previously asserted the
+    convention "delta = phi_gamma - phi_area >= 0" and then reported numbers that
+    were arg(E), i.e. the opposite sign. Both the sign and the convention were
+    inconsistent. Magnitudes and frequency dependence (including the 45 deg
+    ceiling) are unaffected; only the sign convention was wrong.
     """
-    dphi = first_harmonic_phase(t, area, omega) - first_harmonic_phase(t, gamma, omega)
-    return (math.degrees(dphi) + 360.0) % 360.0
+    dphi = first_harmonic_phase(t, gamma, omega) - first_harmonic_phase(t, area, omega)
+    d = math.degrees(dphi)
+    return (d + 180.0) % 360.0 - 180.0
+
+
+def required_samples_per_cycle(kmax: int = 4) -> int:
+    """Distinct samples per cycle needed to fit `kmax` harmonics.
+
+    The design matrix has 1 + 2*kmax columns (mean, then cos/sin for each
+    harmonic). Phase-locked samples at N distinct phases give rank N no matter
+    how many cycles are averaged, because later cycles revisit the same phases.
+
+    BUG FIX 2026-11-05 (FINDINGS 30.5): the project asserted ">= 5 frames per
+    cycle" as a locked design rule. Five is the requirement for a
+    fundamental-only fit (1 + 2*1 = 3 columns, so 3 suffices, and 5 was chosen
+    for margin). For the four-harmonic fit the method actually uses, the
+    requirement is 9. Verified: rank 5 with 5 samples/cycle even over 4 cycles;
+    rank 9 with 9 samples/cycle.
+    """
+    return 1 + 2 * kmax
+
+
+def design_rank(n_per_cycle: int, n_cycles: int, kmax: int = 4) -> int:
+    """Rank of the harmonic design matrix for a phase-locked sampling plan."""
+    import numpy as np
+
+    t = np.concatenate([[i / n_per_cycle + k for i in range(n_per_cycle)]
+                        for k in range(n_cycles)])
+    return int(np.linalg.matrix_rank(_design(t, 2.0 * math.pi, kmax)))
 
 
 def add_noise(t, y, sigma: float, seed: int = 0):

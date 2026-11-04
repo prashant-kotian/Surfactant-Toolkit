@@ -28,11 +28,22 @@ def test_capacity_is_zero_below_cmc():
 
 
 def test_capacity_is_linear_above_cmc():
-    """The closure is exactly linear in (c_tot - CMC)."""
+    """The closure is linear in (c_tot - CMC) up to the volume correction.
+
+    UPDATED 2026-11-05 (FINDINGS 30.6). This previously passed at rel=2e-3
+    because the volume correction was 1000x too small and therefore invisible.
+    With phi correct (1.9e-5 rather than 1.9e-8), 4x cmc differs from 3x the
+    2x-cmc value by 2.1%, so the tolerance has to reflect the physics rather
+    than the old bug.
+    """
     for s in SYSTEMS.values():
         a = s.capacity(2 * s.cmc_mM)
         b = s.capacity(4 * s.cmc_mM)
-        assert b == pytest.approx(3 * a, rel=2e-3)
+        assert b == pytest.approx(3 * a, rel=3e-2)
+        # and the residual is exactly the volume factor, not drift
+        phi4 = s.volume_fraction(4 * s.cmc_mM)
+        phi2 = s.volume_fraction(2 * s.cmc_mM)
+        assert b / (3 * a) == pytest.approx((1 - phi2) / (1 - phi4), rel=1e-12)
 
 
 def test_closure_overestimates_near_the_cmc_edge():
@@ -47,7 +58,7 @@ def test_closure_overestimates_near_the_cmc_edge():
     # near-CMC the closure claims a reservoir 1% of the way up; physically it
     # must be far smaller relative to n_bar. Quantify the overestimate.
     assert near / s.n_bar > 0.005      # closure says ~0.01
-    assert far / s.n_bar == pytest.approx(9.0, rel=1e-2)
+    assert far / s.n_bar == pytest.approx(9.0, rel=3e-2)   # 9.20 with phi
 
 
 def test_frumkin_systems_flag_missing_isotherm_constant():

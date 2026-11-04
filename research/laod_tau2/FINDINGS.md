@@ -2087,3 +2087,173 @@ The correct sequence is now the audit's stages 1–4, not option 1/2/3 from §27
 **re-derivation**, not a reframing: define the kinetic time correctly, separate c_eq from c_total and
 M_eq from dM_eq/dc, adopt the analytic transfer function as the reference, fix the phase convention,
 and rebuild the claims ledger from zero. Nothing in the current manuscript survives stage 1 intact.
+
+# 30. Audit items implemented: what changed, and what the corrected model says
+
+Every item in the external audit was implemented or explicitly bounded. 68 tests pass (was 35).
+The corrected model does not merely shift numbers — **it removes three of the paper's five claims.**
+
+## 30.1 Concentration convention (`systems.py`)
+
+`to_model` now solves `c_total = c_eq + M_eq(c_eq)` and passes the MONOMER concentration.
+`monomer_convention="total"` retains the old behaviour for reproduction and is opt-in.
+For the project's linear closure the solution is `c_eq = c_total/m`, i.e. exactly the classical
+pinned-monomer limit — which is what the bug was really suppressing.
+
+Measured effect at 1 Hz, C_m = 47.5, τ = 4 s: **66.6° → 62.6°, a 3.94° shift** — larger than the
+entire concentration window the paper reported.
+
+## 30.2 Inventory and kinetic time (`model.py`)
+
+`M_eq = C_m·c/n_agg`, not `C_m·c`. New `n_agg` field (default 1.0 = bit-for-bit old results).
+New properties `micelle_inventory` and `relaxation_time = tau2/(1+C_m/n_agg)`.
+
+At 1.5× CMC with n̄ = 95: inventory was **142× too large** (5.06 → 0.0355 mol/m³), and the
+"τ₂ = 4 s" coefficient corresponds to a closed relaxation time of **2.67 s**.
+
+## 30.3 Mass balance (`model.py`)
+
+The old metric divided the endpoint drift of an unweighted sum by an inventory inflated by n_agg.
+It is replaced by the residual of the actual control-volume identity, including the far-boundary
+flux and the Γ·dlnA/dt area sink, normalised by the surfactant actually exchanged. Both the absolute
+residual and the endpoint drift are now reported separately.
+
+Honest value: **2.2×10⁻⁴** residual (absolute 3×10⁻¹¹), against the old 2.2×10⁻³. The old number was
+smaller only because its denominator was 48× too big.
+
+## 30.4 Phase convention (`harmonics.py`)
+
+`lag_deg` returned **330° for a genuine 30° delay**: reversed subtraction, plus a modulo into
+[0,360). Fixed, with no wrapping. Tests recover known delays and leads exactly.
+
+**This exposed a sign inconsistency at the heart of the paper.** Under the corrected definition,
+δ = φ_γ − φ_area is **negative** in this model: the surface tension *leads* the area oscillation.
+Verified independently by locating waveform maxima (γ peaks 0.183 s before A at 1 Hz) and by the
+analytic transfer function (δ = −arg E, agreeing to 0.009°). The project asserted "δ ≥ 0" and then
+reported arg E, which is the opposite sign. Magnitudes and the 45° ceiling are unaffected; the
+signed convention was simply wrong throughout.
+
+Consequently the derivatives in manuscript §7.1 changed sign: |∂δ/∂ln C_m| = 14.0,
+|∂δ/∂ln τ₂| = 13.3 per e-fold, quoted as magnitudes with the branch stated.
+
+## 30.5 Sampling rule (`harmonics.py`)
+
+`required_samples_per_cycle(kmax) = 1 + 2kmax`, plus `design_rank`. For the four-harmonic fit this
+is **9, not 5**. Rank at 5 samples/cycle is 5 and does not improve with more cycles. The "≥5 frames
+per cycle" claim in manuscript title/abstract/§4 is corrected to ≥9 and labelled
+fundamental-only for the 5 case.
+
+## 30.6 Units (`systems.py`, `model.py`)
+
+- Micellar volume fraction was **1000× too small** (1.9×10⁻⁸ vs 1.9×10⁻⁵). Now 0.0019% at 1.5× CMC.
+- `dgamma_dcs` returned dΓ/dc on the Langmuir branch and dΠ/dc on the Frumkin branch. Now returns
+  dΓ/dc on both, with `dPi_dcs` added and Gibbs-verified.
+
+## 30.7 The "infinite compressibility" claim was false (`model.py`, manuscript §2.3)
+
+Carrying c_s as the differential state is a change of variable, not an error: Γ′(c_s) dc_s/dt =
+j − Γ dlnA/dt is the same equation. The claim was removed from the manuscript and replaced with the
+equivalence, which is now tested.
+
+## 30.8 Analytic transfer function (`linear_response.py`, new)
+
+Audit item 2.5, implemented and independently verified. Agreement with the PDE solver:
+**0.009°, 0.001°, 0.001°, 0.001°** at 0.05 / 0.2 / 1 / 5 Hz. LVDT limit never exceeds 45°.
+This is now the reference implementation; the fit study uses it.
+
+## 30.9 Consequence: the reservoir is much weaker than claimed
+
+Because `B = 1 + C_m/(n(1+iωτ))` and the closure gives `C_m/n = m−1`, **n̄ cancels entirely**:
+
+    reservoir strength = (m−1),        not n̄(m−1)
+
+At 1.5× CMC the equilibrium retardation is 1.5, exactly total/monomer. The manuscript's central
+premise — that the reservoir is ~95× the monomer pool and that δ swings 18° across the window — was
+an artefact of the same missing `/n`. Corrected numbers at 0.1 Hz:
+
+| m | |δ| | Δ|δ| vs m=1 |
+|---|---|---|
+| 1.0 | 40.1° | — |
+| 1.5 | 44.4° | +4.3° |
+| 2.0 | 48.2° | +8.1° |
+| 3.0 | 54.0° | +14.0° |
+| 5.0 | 61.2° | +21.1° |
+
+**The 1.2–3.0× CMC window with an interior optimum at 1.5× CMC does not survive this correction.**
+δ is monotone in concentration across the whole range; the "optimum" was the point where the
+inflated reservoir happened to peak against the 45° threshold.
+
+## 30.10 The external fit, redone correctly
+
+Three defects fixed: wrong CMC (7 µmol/L → **18.1 µmol/L**, Rusdi 2005 Table 1, so 30 µmol/L is
+**1.66× CMC not 4.29×**), homolog substitution now labelled, and the unarchived 0.5/E₀=35 result
+replaced by an archived scan. Statistics corrected: RMS residual and residual SD reported
+separately.
+
+Fitted on |δ| (the model's sign is not recoverable from a magnitude-only figure), E₀ and capacity
+and τ₂ all scanned:
+
+| | value |
+|---|---|
+| E₀ | **90 mN/m** (interior) |
+| C_m | **2.0** (95% profile: 1.5–2.0) |
+| τ₂ | **8 s** (interior) |
+| RMS residual | **0.58°** on 6 points |
+| reduced χ² | 0.33 |
+| closure at 1.66× CMC | 62.5 |
+| closure vs fit | **31×**, excluded at ΔSSE = 550 |
+
+So the external data are now fitted **to within their own digitisation uncertainty**, with all three
+parameters interior. That is a much stronger result than §27 — and it still puts the closure 31× too
+high. The capacity discrepancy is real and is not a fitting artefact.
+
+## 30.11 Digitizer portability (`vector_digitize.py`)
+
+Superscript normalisation rebuilt by code point, with explicit sign handling and rejection of
+mangled labels. A bare superscript exponent can no longer be read with the wrong sign.
+
+## 30.12 Manuscript contradictions
+
+- "forty-four times" (§1.3) vs "thirty-one times" (§7.4): 10/0.327 = 30.6, so 31 is right.
+- 0.2% statistical precision withdrawn in favour of the measured 0.327% (60 draws).
+- §7.1 signs: now magnitudes, branch stated.
+- Title changed to the audit's neutral framing.
+- Abstract: amplitude-independence stated; 45° provenance attributed to Fainerman; "lagging =
+  diagnostic" withdrawn; "we measure a window" → "we compute a window".
+
+## 30.13 What is left
+
+Implemented: 30.1–30.12 above, plus 30.14 (micellar diffusion bounded), 30.15 (instrument-rate
+sampling), 30.16 (covariance/weights/seeds).
+
+Not implemented, and why:
+
+- **Two-species transport with mobile micelles (§2.6 full model).** The error is now bounded
+  analytically (1.06× at 1.5× CMC, 1.58× at 10× CMC) rather than modelled. Implementing a second
+  diffusing species is a genuine model extension, not a bug fix, and it should be done against the
+  analytic bound as a test.
+- **Full observation Jacobian / profile likelihood over all nuisances (§3.5).** The capacity profile
+  is done for the external fit. The sensitivity-zero question needs a Jacobian including adsorption
+  and transport nuisances, which requires the model hierarchy of audit §7.2 first.
+- **Redigitisation of Fainerman Fig 5 with a calibrated vector extraction (§3.4).** The figure is a
+  rasterised render, so the vector path is unavailable; this needs the original or author data.
+- **Coverage study at 1900 draws (§4.5).** Currently 60 draws, stated as ±3.9 percentage points.
+- **Independent experimental data (§8.3).** Not something the software can fix.
+
+## 30.14 Verdict after implementation
+
+The audit was right that the project needed a re-derivation rather than a reframing. Post-fix:
+
+- The model is now internally consistent and externally fitted to 0.58° RMS with all parameters
+  interior.
+- The kinetic parameter has a correct definition (`relaxation_time`), though not yet a mapped
+  microscopic identity.
+- **The concentration window, the n̄-driven detectability argument, and the large-amplitude premise
+  are gone.** They were artefacts.
+- The capacity discrepancy with Fainerman (31×) survives every correction and is now the most
+  solid quantitative finding in the project — as a *negative* result about the closure.
+- The 45° ceiling is Fainerman's, and now correctly attributed.
+
+The honest paper is: "the equilibrium capacity closure over-predicts the micellar reservoir by ~30×,
+and the resulting inaccuracy propagates into every phase-based inference; here is a corrected
+formulation, an analytic reference, and a fit to the only external data that exposes it."

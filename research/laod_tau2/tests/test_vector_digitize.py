@@ -54,3 +54,25 @@ def test_calibration_recovers_log_ticks(synthetic_pdf):
         r = validate_synthetic(path, truth)
     decades = [e for _, e in r["calibration"]["x_ticks"]]
     assert decades == [-3.0, -2.0, -1.0, 0.0]
+
+
+def test_superscript_sign_is_never_silently_dropped():
+    """FINDINGS 30.11: a superscript exponent with a minus must stay negative."""
+    from research.laod_tau2.vector_digitize import _as_number
+
+    assert _as_number("\u207b\u00b3") == -3.0          # superscript minus three
+    assert _as_number("\u207b3") == -3.0              # mixed: minus glyph + ASCII
+    assert _as_number("\u22123") == -3.0              # Unicode minus
+    assert _as_number("\u207b\u00b9") == -1.0
+    assert _as_number("\u2070") == 0.0
+    # a bare positive exponent is NOT the same label as a negative one
+    assert _as_number("\u00b2") == 2.0
+
+
+def test_mangled_labels_return_none_rather_than_a_wrong_number():
+    """A dangling sign must not parse as a tick value."""
+    from research.laod_tau2.vector_digitize import _as_number
+
+    assert _as_number("10-") is None      # dangling minus
+    assert _as_number("") is None
+    assert _as_number("abc") is None
