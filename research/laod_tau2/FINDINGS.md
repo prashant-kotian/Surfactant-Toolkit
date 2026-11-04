@@ -1699,3 +1699,82 @@ The SI carries an explicit uncertainty budget: instrument noise σ_inst, baselin
 temperature σ_T, density and ring corrections, timing resolution, combined in root-sum-of-squares
 (Eq. S9). That is a proper metrological treatment. Our 0.106% combined figure comes from a Jacobian SE
 plus a coverage test. Comparable in spirit, weaker in completeness.
+
+# 26. Effective D* test: the decisive result, and it breaks our operating point
+
+`study_effective_D.py` → `effective_D_test.json`. Correct formula used: Fainerman eq 1 gives
+ω_D = D (dΓ/dc)⁻², i.e. D **divided** by (dΓ/dc)². My first run had this inverted and returned
+φ = 0 everywhere; corrected. For the anchored C₁₂E₈ isotherm, E₀ = 45.3 mN/m, dΓ/dc = 3.03×10⁻⁶ m,
+ω_D = 41.4 Hz.
+
+## 26.1 D* is structurally incapable of exceeding 45°
+
+max φ as f → 0, across β from 0 to 100: **44.84, 44.88, 44.93, 44.97, 45.00°**. β can be raised
+indefinitely and the ceiling never breaks, because β only rescales ω_D and
+
+    φ = arctan[ξ/(1+ξ)] → 45° as ξ → ∞,
+
+so no choice of D* reaches even 46°. Over the measured band 0.005–0.2 Hz, D* predicts
+**40.1–44.7°** for β = 0.5 and 43.1–44.7° for β = 5.
+
+**Fainerman's Fig. 5 measures 50°.** So their own effective-D* model cannot explain their own data,
+which is precisely the discrepancy they report and attribute to Joos's fast process.
+
+## 26.2 Our explicit reservoir matches the data with a *small* capacity
+
+Measured maximum φ ≈ 50° (5–30 µmol/L, 0.005–0.2 Hz). Model, τ₂ = 4 s:
+
+| C_m | max φ over band | at f |
+|---|---|---|
+| 0.2 | 45.0 | 0.02 |
+| 0.5 | 47.6 | 0.05 |
+| **0.8** | **50.1** | **0.05** |
+| 1.0 | 51.6 | 0.05 |
+| 2.0 | 56.6 | 0.05 |
+| 5.0 | 63.9 | 0.10 |
+| 10.0 | 69.6 | 0.10 |
+| 47.5 | 78.4 | 0.20 |
+
+**C_m ≈ 0.8 reproduces Fainerman's 50°.** That is the first quantitative agreement between our model
+and a measured micellar dilatational dataset, and it required no fitting of τ₂, E₀ or D.
+
+## 26.3 The problem this creates
+
+Our entire design is built on **C_m = 47.5** (the 1.5× CMC operating point, the 68–78° lags, the
+ε = 0.20 target, the window study, the null locus, the blind-inversion trials). The one external
+dataset we can compare against implies **C_m ≈ 0.8–1.0**.
+
+At C_m = 47.5 the model predicts 78.4° where Fainerman measures 50°: a **28° overshoot**. Either
+
+- (a) our capacity closure C_m = n̄(m − 1) overestimates by ~50×, as the reviewer's item 5 suspected
+  and as the §18.8 capacity sweep only tested out to ×2; or
+- (b) C₁₄EO₈ and C₁₂E₈ differ enough that the comparison does not transfer.
+
+(b) is weak: both are CₙE₈ with similar CMC and τ₂ scale, and the predicted capacity dependence is
+monotone and steep — a 50× discrepancy is not a subtle transfer error.
+
+**This is now the most important open problem in the paper**, ahead of the null locus. If C_m ≈ 1,
+then:
+- the operating point 1.5× CMC gives φ ≈ 50°, not 68–78°
+- the high-leverage regime in the window study (§18.8) is largely an artefact of the closure
+- the "ε = 0.20 operational design point" was never checked at the correct capacity
+- the τ₂ sensitivity lever must be recomputed at C_m ≈ 1, where we measured it to be **small**
+  (§20.2 gives min lever 0.90 deg/e-fold at C_m = 2 — roughly 14× worse than the 13 deg/e-fold we
+  have been quoting at C_m = 47.5)
+
+## 26.4 What survives, and it is not nothing
+
+The **direction** of the result is confirmed externally for the first time: an explicit micellar
+reservoir with a single relaxation time reproduces a measured φ ≈ 50° at the right frequency and with
+C_m of order unity. The mechanism is defensible. It is the *magnitude* of the capacity that is wrong.
+
+And D* is refuted as a sufficient model on the one dataset where it can be tested: it cannot reach 50°
+at any β or frequency. That is a clean, publishable negative result about the standard shortcut, and it
+is independent of our capacity problem.
+
+## 26.5 Immediate consequences for the programme
+
+1. **Re-derive C_m from first principles** rather than n̄(m−1), or fit it to the Fainerman data.
+2. **Rerun the window and null-locus studies at C_m = 1**, not 47.5. Expect much weaker leverage.
+3. **The 45° screen still works** — it only needs φ > 45°, which C_m ≈ 0.8–1 already exceeds.
+4. **Do not quote 68–80° as our predicted range** until the capacity is settled.
