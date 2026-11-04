@@ -1558,3 +1558,144 @@ also unclaimed as a package. That is a narrower claim than the draft makes, and 
 Also newly identified as necessary and previously uncited: Danov & Kralchevsky's two-part mass
 transport theory (doi:10.1016/j.cis.2005.09.002, .09.003), which is the correct theoretical baseline
 for a micellar reservoir and is nowhere in our reference list.
+
+# 25. The seven PDFs, read. Both 2026 threats assessed; one dies, one is a template.
+
+All seven supplied files read in full. Verdicts below are from the actual texts, not abstracts.
+
+## 25.1 Al-Sou'od & Ghanem 2026 (doi:10.1002/jsde.70095) — DOES NOT PRE-EMPT US
+
+Full-text keyword audit of the 16-page paper:
+
+| term | occurrences |
+|---|---|
+| non-monotone / nonmonotone | **0** |
+| zero sensitivity | **0** |
+| multiple minima / local minimum | **0** |
+| flat (cost surface) | **0** |
+| multi-start / global search | **0** |
+| branch | **0** |
+| τ₂ | **0** |
+| micellar reservoir / micelle kinetics (as a modelled species) | not modelled |
+
+Their M2 adds a **phenomenological internal variable ξ** ("not identified a priori with orientation,
+aggregation, packing, or conformational change"). There is **no micelle population** in the model, and
+the CMC appears only to *exclude* a dataset (Poloxamer P9400 chosen because it is *below* CMC).
+
+Their failure mode is explicitly **protocol-induced**: unmeasured variation in area forcing and baseline
+drift generating spurious apparent modes, tested against nuisance models (linear drift, segment-specific
+amplitudes) via AICc and leave-one-segment-out.
+
+**Our §20 null locus is a different object**: a genuine zero of ∂δ/∂lnτ₂ in the noise-free forward map
+of a diffusion-plus-reservoir system, whose location scales with micelle capacity (~C_m^0.4) and across
+which the sensitivity changes sign. That is not a protocol artefact and cannot be removed by better
+instrumentation.
+
+**Verdict: §20–22 SURVIVE.** But §22 is now *contextualised*, not novel as a headline. Both papers find
+that an apparently well-determined relaxation parameter can be unreal; they attribute it to an
+instrument/protocol nuisance, we attribute it to model geometry. Ours is the more fundamental claim and
+theirs is the better-validated one (real digitised data, AICc, locked cross-protocol prediction).
+**We must cite them and state the distinction explicitly, or a referee who knows both will assume we
+are reinventing their result.**
+
+Their methodological requirements we should adopt: model competition against nuisance alternatives,
+AICc or equivalent, and locked cross-protocol prediction as the validation standard.
+
+## 25.2 Fainerman 2008 (doi:10.1021/la704058y) — CORRECTS TWO OF OUR BELIEFS
+
+### (a) The 45° ceiling is the Fainerman/LvT theory's own limit — they say so explicitly
+
+Verbatim, p. 6450: *"The theoretical dependence φ, as calculated from eq 3, predicts **a maximum phase
+angle of 45°**, in good agreement with experimental data at c0 < 2×cmc, while at c0 > 2×cmc the
+theoretical values of the phase angle are **less than those from the experiment**."*
+
+So the 45° bound is not merely a corollary of LvT that we may cite — it is **stated, used, and tested
+against data in 2008**. Our §5.6 must present it as theirs. No novelty claim is possible there, at all.
+
+### (b) They measured the excess and attributed it to Joos's *fast* process
+
+Measured φ increases to **50°** across 5 µmol/L → 30 µmol/L (5° above the 45° limit), and they report
+values **up to 90°–100° at c > 100 µmol/L and low frequency**, which they flag as physically suspect
+("any phase angle above 90° is without physical sense").
+
+Their explanation is Joos's *fast micelle dissociation*: the condition k_f → ∞ fails at high micelle
+concentration, and the extra relaxation pushes φ up toward 90°.
+
+**This is the opposite sign convention to ours.** Their picture: micelles *accelerate* the response and
+add a fast dissipative channel. Ours: the reservoir *lags* and adds dissipation late in the cycle. Both
+predict φ > 45° for micellar solutions. **The two are not distinguished by the sign of the effect on φ.**
+We previously treated "δ > 45° because the reservoir lags" as a diagnostic of our mechanism. It is not
+— it is equally consistent with theirs.
+
+This is a serious narrowing of our §5 claim, and it makes the mechanism question an open controversy
+rather than a result. It also means our "counterintuitive sign" finding may be a re-derivation of a
+controversy already live in 2008.
+
+### (c) An alternative to our reservoir model we had never seen
+
+Their eq 3–4 replace monomer D by an **effective D\* = D(1+β)(1+Rβ)**, β = (c₀ − cmc)/cmc, R ≈ D_m/D ≈
+0.25, keeping the LvT functional form and setting c₀ = cmc. This is a one-parameter modification of the
+diffusion theory that reproduces |ε| at all concentrations.
+
+Our coupled model also reproduces |ε|. **We have never compared against D\*.** Any claim that a coupled
+reservoir is *necessary* must first show that effective-D fails where ours succeeds. On δ they might
+differ — that is a concrete, cheap, decisive test we should run.
+
+### (d) Frequency range is decisive for our horizon argument
+
+Their measurements run over **0.005–0.2 Hz**. Our design targets 1–1.6 Hz. The literature has no micellar
+LAOD at our frequencies. That supports our instrument-horizon framing but also means nothing validates
+us where we operate.
+
+## 25.3 Rusdi 2005 (doi:10.1246/bcsj.78.604) — we have been quoting the wrong CMC
+
+Table 1, CMC ×10⁵ mol dm⁻³:
+
+| | 298.2 K | 303.2 | 308.2 | 313.2 | 318.2 |
+|---|---|---|---|---|---|
+| C₁₄E₈ | 1.81 | 1.72 | 1.67 | 1.67 | 1.67 |
+| C₁₆E₈ | 1.60 | 1.56 | 1.49 | 1.49 | 1.49 |
+| C₁₈E₈ | 1.39 | 1.34 | 1.43 | 1.46 | 1.46 |
+
+**This paper covers C₁₄E₈, C₁₆E₈ and C₁₈E₈ only — it contains no C₁₂E₈.** So it does not supply our CMC
+after all, despite the title's "(CₙE₈)". C₁₂E₈ is only present as a *reference point* in their Fig. 5
+ln CMC vs carbon-number plot.
+
+Consequence: **the C₁₂E₈ CMC in our manuscript is still unsourced.** We have been using ~0.09–0.109 mM
+from secondary web sources. Since the entire 1.2–3.0× CMC window is defined relative to this number, an
+error here rescales every concentration we quote. Still open.
+
+Useful anyway: C₁₄E₈ aggregation numbers (1.34 at 298.2 K rising to 3.60 at 318.2 K) — needed for the
+Aniansson–Wall mβ term in Fainerman's slow-process regime, if we ever model that.
+
+## 25.4 Risse et al. 2025 (doi:10.1016/j.cis.2025.103625) — confirms the gap
+
+Full text read. Occurrences: "inversion" **0**, "identifiability" **0**, "phase angle" 1, "micell" 4
+(all "casein micelles" as colloidal particles). The review covers LAOD for proteins, particles and
+polymers only. **No micellar surfactant LAOD, no inversion, no phase-angle screen.**
+
+This is now positive evidence for our core gap, from the field's own current review rather than from a
+search failure.
+
+## 25.5 Danov & Kralchevsky 2006, parts 1 and 2 — the theory we should have been using
+
+Part 1: reduction of "tens of kinetic equations" to a tractable description of relaxation of micelle
+concentration, aggregation number and polydispersity. Part 2: applies it to quiescent adsorption.
+
+Fainerman cites part 2 (ref 26) to justify using the effective-D approximation over long times: *"eq 4
+describes the diffusion processes in micellar solutions for a time range exceeding the time of fast
+micelle dissociation … eq 4 with the parameter mβ instead of β can be used at a time range significantly
+longer than the time of the slow micelle dissolution process."*
+
+**So the literature already establishes that at times longer than τ₂, the micellar response is
+indistinguishable from an effective diffusion coefficient.** Our ωτ₂ ≈ 3 operating point sits exactly at
+the crossover. That is either the reason our method works (below the crossover the reservoir is
+resolved) or the reason it cannot (above it, only D\* is recoverable). **This is now the central
+theoretical question of the paper and it is not addressed anywhere in the current manuscript.**
+
+## 25.6 Al-Sou'od 2026b SI — what "precision" means in the competing frame
+
+The SI carries an explicit uncertainty budget: instrument noise σ_inst, baseline drift slope β_drift,
+temperature σ_T, density and ring corrections, timing resolution, combined in root-sum-of-squares
+(Eq. S9). That is a proper metrological treatment. Our 0.106% combined figure comes from a Jacobian SE
+plus a coverage test. Comparable in spirit, weaker in completeness.
