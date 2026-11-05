@@ -223,7 +223,46 @@ A genuinely blind test requires a system whose ceiling is not used to set `C`.
 
 ---
 
-## 5. What this does and does not establish
+## 5. From molecular structure, not from a chosen concentration ratio
+
+Everything above fixes `c/c_mc`, which is not a variable an experimenter sets: they
+weigh out a concentration in mol/L, and the CMC is fixed by the molecule. Using
+SurfactantKit's Nagarajan molecular-thermodynamic predictor (`nagarajan.py`, no fitted
+parameters, validated to 0.15 log₁₀ against seven experimental CMCs), the design is
+recomputed from the structure.
+
+Predicted CMCs: C₁₀E₈ 1.4×10⁻³ M, C₁₂E₈ 1.2×10⁻⁴ M, C₁₄E₈ 9.7×10⁻⁶ M,
+C₁₆E₈ 7.9×10⁻⁷ M — the expected decade per two carbons.
+
+| surfactant | best achievable Π (mN/m) | D | at |
+|---|---|---|---|
+| C₁₀E₈ | 80.0 | 9.11 | ceiling |
+| C₁₂E₈ | 62.6 | 9.11 | ceiling |
+| C₁₄E₈ | 45.3 | 9.11 | ceiling |
+| C₁₆E₈ | 28.0 | 9.11 | ceiling |
+
+Every optimum sits at the concentration ceiling, at 10³–10⁶ µmol/L. The result is not a
+recommendation to run at 500× CMC — it is the opposite. **`c/c_mc` measures the wrong
+thing.** A given surface pressure is reached at a *lower* multiple of the CMC for a longer
+chain, so the natural experimental limit (cloud point, solubility, foam stability) binds
+earlier in `c/c_mc` terms, and the design collapses from four dimensions to effectively
+one: run at the highest surface pressure the phase diagram permits, in the lowest
+frequency decade of the instrument, with the modulus recorded.
+
+That is a weaker-sounding but more useful conclusion than a table of optima. It is also the
+one that could not have been reached without the CMC-from-structure step: with a fixed
+assumed CMC, all four surfactants look identical, and the chain-length dependence — the
+thing an experimentalist actually varies — is invisible.
+
+**Limitation.** Γ∞ and K remain calibrated, not molecular. `nagarajan.py` predicts the CMC
+but not the adsorption isotherm, so the Gibbs elasticity still comes from two fitted
+constants. Closing that gap would need an adsorption isotherm module; it is the obvious next
+extension and the reason §3's absolute D values should be read as ordering, not as
+predictions.
+
+---
+
+## 6. What this does and does not establish
 
 **Does:** provides a computable, worst-case, nuisance-profiled criterion for whether a
 planned oscillatory experiment can distinguish a surface relaxation from plain diffusion; and
@@ -240,11 +279,12 @@ checked, no priority claim.
 
 ---
 
-## 6. Reproduce
+## 7. Reproduce
 
 ```
 python -m research.identifiability.run_design      # §3 tables
 python -m research.identifiability.validate_design # §4 retrospective check
+PYTHONPATH=src:. python -m research.identifiability.from_structure  # §5 structure-driven
 python -m research.identifiability.fit_data        # AICc / profile on C14E8
 pytest research/identifiability/tests -q           # 13 tests
 ```

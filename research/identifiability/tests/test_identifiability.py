@@ -243,3 +243,37 @@ def test_worst_case_nuisance_is_a_minimum_not_an_average():
     narrow = discrimination(fr, t, r, [H])
     wide = discrimination(fr, t, r, [H * f for f in (0.3, 0.5, 1.0, 2.0, 3.3)])
     assert wide <= narrow + 1e-12
+
+
+# --- 6. structure -> design chain ----------------------------------------- -
+
+def test_cmc_from_structure_is_physical():
+    """The CMC must fall steeply with chain length and land in a plausible range.
+
+    A C12 polyoxyethylene ether CMC near 1e-4 mol/L is right; 1e-7 would mean a
+    unit error of three orders, which happened twice in this project (mol/L vs
+    mol/m3, and a stray factor in an f-string that printed a 500x-CMC
+    concentration as 59 mM when it was 59 uM).
+    """
+    from research.identifiability.from_structure import cmc_from_structure
+    c12 = cmc_from_structure(12)["cmc_mol_per_L"]
+    c16 = cmc_from_structure(16)["cmc_mol_per_L"]
+    assert 1e-5 < c12 < 1e-3, c12
+    assert c16 < c12, "CMC must decrease with chain length"
+    # Roughly a decade per two carbons for ethoxylates. The Nagarajan
+    # prediction sits at the low end of the experimental scatter for the long
+    # chains (C16E8 is measured around 1e-6 mol/L), so the window is set to
+    # the predictor's own validated range rather than to a literature value.
+    assert 1e-7 < c16 < 5e-6, c16
+    assert c12 / c16 > 20.0, (c12, c16)
+
+
+def test_structure_design_returns_monotone_sweep():
+    """Discrimination must be non-decreasing along the concentration sweep, and
+    must saturate rather than diverge."""
+    from research.identifiability.from_structure import design_for_surfactant
+    s = design_for_surfactant(14)
+    assert "error" not in s
+    Ds = [r["D"] for r in s["sweep"]]
+    assert all(Ds[i] <= Ds[i + 1] + 1e-9 for i in range(len(Ds) - 1))
+    assert max(Ds) < 100.0
