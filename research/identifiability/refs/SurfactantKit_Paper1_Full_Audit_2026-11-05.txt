@@ -1,0 +1,636 @@
+Page 1 
+Scientific and publication audit of SurfactantKit Paper 1  
+Running title: SurfactantKit Paper 1 audit 
+Prepared for: Prashant Kotian 
+Prepared by: Codex scientific audit 
+Affiliation: Not supplied for this audit 
+Corresponding author email: Not supplied for this audit 
+Audit completed: 5 November 2026 
+ 
+
+Page 2 
+1. Publication decision and main recommendation 
+The present manuscript is not ready for submission. Its main difficulty is scientific validity 
+and identification of the measured parameter, rather than language or formatting. The current 
+positive inversion claim is unsupported by an external experiment. The later notebook's opposite 
+conclusion, that real micellar systems occupy an impossible inversion regime, is also unsupported. 
+A mismatched, poor, boundary -limited fit to six digitized points cannot establish a universal 
+physical impossibility. 
+The strongest route is a substantial scientific reset: establish which kinetic time the 
+equations actually contain; repair the equilibrium concentration and reservoir conventions; derive 
+the linear transfer function; then determine when full, measured complex spectra identify that 
+time against competing physical and instrumental explanations. Retain large amplitude only if it 
+adds demonstrated information under equal measurement time and calibrated noise. A publishable 
+paper could emerge as a validated iden tification method or as a carefully bounded identifiability 
+study. Neither outcome should be chosen before the repaired analysis. 
+Several useful components survive: a runnable reaction –diffusion solver, locally 
+conservative exchange, a numerical test suite, documented reversals of earlier claims, and a 
+potentially useful sensitivity map. These are research assets, not evidence that the manuscript's 
+numerical recommendations are correct. The public library is present in the supplied archive; a 
+prior assertion that it was private or unavailable must not be repeated. 
+1.1 What was audited and what was reproduced 
+The authoritative input was the full v2 archive from the supplied Drive folder, containing 
+commit 492b7cf961b1fe46cb7149f4cbc7c69304d4ce6f. The audit examined the complete 
+submission manuscript, orientation, editorial record, literature survey, relevant late findings, 
+research model, harmonic extraction, system definitions, fitting and uncertainty scripts, archived 
+results, and the supplied primary literature sections relevant to the central claims. This is a 
+
+Page 3 
+scientific audit of Paper 1, not a certification of all 36 library modules or the unrelated language -
+model benchmark. 
+Independent checks reran the research tests, constructed the exchange Jacobian, checked 
+reservoir mass and nominal concentration, tested the phase convention with a known delayed 
+sinusoid, checked sampling matrix rank, derived an analytic small -strain response and compared 
+it with numerical integrations, and reconciled the archived external fit with the notebook. The 
+checks are retained in independent_checks.py and independent_checks.json beside this report. 
+The long blind-inversion and collapse studies were inspected through scripts and cached artifacts, 
+rather than independently regenerated. New bench experiments were not performed. No 
+exhaustive current literature search was completed; novelty statements below are limited to the 
+supplied literature and should be followed by citation tracing. 
+1.2 Severity and confidence 
+P0 means the issue blocks the central scientific interpretation. P1 means a major 
+validation, inference, or novelty problem. P2 means a reporting or submission defect. A verified 
+finding follows directly from the supplied artifact or an independent check. A model -dependent 
+deduction follows from the stated equations and is not an experimental observation. A required 
+investigation identifies an unresolved physical assumption. This distinction matters because 
+several earlier errors arose when a conditional mo del result was promoted to a fact about real 
+surfactants. 
+2. Foundational model problems 
+2.1 P0 The parameter called tau two is not automatically the bulk relaxation time 
+Verified mathematical deduction. In model.py the exchange equations, with diffusion 
+suppressed, are dc/dt = (M − C_m c)/tau and dM/dt = (C_m c − M)/tau. The linear Jacobian has 
+eigenvalues zero and −(1 + C_m)/tau. Therefore the conserved, closed two -pool disturbance 
+relaxes with time tau/(1 + C_m), rather than tau. At the advertised C_m = 47.5 and tau = 4 s, this 
+
+Page 4 
+is 0.08247 s. Calling the coefficient 4 s the Aniansson –Wall slow relaxation time requires a 
+derivation and is presently unjustified. 
+Fix: temporarily name the coefficient tau_exchange. Derive its mapping to experimentally 
+measured kinetic eigenmodes from a consistent mass-action or reduced Aniansson–Wall model. If 
+the intended closed relaxation time is tau_slow, a two -pool version needs an exchange prefactor 
+consistent with that definition, for example (1 + C_m) tau_slow in the denominator. This 
+illustrative correction does not itself establish a valid Aniansson –Wall reduction. Recompute 
+instrument horizons only after the mapping is settled. Source: model.py, run_oscillation; Danov et 
+al. part 1, Section 4 [2]. 
+2.2 P0 Equilibrium reservoir inventory is confused with its susceptibility 
+Verified implementation issue. The code initializes M0 = C_m c0. But C_m = dM_eq/dc 
+is a derivative, not the ratio M_eq/c. In the monodisperse mass -action closure M_eq is 
+proportional to c raised to the aggregation number n, and C_m = n M_eq/c. Thus M_eq = C_m 
+c/n. The offset written in the model currently vanishes identically because M0 is set to C_m c0. 
+At the nominal 1.5 CMC point the code stores c0 = 0.1065 mol per cubic metre and M0 = 
+5.05875, giving c0 + M0 = 5.16525 against nominal total 0.1065. With pinned monomer 0.071, 
+the physical micellized inventory would instead be 0.0355. The inflated inventory can hide 
+depletion or positivity problems and dilutes relative mass -error normalization. It does not, by 
+itself, change the linear perturbation dynamics because constant offsets cancel. Fix the base 
+inventory and susceptibility separately, retain the co rrect nonzero linearization offset, and test 
+physical pool positivity. 
+2.3 P0 Total concentration is used as monomer concentration above the CMC 
+Verified. SurfactantSystem.to_model passes c_total_mM into ModelParams.c0; key study 
+scripts do the same. The transport variable c is explicitly monomer concentration. Above CMC, 
+increasing nominal total concentration therefore also increases the Langmuir monomer 
+
+Page 5 
+concentration and coverage, while independently adding a micellar reservoir. This mixes two 
+equilibrium conventions and confounds the reported concentration optimum. 
+An illustrative independent linear calculation at fixed K = 140, C_m = 47.5, tau = 4 and 
+angular frequency 6.28 gives phase 67.98 degrees using c0 = 0.1065, versus 60.74 degrees with 
+c0 pinned to 0.071. This is an internal sensitivity comparison, not a corrected experimental 
+prediction. Fix by solving total = c_eq + M_eq(c_eq) or using a justified pinned -monomer 
+approximation; evaluate adsorption at c_eq, and vary reservoir inventory and slope consistently. 
+2.4 P0 The claimed need for large amplitude is contradicted by the model 
+Verified independent reproduction. At the advertised parameter set, strain 0.002 gives 
+phase 67.9764 degrees at angular frequency 6.28; strain 0.20 gives 67.9460 degrees. At angular 
+frequency 0.31416 the corresponding values are 69.5760 and 69.6233 degrees. An analytic linear 
+response predicts 67.9766 and 69.5670 degrees. Thus the central large phase exists in the 
+infinitesimal-strain model. It is not created by higher harmonics or isotherm nonlinearity. 
+The manuscript itself partly acknowledges amplitude independence in Section 4.5 but 
+retains a large-amplitude title, abstract, and detection requirement. Fix: make the linear theory the 
+baseline. Demonstrate an improvement from nonlinear forcing in information, independent 
+parameter separation, or held -out prediction before describing LAOD as necessary. Higher signal 
+at larger strain can be useful experimentally, but does not establish a new nonlinear identification 
+mechanism. 
+2.5 P1 The analytic linear solution should replace much of the numerical exploration 
+Independent derivation for the supplied immobile -reservoir model. With time dependence 
+exp(i omega t), define h = dGamma_eq/dc and B(omega) = 1 + C_m/(1 + i omega tau_exchange). 
+The decaying bulk mode has q squared = i omega B/D. The modulus is E = E0 i omega/[i omega 
++ D q/h]. Select the square -root branch with positive real part. The phase convention must be 
+stated explicitly. These equations reproduce the numerical small -strain phase to approximately 
+0.01 degrees at the two checked frequencies. 
+
+Page 6 
+This provides a fast independent reference, exposes the governing groups, and permits 
+broad profile likelihoods without repeated expensive PDE fits. It also explains why a micellar 
+phase above 45 degrees need not imply a nonlinear interface. Verify amplitude as well as phase, 
+derive limiting cases, and compare the finite -amplitude solver against this expression over a 
+preregistered grid. Novelty must concern the identification result or validated physical extension, 
+not merely obtaining this transfer function. 
+2.6 P1 Micellar diffusion cannot be dismissed because micelles are slower 
+Required physical investigation with an analytic warning. The manuscript claims micellar 
+diffusion matters only at the highest frequencies. Fainerman's primary treatment explicitly 
+includes micelle diffusion with D_m/D about 0.25 [1]. A smaller diffusion coefficient does not 
+establish a negligible contribution when the transported micellar inventory and susceptibility are 
+large. 
+In the local -equilibrium limit, a two -diffusing-pool model has total storage 1 + C_m and 
+effective transport coefficient D + C_m D_m. Its admittance is proportional to the square root of 
+(D + C_m D_m)(1 + C_m), whereas the immobile approximation uses the square root of D(1 + 
+C_m). Their ratio is sqrt(1 + C_m D_m/D): approximately 3.59 at C_m = 47.5 and 8.89 at C_m = 
+312 for ratio 0.25. Boundary conditions and species definitions still require care. Implement the 
+two-species transport model and map its valid immobile limit before interpreting fitted capacities. 
+2.7 P1 Local exchange cancellation is not a verified global mass balance 
+Verified diagnostic limitation. The exchange terms cancel locally, which is a real strength. 
+However mass_error is the endpoint change of the unweighted integral of c + M plus Gamma, 
+divided by initial inventory. It does not integrate the far -boundary flux. It also does not account 
+explicitly for changing surface area or the associated bulk geometry. For the implemented fixed -
+grid equations, differentiating that sum gives the far -boundary flux minus Gamma dlnA/dt; it is 
+not generally zero. 
+
+Page 7 
+Fix: derive the control -volume balance for the chosen geometry, including area -weighted 
+surface amount and any bulk deformation or advection. Integrate all physical fluxes and calculate 
+the residual of that identity. Report both absolute residual and a normalization relevant to 
+exchanged surfactant. Separately test mesh, domain extent, and periodic convergence. The 
+reported roughly 0.2 percent endpoint drift is neither a proof of conservation nor automatically a 
+numerical error. 
+2.8 P1 A single reservoir variable has not been established as the slow micellar mode 
+Required investigation. Danov et al. explicitly distinguish micelle number, mean 
+aggregation number, and polydispersity, with multiple characteristic times [2]. Fainerman 
+distinguishes fast monomer release from slow complete dissolution [1]. A single pool variable can 
+be a useful reduced model, but its equivalence to the slow mode is an additional hypothesis. The 
+orientation's question about equating beta with C_m is resolved only after specifying the kinetic 
+process: beta is an excess -concentration ratio, while the slow equilibrium susceptibility can 
+include n beta. They are not universally interchangeable. 
+Fix: derive a controlled reduction with stated timescale separation, or label the fitted 
+parameter an effective reservoir time. Use the fuller model to test whether the one -pool null locus 
+survives. A good fit alone cannot assign an effective time to a microscopic process. 
+2.9 P1 A change of numerical state variable cannot make the physics infinitely compressible 
+Verified conceptual error in manuscript Section 2.3. For an invertible local isotherm 
+Gamma = f(c_s), the surface balance can be written f prime(c_s) dc_s/dt = j − f(c_s) dlnA/dt. This 
+is equivalent to integrating Gamma and inverting f. Carrying c_s as a differential state is not 
+inherently wrong; omitting the interfacial storage derivative or mixing constraints is wrong. 
+Fix the explanation and add an equivalence check between the two valid formulations. 
+Remove the unsupported suggestion that standard choices of state variable create infinite 
+compressibility. Retaining this argument would undermine a reviewer’s confidence in the 
+derivation. 
+
+Page 8 
+2.10 P2 Additional parameter and utility defects 
+Verified from systems.py and model.py. The volume -fraction expression multiplies 
+concentration in mM, numerically equal to mol per cubic metre, by an extra factor 0.001 before 
+using density in kilograms per cubic metre. Under the stated units this makes the estimated 
+volume fraction 1000 times too small; a true partial -volume model is preferable. The default 
+C12E8 tau2_ms range is 1 –10 milliseconds, while the paper uses 4 seconds. The to_model 
+argument c_m_tau is multiplied by 0.001 despite a name and defau lt that do not clearly declare 
+milliseconds. 
+Also, dgamma_dcs returns an adsorption derivative in its Langmuir branch but a surface -
+tension derivative in its Frumkin branch, so its units differ across branches. This was not shown to 
+alter the audited Langmuir runs, but it is unsafe for extensions. Fix names, units, documentation, 
+and input guards; test inconsistent cycle counts, nonpositive frequency or relaxation time, invalid 
+strain, and depleted reservoirs before broadening the paper. 
+3. The external fit does not establish the notebook's negative conclusion 
+3.1 P0 The reported best fit is absent from the archived result 
+Verified. FINDINGS Section 27 reports capacity 0.5, fitted E0 of 35, tau of 20 s and error 
+5.97 degrees. The supplied fainerman_fit.json instead records capacity 1.0, tau 20 s, SSE 
+193.1815 and error 6.9495 degrees. Its capacity grid begins at 1.0, and study_fainerman_fit.py 
+fixes E0 at 45.3 rather than scanning it. Therefore the described 0.5 and E0 = 35 result cannot be 
+regenerated by the supplied script and result file. 
+Fix: preserve both versions if both actually exist, with their scripts, hashes, parameter 
+settings and outputs. Until then the 600 -fold assertion is not an archived reproducible result. The 
+archived grid suggests a boundary preference, not a robust estimate of capacity; both capacity and 
+time hit scan edges. 
+
+Page 9 
+3.2 P0 The external comparison does not match the experiment 
+Verified. Fainerman studied C14EO8, at 25 degrees Celsius, with 5 percent area 
+oscillations, a buoyant bubble, and a combined reorientation/compression adsorption model [1]. 
+The fit script uses C12E8 parameters, strain 0.20, a Langmuir interface, no micellar diffusion, and 
+monomer concentration C_TOT = (30/7) times the C12E8 CMC. That is approximately 0.3043 
+mol per cubic metre, rather than the experiment's C14EO8 monomer CMC near 0.007. Its nominal 
+monomer concentration is about 43 times that value. 
+Fix: use the actual species, concentration convention, experimental amplitude, geometry, 
+and independently calibrated adsorption slope. Digitize modulus and phase jointly. A homolog 
+transfer may be an exploratory stress test, but cannot support a quantitative correction of the real 
+reservoir capacity or a universal inversion limit. 
+3.3 P1 A poor fit does not measure an effective capacity reliably 
+Verified statistical correction. With SSE 193.1815, the conventional root mean square 
+residual over six observations is 5.6742 degrees. The archived 6.9495 is sqrt(SSE/4), a residual 
+standard deviation with two fitted parameters, not the same quantity. If the stated one -degree 
+uncertainty were an independent Gaussian standard deviation, chi -square is about 193 for four 
+residual degrees of freedom: a severe lack of fit. The notebook's statement that approximately six 
+degrees is barely above one-degree noise is incorrect. 
+Fix: distinguish digitization uncertainty from original experimental uncertainty, expand 
+parameter ranges, profile nuisance parameters, inspect residuals, and establish model adequacy 
+before interpreting parameters. A boundary optimum can reflect inadequate search range, 
+mismatch, or non-identifiability; it does not uniquely diagnose any one of them. 
+3.4 P1 Digitization is plausible visually but not calibrated or independently repeated 
+Primary Figure 5 on printed page 6451 was visually inspected. The supplied six points 
+roughly follow the filled -square 30 micromolar series, so there is no basis here to call the entire 
+curve fabricated. However the script says they were read by eye, and no second extraction, 
+
+Page 10 
+coordinate calibration, pixel uncertainty, or provenance image accompanies them. Dense 
+overlapping symbols make uncertainty important. 
+Fix: retain a calibrated extraction project, symbol coordinates, figure crop, and an 
+independent second extraction. Obtain author data if possible. Distinguish reading error from 
+scatter in the original measurements; do not assume that repeated digitization creates independent 
+experimental replicates. 
+3.5 P0 One local sensitivity zero is not a global impossibility theorem 
+Model-dependent deduction. The notebook promotes a zero of the derivative of one phase 
+observable into statements about impossibility for real systems. A local zero at one frequency 
+need not imply zero information in amplitude, other frequencies, transients, or nonlinear 
+components. A flat first derivative can retain higher -order dependence and can also create 
+multiple branches rather than total non-identifiability. 
+Fix: construct the full observation Jacobian after nuisance parameters are included, 
+examine its singular values, and compute profile likelihoods and disconnected minima over the 
+permitted parameter domain. State conclusions for a specific observation set, error model and 
+frequency window. The current evidence supports a conditional sensitivity limitation inside one 
+model, not that real surfactants cannot be inverted. 
+3.6 P1 Do not force tau two to be constant across concentration 
+Required model investigation. Protocol B jointly fits multiple concentrations while 
+assuming one common kinetic time. Classical micellar relaxation times can depend on 
+concentration and micellar distribution [2]. A common time can therefore manufacture apparent 
+information or bias even if capacity is correct. Fix by comparing a mechanistic concentration law, 
+a local constant approximation over a justified narrow range, and concentration -specific times. 
+Use held-out concentration prediction; additional concentrations are useful only when their shared 
+assumptions are defensible. 
+
+Page 11 
+4. Measurement and inference need redesign 
+4.1 P1 The code reports phase advance while calling it lag 
+Verified unit check. first_harmonic_phase uses y = amplitude cos(theta − phi). A response 
+delayed by 30 degrees has phi_gamma − phi_area = positive 30 degrees. lag_deg subtracts in the 
+reverse order and returns 330 degrees for that test. The numerical model's positive reported phase 
+matches the positive argument of the analytic complex modulus, namely a stress phase advance in 
+that convention. This can be a valid loss-angle convention, but it is not the stated temporal lag. 
+Fix the naming and convention throughout, test a known lead and delay, state the Fourier 
+sign, and compare complex moduli using the primary paper's convention. Avoid converting every 
+phase to the interval zero to 360 for residual calculations: use complex data or circular differences 
+to prevent artificial discontinuities. 
+4.2 P1 The five-frame rule is an estimator-specific aliasing result 
+Verified rank check. harmonics.py defaults to four harmonics, which requires nine Fourier 
+coefficients including the mean. Exactly phase -locked samples at five distinct phases per cycle 
+have matrix rank five, even over repeated cycles. Nine or more distinct phases are needed for that 
+unrestricted nine -coefficient fit. The separate fundamental -phase fit requires fewer coefficients, 
+but omitted higher harmonics can alias into it. 
+Fix: derive sampling requirements from the fitted harmonic order, exposure time, 
+synchronization, timestamps and noise. One sample per cycle is generally unidentifiable for a 
+phase-locked fundamental; arbitrary returned angles are not meaningful biased estimates. Five 
+frames can work for a restricted waveform, but is not a universal LAOD specification. Validate 
+the actual acquisition chain rather than inferring it from nominal camera frame rate. 
+4.3 P1 Synthetic noise is sampled at a numerical rate rather than a verified instrument rate 
+Verified. study_recovery_uncertainty.py uses run_oscillation's default 320 samples per 
+cycle, retaining four cycles. The advertised PAT rate is 25 –50 frames per second, and the four 
+angular frequencies correspond to approximately 0.48–1 Hz. The synthetic 320 samples per cycle 
+
+Page 12 
+represent approximately 153 –320 samples per second. White noise attached independently to 
+every solver output therefore supplies more independent measurements than the proposed 
+instrument. 
+At 1 Hz, four retained cycles give 1280 synthetic readings against 100 –200 at 25–50 fps. 
+Under an ideal independent -noise approximation alone, uncertainty could grow by factors 
+sqrt(1280/200) to sqrt(1280/100), approximately 2.53–3.58. These are illustrative scaling factors, 
+not corrected precision estimates. Resample at actual timestamps, include exposure averaging and 
+measured temporal correlation, and repeat recovery under the same total experiment time. 
+4.4 P1 Covariance calculation and uncertainty reporting contain specific errors 
+Verified in study_recovery_uncertainty.py. The covariance fit is unweighted across 
+frequencies despite different Monte Carlo phase standard deviations, and uses a scalar mean noise 
+estimate. The capacity parameter is fitted in logarithmic coordinates, so sqrt(covariance diagonal) 
+is already an approximate relative uncertainty; dividing it again by capacity in capacity_relSE is 
+incorrect. Seeds are reused across frequency noise calculations, which requires an explicit cross -
+frequency covariance treatment before treating samples as independent. 
+Fix with a declared likelihood in raw waveform or complex -coefficient space, covariance 
+estimated from calibration, proper transformations, and either independent random streams or 
+intentional, documented correlations. Do not claim that a single frequency can never yield 
+uncertainty because residual degrees of freedom vanish: a known noise model, replicated 
+observations, or a raw waveform can supply uncertainty without residual variance estimation from 
+one scalar. 
+4.5 P1 Conditional synthetic precision is not measurement accuracy 
+Verified limitation. Data generated by the same forward model and fitted with that model 
+test algorithmic recovery under assumed conditions. They do not validate the physical model. 
+Sixty draws reporting 90 percent coverage have Monte Carlo standard error about 3.9 percentage 
+
+Page 13 
+points, so the precise size of the coverage defect is uncertain, even though the optimistic 
+covariance deserves attention. 
+Fix: simulate from competing models, alternate solvers and perturbed calibrations, and 
+repeat enough trials to estimate coverage adequately. For example, about 1900 independent trials 
+give approximately 0.5 percentage -point standard error near 95 percent coverage, subject to the 
+study design. Report bias, interval width, coverage, rejected fits and failures together. Increasing 
+retained cycles is a legitimate design change, but requires a fresh uncertainty study and explicit 
+measurement-time cost. 
+4.6 P1 Second-harmonic detectability is not necessary for phase identification 
+Verified logical issue. The manuscript first shows that the fundamental phase contains the 
+useful information even at small amplitude, then requires I2 to exceed a threshold before allowing 
+inversion. This excludes informative fundamental data by an unrelated nonlinear -signal condition 
+and creates part of the apparent concentration window. 
+Fix: define usable measurements through information or likelihood in the chosen 
+observables. If the method uses only the fundamental, require sufficient fundamental signal, 
+calibrated phase uncertainty and adequate sensitivity. If nonlinear harmonics are proposed as 
+added information, quantify their incremental contribution and propagated covariance. Recompute 
+the window after removing the unsupported I2 prerequisite. 
+4.7 P1 The ratio and phase are compared with inconsistent noise accounting 
+Verified methodological concern. The harmonic -ratio argument propagates an individual 
+instrument reading error into a ratio, whereas the strongest phase precision averages many 
+synthetic readings. Both estimators should be compared after the same acquisition, averaging and 
+calibration. A ratio's uncertainty also depends on numerator and denominator covariance and 
+signal magnitude. 
+Fix: jointly fit the complex fundamental and higher harmonics from each waveform, 
+estimate coefficient covariance, and compare phase -only, amplitude-only, ratio-only and full-data 
+
+Page 14 
+inference under equal budgets. Do not conclude that any published harmonic -ratio inversion must 
+be underdetermined merely because this particular benchmark is weak. 
+4.8 P1 Nuisance mechanisms must compete with reservoir kinetics 
+Required validation. Include adsorption barriers, surface reorientation/compression, finite -
+radius transport, drift, baseline history, actual area forcing, exposure filtering, and instrument 
+timing. A time delay t_delay adds a phase contribution of magnitude omega t_delay and can 
+resemble a kinetic trend. Area and tension inferred from the same drop images can have 
+correlated errors. 
+Fix: calibrate timing and area response independently, fit complex spectra and waveform 
+residuals, and test nuisance models with held -out protocols. Al-Sou'od and Ghanem already show 
+why relaxation assignments can disappear when drift or forcing uncertainty is admitted [4]. Their 
+result does not prove this model wrong, but supplies a necessary comparison standard. 
+5. Novelty and literature claims need correction 
+5.1 P1 The 45-degree ceiling and its measured violation are established prior work 
+Verified primary evidence. Fainerman et al. explicitly state the planar diffusion -model 
+maximum of 45 degrees and discuss measured excess in 2008 [1], printed page 6451. 
+Recomputing that limit is a consistency check, not a new theorem, and exceeding it cannot 
+uniquely identify a slow lagging micellar reservoir. The same paper lists finite fast kinetics, finite 
+slow kinetics, spherical geometry and measurement error as possible causes. The notebook's 
+attribution to a sign difference between fast and lagging mechanisms is too strong. 
+Fix: say that an excess rejects a specified planar instantaneous -equilibrium diffusion 
+baseline under its validity conditions. Use independent mechanisms and geometry to test 
+microscopic attribution. Do not advertise a parameter-free proof of micelles or of slow kinetics. 
+5.2 P1 Effective diffusion has not been newly refuted 
+Verified. The effective-D approximation cannot exceed 45 degrees within the stated planar 
+LVDT form, but Fainerman already identifies the phase discrepancy while reporting successful 
+
+Page 15 
+modulus fits [1]. Demonstrating the ceiling again neither refutes micelle theory nor establishes 
+superiority of the new reservoir model. In particular, its own poor external phase fit is not an 
+adequate competing explanation. 
+Fix: present effective D as an established asymptotic baseline with a known limitation. 
+Compare models simultaneously on modulus, phase, concentrations and held -out frequencies. Do 
+not use an already published limitation as the fallback main contribution of a premium paper. 
+5.3 P1 Source tracing remains inadequate and one notebook reading misses a scale factor 
+Verified. The tau = 4 s anchor lacks a traced primary measurement. CMC and aggregation 
+number provenance in systems.py is a parameter -set message rather than a specimen -specific 
+source. The default millisecond range conflicts with the manuscript's seconds. Rusdi's paper 
+covers C14E8, C16E8 and C18E8, rather than supplying a C12E8 CMC [3]. Its Table 1 labels 
+aggregation number with a factor of 1000: the listed 1.34 corresponds to approximately 1340, not 
+1.34 molecules, as the notebook describes. This is a warning against transferring these systems 
+into a spherical n = 95 closure without checking aggregation regime. 
+Fix: maintain a source -to-parameter ledger containing species identity, purity, 
+temperature, concentration, method, units, table or figure, uncertainty and applicability. Treat 
+untraced values as synthetic design settings. Do not relabel 4 s a literature benchmark until the 
+measurement and its kinetic convention have been verified. 
+5.4 P1 Absence of keywords is not evidence of a unique gap 
+Verified limitation of the internal survey. The literature survey acknowledges that citation-
+graph traversal was not done; later keyword counts in a review are used to argue novelty. A 
+review without the word inversion cannot establish that the intersection of micelle kinetics and 
+rheological identification is empty. Relevant work may use parameter estimation, fitting, 
+relaxation spectra, inverse modeling or transport identification. 
+Fix: trace references backward and forward from Lucassen, Joos, Danov, Fainerman, 
+Risse and the 2026 identifiability paper. Build a comparison matrix of state variables, geometry, 
+
+Page 16 
+forcing, observables, fitted times, external validation and uncertainty. A defensible gap is a 
+specific validation or identification result absent from those papers, not merely a combination of 
+familiar keywords. 
+6. Manuscript and release audit 
+6.1 P1 The abstract and conclusions do not represent the current evidence 
+Verified. The abstract claims direct quantitative recovery, a concentration optimum and an 
+instrument explanation without external validation; the later notebook questions those claims but 
+overstates its own negative interpretation. The manuscript should be rewritten around the final 
+analysis, not patched with additional caveats. Remove direct, robust, diagnostic and measured 
+where they imply experimental demonstration. Numerical sweeps should be called simulated or 
+computed. 
+Suggested provisional title: Identifiability of micellar reservoir kinetics from oscillatory 
+interfacial rheology. Use a more specific title only after the mapping to a physical relaxation time 
+and external validation are established. The paper should begin with the actual inference problem 
+and competing explanations, rather than the history of errors encountered during development. 
+6.2 P2 Internal numerical and logical contradictions remain 
+Verified examples. The manuscript calls harmonic content strong while reporting I2/I1 
+near 0.07 and nearly amplitude -invariant phase. It calls the CMC second harmonic maximal, 
+although its own table gives I2 = 0.129 at 1 CMC and 0.183 at 1.5 CMC. The abstract and 
+conclusion compare 10 percent systematic error with statistics using inconsistent factors 44 and 
+31; 10/0.327 is approximately 30.6. The conclusion still offers 0.2 percent statistical precision 
+after adopting 0.327 percent empirically. 
+The instrument argument predicts fast ionic systems will not exceed 45 degrees on PAT, 
+while the CTAB table reports 55.2 degrees at 1 Hz. A CPT band stated as 0.1 –500 Hz does not 
+cover the entire C12E8 band starting near 0.04 Hz. In Section 7.1, positive capacity derivative and 
+negative time derivative are followed by wording that says faster reservoir lowers phase, 
+
+Page 17 
+reversing the local implication. Correct these from one generated claims ledger rather than editing 
+prose independently. 
+6.3 P2 References and presentation are not submission ready 
+Verified. The reference list retains incorrect or incomplete metadata flagged in the internal 
+survey, including the Risse review and instrument citations. Journal names and other reference 
+text are italicized in the Markdown, contrary to the supplied formatting standard if converted 
+directly. The inspected manuscript is Markdown, with no submission title page containing 
+complete author, affiliation and correspondence details, and no integrated final figure set. 
+Fix bibliographic records against primary publisher metadata, resolve every citation to the 
+exact claim, and remove placeholder or generic citations. Prepare a consistent Word manuscript 
+only after the scientific result is stable: Times New Roman, the requested heading hierarchy, real 
+page fields, proper inline subscripts and superscripts, blue numeric citations and cross -references, 
+numbered tables and concise captions. Inspect a rendered PDF. Full formatting compliance cannot 
+be certified for an existing submission DOCX because no such final artifact was supplied in the 
+manuscript directory. 
+6.4 P1 The reproduction statement is stronger than the observed environment supports 
+Verified rerun. With Python 3.14.0 and NumPy 2.4.2, 33 research tests pass and two 
+vector-digitization tests fail after the temporary -directory permission issue is removed. The 
+failures reverse negative logarithmic tick exponents into positive ones and produce median 
+relative extraction error about 8.51 percent against a required 0.2 percent. These tests exercise a 
+synthetic PDF; they do not prove that the six manually read Fainerman points are wrong. 
+Fix the parser across Unicode minus signs, PDF font encodings and supported plotting -
+library versions, or pin and explain the supported environment. Retain an explicit environment 
+lock and clean -run log. Do not keep claiming a universally passing suite from an older 
+environment. Add meaningful independent tests for the kinetic eigenmode, inventory, transfer 
+function and phase convention; current passing tests do not test all central scientific assumptions. 
+
+Page 18 
+6.5 P2 The paper needs a frozen reproducibility package 
+Required release work. Preserve a single final manuscript, scripts, raw measurements or 
+calibrated digitizations, generated tables and figures, environment lock, complete run manifest, 
+software license and data permissions. Do not distribute conflicting findings as alternative final 
+truth. Every claim should trace through a figure or table to a result file, script, parameter set and 
+source. 
+Record computational assistance and author responsibility according to journal policy. 
+Human scientific checking should specifically sign off the physical time definition, primary -
+source parameter ledger and external -data interpretation. No assumption that private code is 
+missing is warranted: the full archive contains public src/surfactantkit, and the research model 
+does not depend on importing that library. 
+7. Recommended new scientific approach 
+7.1 Frame the question before choosing a positive or negative answer 
+Ask: Under which experimental protocols can a micellar kinetic time be separated from 
+equilibrium capacity, monomer and micelle transport, adsorption physics and instrumental 
+uncertainty? Define the intended microscopic time and the admissible parameter domain. This 
+question is stronger than whether a simulated phase can be fitted, and more defensible than 
+announcing universal non-recoverability from one external curve. 
+Two paths can support a strong paper. A positive methods paper requires external 
+recovery and prediction with independent kinetic comparison. A bounding paper requires a 
+reproducible limitation for stated models, observables and noise, plus a demonstrated way to 
+escape it or a carefully quantified inability to do so. A single failed fit or a familiar 45 -degree 
+asymptote is insufficient for either path. 
+7.2 Build a model hierarchy with observable distinctions 
+Use a planar diffusion baseline; a mobile -micelle equilibrium model that recovers the 
+appropriate effective-D limit; a finite micelle -kinetics model with a derived parameter mapping; 
+
+Page 19 
+and a small set of physically relevant alternatives such as adsorption barriers or surface 
+reorientation. Add spherical transport and instrument filtering where dimensionless checks require 
+them. Derive nested limits and thermodynamic stability rather than choosing a more elaborate 
+model because it fits better. 
+For each model, predict both storage and loss components, phase and modulus, plus time 
+traces when available. Use measured equilibrium adsorption data to constrain E0 and h. Keep 
+identical nuisance treatment across models. Test whether the extra kinetic parameter produces 
+identifiable, predictive behavior; do not infer microscopic reality from a lower training residual 
+alone. 
+7.3 Design experiments to separate parameters 
+First measure equilibrium surface tension against concentration, CMC, purity, 
+temperature, and instrument timing response. Establish an amplitude range where the fundamental 
+response is reproducible and the drop or bubble remains stable. Start with small -amplitude 
+frequency sweeps spanning below and above the candidate kinetic feature. Choose frequencies 
+from the full sensitivity matrix, not only from the largest phase derivative at one nominal truth. 
+Measure several concentrations only with a defensible concentration dependence of the 
+kinetic model. Repeat selected frequencies and amplitudes, randomize sweep order, and record 
+actual area, tension, drop volume, timestamps and equilibrium history. Reserve complete 
+frequencies, concentrations or forcing protocols before fitting. Use a step or broadband protocol if 
+it distinguishes otherwise degenerate parameters more efficiently. A second instrument is justified 
+only if its calibrated useful band resolves an established feature. 
+7.4 Make large amplitude earn its place 
+Compare small strain, intermediate strain and approximately 0.20 under equal total 
+acquisition time, actual frame rate and calibrated noise. Evaluate extra information from higher 
+harmonics and waveform shape after allowing the same nuisance models. Compare bias under 
+deliberate model mismatch, not just smaller nominal covariance. Use matched fundamental 
+
+Page 20 
+amplitude or measurement -time comparisons to distinguish a nonlinear advantage from ordinary 
+signal averaging. 
+If the large-amplitude waveform does not resolve a degeneracy that small -strain complex 
+spectra cannot, remove LAOD from the central novelty claim. If it does, demonstrate that gain on 
+held-out physical data and identify the mechanism of the gain. This is the decisive test for 
+retaining the original paper concept. 
+7.5 Use inference that can reveal failure 
+Fit log-positive parameters with a declared noise likelihood, inspect global and multistart 
+solutions, profile the physical kinetic time after nuisance parameters are optimized, and report 
+disconnected intervals where they occur. Use singular values as a local diagnostic and profile 
+likelihood or posterior exploration as the global check. Treat bounded fits explicitly as bounds, 
+rather than central estimates with symmetric errors. 
+Compare predictive error on locked data; use information criteria only with a defensible 
+likelihood and effective observation count. Raw frames, correlated Fourier coefficients and 
+digitized curve points are not interchangeable independent observations. Report calibration 
+uncertainty, systematic model sensitivity, bias, repeatability and between -run reproducibility 
+separately from conditional fitting precision. 
+8. Concrete revision plan and acceptance gates 
+8.1 Stage one Repair and freeze the foundations 
+Resolve the kinetic eigenmode definition; separate c_eq, total concentration, M_eq and 
+dM_eq/dc; derive the transfer function and global balance; correct phase terminology and 
+parameter units. Reproduce the analytic and numerical limits across concentration, frequency and 
+capacity. Generate a new claims ledger and retire numbers from the old operating -window study. 
+Acceptance gate: equilibrium mass closes, the intended kinetic time matches the reduced model's 
+eigenmode, and analytic and numerical results agree within the declared numerical error. 
+
+Page 21 
+8.2 Stage two Establish what the existing data can support 
+Redigitize Fainerman modulus and phase independently, use the actual experimental 
+conditions, fit the adsorption model or externally constrain it, and compare mobile fast -kinetic, 
+slow-kinetic and nuisance alternatives. Expand boundary searches and publish profiles. 
+Acceptance gate: the interpretation survives physically reasonable adsorption, diffusion, geometry 
+and digitization uncertainty. If it does not, describe the dataset as insufficient for kinetic 
+attribution; do not infer a corrected universal capacity. 
+8.3 Stage three Obtain decisive external evidence 
+Acquire one well-characterized nonionic system with repeated small-amplitude spectra, an 
+amplitude sweep and at least one locked validation protocol. Obtain an independent kinetic 
+measurement where feasible, with matched conditions and kinetic definitions. A second 
+chemically distinct nonionic system would materially strengthen generality. Acceptance gate for a 
+positive paper: a physically interpretable kinetic time predicts held -out data and is consistent with 
+independent information within combined uncert ainty. Statistical recovery from self -generated 
+data cannot substitute for this gate. 
+8.4 Stage four Choose the paper from the result 
+If kinetics are identified, write a validated methods paper focused on observable design, 
+external recovery and uncertainty. If only conditional bounds are identified, write a limits paper 
+with explicit domains and escape protocols. If nuisance or equilibrium models explain the data 
+equally well, present a model -discrimination study only if it produces a new, practically useful 
+conclusion beyond the supplied 2026 work. Avoid splitting unvalidated ionic and Frumkin 
+extensions into a second paper before Paper 1 establishes its foundation. 
+8.5 Proposed manuscript and figure architecture 
+Use Introduction; Physical model and parameter definitions; Experimental data and 
+calibration; Analytic limits and numerical verification; Identifiability and protocol design; 
+External validation and competing models; Limitations and conclusions. Move development 
+
+Page 22 
+history to the research record. The abstract should contain the final data scope, validated result, 
+uncertainty and explicit boundary of applicability. 
+Plan six figures: model hierarchy and state definitions; analytic versus numerical response 
+with equilibrium checks; information and profile -likelihood maps; external modulus and phase 
+with residuals; locked protocol predictions; amplitude benefit and uncertainty budget. Tables 
+should give parameter provenance, model assumptions and publication claims with supporting 
+evidence. Do not use a large gallery of one-axis sweeps in place of these decisive tests. 
+8.6 Journal positioning and what premium publication would require 
+For a theory -led interfacial methods contribution, Langmuir or Journal of Colloid and 
+Interface Science could be plausible targets if the scientific gates above are met; this is a scope 
+judgment, not an acceptance prediction. A narrower, rigorously verified computational methods 
+or instrumentation contribution may fit a specialized venue better. Do not select a prestigious 
+target first and inflate the claims to match it. 
+The minimum strong package is a correctly defined kinetic parameter, a justified transport 
+reduction, an identifiable result under realistic nuisance uncertainty, and external evidence that 
+tests the proposed interpretation. An especially strong package adds a validated protocol that 
+separates mechanisms existing practice confounds, and demonstrates it on a second system. 
+Adding more simulated surfactants, more digits of conditional precision, machine learning, or a 
+larger software wrapper will not replace those requirements. 
+9. Final assessment 
+The project is salvageable, but cosmetic revision is not enough. The original confident 
+positive narrative and the later confident negative narrative both outrun the evidence. The highest-
+value change is to turn the project into an externally tested inference study with a physically 
+derived kinetic time and a consistent equilibrium reservoir. The small -strain analytic result offers 
+an efficient route to doing that work. Publication quality will come from resolving the model's 
+interpretation and surviving independent prediction, rather than preserving the current headline. 
+
+Page 23 
+10. Evidence register and primary references 
+Audit archive: SurfactantKit_Paper1_audit_v2_FULL_2026 -11-04.zip; inspected commit 
+492b7cf961b1fe46cb7149f4cbc7c69304d4ce6f. Local source paths below are relative to 
+source/audit2 in the audit workspace. 
+Manuscript evidence: 03_manuscript/PAPER1_SUBMISSION.md, especially Sections 
+2.2–2.8, 3.2 –3.5, 4.3 –4.6, 5.1 –5.7 and 6 –7; editorial evidence: 
+03_manuscript/PAPER1_RECORD.md; later interpretation: 04_findings/FINDINGS.md Sections 
+18–28; orientation: 00_orientation/READ_FIRST.md. 
+Implementation evidence: 01_source_code/research/laod_tau2/model.py, harmonics.py, 
+systems.py, lvdt.py, study_effective_D.py, study_fainerman_fit.py, 
+study_recovery_uncertainty.py and study_blind_inversion.py; numerical record: 
+fainerman_fit.json, coverage_test.json, blind_inversion.json and related cached studies. 
+Independent outputs: independent_checks.py and independent_checks.json in the report directory. 
+Test command: python -m pytest research/laod_tau2/tests -q with a fresh workspace basetemp; 
+final r esult 33 passed and 2 failed. Library and benchmark -wide validation was outside the 
+reproduction scope. 
+[1] Fainerman VB, Petkov JT, Miller R. Surface Dilational Viscoelasticity of C14EO8 
+Micellar Solution Studied by Bubble Profile Analysis Tensiometry. Langmuir. 2008;24:6447 –
+6452. DOI 10.1021/la704058y. Key locations: printed pages 6448 –6451; equations 1–4; Figures 
+3–5. The phase -limit and alternative -mechanism discussion is on printed page 6451, rather than 
+page 6450 stated in the notebook. 
+[2] Danov KD, Kralchevsky PA, Denkov ND, Ananthapadmanabhan KP, Lips A. Mass 
+transport in micellar surfactant solutions 1 Relaxation of micelle concentration aggregation 
+number and polydispersity. Advances in Colloid and Interface Science. 2006;119:1 –16. DOI 
+10.1016/j.cis.2005.09.002. Companion part 2 concerns adsorption at a quiescent interface, pages 
+
+Page 24 
+17–33, DOI 10.1016/j.cis.2005.09.003. Consult the supplied PDFs for the full kinetic reduction 
+and limiting cases. 
+[3] Rusdi M, Moroi Y, Hlaing T, Matsuoka K. Micelle Formation and Surface Adsorption 
+of Octaethylene Glycol Monoalkyl Ether CnE8. Bulletin of the Chemical Society of Japan. 
+2005;78:604–610. DOI 10.1246/bcsj.78.604. Table 1 on printed page 606 contains the 
+aggregation-number scale factor and the homologs actually measured. 
+[4] Al-Sou'od KA, Ghanem R. Protocol -Induced False Identifiability in Dynamic Surface 
+Tension and Dilational Measurements of Surfactant Interfaces. Journal of Surfactants and 
+Detergents. 2026. DOI 10.1002/jsde.70095. Supplied 16 -page primary paper, especially abstract, 
+nested models, nuisance-protocol competition and locked prediction discussion. 
+[5] Risse K and colleagues. Advances in large amplitude oscillatory dilatational surface 
+rheology A review. Advances in Colloid and Interface Science. 2025;345:103625. DOI 
+10.1016/j.cis.2025.103625. Use the supplied primary review to position nonlinear observables; its 
+omission of a particular keyword is not proof of novelty. 
+[6] Lucassen J, van den Tempel M. Dynamic measurements of dilational properties of a 
+liquid interface. Chemical Engineering Science. 1972;27:1283 –1291. DOI 10.1016/0009 -
+2509(72)80104-0. The baseline expression was checked through the supplied Fainerman primary 
+treatment and the research implementation; a separate copy of this 1972 full text was not present 
+in the supplied source-paper folder. 

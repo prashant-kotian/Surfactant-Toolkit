@@ -1,0 +1,1724 @@
+Mass transport in micellar surfactant solutions: 2. Theoretical
+modeling of adsorption at a quiescent interface
+K.D. Danov a, P .A. Kralchevsky a,*, N.D. Denkov a, K.P . Ananthapadmanabhan b, A. Lips b
+a Laboratory of Chemical Physics and Engineering, Faculty of Chemistry, University of Sofia, 1164 Sofia, Bulgaria
+b Unilever Research and Development, Trumbull, CT 06611, USA
+Available online 23 November 2005
+Abstract
+Here, we apply the detailed theoretical model of micellar kinetics from part 1 of this study to the case of surfactant adsorption at a
+quiescent interface, i.e., to the relaxation of surface tension and adsorption after a small initial perturbation. Our goal is to understand why for
+some surfactant solutions the surface tension relaxes as inverse-square-root of time, 1 / t1/2 , but two different expressions for the characteristic
+relaxation time are applicable to different cases. In addition, our aim is to clarify why for other surfactant solutions the surface tension relaxes
+exponentially. For this goal, we carried out a computer modeling of the adsorption process, based on the general system of equations derived
+in part 1. This analysis reveals the existence of four different consecutive relaxation regimes (stages) for a given micellar solution: two
+exponential regimes and two inverse-square-root regimes, following one after another in alternating order. Experimentally, depending on the
+specific surfactant and method, one usually registers only one of these regimes. Therefore, to interpret properly the data, one has to identify
+which of these four kinetic regimes is observed in the given experiment. Our numerical results for the relaxation of the surface tension,
+micelle concentration and aggregation number are presented in the form of kinetic diagrams, which reveal the stages of the relaxation process.
+At low micelle concentrations, ‘ ‘rudimentary’ ’ kinetic diagrams could be observed, which are characterized by merging of some stages. Thus,
+the theoretical modeling reveals a general and physically rich picture of the adsorption process. To facilitate the interpretation of experimental
+data, we have derived convenient theoretical expressions for the time dependence of surface tension and adsorption in each of the four
+regimes.
+D 2005 Elsevier B.V . All rights reserved.
+Keywords: Micellar surfactant solutions; Fast and slow micellization processes; Adsorption kinetics of surfactants; Dynamic surface tension; Diffusion in micellar
+surfactant solutions
+Contents
+1. Introduction .............................................................. 1 8
+2. General formulation of the problem for small perturbations ..................................... 1 9
+3. Adsorption at a quiescent interface after a small initial perturbation ................................. 2 0
+3.1. Dimensionless form of the basic equations .......................................... 2 0
+3.2. Parameters of the micellar system .............................................. 2 1
+3.3. Numerical results and discussion ............................................... 2 2
+4. Stages of a regular kinetic diagram .................................................. 2 3
+4.1. Initial relaxation regime AB ................................................. 2 3
+4.2. Equilibrated fast micellar process: region BCDE ....................................... 2 4
+4.3. Relaxation regime BC ..................................................... 2 4
+4.4. Relaxation regime DE ..................................................... 2 5
+4.5. Compound asymptotic expression for the region BCDE ................................... 2 6
+4.6. Discussion: ‘ ‘fast’ ’ and ‘ ‘slow’ ’ surfactants and experimental methods ............................ 2 6
+0001-8686/$ - see front matter D 2005 Elsevier B.V . All rights reserved.
+doi:10.1016/j.cis.2005.09.003
+* Corresponding author. Tel.: +359 2 962 5310; fax: +359 2 962 5438.
+E-mail address: pk@lcpe.uni-sofia.bg (P .A. Kralchevsky).
+Advances in Colloid and Interface Science 119 (2006) 17 – 33
+www.elsevier.com/locate/cis
+
+5. Stages of a rudimentary kinetic diagram ............................................... 2 7
+5.1. Merged or missing regimes BC and CD ............................................ 2 7
+5.2. Description of the region BCD for rudimentary diagrams ................................... 2 8
+6. Summary and conclusions ....................................................... 2 9
+Acknowledgement .............................................................. 2 9
+Appendix A. Procedure for solving the general system in Section 3 ................................... 2 9
+Appendix B. Solution of the diffusion problem in Section 4 ....................................... 3 0
+References .................................................................. 3 2
+1. Introduction
+In the first part of this study [1], we proposed a theoretical
+model, which generalizes previous models of micellization
+kinetics in the following aspects. First, we did not apply the
+simplifying assumption that the width of the micellar peak is
+constant under dynamic conditions. Second, we avoided the
+use of the quasi-equilibrium approximation (local chemical
+equilibrium between micelles and monomers). Third, we
+reduced the problem to a self-consistent system of four
+nonlinear differential equations. Its solution gives the concen-
+tration of surfactant monomers, total micelle concentration,
+mean aggregation number, and half-width of the micellar peak
+as functions of the spatial coordinates and time. Further, we
+checked the predictions of the model for the case of spatially
+uniform bulk perturbations (such as jumps in temperature,
+pressure or concentration). A detailed literature review could
+be found in [1].
+Here, we apply the detailed model from [1] to investigate
+theoretically the problem about the kinetics of surfactant
+adsorption from micellar solutions. Many works have been
+dedicated to this subject [2 – 20]. The first theoretical model
+was developed by Lucassen [2] for the case of periodically
+expanding and contracting liquid surface. In this model, a
+complete local dynamic equilibrium between monomers and
+micelles has been assumed: the equilibrium mass-action law for
+the micelle reactions has been used. In such case, the surfactant
+transfer can be described as conventional diffusion-limited
+adsorption characterized by an apparent diffusion coefficient,
+DA , which depends on the micellar concentration and
+aggregation number [11,12]. Because of the assumption for
+quasi-equilibrium between monomers and micelles, DA is
+independent of the rate constants of the fast and slow
+micellization processes: km/C0 and kS/C0; for the definitions of the
+latter constants—see [1]. Correspondingly, if the quasi-equi-
+librium model by Lucassen [2] is applicable to a given
+experimental situation, then km/C0 and kS/C0 cannot be determined
+from the obtained data for the dynamic surface tension or
+adsorption.
+Later, Joos et al. [10 – 13] confirmed experimentally that in
+some cases the adsorption from micellar solutions could be
+described as diffusion-limited process characterized by an
+apparent diffusion coefficient, DA, but the experimental data
+were not in agreement with the expression for DA that follows
+from the Lucassen’s model [2]. An alternative semiempirical
+expression for DA was proposed [11,12], which agrees well
+with the experiment, but lacks a theoretical basis.
+In subsequent studies, Joos et al. [14,15] established that
+sometimes the dynamics of adsorption from micellar solutions
+exhibits a completely different kinetic pattern: the interfacial
+relaxation is exponential, rather than inverse-square-root,a si t
+is for the diffusion-limited kinetics. The theoretical develop-
+ments [14,15,19] revealed that the exponential relaxation is
+influenced by the kinetics of the micellization processes, and
+from its analysis one could, in principle, determine the rate
+constants km/C0 and kS/C0. Thus, the physical picture becomes rather
+complicated. For example, for the surfactant Triton X-100 one
+obtains different types of adsorption kinetics depending on the
+used experimental method: exponential kinetics in the case of
+the inclined-plate method [14], and inverse-square-root kinetics
+for the maximum-bubble-pressure method [13].
+Our main goal in the present paper is to give a general
+picture of the consecutive regimes of relaxation of the surface
+tension of a micellar surfactant solution. For this goal, we
+carried out a computer modeling of the adsorption process,
+based on the general system of equations derived in [1]. This
+analysis reveals the existence of four different consecutive
+regimes of interfacial relaxation for the same micellar
+surfactant solution: two exponential regimes and two inverse-
+square-root regimes, following one after another in alternating
+order. Experimentally, depending on the specific surfactant and
+method used, one typically registers one of these four regimes.
+Then, one has to identify which is the regime to interpret the
+obtained experimental results. To facilitate the data interpreta-
+tion, we have derived convenient theoretical expressions for the
+time dependence of the surface tension and adsorption for each
+separate regime.
+The paper is organized as follows. In Section 2, we give the
+general formulation of the problem for surfactant adsorption
+from micellar solution upon small perturbations, including the
+convective term in the mass-transport equations. In Section 3,
+we specify and simplify the basic set of differential equations
+and boundary conditions for the case of adsorption at a
+quiescent interface, after a small initial perturbation. The
+analysis of this case is the main subject of the present article.
+Numerical results for the relaxation of the surface tension,
+micelle concentration and aggregation number are presented in
+the form of kinetic diagrams, which reveal the stages of the
+relaxation process. In Section 4, in the case of regular kinetic
+diagram, we consider separately each of the four relaxation
+regimes and derive appropriate expressions describing theoret-
+ically the time dependence of the interfacial properties. Section
+5 is devoted to the ‘ ‘rudimentary’ ’ kinetic diagrams, which
+could be observed at low micelle concentrations and/or at great
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3318
+
+values of the rate constant of the fast micellization process.
+Merging or missing of some kinetic regimes characterizes such
+rudimentary diagrams.
+The theoretical modeling of the dynamic surface tension of
+micellar surfactant solutions reported here reveals a general and
+physically rich picture of the adsorption process, which could
+find a direct application for the interpretation of experimental
+data.
+2. General formulation of the problem for small
+perturbations
+Let us first consider the general case of a planar fluid
+interface, which is subjected to uniform expansion and/or
+compression. Then, the interfacial area, A, becomes a function
+of time, t. We will assume that the initial surface area A0 and
+the time dependence, A = A(t), are known. The rate of surface
+dilatation, a˙ (t) and, the surface dilatation, a˙ (t), are defined as
+follows [21 – 24]:
+˙aa tðÞ u 1A dAdt ¼ da tðÞdt ; a tðÞ¼ Z t0 ˙aadt ¼ ln AtðÞA0 ð2:1Þ
+One of the two neighboring fluid phases is assumed to be a
+micellar surfactant solution. The dilatation of the fluid interface
+gives rise to surfactant adsorption and diffusion. The diffusion
+flux leads to exchange of surfactant between the bulk and the
+interface. Both surfactant monomers and aggregates take part
+in the diffusion process. In addition, the aggregates (the
+micelles) exchange monomers between each other and with
+the surrounding solution ( Fig. 1 ). As demonstrated in the first
+part of this study, this complex process can be adequately
+described by four functions of the position vector, r, and time,
+t. These are the concentration of surfactant monomers, c1(r,t);
+the concentration of surfactant micelles, Cm(r,t); the mean
+aggregation number of the micelles, m(r,t), and the half-width
+of the peak in the micellar size distribution (the polydispersity),
+r(r,t). A full system of nonlinear differential equations for
+determining the latter four functions has been derived in [1].
+For small deviations from equilibrium (small perturbations),
+this system of equations can be linearized; see Eqs. (3.3) – (3.6)
+in [1]. Furthermore, substituting the expressions for the
+diffusion fluxes, Eqs. (2.22), (2.23) and (2.26), and reaction
+fluxes, Eqs. (3.7) – (3.9) in [1], the basic set of equation
+acquires the form:
+Bc1;p
+Bt /C0 ˙aaz Bc1;pBz ¼ DoS B2c1;pBz2 /C0 k/C0S meq /C0 wreq/C0/C1
+/C2 c1;eq
+S f s /C0 k/C0m bc1;eqmeqS fm ð2:2Þ
+BCm;p
+Bt /C0 ˙aaz BCm;pBz ¼ Bm DoS B2Cm;pBz2 þ k/C0S c1;eq fs ð2:3Þ
+Bmp
+Bt /C0 ˙aaz BmpBz ¼ Bm DoS B2mpBz2 /C0 k/C0s wmeqreqb fs þ k/C0m fm
+ð2:4Þ
+Brp
+Bt /C0 ˙aaz BrpBz ¼ Bm DoS B2rpBz2 þ k/C0S w2 /C0 1/C0/C1 reqmeqb fs
+/C0 k/C0m
+2req
+fm /C0 k/C0m 2r2eq rp ð2:5Þ
+Here we use the same notations as in the first part of this
+study [1]. The subscripts ‘ ‘eq’ ’ and ‘ ‘p’ ’ mark the equilibrium
+values and the perturbations of the respective variables; z is the
+spatial coordinate along the normal to the interface ( Fig. 1); km/C0
+is the rate constant of monomer dissociation from the micelles;
+kS/C0 is the rate constant of the slow micelle relaxation process,
+see Eq. (4.26) in [1]. S and Do are defined as follows:
+Su
+Xno
+s¼1
+s2 cs;eq
+c1;eq
+; Dou
+Xno
+s¼1
+s2 cs;eq
+c1;eq
+Ds ð2:6Þ
+where the values of the summation index s correspond to the
+region of the surfactant monomers and oligomers, s =1 , 2 , ... ,
+no; cs,eq and Ds are the equilibrium concentration and the
+diffusivity of the respective species; note that S /C21 1a n d
+Do /C21 D1. A reasonable approximation is to assume that the
+concentrations of the oligomers, cs,eq for 2 /C20 s /C20 no,a r e
+negligible, and then S = 1 and Do = D1. In addition, we have
+introduced the notation:
+BmuSDm=Do ð2:7Þ
+where Dm is the diffusivity of the micelles. The parameter b in
+Eqs. (2.2) – (2.5) is the equilibrium concentration of surfactant
+in micellar form, scaled by the critical micellization concen-
+tration, CMC:
+bu Ctot /C0 CMCðÞ =CMC ¼ meqCm;eq=c1;eq ð2:8Þ
+Ctot is the total surfactant concentration and c1,eq =C M C .
+Another equilibrium dimensionless parameter is
+wu meq /C0 nr
+/C0/C1
+=req > 1 ð2:9Þ
+where nr is aggregation number at the boundary between the
+regions of the rare aggregates and the abundant micelles at
+equilibrium; req is the polydispersity of the equilibrium micelle
+Fig. 1. Process of surfactant adsorption from micellar solutions. In the
+neighborhood of an expanded adsorption monolayer, the micelles release
+monomers to restore the equilibrium surfactant concentration at the surface and
+in the bulk. The concentration gradients give rise to bulk diffusion of both
+monomers and micelles.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 19
+
+size distribution; see Fig. 1 in [1]. Finally, the quantities fm and
+fs are related to the reaction fluxes of the fast and slow
+micellization processes, Jm,0 and J, see [1]:
+Jm;0 ¼ k/C0mbc1;eqmeq fm; J ¼ k/C0S c1;eq fs ð2:10Þ
+fmu c1;pc1;eq þ rp /C0 reqmpr3eq ð2:11Þ
+fsu meq /C0 wreq
+/C0/C1 c1;p
+c1;eq
+/C0 meqCm;p
+bc1;eq
+þ wmp
+req
+/C0 w2 /C0 1/C0/C1 rp
+req
+ð2:12Þ
+In view of Eqs. (2.11) and (2.12), Eqs. (2.2) – (2.5) form a
+system of four linear differential equations for determining the
+evolution of the perturbations in the four basic parameters of
+the system: c1,p(z,t); Cm,p(z,t); mp(z,t), and rp(z,t). It should be
+noted also, that the convective terms in Eqs. (2.2) – (2.5), those
+containing a˙ , are obtained by using the approximation of van
+V oorst V ader et al. [22], vIlc = /C0 a˙ z(ﬂc / ﬂz), where v is
+velocity and c is concentration; see also [18] and [25]. The
+validity of this approximation has been mathematically proven
+in [20,26,27]. This approximation is based on the fact that in
+most of the liquids, the thickness of the diffusion boundary
+layer is much smaller than the thickness of the hydrodynamic
+boundary layer.
+To solve system (2.2) – (2.5) we need boundary conditions at
+the interface ( z = 0) and in the bulk of solution ( zYV). Based
+on the experimental results, it is usually accepted that the
+micelles do not adsorb at the interface, and that only the
+monomers can adsorb [4 – 20]. These assumptions lead to the
+following mass balance equations at the interface [1]:
+BCp
+Bt þ ˙aaCeq ¼ Do
+Bc1;p
+Bz at z ¼ 0a n d t > 0 ð2:13Þ
+BCm;p
+Bz ¼ 0; BmpBz ¼ 0; BrpBz ¼ 0a t z ¼ 0 and t > 0
+ð2:14Þ
+Here C denotes surfactant adsorption; Ceq and Cp =C /C0Ceq
+are its equilibrium value and perturbation. What concerns the
+other limit, zYV, the perturbations c1,p(z,t); Cm,p(z,t); mp(z,t),
+and rp(z,t) are assumed to vanish in this limit (in the bulk of
+solution).
+To close the set of boundary conditions, we have to specify
+the mechanism of surfactant adsorption. Here we will assume
+that the adsorption occurs under diffusion control. This is the
+most typical mechanism, although in some cases adsorption
+under barrier control could be also observed [15,19,28 – 34].I n
+the case of diffusion-limited adsorption, the subsurface layer of
+the solution is assumed to be in equilibrium with the adsorption
+layer at the interface. Then, the adsorption is related to the
+subsurface concentration of monomers by means of the
+equilibrium adsorption isotherm. For small perturbations, we
+have:
+Cp ¼ hac1;p; hau BCBc1
+/C18/C19
+eq
+; at z ¼ 0 and t > 0 ð2:15Þ
+Here ha is the so-called adsorption length, which is to be
+calculated from the equilibrium surfactant adsorption isotherm,
+C(c1). For micellar solutions, ha should be estimated at the
+critical micelle concentration, i.e., at c1 = CMC.
+The general system of equations and boundary conditions
+described in the present section can be applied to describe the
+dynamics of surfactant adsorption under various dynamic
+regimes, corresponding to different experimental methods.
+For example, such regimes could correspond to quiescent,
+expanding, or oscillating interface. It turns out that the different
+dynamic regimes have different characteristic times, and
+correspond to different modified versions of the basis system
+of equations. For this reason, the different dynamic regimes
+demand separate treatment. In this paper, we will focus our
+attention on the detailed investigation of the relaxation of a
+quiescent interface after an initial small perturbation.
+3. Adsorption at a quiescent interface after a small initial
+perturbation
+The relaxation methods for measurement of dynamic
+surface tension [35 – 40] are based on an initial perturbation
+of the fluid interface, followed by diffusion of surfactant
+toward the immobile interface, and relaxation of the surfactant
+adsorption and the interfacial tension. At the initial moment,
+t = 0, the deviation from equilibrium is characterized by the
+initial perturbation in adsorption, Cp(0) =C(0) /C0Ceq. For t >0 ,
+the interface is immobile, a˙ = 0 and, and the perturbation in
+adsorption, Cp(t)= C(t) /C0Ceq, tends to zero for tYV. In the
+case of micellar surfactant solutions and small perturbations,
+this relaxation process is described by the system of Eqs.
+(2.2) – (2.5), and the boundary conditions, Eqs. (2.13) – (2.15),
+where we have to set a˙ =0 .
+3.1. Dimensionless form of the basic equations
+First, let us introduce the following dimensionless variables
+and constant parameters:
+fu Sha z; su SDoh2a t; Ksu h2aSDo k/C0S ; Kmu h2aSDo k/C0m : ð3:1Þ
+Here, f, s, Ks,a n d Km are the dimensionless normal
+coordinate, z; time, t, and rate constants of the slow and fast
+micellar relaxation processes, kS/C0 and km/C0. Furthermore, it is
+convenient to scale the dependent variables as follows:
+n1u haCp 0ðÞ c1;p; ncu habCp 0ðÞ Cm;p; nmu hac1;eqr2eqCp 0ðÞ mp;
+nru hac1;eqreqCp 0ðÞ rp ð3:2Þ
+Here, n1, nc, nm, and nr are the dimensionless perturbations
+in the concentration of surfactant monomers, c1,p; micelle
+concentration, Cm,p; micelle mean aggregation number, mp,
+and polydispersity of the abundant micelles, rp. It is important
+to note that the convenient definitions of the dimensionless
+perturbations n1, nc, nm, and nr are different for different
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3320
+
+dynamic problems. Here and in [1], we are using the same
+notation for the dimensionless perturbations of the same
+variables, despite some differences in the used scaling. This
+should not lead to any misunderstandings, because the
+treatment of different dynamic problems is completely inde-
+pendent here and in [1].
+With the help of the above definitions, Eqs. (3.1) and (3.2),
+we bring the basic system of Eqs. (2.2) – (2.5), into the
+following dimensionless form:
+Bn1
+Bs ¼ B2n1Bf2 /C0 meq /C0 wreq/C0/C1 KsS us /C0 bKmmeqS um ð3:3Þ
+Bnc
+Bs ¼ Bm
+B2nc
+Bf2 þ Ksb us ð3:4Þ
+Bnm
+Bs ¼ Bm
+B2nm
+Bf2 /C0 Ks
+wmeq
+breq
+us þ Kmr2eq um ð3:5Þ
+Bnr
+Bs ¼ Bm
+B2nr
+Bf2 þ Ks w2 /C0 1/C0/C1 meq2b us /C0 Km2r2eq um /C0 2Kmr2eq nr
+ð3:6Þ
+Here, we have introduced the auxiliary notations.
+us ¼ hac1;eqCp 0ðÞ fs; um ¼ hac1;eqCp 0ðÞ fm ð3:7Þ
+In terms of the new variables, defined by Eqs. (3.2) and
+(3.7), Eqs. (2.11) and (2.12) acquire the form:
+um ¼ hameqCp 0ðÞ bk/C0m Jm;0 ¼ n1 /C0 nm þ nrr2eq ð3:8Þ
+us ¼ haCp 0ðÞ k/C0S J ¼ meq /C0 wreq/C0/C1 n1 /C0 meqnc þ reqwnm
+/C0 w2 /C0 1/C0/C1 nr ð3:9Þ
+Eq. (3.8) shows that if nr/C2290 and n1/C229nm, then um/C2290, i.e.,
+the system is equilibrated with respect to the fast micelle
+relaxation process, Jm,0/C2290. In addition, Eq. (3.9) implies that if
+nr/C2290, and n1/C229nc /C229nm,t h e n us /C2290, i.e., the system is
+equilibrated with respect to the slow micelle relaxation process,
+J/C2290.
+For small deviations from equilibrium, the relationships
+between interfacial tension, c, and surfactant adsorption, C,a s
+well as between C and the subsurface concentration of
+surfactant monomers, c1(0,t), are linear. Then, in view of Eq.
+(3.2), for the relative perturbations of these quantities we have:
+c tðÞ/C0 ceq
+c 0ðÞ /C0 ceq
+¼ C tðÞ/C0 Ceq
+C 0ðÞ /C0 Ceq
+¼ n1 0; sðÞ un1;0 sðÞ ð 3:10Þ
+see also Eqs. (2.15) and (3.2); n1,0(s) is the dimensionless
+perturbation of the subsurface concentration of surfactant
+monomers as a function of the dimensionless time, s.
+With the help of Eqs. (3.1) (3.2) and (3.10), setting a˙ =0
+and we obtain the dimensionless form of the boundary
+conditions, Eqs. (2.13) and (2.14):
+Bn1
+Bs ¼ Bn1Bf ; BncBf ¼ BnmBf ¼ BnrBf ¼ 0; at f ¼ 0a n d s > 0:
+ð3:11Þ
+In the bulk of solution ( fYV), all perturbations vanish. In
+addition, the initial conditions (at t = 0) are:
+n1 0; 0ðÞ ¼ 1; n1 f; 0ðÞ ¼ 0 for f > 0 ð3:12Þ
+nc f; 0ðÞ ¼ nm f; 0ðÞ ¼ nr f; 0ðÞ ¼ 0 for f /C21 0 ð3:13Þ
+The system of differential equations, Eqs. (3.3) – (3.6),
+together with the boundary conditions, Eq. (3.11), and the
+initial conditions, Eqs. (3.12) and (3.13) can be solved
+numerically, as described in Appendix A. The results are
+reported below.
+3.2. Parameters of the micellar system
+To investigate the relaxation of adsorption and surface
+tension of micellar surfactant solutions, we calculated numer-
+ically the time evolution of the subsurface values (at z =0 ) o f
+the parameters of the micellar solution: n1,0(s) Kn1(0,s);
+nc,0(s) Knc(0,s); nm,0(s) Knm(0,s), and nr,0(s) Knr(0,s), see
+Fig. 2 . In our computations, we assigned typical values to the
+following constant parameters of the system:
+S ¼ 1:1; meq ¼ 60; req ¼ 5; w ¼ 3; Km ¼ 103; Bm ¼ 0:2
+ð3:14Þ
+The rate constant of the slow process, Ks, is varied. To
+illustrate its influence, we obtained numerical data for the
+following three values: Km / Ks =1 05 (Fig. 2 a); Km / Ks =1 06
+(Fig. 2 b), and Km / Ks =1 07 (Fig. 2 c).
+In [1], we developed a general procedure for determination
+of the three micellar relaxation times as roots of a cubic
+characteristic equation; see Eq. (4.30) in [1]. Two of them, tm
+and tr, characterize the fast relaxation process, while the third
+one, tc, characterizes the slow relaxation process. In general, tc,
+tm and tr are related to the relaxation of the three independent
+perturbations: in the micelle concentration, nc; in the micelle
+mean aggregation number, nm, and in the micelle polydisper-
+sity, nr, respectively. At low micelle concentrations we have
+tc >t m >t r, while at high micelle concentrations the two fast
+relaxation times exchange their positions: tc > tr > tm; see [1]
+for details.
+In our computations, we obtain the dimensionless micellar
+relaxation times (for details—see below):
+si ¼ k/C0m ti ¼ Kmhi i ¼ c; m; rðÞ ð 3:15Þ
+Here si , and hi =si / Km are the dimensionless relaxation
+times corresponding to the scaling used, respectively, in [1] and
+here, see Eq. (3.1). V alues of hc, hm, and hr, corresponding to
+different Km / Ks and micelle concentration b K (Ctot/C0CMC)/
+CMC, are listed in Table 1. To compute the values in Table 1,
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 21
+
+we first calculated sc, sm,a n d sr using the procedure
+developed in [1]. The respective values of hc, hm,a n d hr are
+shown by vertical dashed lines in Fig. 2 to show how they are
+related to the stages of the interfacial relaxation. Table 1
+indicates that hc is sensitive to the variation of both b and Km /
+Ks;hm is sensitive to b, but insensitive to Km / Ks; hr is
+insensitive to both b and Km / Ks.
+3.3. Numerical results and discussion
+The results reported here are obtained by solving numeri-
+cally the general system of equations in Section 3.1 by means
+of the numerical procedure described in Appendix A. The
+calculated curves n1,0(s), nc,0(s), and nm,0(s) are shown in Fig.
+2 for a relatively high micelle concentration, b = 100. The
+perturbation nr,0(s), which is similar for Fig. 2 a, b and c, is
+shown only in Fig. 2 a. Note that n1,0 expresses not only the
+perturbation in the subsurface monomer concentration, but also
+the perturbations in the surface tension and adsorption, see Eq.
+(3.10).
+The general picture in a regular kinetic diagram ( Fig. 2 )i s
+the following. At the initial stage (denoted by A) the
+perturbation of the subsurface concentration of monomers is
+n1,0/C2291, while the other perturbations, nc,0, nm,0, and nr,0, are
+/C2290. In the limit of long times, sYV, all perturbations become
+zero again. For this reason, nc,0, nm,0, and nr,0 have extremum,
+while n1,0 monotonically decays with time. Note, that the
+minimum of nr,0 and the maximum of nc,0 correspond to the
+respective micellar relaxation times, hr and hc. In contrast, the
+maximum of nm,0(s) appears at smhm.
+The most important feature of the relaxation curves ( Fig. 2)
+is that nm,0 merges with n1,0 at a given point, denoted by B,
+while nc,0 merges with n1,0 (and nm,0) at another point, denoted
+by D. The moments of time, corresponding to the points B and
+D, will be denoted below by sB and sD, respectively. As seen in
+Fig. 2 , for s >sB, we have nr,0/C2290 and n1,0 =nm,0. In view of
+Eq. (3.8), this means that for s >sB the flux of the fast micelle
+relaxation process, Jm,0, is equal to zero. In other words, for
+s >sB the monomers and micelles are equilibrated with respect
+to the fast relaxation process. It turns out that for a regular
+relaxation process sB/C2292hr1/2 , see Eq. (4.9).
+In Section 4 we derive asymptotic analytical expressions
+describing the regions AB, BC, CD and DE of the relaxation
+curve n1,0(s)( Fig. 2 ). In particular, the point C corresponds to
+the moment sC/C229hc. It turns out that n1,0(s) exhibits two
+exponential regimes, AB and CD, and two inverse-square-root
+regimes, BC and DE, see Fig. 2 b. Expressions for the
+respective characteristic adsorption relaxation times, sF, sC,
+sBC, and sDE, are also derived.
+It should be also noted that in addition to the regular kinetic
+diagrams (Fig. 2 and Section 4) one could sometimes observe a
+‘ ‘rudimentary’ ’ kinetic diagram, characterized by merging or
+disappearance of the stages BC and CD, see Section 5.
+Fig. 2. Time dependence of the perturbations in the subsurface (at z =0 )
+monomer concentration, n1,0, micelle concentration, nc,0, mean aggregation
+number, nm,0, and polydispersity, nr,0, for b = 100; the other parameters are
+given by Eq. (3.14). n1,0 expresses also the dimensionless perturbation in surface
+tension and adsorption, see Eq. (3.10). The curves are obtained by numerical
+solution of the general system of equations in Section 3.1. (a) Km / Ks =1 05; (b)
+Km / Ks =1 06; (c) Km / Ks =1 07. nr,0, which is similar for (a), (b) and (c), is shown
+only in (a). In (c) it is illustrated that the relaxation of n1,0 exhibits two
+exponential regimes (AB and CD), and two inverse-square-root regimes (BC
+and DE), with different characteristic times, sF, sC, sBC, and sDE (see the text).
+hm, hr and hc are the three characteristic micellization times ( Table 1).
+Table 1
+Calculated values of the dimensionless micellar relaxation times, hc, hm, and hr
+Relax. time Km / Ks =1 05 Km / Ks =1 06 Km / Ks =1 07
+b = 1
+hc 5.44 /C2 10/C0 2 4.21 /C210/C0 1 4.12 /C2 100
+hm 1.82 /C2 10/C0 2 1.86 /C2 10/C0 2 1.87 /C2 10/C0 2
+hr 9.41 /C210/C0 3 1.19 /C2 10/C0 2 1.21 /C210/C0 2
+b = 100
+hc 1.20 /C2 100 1.18 /C2 101 1.18 /C2 102
+hm 6.36 /C2 10/C0 4 6.42 /C2 10/C0 4 6.43 /C2 10/C0 4
+hr 1.25 /C2 10/C0 2 1.25 /C2 10/C0 2 1.25 /C2 10/C0 2
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3322
+
+4. Stages of a regular kinetic diagram
+4.1. Initial relaxation regime AB
+For the initial relaxation regime (stage) AB ( Fig. 2), we have
+nc,0 /C229nm,0 /C229nr,0 /C2290. Hence, the respective terms in Eqs. (3.3)
+(3.8) and (3.9) can be neglected. Thus, Eq. (3.3) acquires the
+form:
+Bn1
+Bs ¼ B2n1Bf2 /C0 1 þ RsðÞ 2 bKmmeqS n1 ð4:1Þ
+where the parameter Rs characterizes the relative importance of
+the slow micellar process with respect to the fast one:
+Rsumeq meq /C0 wreq
+/C0/C1 2 Ks
+bKm
+ð4:2Þ
+For the parameter values in Eq. (3.14), we obtain:
+Rs ¼ 1:215 /C2 105 KsbKm ð4:3Þ
+Thus, for Km / Ks /C21 105 and b = 100 (Fig. 2), Eq. (4.3) yields
+Rs<<1, and the contribution of the slow process is negligible;
+then Rs could be neglected in Eq. (4.1). In contrast, for Km /
+Ks =1 05 and b = 1 (low micelle concentration, see Section 5),
+Eq. (4.3) yields Rs/C2291, and the contribution of the slow process
+becomes considerable.
+Eq. (4.1) represents a diffusion equation with a linear
+reaction (source) term. Similar equation was first used in the
+theory of adsorption from micellar solutions by Rillaerts and
+Joos [41], and subsequently applied by many other authors
+[9,15,17,19,30,42,43]. The novel information in our Eq. (4.1)
+is that the coefficient before n1 in the reaction term is obtained
+in explicit form. One sees that this coefficient is related to the
+micellar concentration and mean aggregation number, b and
+meq; to the width of the micellar peak, w,a n dt ot h e
+dimensionless rate constants of the fast and slow micellar
+processes, Km and Ks.
+From a kinetic viewpoint, every chemical reaction, irre-
+spective of its order, yields a linear reaction term in the case of
+small deviations from equilibrium, when the respective term
+can be linearized. This approximation is known as pseudo-first-
+order-reaction (PFOR) model, which is widely used in
+chemical kinetics; see e.g., [44]. Mathematically, Eq. (4.1) is
+a linear differential equation for n1. The Laplace transform of
+n1 can be easily found, but it is a nontrivial task to find the
+original n1 in explicit analytical form. As we are interested in
+dynamic surface tension and adsorption, see Eq. (3.10), we will
+use the exact solution for n1,0(s) obtained in [19] in a closed
+form:
+n1;0 sðÞ ¼ sF /C0 1sF exp /C0 sF /C0 12 s/C18/C19 þ 2pZ V0 exp /C0 1sF þ ˜ss2/C18/C19 s/C20/C21
+˜ss2
+˜ss2 þ 1=sFðÞ 2 þ ˜ss2 d˜ss ð4:4Þ
+To derive Eq. (4.4), the initial condition, Eq. (3.12), and the
+boundary condition for n1(fYV) = 0 have been used. Eq. (4.4)
+is applicable only for the regime AB; s˜ is an integration
+variable; the characteristic relaxation time, sF,a n dt h e
+parameter, sF, are defined by the expressions:
+1
+1 þ RsðÞ sF
+u bKm
+meqS , 1hm /C0 12hr ; sFu 1 þ 4sF
+/C18/C19 1=2
+ð4:5Þ
+To obtain the relationship between sF and the two fast
+micellar relaxation times, hm and hr, we used Eq. (4.45) in [1].
+At sufficiently high micelle concentrations, we have hm<<hr
+and Rs<<1; then sF/C229hm.
+For short times, s<<1, Eq. (4.4) has a simple asymptotics,
+which coincides with the respective asymptotics for diffusion-
+controlled adsorption, see [19] and [45]:
+n1;0 ¼ 1 /C0 2 sp/C16/C17 1=2 þ s þ > ð short /C0 time asymptotics Þ
+ð4:6Þ
+Eq. (4.6) implies that the time limiting factor at short times
+is the diffusion of surfactant monomers; see the definition of s
+in Eq. (3.1).
+The long-time (for sYV) asymptotics of Eq. (4.4) is [19]:
+n1;0 ¼ sF /C0 1sF exp /C0 sF /C0 12 s/C18/C19 þ > ðlong /C0 time asymptotics Þ
+ð4:7Þ
+where the higher order terms are neglected. In particular, for 4/
+sF << 1, we have ( sF/C01)/2 /C2291/sF. Then, Eq. (4.7) reduces to:
+n1;0 , 2sF exp /C0 ssF
+/C18/C19
+þ > for 4sF << 1/C18/C19 ð4:8Þ
+Thus, in contrast with the short-time limit, Eq. (4.6), the
+long-time limit, Eqs. (4.7) and (4.8), is affected by the presence
+of micelles through sF, which is related to the characteristic
+times of the fast micellar process, hm and hr, see Eq. (4.5).
+Moreover, Eqs. (4.7) and (4.8) predict exponential decay of the
+perturbation n1,0(s), instead of the much slower, inverse-
+square-root decay for concentrations below the CMC [45].
+Such an exponential decay has been experimentally detected
+for micellar solutions of Triton X-100 by means of the
+inclined-plate method, see [14] and [19]. From the fits of
+experimental data, one can determine sF and then from the
+slope of the plot 1 / sF vs. b, one could obtain the rate constant
+of the fast process, Km; see Eq. (4.5) and [19].
+It is important to note that the simplified model, based on
+Eq. (4.1), and its solution, Eq. (4.4), is valid only during the
+stage AB ( Fig. 2 ). After the point B (for s >sB), where the
+fast micellar process attains equilibrium, the dependence
+n1,0(s) could not be dependent on the kinetic parameter sF.
+It turns out that for s >sB, the exponential decay is
+transformed into inverse-square-root decay; see Section 4.3.
+In other words, Eqs. (4.4), (4.7) and (4.8) could be applied
+only for s <sB.
+Analyzing the Laplace transforms of Eqs. (3.5) and (3.6),
+along with Eq. (3.8), and comparing the different time-scales
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 23
+
+with the numerical results for sB, we arrived at the following
+semi-empirical expression:
+sB ¼
+2r2eq
+Km
+ ! 1=2
+¼ 2h1=2r ð4:9Þ
+See Eq. (4.45) in [1] for hr. The above expression is related
+to the factor Km/(2r2eq) that appears before um in Eqs. (3.5) and
+(3.6).
+In Fig. 3 , the integral asymptotic solution, Eq. (4.4), the
+dashed curves, is checked against the exact solution of the
+general system of equations in Section 3.1 (the full curves).
+One sees that for the lower values of Km (1 and 10) there is an
+excellent agreement between the two types of curves. On the
+other hand, for Km = 1000 the agreement is not so good. In such
+cases, the exact numerical solution (Section 3.1) should be
+used. On the other hand, in Fig. 3 the exact and asymptotic
+curves merge for small s. Hence, the short-time asymptotics,
+Eq. (4.6), has a greater range of validity with respect to the
+values of the rate constants Km and Ks.
+4.2. Equilibrated fast micellar process: region BCDE
+As mentioned above, for s >sB we have nr,0/C2290a n d
+n1,0 =nm,0, and consequently, the reaction flux of the fast
+micellar process is Jm,0 = 0, see Eq. (3.8) and Fig. 2 . In other
+words, micelles and monomers are equilibrated with respect to
+the fast process along the whole region BCDE ( Fig. 2 ). From
+the viewpoint of the theoretical description, nr,0 /C2290 means that
+in the general system of equations we could skip Eq. (3.6).
+Furthermore, n1,0 =nm,0 implies that Eqs. (3.3) and (3.5) could
+be combined into a single mass balance equation. To eliminate
+the terms with um, we multiply Eq. (3.5) by br2eq/(meqS) and
+sum the result with Eq. (3.3):
+B
+Bs n1 þ
+br2eq
+meqS nm
+ !
+¼ B2
+Bf2 n1 þ
+br2eq
+meqS Bmnm
+ !
+/C0 meq
+Ks
+S us
+ð4:10Þ
+The boundary condition for Eq. (4.10) requires a special
+derivation. For this goal, let us consider a small cylinder of
+height, L, and bases parallel to the interface. Integrating Eq.
+(4.10) for 0 /C20f /C20 L, along with the boundary conditions ﬂn1 /
+ﬂf = ﬂn1 / ﬂs and ﬂnm /f =0 a t f = 0 (see Eq. (3.11)), yields:
+Z L
+0
+B
+Bs n1 þ
+br2eq
+meqS nm
+ !
+þ meq
+Ks
+S us
+"#
+df
+¼ BBf n1 þ br2eqmeqS Bmnm ! /C12/C12/C12/C12f¼L /C0 Bn1Bs /C12/C12/C12/C12f¼0 ð4:11Þ
+Next, in Eq. (4.11) we make the transition LY0 and use the
+relationship nm/C229n1, which is fulfilled in the region BCDE
+(Fig. 2 ). Thus, we obtain the boundary condition in the form:
+Bn1
+Bs ¼ 1 þ
+br2eq
+meqS Bm
+ !
+Bn1
+Bf at f ¼ 0 and s > sB ð4:12Þ
+Furthermore, using again the relationships nr,0 = 0 and
+n1,0 =nm,0, along with Eq. (3.9), we bring the mass-transport
+Eqs. (4.10) and (3.4) into the form:
+1 þ
+br2eq
+meqS
+ !
+Bn1
+Bs ¼ 1 þ
+br2eq
+meqS Bm
+ !
+B2n1
+Bf2 /C0
+m2eqKs
+S n1 /C0ncðÞ
+ð4:13Þ
+Bnc
+Bs ¼ Bm
+B2nc
+Bf2 þ meqKsb n1 /C0 ncðÞ ð 4:14Þ
+Thus, we replace the general system, Eqs. (3.3) – (3.6) and
+the boundary condition Eq. (3.11), with a simplified boundary
+problem consisting of Eqs. (4.12) – (4.14). In [9], the model
+based on the latter simplified system is called ‘ ‘diffusion
+affected by the slow relaxation process’ ’; see Eqs. (3.15a) and
+(3.15b) in [9]. Note, however, that the correct boundary
+condition for the simplified system is Eq. (4.12), rather than
+ﬂn1 / ﬂf = ﬂn1 / ﬂs, which has been used in [9]. Joos et al.
+[11,12], were the first who derived the correct boundary
+condition for the case of monodisperse micelles, which is
+analogous to Eq. (4.12). Finally, we recall that the simplified
+model, based on Eqs. (4.12) – (4.14), is applicable only for
+s >sB (equilibrated fast micellar process).
+4.3. Relaxation regime BC
+The relaxation regime BC ( Fig. 2), that occurs at sB <s<sC,
+is a sub-domain of the greater region BCDE considered in the
+previous subsection. Here, sC can be identified with the
+characteristic time of the slow micellar relaxation process:
+sCuhc ,
+br2eq
+m3eqKs ð4:15Þ
+At the last step we have used Eq. (4.43) in [1] for b >> 1 and
+m2eq >>r2eq. For s <sC, the slow micellar process has not yet
+been activated. For this reason, in the region BC we have
+nc << 1, and the reaction flux due to the slow process gives a
+Fig. 3. Comparison of the approximate analytical solution, Eq. (4.4), the dashed
+lines, with the exact numerical solution of the system in Section 3.1, the solid
+lines. The values of Km and Km / Ks are denoted in the figure; the other
+parameters are given by Eq. (3.14).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3324
+
+negligible contribution in the mass balance of surfactant. Then,
+we could skip Eq. (4.14) and neglect the last term in Eq. (4.13),
+which acquires the form:
+1 þ
+br2eq
+meqS
+ !
+Bn1
+Bs ¼ 1 þ
+br2eq
+meqS Bm
+ !
+B2n1
+Bf2 ð4:16Þ
+Eq. (4.16) has to be solved in combination with the
+boundary condition, Eq. (4.12). This mathematical problem is
+analogous to the known kinetic problem for diffusion-limited
+adsorption below the CMC [45]. In view of the initial
+condition, Eq. (3.12), the solution of this problem reads:
+n1;0 sðÞ ¼ exp s=sBCðÞ erfc s=sBCðÞ 1=2
+/C16/C17
+ð4:17Þ
+where erfc( x) is the complementary error function [46], and
+1
+sBC
+¼ 1 þ
+br2eq
+meqS
+ !
+1 þ
+br2eq
+meqS Bm
+ !
+ð4:18Þ
+Because in the region BC we have s /sBC >sB /sBC>>1, we
+have to use only the asymptotic form of Eq. (4.17), viz.
+n1;0 sðÞ , sBCps/C16/C17 1=2 sB < s < sCðÞ ð 4:19Þ
+In other words, in the region BC the relaxation process is
+described as diffusion controlled, with an inverse-square-root
+dependence of time, Eq (4.19). Note that the characteristic
+time, sBC, Eq. (4.18), depends on the diffusion coefficients
+and the equilibrium parameters, but it is independent of the
+rate constants of the fast and slow micellar processes, Km
+and Ks.
+In the case of diffusion-controlled adsorption below the
+CMC, the characteristic relaxation time is tr = ha2 / D, where D
+is diffusivity. In analogy with the latter relationship, for the
+micellar solution one could define an apparent surfactant
+diffusivity for the region BC: DBC K ha2 / tBC = SDo /sBC, where
+tBC is the dimensional time, corresponding to sBC; see Eq.
+(3.1). Thus, the multiplication of Eq. (4.18) by SDo yields:
+DBC ¼ SDo 1 þ
+br2eq
+meqS
+ !
+1 þ
+br2eq
+meqS Bm
+ !
+ð4:20Þ
+If we set meqS /r2eq /C2291, Eq. (4.20) reduces to the semi-
+empirical expression for the effective diffusivity in a micellar
+solution, obtained by Joos et al. [11,12]. Indeed, for typical
+parameter values, meq = 60, req = 8, and S = 1.1, we really get
+meqS /req2 /C2291.
+Experimentally, an inverse-square-root dependence of time,
+Eq. (4.19), has been observed in a number of studies on
+kinetics of adsorption from micellar surfactant solutions. Such
+dependence has been established for the nonionic surfactant
+Brij 58 by means of the dynamic drop-volume method [10,11],
+and by means of the stripe method [12]. Analogous results
+have been obtained for the surfactant Triton X-100 by means of
+the maximum-bubble-pressure method [13]. In particular, a
+good agreement between experiment and theory (Eq. (4.20)
+with meqS /r2eq /C2291) was reported in [12]. Our analysis indicates
+that the adsorption kinetics detected in these experiments
+corresponds to the kinetic regime BC ( Fig. 2 ).
+4.4. Relaxation regime DE
+The theoretical analysis of the relaxation regime DE is
+analogous to that of BC. (The intermediate region CD is
+considered in Section 4.5 below.) After the point D, i.e., for
+s >sD, we have nc,0 =nm,0 =n1,0,a n d nr,0/C2290( Fig. 2 ). The
+substitution of the latter relationships into Eqs. (3.8) and (3.9)
+leads to the conclusion that the reaction fluxes of both the fast
+and slow micellar processes are equal to zero: um =us = 0 for
+s >sD. In other words, the micelles are completely equilibrated
+with the monomers. In such a case, Eqs. (3.3) – (3.5) can be
+combined into a single mass balance equation for the
+surfactant. For this goal, we multiply Eq. (3.4) by meqb / S,
+and sum it with Eq. (4.10). The result reads:
+B
+Bs n1 þ
+br2eq
+meqS nm þ meqbS nc
+ !
+¼ B2
+Bf2 n1 þ
+br2eq
+meqS Bmnm þ meqbS Bmnc
+ !
+ð4:21Þ
+Following the derivation of Eq. (4.12), we integrate Eq.
+(4.21) to deduce the boundary condition
+Bn1
+Bs ¼ 1þBm
+r2eq þ m2eq
+meqS b
+ !
+Bn1
+Bf at f ¼ 0 and s > 0 ð4:22Þ
+Furthermore, in Eq. (4.21) we substitute nc,0 =nm,0 =n1,0,
+and obtain the combined mass balance equation for the
+surfactant in the kinetic region DE:
+1 þ b
+r2eq þ m2eq
+meqS
+ !
+Bn1
+Bs ¼ 1 þ b
+r2eq þ m2eq
+meqS Bm
+ !
+B2n1
+Bf2
+ð4:23Þ
+Eq. (4.23) has to be solved in combination with the
+boundary condition, Eq. (4.22). Again, this mathematical
+problem is similar to the known kinetic problem for diffu-
+sion-limited adsorption below the CMC [45]. In the same way,
+as in Section 4.3, we derive analogues of Eqs. (4.18) (4.19) and
+(4.21):
+1
+sDE
+u 1 þ b
+r2eq þ m2eq
+meqS
+ !
+1 þ b
+r2eq þ m2eq
+meqS Bm
+ !
+ð4:24Þ
+n1;0 sðÞ , sDEps/C16/C17 1=2 s > sDðÞ ð 4:25Þ
+DDE ¼ SDo 1 þ b
+r2eq þ m2eq
+meqS
+ !
+1 þ b
+r2eq þ m2eq
+meqS Bm
+ !
+ð4:26Þ
+Thus, in the region DE the relaxation process is described as
+diffusion controlled, with an inverse-square-root dependence of
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 25
+
+time, Eq. (4.25). Note that the characteristic time, sDE, depends
+on the diffusion coefficients and the equilibrium parameters,
+but it is independent of the rate constants of the fast and slow
+micellar processes, Km and Ks; see Eq. (4.24).
+For micellar systems we typically have S/C2291, Do/C229D1, and
+m2eq >>r2eq. Then, Eq. (4.26) reduces to:
+DDE , D1 1 þ bmeq
+/C0/C1
+1 þ bmeqBm
+/C0/C1
+ð4:27Þ
+An expression analogous to Eq. (4.27) has been derived by
+Lucassen [2] for a model assuming monodisperse micelles of
+aggregation number meq. He found a good agreement of this
+model with experimental data for adsorption of the nonionic
+surfactants C 12E6 and C 14E6 at a liquid interface that is
+subjected to small sinusoidal compression and expansion
+[2,3].
+Because m2eq >>r2eq, the dependence D DE(b), predicted by
+Eq. (4.26) is much stronger than the dependence D BC(b),
+predicted by Eq. (4.20). Of course, the same is true for the
+dependencies sDE(b) and sBC(b), given by Eqs. (4.24) and
+(4.18). The latter fact enables one to easily distinguish
+between the regimes BC and DE (both of them corresponding
+to inverse-square-root time dependence), when interpreting a
+set of experimental data for the dependence of the apparent
+diffusivity (or relaxation time) on b. For example, Joos et al.
+[10 – 12] established a considerable disagreement between
+their experimental data and the Lucassen’s Eq. (4.27). The
+reason is that the data by Joos et al. correspond to the regime
+BC, while the Lucassen’s Eq. (4.27) is derived for the regime
+DE (the two regimes have not been distinguished at that
+time).
+4.5. Compound asymptotic expression for the region BCDE
+In Appendix B, from Eqs. (4.13) and (4.14) we have derived
+a compound asymptotic expression, which describes the
+relaxation kinetics in the whole region BCDE:
+n1;0 ¼ sDEps/C16/C17 1=2 þ sBCps/C16/C17 1=2exp /C0 ssC/C18/C19
+s > sB; b >> 1ðÞ
+ð4:28Þ
+For large s, the exponential function is zero, and Eq. (4.28)
+reduces to Eq. (4.25) (regime DE). For s/sC << 1, the
+exponential function is equal to 1, and Eq. (4.28) reduces to
+Eq. (4.19) (regime BC), because sBC >>sDE. Finally, for
+intermediate values of s, we have an exponential transition
+between the regimes BC and DE ( Fig. 2 ):
+n1;0, sBCps/C16/C17 1=2exp /C0 ssC/C18/C19 regime CD; sC < s < sDðÞ
+ð4:29Þ
+Note that in regime CD the relaxation kinetics is influenced
+by the rate constant of the slow micellar process, Ks, through
+sC; see Eq. (4.15).
+Eq. (4.28) allows one to determine the time moment sD, i.e.,
+the position of the point D, which represents the boundary
+between the regimes CD and DE ( Fig. 2 ). Let us define sD as
+the value of s, for which the two terms in the right-hand side of
+Eq. (4.28) are equal. Thus, we obtain:
+sDusCln sBCsDE
+/C18/C19 1=2
+/C0 1
+"#
+, 2sCln meqreq
+/C18/C19
+: ð4:30Þ
+In Fig. 4 we compare the exact numerical solutions of the
+general system in Section 3.1, and of the simplified system,
+Eqs. (4.12) – (4.14). The three curves correspond to different
+values of Km / Ks; the other parameters are given by Eq. (3.14).
+The curves calculated by using the general and the simplified
+systems of equations are in excellent agreement: they differ
+only for s <sB (on the left of the point B in Fig. 4 ), where the
+simplified system is not valid by presumption. For the same
+parameter values, we calculated n1,0(s) by using the compound
+asymptotic expression, Eq. (4.28). The results were practically
+identical with those obtained by numerical solution of the
+simplified system, Eqs. (4.12) – (4.14): the respective calculated
+curves coincide in Fig. 4 . This confirms that Eq. (4.28) holds
+with high precision in the whole relaxation region BCDE.
+The vertical dashed lines in Fig. 4 correspond to the time
+moment sD, calculated by means of Eq. (4.30) for each of the
+three curves in the figure. The respective three values, sD1, sD2,
+and sD3, mark the positions of the boundary points, D 1,D 2, and
+D3, for the three curves.
+4.6. Discussion: ‘ ‘fast’ ’ and ‘ ‘slow’ ’ surfactants and experimen-
+tal methods
+We will call ‘ ‘fast’ ’ surfactant an amphiphilic component,
+which adsorbs quickly at the interface. Likewise, a ‘ ‘fast’ ’
+experimental method for dynamic surface tension measurement
+is a method, which allows one to detect early stages of the
+adsorption kinetics. Here the use of the terms ‘ ‘fast’ ’ and
+‘ ‘slow’ ’ is relative: a method, which is ‘ ‘slow’ ’ for a given
+surfactant, could be ‘ ‘fast’ ’ for another surfactant.
+0.1 1 10 100 1000
+10-5
+10-4
+10-3
+10-2
+10-1
+100
+(3)
+  107
+(2)
+ 106
+(1)
+Km /Ks = 105
+= 100
+B
+D1
+D2
+D3
+D1 D2 D3A B
+Perturbation   1,0ξ
+τ
+β
+τ
+Dimensionless time, τ
+ττ
+Fig. 4. Comparison of the simplified system, Eqs. (4.12) – (4.14), corresponding
+to diffusion affected by the slow relaxation process (the dashed lines), against
+the exact numerical solution of the general system in Section 3.1, the solid
+lines; b = 100. Each of the three curves corresponds to a fixed value of Ks / Km
+denoted in the figure; the other parameters are given by Eq. (3.14). The values
+of sD, calculated from Eq. (4.30), correspond to the point D for the respective
+curves, 1, 2, and 3.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3326
+
+From this viewpoint, the initial stage of the adsorption
+kinetics from micellar solutions, the region AB in Fig. 2, could
+be registered for ‘ ‘slow’ ’ surfactants by ‘ ‘fast’ ’ methods. In
+contrast, the region BC in Fig. 2 could be registered for ‘ ‘fast’ ’
+surfactants by ‘ ‘slow’ ’ methods. The regions CD and DE inFig.
+2 are difficult for detection because n1,0(s) is very small in
+these regions (n1,0 << 1 for s >sC). In principle, the regions CD
+and DE could be detected for fast surfactants by slow and very
+sensitive methods. (In Section 5 we demonstrate that the
+regime DE is easier for detection in the case of ‘ ‘rudimentary’ ’
+kinetic diagram, which could be observed at lower micelle
+concentrations, b, and greater values of the rate-constant, Km,
+of the fast micellar process.)
+At our best knowledge, until now the initial regime AB has
+been observed only for the nonionic surfactant Triton X-100 by
+means of the inclined plate method [14,19]. For the same
+surfactant, the data by the maximum-bubble-pressure method
+[13] correspond to the regime BC, although deviations from
+diffusion-limited adsorption has been observed at the greater
+frequencies (indications for the regime AB). Thus, it turns out
+that the inclined-plate method is faster than the maximum-
+bubble-pressure method. Of course, as mentioned above, the
+use of the terms ‘ ‘fast’ ’ and ‘ ‘slow’ ’ is relative here.
+Another point, which deserves discussion, is the applicability
+of the assumption of small perturbation and, consequently, the
+limits of the developed model. Below the CMC, the conven-
+tional measurements of dynamic surface tension are often
+incompatible with this approximation and one has to take into
+account non-linear effects. However, for concentrations above
+the CMC, the situation is quite different. The characteristic time
+of the fast micellar process is so short that the micelles quickly
+damp any perturbation in the surfactant adsorption. For this
+reason, most of the experimental methods for interfacial
+dynamics (except the fastest ones) produce data in the regime
+of small deviations from equilibrium. This is confirmed by the
+good agreement of the developed theory (assuming small
+deviations) with experimental data obtained by various methods.
+For example, in [19] we have demonstrated that data from the
+inclined-plate method are in very good agreement with Eq. (4.7)
+(regime AB). In addition, in a subsequent paper [47], which
+could be considered as Part 3 of the present study, we
+demonstrate that Eq. (4.20) complies very well with data for
+the dynamic surface tension and adsorption produced by the strip
+method [12] and the overflowing cylinder method [20,27,48]
+(regime BC). The present theoretical approach could also find
+applications for interpretation of experimental results obtained
+by means of the maximum bubble pressure method[13], the fast-
+formed drop method [39,40], methods with oscillating surface
+area [2,3,49,50], etc.
+5. Stages of a rudimentary kinetic diagram
+5.1. Merged or missing regimes BC and CD
+In Fig. 5 we present numerical results for n1,0(s), nc,0(s),
+nm,0(s), and nr,0(s) obtained by solving the general system of
+equations in Section 3.1 by means of the numerical procedure
+described in Appendix A. In contrast with Fig. 2, the curves in
+Fig. 5 are calculated for a low micelle concentration, b = 1; i.e.,
+the total surfactant concentration is 2 /C2 CMC, see Eq. (2.8).
+The perturbation nr,0(s), which is similar for Fig. 5a, b and c, is
+shown only in Fig. 5a. As mentioned above, n1,0 expresses not
+only the perturbation in the subsurface monomer concentration,
+but also the perturbations in the surface tension and adsorption,
+see Eq. (3.10).
+Fig. 5. Time dependence of the subsurface (at z = 0) perturbations in monomer
+concentration, n1,0, micelle concentration, nc,0, mean aggregation number, nm,0,
+and polydispersity, nr,0, for b = 1; the other parameters are given by Eq. (3.14).
+The curves are obtained by exact numerical solution of the system of equations
+in Section 3.1. (a) Km / Ks =1 05; stages BC and CD are missing; (b) Km / Ks =1 06;
+missing stage BC; (c) Km / Ks =1 07; missing stage BC. Analytical expressions
+for the asymptotics of n1,0 are shown in (a) and (b). nr,0, which is similar for (a),
+(b) and (c), is shown only in (a). hm, hr and hc are the three characteristic
+micellization times ( Table 1).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 27
+
+The most important difference between the relaxation curves
+in Figs. 5 and 2 , is that the intermediate regimes BC and CD in
+Fig. 5 are merged or missing. Indeed, the point B has been
+defined as the point where nm,0 and n1,0 merge, while the point
+D marks the merging of nc,0 and n1,0.I n Fig. 5 a, the points B
+and D coincide, which means that the whole region BCD is
+missing in this kinetic diagram. In Fig. 5 b and c, the points B
+and D are distinct, but there is no region BC in which
+n1,0”s/C0 1/2 ; see Section 4.3 above. Hence, the point C cannot
+be defined as the boundary between regimes of inverse-square-
+root and exponential relaxation; see Fig. 2c. It turns out that the
+whole region BCD in Fig. 5 b and c can be described by an
+integral expression, Eq. (5.6). Such kinetic diagrams ( Fig. 5), in
+which the intermediate stages BC and CD are merging or
+missing, will be termed rudimentary kinetic diagrams.
+On the other hand, the initial and final stages, AB and DE,
+are always present in the kinetic diagrams, both ‘ ‘regular’ ’ (Fig.
+2) and ‘ ‘rudimentary’ ’ (Fig. 5 ). The analytical expressions for
+n1,0(s) at these stages are the same as given in Sections 4.1 and
+4.4, irrespective of whether the diagram is regular or
+rudimentary. In particular, the short-time asymptotics, n1,0 =
+1 /C0 2(s /p)1/2 + ... , given by Eq. (4.6), is valid in all cases.
+In general, Fig. 5 illustrates that the increase of the ratio Km /
+Ks may lead to a transition from rudimentary to regular kinetic
+diagram. Another parameter, whose variation may induce such
+transition, is the rate constant of the fast micellar process, Km.I n
+Fig. 6 we show six relaxation curves, n1,0(s), each of them
+corresponding to different Km. The curves 1 and 2 exhibit
+rudimentary relaxation pattern; the curve 3 is transitional, while
+the curves 4, 5 and 6 have regular relaxation pattern. The
+boundaries of the separate stages are denoted by A, B 4,C 4 and
+D4 for the curve 4 ( Fig. 6). The point D is well distinct for each
+curve and is denoted by D 1,... ,D 6. Thus, the curves in Fig. 6
+indicate that the increase of Km (at fixed other parameters) may
+induce a transition from regular to rudimentary kinetic diagrams.
+In addition, the family of curves in Fig. 6 exhibits three
+asymptotes, representing straight lines of slope /C0 1 / 2, and
+corresponding to diffusion-limited adsorption. The upper
+asymptote corresponds to micelle free solution; the intermedi-
+ate asymptote corresponds to the regime BC, and the lower
+asymptote corresponds to the regime DE.
+5.2. Description of the region BCD for rudimentary diagrams
+The whole relaxation curve, ABCDE in Figs. 2 and 5 , can
+be described by solving numerically the general system of
+equations in Section 3.1. Alternatively one could describe the
+whole region BCDE by numerically solving the simpler system
+of Eqs. (4.13) and (4.14), along with the boundary condition,
+Eq. (4.12). In Fig. 7, the continuous lines n1,0(s) are computed
+from the general equations in Section 3.1, while the dashed
+lines are calculated by solving numerically Eqs. (4.12) – (4.14).
+The dashed and continuous curves practically coincide for
+curves 2 and 3, for which Km / Ks =1 06 and 107 (corresponding
+to Fig. 5b and c). In contrast, for Km / Ks =1 05, that is curve 1 in
+Fig. 7 , such excellent agreement is missing. The reason is that
+for curve 1 we have a broad region with nm,0(s)< <n1,0(s)
+(region AB in Fig. 5 a), while the simplified system of Eqs.
+(4.12) – (4.14) is based on the assumption that nm,0(s) /C229n1,0(s).
+Note also that in the case of rudimentary kinetic diagrams, Eq.
+(4.30) cannot be used to determine the positions of the point D
+on the diagram.
+Analytical expression for the region BCD of a rudimentary
+kinetic diagram ( Fig. 5b and c) can be derived in the following
+way. We have nc,0<<n1,0 everywhere in the region BCD,
+except the vicinity of the point D (see Fig. 5 b and c).
+Consequently, for this region we can neglect nc in Eq. (4.13):
+1 þ
+br2eq
+meqS
+ !
+Bn1
+Bs ¼ 1 þ
+br2eq
+meqS Bm
+ !
+B2n1
+Bf2 /C0
+m2eqKs
+S n1
+ð5:1Þ
+Fig. 6. Plot of the perturbation in the subsurface monomer concentration, n1,0,
+vs. time for b = 100 and Ks / Km =1 07. Each of the six curves corresponds to a
+fixed value of Km denoted in the figure; the other parameters are given by Eq.
+(3.14). The curves are obtained by exact numerical solution of the general
+system of equations in Section 3.1. For curves 1 and 2 the relaxation pattern is
+rudimentary (the stages BC and CD are missing or merging). For curves 4, 5
+and 6 the relaxation pattern is regular, with separate stages AB, BC, CD, and
+DE. The curve 3 is transitional between regular and rudimentary relaxation.
+Fig. 7. Comparison of the solution of the simplified boundary problem, Eqs.
+(4.12) – (4.14), the dashed lines, against the exact numerical solution of the
+general system in Section 3.1, the solid lines. The perturbation in the subsurface
+concentration of monomers, n1,0, is plotted vs. time for b = 1 and Km = 1000.
+Each of the three curves corresponds to a fixed value of Ks / Km denoted in the
+figure; the other parameters are given by Eq. (3.14).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3328
+
+The boundary condition for Eq. (5.1) is given by Eq. (4.12).
+The resulting problem is equivalent to the known pseudo-first-
+order-reaction (PFOR) approximation. Let us formally intro-
+duce new dimensionless variables:
+ˆffu 1 þ r2eqbmeqS ! f; ˆssus=sBC ð5:2Þ
+where sBC is defined by Eq. (4.18). Then, Eqs. (5.1) and (4.12)
+acquire the form:
+Bn1
+Bˆss ¼ B2n1Bˆff2 /C0 1sS n1 ð5:3Þ
+Bn1
+Bˆss ¼ Bn1Bˆff at ˆff ¼ 0 and ˆss > 0 ð5:4Þ
+where the characteristic time sS is defined as:
+sSu 1 þ
+br2eq
+meqS
+ ! 2
+1 þ
+br2eq
+meqS Bm
+ !
+S
+m2eqKs ð5:5Þ
+Eq. (5.3), along with Eq. (5.4), has a general integral
+solution, which is analogous to Eq. (4.4):
+n1;0 ˆssðÞ ¼ sB /C0 1sB exp /C0 sB /C0 12 ˆss/C18/C19 þ 2pZ V0 exp /C0 1ss þ s2/C18/C19 ˆss/C20/C21
+/C2 s2
+s2 þ 1=sSðÞ 2 þ s2 ds ð5:6Þ
+where
+sBu 1 þ 4sS
+/C18/C19 1=2
+ð5:7Þ
+The asymptotics of Eq. (5.6) for large sˆ is [19]:
+n1;0 ¼ sB /C0 1sB exp /C0 sB /C0 12 ˆss/C18/C19 þ > for exp /C0 ˆss=sSðÞ << 1ðÞ
+ð5:8Þ
+In particular, for 4 / sS << 1, we have (s B/C01)/2 /C2291/ sS. Then,
+Eq. (5.8) reduces to:
+n1;0 , 2sS exp /C0 ˆsssS
+/C18/C19
+þ > for 4sS << 1/C18/C19 ð5:9Þ
+Thus, the region BCD contains a sub-domain with
+exponential decrease of n1,0(s) (see Fig. 5 b and c). In this
+sub-domain, n1,0 decreases much faster than the slower square
+root decay in the region DE. For smaller values of sˆ (closer to
+the point B), the asymptotic formula, Eq. (5.8), could become
+inapplicable, and then one should use the more general Eq.
+(5.6).
+6. Summary and conclusions
+In this paper, the set of equations obtained in [1] is applied
+for theoretical modeling of surfactant adsorption from micellar
+solutions after a small initial perturbation of the interface. The
+proposed model gives a general picture of the interfacial
+relaxation kinetics, including the variation of the adsorption
+and interfacial tension; see Section 3 and Fig. 2 . The derived
+general system of kinetic equations (Section 3.1) describes all
+stages of the relaxation process at both high and low micelle
+concentrations; for both ‘ ‘fast’ ’ and ‘ ‘slow’ ’ surfactants and
+experimental methods; for arbitrary values of all parameters of
+the micellar system.
+The following kinetic regimes (stages) have been identified
+(Fig. 2 ): AB – exponential asymptotics governed by the fast
+micellization process (Section 4.1); BC – inverse-square-root
+asymptotics: equilibrated fast process but negligible slow
+process, and diffusion limited kinetics (Section 4.3); CD –
+exponential asymptotics governed by the slow micellization
+process (Section 4.5), and DE – inverse-square-root asympto-
+tics: both the fast and slow micellization processes are
+equilibrated and the kinetics is diffusion-limited (Section 4.4).
+Regime AB can be detected by fast methods; for example,
+Triton X-100 by the inclined plate method [14,19]. Regime BC
+can be detected by slower methods; for example, Triton X- 100
+by the maximum-bubble pressure method [13]. Regimes CD
+and DE are difficult for detection because the decaying
+perturbation, n1,0(s), has become very small for these regimes
+(Fig. 2); in principle, regimes CD and DE could be detected for
+fast surfactants by slow and sensitive methods.
+Rudimentary kinetic pattern is observed at low micelle
+concentration (b /C2291, Fig. 5 ) and/or at sufficiently great values
+of Km, the rate constant of the fast micellization process ( Fig.
+6). Merging or missing of the kinetic regimes BC and CD
+characterizes such rudimentary diagrams (Section 5).
+From the viewpoint of applications, the developed theoret-
+ical model could help the experimentalists to identify the
+kinetic regime for each specific surfactant solution detected by
+a given experimental method. The model provides theoretical
+expressions for data processing in each separate regime. The
+characteristic relaxation times of the various regimes, such as
+sF, sC, sBC, sDE and sS, turn out to be the same, irrespective of
+the used experimental method. In other words, Eqs. (4.5) (4.15)
+(4.18) (4.24) and (5.5) have a general validity. On the other
+hand, the derived equations for the time dependence of surface
+tension, n1,0(s), in different regimes are specific to the type of
+the used method, in our case, relaxation of a quiescent interface
+after an initial perturbation. The application of the present
+theoretical approach to other classes of dynamic methods (with
+stationary and non-stationary interfacial dilatation, and with
+oscillating surface area) will be subjects of subsequent studies.
+Acknowledgement
+This work was supported by Unilever Research US,
+Trumbull, CT.
+Appendix A. Procedure for solving the general system in
+Section 3
+The linear system of Eqs. (3.3) – (3.6), with boundary
+condition (3.11), is solved numerically as follows. First
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 29
+
+Laplace transform, L, is applied; the respective Laplace images
+are:
+˜nn1uL n1½/C138 ; ˜nncuL nc½/C138 ; ˜nnmuL nm½/C138 ; ˜nnruL nr½/C138 ð A:1Þ
+Below, the parameter of the Laplace transform will be
+denoted by q. The Laplace images of the diffusion Eqs. (3.3) –
+(3.6), written in a matrix form, are:
+d2 ˜nni
+df2 ¼ aij ˜nnj i; j ¼ 1; c; m; rðÞ ð A:2Þ
+where the coefficients aij are:
+a11 ¼ q þ meq /C0 wreq
+/C0/C1 2 Ks
+S þ bKmmeqS ;
+a1c ¼/C0 meq meq /C0 wreq
+/C0/C1 Ks
+S ðA:3Þ
+a1m ¼ wreq meq /C0 wreq
+/C0/C1 Ks
+S /C0 bKmmeqS ;
+a1r ¼/C0 w2 /C0 1/C0/C1 meq /C0 wreq/C0/C1 KsS þ bKmr2eqmeqS ðA:4Þ
+ac1 ¼/C0 meq /C0 wreq
+/C0/C1 Ks
+bBm
+; acc ¼ qBm þ meqKsbBm ðA:5Þ
+acm ¼/C0 wreq
+Ks
+bBm
+; acr ¼ w2 /C0 1/C0/C1 KsbBm ðA:6Þ
+am1 ¼ meq /C0 wreq
+/C0/C1 Ks
+Bm
+wmeq
+breq
+/C0 Km
+Bmr2eq ;
+amc ¼/C0 meq
+Ks
+Bm
+wmeq
+breq
+ðA:7Þ
+amm ¼ qBm þ wreq KsBm wmeqbreq þ KmBmr2eq ;
+amr ¼/C0 w2 /C0 1/C0/C1 KsBm wmeqbreq /C0 KmBmr4eq ðA:8Þ
+ar1 ¼/C0 w2 /C0 1/C0/C1 meq /C0 wreq/C0/C1 KsBm meq2b þ Km2Bmr2eq ;
+arc ¼ meq w2 /C0 1/C0/C1 KsBm meq2b ðA:9Þ
+arm ¼/C0 wreq w2 /C0 1/C0/C1 KsBm meq2b /C0 Km2Bmr2eq ðA:10Þ
+arr ¼ qBm þ w2 /C0 1/C0/C1 2 KsBm meq2b þ Km 1 þ 4r2eq
+/C16/C17
+2Bmr4eq ðA:11Þ
+To find the solution of the linear system of Eq. (A.2), all
+eigenvalues of this system have to be calculated. For that
+reason, the solution is assumed proportional to exp( /C0kf). The
+latter expression is substituted into Eq. (A.2) and the
+characteristic equation det( aij /C0k2dij) = 0 is obtained, where
+dij is the Kronecker delta. For calculation of the four complex
+eigenvalues, kk2, and the components of the eigenvectors, fik
+(k =1 ,c,m,r), we used the QZ algorithm, described in [51,52].
+The complex value of kk is chosen in such a way that
+Re(kk) > 0. Thus, the solution of the system (A.2) can be
+presented in the form:
+˜nini ¼ X
+k¼1;c;m;r
+fik Xk exp /C0 kkfðÞ i ¼ 1; c; m; rðÞ ð A:12Þ
+where the unknown constants, Xk, are determined from the
+boundary conditions. With the help of the Laplace transform,
+Eq. (A.1), the boundary conditions (3.11) are represented in the
+form:
+q ˜nn1 /C0 d ˜nn1df ¼ 1; d ˜nncdf ¼ d ˜nnmdf ¼ ˜nnrdf ¼ 0a t f ¼ 0ðÞ ð A:13Þ
+where the initial condition, Eq. (3.12), has been also used.
+After substitution of Eq. (A.12) into the boundary conditions,
+Eq. (A.13), one obtains the following linear system of equation
+for Xk:
+X
+k¼1;c;m;r
+qd1i þ kkðÞ fik Xk ¼ d1i i ¼ 1; c; m; rðÞ ð A:14Þ
+The linear complex system of Eqs. (A.14) is solved using
+the LU factorization method; see [53]. We are interested in the
+values of the perturbations at the interface ( f = 0), where Eq.
+(A.12) acquires the form:
+˜nni;0 ¼ X
+k¼1;c;m;r
+fik Xk i ¼ 1; c; m; rðÞ ð A:15Þ
+The inverse Laplace transformation of Eq. (A.15) is
+performed by numerical inversion, using a Fourier series
+approximation; see [54,55].
+Appendix B. Solution of the diffusion problem in Section 4
+To find the exact solution of the boundary problem (4.12) –
+(4.14), we will use Laplace transform with respect to time; see
+Eq. (A.1). The Laplace images of Eqs. (4.13) and (4.14) are:
+1 þ
+br2eq
+meqS
+ !
+q ˜nn1 ¼ 1 þ br2eqmeqS Bm ! d2 ˜nn1df2 /C0 m2eqKsS ˜nn1 /C0 ˜nnc/C0/C1
+ðB:1Þ
+q ˜nnc ¼ Bm d2 ˜nnc
+df2 þ meqKsb ˜nn1 /C0 ˜nnc/C0/C1 ðB:2Þ
+( q is the Laplace parameter). The initial conditions are given by
+Eqs. (3.12) and (3.13), while the boundary conditions are Eq.
+(4.12) and ﬂnc / ﬂf =0 a t f = 0. Their Laplace transforms are:
+q ˜nn1 /C0 1 ¼ 1 þ br2eqmeqS Bm ! d ˜nn1df at f ¼ 0 and s > 0 ðB:3Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3330
+
+d ˜nnc
+df ¼ 0a t f ¼ 0 and s > 0 ðB:4Þ
+Let k1 and k2 be the characteristic values of the system of
+differential Eqs. (B.1) and (B.2), chosen in such a way that
+k1 > 0 and k2 > 0. Then the Laplace transforms of n1 and nc are
+obtained in the form:
+˜nnc ¼ ˜nnc;0k2 /C0 k1 k2 exp /C0 k1fðÞ /C0 k1 exp /C0 k2fðÞ½/C138 ð B:5Þ
+˜nn1 ¼ ˜nnc;0k2 /C0 k1ðÞ q þ meqKs/C0/C1 =b þ Bmk1k2Þ
+/C2 q þ meqKs
+/C0/C1
+=b /C0 Bmk21/C2/C1 /C138k2 exp
+/C2/C0 k1fðÞ /C0 q þ meqKs=b /C0 Bmk22/C0/C1 k1exp /C0 k2fðÞ /C138 :
+ðB:6Þ
+Here, n˜c,0 and n˜1,0 are the values of nc and n1 at f = 0. Note
+that Eqs. (B.5) and (B.6) satisfy the diffusion Eqs. (B.1) and
+(B.2), and the boundary condition (B.4). The substitution of
+Eq. (B.6) into the second boundary condition, Eq. (B.3), yields
+an expression for ) n˜1,0( q):
+˜nn1;0 ¼ q þ Bmk1k2 k1 þ k2ðÞq þ meqKs=b þ Bmk1k2 1 þ r2eqbmeqS Bm !"# /C01
+ðB:7Þ
+Next, we have to determine k1(q)a n d k2(q). The
+characteristic equation for the system of Eqs. (B.1) and (B.2)
+represents a biquadratic equation: ak4 /C0 bk2 + c = 0, where
+a ¼ 1 þ
+r2eqb
+meqS Bm
+ !
+Bm ðB:8aÞ
+bqðÞ ¼ q þ meqKs
+b
+þ 1 þ
+2r2eqb
+meqS
+ !
+q þ m2eq þ r2eq
+/C16/C17 Ks
+S
+"#
+Bm ðB:8bÞ
+cqðÞ ¼ 1 þ
+r2eqb
+meqS
+ !
+q þ meq
+Ks
+b þ m2eq þ r2eq
+/C16/C17 Ks
+S
+"#
+q
+ðB:8cÞ
+With the help of the Vie `te’s formulas we obtain:
+k21 þ k22 ¼ b=a ðB:9Þ
+k1k2 ¼ c=aðÞ 1=2 ðB:10Þ
+and then we can determine
+k1 þ k2 ¼ k21 þ k22 þ 2k1k2/C0/C1 1=2 ðB:11Þ
+The substitution of Eqs. (B.10) and (B.11) into Eq. (B.7),
+along with Eqs. (B.8a) (B.8b) (B.8c) and (B.9), gives the
+explicit dependence n˜1,0( q). We performed the inverse Laplace
+transformation of Eq. (B.7) by means of numerical inverse
+Laplace transform using a Fourier series approximation; see
+[54,55].
+In the case of high surfactant concentrations, a simple
+asymptotic expression for n1,0(s) can be derived. For this goal,
+we first simplify Eqs. (B.1) and (B.2) for br2eq /( meqS)> >1 :
+q ˜nn1 ¼ Bm d2 ˜nn1
+df2 /C0
+m3eqKs
+r2eqb ˜nn1 /C0 ˜nnc/C0/C1 ðB:12Þ
+q ˜nnc ¼ Bm d2 ˜nnc
+df2 þ meqKsb ˜nn1 /C0 ˜nnc/C0/C1 ðB:13Þ
+The elimination of the last term in Eqs. (B.12) and (B.13)
+yields:
+q ˜nn1 þ m2eqr2eq ˜nnc ! ¼ Bm d2df2 ˜nn1 þ m2eqr2eq ˜nnc ! ðB:14Þ
+The exact solution of Eq. (B.14) is:
+˜nn1 þ m2eqr2eq ˜nnc ¼ Y1exp /C0 qBm/C18/C19 1=2f"# ðB:15Þ
+where Y1 is a constant of integration. Note that in the left-hand
+side of Eq. (B.15) we have a multiplier meq2 /req2 >>1.
+Nevertheless, in the region BC we have n˜1>>n˜c, and the term
+n˜1 could prevail in the left-hand side of Eq. (B.15). On the
+other hand, in the region DE we have n˜1/C229n˜c, and then the
+second term in the left-hand side of Eq. (B.15) becomes larger.
+At the next step, we subtract equation (B.13) from equation
+(B.12):
+q ˜nn1 /C0 ˜nnc/C0/C1 ¼ Bm d2
+df2
+˜nn1 /C0 ˜nnc/C0/C1 /C0 1sC ˜nn1 /C0 ˜nnc/C0/C1 ðB:16Þ
+where
+1
+sC
+u
+m2eq
+r2eq þ 1
+ !
+meqKs
+b ðB:17Þ
+The solution of Eq. (B.16) is:
+˜nn1 /C0 ˜nnc ¼ Y2exp /C0 q þ 1=sCBm
+/C18/C19 1=2
+f
+"#
+ðB:18Þ
+where Y2 is a constant of integration. In the region BC, where
+n˜1>>n˜c, the first term in the left-hand side of Eq. (B.18)
+prevails, while in the region DE we have n˜1/C229n˜c.
+Next, we eliminate n˜1 between Eqs. (B.15) and (B.18) and
+substitute the result for n˜c into the boundary condition, Eq.
+(B.4); thus we find a relationship between Y1 and Y2:
+Y2 ¼ Y1
+q
+q þ 1=sC
+/C18/C19 1=2
+ðB:19Þ
+From Eqs. B.15), (B.18) and (B.19, we derive:
+˜nn1 ¼ Y11 þ m exp /C0 qBm
+/C18/C19 1=2
+f
+"#
+þ qu/C16/C17 1=2m exp /C0 uBm/C18/C19 1=2f"#()
+ðB:20Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 31
+
+where u = q +1/ sC and m = m2eq /r2eq. Using the relationship
+n˜1|f=0 =n˜1,0, we further determine Y1 in Eq. (B.20):
+˜nn1 ¼ ˜nn1;0 1 þ qu/C16/C17 1=2m/C20/C21 /C01 exp /C0 qBm/C18/C19 1=2f"# þ qu/C16/C17 1=2(
+/C2 m exp /C0 uBm
+/C18/C19 1=2
+f
+"# )
+ðB:21Þ
+For large surfactant concentrations, Eq. (B.3) reduces to
+q ˜nn1 /C0 1 ¼ br2eqmeqS Bm d ˜nn1df at f ¼ 0 and s > 0 ðB:22Þ
+Substituting the solution (B.21) into the boundary condition
+(B.22), we get:
+q ˜nn1;0 /C0 1 ¼/C0 br2eqmeqS BmqðÞ 1=2 1 þ qu/C16/C17 1=2m/C20/C21 /C01 1 þ mðÞ ˜nn1;0
+ðB:23Þ
+For m >> 1, the latter equation reduces to:
+q þ meqbS BmqðÞ 1=2 1 þ m2eqr2eq ! qq þ 1=sC/C18/C19 1=2"# /C018<: 9=; ˜nn1;0 ¼1
+ðB:24Þ
+Because the long-time limit, s >> 1, corresponds to q << 1, from
+Eq. (B.24) we obtain the following asymptotic expression:
+˜nn1;0 ¼ sDEq/C18/C19 1=2 þ sBCq þ 1=sC/C18/C19 1=2 ðB:25Þ
+where
+1
+sBC
+,
+r2eqb
+meqS
+ ! 2
+Bm; 1sDE , meqbS/C18/C19 2Bm ðB:26Þ
+is the asymptotic form of Eqs. (4.18) and (4.24) for b >> 1.
+Finally, the inverse Laplace transform of Eq. (B.26) yields Eq.
+(4.28); see e.g., [46].
+References
+[1] Danov KD, Kralchevsky PA, Denkov ND, Ananthapadmanabhan KP ,
+Lips A. Mass transport in micellar surfactant solutions: 1. Relaxation of
+micelle concentration, aggregation number and polydispersity. Adv
+Colloid Interface Sci in press. ________________________doi:10.1016/j.cis.2005.09.002.
+[2] Lucassen J. Adsorption kinetics in micellar systems. Faraday Discuss
+Chem Soc 1975;59:76 – 87.
+[3] Lucassen J, Giles D. Dynamic surface properties of nonionic surfactant
+solutions. J Chem Soc Faraday Trans I 1975;71:217 – 32.
+[4] Miller R. Adsorption kinetics of surfactants from micellar solutions.
+Colloid Polym Sci 1981;259:1124 – 8.
+[5] Fainerman VB. Kinetics of the adsorption of surfactants from micellar
+solutions (theory). Kolloidn Zh 1981;43:94 – 100.
+[6] Fainerman VB, Rakita YM. Investigation of the dissociation kinetics of
+micelles from the dynamic surface tension of the expanding surface of
+micellar solutions. Kolloidn Zh 1981;43:106 – 11.
+[7] Fainerman VB, Makievski A V . Study of micelle dissociation kinetics by
+dynamic surface tension of micellar solutions. Colloids Surf 1993;69:
+249 – 63.
+[8] Dushkin CD, Ivanov IB. Effects of the polydispersity of diffusing micelles
+on the dynamic surface elasticity. Colloids Surf 1991;60:213 – 33.
+[9] Dushkin CD, Ivanov IB, Kralchevsky PA. The kinetics of the surface
+tension of micellar surfactant solutions. Colloids Surf 1991;60:235 – 61.
+[10] van Hunsel J, Bleys G, Joos J. Adsorption kinetics at the oil/water
+interface. J Colloid Interface Sci 1986;114:432 – 41.
+[11] Joos P , van Hunsel J. Adsorption kinetics of micellar Brij 58 solutions.
+Colloids Surf 1988;33:99 – 108.
+[12] Li B, Joos P , van Uffelen M. Adsorption kinetics of Brij 58 micellar
+solution. J Colloid Interface Sci 1995;171:270 – 5.
+[13] Makievski A V , Fainerman VB, Joos P . Dynamic surface tension of
+micellar Triton X-100 solutions by the maximum-bubble-pressure method.
+J Colloid Interface Sci 1994;166:6 – 13.
+[14] Geeraerts G, Joos P . Dynamic surface tension of micellar Triton X-100
+solutions. Colloids Surf, A Physicochem Eng Asp 1994;90:149 – 54.
+[15] Joos P . Dynamic surface phenomena. AH Zeist, The Netherlands ’ VSP
+BV; 1999.
+[16] Noskov BA, Grigoriev DO. Adsorption from micellar solutions. In:
+Fainerman VB, Mo ¨bius D, Miller R, editors. Surfactants: chemistry,
+interfacial properties, applications. Amsterdam’ Elsevier; 2001. p. 401 – 509.
+[17] Noskov BA. Kinetics of adsorption from micellar solutions. Adv Colloid
+Interface Sci 2002;95:237 – 93.
+[18] Danov KD, Vlahovska PM, Horozov T, Dushkin CD, Kralchevsky PA,
+Mehreteab A, et al. Adsorption from micellar surfactant solutions:
+nonlinear theory and experiment. J Colloid Interface Sci 1996;183:
+223 – 35.
+[19] Danov KD, V alkovska DS, Kralchevsky PA. Adsorption relaxation for
+nonionic surfactants under mixed barrier-diffusion and micellization-
+diffusion control. J Colloid Interface Sci 2002;251:18 – 25.
+[20] Breward CJW, Howell PD. Straining flow of a micellar surfactant
+solution. Eur J Appl Math 2004;15:511 – 31.
+[21] De Groot SR, Mazur P . Non-equilibrium thermodynamics. Amsterdam ’
+North Holland; 1962.
+[22] V an V oorst V ader F, Erkens ThF, van den Tempel M. Measurement of
+dilatational surface properties. Trans Faraday Soc 1964;60:1170 – 7.
+[23] Edwards DA, Brenner H, Wasan DT. Interfacial transport processes and
+rheology. Boston’ Butterworth-Heinemann; 1991.
+[24] Ivanov IB, Danov KD, Ananthapadmanabhan KP , Lips A. Interfacial
+rheology of adsorbed layers with surface reaction: on the origin of the
+dilatational surface viscosity. Adv Colloid Interface Sci 2005;114 – 115:
+61 – 92.
+[25] Kralchevsky PA, Radkov YS, Denkov ND. Adsorption from surfactant
+solutions under diffusion control. J Colloid Interface Sci 1993;161:361 – 5.
+[26] Breward CJW, Darton RC, Howell PD, Ockendon JR. The effect of
+surfactants on expanding free surfaces. Chem Eng Sci 2001;56:2867 – 78.
+[27] Howell PD, Breward CJW. Mathematical modeling of the overflowing
+cylinder experiment. J Fluid Mech 2003;474:275 – 98.
+[28] Baret JF. Theoretical model for an interface allowing a kinetic study of
+adsorption. J Colloid Interface Sci 1969;30:1 – 12.
+[29] Dukhin S, Kretzschmar G, Miller R. Dynamics of adsorption at liquid
+interfaces. Amsterdam’ Elsevier; 1995.
+[30] Eastoe J, Dalton JS. Dynamic surface tension and adsorption mechanisms
+of surfactants at the air – water interface. Adv Colloid Interface Sci
+2000;85:103 – 44.
+[31] Diamant H, Andelman D. Kinetics of surfactant adsorption at fluid – fluid
+interfaces. J Phys Chem 1996;100:13732 – 42.
+[32] Fainerman VB, Zholob SA, Miller R, Joos P . Non-diffusional adsorption
+dynamics of surfactants at the air/water interface: adsorption barrier or
+non-equilibrium surface layer. Colloids Surf, A Physicochem Eng Asp
+1998;143:243 – 9.
+[33] Danov KD, Kralchevsky PA, Ivanov IB. Equilibrium and dynamics of
+surfactant adsorption monolayers and thin liquid films. In: Broze G, editor.
+Handbook of detergents. Part. A: properties. New York ’ Marcel Dekker;
+1999. p. 303 – 418.
+[34] Kralchevsky PA, Nagayama K. Particles at fluid interfaces and mem-
+branes. Amsterdam’ Elsevier; 2001. p. 48 – 53. Chapter 1.3.3.
+[35] Passerone A, Liggieri L, Rando N, Ravera F, Ricci E. A new experimental
+method for the measurement of the interfacial tensions between
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 3332
+
+immiscible fluids at zero bond number. J Colloid Interface Sci
+1991;146:152 – 62.
+[36] Nagarajan R, Wasan DT. Measurement of dynamic interfacial tension by
+an expanding drop tensiometer. J Colloid Interface Sci 1993;159:164 – 73.
+[37] Liggieri L, Ravera F, Passerone A. Dynamic interfacial tension measure-
+ments by a capillary pressure method. J Colloid Interface Sci 1995;169:
+226 – 37.
+[38] Ferrari M, Liggieri L, Ravera F. Adsorption properties of C 10E8 at the
+water-hexane interface. J Phys Chem B 1998;102(51):10521 – 7.
+[39] Horozov T, Arnaudov L. A novel fast technique for measuring dynamic
+surface and interfacial tension of surfactant solutions at constant interfacial
+area. J Colloid Interface Sci 1999;219:99 – 109.
+[40] Horozov T, Arnaudov L. Adsorption kinetics of some polyethylene glycol
+octylphenyl ethers studied by the fast formed drop technique. J Colloid
+Interface Sci 2000;222:146 – 55.
+[41] Rillaerts E, Joos P . Rate of demicellization from the dynamic surface
+tensions of micellar solutions. J Phys Chem 1982;86:3471 – 8.
+[42] Johner A, Joanny JF. Block copolymer adsorption in a selective solvent: a
+kinetic study. Macromolecules 1990;23:5299 – 311.
+[43] Kabalnov A, Weers J. Kinetics of mass transfer in micellar systems:
+surfactant adsorption, solubilization kinetics, and ripening. Langmuir
+1996;12:3442 – 8.
+[44] Jordan PC. Chemical kinetics and transport. New York ’ Plenum Press;
+1979.
+[45] Sutherland KL. The kinetics of adsorption at liquid surface. Aust J Sci Res
+1952;A5:683 – 96.
+[46] Korn GA, Korn TM. Mathematical handbook. New York ’ McGraw-Hill;
+1968.
+[47] Danov KD, Kralchevsky PA, Ananthapadmanabhan KP , Lips A. Micel-
+lar surfactant solutions: dynamics of adsorption at fluid interfaces sub-
+jected to stationary expansion. Colloids Surf A Physicochem Eng Asp
+in press.
+[48] Manning-Benson S, Bain CD, Darton RC. Measurement of dynamic
+interfacial properties in an overflowing cylinder by ellipsometry. J Colloid
+Interface Sci 1997;189:109 – 16.
+[49] Kovalchuk VI, Kra ¨gel J, Aksenenko EV , Loglio G, Liggieri L.
+Oscillating bubble and drop techniques. In: Mo ¨ bius D, Miller R,
+editors. Novel methods to study interfacial layers. Amsterdam ’ Elsevier;
+2001. p. 485 – 516.
+[50] Kovalchuk VI, Kra¨gel J, Makievski A V , Ravera F, Liggieri L, Loglio G, et
+al. Rheological surface properties of C 12DMPO solution as obtained from
+amplitude- and phase-frequency characteristics of an oscillating bubble
+system. J Colloid Interface Sci 2004;280:498 – 505.
+[51] Moler C, Stewart GW. An algorithm for generalized matrix eigenvalue
+problems. SIAM J Numer Anal 1973;10:241 – 56.
+[52] Garbow BS. CALGO Algorithm 535: Q.Z. The algorithm to solve the
+generalized eigenvalue problem for complex matrices. ACM Trans Math
+Softw 1978;4:404 – 10.
+[53] Dongarra JJ, DuCroz J, Hammarling S, Duff I. A set of level 3 basic linear
+algebra subprograms. ACM Trans Math Softw 1990;16:1 – 17.
+[54] Crump KS. Numerical inversion of Laplace transforms using a Fourier
+series approximation. J Assoc Comput Mach 1976;23:89 – 96.
+[55] De Hoog FR, Knight JH, Stokes AN. An improved method for
+numerical inversion of Laplace transforms. SIAM J Sci Statist Comput
+1982;3:357 – 66.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 17 – 33 33

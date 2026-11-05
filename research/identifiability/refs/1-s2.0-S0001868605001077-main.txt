@@ -1,0 +1,1816 @@
+Mass transport in micellar surfactant solutions: 1. Relaxation of micelle
+concentration, aggregation number and polydispersity
+K.D. Danov a, P .A. Kralchevsky a,*, N.D. Denkov a, K.P . Ananthapadmanabhan b, A. Lips b
+a Laboratory of Chemical Physics & Engineering, Faculty of Chemistry, University of Sofia, 1164 Sofia, Bulgaria
+b Unilever Research & Development, Trumbull, Connecticut 06611, USA
+Available online 21 November 2005
+Abstract
+The surfactant transfer in micellar solutions includes transport of all types of aggregates and the exchange of monomers between them. Such
+processes are theoretically described by a system containing tens of kinetic equations, which is practically inapplicable. For this reason, one of t he
+basic problems of micellar kinetics is to simplify the general set of equations without loosing the adequacy and correctness of the theoretical
+description. Here, we propose a model, which generalizes previous models in the following aspects. First, we do not use the simplifying
+assumption that the width of the micellar peak is constant under dynamic conditions. Second, we avoid the use of the quasi-equilibrium
+approximation (local chemical equilibrium between micelles and monomers). Third, we reduce the problem to a self-consistent system of four
+nonlinear differential equations. Its solution gives the concentration of surfactant monomers, total micelle concentration, mean aggregation
+number, and halfwidth of the micellar peak as functions of the spatial coordinates and time. Further, we check the predictions of the model for the
+case of spatially uniform bulk perturbations (such as jumps in temperature, pressure or concentration). The theoretical analysis implies that the
+relaxations of the three basic parameters (micelle concentration, mean aggregation number, and polydispersity) are characterized by three differ ent
+characteristic relaxation times. Two of them coincide with the slow and fast micellar relaxation times, which are known in the literature. The third
+time characterizes the relaxation of the width of the micellar peak (i.e. of the micelle polydispersity). It is intermediate between the slow and fast
+relaxation times, in the case of not-too-low micellar concentrations. For low micelle concentrations, the third characteristic time is close to the fast
+relaxation time. Procedure for obtaining the exact numerical solution of the problem is formulated. In addition, asymptotic analytical expression s
+are derived, which compare very well with the exact numerical solution. In the second part of this study, the obtained set of equations is applied for
+theoretical modeling of surfactant adsorption from micellar solutions under various dynamic conditions, corresponding to specific experimental
+methods.
+D 2005 Elsevier B.V . All rights reserved.
+Keywords: Micellar surfactant solutions; Kinetics of micelle association and decay; Fast and slow micellization processes; Surfactant adsorption kinetics ; Dynamic
+surface tension
+Contents
+1. Introduction ............................................................... 2
+2. Nonlinear theory of the mass transfer in micellar solutions ...................................... 3
+2.1. General set of equations ..................................................... 3
+2.2. Real and model micelle size distributions ............................................ 3
+2.3. Balance equations for the monomers and oligomers ....................................... 4
+2.4. Basic system of four nonlinear differential equations ...................................... 5
+3. Small deviations from equilibrium ................................................... 5
+0001-8686/$ - see front matter D 2005 Elsevier B.V . All rights reserved.
+doi:10.1016/j.cis.2005.09.002
+* Corresponding author. Tel.: +359 2 962 5310; fax: +359 2 962 5438.
+E-mail address: pk@lcpe.uni-sofia.bg (P .A. Kralchevsky).
+Advances in Colloid and Interface Science 119 (2006) 1 – 16
+www.elsevier.com/locate/cis
+
+4. Relaxation of a spatially uniform perturbation. ............................................ 6
+4.1. Micellar relaxation times .................................................... 6
+4.2. Characteristic time of the slow relaxation process ....................................... 6
+4.3. Two characteristic times of the fast relaxation process ..................................... 7
+4.4. Exact solution and interplay of the relaxation processes .................................... 8
+4.5. Numerical results and discussion ................................................ 9
+4.6. Analytical expressions for the micellar evolution ....................................... 1 2
+4.7. Discussion on the limitations of the present theoretical model ................................. 1 3
+5. Summary and conclusions ....................................................... 1 3
+Acknowledgement ............................................................. 1 3
+Appendix A. Derivation of some equations in Section 2 ......................................... 1 3
+Appendix B. Derivation of some equations in Section 3 ......................................... 1 4
+Appendix C. Matrix elements in Section 4 ................................................ 1 5
+References ................................................................. 1 5
+1. Introduction
+In the present series of two articles, we address some
+unsolved problems in the theory of adsorption from micellar
+surfactant solutions. In general, the diffusion and convective
+transport of monomers and aggregates is accompanied by
+release or uptake of monomers by the micelles. The first
+models of micellar kinetics in spatially uniform solutions have
+been developed by Kresheck et al. [1], and Aniansson and Wall
+[2]. The model [2] provides explanations of the main
+experimental facts, so that it is generally accepted and used
+as a basis for further developments. In subsequent studies, it
+was upgraded and applied to interpret experimental results for
+various micellar systems [3 – 11]. Detailed reviews on micellar
+kinetics and dynamic surface tension have been recently
+published by Noskov and Grigoriev [12] and Noskov [13].
+The first theoretical model of surfactant adsorption from
+micellar solutions was proposed by Lucassen [14] and applied
+to interpret the tensiometric data from experimental methods
+with oscillating surface area [14,15]. This model uses the
+simplifying assumptions that the micelles are monodisperse,
+and that the micellization happens as a single step, which is
+described as a reversible reaction of order n (n is the micelle
+aggregation number). This nonlinear problem was linearized
+for the case of small perturbations [14]. Later, Miller [16]
+solved numerically the nonlinear problem using the assumption
+for monodisperse micelles. An alternative approach to the
+nonlinear problem, based on the von Karman’s method in
+hydrodynamics, was proposed in [17]. A linearized model was
+developed by Fainerman [18] and applied to interpret dynamic
+surface tension data [19 – 21]. Joos and co-authors [22 – 25]
+developed a model, which is based on the assumption for local
+quasi-equilibrium between monodisperse micelles and mono-
+mers. More realistic models of the diffusion in micellar
+solutions, which account for the polydispersity of the micelles
+and for the multi-step character of the micellar process, was
+developed independently by Noskov [26], Johner and Joanny
+[27],a n dD u s h k i ne ta l . [28,29] . Shah and coworkers
+investigated the effect of the micellar kinetics on the foaminess
+of surfactant solutions, and its scientific and technological
+significance [30 – 32].
+Despite the advance in this field, some unsolved questions
+remain. In the case, when the deviations from equilibrium are
+not small, the available theories are using unjustifiable
+assumptions and are describing the kinetics of adsorption only
+in a limited number of situations [13]. In addition, depending
+on the used experimental method and specific surfactant, the
+measured experimental dynamic surface tension of micellar
+solutions follows different functional dependencies: inverse
+square root of time [21 – 23], or exponential decay [25,33,34].
+Although some encouraging steps in theory have been made
+[23,25,33,34], a general theoretical picture is still missing, and
+it is not clear why different functional dependencies are
+observed under different experimental conditions. An addi-
+tional challenge to the theory comes from the necessity to
+interpret the data for the dynamic surface tension of micellar
+solutions measured by different experimental methods [35],
+such as the maximum bubble pressure tensiometry [21,36,37],
+the inclined plate method [25,33], the dynamic drop volume
+method [22,23], the stripe method [24,25], the oscillatory
+methods [14,15], the overflowing cylinder method [38,39], etc.
+In an attempt to resolve a part of the above problems, here
+we present a general derivation of the mass balances in a
+micellar solution avoiding most of the approximations and
+simplifying assumptions used in previous studies. First, a
+basic system of four nonlinear mass-balance equations is
+derived for multi-step micellization (Section 2). We do not use
+the simplifying assumption for constant width of the micellar
+peak and, in the general case we do not linearize the equations
+for small perturbations. The linearized equations are derived in
+Section 3, as a special case.
+The model is further applied to analyze the evolution of a
+micellar system, which is subjected to spatially uniform
+perturbations. As a result, we arrive at the non-trivial
+conclusion that there are three (rather than two) micelle
+relaxation times (Section 4). The third characteristic time
+describes the relaxation of the width of the micellar peak. Its
+existence is not in conflict with the previous works on micellar
+relaxation kinetics. From the viewpoint of applications, the
+measurement of the third characteristic time would allow one to
+determine the rate constant of the fast micellization process. At
+the next step, in the second part of this study [40] we apply the
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 162
+
+developed theoretical model to investigate the complicated
+dynamics of adsorption from micellar solutions.
+2. Nonlinear theory of the mass transfer in micellar
+solutions
+2.1. General set of equations
+According to the theory by Aniansson and Wall [2], the
+association and dissociation of surfactant aggregates proceeds
+in unitary steps, described by the following set of reactions:
+A1 þ As/C01 $
+kþs
+k/C0s
+As s ¼ 2; 3; 4; ...ðÞ ð 2:1Þ
+Here A1 and As denote, respectively, a surfactant monomer and
+an aggregate of s monomers; ks+ and ks/C0 are the rate constants
+of association and dissociation, respectively. The above
+reaction mechanism implies the following balance equations
+for the monomers and aggregates [2,26,29]:
+dc1
+dt þ lII1 ¼/C0 2J2 /C0
+XV
+s¼3
+Js ð2:2Þ
+dcs
+dt þ lIIs ¼ Js /C0 Jsþ1 s ¼ 2; 3; 4; ...ðÞ ð 2:3Þ
+Here, cs is the number concentration of the aggregates As
+(s =1 ,2 ,3 ,... ); t is time; l is the spatial gradient operator; Is is
+the diffusion flux of the respective component ( s =1 ,2 ,... ); Js
+is the flux due to the respective reaction ( s =2 ,3 ,... ), see Eq.
+(2.7), and d / d t is the material time derivative:
+d
+dt ¼ BBt þ vIl ð2:4Þ
+v is the mean mass velocity ( l I v = 0 for an incompressible
+fluid). In general, the flux Is expresses the relative motion of
+the component s with respect to the mean mass velocity [41]:
+Isucs vs /C0 vðÞ s ¼ 1; 2; 3; ...ðÞ ð 2:5Þ
+where vs is the velocity of component s. As a next step, one
+can postulate the Fick’s law of diffusion:
+Is ¼/C0 Dslcs s ¼ 1; 2; 3; ...ðÞ ð 2:6Þ
+where Ds is the diffusivity of the respective component. The
+reaction flux Js accounts for the micelle association and
+dissociation. In accordance with the reaction mechanism, Eq.
+(2.1), this flux is given by the expression:
+Jsukþs c1cs/C01 /C0 k/C0s cs s ¼ 2; 3; 4; ...ðÞ ð 2:7Þ
+At equilibrium, all reaction fluxes, Js, are equal to zero, and
+Eq. (2.7) reduces to the mass action law connecting the
+respective equilibrium concentrations:
+kþs
+k/C0s ¼ cs;eqc1;eqcs/C01;eq s ¼ 2; 3; 4; ...ðÞ ð 2:8Þ
+Here and hereafter, the subscript ‘ ‘eq’ ’ denotes the equilibrium
+value of the respective quantity. The balance equation for the
+total amount of surfactant (the total number of surfactant
+molecules per unit volume), ctot , can be obtained by
+multiplying Eq. (2.3) by s, and summing up all equations for
+s /C21 1:
+dctot
+dt þ lIItot ¼ 0 ð2:9Þ
+ctotu
+XV
+s¼1
+scs; Itotu
+XV
+s¼1
+sIs ð2:10Þ
+where Itot is the total flux of surfactant. Note that the reaction
+fluxes disappear from Eq. (2.9), which is due to the
+conservation of the total number of surfactant molecules in
+the system.
+2.2. Real and model micelle size distributions
+In the theory by Aniansson and Wall [2], the micelle size
+distribution exhibits three different regions ( Fig. 1 ): (i) Region
+of the monomers and oligomers, Xo (1 /C20 s /C20 no); (ii) Region of
+the rare aggregates, Xr (no < s < nr), and (iii) Region of the
+abundant micelles, Xm (s /C21 nr). In the region Xr, the aggregate
+concentration is assumed to be relatively small ( Fig. 1 ). In the
+region Xm, the peak of the micelle size distribution is usually
+described by a Gaussian curve [2]:
+cs ¼ Cmﬃﬃﬃﬃﬃﬃﬃﬃ2prp exp /C0 s /C0 mðÞ 22r2"# s /C21 nrðÞ ð 2:11Þ
+Here Cm is the total concentration of the abundant micelles; m
+is their mean aggregation number; r2 is the dispersion of the
+Gaussian distribution, which characterizes the polydispersity of
+the abundant micelles. It is assumed that Eq. (2.11) holds under
+both equilibrium and dynamic conditions. In the latter case, the
+parameters in Eq. (2.11) depend on the spatial coordinate, r,
+and time, t, i.e., we have: Cm(r, t), m(r, t) and r(r, t).
+To determine Cm, m,a n d r , we will impose three
+conditions for equivalence of the model Gaussian distribution,
+Eq. (2.11), to the real micelle size distribution. For this goal, we
+will require the zeroth, first and second moments of the size
+distribution of the abundant micelles ( s /C21 nr) to be identical for
+Fig. 1. Sketch of the typical size distribution of aggregates in a surfactant
+solution; cs and s are the aggregate concentration and aggregation number; Xo
+Xr and Xm are, respectively, the regions of oligomers, rare aggregates and
+abundant micelles; no and nr represent boundaries between the regions; s = m
+corresponds to the peak in the region Xm.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 3
+
+the real and model systems. The following relations take place
+(see Appendix A):
+X
+s/C21nr
+cs , Cm ð2:12Þ
+X
+s/C21nr
+scs , mCm ð2:13Þ
+X
+s/C21nr
+s2cs , m2 þ r2/C0/C1 Cm ð2:14Þ
+To obtain the latter three equations, we have substituted the
+Gaussian distribution, Eq. (2.11), for cs, and replaced the
+summation by integration (as an approximation).
+To determine the functions Cm(r, t), m(r, t) and r(r, t), we
+have to derive a corresponding set of equations. For this goal,
+we multiply Eq. (2.3) by si, i = 0, 1, 2, and sum up for s /C21 nr.
+Thus, with the help of Eqs. (2.12) – (2.14), we derive
+(Appendix A):
+dCm
+dt þ lIIm;0 ¼ J ð2:15Þ
+d
+dt mCmðÞ þ lIIm;1 ¼ nrJ þ Jm;0 ð2:16Þ
+d
+dt m2 þ r2/C0/C1 Cm/C2/C3 þ lIIm;2 ¼ n2r J /C0 Jm;0 þ 2Jm;1 ð2:17Þ
+where we have introduced the following notations:
+Im;iu
+X
+s/C21nr
+siIs i ¼ 0; 1; 2;ðÞ ð 2:18Þ
+J uJnr ; Jm;iu
+X
+s>nr
+siJs i ¼ 0; 1ðÞ ð 2:19Þ
+Here, Im,i and Jm,i are the i-th moments of the diffusion and
+reaction fluxes, respectively; J is the reaction flux for s = nr (at
+the boundary between the rare and abundant micelles, see Fig.
+1). With the help of Eqs. (2.7) and (2.11), we obtain
+(Appendix A):
+Jm;0 ¼ k/C0m Cm c1c1;eq exp r2 /C0 r2eq2r4eq /C0 m /C0 meqr2eq ! /C0 1"# ð2:20Þ
+Jm;1 ¼ k/C0m mCm c1c1;eq 1 /C0 r2 /C0 r2eqmr2eq !"
+/C2 exp
+r2 /C0 r2eq
+2r4eq /C0 m /C0 meqr2eq
+ !
+/C0 1
+#
+ð2:21Þ
+As before, the subscript ‘ ‘eq’ ’ denotes the equilibrium value
+of the respective quantity. In addition, following [2] we have
+assumed that the dissociation rate constant of the abundant
+micelles is (approximately) the same, i.e., ks/C0 = km/C0 for s /C21 nr.
+Furthermore, applying the Fick’s law, Eq. (2.6), and using Eqs.
+(2.12) – (2.14), we derive:
+Im;o ¼/C0 DmlCm; Im;1 ¼/C0 Dml mCmðÞ ð 2:22Þ
+Im;2 ¼/C0 Dml m2 þ r2/C0/C1 Cm/C2/C3 ð2:23Þ
+where we have assumed that the diffusivity of the abundant
+micelles is (approximately) the same, i.e., Ds = Dm for s /C21 nr.
+Thus, Eqs. (2.15) – (2.17) become a set of three equations for
+determining the parameters Cm, m, and s of the model micelle
+size distribution, Eq. (2.11). To close the system of equations,
+we need an additional relationship to determine the unknown
+flux J. Such a relationship is derived in the following
+subsection; see Eq. (2.32).
+2.3. Balance equations for the monomers and oligomers
+Let us multiply Eq. (2.3) by s, and sum up for 2 /C20 s < nr.I n
+view of Eqs. (2.2) and (2.19), we can bring the result in the
+form:
+d
+dt co þ crðÞ þ lI Io þ IrðÞ ¼ /C0 nrJ /C0 Jm;0 ð2:24Þ
+where
+cou
+Xno
+s¼1
+scs; cru
+Xnr /C01
+s¼no þ1
+scs ð2:25Þ
+co and cr give the total number of monomers (per unit volume)
+incorporated, respectively, in oligomers and rare micelles. The
+diffusion fluxes in Eq. (2.24) are defined as follows:
+Iou
+Xno
+s¼1
+sIs; Ir u
+Xnr /C01
+s¼no þ1
+sIs ð2:26Þ
+The theory by Aniansson and Wall [2] makes use of the
+following two simplifying assumptions: (i) In the oligomer
+region, Xo (2 /C20 s /C20 no), the characteristic time for monomer
+release from an aggregate, 1 / ks/C0 , is much shorter than the
+characteristic times of all other processes: convection, diffu-
+sion, ‘ ‘fast’ ’ and ‘ ‘slow’ ’ micelle relaxation processes (see
+Section 4). (ii) In the rare-aggregate region, Xr (no < s<n r), the
+aggregate concentration is very small in comparison with the
+concentrations in the other two regions ( Fig. 1 ). The latter two
+assumptions imply that for 2 /C20 s<n r the terms in the left hand
+side of Eq. (2.3) are negligible (in a first approximation), which
+leads to [2]:
+J2 ¼ J3 ¼ ... ¼ Jnr uJ ð2:27Þ
+Using Eqs. (2.8) and (2.27), we succeeded to find an exact
+solution of the nonlinear system of algebraic equations, Eq.
+(2.7), for cs (2 /C20 s /C20 nr), see Appendix A:
+cs
+cs;eq
+¼ cs1
+cs1;eq /C0 J
+Xs/C02
+i¼0
+ci1
+ci1;eq
+1
+k/C0s/C0ics/C0i;eq s ¼ 2; ... ; nrðÞ
+ð2:28Þ
+This new result leads to the following two main
+conclusions. In the oligomer region, Xo, where 1 / ks/C0 is a
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 164
+
+small quantity, the term with J in Eq. (2.28) is negligible, and
+then
+cs=cs;eq ¼ cs1=cs1;eq s ¼ 2; ... ; noðÞ ð 2:29Þ
+i.e., the oligomers are in quasi-equilibrium with the mono-
+mers. Substituting Eq. (2.29) into Eq. (2.25), we express the
+total number of surfactant molecules in the region Mo.( Fig. 1 )
+as a function of c1:
+co ¼
+Xno
+s¼1
+scs;eq
+cs1
+cs1;eq ð2:30Þ
+Because the concentration of the rare aggregates is
+negligibly small, cr bco, Eq. (2.24) reduces to a balance
+equation for the oligomers alone:
+dco
+dt þ lIIo ¼/C0 nrJ /C0 Jm;0 ð2:31Þ
+To find an expression for J, we match the Gaussian
+distribution, Eq. (2.11), with Eq. (2.28) at the boundary
+between the regions of abundant and rare micelles (at s = nr):
+Cmﬃﬃﬃﬃﬃﬃﬃﬃ
+2pr
+p exp /C0 nr /C0 mðÞ 2
+2r2
+"#
+¼ cnr ;eq
+cnr1
+cnr1;eq
+/C0 J
+Xnr /C02
+i¼0
+ci1
+ci1;eq
+cnr ;eq
+k/C0nr /C0icnr /C0i;eq
+ð2:32Þ
+Eq. (2.32) closes our set of equations, which is described in
+the next subsection. After linearization, Eq. (2.32) reduces to
+Eq. (3.9); see below.
+2.4. Basic system of four nonlinear differential equations
+Eqs. (2.15) – (2.17) form a system of four basic differential
+equations for determining the monomer concentration, c1(r, t),
+and the three parameters of the micelle distribution, Cm(r, t)
+m(r, t), and s(r, t). This basic system is to be considered in
+conjunction with the following algebraic expressions for the
+auxiliary variables: The reaction fluxes Jm,0, Jm,1, and J are
+given by Eqs. (2.20) (2.21) (2.32); the diffusion fluxes Im,0,
+Im,1, and Im,2 are defined by Eqs. (2.22) and (2.23); the
+concentration of surfactant in monomeric and oligomeric form,
+co, is given by Eq. (2.30).
+The considered system is nonlinear, because it contains
+several nonlinear equations: Eqs. (2.16) (2.17) (2.20) (2.21)
+(2.30) (2.32). In the next section, we address the special case of
+small deviations from equilibrium, when all equations can be
+linearized.
+3. Small deviations from equilibrium
+In the case of small deviations from equilibrium, the set of
+equations in Section 2 could be linearized and explicit
+analytical solutions could be obtained. In particular, one can
+derive expressions for the relaxation times, which characterize
+how rapidly a micellar solution restores its equilibrium state
+after an initial homogeneous bulk perturbation due to a jump in
+temperature, pressure or concentration (see Section 4). We will
+present the basic variables in the form:
+c1 ¼ c1;eq þ c1;p; Cm ¼ Cm;eq þ Cm;p
+m ¼ meq þ mp; r ¼ req þ rp ð3:1Þ
+where the subscripts ‘ ‘eq’ ’ and ‘ ‘p’ ’ mark the corresponding
+equilibrium values and the perturbations. At equilibrium, all
+diffusion and reaction fluxes, Is and Js, are equal to zero.
+Therefore, such fluxes could appear in the equations only as
+perturbations. For this reason, we will skip the subscript ‘ ‘p’ ’
+for all fluxes.
+Next, we substitute Eq. (3.1) in the balance equation for
+monomers and oligomers, Eq. (2.31), expand in series for small
+perturbations, and preserve only the linear terms. Introducing
+the auxiliary notation
+Su
+Xno
+s¼1
+s2 cs;eq
+c1;eq
+ð3:2Þ
+we obtain:
+S dc1;p
+dt þ lIIo ¼/C0 nrJ /C0 Jm;0 ð3:3Þ
+If the concentration of the monomers is much greater than
+that of all oligomers, then one could keep only the term with
+s = 1 in Eq. (3.2), which yields S /C229 1. In Appendix B, we show
+that the linearization of Eqs. (2.15) – (2.17) leads to the
+following equations for the perturbations of Cm, m and r.
+dCm;p
+dt þ lIIm;0 ¼ J ð3:4Þ
+Cm;eq
+dmp
+dt þ lI Im;1 /C0 meqIm;0
+/C0/C1
+¼ nr /C0 meq
+/C0/C1
+J þ Jm;o ð3:5Þ
+2reqCm;eq
+drp
+dt þ lI Im;2 /C0 2meqIm;1 þ m2eq /C0 r2eq
+/C16/C17
+Im;0
+hi
+¼ nr /C0 meq
+/C0/C1 2
+/C0 r2eq
+hi
+J /C0 2meq þ 1
+/C0/C1
+Jm;0 þ 2Jm;1 ð3:6Þ
+Furthermore, substituting Eq. (3.1) into the expressions for
+the reaction fluxes, Eqs. (2.20) and (2.21), and linearizing, we
+obtain:
+Jm;0 ¼ k/C0m Cm;eq c1;pc1;eq þ rp /C0 reqmpr3eq
+ !
+ð3:7Þ
+Jm;1 ¼ k/C0m meqCm;eq c1;pc1;eq þ rp /C0 reqmpr3eq /C0 2rpmeqreq
+ !
+ð3:8Þ
+Finally, we substitute Eq. (3.1) into Eq. (2.32), and derive
+(Appendix B):
+RJ ¼ nrc1;p
+c1;eq
+/C0 Cm;p
+Cm;eq
+þ meq /C0 nr
+/C0/C1
+mp
+r2eq /C0
+meq /C0 nr
+/C0/C1 2
+/C0r2eq
+r2eq
+rp
+req
+ð3:9Þ
+Ru
+Xnr
+j¼2
+1
+k/C0j cj;eq ,
+Xnr
+j>no
+1
+k/C0j cj;eq ð3:10Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 5
+
+R is termed [2] resistance to ‘ ‘flow’ ’ through the region of
+the rare micellar aggregates, Xr (Fig. 1 ). In Eq. (3.10), at the
+last step, we have used the fact that the concentrations of
+the oligomers are much greater than those of the rare
+micelles, and therefore all terms with 2 /C20 j /C20 no could be
+neglected.
+The linear equations obtained in this section will be used for
+description of the relaxation of bulk (Section 4) and interfacial
+perturbations [40].
+4. Relaxation of a spatially uniform perturbation
+4.1. Micellar relaxation times
+The previous studies are using the simplifying assump-
+tion that the width of the micelle size distribution,
+characterized by r , is not affected by the perturbation
+(rp = 0). In such a case, the reaction fluxes J and Jm,0, see
+Eqs. (3.7) and (3.9), define two different characteristic
+times, which correspond to the known fast and slow
+processes of micelle relaxation [2,3,42]; see also [12,13,
+28,31,32] . Physically, the fast process corresponds to
+variation of the mean aggregation number, m, due to
+exchange of monomers between the abundant micelles and
+the surrounding solution, at constant total micelle concen-
+tration, Cm. The slow relaxation process is related to decay
+or formation of abundant micelles and variation in their
+total number concentration, Cm.
+In the present theoretical model (Section 3), we do not use
+the simplifying assumption rp = 0. Instead, we derived a new
+equation for determining rp, Eq. (3.6), which contains an
+additional flux, Jm,1, given by Eq. (3.8). Thus, we could
+anticipate that a third relaxation time will appear in the
+theory, which characterizes the relaxation of the width of the
+micellar peak (see region Xm in Fig. 1 ). Below, we will see
+what is the magnitude of this third relaxation time and
+whether it is of importance for the interpretation of
+experimental data.
+Hereafter, we consider homogeneous bulk perturbations. In
+such case, all diffusion and convective fluxes are equal to zero
+(unlike the reaction fluxes), and the perturbations depend only
+on time, t. If we multiply Eq. (3.4) by meq, and sum up the
+result with Eqs. (3.3) and (3.5), we can derive
+Sc1;p þ meqCm;p þ mpCm;eq ¼ 0 ð4:1Þ
+This is the form of the surfactant conservation law in terms
+of perturbations. Eq. (4.1) expresses the perturbation c1,p as a
+linear combination of the perturbations Cm,p and mp. Conse-
+quently, c1,p is not an independent variable in the considered
+case of homogeneous perturbations. In other words, we are
+dealing with three independent perturbations, Cm,p, mp and rp,
+which have to be determined from Eqs. (3.4) – (3.6). Following
+the standard procedure, we assume that these perturbations are
+proportional to exp( /C0mt), where 1 / m is the characteristic
+relaxation time. In this way, from Eqs. (3.4) – (3.6) we obtain
+the following system of equations, which is applicable to
+homogeneous perturbations:
+/C0 Cm;pm ¼ J ð4:2Þ
+/C0 Cm;eqmpm ¼ nr /C0 meq
+/C0/C1
+J þ Jm;0 ð4:3Þ
+/C0 2reqCm;eqrpm ¼ nr /C0 meq
+/C0/C1 2
+/C0 r2eq
+hi
+J
+/C0 2meq þ 1
+/C0/C1
+Jm;0 þ 2Jm;1 ð4:4Þ
+The equations for the reaction fluxes, Eqs. (3.7) – (3.9),
+imply that Eqs. (4.2) – (4.4) form a linear homogeneous system
+for determining Cm,p, mp and rp. As known, such a system has
+a nontrivial solution only when its determinant is equal to zero.
+Thus, from Eqs. (4.2) – (4.4) we obtain a cubic characteristic
+equation for m, which has three real positive roots. The
+reciprocal values of these roots give the three characteristic
+relaxation times: tc, tm, and tr, which are related to the
+relaxations of Cm,p, mp and rp, respectively (see Section 4.4
+below). Correspondingly, any relaxing parameter, Y, of the
+micellar system could be expressed as a linear combination of
+three exponents:
+Y ¼ Y1exp /C0 t=tcðÞ þ Y2exp /C0 t=tmðÞ þ Y3exp /C0 t=trðÞ ð 4:5Þ
+where Y1, Y2 and Y3 are constant amplitudes; see also Eqs.
+(4.34) (4.48) (4.51). To obtain explicit analytical expressions
+for the characteristic times tc, tm, and tr, we consider separately
+the slow and fast micellar relaxation processes.
+4.2. Characteristic time of the slow relaxation process
+In this case, by definition km/C0 /m H 1. We substitute the
+reaction fluxes Jm,0 and Jm,1 from Eqs. (3.7) and (3.8) into Eqs.
+(4.3) and (4.4), and carry out the transition km/C0 Y V. This is
+equivalent to set each of the fluxes Jm,0 and Jm,1 equal to zero.
+As a result, we obtain:
+rp ¼ 0 ð4:6Þ
+mp ¼ r2eq c1;pc1;eq : ð4:7Þ
+In other words, for the slow relaxation process, the
+perturbation in the width of the micelle size distribution is
+equal to zero ( rp = 0), while the perturbation in the micelle
+mean aggregation number is proportional to the perturbation in
+the monomer concentration, mp”c1,p. Substituting Eq. (4.7)
+into Eqs. (3.9) and (4.1), we obtain the following expressions
+for the reaction flux J and monomer concentration, c1,p:
+J ¼ 1R meq c1;pc1;eq /C0 Cm;pCm;eq
+/C18/C19
+ð4:8Þ
+c1;p
+c1;eq
+¼/C0 meqCm;p
+r2eqCm;eq þ Sc1;eq ð4:9Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 166
+
+Finally, we substitute Eq. (4.9) into Eq. (4.8), and the result
+—into Eq. (4.2). Thus we obtain the following expression for
+m gmc
+mc ¼ 1tc ¼ 1RCm;eq 1 þ m2eqCm;eqSc1;eq þ r2eqCm;eq ! ð4:10Þ
+where tc is the relaxation time of the slow process. The latter
+expression coincides with the result by Aniansson and Wall [2].
+At sufficiently high micellar concentrations (Cm,eq H Sc1,eq /
+r2eq), Eq. (4.10) predicts a linear increase of the relaxation time,
+tc, with Cm,eq:
+tc ,
+Rr2eq
+m2eq þ r2eq Cm;eq ð4:11Þ
+4.3. Two characteristic times of the fast relaxation process
+In this case, the characteristic relaxation time, 1 / m, is much
+smaller than tc. Thus, carrying out the transition 1 / m Y 0 in Eq.
+(4.2), we obtain Cm,p = /C0 J /m Y 0. In other words, the
+perturbation in the total concentration of the abundant micelles
+is zero for the fast process. Setting J /m Y 0 also in Eqs. (4.3)
+and (4.4), we derive:
+mpm ¼/C0 Jm;oCm;eq ð4:12Þ
+rpm ¼ 2meq þ 12reqCm;eq Jm;0 /C0 1reqCm;eq Jm;1 ð4:13Þ
+Further, substituting Cm,p Y 0 in the mass conservation law,
+Eq. (4.1), we obtain:
+c1;p ¼/C0 Cm;eqmp=S ð4:14Þ
+Combining Eqs. (3.7) (4.12) (4.14), we derive:
+mpm ¼ k/C0m Cm;eqmpSc1;eq /C0 rp /C0 reqmpr3eq
+ !
+ð4:15Þ
+Next, we substitute Jm,0 and Jm,1 from Eqs. (3.7) and (3.8)
+into Eq. (4.13), and replace c1,p from Eq. (4.14):
+2reqrpm
+k/C0m ¼ rp /C0 reqmpr3eq þ 4rpmeqreq /C0 Cm;eqmpSc1;eq ð4:16Þ
+Eqs. (4.15) and (4.16) form a linear homogeneous system for
+the perturbations mp and rp. This system has a nontrivial
+solution only if its determinant is equal to zero. The latter re-
+quirement leads to a quadratic equation for m, whose solution is:
+2r2eq
+k/C0m m1;2 ¼ 3 þ u þ eF 3 þ u þ eðÞ 2 /C0 81 þ uðÞhi 1=2 ð4:17Þ
+uu
+r2eqCm;eq
+Sc1;eq
+; eu 12r2eq : ð4:18Þ
+Eq. (4.18) implies that the dimensionless parameter u can
+vary from zero at the CMC ( Cm,eq = 0) up to high values,
+u H 1, at Cm,eq H c1,eq. In addition, for most systems, we have
+1/6 req2 =e /3 b 1, and then Eq. (4.17) can be simplified:
+m1ummu 1tm , k/C0mr2eq 1 þ uðÞ ð 4:19Þ
+m2umru 1tr , 2 k/C0mr2eq ð4:20Þ
+where tm and tr are the two characteristic times of the fast
+relaxation process. One can check that the expression for tm
+exactly coincides with the expression for the relaxation time of
+the fast process derived by Aniansson and Wall [2]. On the
+other hand, tr is a new relaxation time, which appears in our
+theory because we consider perturbations in the width of the
+micellar peak, i.e., rp m 0. (The previous studies have used
+rp g 0 as a simplifying assumption.) Eq. (4.20) implies that tr
+is independent on the micelle concentration, Cm,eq, unlike tm.
+For 0 < u /C20 1, i.e., in the vicinity of the CMC, Eqs. (4.19)
+and (4.20) yield tm /C21 tr. Out of this relatively narrow
+concentration zone, we have another relation, viz.:
+tc > tr > tm u > 1ðÞ ð 4:21Þ
+In other words, the longest is the relaxation time of the slow
+process, tc, which is related to the relaxation of the micelle
+concentration, Cm (see Section 4.6 for details). The shortest is
+the conventional relaxation time of the fast process, tm, which
+is related to the relaxation of the micelle mean aggregation
+number, m. The relaxation time, tr, which is related to the
+relaxation of the width of the micelle peak, r,h a sa n
+intermediate value for u >1 .
+Both tc and tm are accessible to experimental measurements,
+and have been found to affect the occurrence of processes of
+scientific and practical importance [3,31,32,42]. Then, Eq.
+(4.21) implies that the intermediate relaxation time, tr, should
+be also accessible for measurement by the experimental
+relaxation methods. Note that tr is simply related to km/C0, see
+Eq. (4.20), and correspondingly, the measurement of tr allows
+one to determine km/C0. At surfactant concentrations much above
+the CMC ( u H 1), Eqs. (4.19) and (4.20) predict tr H tm.I n
+such a case, one should be able to clearly distinguish between
+these two relaxation times. On the other hand, at u /C229 1 (close to
+the CMC) we have tr /C229 tm, and it could be difficult to
+distinguish between them (unless they govern the relaxation
+of different experimental parameters; see Section 4.6).
+It should be noted that Eq. (4.20) for tr is identical with Eq.
+(11) (for n = 2) in the paper by Wall and Aniansson [5].
+However, the two equations have been obtained in quite
+different contexts and have different meaning. In [5], the
+perturbation is mathematically expressed as an infinite series of
+exponentials with different decay times, at constant r .I n
+contrast, here the width of the micellar peak, r,i s variable, and
+tr is its characteristic relaxation time. Moreover, in [5] the fast
+process is characterized by a single characteristic time, tm,
+while here, the fast process is characterized by both tm and tr .
+At the lower micelle concentrations ( b /C229 1) tm and tr are
+comparable by magnitude (see Section 4.5). Then the
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 7
+
+relaxation of the monomer concentration is described by a
+superposition of two exponentials (rather than a single one), as
+discussed at the end of Section 4.5. In other words, in our case
+the relaxation of c1,p is affected by tr. On the other hand, s2 in
+Eq. (11) of [5] does not enter the expression for n1 therein.
+4.4. Exact solution and interplay of the relaxation processes
+In general, we consider small perturbations in the three
+parameters describing the shape of the micellar peak ( Fig. 1 ),
+viz. its height, position and width, characterized, respectively,
+by Cm, m, and r. In Sections 4.2 and 4.3 we derived analytical
+expressions for the corresponding relaxation times, tc, tm, and
+tr, at the cost of some approximations. However, it is possible
+to solve the problem exactly. This will give us the exact values
+of the relaxation times; will allow us to check the approximated
+expressions and to see whether all of tc, tm, and tr influence the
+relaxation of each separate perturbation, Cm,p, mp, and rp. For
+this goal, it is convenient to introduce dimensionless variables:
+n1u c1;pc1;eq ; ncu Cm;pCm;eq ; nmu mpmeq ; nru rpreq ð4:22Þ
+From Eqs. (4.1) and (4.22) we express the dimensionless
+perturbation in the monomer concentration:
+n1 ¼/C0 bS nc þ nmðÞ ð 4:23Þ
+where we have introduced the relative micelle concentration, b:
+bu Ctot /C0 CMCCMC ¼ meq Cm;eqc1;eq ð4:24Þ
+with Ctot being the total surfactant concentration. Further, from
+Eqs. (3.9) and (4.22) we express the reaction flux J:
+J
+k/C0S ¼ meq /C0 wreq
+/C0/C1
+n1 /C0 nc þ w meqreq nm /C0 w2 /C0 1/C0/C1 nr
+ð4:25Þ
+wu meq /C0 nr
+req
+> 1; k/C0S u 1Rc1;eq ð4:26Þ
+where the equilibrium dimensionless parameter w is propor-
+tional to the distance between the positions of the micellar
+peak, meq, and the boundary, nr, between the rare aggregates
+and the abundant micelles ( Fig. 1 ). The parameter kS/C0, defined
+by Eq. (4.26), can be interpreted as rate constant of the slow
+relaxation processes. Likewise, from Eqs. (3.7), (4.22) and
+(4.23) we obtain an expression for the reaction flux, Jm,0:
+Jm;0
+k/C0m Cm;eq ¼/C0 bS nc /C0 meqr2eq þ bS
+ !
+nm þ 1r2eq nr ð4:27Þ
+Finally, from Eqs. (3.8), (4.22) and (4.23) we obtain:
+Jm;1
+k/C0m meqCm;eq ¼/C0 bS nc /C0 meqr2eq þ bS
+ !
+nm þ 1r2eq /C0 2meq
+ !
+nr
+ð4:28Þ
+The substitution of Eqs. (4.27) and (4.28) into Eqs. (4.2) –
+(4.4), after some transformations, leads to a linear homoge-
+neous system of equations:
+X
+j¼c;mr
+aij /C0 kdij
+/C0/C1
+nj ¼ 0; i ¼ c; m; r ð4:29Þ
+where k ‘ /C0m / km/C0 is a dimensionless parameter; dij is the
+Kronecker symbol; aij is a matrix, whose elements are given in
+Appendix C. The system (4.29) has a nontrivial solution only if
+its determinant is equal to zero, which leads to:
+k3 /C0 I1k2 þ I2k /C0 I3 ¼ 0 ð4:30Þ
+where the three invariants of the matrix ( aij) are
+I1 ¼ acc þ amm þ arr;
+I2 ¼ accamm /C0 acmamc þ ammarr /C0 amrarm þ accarr /C0 acrarc;
+I3 ¼ det a ij
+/C0/C1
+ð4:31Þ
+Note that aij, I1, I2, and I3 depend on the following
+dimensionless parameters of the system:
+meq; req; w; b; S; and huk/C0S =k/C0m ð4:32Þ
+Consequently, the same is true for the three roots of Eq.
+(4.30), which determine the three characteristic relaxation times
+of the system:
+kju /C0 1sj u /C0 1k/C0m tj ; j ¼ c; m; r ð4:33Þ
+Solving Eq. (4.30), we determine the three eigenvalues, kc,
+km, and ks. In general, the matrix aij is non-symmetric, but
+nevertheless, for physically reasonable values of the system’s
+parameters, all three eigenvalues are real and negative, see
+Section 4.5. The next step is to determine the three
+eigenvectors, f (c) , f (m),a n d f (s), from Eq. (4.29). The
+components, fi( j ), of the latter three vectors could be
+determined by means of a standard software, using the matrix
+elements, aij, as input parameters; see Appendix C. Further, the
+relaxation of an arbitrary perturbation, in either Cm, m,o r r ,
+can be expressed in the general form [43]:
+ni ¼
+X
+j¼c;m;r
+Xj f jðÞi exp /C0 s=sj/C0/C1 ; i ¼ c; m; r ð4:34Þ
+where s = km/C0t is the dimensionless time. The constants Xj have
+to be determined from the initial conditions, at s = 0. It is useful
+to consider the following three normalized independent modes:
+nc 0ðÞ ¼ 1; nm 0ðÞ ¼ 0; nr 0ðÞ ¼ 0 : mode 1 ; 0; 0ðÞ
+ð4:35Þ
+nc 0ðÞ ¼ 0; nm 0ðÞ ¼ 1; nr 0ðÞ ¼ 0 : mode 0 ; 1; 0ðÞ
+ð4:36Þ
+nc 0ðÞ ¼ 0; nm 0ðÞ ¼ 0; nr 0ðÞ ¼ 1 : mode 0 ; 0; 1ðÞ
+ð4:37Þ
+For each mode, we substituted the respective initial
+condition into Eq. (4.34), and determined the respective values
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 168
+
+of the constants Xj. In Appendix C it is explained how one
+could determine the coefficients to Eq. (4.37) X j(c)
+corresponding to Eq. (4.35), Xj(m) corresponding to Eq.
+(4.36), and Xj(r) corresponding to Eq. (4.37). Then, the
+evolution of each of Cm, m, and r corresponding to the
+boundary conditions, Eqs. (4.35) – (4.37), is given by the
+respective version of Eq. (4.34):
+n kðÞi ¼ X
+j¼c;m;r
+X kðÞj f jðÞi exp /C0 s=sj/C0/C1 ; i; k ¼ c; m;r ð4:38Þ
+ni(k) (t) expresses the evolution of the parameter . ni(i = c, m,r),
+which is due to the relaxation of an initial perturbation,
+nk(0) = 1, in the parameter k( k = c, m,r). In general, an initial
+perturbation in one of the parameters, for example Cm,
+engenders variation also in the other two parameters, m and
+r. This fact is important for the interpretation of experimental
+data, and is illustrated in Section 4.5, where graphs of ni(k)(t)a r e
+given for all i, k = c, m,r.
+Finally, let us consider an arbitrary perturbation,
+corresponding to the initial condition:
+nc 0ðÞ ¼ Ac; nm 0ðÞ ¼ Am; nr 0ðÞ ¼ Ar ð4:39Þ
+Then, we can calculate the evolution of each parameter,
+nc(t), nm(t), and nr(t), due to the relaxation of the considered
+initial perturbation:
+ni tðÞ¼
+X
+k¼c;m;r
+Akn kðÞi tðÞ ; i ¼ c; m; r ð4:40Þ
+Here ni(k) is defined by Eq. (4.38). This completes the
+solution of our problem.
+Because we are dealing with small perturbations, the
+amplitudes in Eq. (4.40) must be small, Ak b 1, while the
+characteristic functions ni(k)(t) could be of the order of 1, see
+Figs. 2 – 4 . Note also, that simple and accurate asymptotic
+expressions for nc(t), nm(t) and nr(t) can be derived in the case
+when tc H tm, tr; see Eqs. (4.46) (4.48) (4.51).
+4.5. Numerical results and discussion
+To obtain numerical results, we have to assign physically
+reasonable values to the system’s parameters, specified by Eq.
+(4.32). We used the following values:
+meq ¼ 60; req ¼ 5; w ¼ 3; S ¼ 1:1; h ¼ 10/C07 ð4:41Þ
+In particular, w = 3 means that the concentration of the rare
+aggregates is /C2290.001 cm; this follows from Eq. (2.11), where
+(s /C0 m)2 /r2 should be replaced by w2. The value S = 1.1 means
+that the oligomers give a contribution of 10% to the sum in Eq.
+(3.2); if the monomers were completely predominant, then we
+would have S = 1. To determine h Q k /C0S / k /C0m, we varied this
+ratio until we found a value, for which the theoretical
+predictions were similar to what we know from the experiment
+[3]. We carried out calculations at two values b = 1 and 100,
+corresponding to surfactant concentrations 2 /C2 CMC, and well
+above the CMC; see Eq. (4.24).
+Next, we calculated the matrix elements aij, using equations
+from Appendix C, and the invariants I1, I2, and I3, given by
+Eq. (4.31). Further, we solved Eq. (4.30) numerically, and with
+the help of Eq. (4.33) we determined the exact values of the
+three dimensionless relaxation times, sc, sm, and sr.I n Table
+1, they are compared with the output of the respective
+approximated expressions, as follows. The characteristic time
+of the slow process, sc, was calculated from Eqs. (4.10) and
+(4.11), which have been transformed in the following
+dimensionless form:
+1
+sc
+¼ meqhb 1 þ meqbS þ r2eqb=meq
+ !
+ð4:42Þ
+sc ,
+br2eq
+m2eq þ r2eq
+/C16/C17
+meqh
+bH1ðÞ ð 4:43Þ
+See also Eqs. (4.24) and (4.26). Note that Eq. (4.42) is
+more accurate expression for sc, while Eq. (4.43) is its
+simplified version for bH1. Furthermore, the relaxation times
+(a) 
+(b)
+Dimensionless time,  τ
+Dimensionless time,  τ
+1 10 100
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0 mode (0,0,1)
+= 1
+  =  = 100
+10-1 100 101 102 103 104
+0
+4
+3
+2
+1
+-0.6
+-0.5
+-0.4
+-0.3
+-0.2
+-0.1
+0.0
+mode (0,0,1)
+= 100
+  =  = 1
+= 100
+ξ
+ξ
+σ
+σσ
+(σ)
+(σ) = pe q/ β
+β
+β
+β
+β
+( m
+mm= p eq
+/ ) x 1000
+ξ
+(σ)( c
+CC= m,p m,eq
+ / ) x 1000
+Fig. 2. Plots of ni(r) (i =r, m, c) versus the dimensionless time, s = km/C0t:
+evolution of a micellar system after an initial perturbation in the micelle
+polydispersity, r. The deviations from equilibrium of the micelle concentration,
+aggregation number, and polydispersity are, respectively, Cm,p, mp and rp. The
+curves are calculated for two dimensionless micelle concentrations: b = 1 and
+100; the other parameters are given by Eq. (4.41). (a) Diagonal term nr(r); (b)
+Cross terms nm(r)and nc(r).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 9
+
+of the mean micelle aggregation number and polydispersity,
+sm and sr, were calculated from the dimensionless forms of
+Eqs. (4.17) – (4.19):
+2r2eq
+sm;r
+¼ 3 þ u þ eF 3 þ u þ eðÞ 2 /C0 81 þ uðÞhi 1=2 ð4:44Þ
+1
+sm
+, 1r2eq 1 þ uðÞ ; 1sr , 2r2eq ð4:45Þ
+where u =(br2eq)/( Smeq), and e =( 2req2 )/C0 1. Note that Eq.
+(4.44) is more accurate expression for sm and sr, while Eq.
+(4.45) is its simplified version for e b 3.
+The results in Table 1 indicate that the approximate Eqs.
+(4.42) – (4.45) give the values of the relaxation times very
+accurately, except Eq. (4.43) at b = 1 (where the latter equation
+is out of the range of its validity). In particular, Eq. (4.45)
+enables one to identify which of the roots of Eq. (4.44), or of
+the exact Eq. (4.30), corresponds to sm and sr. As expected,
+both the exact and approximate solutions imply that sr is
+practically independent of the surfactant concentration, char-
+acterized by b. On the other hand, when the surfactant
+concentration rises, sc increases, while sm decreases.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0 mode (1,0,0)
+  =  = 1
+  =  = 100
+(a)
+-1.00
+-0.75
+-0.50
+-0.25
+0.00
+0.25
+0.50
+0.75
+1.00
+ = 1
+ = 100
+mode (1,0,0)
+mp /meq
+eqp
+(b)
+(c) ξc
+CC= m,p m,eq
+/
+(c)
+103
+10-1 100 101 102 103 104 105
+10-110-2 100 101 102 103 104 105 106
+104 105
+Dimensionless time,  τ
+Dimensionless time,  τ
+Dimensionless time,  τ
+β
+β
+β
+β
+ξξ
+σ σσ
+σ
+σ
+(c)
+(c) = pe q/m
+m
+m= pe q/ and
+ξc
+(c)
+ξ1
+(c)
+ξm
+(c)
++ 
+/
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0 mode (1,0,0)β  =  = 1
+β     = 100
+τc
+τm
+σττm
+τc
+Fig. 4. Plot of ni(c)(i=c , m,r) versus the dimensionless time, s = km/C0t: evolution
+of a micellar system after an initial perturbation in the total micelle
+concentration, Cm. The deviations from equilibrium of the micelle concentra-
+tion, aggregation number, and polydispersity are, respectively, Cm,p, mp and rp.
+The curves are calculated for two dimensionless micelle concentrations: b =1
+and 100; the other parameters are given by Eq. (4.41). (a) Diagonal term nc(c) (b)
+Cross terms nm(c) and nr(c); (c) nc(c)+nm(c) = /C0(S /b)n1(c).
+0.1 1 10 100
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0 mode (0,1,0)
+= 1
+  =  = 100
+0.0
+0.5
+1.0
+1.5
+2.0
+-1.5
+-1.0
+-0.5
+0.0
+mode (0,1,0)
+= 100
+= 1
+(a)
+(b) ξm
+mm= pe q/ξ = pe q/
+Dimensionless time,  τ
+Dimensionless time,  τ
+β
+β
+β
+β
+σ
+σσ
+10-1 100 101 102 103 104 105
+ξ
+(m)
+(m)
+(m)
+( c
+CC= m,p m,eq
+ / ) x 1000
+Fig. 3. Plots of ni(m)(i=m ,r, c) versus the dimensionless time, s = km/C0t:
+evolution of a micellar system after an initial perturbation in the micelle mean
+aggregation number, m. The deviations from equilibrium of the micelle
+concentration, aggregation number, and polydispersity are, respectively, Cm,p,
+mp and rp. The curves are calculated for two dimensionless micelle
+concentrations: b = 1 and 100; the other parameters are given by Eq. (4.41).
+(a) Diagonal term nm(m) (b) Cross terms nr(m) and nc(m).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 1610
+
+Next, let us imagine an initial perturbation in the polydis-
+persity, r, at fixed micelleconcentration and aggregation
+number. Such a perturbation is described by Eq. (4.37).
+Determining fi( j) and Xj(r) , as explained in Appendix C, we
+applied Eq. (4.38) to calculate the time dependencies of the
+height, position and width of the micellar peak, described by
+the functions nc(r)(t), nm(r)(t), and nr(r)(t).
+Fig. 2a shows the calculated dependence nr(r)(t). The curves
+corresponding to b = 1 and 100 coincide, which indicates that
+nr(r)(t) is insensitive to the micelle concentration. The inflexion
+point of the curve nr(r)(t) corresponds to s /C229sr: compare Table
+1 and Fig. 2 a. Hence, the decay of nr(r) at long times is
+determined by sr.
+Fig. 2b shows the cross terms, nc(r)(t) and nm(r)(t), which are
+the dimensionless variations of Cm and m, induced by the
+initial perturbation of r. It is important to note that both nc(r)
+and nm(r) are very small. For this reason, we have plotted them
+multiplied by 1000. In addition, we have nc(r) < 0, but nc(r) >0 ,
+which means that an initial increase in r engenders a small
+decrease in Cm, and a small increase in m. By definition, we
+have nc(r)(0) =nm(r)(0) = 0 at the initial moment. In addition,
+these quantities should decay for t Y V. For this reason, the
+respective time dependencies exhibit maxima or minima. For
+the same reason, all cross terms plotted in Figs. 3b and 4b
+exhibit maxima or minima.
+In summary, an initial perturbation in the micelle polydis-
+persity, r, induces a relaxation of r with characteristic time sr,
+but it does not perturb noticeably the micelle concentration,
+Cm, and the mean aggregation number, m (Fig. 2 ).
+Fig. 3 a shows the calculated dependence n(m)m (t). The
+curves corresponding to b = 1 and 100 are rather different,
+which indicates that n(m)m (t) is sensitive to the micelle
+concentration. The inflexion points of the curves n(m)m (t)
+correspond to the values of tm for the respective b: compare
+Table 1 and Fig. 3 a. Hence, the decay of n(m)m at long times is
+determined by tm.
+Fig. 3 b shows nc(m)(t) and nr(m)(t), which are the dimen-
+sionless variations of Cm and r, induced by the initial
+perturbation of m. It is important to note that nc(m) is very
+small, and for this reason it is plotted multiplied by 1000. In
+contrast, nr(m) is not small at all; close to its maximum it can be
+of the order of 1. (Despite the fact that here we are working
+with small perturbations, the characteristic functions ni(m) could
+be of the order of 1; see the paragraph after Eq. (4.40).) In
+addition, we have nc(m) < 0, but nr(m) > 0, which means that an
+initial increase in m engenders a small decrease in Cm, and a
+considerable increase in r.
+In summary, an initial perturbation in the micelle mean
+aggregation number, m, induces a relaxation of m with
+characteristic time sm, and a significant perturbation of r,
+but it does not affect considerably the micelle concentra-
+tion, Cm.
+Finally, Fig. 4 a shows the calculated dependence nc(c)(t).
+The curves corresponding to b = 1 and 100 are rather different,
+which indicates that nc(c )(t) is sensitive to the micelle
+concentration. The inflexion points of the curves nc(c)(t)
+correspond to the values of sc for the respective b: compare
+Table 1 and Fig. 4 a. Hence, the decay of nc(c) at long times is
+determined by sc.
+Fig. 4b shows the cross terms, n(c)m (t). and nr(c)(t), which are
+the dimensionless variations of m and r, induced by the initial
+perturbation of Cm. It is important to note that both n(c)m and
+nr(c) are considerable, especially at the higher micelle concen-
+tration ( b = 100). As in the previous cases, n(c)r decays for
+s Hsr (see the values of the relaxation times in Table 1). On
+the other hand, n(c)m decays for s Hsc, which means that in the
+considered case sc (rather than sm) characterizes the decay of
+n(c)m at the long times. In addition, we have n(c)m < 0, but n(c)r >0 ,
+which means that an initial increase in Cm engenders decrease
+in m, and increase in r.
+Thus, an initial perturbation in the micelle concentration,
+Cm, induces a relaxation of Cm with characteristic time sc,
+and considerable perturbations of m and r. What concerns
+the perturbation in the monomer concentration, n1,i n
+accordance with Eq. (4.23) we have: n1 = /C0 (b / S)(nc +nm).
+To illustrate the relaxation of n1(c),i n Fig. 4 c we have plotted
+nc(c) +nm(c) vs. the dimensionless time, t, for two different
+values of b. At the higher micelle concentration, b = 100, we
+observe a conventional relaxation curve, with two character-
+istic relaxation times: fast, sm, and slow, sc.I n Fig. 4 c, sm
+and sc correspond to the inflection points of the kinetic
+curves, and are denoted by arrows. For the considered
+numerical example, the values of sm, sc and ss can be found
+in Table 1 .
+The curve for b =1 i n Fig. 4 c deserves a special discussion.
+In this case, the two dimensionless fast relaxation times are
+close to each other: sm = 18.7 and sr = 12.1; see Table 1. Hence,
+in this time interval (around s /C229sm /C229sr), the dependence
+n1(c)(s) must be fitted with a superposition of two exponents,
+those with j = m, s in Eq. (4.38), or with the full theory from
+Section 4.4. In contrast, if one fits n1(c)(s) in the same time
+interval with a single exponent, one will obtain an apparent
+dimensionless fast relaxation time, s*, which is typically
+greater than sm and sr. If the determined s* is (incorrectly!)
+identified with sm, one will find that the relaxation time of the
+fast process does not comply with Eq. (4.19) at the lower
+micelle concentrations, where the plot of the apparent 1 / sm vs.
+u will deviate from a straight line. Such deviations have been
+really observed; see Figs. 9 and 10 in [3]. The present model
+could give a possible explanation.
+Table 1
+Calculated values of the micellar relaxation times
+Dimensionless
+relax. time
+Exact,
+Eq. (4.30)
+More accurate
+expressions,
+Eqs. (4.42) and (4.44)
+Simplified
+expressions,
+Eqs. (4.43) and (4.45)
+b =1
+sc 4.12 /C2 103 4.11/C2103 1.15 /C2 103
+sm 1.87 /C2 101 1.87 /C2 101 1.81 /C2101
+sr 1.21 /C2101 1.21 /C2101 1.25 /C2 101
+b = 100
+sc 1.18 /C2 105 1.18 /C2 105 1.15 /C2 105
+sm 6.43 /C2 10/C01 6.43 /C2 10/C01 6.43 /C2 10/C01
+sr 1.25 /C2 101 1.25 /C2 101 1.25 /C2 101
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 11
+
+Finally, it should be noted that relaxation curves, like that
+with b =1 i n Fig. 4c, can be theoretically described by the exact
+solution of the linear system in Section 4.4. The approximate
+expressions derived in Section 4.6 (for sm bsr bsc) are not
+applicable for low micelle concentrations, where sm and ss
+have the same order of magnitude.
+4.6. Analytical expressions for the micellar evolution
+Experimentally, either of the parameters Cm, m, and r, or all
+of them, could be measured as functions of time. To interpret
+the obtained data one could apply the theory described in
+Section 4.4. However, it is possible to derive much simpler
+asymptotic expressions for the typical case of not-too-low
+micelle concentrations, when the three characteristic micellar
+times markedly differ from each other, viz. sc Hsr Hsm.
+The latter relation is fulfilled for the numerical data with
+b = 100 given in Table 1 and Figs. 2 – 4. In these figures, one
+sees that initial perturbations in m and r cannot produce
+significant perturbations in Cm. In other words, the cross
+terms nc(m) and nc(r) are small. The same is true for nm(r) , see
+Fig. 2 b.
+Now, let us consider a general initial perturbation in Cm, m,
+and r , with perturbation amplitudes Ac, Am, and Ar. Having in
+mind that nc(m), nc(r) b 1, from Eqs. (4.38) – (4.40) it follows:
+nc tðÞ , Acexp /C0 t=tcðÞ tcHtrHtmðÞ ð 4:46Þ
+In other words, the relaxation of the micelle concentration,
+Cm, is determined solely by tc. (As before, the relation between
+the dimensional time, t, and the dimensionless time, s,i s
+s = k/C0mt ; see also Eq. (4.33)). Eq. (4.46) implies that the
+relaxation time of the slow process, tc, can be directly
+determined from data for the relaxation of Cm.
+On the other hand, as seen in Fig. 4, an initial perturbation in
+Cm induces also a significant long-time perturbation, nc(c) in the
+micelle mean aggregation number, m, while the perturbation
+induced in r, n(c)r, decays much faster. Then, for meq H 1 the
+last term in Eq. (4.27) is negligible, and setting the left-hand
+side equal to zero (for the slow process) we obtain:
+n cðÞm , /C0 r2eqbSmeq þ r2eqb nc , /C0 smbSmeq nc ð4:47Þ
+see Eq. (4.45) for sm. Then, from Eqs. (4.38 – 4.40) (4.46) and
+(4.47), we obtain:
+nm tðÞ , /C0 Ac
+smb
+Smeq
+expð/C0 t=tcÞþ Am þ Ac
+smb
+Smeq
+/C18/C19
+expð/C0 t=tmÞ
+ð4:48Þ
+(tc H tr H tm). Note that the initial condition, nm(0) =Am is
+fulfilled. Eq. (4.48) implies that the relaxation of the micelle
+mean mass aggregation number, m, after a general initial
+perturbation, involves two relaxation processes, characterized
+by relaxation times tc and tm. Despite the fact that r is also
+perturbed, exp( /C0 t / tr ) does not enter Eq. (4.48).
+The variation of m, nm, induces a variation nr(m) in r.I n
+view of Eqs. (3.6) and (4.4), for uniform perturbations we
+have:
+2r2eqCm;eq BnrBt ¼ nr /C0 meq/C0/C1 2 /C0 r2eqhi J
+/C0 2meq þ 1
+/C0/C1
+Jm;0 þ 2Jm;1 ð4:49Þ
+For tc H tm H tr, the term with J in the latter equation is
+negligible. Furthermore, in Eqs. (4.27) and (4.28) the terms with
+nc are annihilated by the first term ofnm in Eq. (4.48), but the last
+term in nm remains. Thus, Eq. (4.49) is reduced to a first order
+inhomogeneous differential equation for nr, whose solution
+gives the effect, Dnr, of the perturbations in Cm and m on nr:
+Dnr ¼ Am þ Ac
+smb
+Smeq
+/C18/C19 meqtr
+2 tm /C0 trðÞ r2eq exp /C0 t=tmðÞ ð 4:50Þ
+Finally, from Eqs. (4.38 – 4.40), we obtain:
+nr tðÞ , Arexp /C0 t=trðÞ þ Am þ Ac
+smb
+Smeq
+/C18/C19
+/C2 meq
+2r2eq
+tr
+tm /C0 tr
+exp /C0 t=tmðÞ /C0 exp /C0 t=trðÞ½/C138 ð 4:51Þ
+(tc H tr H tm). Note that the initial condition, nr(0) =Ar is
+satisfied. One sees that the relaxation of the width of the
+micelle peak, described by nr(t), is determined by the two
+characteristic relaxation times of the fast process, tm and tr.
+Despite the fact that Cm is also perturbed, exp( /C0 t / tc) does not
+enter Eq. (4.51). The presence of the three perturbation
+amplitudes, Ac, Am, and Ar, in Eq. (4.51) implies that initial
+perturbations in either Cm, m,o r r, can produce a variation of
+r. This result is also in agreement with Figs. 2 3 and 4 . The
+developed theoretical model predicts that, in general, the
+relaxation of the micelle polydispersity, r, will exhibit two
+characteristic relaxation times, tm and tr, which could be
+determined by fitting the experimental dependence. nr(t) with
+the help of Eq. (4.51). Further, from either tm or tr one can
+calculate the demicellization rate constant, km/C0, see Eqs. (4.19)
+and (4.20). The coincidence of the values of km/C0 obtained from
+tm and tr could be a criterion for the adequacy of the proposed
+model.
+It is important to note that Eqs. (4.46) (4.48) (4.51), along
+with the initial condition, Eqs. (4.35) – (4.37), reproduce
+perfectly the exact curves for n(r)r, n(m)m, nr(m), nc(c), nm(c), and
+nr(c) in Figs. 2 - 4 for b = 100. The negligible cross terms
+(nc(r),nm(r),nc(m) b 1), which are shown multiplied by 1000 in
+Figs. 2 and 3 , cannot be reproduced by the above approximate
+equations. In addition, as mentioned at the end of Section 4.5,
+at low micelle concentrations we have tr /C229 tm, and one of the
+presumptions used to derive Eqs. (4.46) (4.48) (4.51) is
+violated. In the latter case, one should use the exact solution
+of the linear system in Section 4.4 to calculate nc(t), nm(t) and
+nr(t).
+Having determined nc(t)a n d nm(t), one could easily
+calculate the perturbation in the monomer concentration,
+1= /C0 (b / S)(nc +nm), see Eq. (4.23).
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 1612
+
+4.7. Discussion on the limitations of the present theoretical
+model
+The basic assumption of the model by Aniansson and Wall
+[2], is the stepwise kinetic scheme of micelle association and
+dissociation, Eq. (2.1), which is used also in the present paper.
+Deviations from this kinetic scheme could happen for long
+cylindrical (rodlike, wormlike) micelles, which could split to
+smaller aggregates, of aggregation number greater than s =1 ;
+see e.g., [44]. Hence, Eq. (2.1) can be used for not-too-large
+micelles (spherical and elongated), for which such splitting is
+not observed.
+Another assumption in [2], which is used here, is the
+approximation of the micellar peak with a Gaussian curve; see
+Eq. (2.11) and Fig. 1 . In fact, every peak could be
+approximated with a Gaussian curve, unless it is markedly
+asymmetric. Such asymmetric distribution is typical for the
+giant cylindrical micelles [45,46], which are out of the scope of
+the present study, as discussed above. In principle, asymmetry
+in the micellar peak could appear also upon large deviations
+from equilibrium. However, the agreement of the theory by
+Aniansson and Wall [2] with the experiment [3,47] indicates
+that the micellar peak is sufficiently symmetric and can be
+adequately described by a Gaussian curve for a wide class of
+dynamic processes.
+5. Summary and conclusions
+The model proposed here represents a generalization of
+previous models in the following three aspects. First, we do not
+use the simplifying assumption that the width of the micellar
+peak is constant during the transport process. Second, we avoid
+the use of the quasi-equilibrium approximation, which pre-
+sumes that the micelles are in local chemical equilibrium with
+the monomers. Third, we reduced the initial set, containing tens
+of equations, to a system containing only four nonlinear
+differential equations, Eqs. (2.15 – 2.17).
+The solution of the latter system gives the following
+parameters: (i) the concentration of surfactant monomers,
+c1(r, t); (ii) the total number concentration of surfactant micelles,
+Cm(r, t); (iii) the micelle mean aggregation number, m(r, t), and
+(iv) the halfwidth of the micellar peak, r(r, t). The general set
+of four equations could be applied to solve various problems,
+like the relaxation problem in the case of a spatially uniform
+perturbation (due to jumps in pressure temperature or concen-
+tration), or the problem about the kinetics of adsorption from
+micellar solutions, and the respective dynamic surface tension.
+To derive the basic system of four differential equations
+(Section 2) we imposed the natural requirement that the model
+Gaussian curve (describing the micellar size distribution) must
+be equivalent to the real micellar peak with respect to the total
+micelle concentration, mean micelle aggregation number, and
+micelle polydispersity, i.e., with respect to the position, height
+and width of the micellar peak ( Fig. 1 ). In the case of small
+deviations from equilibrium, all equations can be linearized.
+The respective linear system, Eqs. (3.3) – (3.6), is derived in
+Section 3.
+In Section 4 we apply the derived system of equations to
+describe the relaxation of small uniform bulk perturbations.
+The theoretical analysis implies that the relaxation of the three
+basic parameters, the micelle concentration, Cm, the mean
+aggregation number, m, and the polydispersity, r,a r e
+characterized by three distinct relaxation times: tc, tm, and tr,
+see Eqs. (4.10), (4.19) and (4.20). The first two of them, tc and
+tm, coincide with the conventional slow and fast micellar
+relaxation times [2,42]. The third relaxation time, tr, is close to
+tm for low micelle concentrations, but at high micelle
+concentrations we have tc > tr > tm. The interplay of the three
+relaxation processes is illustrated in Figs. 2 – 4 . Asymptotic
+analytical expressions, viz. Eqs. (4.46) (4.48) (4.51), are
+derived for the typical case tc H tr H tm. These asymptotic
+equations indicate that the relaxation of Cm is affected by tc
+alone; the relaxation of m is affected by both tc and tm, while
+the relaxation of m is affected by tr and tm. This result is in
+agreement with previous experimental studies, which are based
+on measurements of c1, Cm and m, and establish the existence
+of two relaxation times: tc and tm. In addition, the developed
+model (Section 4.4) describes also the case of low micelle
+concentrations (b /C229 1), where tr and tm have the same order of
+magnitude, and where the third relaxation time, tr, should be
+taken into account when interpreting experimental data; see
+Fig. 4 c and the related text.
+Our analysis indicates that if the relaxation time of
+micelle polydispersity, tr , is measured, one could indepen-
+dently determine the demicellization rate constant, km/C0,b y
+using Eq. (4.20). Moreover, it turns out that the existence of
+a third relaxation time, tr, has an essential impact on the
+kinetics of adsorption from micellar solutions. Qualitatively,
+this is understandable, because the broadening or narrowing
+of the micellar peak must be accompanied by uptake or
+release of surfactant monomers. The respective quantitative
+analysis of the adsorption dynamics demands additional
+theoretical work, which is reported in the second part of this
+study [40].
+Finally, it is worthwhile noting that simple, but accurate
+analytical expressions are available for calculation of the three
+relaxation times, Eqs. (4.42) – (4.45); see Table 1 , and for
+describing the evolution of a micellar system: Eqs. (4.46)
+(4.48) (4.51); see Figs. 2 – 4.
+Acknowledgement
+This work was supported by Unilever Research and
+Development, Trumbull, CT.
+Appendix A. Derivation of some equations in Section 2
+Using the Gaussian distribution, Eq. (2.11), and replacing
+the sum with integral, we derive:
+XV
+s¼nr
+cs ¼ Cmﬃﬃﬃﬃﬃﬃ2pp rXVs¼nr exp /C0 s/C0mðÞ 22r2"# , Cmﬃﬃﬃﬃﬃﬃ2pp rZ V/C0V exp /C0 s22r2/C18/C19
+/C2 ds ¼ Cm ðA:1Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 13
+
+Likewise, we obtain Eq. (2.13):
+XV
+s¼nr
+scs ¼ Cmﬃﬃﬃﬃﬃﬃ2pp r XVs¼nr s /C0 mðÞ exp /C0 s /C0 mðÞ 22r2"#
+þ mCmﬃﬃﬃﬃﬃﬃ
+2p
+p
+r
+XV
+s¼nr
+exp /C0 s /C0 mðÞ 2
+2r2
+"#
+, mCm ðA:2Þ
+To derive Eq. (2.14), we are using the substitution y = s /C0 m:
+XV
+s¼nr
+s2cs , Cmﬃﬃﬃﬃﬃﬃ2pp rZ V/C0V y þ mðÞ 2exp /C0 y22r2/C18/C19 dy
+¼ Cmﬃﬃﬃﬃﬃﬃ
+2p
+p
+r
+Z V
+/C0V
+y2exp /C0 y2
+2r2
+/C18/C19
+dy þ m2Cm
+¼ r2 þ m2/C0/C1 Cm ðA:3Þ
+Using the assumption for equal dissociation rates, ks/C0 = km/C0
+for s /C21 nr, from Eqs. (2.7) (2.8) (2.12) (2.19), we obtain:
+Jm;0 ¼
+X
+s>nr
+kþs c1cs/C01 /C0 k/C0m cs/C0/C1
+¼ k/C0m X
+s>nr
+cs;eq
+c1;eqcs/C01;eq
+c1cs/C01 /C0 cs
+/C18/C19
+, k/C0m c1c1;eq Xs>nr cs;eqcs/C01;eq cs/C01 /C0 Cm
+ !
+ðA:4Þ
+Further, the three concentrations appearing under the sign of
+the latter sum are substituted from Eq. (2.11):
+X
+s>nr
+cs;eq
+cs/C01;eq
+cs/C01 ¼ Cmﬃﬃﬃﬃﬃﬃ2pp r Xs>nr exp /C0 s /C0 meq
+/C0/C1 2
+2r2eq
+"
+þ s /C0 1 /C0 meq
+/C0/C1 2
+2r2eq /C0 s /C0 1 /C0 mðÞ 22r2 # ðA:5Þ
+Next, we substitute n = s /C0 1 /C0 m, and bring the latter sum
+into the form:
+Cmﬃﬃﬃﬃﬃﬃ
+2p
+p
+r
+exp
+r2 /C0 r2eq
+2r4eq /C0 m /C0 meqr2eq
+ !
+/C2
+XV
+n¼/C0V
+exp /C0 12r2 n þ r2r2eq
+ ! 22
+4
+3
+5
+, Cmexp
+r2 /C0 r2eq
+2r4eq /C0 m /C0 meqr2eq
+ !
+ðA:6Þ
+Substituting the latter result into Eq. (A.4), we obtain Eq.
+(2.20). In analogy with Eq. (A.4), using Eqs. (2.7) (2.8) (2.13)
+(2.19), we derive:
+Jm;1 ¼
+X
+s>nr
+sk þs c1cs/C01 /C0 k/C0m cs/C0/C1
+, k/C0m c1c1;eq XVs>nr s cs;eqcs/C01;eq cs/C01 /C0 mCm
+ !
+ðA:7Þ
+Again, the three concentrations appearing under the sign of
+the latter sum are substituted from Eq. (2.11), and n = s /C0 1 /C0 m
+is introduced. Thus, we obtain a counterpart of Eq. (A.6):
+XV
+s>nr
+s cs;eq
+cs/C01;eq
+cs/C01
+, Cmﬃﬃﬃﬃﬃﬃ
+2p
+p
+r
+exp
+r2 /C0 r2eq
+2r4eq /C0 m /C0 meqr2eq
+ ! XV
+n¼/C0V
+n þ m þ 1ðÞ
+/C2 exp /C0 12r2 n þ r2r2eq
+ ! 22
+4
+3
+5 , Cm m /C0 r2 /C0 r2eqr2eq !
+/C2 exp
+r2 /C0 r2eq
+2r4eq /C0 m /C0 meqr2eq
+ !
+ðA:8Þ
+Substituting the latter result into Eq. (A.7), we arrive at Eq.
+(2.21). To derive Eq. (2.28), we will use a proof by
+mathematical induction. For s = 2, Eq. (2.28) reduces to:
+c2
+c2;eq
+¼ c21
+c21;eq /C0 Jk/C02 c2;eq ðA:9Þ
+which is equivalent to
+J ¼ k/C02 c2;eq c21c21;eq /C0 k/C02 c2 ¼ kþ2 c21 /C0 k/C02 c2 ðA:10Þ
+At the last step we applied Eq. (2.8). In view of Eq. (2.7),
+Eq. (A.10) is satisfied, because it is a special case of Eq. (2.7)
+for s = 2. Next, assuming that Eq. (2.28) is valid for s =2 ,
+3, ... , n /C0 1, our aim is to prove that Eq. (2.28) is valid also for
+s = n (n /C20 nr). From Eqs. (2.7) (2.8) (2.27), for s = n, we obtain:
+cn
+cn;eq
+¼ kþn c1cn/C01
+k/C0n cn;eq /C0 Jk/C0n cn;eq ¼ c1cn/C01c1;eqcn/C01;eq /C0 Jk/C0n cn;eq ðA:11Þ
+In the latter equation, we substitute cn/C01 / cn/C01,eq from Eq.
+(2.28) for s = n /C0 1. As a result, we obtain:
+cn
+cn;eq
+¼ cn1
+cn1;eq /C0 J c1c1;eq Xn/C03i¼0 c i1ci1;eq 1k/C0n/C01/C0icn/C01/C0i;eq /C0 Jk/C0n cn;eq
+¼ cn1
+cn1;eq /C0 J
+Xn/C02
+j¼1
+c j1
+c j1;eq
+1
+k/C0n/C0jcn/C0j;eq /C0 Jk/C0n cn;eq
+¼ cn1
+cn1;eq /C0 J
+Xn/C02
+j¼0
+c j1
+c j1;eq
+1
+k/C0n/C0jcn/C0j;eq ðA:12Þ
+where we have substituted j = i + 1. Hence, Eq. (2.28) is valid
+for all values of s, for which Eq. (2.27) holds, i.e., for
+2 /C20 s /C20 nr.
+Appendix B. Derivation of some equations in Section 3
+Using Eq. (3.1), we obtain the linearized version of Eq.
+(2.16) in the form:
+Cm;eq
+dmp
+dt þ meq
+dCm;p
+dt þ lIIm;1 ¼ nrJ þ Jm;0 ðB:1Þ
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 1614
+
+Next, we multiply Eq. (3.4) by meq and subtract the result
+from Eq. (B.1). Thus we obtain Eq. (3.5). Furthermore,
+substituting Eq. (3.1) into Eq. (2.17), and expanding in series
+for small perturbations, we get:
+m2eq þ r2eq
+/C16/C17 dCm;p
+dt þ 2meqCm;eq
+dmp
+dt þ 2reqCm;eq
+drp
+dt
+þ lIIm;1 ¼ n2r J /C0 Jm;0 þ 2Jm;1 ðB:2Þ
+To eliminate the perturbations Cm,p and mp, we multiply Eq.
+(3.4) by meq2 +req2 and Eq. (3.5) by 2 meq, and subtract the
+results from Eq. (B.2). In this way we derive Eq. (3.6).
+Setting s = nr into Eq. (2.11), we obtain:
+cnr ;eq ¼ Cm;eqﬃﬃﬃﬃﬃﬃ2pp req exp /C0 nr /C0 meq
+/C0/C1 2
+2r2eq
+"#
+ðB:3Þ
+A substitution of Eq. (B.3) into the right-hand side of Eq.
+(2.32), after some transformations, yields:
+Cmreq
+rCm;eq
+exp nr /C0 meq
+/C0/C1 2
+2r2eq /C0 nr /C0 mðÞ 22r2"# , 1 þ nrc1;pc1;eq
+/C0 RJ ðB:4Þ
+where we have introduced the notation:
+Ru
+Xnr /C02
+i¼0
+1
+k/C0nr /C0icnr /C0i;eq ¼
+Xnr
+j¼2
+1
+k/C0j cj;eq ðB:5Þ
+At the last step, we made the replacement j = nr /C0 i.W e
+recall that J represents a perturbation, and for this reason the
+equilibrium value of the sum in Eq. (2.32) has been taken.
+Finally, in Eq. (B.4) we expand in series for m Y meq and
+r Yreq. As a result, we obtain Eq. (3.9).
+Appendix C. Matrix elements in Section 4
+The relaxation of a uniform perturbation of a micellar
+solution is described by the linear system of Eq. (4.29). All
+elements of the matrix aij can be expressed in terms of the
+system parameters given in Eq. (4.32). It is convenient to
+introduce the following auxiliary parameters:
+yumeq
+h
+b ; zu meqreq ; Qu meq /C0 wreq/C0/C1 bS ; smu Smeqr2eqSmeq þ r2eqb
+ðC:1Þ
+In fact, sm represents the dimensionless relaxation time of
+the micelle mean aggregation number, m; see Eq. (4.45). Then,
+the matrix elements are expressed as follows:
+acc ¼/C0 Q þ 1ðÞ y; acm ¼ wz /C0 QðÞ y ðC:2Þ
+acr ¼/C0 w2 /C0 1/C0/C1 y; amc ¼/C0 wz acc /C0 bSmeq ðC:3Þ
+amm ¼/C0 wz acm /C0 1sm ðC:4Þ
+amr ¼/C0 wz acr þ 1r2eqmeq ðC:5Þ
+arc ¼ acr2 Q þ 1ðÞ þ b2r2eqS ðC:6Þ
+arm ¼ acm2 w2 /C0 1/C0/C1 þ z2reqsm ðC:7Þ
+arr ¼/C0 y2 w2 /C0 1/C0/C1 2 /C0 1 þ 4r2eq2r4eq ðC:8Þ
+To determine the three dimensionless characteristic relaxa-
+tion times, one should substitute Eqs. (C.2) (C.3) (C.4) (C.5)
+(C.6) (C.7) (C.8) into Eq. (4.31), and then to solve the cubic
+equation, Eq. (4.30).
+Alternatively, because this is a standard problem for
+determining the eigenvalues, kc, km, and kr, and eigenvectors,
+f(c), f(m), and f(r), of the matrix aij, one could use some
+available program package. For example, the program ‘ ‘Math-
+ematica 5.0’ ’ provides a module ‘ ‘Eigensystem’ ’ for the
+calculation of the eigenvalues and the components of the
+eigenvectors, fi( j). Another module, FLinearSolve’ ’, could be
+applied to calculate the coefficients Xi(k), which appear in Eq.
+(4.38). This, in principle, solves the problem.
+References
+[1] Kresheck GC, Hamory E, Davenport G, Scheraga HA. Determination of
+the dissociation rate of dodecylpyridinium iodide micelles by a temper-
+ature-jump technique. J Am Chem Soc 1966;88:246 – 53.
+[2] Aniansson EAG, Wall SN. On the kinetics of step-wise micelle
+association. J Phys Chem 1974;78:1024 – 30;
+Aniansson EAG, Wall SN. On the kinetics of step-wise micelle
+association. J Phys Chem 1975;79:857 – 8.
+[3] Aniansson EAG, Wall SN, Almgren M, Hoffmann H, Kielmann I,
+Ulbricht W, et al. Theory of the kinetics of micellar equilibria and
+quantitative interpretation of chemical relaxation studies of micellar
+solutions of ionic surfactants. J Phys Chem 1976;80:905 – 22.
+[4] Tondre C, Zana R. On the kinetics of the micelle dissolution – formation
+equilibrium in solutions of cationic detergents: a comparison between
+temperature-jump and stopped-flow data. J Colloid Interface Sci 1978;66:
+544 – 58.
+[5] Wall SN, Aniansson GEA. Numerical calculations on the kinetics of
+stepwise micelle association. J Phys Chem 1980;84:727 – 36.
+[6] Lessner E, Teubner M, Kahlweit M. Relaxation experiments in aqueous
+solutions of ionic micelles: 2. Experiments on the system water – sodium
+dodecyl sulfate – sodium perchlorate and their theoretical interpretation.
+J Phys Chem 1981;85:3167 – 75.
+[7] Kahlweit M. Kinetics of formation of association colloids. J Colloid
+Interface Sci 1981;90:92 – 9.
+[8] Yiv S, Zana R, Ulbriht W, Hoffmann H. Effect of alcohol on the
+properties of micellar systems: 2. Chemical relaxation studies of the
+dynamics of mixed alcohol + surfactant micelles. J Colloid Interface Sci
+1981;80:224 – 36.
+[9] Hecht E, Hoffmann H. Kinetic and calorimetric investigations on micelle
+formation of block copolymers of the poloxamer type. Colloids Surf, A
+Physicochem Eng Asp 1995;96:181 – 97.
+[10] Waton G. Kinetics associated with the change of the number density of
+micelles in solution. J Phys Chem B 1997;101:9727 – 31.
+[11] Groth C, Nyde ´n M, Holmberg K, Kanicky JR, Shah DO. Kinetics of the
+self-assembly of gemini surfactants. J Surfactants Deterg 2004;7:247 – 55.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 16 15
+
+[12] Noskov BA, Grigoriev DO. Adsorption from micellar solutions. In:
+Fainerman VB, Mo ¨ bius D, Miller R, editors. Surfactants: chemistry,
+interfacial properties, applications. Amsterdam ’ Elsevier; 2001.
+p. 401 – 509.
+[13] Noskov BA. Kinetics of adsorption from micellar solutions. Adv Colloid
+Interface Sci 2002;95:237 – 93.
+[14] Lucassen J. Adsorption kinetics in micellar systems. Faraday Discuss
+Chem Soc 1975;59:76 – 87.
+[15] Lucassen J, Giles D. Dynamic surface properties of nonionic surfactant
+solutions. J Chem Soc Faraday Trans I 1975;71:217 – 32.
+[16] Miller R. Adsorption kinetics of surfactants from micellar solutions.
+Colloid Polymer Sci 1981;259:1124 – 8.
+[17] Danov KD, Vlahovska PM, Horozov T, Dushkin CD, Kralchevsky PA,
+Mehreteab A, et al. Adsorption from micellar surfactant solutions:
+nonlinear theory and experiment. J Colloid Interface Sci 1996;183:
+223 – 35.
+[18] Fainerman VB. Kinetics of the adsorption of surfactants from micellar
+solutions (theory). Kolloidn Z 1981;43:94 – 100.
+[19] Fainerman VB, Rakita YM. Investigation of the dissociation kinetics of
+micelles from the dynamic surface tension of the expanding surface of
+micellar solutions. Kolloidn Z 1981;43:106 – 11.
+[20] Fainerman VB, Makievski A V . Micelle dissociation kinetics study by
+dynamic surface tension of micellar solutions. Colloids Surf 1993;69:
+249 – 63.
+[21] Makievski A V , Fainerman VB, Joos P . Dynamic surface tension of
+micellar Triton X-100 solutions by the maximum-bubble-pressure method.
+J Colloid Interface Sci 1994;166:6 – 13.
+[22] van Hunsel J, Bleys G, Joos J. Adsorption kinetics at the oil/water
+interface. J Colloid Interface Sci 1986;114:432 – 41.
+[23] Joos P , van Hunsel J. Adsorption kinetics of micellar Brij 58 solutions.
+Colloids Surf 1988;33:99 – 108.
+[24] Li B, Joos P , van Uffelen M. Adsorption kinetics of Brij 58 Micellar
+Solution. J Colloid Interface Sci 1995;171:270 – 5.
+[25] Joos P . Dynamic surface phenomena. The Netherlands ’ AH Zeist; 1999.
+VSP BV .
+[26] Noskov BA. Diffusion of micellar surfactants in liquids. The influence of
+the fast relaxation process. Kolloidn Z 1990;52:509 – 14.
+[27] Johner A, Joanny JF. Block copolymer adsorption in a selective solvent: a
+kinetic study. Macromolecules 1990;23:5299 – 311.
+[28] Dushkin CD, Ivanov IB. Effects of the polydispersity of diffusing micelles
+on the dynamic surface elasticity. Colloids Surf 1991;60:213 – 33.
+[29] Dushkin CD, Ivanov IB, Kralchevsky PA. The kinetics of the
+surface tension of micellar surfactant solutions. Colloids Surf 1991;
+60:235 – 61.
+[30] Patist A, Axelberd T, Shah DO. Effect of long chain alcohols on micellar
+relaxation time and foaming properties of sodium dodecyl sulfate
+solutions. J Colloid Interface Sci 1998;208:259 – 65.
+[31] Patist A, Oh SG, Leung R, Shah DO. Kinetics of micellization: its
+significance to technological processes. Colloids Surf, A Physicochem
+Eng Asp 2001;176:3 – 16.
+[32] Patist A, Kanicky JR, Shukla PK, Shah DO. Importance of micellar
+kinetics in relation to technological processes. J Colloid Interface Sci
+2002;245:1 – 15.
+[33] Geeraerts G, Joos P . Dynamic surface tension of micellar Triton X-100
+solutions. Colloids Surf, A Physicochem Eng Asp 1994;90:149 – 54.
+[34] Danov KD, V alkovska DS, Kralchevsky PA. Adsorption relaxation for
+nonionic surfactants under mixed barrier-diffusion and micellization-
+diffusion control. J Colloid Interface Sci 2002;251:18 – 25.
+[35] Eastoe J, Dalton JS. Dynamic surface tension and adsorption mechanisms
+of surfactants at the air – water interface. Adv Colloid Interface Sci 2000;
+85:103 – 44.
+[36] Fainerman VB, Miller R. Maximum bubble pressure tensiometry—an
+analysis of experimental constraints. Adv Colloid Interface Sci 2004;
+108 – 109:287 – 301.
+[37] Fainerman VB, Kazakov VN, Lylyk SV , Makievski A V , Miller R.
+Dynamic surface tension measurements of surfactant solutions using the
+maximum bubble pressure method—limits of applicability. Colloids Surf,
+A Physicochem Eng Asp 2004;250:97 – 102.
+[38] Bain CD, Manning-Benson S, Darton RC. Rates of mass transfer and
+adsorption of hexadecyltrimethylammonium bromide at an expanding
+air – water interface. J Colloid Interface Sci 2000;229:247 – 56.
+[39] Breward CJW, Howell PD. Straining flow of a micellar surfactant
+solution. Eur J Appl Math 2004;15:511 – 31.
+[40] Danov KD, Kralchevsky PA, Denkov ND, Ananthapadmanabhan KP ,
+Lips A. Mass transport in micellar surfactant solutions: 2. Theoretical
+modeling of adsorption at a quiescent interface. Adv Colloid Interface Sci
+2005 [part 2 of this study, in press], doi:10.1016/j.cis.2005.09.003.
+[41] De Groot SR, Mazur P . Nonequilibrium thermodynamics. Amsterdam ’
+NorthHolland; 1962.
+[42] Lang J, Tondre C, Zana R, Bauer R, Hoffmann H, Ulbricht W.
+Chemical relaxation studies of micellar equilibriums. J Phys Chem
+1975;79:276 – 83.
+[43] Korn GA, Korn TM. Mathematical handbook. New York ’ McGraw-Hill;
+1968.
+[44] Cates ME, Candau SJ. Statics and dynamics of worm-like surfactant
+micelles. J Phys, Condens Matter 1990;2:6869 – 92.
+[45] Missel PJ, Mazer NA, Benedek GB, Young CY , Carey MC. Thermody-
+namic analysis of the growth of sodium dodecyl sulfate micelles. J Phys
+Chem 1980;84:1044 – 57.
+[46] Alargova RG, Danov KD, Kralchevsky PA, Broze G, Mehreteab A.
+Growth of giant rodlike micelles of ionic surfactant in the presence of Al 3+
+counterions. Langmuir 1998;14:4036 – 49.
+[47] Zana R, editor. Dynamics of surfactant self-assemblies. Boca Raton ’ CRC
+Press; 2005.
+K.D. Danov et al. / Advances in Colloid and Interface Science 119 (2006) 1 – 1616

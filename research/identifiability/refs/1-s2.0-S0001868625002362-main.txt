@@ -1,0 +1,1784 @@
+Advances in large amplitude oscillatory dilatational surface rheology – 
+A review
+Kerstin Risse a,1, Jack Yang b,1, Anteun de Groot b, Gerard Gim´enez-Ribes b, Penghui Shen b,  
+Stephan Drusch a, Emma B.A. Hinderink c, Leonard M.C. Sagis b,*
+a Technische Universit¨at Berlin, Faculty III Process Sciences, Institute of Food Technology and Food Chemistry, Department of Food Technology and Food Material 
+Science, K¨oning-Luise-Str. 22, 14195 Berlin, Germany
+b Wageningen University, Laboratory of Physics and Physical Chemistry of Foods, Bornse Weilanden 9, 6708WG Wageningen, the Netherlands
+c Delft Universtity of Technology, Multiphase Systems (ME-P&E), Leeghwaterstraat 39, 2628, CD, Delft, the Netherlands
+ARTICLE INFO
+Keywords:
+Interfacial rheology
+General stress decomposition
+Nonlinear rheology
+Lissajous plots
+Foams
+Emulsions
+Multiphase systems
+ABSTRACT
+Large amplitude oscillatory dilatational (LAOD) surface rheology is an emerging tool for characterising the 
+nonlinear mechanical behaviour of air-liquid and liquid-liquid interfaces in multiphase systems, such as in foams 
+and emulsions. These interfaces, stabilised by surfactants or emulsifiers, exhibit complex viscoelastic properties 
+that significantly influence bubble and droplet stability under large deformation conditions. While conventional 
+methods mainly focus on linear viscoelastic behaviour, LAOD allows us to explore the nonlinear deformation 
+behaviour of interfaces, offering deeper insights into the mechanical properties of interfaces upon large 
+deformation.
+This review highlights key advances in the dilatational rheology of interfacial films, providing a compre-
+hensive background on LAOD experimental design, data collection, and analysis techniques. Recent de-
+velopments in data analysis have revolutionised the LAOD technique. While Lissajous plots gave qualitative 
+insights in the past, the new general stress decomposition (GSD) method allows for more quantitative analysis of 
+the nonlinearities. GSD can quantitatively separate density-driven and actual rheological (i.e. network) contri-
+butions in the stress response. This separation reveals previously hidden rheological responses, allowing more 
+accurate quantification of interfacial mechanics and deeper mechanistic insights into interfacial stabilisation 
+phenomena. We will discuss how these LAOD methodologies have significantly enhanced our understanding of 
+interfaces stabilised by surfactants, proteins, particles, and mixed systems.
+The main take-home-message: The emergence of advanced LAOD methodologies has redefined how we 
+characterise nonlinear interfacial mechanics. Future research should focus on expanding GSD applications and 
+revisiting previously studied interfaces with GSD, which will quantify the previously qualitatively described 
+behaviour of interfacial films.
+1. Introduction
+Multiphase systems are ubiquitous in life, and examples are emul-
+sions and foams in pharmaceuticals, cosmetics, and foods [1,2,3,4]. 
+Multiphase systems also play a key role in the function of the human 
+body, for instance, where cell bilayers play a key role in cell 
+functionality [5]. As a result, there is widespread research focus on these 
+multiphase systems, with a specific emphasis on the boundary between 
+the immiscible phases: the interface.
+The stabilisation of liquid-liquid or gas-liquid interfaces is key in 
+many applications. To successfully stabilise these thermodynamically 
+unstable systems, stabilising molecules are needed, such as emulsifiers 
+Abbreviations: AFM, Atomic force microscopy; A-W, Air-water (interface); BAM, Brewster angle microscopy; Bo, Bond number; CCD, Charge-coupled device; DT, 
+Drop tensiometer; Ed’, Dilatational elastic modulus; Ed”, Dilatational viscous modulus; GSD, General stress decomposition; LAOD, Large amplitude oscillatory 
+dilatation; LAOS, Large amplitude oscillatory shear; LVE, Linear viscoelastic; NLVE, Nonlinear viscoelastic; O-W, Oil-water interface; PL, phospholipid; S, strain 
+stiffening/softening ratio.
+* Corresponding author.
+E-mail address: leonard.sagis@wur.nl (L.M.C. Sagis). 
+1 These authors have contributed equally to this manuscript.
+Contents lists available at ScienceDirect
+Advances in Colloid and Interface Science
+journal homepage: www.elsevier.com/locate/cis
+https://doi.org/10.1016/j.cis.2025.103625
+Received in revised form 3 August 2025;   
+Advances in Colloid and Interface Science 345 (2025) 103625 
+Available online 5 August 2025 
+0001-8686/© 2025 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ). 
+
+or surfactants. The chosen interfacial stabiliser will determine the 
+interfacial properties and will, therefore, determine to a great extent the 
+stability of emulsions and foams during deformations that may occur 
+during emulsion or foam processing [6]. Depending on the type of sta-
+biliser, the interface can form interfacial layers with different types of 
+rheological/mechanical properties, and examples are elastic or visco-
+elastic layers. The interfacial mechanics play a major role in the stability 
+of droplets or bubbles during deformations. Other external factors such 
+as the system’s pH, ionic strength or the presence of other components 
+might further influence the interfacial properties [7,8,9,6] Under-
+standing how a certain emulsifier behaves at the interface, taking 
+external factors into account is thus crucial for understanding and pre-
+dicting the process, temperature and storage stability of any multiphase 
+system as well as to predict the behaviour of an emulsifier in stabilising 
+an interface.
+The behaviour of these interfacial stabilisers at the interface can be 
+studied using rheology to obtain insights into the mechanical properties 
+of an interface [10,11,12], imaging/microscopy techniques to obtain 
+visual insights into the structure [13,14] and computationally to gain 
+insights into molecular interactions and arrangements [15]. In this re-
+view, we will mainly focus on the mechanical properties, which are 
+studied by interfacial (or surface) rheology.
+In interfacial/surface rheology, an interface is deformed in a 
+controlled manner while carefully analysing the stress response. Two 
+main modes are commonly used: surface shear rheology and surface 
+dilatational rheology [16]. In both, the deformations are commonly 
+applied in oscillatory mode, where the deformation amplitude and fre-
+quency of oscillations can be varied. The deformation conditions can be 
+used to test the mechanical response in two regimes: the linear visco-
+elastic (LVE) or the nonlinear viscoelastic (NLVE) regime. The LVE 
+regime is the region where the interfacial microstructure recovers at the 
+same rate as the disruption induced by the deformation. The NLVE 
+regime is the regime where the disruption is more pronounced than the 
+recovery, resulting in a breakdown of the microstructure. These regimes 
+can be found by performing amplitude (or strain) sweeps, where the 
+deformation amplitude is gradually increased. By measuring the first 
+harmonic-based storage and loss moduli, one would find moduli inde-
+pendent of amplitude in the LVE regime (often <5 % deformation 
+amplitude), and typically a decrease (and occasionally an increase) of 
+moduli for the NLVE regime [17,18,19]. The rheological deformations 
+in the NLVE regime are considered large deformations, often called large 
+amplitude oscillatory dilatation (LAOD) or shear (LAOS).
+During these large deformations, nonlinearities in the stress output 
+emerge, due to the breakdown of the interfacial microstructure [16]. 
+These nonlinearities often complicate the accurate analysis of interfacial 
+film behaviour, especially when using conventional analysis methods, 
+such as calculating the first harmonic-based moduli, which are often 
+incorporated in commercially available rheological instruments. This 
+inaccurate analysis is unfortunate, as deformation in the NLVE regime is 
+often necessary to assess the stability of a system exposed to large de-
+formations that occur during processing in industrial settings, such as 
+the stability of air bubbles and oil droplets under high shear. Non-
+linearities in the stress response can be accurately analysed in surface 
+shear rheology, using methods previously established for nonlinear bulk 
+shear rheology [20]. A well-known example is using Lissajous-(Bow-
+ditch) curves to qualitatively analyse the raw stress response. These 
+curves can be further quantitatively characterised by determining shear 
+stiffening/thickening factors and dissipated energy values [21]. In 
+addition, methods have been derived to also include the higher har-
+monics, thus the nonlinearities, into so-called multi-harmonic moduli 
+[22]. While in (surface) shear rheology, nonlinear analysis has received 
+considerable attention, this is not the case for interfacial dilatational 
+rheology.
+In the past years, LAOD has seen increasing use, but it is still mostly 
+studied in a qualitative fashion using Lissajous plots. This analysis 
+already gives more insights into the mechanical properties of an 
+interfacial layer, compared to solely studying the first-harmonic-based 
+surface dilatational moduli. This technique combined with microstruc-
+ture (imaging) analysis, using, for instance, ellipsometry, synchrotron 
+scattering techniques, and electron or atomic force microscopy on 
+deposited films, has yielded new insights into interface stabilisation 
+([23,18,24,14]). In addition, a new method has recently been developed 
+to quantitatively analyse the nonlinearities of dilatational rheological 
+output, which could help in further evolving the field of LAOD [25].
+In this review, we aim to summarise these recent advances in LAOD 
+rheology analysis and quantification and provide key insights into the 
+dilatational rheological properties of interfacial films. We will first give 
+a background on dilatational rheology, including analysis techniques, 
+experimental design, and data analysis, to describe the state-of-the-art 
+before diving into the recent developments. The latter will be exten-
+sively discussed to guide readers through the key elements of LAOD 
+analysis in both qualitative and quantitative ways. Finally, we show how 
+to relate the rheological findings to the microstructure of various types 
+of interface stabilisers, such as small surfactants and large biopolymers 
+(e.g., proteins and polysaccharides).
+2. Introduction to large amplitude oscillatory dilatation (LAOD)
+2.1. Dilatational surface rheology
+Many destabilisation mechanisms in multiphase systems involve 
+substantial changes in interfacial area. This is where dilatational inter-
+facial rheology comes into play, which studies the mechanical properties 
+of interfaces, such as liquid-liquid (e.g., oil-water) or gas-liquid 
+(generally air-water) interfaces, under conditions where the total area 
+of the interface is changed [26]. It focuses on the properties of the in-
+terfaces upon compression and expansion, when an all-sided in-plane 
+compression or extension is performed. The surface mass is, therefore, 
+not always conserved during these types of deformation [27]. Upon 
+compression, the interfacial density of surface-active agents may in-
+crease, which can cause the desorption of some surfactants from the 
+interface back into the bulk. Whether the molecules desorb back to the 
+bulk or remain at the interface will be determined by the desorption 
+energy. Analogously, upon extension, the interfacial density decreases, 
+often facilitating the absorption of new molecules from the bulk to the 
+newly created interfacial area.
+Different instruments can be used to perform interfacial dilatational 
+experiments [28]. The Langmuir-Blodget trough (commonly referred to 
+as Langmuir trough) was the first instrument to be employed, based on 
+the early experiments of Agnes Pockels on thin films of amphiphilic 
+substances at the surface of water [29]. Irvin Langmuir and Katherine 
+Blodgett then improved the equipment, which consists of a liquid 
+reservoir, with movable barriers at the interface, that allow for the 
+compression and expansion of the interface [30]. The dynamic surface 
+tension (γd) during the deformations is measured using a Wilhelmy 
+plate, connected to a balance [31]. However, the Langmuir trough does 
+not provide a purely dilatational response, but a combination of shear 
+and dilatation, due to the two barriers compressing the interface from 
+just two sides, essentially performing a uniaxial compression rather than 
+an all-sided one [32]. A fully all-sided deformation can be achieved by 
+an equal deformation from all directions, which can, for instance, be 
+achieved by using a recently invented quadrotrough [33].
+A different method to measure surface tension was described in two 
+early works by [34,35], based on the so-called “oil-drop” method, where 
+the surface tension was for the first time calculated in real-time to 
+measure lipase kinetics from the contour of a rising oil droplet in water, 
+also known as an inverted pendant drop. Based on this rising drop setup, 
+a dynamic drop tensiometer (DT) was later developed [36], where a 
+droplet of a few millimetres in diameter at the tip of a needle could be 
+deformed by changing the volume, using a syringe, thereby expanding 
+or contracting the interface. These deformations are, in general, a better 
+approximation for an all-sided extension/compression, than those 
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+2 
+
+applied in the Langmuir trough, if they are applied affinely.
+The basic setup of a dynamic DT consists of a cuvette, where the oil 
+droplet is formed at the tip of a U-shaped syringe, and a high-speed or 
+charge-coupled device (CCD) camera to record the oil drop shape within 
+the water phase. Through the Young-Laplace equation, the surface 
+tension of the droplet can be obtained: 
+P2  P1 = 2γdH+ Δρgh (1) 
+where P2 is the pressure inside the droplet, P1 is the pressure outside the 
+droplet, γd is the dynamic surface tension, H is the curvature of the 
+interface, Δρ is the density difference between the two phases (ρd  ρ), 
+ρd is the density inside the droplet, ρ is the density of the outer phase, 
+and h is the height difference [37,27,38].
+So far, we have defined what interfacial dilatational rheology is, and 
+the main instruments that have been developed to study this. In the next 
+section, we explain how to perform dilatational rheology experiments, 
+with a focus on using drop tensiometry.
+2.2. Experimental design: Dilatational rheology using drop tensiometry
+When working with a drop tensiometer, the measurement can be 
+carried out using either the rising/emerging drop/bubble/inverted 
+pendant drop method or the pendant/hanging drop method [26]. In the 
+rising method, a droplet of the lower density phase or an air bubble is 
+created at the tip of a curved needle, immersed in a cuvette filled with 
+the higher density phase (often water). The phases are reversed when 
+using the pendant drop method, where a droplet of the high-density 
+phase is created at the tip of a straight needle, which is surrounded by 
+the lower-density phase (which can be oil or air). The choice of method 
+depends on several factors, such as 1) the available amount of emulsifier 
+or oil phase, where the phase with a lower availability is typically put in 
+the droplet, and 2) transparency (the continuous phase should be suf-
+ficiently transparent to capture the droplet contour).
+The exact calibration of a drop tensiometer is vital for obtaining 
+accurate measurements (Fig. 1). For the correct calculation of the 
+interfacial tension, we require knowledge of the horizontal (cr) and 
+vertical (cz) calibration factors for the conversion of the CCD-camera 
+pixels to SI units (millimetres) [39]. These parameters are determined 
+during the optical calibration. The optical calibration of the instrument 
+can be done in three different ways: calibration with a sphere of known 
+radius, calibration with a capillary of known radius, or calibration with a 
+pure liquid or water at a specific temperature. As reported by [39], the 
+accuracy of such conversion factors should be better than 0.1 %.
+For the measurement, either a high-speed camera or a CCD camera is 
+used to take pictures of the given droplet at fixed intervals. A corre-
+sponding software determines the coordinates of the drop profile by 
+image analysis and sub-pixel edge detection, using cr and cz. The 
+interfacial tension is then calculated from this information by fitting the 
+profile to the Young-Laplace Equation, which relates the Laplace pres-
+sure across an interface to the curvature of the interface and the inter-
+facial tension [40].
+By taking advantage of axisymmetry, the Young-Laplace Equations 
+can be expressed in terms of the cylindrical coordinates r and z (the 
+radial and vertical coordinate, respectively), together with the tangent 
+angle φ [41]. To facilitate numerical solutions and generalisation, these 
+equations are typically written in dimensionless form by scaling all 
+lengths with the radius of curvature at the apex R0. The following set of 
+coupled dimensionless differential equations then describes the drop 
+profile as described by Berry et al. [41]: 
+dφ
+dS= 2  Boz  sinφr (2) 
+dr
+dS= cos φ (3) 
+dz
+dS= sin φ (4) 
+where r= r/R0 is the dimensionless radial coordinate, z= z/R0 is the 
+dimensionless vertical coordinate, and S/R0 is the dimensionless arc 
+length measured from the drop apex. The Bond number (Bo) or E¨otvos 
+number, is defined as 
+Bo≡(ρd  ρ)gR0
+γd
+(5) 
+where ρd is the density inside the droplet, ρ is the density of the outer 
+phase, g is the gravitational acceleration, R0 is the radius of curvature at 
+the droplet’s apex and γd is the interfacial tension. It is a measure of the 
+relative importance of gravitational forces to interfacial forces. It can be 
+used to evaluate the quality of the obtained data (and the experimental 
+setup). A small Bond number implies that the interfacial forces dominate 
+the gravitational forces; the interfaces are only slightly perturbed from a 
+spherical shape, and the sensitivity of the method is reduced [41,42]. 
+Acceptable bond numbers range from 0.1 to 1. (Berry et al., [41] re-
+ported, that the Bond number is strongly influenced by the needle width. 
+With decreasing needle width, the minimum true Bond number required 
+for accurate calculation also decreases.
+By applying a sinusoidal (oscillatory) deformation of the volume or 
+area of the created drop, the resulting sinusoidal response of the surface 
+tension can be used to calculate a complex surface dilatational modulus, 
+E*d, defined as 
+E*d = F(Π(t))F   A  1ΔA(t))= Eʹd+ iEʹʹd (6) 
+where F denotes a Fourier transform, Π(t)= γd(t)  γeq, γeq is the sur-
+face tension of the nondeformed interface, A is the interfacial area, Eʹd is 
+the dilatational storage or elastic modulus (in phase with the oscillatory 
+deformation) accounting for the dilatational elastic contribution, Eʹʹd =
+ωηd is the dilatational loss or viscous modulus (90◦ out of phase with the 
+oscillatory deformation), accounting for the dilatational viscous 
+contribution, with ω being the frequency and ηd is the dilatational vis-
+cosity [32,43,44]. The dilatational modulus is the resistance of the 
+interface against all-sided expansion/compression, and hence the two- 
+.
+Fig. 1. Schematic overview of the surface tension determination in a drop 
+tensiometer. A droplet is formed at the tip of a capillary in a surrounding liquid 
+or gas phase. The figure demonstrates how the variables in the Young-Laplace 
+equation are obtained. The zoomed in panel demonstrates the pixel analysis in 
+modern drop tensiometry software.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+3 
+
+dimensional equivalent of the bulk modulus.
+The volume and area can be set as parameters to control the oscil-
+latory deformations. In the case of area-based oscillations, the equip-
+ment requires a feedback loop, where the area is constantly calculated 
+from the drop image to make adjustments from the starting point i.e. the 
+set area. In volume-based oscillations, regulation is not performed via 
+image analysis but through communication between the motor and 
+software, resulting in the controlled rotation of the motor shaft over 
+time. For this reason, a volumetric calibration for the syringe, where the 
+volume expelled by a syringe during one revolution of the motor is 
+measured, is mandatory before starting the experiment. In other words, 
+one has to measure the exact volume being pumped in/out by the motor 
+before selecting a volume-based regulation for the experiment.
+The downside of volume-based oscillations is that, as shown in the 
+previous equation, the dilatational modulus is calculated based on area 
+changes, and volume-based changes can result in less precise sinusoidal 
+oscillations of the area. In particular, a drift from the set amplitude is 
+possible between oscillation cycles i.e. the set value of the amplitude is 
+not reached. On the other hand, a volume-based oscillation usually leads 
+to a less noisy data set and allows for very small periods (as small as 1 % 
+deformation amplitude), while small periods cannot be reached with an 
+area-based oscillation. An area-controlled oscillation, however, mini-
+mises deviations from the setpoint value. In short, each regulation 
+method comes with advantages and disadvantages, and one should 
+carefully choose a regulation type based on the required experimental 
+setup. The volume-based or area-based regulation can also be used for 
+simple surface tension measurements without oscillation to keep the 
+area/ volume constant over time, e.g. during film formation.
+2.3. Linear and nonlinear dilatational deformations
+Three types of dilatational rheology tests are commonly performed: 
+time, frequency, and amplitude sweeps. A time sweep allows one to 
+follow the evolution of interfacial stiffness over time by plotting Eʹd and 
+Eʹʹd as a function of time or surface pressure [45,46,19], where the latter 
+is defined as Π0 = γ0  γ(t), and γ0 is the surface tension of the clean 
+interface. This sweep is measured by subjecting the droplet or bubble to 
+small oscillations with a fixed frequency and amplitude (Fig. 2, type 2).
+It is worth noting that some literature refers to the monitoring of the 
+dynamic surface tension over time also as “time sweep” tests, where no 
+oscillations are performed, and thus this should be referred to as 
+“interfacial tension” or “surface tension” measurements instead (Fig. 2, 
+Time sweep type 1).
+The earlier-mentioned interfacial/surface tension analysis can be 
+combined with rheological tests, such as a frequency sweep, amplitude 
+sweep, or step-dilation. In the section below, we will focus on the 
+oscillatory rheology via frequency and amplitude sweeps. For more in-
+formation about step dilatation, we refer the reader to [47]. First, the 
+interface would be allowed to age, with typical times ranging from 1 to 
+16 h, followed by a desired rheological test ([48,49,50,51,52]). Fre-
+quency sweeps are used to assess the dependence of the dilatational 
+moduli of the interface on frequency ω. Generally, the frequency of the 
+deformation is increased, while keeping the amplitude constant. The 
+dependence of the complex dilatational modulus on frequency can 
+reveal information on the nature of interfacial viscoelasticity. In the 
+absence of in-plane interactions, surfactants follow the Lucassen-Van 
+den Tempel model [53], where the complex modulus is dominated by 
+bulk-interface exchange. This model introduces a characteristic fre-
+quency, ωc, which marks the transition between diffusion-controlled 
+dynamics at lower frequencies and other interfacial processes domi-
+nating at higher frequencies. Far below the characteristic frequency, the 
+Lucassen-Van den Tempel model scales as Eʹd∼ ω0.5. For solid-like in-
+terfaces, the frequency dependence of the Eʹd often scales in a power-law 
+manner Eʹd∼ ωn, with n≪0.5. A low exponent n (~0.1–0.2) indicates the 
+interface has the characteristics of a disordered solid (i.e., a 2D gel or 
+jammed system), and is typically a sign that the interfacial structure 
+displays a broad spectrum of relaxation times [54,55]. In such in-
+terfaces, relaxation is not typically governed by bulk-interface exchange, 
+and other processes play a more dominant role in the interfacial elas-
+ticity, such as momentum transfer between interface and bulk or in- 
+plane interactions [47]. For experiments using drop tensiometry, the 
+maximum frequency that can be accurately applied is 0.1 Hz, whereas 
+the lower limit employed is usually around 0.001 Hz, as lower fre-
+quencies would increase the measuring time, thus introducing the ef-
+fects of further ageing of the interface or adsorption of additional 
+surface-active molecules. Faster frequencies up to 150 Hz can be 
+reached using bubble pressure analysis in combination with a piezo- 
+controlled motor [56].
+Fig. 2. Overview of the commonly performed rheology tests: time sweep, frequency & amplitude sweep. These tests are used to characterise the viscoelastic 
+properties of interfacial layers. A time sweep monitors changes in the interfacial modulus over time at constant frequency and deformation amplitude, typically to 
+observe adsorption or film formation. A frequency sweep probes the interface’s viscoelastic behaviour across a range of frequencies and a constant deformation 
+amplitude. An amplitude sweep probes the interface’s viscoelastic behaviour across a range of deformation amplitudes and a constant frequency.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+4 
+
+Amplitude sweeps, where ω is kept constant, and the amplitude of 
+oscillation is gradually increased from small to large deformations, are 
+commonly used to find the limit of linearity, thus defining the linear 
+(LVE) and nonlinear viscoelastic (NLVE) regimes [57,58,45,18,50]. This 
+method is mostly used to ensure that other tests, such as time and fre-
+quency sweeps, are performed within the linear regime. The interfacial 
+viscoelasticity as a function of amplitude is determined by oscillating the 
+droplet or air bubble with a fixed frequency (0.01 to 0.1 Hz) and varying 
+amplitudes from usually 1–30 %. In amplitude sweeps, the applied fre-
+quency and deformation regime are relatively narrow to avoid the for-
+mation of surface waves [16]. In the LVE regime, it is assumed that the 
+interfacial stress response amplitude is proportional to the applied 
+deformation amplitude. The moduli are calculated from the intensity 
+and phase of the first (or fundamental) harmonic in the frequency 
+spectrum [16]. In this regard, the first harmonic is the input frequency of 
+oscillation defined by the experimental settings.
+Amplitude sweeps also provide a plethora of information when the 
+deformations are performed in the NLVE regime, which goes beyond the 
+quantification of Eʹd and Eʹʹd, which, as will be indicated below, are not 
+accurate anymore. This corresponds to large amplitude oscillatory 
+dilatation (LAOD). Interfaces show a nonlinear dynamic response 
+beyond a critical amplitude as a consequence of the changes in the 
+interfacial microstructure induced by the area changes. This nonlinear 
+behaviour conveys additional information about the interfacial visco-
+elasticity and its stability under real process conditions.
+In the NLVE regime, the surface stress response can be decomposed 
+into a superposition of sinusoidal waves, starting with the applied fre-
+quency and including positive integer multiples of this frequency, 
+known as higher harmonics. Using the Fourier Transformation, the 
+contribution of such higher harmonics to the stress signal can be accu-
+rately quantified. Each of these higher harmonics has its own amplitude 
+and phase angle [57]. Analysing highly nonlinear behaviour in dilata-
+tional experiments can pose challenges, as the applied deformation may 
+become non-affine, as demonstrated for very stiff (hyper)elastic inter-
+facial films [59]. The result is a non-uniform, thus non-Laplacian shape 
+of the droplet, thereby hindering the accurate analysis of surface stress 
+upon oscillatory deformations [60]. Examples of a Laplacian and non- 
+Laplacian droplet shape are shown in Fig. 3. In such cases, capillary 
+meniscus dynamometry offers better results. This method uses both the 
+shape of the meniscus and the internal capillary pressure to calculate the 
+components of the surface stress in the meridian or parallel directions 
+[61].
+When looking at the literature, for time sweeps and frequency 
+sweeps, it is often tacitly assumed that the data was obtained within the 
+LVE regime, and, therefore, that the surface tension signal follows a 
+simple sine wave, which can be Fourier transformed to obtain Eʹd and E˝d 
+from the amplitude and phase of the first harmonic [62]. If these tests 
+are performed outside of the LVE regime, then Eʹd and E˝d become inac-
+curate, due to the presence of higher harmonics in the signal [16]. Un-
+fortunately, the extent of the LVE is often not checked in studies that 
+perform dilatational rheology, and frequency or time sweeps are 
+sometimes performed at amplitudes as large as 20 %. These measure-
+ments might well be in the nonlinear regime, therefore making the ob-
+tained Eʹd and Eʹʹd values questionable [16]. A combination of tests within 
+a study is, therefore, the most recommended approach. (Rheological) 
+time sweeps are used to evaluate a proper plateau for the ageing of the 
+interface, ensuring the interface does not evolve to a large extent during 
+a frequency or amplitude sweep, which would render the results inac-
+curate. Amplitude sweeps should then be used to evaluate the extent of 
+the LVE regime and analyse the behaviour of the interface under large 
+deformations. Finally, frequency sweeps can be used to study the time- 
+dependent rheological behaviour of the interface at an amplitude in the 
+LVE regime.
+Since the dynamic moduli lose their physical meaning beyond the 
+LVE, other approaches are necessary to evaluate the nonlinear defor-
+mation behaviour within the LAOD regime, which will be discussed in 
+the next sections.
+2.4. Drawbacks of using the first harmonic-based moduli in the NLVE
+Within the LVE regime, the surface tension signal follows a simple 
+sine wave, which can be Fourier-transformed to obtain Eʹd and E˝d [62]. 
+Once the deformation is in the nonlinear regime (large amplitudes), the 
+stress signal is no longer a simple sinusoidal response, but consists of 
+contributions at the applied testing frequency and terms at multiples of 
+this frequency [63,16] (Fig. 4). Some (modern) drop tensiometer 
+Fig. 3. Examples of a rising oil droplet (known as inverted pendant drop) in water, that have a Laplacian (left) and non-Laplacian shape (middle and right), captured 
+in a drop tensiometer. The bottom rows show the “point number”. To clarify, the droplet image was first processed in pixel coordinates to detect the droplet interface. 
+Each pixel-derived contour point was then assigned to a consecutive index (‘point number’), which serves solely as a positional identifier. This enables localisation of 
+the fitting error from the Laplace equation along the contour and ensures that the points remain in the correct order when computing local curvature and fitting the 
+theoretical shape. Importantly, the point number is not a fitting parameter and is independent of image resolution or pixel values.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+5 
+
+analysis software can compare the contributions of the higher harmonics 
+to the surface stress response and evaluate which higher harmonics to 
+include to describe the surface tension signal best (e.g. by adding the 
+third harmonic). This gives an indication of the errors in Eʹd and E˝d, but 
+the fact remains that these first harmonic-based moduli become inac-
+curate when the higher harmonics give a significant contribution to the 
+surface tension signal.
+A similar issue was reported for interfacial large amplitude oscilla-
+tory shear (LAOS) experiments [20,58]. Like in dilatational rheology, in 
+LAOS a sinusoidal deformation is applied to an interface at various 
+strains and single frequencies. For LAOS, different methods have been 
+developed to quantify the nonlinear oscillatory stress response in the 
+nonlinear regime, such as the use of more advanced FT-algorithms, 
+which e.g. allow averaging the magnitude spectra so that the peaks 
+are all positive and independent of the phase of the higher harmonics 
+[64]. Another approach is the introduction of a nonlinear quantitative 
+coefficient, Q, within the FT analysis to evaluate the intensity and 
+variation of the higher harmonics compared to the first harmonic [60].
+Unfortunately, these approaches cannot simply be adopted for dila-
+tational rheology, as stress-controlled rheometers have a much lower 
+torque limit (thus higher sensitivities) than image-based tensiometers, 
+making the FT analysis more robust. Additionally, dilatational rheology 
+follows slightly different mathematical and physical principles. One 
+main difference between surface shear and dilatational rheology is the 
+area conservation of the interface. While in surface shear rheology, the 
+total area is conserved, this is not the case in dilatational rheology (area 
+increases/decreases continuously during oscillation and with it, the 
+density of the adsorbed emulsifier). Mathematically speaking, only odd 
+harmonics are included in shear rheology because the stress response 
+can be assumed to be of odd symmetry with respect to the directionality 
+of shear strain or shear rate [20]. In contrast, both, even and odd har-
+monics appear in LAOD due to changes in density upon expansion and 
+contraction of the interface. In other words, there is no odd symmetry, 
+and the surface tension signal will look different in compression and 
+expansion. Other methods are needed to quantify the nonlinear material 
+response under LAOD deformation, which will be further discussed in 
+Section 3.
+2.5. A more fundamental look at interfacial dynamics: The surface 
+momentum balance
+The origin of the nonlinearities we discussed in the preceding sec-
+tions may not be immediately obvious. We discuss this here in more 
+detail by taking a closer look at the dynamics of an interface when it is 
+deformed.
+In principle, a drop tensiometer measures surface tension, and the 
+dilatational modulus we determine by applying oscillatory area changes 
+using Eq. (6), in which the numerator for most simple surfactant- 
+stabilised interfaces contains only contributions from surface tension. 
+But many surface-active components from viscoelastic solid-like 
+(arrested) structures, after adsorption (i.e., 2D networks, soft solid 
+glasses, or solid crystalline phases), and upon expansion/compression of 
+these structures, deviatoric stresses are induced. From Eq. (6), it is not 
+immediately clear how these stresses are accounted for in the mea-
+surement. These deviatoric stresses may also result in the emergence of 
+surface shear stresses in the measured surface stress, particularly for 
+very stiff interfaces with a high surface shear modulus. The dilatational 
+deformation in a drop tensiometer is, in fact, not a completely all-sided 
+deformation. In very stiff and highly elastic interfaces, the deformations 
+in the meridional and azimuthal directions of the drop may deviate 
+significantly, resulting in a substantial shear deformation. To see how 
+these effects emerge in the measured surface stress signal we have to 
+take a closer look at the Young-Laplace equation.
+The Young-Laplace equation, as it is presented in Eq. (1), is in fact 
+not a fundamental equation, but an approximation of the momentum 
+balance at the interface [65], valid only when in-plane inertial stresses, 
+Marangoni stresses, surface deviatoric stresses, and inertial and devia-
+toric stresses exerted by the adjoining bulk phases on the interface are 
+negligible. The full momentum balance at the interface takes on the form 
+[65]: 
+ρsdsvs
+dt   ∇s⋅Ts  ρsbs+ ρ1  v1  vs)  v1  vs)⋅n  ρ2  v2  vs)  v2  vs)⋅n
++ T1⋅n  T2⋅n= 0
+(7) 
+"
+Fig. 4. Schematic overview of an oscillating droplet with the resulting area and surface tension raw signal from surface dilatational deformations at small and large 
+amplitudes, demonstrating the contribution of higher harmonics.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+6 
+
+Here, ρs is the overall surface mass density, vs is the surface velocity 
+field, ∇s is the surface gradient operator, Ts is the total surface stress 
+tensor (a tangential surface tensor), bs are the body force fields per unit 
+mass acting on the material in the interface, ρM (M = 1,2) is the bulk 
+density evaluated at the interface for phase 1 and 2, vM is the bulk ve-
+locity of the two adjoining phases evaluated at the interface, TM is the 
+stress tensor in the bulk evaluated at the interface, and n is the unit 
+normal vector to the interface. The surface and bulk stress tensors are 
+commonly split in a hydrostatic and extra stress part, according to: 
+T=  PI+ S (8) 
+Ts = γIs+ Ss (9) 
+where P is again the pressure in the bulk, I is the 3d unit tensor for the 
+bulk fields, S is the bulk extra stress tensor, γ the surface tension, Is is the 
+surface projection tensor (the unit tensor for the tangential surface 
+fields), and Ss is the surface extra stress tensor. Substituting the last two 
+equations in the momentum balance gives: 
+ρsdsvs
+dt   ∇sγ  2γHn  ∇s⋅Ss  ρsbs+ ρ1  v1  vs)  v1  vs)⋅n
+  ρ2  v2  vs)  v2  vs)⋅n 
++
+ 
+S1  S2)⋅n+  P2  P1)n= 0 (10) 
+To arrive at this result, we have used ∇s⋅Is = 2H, where H is the 
+mean curvature of the interface. This balance describes the time rate of 
+change of surface excess momentum as a function of (in order of 
+appearance in the equation) Marangoni stresses (surface tension gradi-
+ents), curvature-induced stresses, in-plane surface deviatoric stresses, 
+body forces, inertial forces exerted on the interface by bulk phase 1 and 
+2, deviatoric stresses exerted by bulk phase 1 and 2, and the hydrostatic 
+pressure difference across the interface. In general, dilatational de-
+formations in drop tensiometry are sufficiently slow for inertial stresses 
+to be negligible, and when viscosities of the adjoining bulk phases are 
+low, bulk deviatoric stresses can also be ignored in the analysis of data. 
+The equation then reduces to 
+  ∇sγ  2γHn  ∇s⋅Ss  ρsbs+  P2  P1)n= 0 (11) 
+When deformations are affine, the Marangoni stress term also can-
+cels. The second, 4th, and last term are the classical Young-Laplace 
+equation that is used to extract the surface tension from the profile of 
+the droplet. To see how the third term in this equation, the surface 
+deviatoric stresses affect the surface pressure data, we first split the 
+surface stress tensor into a contribution purely from its trace, and a 
+symmetric traceless contribution (Ss): 
+Ss = 12(tr[Ss])Is+ Ss (12) 
+The first term on the right-hand side represents the purely dilata-
+tional stresses, the second term quantifies the surface shear stresses. 
+Substituting this in the jump momentum balance, we obtain 
+2γHn+∇s(tr[Ss])+(tr[Ss])Hn+∇s⋅Ss+ ρsbs    P2  P1)n= 0 (13) 
+In standard profile analysis, only the normal component of this 
+balance is used to extract the surface tension. The second term on the 
+left-hand side is purely tangential, but the 4th term, representing the 
+shear stresses, does have a normal component. Hence, the normal 
+component reduces to 
+2γeffH+(∇s⋅Ss)• n+ ρsbs• n    P2  P1)= 0 (14) 
+where 
+γeff = γ+ 12(tr[Ss]) (15) 
+Here, we observe that the emergence of dilatational deviatoric 
+stresses results in an effective surface tension that comprises both a 
+surface tension and a deviatoric stress contribution. When only image 
+analysis is used to extract this surface tension, these two contributions 
+cannot be separated. But when image analysis is used in conjunction 
+with measuring the Laplace pressure, and a suitable constitutive equa-
+tion is selected for the dilatational stress, these parameters can be 
+determined individually. However, this technique termed capillary 
+meniscus dynamometry, is not yet widely used.
+The shear stress term takes on a more complicated form. Let us define 
+a parametrisation of the interface of the form z= f
+ 
+y1, y2), where z 
+denotes the position of the interface in 3D space, and yα(α= 1, 2) are the 
+surface coordinates. And let 
+{
+aα, aβ
+}
+be the natural basis vectors at every 
+point on the surface, and 
+{
+aα, aβ} its associated dual basis. We can then 
+express the shear stress with respect to these bases as Ss= Sαβaαaβ or 
+Ss = Sαβaαaβ, where Sαβ and Sαβ are the covariant and contravariant 
+components of this tensor, respectively. The surface gradient of an 
+arbitrary vector c is defined here as ∇sc=(∂c/∂yα)aα and its surface 
+divergence as ∇s• c=(∂c/∂yα)• aα. With these definitions, we can 
+write the normal component of the divergence of the shear stresses as 
+([65] 
+(∇s⋅Ss)• n= SαβBβα = Ss : B (16) 
+Where B is the symmetric second ground form tangential tensor, 
+equal to -∇sn (with its trace equal to 2H). With this, the momentum 
+balance finally reduces to 
+2γeffH+ Ss : B+ ρsbs• n=  P2  P1) (17) 
+We see that when using the standard analysis protocol of a drop 
+tensiometer (i.e. the Young-Laplace equation), deviatoric dilatational 
+stresses are simply lumped into the effective surface pressure extracted 
+from the profile analysis. But, the shear stresses are not explicitly 
+accounted for, and when shear moduli are high, this may induce sig-
+nificant errors in the values for the dilatational parameters. Based on the 
+theory of 2D elasticity, Ed and the surface shear modulus Gs are related 
+through the surface Poisson ratio νs [27] by 
+Ed = Gs
+(1+ νs
+1  νs
+)
+(18) 
+with the Poisson ratio taking on values between 0 and 1. This means that 
+Gs≤ Ed and for completely compressible interfaces (νs = 0), Gs is at 
+most equal to Ed. As long as Gs≪Ed contributions from shear can be 
+neglected in Eq. (17). But recent studies have shown that when Gs∼ Ed, 
+errors can be substantial when simply using Eq. (1) to extract dilata-
+tional moduli [66].
+In some cases, the condition that Gs≤ Ed appears to be violated, and 
+this mostly occurs in particle (i.e., Pickering) stabilised interfaces (see 
+for example [66], and references therein). This would imply a negative 
+Poisson ratio, and although most interfaces will have a positive Poisson 
+ratio, technically a negative value is possible: the second law of ther-
+modynamics requires only that both Gs≥ 0 and Ed≥ 0, which restricts 
+the Poisson ratio to   1< νs < 1. A negative Poisson ratio would make 
+the interface the two-dimensional equivalent of a meta-material. It is 
+unlikely that a Pickering-stabilised interface would have such charac-
+teristics, and this apparent violation is more likely the result of the 
+complex nature of these interfaces: colloidal particles are trapped by a 
+primary fluid-fluid interface, and these particles (at sufficiently high 
+area fraction) form a much thicker secondary interface. When the 
+attractive interactions between the particles are weak (e.g., contact 
+angles with the primary surface close to 90o, and/or sufficiently strong 
+repulsive forces to screen the attraction), such that the particles do not 
+form a strong network, a shear deformation could still result in a sig-
+nificant surface shear stress, because of jamming. So in shear, we would 
+be probing the properties of the secondary interface. But particularly in 
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+7 
+
+the expansion stage of dilatation, we would be expanding the primary 
+interface, resulting in a low resistance and hence a low value for the 
+dilatational modulus, which is much smaller than the surface shear 
+modulus. In compression, we would again expect jamming, and hence a 
+considerably higher surface stress than in expansion. But this type of 
+interface often displays buckling even at moderate strains, which makes 
+further analysis of the dilatational response impossible.
+To summarise, for complex interfaces, shear parameters should al-
+ways be tested along with the dilatational properties to determine 
+whether shear effects are small enough to be neglected. If this is not the 
+case, dilatational deformations should be limited to small amplitudes, or 
+one should resort to different methods, such as the quadrotrough [33], 
+which can apply a purely all-sided dilatational deformation even for 
+highly elastic solid-like interfaces.
+The deviatoric stresses in the effective surface tension are not the 
+only source of nonlinearities in the response. The surface tension itself is 
+dependent on the surface load of the adsorbed component through an 
+equation of state, which is in general a nonlinear equation, even for the 
+simplest types of interfaces, i.e., interfaces described by the 2D ideal gas 
+law. The surface tension will increase upon expansion and decrease 
+upon compression. As a result of the nonlinearity of the equation of 
+state, when deformations are sufficiently large, these effects are not 
+symmetric with respect to the nondeformed state, leading to the emer-
+gence of the even harmonics, which we mentioned in the previous 
+section.
+3. Qualitative and quantitative analysis of LAOD
+3.1. Lissajous plots
+In view of our discussion in the previous section, other methods are 
+needed for the analysis of the nonlinear material response in LAOD 
+deformations. A popular qualitative analysis of LAOD is by plotting the 
+measured cyclic surface stress/pressure directly against the time- 
+dependent area signal in Lissajous(-Bowditch) plots ([20,50,67,46]). 
+In these plots, the surface stress changes in a clockwise direction, and at 
+sufficiently small amplitudes, the plots will be point-symmetric with 
+respect to the origin (Fig. 5). Here, the upper part of the plot is the 
+expansion part of the deformation cycle, where the area changes from its 
+minimum to its maximum value. The opposite is true for the bottom part 
+of the plot, which represents the compression part of the deformation 
+cycle. The shape of the Lissajous plots showcases the rheological 
+response. In a purely elastic response, the stress is in phase with the 
+amplitude, resulting in a straight line in the plots. In a purely viscous 
+response, the stress response is 90◦ out of phase with the applied 
+amplitude, creating a circle in the plots. Viscoelastic behaviour is shown 
+as a combination of both elastic and viscous signals, in the form of an 
+ellipsoidal shape. In the NLVE regime, Lissajous plots will show a 
+distortion from the original symmetric shape where the plots can show 
+different responses in expansion or compression as a result of cyclic 
+interfacial strain stiffening and softening, as shown in the example, 
+where Lissajous plots become more asymmetric at higher deformations 
+(Fig. 5).
+The strain stiffening and softening visually shown in Lissajous plots 
+was, for instance, quantified in Van Kempen et al. [46], where the 
+intracycle strain stiffening ratio in compression Scom and expansion Sexp 
+was analysed, in the same way as [20] defined the intracycle strain 
+stiffening ratio S for bulk rheology. Such a method is a geometrical 
+interpretation calculated from the shape of Lissajous curves, and the 
+higher harmonic components obtained via Fourier transformation of the 
+oscillatory signal are not used. A more accurate method to quantify the 
+nonlinear contributions in LAOD, a general stress decomposition (GSD) 
+method was developed by de Groot et al., [25], and is described in the 
+next section.
+3.2. General stress decomposition
+The general stress decomposition (GSD) assumes that the total sur-
+face stress response in oscillatory dilatation results from two contribu-
+tions: 1) network stresses due to network interactions + linear surface 
+density changes and 2) nonlinear stress contributions due to surface 
+density changes. The network contributions are similar to those found 
+for isotropic shear rheological responses, but the contributions due to 
+surface density changes are unique to interfacial dilatational rheology. 
+The combination of network and nonlinear surface density changes 
+yields an asymmetric response in compression and expansion in large 
+amplitude oscillatory dilatational rheology (Fig. 6A). This surface stress 
+response, Π(t)= γ(t)  γeq, where again γeq is the surface tension of the 
+equilibrium or nondeformed interface, can be described by: 
+Π(t)=
+∑∞
+k=0
+qksin(kωt+ δk) (19) 
+Here, qk is the amplitude of the kth harmonic, ω is the base frequency, 
+t is time, and δk is the phase shift of the kth harmonic. The surface stress 
+Π(t) should not be confused with the surface pressure Π0, which is 
+defined with respect to the surface tension of the bare interface. The 
+latter is always positive, whereas Π(t) can take on positive and negative 
+values. Note that here, also the even multiples of the applied frequency 
+are included as opposed to only the odd ones in shear experiments [20]. 
+The overall stress (Π(t)), is then split into τ1 and τ2 that contain all the 
+odd harmonic contributions, and τ3 and τ4 which are composed of all the 
+even harmonics. Their form is given by: 
+τ1 =
+∑∞
+k=0
+bʹ2k+1sin((2k+ 1)ωt) (20) 
+τ2 =
+∑∞
+k=0
+aʹ2k+1cos((2k+ 1)ωt) (21) 
+τ3 =
+∑∞
+k=0
+cʹ2ksin(2kωt) (22) 
+Fig. 5. Example of Lissajous plots from small to large deformations (5–50 %) of a whey protein-stabilised air-water interface. The left panel shows examples of a 
+purely elastic, viscoelastic and a purely viscous plot.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+8 
+
+τ4 =
+∑∞
+k=0
+dʹ2kcos(2kωt) (23) 
+The coefficients aʹ2k+1, bʹ2k+1, cʹ2k, and dʹ2k are the amplitudes for each 
+harmonic contained in respectively τ1 - τ4. For symmetric viscoelastic 
+responses, such as those obtained in surface shear rheology or small 
+amplitude dilatational rheology, only τ1 and τ2 are present. Here τ1, 
+describes the elastic contribution and τ2 the viscous contribution is 
+similar to the framework provided by [20]. Asymmetric responses 
+(Fig. 6A), such as those obtained in LAOD, contain all four components. 
+Here, τ3 and τ4 represent the energy-dissipating and energy-storing 
+contribution. In Fig. 6A, an asymmetric response is decomposed into 
+odd and even harmonics. The odd harmonics are point symmetric 
+around the origin, e.g. the stress response to compression and expansion 
+is equal but opposite. The example of compressing a spring gives some 
+intuition for the matter. The spring can display nonlinearities but must 
+have an opposite response in compression and expansion (Fig. 6B). 
+Nonlinearities in the odd harmonics display strain stiffening or softening 
+behaviour and strain rate thinning and thickening behaviour of the 
+interface.
+These network nonlinearities are typically related to deviatoric 
+stresses generated by changes in the interfacial microstructure that 
+change the effective surface tension (γeff
+)
+. It is important to note that the 
+first harmonic shows the linear portion of the response and therefore 
+contains both a linear network (or deviatoric) contribution and the 
+linearised portion of the response due to surface density changes. The 
+even harmonics of the intracycle surface density changes result in an 
+identical response in compression and expansion, i.e., the plots are 
+symmetric with respect to the vertical axis (Fig. 6C). As mentioned 
+above, the nonlinearities in the even harmonics stem from the nonlin-
+earity of the surface pressure area isotherm. For the simplest case, the 
+ideal surface gas, this curve is smoothly decreasing with increasing 
+surface area (∂Π0/∂A< 0 & ∂2Π0/∂A2 > 0) as shown in Fig. 6C. This 
+plot shows that large compression and expansion lead to an identical 
+deviation from the linear response, which ends up in the even harmonics 
+(τ3 and τ4). Here, τ4 shows that the recoverable (elastic) contribution of 
+nonlinearities in the surface pressure isotherm and τ3 the dissipative 
+(viscous) contribution.
+The availability of this decomposition also makes it possible to 
+analyse the intracycle nonlinear viscous properties by plotting strain 
+rate versus τ2, creating a so-called viscous Lissajous plot. This can pro-
+vide additional information on interfacial strain thickening or thinning.
+We should however emphasise that the validity of the assumption 
+that odd harmonics represent network interactions and even harmonics 
+are related to density changes relies on a number of assumptions: firstly, 
+the interfacial microstructure should be isotropic, as anisotropic 
+network structures may generate even harmonics [68]. Additionally, the 
+surface pressure area isotherm should be a smoothly decreasing function 
+with increasing area; otherwise, the surface density changes may 
+generate odd harmonics. This may occur when the interface undergoes a 
+phase transition during compression or expansion, which can lead to 
+inflexion points in the surface pressure isotherm. The isotropy of inter-
+facial structures can be verified with microscopic techniques such as 
+Langmuir-Blodgett deposition in combination with atomic force mi-
+croscopy. Verification of the surface pressure-area isotherm is more 
+challenging as deformation in LAOD is often performed around a dy-
+namic equilibrium as opposed to the near-equilibrium conditions when 
+measuring surface pressure area isotherm in a Langmuir trough. Many 
+surfactants are known to go through phase transitions under compres-
+sion [69,70,71]. However, it is expected that this only occurs at 
+extremely large deformations for specific surfactants [72,70]. Never-
+theless, this assumption seems acceptable for many surface-active 
+agents, particularly at air-liquid interfaces. At oil-water interfaces, the 
+Fig. 6. Decomposition of an asymmetric nonlinear response (A) into the odd harmonics (B) and the even harmonics (C). The right side shows a schematic repre-
+sentation of the underlying mechanism for establishing the stress response in compression (1) and expansion (2). The compressed interface contains more proteins 
+per surface area and a compressed network; The expanded interface contains less proteins per surface area and a stretched network.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+9 
+
+decomposition may break down at large amplitudes, often as a result of 
+buckling of the interface. We will explain this in more detail when we 
+discuss results for specific systems (section 4).
+3.3. Quantification of Lissajous plot data
+The general stress decomposition now provides an opportunity to 
+define new parameters for interfacial dilatational stress responses to 
+facilitate the analysis of a complete amplitude sweep. In Fig. 7, we 
+provide a visual aid showing each quantification parameter in its cor-
+responding Lissajous plot.
+For the stress, τ1, parameters similar to those used in shear rheology 
+can be introduced, where Eτ1L is defined as the secant modulus, i.e., the 
+slope of the line connecting the origin and the point in the curve at 
+maximum expansion; Eτ1L describes the overall stiffness of an interface, 
+and Eτ1M the stiffness at zero strain, they are given by: 
+Eτ1L = τ1
+ε
+⃒⃒⃒
+ε=±ε0
+=
+∑∞
+k=0
+bʹ2k+1(  1)k
+ε0
+(24) 
+Eτ1M = dτ1
+dε
+⃒⃒⃒⃒
+ε=0
+=
+∑∞
+k=0
+(2k+ 1)bʹ2k+1
+ε0
+(25) 
+Where, ε is the strain and ε0 is the maximum strain (related by ε =
+ε0 sin(ωt)). Comparing the decomposition of dilatational stress to shear 
+stress reveals that Eτ1L and Eτ1M are equivalent to GL’ and GM’ as defined 
+by [20].
+Both describe the stiffness of the interfacial network, and any dif-
+ferences between the two give an indication of the effects of deformation 
+on the stiffness of the interface. This can be expressed by the S-factor, a 
+measure for intracycle strain stiffening or softening, which is given by: 
+S= Eτ1L  Eτ1M
+Eτ1L
+(26) 
+Next, τ4 is also quantified with a modulus, Eτ4 (Eq. 9), which de-
+scribes the contributions to the overall stress due to surface density 
+changes: a lower (more negative) Eτ4 relates to a more significant 
+contribution of the surface density changes to the intracycle surface 
+stress. Additionally, the overall shift of the surface stress is quantified by 
+γs (Eq. 10) which displays how far from equilibrium the deformations 
+are performed. Eτ4 and γs are given by: 
+Eτ4 = τ4(ε0)  τ4(0)ε0 = 
+∑n
+k=0
+2dʹ4k+2
+ε0
+(27) 
+γs = γeq  γ0 = dʹ0 (28) 
+Since, τ2 and τ3 are dissipative contributions, a dissipated energy per 
+cycle can be calculated for both. These dissipated energies correspond to 
+the enclosed areas of their respective loops, denoted by Udτ2 and Udτ3, 
+and are calculated using: 
+Udτ2 =
+∮
+τ2(t)˙ε(t) dt= π ε20 Eʹʹ1 (29) 
+Udτ3 =
+∮
+τ3(t) ˙ε(t) dt= 2ε20
+∑n
+k=1
+(
+E2kτ3*k
+k2  1/4
+)
+(30) 
+Here, ˙ε(t) is the dilatational strain rate, Eʹʹ1 is the loss modulus from 
+the first harmonic and E2kτ3 = cʹ2k/ε0 is the loss modulus from the even 
+harmonics of the Fourier series. Their sum is equal to the total dissipated 
+energy per cycle, and equal to the area enclosed by the overall loop. To 
+obtain the coefficients aʹ2k+1, bʹ2k+1, cʹ2k, and dʹ2k in eqs. 20–23, a Fast 
+Fourier Transform (FFT) is applied to the time-dependent surface stress 
+signal. This approach will decompose the signal into its harmonic 
+components, of which the amplitude and phases of the relevant Fourier 
+coefficients are then extracted. These coefficients are then directly used 
+in the expressions to obtain τ1–τ4, allowing the reconstruction of the 
+individual stress contributions over the whole deformation cycle. This 
+same approach is used to generate the Lissajous plots in Fig. 7, which 
+visualises the decomposed stress signals for each of the contributions, 
+and, finally, allowing quantification. For a step-by-step description of 
+the method and theoretical background, we refer to the original GSD 
+article [25].
+3.4. Interpretation of Lissajous plots
+Based on the separation into odd and even harmonics, we explore the 
+phase space of interfacial viscoelastic responses in Fig. 8. Here, Lissajous 
+plots are shown as a function of the intensity of the elastic component of 
+the second and third harmonic, I′2 and I′3; their ratio and intensity can 
+vary depending on the surface-active component and applied strain. 
+Surface-active components without any attractive in-plane interactions 
+will behave like colloidal glasses under deformation, and only surface 
+density changes will affect the intracycle stress. These colloidal glass- 
+like interfaces will, therefore, solely contain nonlinearities related to 
+the second (or higher even) harmonic(s) and show Lissajous plots similar 
+to the ones on the horizontal axis, where I′3 = 0. Contrarily, the Lissajous 
+plots on the vertical axis represent a gel-like structure with strong 
+attractive in-plane interactions and limited surface density changes or a 
+linear surface pressure area-isotherm. Depending on whether the gel 
+network is strain-softening or strain-stiffening, the respective I′3 will be 
+positive or negative. Quantification of these different contributions can 
+be done with Fourier-transform rheology, similar to what is done in bulk 
+rheology [73]. Here, the intensity of each harmonic is normalised for the 
+first harmonic and fitted with the empirical scaling law: 
+In/1 = In
+I1
+= pnε  10 + qnεn  10 (31) 
+were In/1 is the normalised intensity of the corresponding harmonic n, 
+and pn and qn are scalar coefficients. At large deformations, qn dominates 
+this equation and is essentially an intrinsic nonlinearity [73]: 
+Fig. 7. Quantification of each decomposed stress τ1 – τ4, adapted from [25]. 
+The horizontal axis represent deformation and the vertical axis represents 
+surface stress.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+10 
+
+qn = nQ0 = limε0 →0 In/1εn  10 (32) 
+The relative values of the intrinsic nonlinearity of the odd versus 
+even harmonics give an indication of the nature of interface stabilisa-
+tion, and indicate whether the nonlinear response of an interface is 
+dominated by network disruptions or density changes. This has been 
+used to show that casein micelles form stiffer interfaces at highly polar 
+oils through particle-like interface stabilisation [74].
+For the examples of Lissajous plots with varying contributions of 
+network and density nonlinearities in Fig. 8, the previously described 
+parameters help to quantify the changes in viscoelasticity over the 
+course of an amplitude sweep. The overall interfacial stiffness is 
+described by Eτ1L and the initial stiffness by Eτ1M. In the presence of an 
+interfacial network which is progressively disrupted with increasing 
+strain amplitude, the values of Eτ1L will decrease with increasing 
+amplitude. In the absence of a network, the interfacial stiffness will 
+remain constant as there is no network that can break down under large 
+deformation amplitude. Additionally, the total energy dissipation within 
+one cycle can be calculated with Udτ2 to quantify the viscous energy 
+dissipation and describe the flow behaviour of an interface, e.g. micro-
+structural rearrangements. The even harmonics are quantified with 
+similar parameters, and the stiffness regarding nonlinearities in the 
+surface density changes is quantified by Eτ4. Eτ4 has a more negative 
+value for surface-active components with large changes in surface den-
+sity, i.e., components that exhibit limited compensation of the density 
+change by exchange with the bulk phase and a highly nonlinear and 
+steep surface pressure-area isotherm. The viscous dissipation related to 
+surface density changes is quantified by Udτ3. The shift, γs, indicates a 
+baseline shift, and is a measure of how far the oscillations are driving the 
+interface out of equilibrium. Generally, this shift is negative. Physical 
+interpretation of the dissipated energy and shift described by Udτ3 or γs 
+remains challenging, and additional research should be conducted.
+4. Application of LAOD to investigate the nonlinear deformation 
+behaviour of various emulsifiers – Examples
+In this section, we will show the potential of LAOD in elucidating the 
+mechanical properties of liquid-liquid or air-liquid interfaces. LAOD can 
+give insights into the type of interfacial microstructures formed and the 
+type of in-plane interactions between adsorbed interfacial stabilisers. 
+We will discuss several categories of stabilisers, such as low molecular 
+weight surfactants, proteins and particles.
+LAOD is especially powerful in combination with microstructure 
+imaging, as the latter can underpin the microscopic structural features in 
+interfacial films suggested by the LAOD results. Examples are Langmuir- 
+Blodgett or – Schaefer deposition of interfacial layers onto substrates, 
+followed by atomic force microscopy (AFM) or electron microscopy 
+([75,76]; Q. [77,14]). Less invasive and more in-situ methods include 
+Brewster angle microscopy (BAM) in combination with a Langmuir 
+through or multiphoton microscopy [78,79,80]. Examples where LAOD 
+and imaging have been used for different emulsifiers such as surfactants, 
+proteins and particles are shown in Table 1. A category of mixtures is 
+also shown, as LAOD has been proven useful in underpinning the role of 
+different emulsifiers in mixed systems.
+4.1. Surfactants
+Low molecular weight surfactants are generally amphiphilic mole-
+cules with a well-defined hydrophilic headgroup and hydrophobic tail. 
+In literature, most surfactants are not expected to self-assemble into 
+interfacial 2D microstructures and are, therefore, assumed to form weak 
+and highly viscous interfacial films which are unstable under large de-
+formations. At low deformation rates, their dilatational properties are 
+largely governed by dynamic exchange of the surfactant between 
+interface and the bulk solution. However, under fast deformations, the 
+exchange of surfactant between interface and bulk cannot keep up with 
+the deformation, as described by the Lucassen-van den Tempel theory 
+[53]. In such cases, the interfacial response appears elastic not because 
+of structural rigidity, but due to the inability of the adsorbed surfactant 
+molecules to rapidly move to the bulk phase. Nevertheless, recent 
+studies have shown that some surfactants (e.g. phospholipids, saponins) 
+may form viscoelastic networks at the interface with complex nonlinear 
+behaviour [102,103,104,105,106].
+So far, only a few studies have used GSD to analyse the interfacial 
+behaviour of surfactant-stabilised interfacial films. For example, De 
+Groot et al. reported nonlinear in-plane behaviour for lecithin. Here, the 
+GSD showed that in-plane network interactions are nearly absent when 
+deforming lecithin-stabilised air-water interfaces, and the surface den-
+sity changes dominated the overall stress signal [25]. Risse et al. 
+expanded the investigation of the nonlinear behaviour of lecithin, which 
+in fact are phospholipid mixtures, and showed that unsaturated phos-
+pholipids lack in-plane interactions at the oil-water interface. In 
+contrast, saturated phospholipids formed stiff interfacial films with 
+dominating in-plane network interactions [49]. The difference between 
+unsaturated and saturated phospholipids comes from the wider fatty 
+acid tails of the unsaturated phospholipids that provide steric hindrance 
+at the interface, resulting in less tight packing of the head groups at the 
+interface. Similar behaviour was also shown for the surfactants Tween, 
+Span and Brij, which have different head- and tail-group sizes [83].
+Escin is a triterpenoid bidesmosidic (2 sugar residues) saponin which 
+forms stiff air-water interfaces with dilatational (and shear) viscoelastic 
+moduli of 1 to 2 orders of magnitude larger than those of proteins at the 
+air-water [72,107,104,95]. The stiff interfacial films resulted in non- 
+Laplacian droplet shapes at larger deformations, which were reflected 
+in highly nonlinear Lissajous plots. The Lissajous plots of escin showed a 
+Fig. 8. Typical Lissajous plots for varying contributions of the elastic compo-
+nent of the second harmonic (I′2) versus the elastic component of the third 
+harmonic (I′3). The extremes of only third harmonic contributions (which lie on 
+the vertical axis) show nonlinear behaviour similar to that observed for a gel 
+network in shear rheology, and the extreme of only second harmonic contri-
+butions shows wide and asymmetric plots we typically observe in dilatational 
+rheology. Negative I′2 are not shown since they are rarely observed in literature 
+and so far these lack physical interpretation. The shaded colours roughly 
+indicate typical boundaries of the linear regime, the nonlinear regime accessible 
+by an oscillating drop tensiometer, and inaccessible part of the nonlinear 
+regime; boundaries of these regimes may vary depending on the device and the 
+surface-active component.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+11 
+
+Table 1 
+Literature overview on works that have performed LAOD. Abbreviations: air-water (A-W), oil-water (O-W), elastic storage modulus (Ed’), elastic loss modulus (Ed”), 
+general stress decomposition (GSD).
+Emulsifier Interface 
+type
+Nonlinearity analysis 
+method
+Main findings using LAOD Reference
+Surfactants
+Escin A-W Lissajous plots
+Escin formed incredibly stiff glassy-like interfaces, leading to the loss of the 
+Laplacian shape of the droplet at higher deformations. Highly nonlinear 
+response was not analyzable using moduli. Lissajous plots showed buckling and 
+multi-layer formation of the interface upon compression.
+[72]
+Lecithin A-W Ed’ and Ed” moduli, Lissajous plots, GSD Lecithin shows complex nonlinear behaviour in Lissajous plots. GSD showed that in-plane interactions are very weak for lecithin, as the surface density changes dominate the overall stress response. [25]
+Oligofructose A-W Lissajous plots Oligofructose fatty esters show highly nonlinear behaviour, only visible when performing LAOD and depicting results in Lissajous plots. [46]
+Span 65 A-W Ed’ and Ed” moduli Molecules self-assemble into a viscoelastic network. [81]
+Asphaltene O-W Ed’ and Ed” moduli, Lissajous plots
+Coal asphaltenes formed very stiff interfaces, resulting in buckling and multi- 
+layer formation at the interface upon compression, similar to Escin. Petroleum 
+and bitumen asphaltenes, which contain more aliphatic groups, formed more 
+deformable interfacial layers.
+[82]
+Tween 20/60/80, Span 
+20/60/80, BrijS20 O-W Ed’ and Ed” moduli, Lissajous plots Emulsifiers were crystallised by the heat-cool cycle. First-harmonic-based moduli were unreliable; Lissajous plots showed how the interfacial stiffness increased with higher FA chain lengths. [83]
+(Un)saturated 
+phospholipids O-W Ed’ and Ed” moduli, Lissajous plots, GSD Unsaturated phospholipids formed predominantly viscous interfacial layers (Ed” > Ed’). Saturated phospholipids formed stiff interfaces, and GSD showed that network interactions dominate. [49]
+Proteins
+Rapeseed proteins – 
+napin and cruciferin A-W Ed’ and Ed” moduli, Lissajous plots Napin formed thinner and weaker interfacial layers than cruciferin. Lissajous plots showed that cruciferin dominated napin-cruciferin mixtures. [84]
+Rubisco proteins A-W Ed’ and Ed” moduli, Lissajous plots, GSD Rubisco proteins were extracted using two methods. The moduli showed only minor differences, but the GSD revealed that less aggregated proteins lead to more network-dominated interfaces. [85]
+Wheat aqueous phase 
+proteins A-W Ed’ and Ed” moduli, Lissajous plots, GSD Wheat aqueous phase proteins were fractionated using ethanol. LAOD and GSD analysis showed that the ethanol-soluble fraction dominates the interfacial mechanics of the whole fraction. [86]
+Ovalbumin A-W Ed’ and Ed” moduli, Lissajous plots Ovalbumin proteins were tested at different pH and salt concentrations. Conditions with lower protein charge led to increased interactions between adsorbed proteins, shown using LAOD. [87]
+Casein proteins O-W Ed’ and Ed” moduli, Lissajous plots, GSD The stiffness of interfacial layers formed by casein proteins was determined by their ability to bind calcium ions, which could only be shown by differentiating between network interaction or surface density contributions using the GSD. [88]
+Lipase O-W Ed’ and Ed” moduli, Lissajous plots Lissajous plots revealed that enzymatic hydrolysis using lipase on oil leads to stiff, highly nonlinear interfaces, which were not visible when only first- harmonic-based moduli were used. [89]
+Potato peptides O-W Ed’ and Ed” moduli, Lissajous plots Rheology showed how a higher exposed β-sheet content leads to interfacial stiffness, as shown by LAOD. [90]
+Whey protein O-W Ed’ and Ed” moduli, Lissajous plots Whey proteins formed stiff viscoelastic solid-like networks. [18]
+Pea proteins O-W Ed’ and Ed” moduli, Lissajous plots, S-factor LAOD rheology revealed that the overall pea protein interfacial behaviour is dominated by the protein types known as 7S and 11S. [91]
+Pea proteins O-W Lissajous plots
+Pea proteins were extracted with endogenous phospholipids. The work showed 
+using LAOD how these phospholipids play a major role in pea protein oil- 
+interface formation, thereby largely reducing interactions between adsorbed 
+pea proteins.
+[92]
+Mixtures
+Casein and tannic acid A-W Ed’ and Ed” moduli, Lissajous plots, S-factor The formation of casein and tannic acid complexes increased the interfacial elasticity compared to casein alone, and a soft glassy interface was formed. [93]
+Rapeseed proteins and 
+oleosomes A-W Ed’ and Ed” moduli, Lissajous plots
+Rapeseed proteins formed stiff interfacial films, while oleosomes formed weak 
+stretchable layers. In mixture, oleosomes can weaken the rapeseed protein film. 
+Lissajous plots showed how, by controlling the rapeseed protein concentration, 
+the impact of oleosomes can be reduced.
+[94]
+Whey protein and escin A-W Ed’ and Ed” moduli, Lissajous plots Escin formed much stiffer interfaces than whey proteins. Replacing only 12.5 % of protein by escin leads to substantially stiffer interfaces. (J. [95])
+Whey and pea protein A-W O-W Ed’ and Ed” moduli, Lissajous plots Whey proteins formed stiffer interfacial layers than pea proteins. LAOD showed how a mixture of both proteins leads to an intermediate behaviour. [75]
+Membrane proteins and 
+phospholipids O-W Ed’ and Ed” moduli, Lissajous plots, GSD GSD revealed that phospholipids contributed to the network stiffness by increasing the surface density contribution, while the membrane proteins were responsible for network interactions. (J. [96])
+Oleosome membrane 
+and curcumin O-W Ed’ and Ed” moduli, Lissajous plots, GSD GSD revealed how curcumin enhances molecular interactions between oleosome membrane molecules, forming a stiff glassy-like structure. [97]
+Particles
+Cellulose nanocrystal A-W Ed’ and Ed” moduli, Lissajous plots Salt addition screens charges, leading to interactions between nanocrystals. The result is an increased interfacial stiffness. [98]
+Gliadin nanoparticles A-W Ed’ and Ed” moduli, Lissajous plots, GSD LAOD was started at different ageing times, showing a transformation of the nanoparticles at the interface. The particles slowly deformed and merged into a viscoelastic 2D solid film. [23]
+Soy protein fibrils A-W Lissajous plots, S-factor LAOD revealed that fibrils did not contribute to interface stabilisation, as the free peptides dominated the air-water interface. [99]
+Whey protein 
+nanoparticles A-W Ed’ and Ed” moduli, Lissajous plots, S-factor These nanoparticles were not surface active, and the nonaggregated material was found to dominate the air-water interface stabilisation. [19]
+(continued on next page)
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+12 
+
+crossover (Fig. 9), which is the result of a combination of interfacial 
+buckling, fracturing, and forming multilayers upon compression, which 
+then return to a stretched state upon expansion (J. [95]). Similar high 
+nonlinearity was also observed for quillaia saponin at the oil-water 
+interface, using LAOD [108]. Escin has these capabilities due to its 
+molecular structure, as it possesses hydrophobic aglycone parts that 
+interact via attractive van der Waals forces, and sugar residues that are 
+responsible for dipole-dipole attraction and hydrogen bonds [107,106]. 
+Asphaltene is another category, while not being classified as surfactants, 
+it may exhibit interfacial activity under specific conditions. As asphal-
+tene can form similar types of stiff interfacial films as the saponins due to 
+the interaction between aliphatic and aromatic parts of the asphaltenes 
+at the interface [82].
+4.2. Proteins
+Proteins are biopolymers, of which, many are surface-active. Surface 
+active proteins can adsorb at the interface, followed by structural rear-
+rangements and interactions, finally, forming viscoelastic films 
+[109,10,110]. The type of interface formed depends largely on the type 
+of interactions and interfacial arrangements of adsorbed proteins, which 
+can be effectively analysed using LAOD [89,85,18,84]. An example was 
+shown for rapeseed proteins, where air-water interfacial films of rape-
+seed proteins, specifically napin and cruciferin, were studied [84]. 
+Napin is a smaller more hydrophilic protein, which forms thinner and 
+weaker interfacial structures. Cruciferin proteins, which are about 20 
+times larger than napin and more hydrophobic, can form stiffer inter-
+facial layers. This also resulted in a higher stability of cruciferin- 
+stabilised foams than napin-stabilised ones. These insights were ob-
+tained using a combination of LAOD rheology and microstructural im-
+aging of the interface. Examples of atomic force microscopy images of 
+Langmuir-Blodgett films of cruciferin and napin are shown in Fig. 10. 
+Here, one can observe a heterogeneous structure for cruciferin, sug-
+gesting a gel-like structure, while napin showed a thinner and more 
+homogenous structure. The combination of interfacial rheology and 
+imaging has been useful in explaining interfacial microstructural dif-
+ferences between proteins, such as dairy proteins, plant proteins, and 
+peptides [18,111,112,113,80].
+The GSD has been applied for several protein-stabilised interfaces (e. 
+g., rubisco and casein proteins). Ma et al. extracted rubisco proteins from 
+spinach using two different methodologies [85]. Proteins that were 
+mildly extracted retained their native structure, and these proteins were 
+Table 1 (continued)
+Emulsifier Interface 
+type 
+Nonlinearity analysis 
+method 
+Main findings using LAOD Reference
+Soy protein coacervate 
+particles
+O-W Lissajous plot Soy protein coacervates formed extremely stiff interfacial films that showed 
+wrinkling upon compression at lower pH values. This behaviour was 
+successfully captured using Lissajous plots.
+[100]
+Chitosan Microgel O-W Ed’ and Ed” moduli, 
+Lissajous plots, S-factor
+LAOD rheology revealed how chitosan microgel particles form stiffer interfacial 
+films upon swelling, which can be induced by varying the pH and particle 
+production method.
+[101]
+Fig. 9. A Lissajous plot of an interface stabilised by escin at 5 % deformation with schematic drawings of potential phenomena upon deformations based on work of 
+Gim´enez-Ribes et al. [72].
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+13 
+
+able to form stiffer interfacial films. Using the second extraction method, 
+the Rubisco proteins were heavily aggregated and unable to interact at 
+the interface, resulting in weak interfaces. This highlights the impor-
+tance of protein molecular state on interfacial interactions. De Groot 
+et al. showed how different casein proteins interact with calcium ions at 
+the interface. Proteins with a strong affinity for calcium were able to 
+form stiffer interfaces [88]. In both cases, the GSD gave quantitative 
+insights, showing when network interactions or surface density changes 
+dominated the interfacial properties.
+Another key property that drives protein interfacial interactions 
+seems to be the protein secondary structure. A recent study combined 
+LAOD rheology and synchrotron radiation circular dichroism to char-
+acterise oil-water interfaces and emulsions stabilised by potato peptides 
+with varying α-helix, β-sheet, and random coil compositions [90]. Pep-
+tides that are high in β-sheet content formed stiff solid-like interfacial 
+films, while peptides without these sheets formed weak stretchable 
+interfaces.
+4.3. Mixtures
+LAOD has been proven useful in understanding the role of individual 
+components in multicomponent systems, such as protein-protein and 
+protein-surfactant mixtures. When both stabilisers are initially present 
+in the bulk phase, this may lead to competitive adsorption (one stabiliser 
+dominates the interface), co-adsorption (both adsorb forming homoge-
+nous or heterogenous blends at the interface), and/or displacement (one 
+stabiliser replaces the other at the interface over time) [114]. For 
+instance, caseinate-tannic acid mixtures formed stiffer interfaces than 
+caseinate and tannic acid alone [93]. The molecules interacted and 
+formed complexes that co-adsorbed, where the tannic acid probably 
+further connected the proteins after adsorption, yielding stiffer in-
+terfaces. Co-adsorption without interactions is also possible, as shown 
+for whey protein and pea protein mixtures, where both proteins adsor-
+bed onto the interface, and hindered each other’s network formation 
+[75]. Sequential adsorption can be studied by first forming an interface 
+in a drop tensiometer with the first stabiliser, followed by the exchange 
+of the water or oil phase, and introducing a second stabiliser. Performing 
+LAOD before and after the exchange gives insights into the potential 
+displacement of the first stabiliser by the second one [115].
+Interfaces stabilised by mixtures of proteins and smaller surfactants 
+are especially suitable for analysis using LAOD. The first example is a 
+whey protein-escin mixture, where, at low escin concentrations, the 
+escin can increase the stiffness of the mixture ([107]; J. [95]). At high 
+escin concentrations, escin will dominate the interfacial behaviour of 
+the mixtures. The opposite is also possible, as shown for rapeseed 
+protein-oleosome mixtures [94]. Oleosomes are oil droplets stabilised 
+with phospholipids and membrane proteins, and upon adsorption at the 
+interface, the droplets can rupture, spreading the oil, phospholipids and 
+membrane proteins. In a protein-oleosome mixture, the oleosome 
+rupture at the interface can significantly reduce the formation of stiff 
+protein-stabilised interfaces [94]. If protein concentrations are high 
+enough, the proteins can outcompete the adsorption of oleosomes at the 
+air-water interface, thus preserving the protein-stabilised interface. In 
+both the whey protein-escin and rapeseed protein-oleosome mixtures, 
+the combination of imaging and rheology was essential to obtain the 
+earlier-mentioned insights.
+The GSD has also revealed specific insights on mixed systems. For 
+example, in oleosome membrane proteins and phospholipid mixtures, 
+the proteins formed stiff viscoelastic interfaces, and the phospholipids 
+formed weak stretchable interfaces (J. [96]). Upon mixing, nearly 
+identical Lissajous plots were observed for the mixtures at several ratios, 
+suggesting that oleosins dominated the interface. But, after performing 
+the GSD, a clear contribution of the phospholipids was observed, sug-
+gesting the presence of both components at the interface. A final 
+example is an oleosome membrane-curcumin mixture-stabilised oil- 
+water interface [97], where an increase of surface elastic modulus was 
+observed at increasing deformation amplitude from 5 to 30 %, followed 
+by a modulus decrease when increasing to 50 % deformation. This in-
+crease in modulus is unexpected, as higher deformation typically dis-
+rupts the interfacial microstructure, resulting in lower modulus values. 
+Here, the GSD showed a continued increase of network interactions over 
+the whole deformation range, while the surface density changes showed 
+a similar increase followed by a decrease. These findings suggest that the 
+interfacial network strength is increasing, likely due to newly adsorbed 
+material being constantly compressed into a denser layer. At the same 
+time, the density contribution increased, but decreased again at de-
+formations >30 %. Ultimately, at >30 % deformations, the interfacial 
+structure was broken down, resulting in an overall decrease in moduli. 
+In both cases, the GSD was essential in gaining insights into the interface 
+stabilising role of individual components in a multicomponent system.
+4.4. Particles
+Particles have been widely studied as interface stabilisers, often 
+referred to as Pickering stabilisers, and have been studied using LAOD. 
+Here, a main caution is the actual presence of particles at the interface in 
+a diffusion-based system, as shown for protein-silica bead systems, 
+where the beads sediment and change the droplet’s shape, leading to an 
+apparent surface tension decrease [116]. Sometimes, particles cannot 
+spontaneously adsorb at an interface and attach only by convection, for 
+instance, by using homogenisation. Several studies have demonstrated 
+the absence of particles at the interface in tensiometry, as observed for 
+soy protein fibrils [99]. These large fibrils were not surface-active, and 
+the non-aggregated proteins in the solution dominated the interfacial 
+Fig. 10. Atomic force microscopy (AFM) images of Langmuir-Blodgett films created from cruciferin (left) and napin (right) air-water interfaces at a compression state 
+of 23 mN/m [84].
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+14 
+
+layer. The same was found for whey protein nanoparticles, where AFM 
+imaging showed the absence of the particles on Langmuir-Blodgett films 
+[24].
+If the particles are actually adsorbing at the interface, LAOD can give 
+insights into the type of layers formed. For example, for cellulose 
+nanocrystals stabilised interfaces, salt screened the particle’s charges 
+and thus increasing the surface load and interactions at the interface 
+[98]. Additional insights into the structural arrangement at the interface 
+were obtained using neutron reflectometry. The GSD was used to study a 
+gliadin nanoparticle system [23]. LAOD deformations were performed 
+at different ageing times of the gliadin nanoparticle-stabilised interface. 
+In combination with imaging, the authors showed how the nanoparticles 
+transformed over time at the interface by slowly deforming and merging 
+into a viscoelastic solid polymeric film.
+5. Summary and future outlook
+Large amplitude oscillatory dilatational (LAOD) rheology has 
+emerged as a powerful technique for characterising the mechanical 
+behaviour of interfaces under nonlinear deformation conditions. LAOD 
+enables us to probe the complex viscoelastic properties of interfacial 
+films stabilised by a broad range of surface-active molecules, including 
+low molecular weight surfactants, proteins, particles, and their mix-
+tures. These insights are crucial for understanding and predicting the 
+stability of emulsions, foams, and other multiphase systems. For de-
+cades, the analysis of LAOD data was limited to first-harmonic-based 
+moduli and Lissajous plots. While these methods provided valuable 
+qualitative insights, they struggled to accurately quantify nonlinear 
+behaviour, especially when higher harmonic contributions became sig-
+nificant. As such, first harmonic-based moduli in the nonlinear visco-
+elastic (NLVE) regime often led to incomplete or misleading 
+interpretations of interfacial mechanics. The recent development of the 
+general stress decomposition (GSD) has been a significant breakthrough. 
+This new method enables a quantitative separation of rheological 
+(network) contributions and surface density-driven effects in the stress 
+response. By isolating the true rheological signal, GSD opens the door to 
+a much more detailed and mechanistic understanding of interfacial 
+behaviour. It allows rheological analyses that were previously not 
+possible, thereby transforming the field of LAOD.
+As the field advances, several promising research directions emerge: 
+• Revisiting classic systems: Many interfacial films previously 
+characterised with traditional methods should be re-evaluated using 
+LAOD in combination with GSD. This could reveal overlooked non-
+linearities or misinterpreted behaviours.
+• Expanding GSD applications: More interfacial systems, especially 
+complex and multicomponent interfaces, should be studied using 
+GSD to create a broader understanding of interfacial mechanics 
+across different materials.
+• New rheological models: Since GSD effectively decouples surface 
+density changes from intrinsic rheology, the pure rheological signal 
+obtained can serve as a foundation for new constitutive models of 
+interfacial rheology. An example would be models to describe 
+anisotropic interfacial behaviour.
+• Dynamic surface pressure isotherms: The density-driven contri-
+bution identified using GSD directly links to the dynamic surface 
+pressure behaviour. Systematically exploring this relationship could 
+provide a better understanding of the origin of the formation of 
+specific microstructures, such as those observed in protein-stabilised 
+interfaces.
+Together, these advances show that LAOD, especially in combination 
+with GSD, gives a comprehensive framework for measuring and un-
+derstanding nonlinear interfacial mechanics.
+CRediT authorship contribution statement
+Kerstin Risse: Writing – original draft, Visualization, Methodology, 
+Investigation, Formal analysis, Conceptualization. Jack Yang: Writing – 
+original draft, Visualization, Supervision, Methodology, Investigation, 
+Formal analysis, Conceptualization. Anteun de Groot: Writing – orig-
+inal draft, Visualization, Methodology, Investigation, Formal analysis. 
+Gerard Gim´enez-Ribes: Writing – original draft, Methodology, Inves-
+tigation. Penghui Shen: Writing – review & editing. Stephan Drusch: 
+Writing – review & editing. Emma B.A. Hinderink: Writing – review & 
+editing. Leonard M.C. Sagis: Writing – original draft, Supervision, 
+Methodology, Investigation, Formal analysis, Conceptualization.
+Declaration of competing interest
+The authors have declared that no competing interest exist. This 
+manuscript has not been published and is not under consideration for 
+publication in any other journal. All authors approve this manuscript 
+and its submission to Advances in Colloids and Interface Science.
+Acknowledgements
+Kerstin Risse and Stephan Drusch acknowledge the IGF Project 
+(01IF23169N) of the FEI, which is supported within the programme for 
+promoting the Industrial Collective Research (IGF) of the Federal Min-
+istry of Economic Affairs and Climate Action (BMWK), based on a res-
+olution of the German Parliament.
+Data availability
+Data will be made available on request.
+References
+[1] Arzhavitina A, Steckel H. Foams for pharmaceutical and cosmetic application. Int 
+J Pharm 2010;394(1–2):1–17. https://doi.org/10.1016/J. 
+IJPHARM.2010.04.028.
+[2] Chappat M. Some applications of emulsions. Colloids Surf A Physicochem Eng 
+Asp 1994;91(C):57–77. https://doi.org/10.1016/0927-7757(94)02976-8.
+[3] Marti-Mestres G, Nielloud F. Emulsions in health care applications—an overview. 
+J Dispers Sci Technol 2002;2, 23(1–3):419–39. https://doi.org/10.1080/ 
+01932690208984214.
+[4] Murray BS. Recent developments in food foams. Curr Opin Colloid Interface Sci 
+2020;50:101394. https://doi.org/10.1016/J.COCIS.2020.101394.
+[5] Rühs PA, Bergfreund J, Bertsch P, Gst¨ohl SJ, Fischer P. Complex fluids in animal 
+survival strategies. Soft Matter 2021;17(11):3022–36. https://doi.org/10.1039/ 
+d1sm00142f.
+[6] Wilde P, Mackie A, Husband F, Gunning P, Morris V. Proteins and emulsifiers at 
+liquid interfaces. Adv Colloid Interface Sci 2004;108–109:63–71. https://doi.org/ 
+10.1016/j.cis.2003.10.011.
+[7] Gomes A, Costa ALR, Cunha RL. Impact of oil type and WPI/tween 80 ratio at the 
+oil-water interface: adsorption, interfacial rheology and emulsion features. 
+Colloids Surf B Biointerfaces 2018;164:272–80. https://doi.org/10.1016/j. 
+colsurfb.2018.01.032.
+[8] Loveday SM, Wang XL, Rao MA, Anema SG, Creamer LK, Singh H. Tuning the 
+properties of β-lactoglobulin nanofibrils with pH, NaCl and CaCl2. Int Dairy J 
+2010;20(9):571–9. https://doi.org/10.1016/j.idairyj.2010.02.014.
+[9] Rühs PA, Scheuble N, Windhab EJ, Mezzenga R, Fischer P. Simultaneous control 
+of ph and ionic strength during interfacial rheology of β-lactoglobulin fibrils 
+adsorbed at liquid/liquid interfaces. Langmuir 2012;28(34):12536–43. https:// 
+doi.org/10.1021/la3026705.
+[10] Dickinson E. Adsorbed protein layers at fluid interfaces: interactions, structure 
+and surface rheology. Colloids Surf B Biointerfaces 1999;15(2):161–76. https:// 
+doi.org/10.1016/S0927-7765(99)00042-9.
+[11] Jaensson N, Vermant J. Tensiometry and rheology of complex interfaces. Curr 
+Opin Colloid Interface Sci 2018;37:136–50. https://doi.org/10.1016/j. 
+cocis.2018.09.005.
+[12] Sagis LMC, Scholten E. Complex interfaces in food: structure and mechanical 
+properties. Trends Food Sci Technol 2014;37(1):59–71. https://doi.org/10.1016/ 
+j.tifs.2014.02.009.
+[13] Mackie AR, Gunning AP, Wilde PJ, Morris VJ. Orogenic displacement of protein 
+from the air/water Interface by competitive adsorption. J Colloid Interface Sci 
+1999;210(1):157–66. https://doi.org/10.1006/jcis.1998.5941.
+[14] Zou Y, Wan Z, Guo J, Wang J, Yin S, Yang X. Tunable assembly of hydrophobic 
+protein nanoparticle at fluid interfaces with tannic acid. Food Hydrocoll 2017;63: 
+364–71. https://doi.org/10.1016/j.foodhyd.2016.09.010.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+15 
+
+[15] Dalkas G, Euston SR. Molecular simulation of protein adsorption and 
+conformation at gas-liquid, liquid–liquid and solid–liquid interfaces. Curr Opin 
+Colloid Interface Sci 2019;41:1–10.
+[16] Sagis LMC, Fischer P. Nonlinear rheology of complex fluid-fluid interfaces. Curr 
+Opin Colloid Interface Sci 2014;19(6):520–9. https://doi.org/10.1016/j. 
+cocis.2014.09.003.
+[17] Li J, Zhang B, Ye J, Sun F, Liu Y, Yang N, et al. Nonlinear dilatational rheology of 
+different protein aggregates at the oil-water interface. Soft Matter 2022. https:// 
+doi.org/10.1039/d1sm01735g.
+[18] Rühs PA, Affolter C, Windhab EJ, Fischer P. Shear and dilatational linear and 
+nonlinear subphase controlled interfacial rheology of β-lactoglobulin fibrils and 
+their derivatives. J Rheol 2013;57(3):1003–22. https://doi.org/10.1122/ 
+1.4802051.
+[19] Yang J, Thielen I, Berton-Carabin CC, van der Linden E, Sagis LMC. Nonlinear 
+interfacial rheology and atomic force microscopy of air-water interfaces stabilized 
+by whey protein beads and their constituents. Food Hydrocoll 2020;101:105466. 
+https://doi.org/10.1016/j.foodhyd.2019.105466.
+[20] Ewoldt RH, Hosoi AE, McKinley GH. New measures for characterizing nonlinear 
+viscoelasticity in large amplitude oscillatory shear. J Rheol 2007;52(6):1427–58. 
+https://doi.org/10.1122/1.2970095.
+[21] Ewoldt RH, Winter P, Maxey J, McKinley GH. Large amplitude oscillatory shear of 
+pseudoplastic and elastoviscoplastic materials. Rheol Acta 2010;49(2):191–212. 
+https://doi.org/10.1007/s00397-009-0403-7.
+[22] Wilhelm M. Fourier-transform rheology. Macromol Mater Eng 2002;287(2): 
+83–105. https://doi.org/10.1002/1439-2054(20020201)287:2%3C83::AID- 
+MAME83%3E3.0.CO;2-B.
+[23] Peng D, Yang J, De Groot A, Jin W, Deng Q, Li B, et al. Soft gliadin nanoparticles 
+at air / water interfaces : the transition from a particle-laden layer to a thick 
+protein film. J Colloid Interface Sci 2024;669(December 2023):236–47. https:// 
+doi.org/10.1016/j.jcis.2024.04.196.
+[24] Yang J, Waardenburg LC, Berton-Carabin CC, Nikiforidis CV, van der Linden E, 
+Sagis MC. Air-water interfacial behaviour of whey protein and rapeseed oleosome 
+mixtures. J Colloid Interface Sci 2021;602:207–21. https://doi.org/10.1016/j. 
+jcis.2021.05.172.
+[25] de Groot A, Yang J, Sagis LMC. Surface stress decomposition in large amplitude 
+oscillatory interfacial dilatation of complex interfaces. J Colloid Interface Sci 
+2023;638:569–81. https://doi.org/10.1016/j.jcis.2023.02.007.
+[26] Ravera F, Loglio G, Kovalchuk VI. Interfacial dilational rheology by oscillating 
+bubble/drop methods. Curr Opin Colloid Interface Sci 2010;15(4):217–28. 
+https://doi.org/10.1016/j.cocis.2010.04.001.
+[27] Sagis LMC. Dynamic properties of interfaces in soft matter: experiments and 
+theory. Rev Mod Phys 2011;83(4):1367–403. https://doi.org/10.1103/ 
+RevModPhys.83.1367.
+[28] Marquez R, Salager JL. Measurement techniques for interfacial rheology of 
+surfactant, asphaltene, and protein-stabilized interfaces in emulsions and foams. 
+Colloids Interf 2025;9(1). https://doi.org/10.3390/colloids9010014.
+[29] Rayleigh.. Surface tension. Nature 1891;43(1115):437–9. https://doi.org/ 
+10.1038/043437c0.
+[30] Blodgett KB. Films built by depositing successive monomolecular layers on a solid 
+surface. J Am Chem Soc 1935;57(6):1007–22. https://doi.org/10.1021/ 
+ja01309a011.
+[31] Wilhelmy L. Ueber die Abh¨angigkeit der Capillarit¨ats-Constanten des Alkohols 
+von Substanz und gestalt des benetzten festen K¨orpers. Annalen Der Physik Und 
+Chemie 1863;195(6):177–217. https://doi.org/10.1002/andp.18631950602.
+[32] Ciutara CO, Barman S, Iasella S, Huang B, Zasadzinski JA. Dilatational and shear 
+rheology of soluble and insoluble monolayers with a Langmuir trough. J Colloid 
+Interface Sci 2023;629:125–35. https://doi.org/10.1016/j.jcis.2022.08.051.
+[33] Tein YS, Thompson BR, Majkrzak C, Maranville B, Renggli D, Vermant J, et al. 
+Instrument for measurement of interfacial structure-property relationships with 
+decoupled interfacial shear and dilatational flow: “Quadrotrough ”. Rev Sci 
+Instrum 2022;93(9). https://doi.org/10.1063/5.0090350.
+[34] Badran AA, Marschall E. Oscillating pendant drop: a method for the measurement 
+of dynamic surface and interface tension. Rev Sci Instrum 1986;57(2):259–63. 
+https://doi.org/10.1063/1.1138925.
+[35] Nury S, Pi´eroni G, Rivi`ere C, Gargouri Y, Bois A, Verger R. Lipase kinetics at the 
+triacylglycerol-water interface using surface tension measurements. Chem Phys 
+Lipids 1987;45(1):27–37. https://doi.org/10.1016/0009-3084(87)90037-5.
+[36] Benjamins J, Cagna A, Lucassen-Reynders EH. Viscoelastic properties of 
+triacylglycerol/water interfaces covered by proteins. Colloids Surf A Physicochem 
+Eng Asp 1996;114:245–54. https://doi.org/10.1016/0927-7757(96)03533-9.
+[37] Laplace P. Supplement to the tenth edition M´echanique C´eleste. 1806. p. 10.
+[38] Young T. An essay on the cohesion of fluids. Philos Trans Royal Soc London 1804; 
+1805, 95:65–87. Anne Carson/ Antiquity, 65–87, https://doi.org/10.5040/97 
+81350174788.ch-010.
+[39] Loglio G, Pandolfini P, Makievski AV, Miller R. Calibration parameters of the 
+pendant drop tensiometer: assessment of accuracy. J Colloid Interface Sci 2003; 
+265(1):161–5. https://doi.org/10.1016/S0021-9797(03)00138-3.
+[40] Javadi A, Mucic N, Karbaschi M, Won JY, Lotfi M, Dan A, et al. Characterization 
+methods for liquid interfacial layers. Eur Phys J Spec Topics 2013;222(1):7–29. 
+https://doi.org/10.1140/epjst/e2013-01822-3.
+[41] Berry JD, Neeson MJ, Dagastine RR, Chan DYC, Tabor RF. Measurement of 
+surface and interfacial tension using pendant drop tensiometry. J Colloid 
+Interface Sci 2015;454:226–37. https://doi.org/10.1016/j.jcis.2015.05.012.
+[42] Nagarajan R. Measurements of dynamic interfacial tension by an expanding drop 
+tensiometer. 1993.
+[43] Loglio G, Tesei U, Cini R. Measurement of interfacial dilational properties: a 
+software-driven apparatus. Rev Sci Instrum 1988;59(9):2045–50. https://doi. 
+org/10.1063/1.1140023.
+[44] Miller R, Loglio G, Tesei U, Schano KH. Surface relaxations as a tool for studying 
+dynamic interfacial behaviour. Adv Colloid Interface Sci 1991;37(1–2):73–96. 
+https://doi.org/10.1016/0001-8686(91)80039-M.
+[45] Mezger TG. The rheology handbook: 4th edition. Vincentz Network; 2012. 
+https://doi.org/10.1515/9783748600367.
+[46] van Kempen SEHJ, Schols HA, van der Linden E, Sagis LMC. Non-linear surface 
+dilatational rheology as a tool for understanding microstructures of air/water 
+interfaces stabilized by oligofructose fatty acid esters. Soft Matter 2013;9(40): 
+9579. https://doi.org/10.1039/c3sm51770e.
+[47] Sagis LMC, Liu B, Li Y, Essers J, Yang J, Moghimikheirabadi A, et al. Dynamic 
+heterogeneity in complex interfaces of soft interface-dominated materials. Sci Rep 
+2019;9(1):1–12. https://doi.org/10.1038/s41598-019-39761-7.
+[48] Peng D, Jin W, Tang C, Lu Y, Wang W, Li J, et al. Foaming and surface properties 
+of gliadin nanoparticles: influence of pH and heating temperature. Food 
+Hydrocoll 2018;77:107–16. https://doi.org/10.1016/j.foodhyd.2017.09.026.
+[49] Risse K, Bridot JL, Yang J, Sagis L, Drusch S. Tuning interfacial properties of 
+phospholipid stabilised oil–water interfaces by changing the phospholipid 
+headgroup or fatty acyl chain. J Colloid Interface Sci 2025;686(January):203–17. 
+https://doi.org/10.1016/j.jcis.2025.01.215.
+[50] Rühs PA, Scheuble N, Windhab EJ, Fischer P. Protein adsorption and interfacial 
+rheology interfering in dilatational experiment. Eur Phys J Spec Topics 2013;222 
+(1):47–60. https://doi.org/10.1140/epjst/e2013-01825-0.
+[51] Tamm F, Drusch S. Impact of enzymatic hydrolysis on the interfacial rheology of 
+whey protein/pectin interfacial layers at the oil/water-interface. Food Hydrocoll 
+2017;63:8–18. https://doi.org/10.1016/j.foodhyd.2016.08.013.
+[52] Voudouris P, Mocking-Bode HCM, Sagis LMC, Nikiforidis CV, Meinders MBJ, 
+Yang J. Effect of membrane filtration and direct steam injection on mildly refined 
+rapeseed protein solubility, air-water interfacial and foaming properties. Food 
+Hydrocoll 2025;160:110754. https://doi.org/10.1016/j.foodhyd.2024.110754.
+[53] Lucassen J, Van Den Tempel M. Dynamic measurements of dilational properties 
+of a liquid interface. Chem Eng Sci 1972;27(6):1283–91. https://doi.org/ 
+10.1016/0009-2509(72)80104-0.
+[54] Jaishankar A, McKinley GH. Power-law rheology in the bulk and at the interface: 
+quasi-properties and fractional constitutive equations. Proc Royal Soc A 2012;469 
+(2149). https://doi.org/10.1098/rspa.2012.0284. 20120284–20120284.
+[55] Sollich P. Rheological constitutive equation for a model of soft glassy materials. 
+Phys Rev E Stat Phys Plasmas Fluids Relat Interdiscip Topics 1998;58(1):738–59. 
+https://doi.org/10.1103/PhysRevE.58.738.
+[56] Loglio G, Pandolfini P, Miller R, Ravera F. Optical observation of high-frequency 
+drop oscillations by a spectrum compression technique applied to the capillary 
+pressure tensiometry. Langmuir 2009;25(21):12780–6. https://doi.org/10.1021/ 
+la901391y.
+[57] Bykov AG, Liggieri L, Noskov BA, Pandolfini P, Ravera F, Loglio G. Surface 
+dilational rheological properties in the nonlinear domain. Adv Colloid Interface 
+Sci 2015;222:110–8. https://doi.org/10.1016/j.cis.2014.07.006.
+[58] Hyun, K., Wilhelm, M., Klein, C. O., Cho, K. S., Nam, J. G., Ahn, K. H., Lee, S. J., 
+Ewoldt, R. H., & McKinley, G. H. (2011). A review of nonlinear oscillatory shear 
+tests: analysis and application of large amplitude oscillatory shear (LAOS). Prog 
+Polym Sci (Vol. 36, issue 12, pp. 1697–1753). doi:https://doi.org/10.1016/j. 
+progpolymsci.2011.02.002.
+[59] Ferri JK, Fernandes PAL, McRuiz JT, Gambinossi F. Elastic nanomembrane 
+metrology at fluid-fluid interfaces using axisymmetric drop shape analysis with 
+anisotropic surface tensions: deviations from young-Laplace equation. Soft Matter 
+2012;8(40):10352–9. https://doi.org/10.1039/c2sm26604k.
+[60] Klein CO, Theodoratou A, Rühs PA, Jonas U, Loppinet B, Wilhelm M, et al. 
+Interfacial Fourier transform shear rheometry of complex fluid interfaces. Rheol 
+Acta 2019;58(1–2):29–45. https://doi.org/10.1007/s00397-018-01122-y.
+[61] Danov KD, Stanimirova RD, Kralchevsky PA, Marinova KG, Alexandrov NA, 
+Stoyanov SD, et al. Capillary meniscus dynamometry - method for determining 
+the surface tension of drops and bubbles with isotropic and anisotropic surface 
+stress distributions. J Colloid Interface Sci 2015;440:168–78. https://doi.org/ 
+10.1016/j.jcis.2014.10.067.
+[62] Kovalchuk VI, Miller R, Fainerman VB, Loglio G. Dilational rheology of adsorbed 
+surfactant layers-role of the intrinsic two-dimensional compressibility. In: 
+Advances in colloid and interface science. vols. 114–115. Elsevier; 2005. 
+p. 303–12. https://doi.org/10.1016/j.cis.2004.08.007.
+[63] Cho KS, Hyun K, Ahn KH, Lee SJ. A geometrical interpretation of large amplitude 
+oscillatory shear response. J Rheol 2005;49(3):747–58. https://doi.org/10.1122/ 
+1.1895801.
+[64] Hyun K, Wilhelm M. Establishing a new mechanical nonlinear coefficient Q from 
+FT-rheology: first investigation of entangled linear and comb polymer model 
+systems. Macromolecules 2009;42(1):411–22. https://doi.org/10.1021/ 
+ma8017266.
+[65] Slattery J, Sagis L, Oh E. Interfacial transport phenomena. 2nd ed. Springer; 2007. 
+https://doi.org/10.1007/978-0-387-38442-9.
+[66] Rodríguez-Hakim M, Jaensson N, Vermant J. Towards operating windows for 
+pendant drop methods: tensiometry and rheometry of elastic interfaces. Rheol 
+Acta 2025. https://doi.org/10.1007/s00397-025-01493-z.
+[67] Sagis LMCC, Humblet-Hua KNP, van Kempen SEHJHJ. Nonlinear stress 
+deformation behavior of interfaces stabilized by food-based ingredients. J Phys 
+Condens Matter 2014;26(46):9. https://doi.org/10.1088/0953-8984/26/46/ 
+464105.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+16 
+
+[68] Sagis LMC, Ramaekers M, van der Linden E. Constitutive equations for an elastic 
+material with anisotropic rigid particles. Phys Rev E Stat Nonlinear Soft Matter 
+Phys 2001;63(5 I):515041–8. https://doi.org/10.1103/PhysRevE.63.051504.
+[69] Chandran S, Dold S, Buvignier A, Krannig KS, Schlaad H, Reiter G, et al. Tuning 
+morphologies of Langmuir polymer films through controlled relaxations of non- 
+equilibrium states. Langmuir 2015;31(23):6426–35. https://doi.org/10.1021/ 
+acs.langmuir.5b01212.
+[70] Kaganer VM, Hohwald H, Dutta P. Structure and phase transitions in Langmuir 
+monolayers.pdf. Rev Mod Phys 1999;71(3):779–819. https://doi.org/10.1103/ 
+RevModPhys.71.779.
+[71] Staton JA, Stearns SW, Dungan SR. Mechanism of time-dependent adsorption for 
+phosphatidylcholine onto a clean air-water interface from a dispersion of vesicles: 
+effect of temperature and acyl chain length. Langmuir 2019;35(51):16850–61. 
+https://doi.org/10.1021/acs.langmuir.9b02904.
+[72] Gim´enez-Ribes G, Habibi M, Sagis LMC. Interfacial rheology and relaxation 
+behavior of adsorption layers of the triterpenoid saponin Escin. J Colloid Interface 
+Sci 2020;563:281–90. https://doi.org/10.1016/j.jcis.2019.12.053.
+[73] Reinheimer K, Grosso M, Hetzel F, Kübel J, Wilhelm M. Fourier transform 
+rheology as an innovative morphological characterization technique for the 
+emulsion volume average radius and its distribution. J Colloid Interface Sci 2012; 
+380(1):201–12. https://doi.org/10.1016/J.JCIS.2012.03.079.
+[74] de Groot A, Fan Z, Vissers T, Verdouw H, Bollen R, Bijl E, et al. Casein micelle 
+reassembly affects the interfacial properties of fluid-fluid interfaces. J Colloid 
+Interface Sci 2025;686:318–26. https://doi.org/10.1016/J.JCIS.2025.01.235.
+[75] Hinderink EBA, Sagis L, Schro¨en K, Berton-Carabin CC. Behavior of plant-dairy 
+protein blends at air-water and oil-water interfaces. Colloids Surf B Biointerfaces 
+2020;192:111015. https://doi.org/10.1016/j.colsurfb.2020.111015.
+[76] S´anchez-Gonz´alez J, Ruiz-García J, G´alvez-Ruiz MJ. Langmuir-Blodgett films of 
+biopolymers: a method to obtain protein multilayers. J Colloid Interface Sci 2003; 
+267(2):286–93. https://doi.org/10.1016/S0021-9797(03)00754-9.
+[77] Yang Q, Yang J, Waterink B, Venema P, De Vries R, Sagis LMC. Mung bean 
+protein colloid mixtures and their fractions - a novel and excellent foam stabiliser. 
+Food Hydrocoll 2024;155:110174. https://doi.org/10.1016/j. 
+foodhyd.2024.110174.
+[78] Waschatko G, Schiedt B, Vilgis TA, Junghans A. Soybean oleosomes behavior at 
+the air   water interface. J Phys Chem B 2012;116(10832–10841). https://doi. 
+org/10.1021/jp211871v.
+[79] Zhang H, Cui G, Li J. Morphological investigation of mixed protein/phospholipid 
+monolayers. Colloids Surf A Physicochem Eng Asp 2002;201(1–3):123–9. https:// 
+doi.org/10.1016/S0927-7757(01)00879-2.
+[80] Zhou X, Yang J, Sala G, Sagis LMC. Are micelles actually at the interface in 
+micellar casein stabilized foam and emulsions? Food Hydrocoll 2022;129: 
+107610. https://doi.org/10.1016/j.foodhyd.2022.107610.
+[81] Rehage H, Achenbach B, Geest M, Wilhelm Siesler H. Ultrathin dynamic networks 
+formed by the surfactant SPAN 65 at the air-water and oil-water interface. Colloid 
+Polym Sci 2001;279(6):597–606. https://doi.org/10.1007/s003960000461.
+[82] Bridot J-L, Lanevin D, Mullins O. Role of asphaltene origin in its adsorption at oil- 
+water interfaces. Energy Fuel 2022;36(16):8749–59. https://doi.org/10.1021/ 
+acs.energyfuels.2c00966.
+[83] Risse K, Drusch S. (Non)linear interfacial rheology of Tween, Brij and Span 
+stabilized oil-water interfaces: impact of the molecular structure of the surfactant 
+on the interfacial layer stability. Langmuir 2024. https://doi.org/10.1021/acs. 
+langmuir.4c02210.
+[84] Shen P, Yang J, Nikiforidis CV, Mocking-Bode HCM, Sagis LMC. Cruciferin versus 
+napin – air-water interface and foam stabilizing properties of rapeseed storage 
+proteins. Food Hydrocoll 2023;136:108300. https://doi.org/10.1016/j. 
+foodhyd.2022.108300.
+[85] Ma X, van Polen T, Habibi M, Landman J, Sagis LMC, Shen P. Rubisco at 
+interfaces I: conformational flexibility enhances air-water interface and foam 
+stabilization. Food Hydrocoll 2025;160(P1):110783. https://doi.org/10.1016/j. 
+foodhyd.2024.110783.
+[86] Chen Z, Wang G, Qiu R, Zhao P, Ren H, Hu A, et al. Nonlinear rheological 
+behavior and quantitative proteomic analysis of wheat aqueous phase protein at 
+the air-water interface. Food Hydrocoll 2025;168:111565. https://doi.org/ 
+10.1016/j.foodhyd.2025.111565.
+[87] Jin H, Pan J, Yang Y, Zhang Y, Jin Y, Sheng L. Modulation of molecular state and 
+air-water interface adsorption behavior of ovalbumin via interference with its 
+surrounding charge distribution. Food Hydrocoll 2024;152. https://doi.org/ 
+10.1016/j.foodhyd.2024.109907.
+[88] de Groot A, Bijl E, Sagis LMC. Casein network formation at oil–water interfaces is 
+reduced by β-casein and increased by Ca2+. Food Hydrocoll 2025;160(June 
+2024). https://doi.org/10.1016/j.foodhyd.2024.110741.
+[89] Javadi A, Dowlati S, Shourni S, Rusli S, Eckert K, Miller R, et al. Enzymatic 
+hydrolysis of triglycerides at the water–oil interface studied via interfacial 
+rheology analysis of lipase adsorption layers. Langmuir 2021. https://doi.org/ 
+10.1021/acs.langmuir.1c01963.
+[90] García-Moreno PJ, Yang J, Gregersen S, Jones NC, Berton-Carabin CC, Sagis LMC, 
+et al. The structure, viscoelasticity and charge of potato peptides adsorbed at the 
+oil-water interface determine the physicochemical stability of fish oil-in-water 
+emulsions. Food Hydrocoll 2021;115:106605. https://doi.org/10.1016/j. 
+foodhyd.2021.106605.
+[91] Shen Q, Li J, Shen X, Zhu X, Dai J, Tang C, et al. Linear and nonlinear interface 
+rheological behaviors and structural properties of pea protein (vicilin, legumin, 
+albumin). Food Hydrocoll 2023;139. https://doi.org/10.1016/j. 
+foodhyd.2023.108500.
+[92] Keuleyan E, Kergomard J, Boire A, David-Briand E, Vi´e V, Meynier A, et al. The 
+competition between endogenous phospholipids and proteins from pea protein 
+isolate rules their interfacial properties. Food Hydrocoll 2025;168. https://doi. 
+org/10.1016/j.foodhyd.2025.111475.
+[93] Zhan F, Chen Y, Hu J, Youssef M, Korin A, Li J, et al. Combining surface 
+dilatational rheology and quantitative proteomics as a tool for understanding 
+microstructures of air / water interfaces stabilized by sodium caseinate / tannic 
+acid complex. Food Hydrocoll 2020;102(November 2019):105627. https://doi. 
+org/10.1016/j.foodhyd.2019.105627.
+[94] Yang J, Berton-Carabin CC, Nikiforidis CV, van der Linden E, Sagis LMC. 
+Competition of rapeseed proteins and oleosomes for the air-water interface and 
+its effect on the foaming properties of protein-oleosome mixtures. Food Hydrocoll 
+2021;122:107078. https://doi.org/10.1016/j.foodhyd.2021.107078.
+[95] Yang J, Gim´enez-Ribes G, He Q, Habibi M, Sagis LMC. Surface dilatational and 
+foaming properties of whey protein and escin mixtures. Food Hydrocoll 2023; 
+144:108941. https://doi.org/10.1016/j.foodhyd.2023.108941.
+[96] Yang J, Plankensteiner L, De Groot A, Hennebelle M, Sagis LMC, Nikiforidis CV. 
+The role of oleosins and phosphatidylcholines on the membrane mechanics of 
+oleosomes. J Colloid Interface Sci 2025;678:1001–11. https://doi.org/10.1016/j. 
+jcis.2024.09.171.
+[97] Vardar U, Konings G, Yang J, Sagis LMC, Bitter JH, Nikiforidis CV. Modifying the 
+interfacial dynamics of oleosome (lipid droplet) membrane using curcumin. 
+J Colloid Interface Sci 2025;678:1077–86. https://doi.org/10.1016/j. 
+jcis.2024.09.181.
+[98] Bertsch P, Fischer P. Interfacial rheology of charged anisotropic cellulose 
+nanocrystals at the air-water Interface. Langmuir 2019;35(24):7937–43. https:// 
+doi.org/10.1021/acs.langmuir.9b00699.
+[99] Wan Z, Yang X, Sagis LMC. Contribution of long fibrils and peptides to surface 
+and foaming behavior of soy protein fibril system. Langmuir 2016;32(32): 
+8092–101. https://doi.org/10.1021/acs.langmuir.6b01511.
+[100] Cai J, Zhang S, Zheng S, Yang Y, Wan Z, Yang X. Multistep dynamic wetting of soy 
+protein coacervates at hydrophobic interfaces. Food Hydrocoll 2025;159. https:// 
+doi.org/10.1016/j.foodhyd.2024.110616.
+[101] Sun F, Li Z, Kong S, Ma X, Liu Y, Yang N. Linear and nonlinear interfacial rheology 
+of responsive microgels at the oil-water interface. Food Hydrocoll 2025;158. 
+https://doi.org/10.1016/j.foodhyd.2024.110479.
+[102] B¨ottcher S. Interfacial properties of saponins from Quillaja saponaria Molina and 
+their functionality in dispersed systems. April 2017. 2017.
+[103] Gim´enez-Ribes G, Sagis LMC, Habibi M. Interfacial viscoelasticity and aging effect 
+on droplet formation and breakup. Food Hydrocoll 2020;103(December 2019): 
+105616. https://doi.org/10.1016/j.foodhyd.2019.105616.
+[104] Golemanov K, Tcholakova S, Denkov N, Pelan E, Stoyanov SD. Remarkably high 
+surface visco-elasticity of adsorption layers of triterpenoid saponins. Soft Matter 
+2013;9(24):5738. https://doi.org/10.1039/c3sm27950b.
+[105] Rehage H, Achenbach B, Geest M, Siesler HW. Ultrathin dynamic networks 
+formed by the surfactant SPAN 65 at the air ± water and oil ± water 
+interface606; 2001. p. 597–606.
+[106] Tsibranska S, Ivanova A, Tcholakova S, Denkov N. Self-assembly of Escin 
+molecules at the air-water Interface as studied by molecular dynamics. Langmuir 
+2017;33(33):8330–41. https://doi.org/10.1021/acs.langmuir.7b01719.
+[107] Gimenez-Ribes G, Yang J, He Q, Habibi M, Sagis LMC. Self-similarity and Payne 
+effect of whey protein-escin mixtures at the air-water interface. Food Hydrocoll 
+2023;139:108554. https://doi.org/10.1016/j.foodhyd.2023.108554.
+[108] B¨ottcher S, Keppler JK, Drusch S. Mixtures of Quillaja saponin and beta- 
+lactoglobulin at the oil/water-interface: adsorption, interfacial rheology and 
+emulsion properties. Colloids Surf A Physicochem Eng Asp 2017;518:46–56. 
+https://doi.org/10.1016/j.colsurfa.2016.12.041.
+[109] Bos MA, van Vliet T. Interfacial rheological properties of adsorbed protein layers 
+and surfactants: a review. Adv Colloid Interface Sci 2001;91(3):437–71. https:// 
+doi.org/10.1016/S0001-8686(00)00077-4.
+[110] Sagis LM, Yang J. Protein-stabilized interfaces in multiphase food: comparing 
+structure-function relations of plant- and animal-based proteins. Curr Opin Food 
+Sci 2022;43:53–60. https://doi.org/10.1016/j.cofs.2021.11.003.
+[111] Stanimirova RD, Gurkov TD, Kralchevsky PA, Balashev KT, Stoyanov SD, 
+Pelan EG. Surface pressure and elasticity of hydrophobin HFBII layers on the air- 
+water interface: rheology versus structure detected by AFM imaging. Langmuir 
+2013;29(20):6053–67. https://doi.org/10.1021/la4005104.
+[112] Xia W, Botma T, Sagis LMC, Yang J. Selective proteolysis of β-conglycinin as a tool 
+to increase air-water interface and foam stabilising properties of soy proteins. 
+Food Hydrocoll 2022;130:107726. https://doi.org/10.1016/j. 
+foodhyd.2022.107726.
+[113] Yang J, Faber I, Berton-Carabin CC, Nikiforidis CV, van der Linden E, Sagis LMC. 
+Foams and air-water interfaces stabilised by mildly purified rapeseed proteins 
+after defatting. Food Hydrocoll 2020;112:106270. https://doi.org/10.1016/j. 
+foodhyd.2020.106270.
+[114] Hinderink EBA, Meinders MBJ, Miller R, Sagis L, Schro¨en K, Berton-Carabin CC. 
+Interfacial protein-protein displacement at fluid interfaces. Adv Colloid Interface 
+Sci 2022;305(April). https://doi.org/10.1016/j.cis.2022.102691.
+[115] Hinderink EBA, Sagis L, Schro¨en K, Berton-Carabin CC. Sequential adsorption and 
+interfacial displacement in emulsions stabilized with plant-dairy protein blends. 
+J Colloid Interface Sci 2021;583:704–13. https://doi.org/10.1016/j. 
+jcis.2020.09.066.
+[116] Delahaije RJBM, Sagis LMC, Yang J. Impact of particle sedimentation in pendant 
+drop Tensiometry. Langmuir 2022;38:10183–91. https://doi.org/10.1021/acs. 
+langmuir.2c01193.
+K. Risse et al.                                                                                                                                                                                                                                    Advances in Colloid and Interface Science 345 (2025) 103625 
+17 

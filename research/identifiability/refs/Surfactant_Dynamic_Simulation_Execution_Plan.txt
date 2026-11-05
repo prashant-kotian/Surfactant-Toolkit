@@ -1,0 +1,331 @@
+1
+Comprehensive  Operational  Roadmap,  Hardware  Specifications,  Data 
+Mining Protocols, and Task Distribution for Multiscale Dynamic Colloid  
+Simulation
+Short Title: Operational Roadmap for Dynamic Colloid Simulation
+Prashant D. Kotian1,*
+1 The ChemSolver / DevSwarm Research Lab, Mumbai, India
+*Corresponding author: kotian333@gmail.com
+Abstract
+Bridging microscopic surfactant thermodynamics with macroscopic continuum fluid dynamics  
+requires  a  structured  computational  infrastructure,  precise  experimental  validation  datasets,  and  an 
+efficient division of labor between specialized artificial intelligence agents. In this operational roadmap,  
+we delineate the complete technical requirements and execution blueprint for the Surfactant-Dynamics-
+Sim project across four sequential phases. First, we outline the exact data mining requirements, focusing  
+on four primary classes of experimental records: dynamic surface tensiometry (DST), large-amplitude  
+oscillatory dilatational (LAOD) interfacial rheology, microfluidic droplet pinch-off timeseries, and thin  
+liquid film foam drainage isotherms. Second, hardware and software environments are comprehensively  
+specified, detailing the utilization of local Intel Core Ultra 7 CPUs, 8 GB Intel Arc 140V GPUs (for  
+neural operator surrogate acceleration), remote Kaggle GPU environments (for heavy coarse-grained  
+molecular dynamics and Bayesian sampling), and the pre-installed Scilab-Xcos 2025 numerical engine.  
+Third, an operational collaboration framework is established between Antigravity (the local execution  
+and numerical agent) and Arena AI (the browser-based data mining and literature extraction agent),  
+synchronized  through  GitHub  (prashant-kotian/surfactant-dynamics-sim)  and  Google  Drive  
+(kotianinterface@gmail.com).  Finally,  a  rigorous  four-phase  plan  of  action  is  detailed,  providing 
+milestone criteria, numerical convergence tolerances, and journal submission targets for high-impact Q1  
+publications.
+
+2
+Keywords: SurfactantKit, Scilab, Xcos, data mining, Intel Arc GPU, Kaggle GPU, agentic collaboration, 
+interfacial dynamics.
+1. Introduction and Objectives
+The primary objective of the Surfactant-Dynamics-Sim initiative is to establish the first open-
+source, multiscale simulation framework coupling molecular-level surfactant thermodynamic properties  
+with continuum-scale dynamic transport phenomena [1,2]. While standard molecular modeling toolkits  
+and  computational  fluid  dynamics  packages  operate  in  mutual  isolation,  our  integrated  framework 
+bridges this gap by marrying the molecular parameter calculation engine of SurfactantKit with the stiff  
+differential-algebraic equation (DAE) solvers of Scilab-Xcos [3-5].
+To ensure seamless execution, this document serves as the master operational plan. It provides  
+complete specifications for data acquisition, hardware utilization across local and cloud tiers, AI agent  
+task allocations, and a phase-by-phase implementation schedule designed to yield premium scientific  
+publications in premier journals such as Journal of Colloid and Interface Science (JCIS), Chemical  
+Engineering Science (CES), and Colloids and Surfaces A [6-8].
+2. Experimental Data Mining Protocols and Target Datasets
+To  rigorously  validate  the  computational  models  across  all  dynamic  regimes,  experimental 
+datasets must be extracted, digitized, and curated from peer-reviewed literature into standardized JSON  
+and CSV formats [9]. Four core experimental categories are required:
+2.1. Dynamic Surface Tensiometry (DST) Datasets
+Dynamic surface tension curves (gamma(t) versus time) spanning short adsorption times (1  
+millisecond) to long-term equilibrium (10 3 seconds) are required for baseline model calibration [10,11]. 
+Target  surfactant  systems  must  encompass  diverse  molecular  architectures:  (1)  anionic  surfactants, 
+specifically  sodium  dodecyl  sulfate  (SDS)  and  sodium  bis(2-ethylhexyl)  sulfosuccinate  (AOT);  (2) 
+
+3
+cationic  surfactants,  including  cetyltrimethylammonium  bromide  (CTAB)  and  
+dodecyltrimethylammonium bromide (DTAB); (3) nonionic ethoxylated alcohols, such as Triton X-100  
+and  C12E8;  and  (4)  representative  cationic  gemini  surfactants  (alkanediyl-alpha,omega-
+bis(dimethylalkylammonium bromide), 12-s-12 series) [12,13]. For each system, digitized records must  
+capture  temperature,  bulk  concentration  (from  0.01*CMC  to  10*CMC),  maximum  surface  excess 
+(Gamma_inf), molecular headgroup area (a0), and diffusion coefficient (D).
+2.2. Large-Amplitude Oscillatory Dilatational (LAOD) Rheology Datasets
+Interfacial dilatational rheometry records obtained via pulsating bubble or oscillating pendant  
+drop  tensiometers  (e.g.,  Kruss  PAT-1M,  Teclis  Tracker)  provide  complex  viscoelastic  moduli  as 
+functions of angular frequency (omega = 0.05 to 10 rad/s) and strain amplitude (epsilon = Delta A / A0  
+= 0.01 to 0.40)  [14,15]. Mined data must include the storage dilatational modulus (E'), loss modulus  
+(E''), loss angle (theta), and higher harmonic intensity ratios (I_2omega / I_omega, I_3omega / I_omega)  
+to benchmark non-linear viscoelastic distortions [16].
+2.3. Microfluidic Droplet Breakup and Pinch-Off Timeseries
+High-speed microphotographic datasets of droplet generation in planar flow-focusing and T-
+junction  microchannels  provide  critical  validation  for  dynamic  interfacial  area  generation  [17,18]. 
+Extracted  parameters  must  comprise  channel  orifice  dimensions  (width  w  =  20-100  micrometers), 
+continuous and dispersed flow rates (Q_c, Q_d), dynamic capillary numbers (Ca = mu * v / gamma(t)),  
+neck thinning trajectories (h_neck(t) versus time), and resulting droplet polydispersity indices.
+2.4. Thin Liquid Film and Dynamic Foam Lamella Drainage
+Thin  film  balance  (TFB)  interferometric  measurements  of  microscopic  foam  lamellae  
+(Scheludko cell data) are required to validate drainage hydrodynamics [19,20]. Target datasets comprise 
+
+4
+film  thickness  decay  curves  (h(t)  versus  time),  equilibrium  film  thickness  (h_eq),  critical  rupture 
+thickness (h_crit), and disjoining pressure isotherms (Pi(h)) across ionic strengths from 10-4 to 10-1 M.
+Table 1. Summary of target experimental datasets for calibration and validation of dynamic continuum models.
+Experimental 
+Category
+Primary Technique Key  Physical  
+Variables
+Target  Model  
+Surfactants
+Key  Literature  
+Sources
+Dynamic  Surface  
+Tension (DST)
+Maximum  bubble  
+pressure  /  Pendant  
+drop
+gamma(t), 
+Gamma_inf, D, ka, kd
+SDS,  CTAB,  Triton 
+X-100, 12-s-12
+Miller  et  al.  [10], 
+Eastoe et al. [11]
+Interfacial 
+Dilatational Rheology
+Oscillating  drop  
+tensiometry 
+(PAT-1M)
+E'(omega), 
+E''(omega),  theta,  
+harmonics
+SDS,  C12E8,  Beta-
+casein, Geminis
+Lucassen  et  al.  [14], 
+Ravera et al. [15]
+Microfluidic  Droplet  
+Pinch-Off
+High-speed  optical  
+microfluidics
+Q_c/Q_d, Ca(t), neck  
+width, droplet size
+AOT  /  mineral  oil, 
+SDS / hexadecane
+Anna  et  al.  [17], 
+Garstecki et al. [18]
+Thin  Liquid  Film  
+Drainage
+Thin  film  balance  
+(TFB) interferometry
+h(t),  hcrit,  disjoining 
+pressure Pi(h)
+SDS  +  NaCl,  
+C12TAB,  Alkyl  
+polyglucosides
+Exerowa  et  al.  [19], 
+Bergeron et al. [20]
+3. Hardware Specifications and Computational Allocation
+The computational architecture combines local edge processing with high-performance cloud  
+accelerators to optimize turnaround time and numerical efficiency.
+3.1. Local Host Environment: Windows 11 Laptop
+The host workstation is equipped with an Intel Core Ultra 7 256V processor (8 high-IPC physical 
+cores) and 16 GB on-package LPDDR5X memory. This environment hosts Scilab 2025.0.0 and Xcos,  
+utilizing the Intel Math Kernel Library (MKL) for accelerated matrix decompositions and SUNDIALS  
+CVode/IDA numerical integration  [21]. All local Scilab scripts, ODE state-space solvers, and Xcos  
+graphical block diagrams (.zcos) execute directly within this tier.
+3.2. Intel Arc 140V GPU (8 GB) Utilization
+The  integrated  Intel  Arc  140V  GPU,  based  on  the  advanced  Xe2  microarchitecture  with 
+dedicated XMX AI engines, is allocated specifically for local machine learning acceleration [22]. While 
+Scilab itself relies on CPU-bound MKL vectorization, the Intel Arc GPU is harnessed via PyTorch with  
+
+5
+DirectML (torch-directml) or Intel Extension for PyTorch (IPEX) to train and execute Physics-Informed  
+Neural Networks (PINNs) and DeepONet neural operators  [23]. These neural surrogates approximate  
+the non-local Ward-Tordai convolutional integral in sub-millisecond inference times, providing instant  
+property evaluations to the Scilab solver.
+3.3. Remote Cloud GPU Environment: Kaggle Compute
+For tasks exceeding local workstation memory or requiring prolonged multi-GPU parallelism, a  
+dedicated Kaggle cloud account (equipped with dual Nvidia Tesla T4 or P100/A100 accelerators) is  
+utilized [24]. This environment is deployed for: (1) coarse-grained dissipative particle dynamics (DPD)  
+or molecular dynamics (GROMACS) to  compute  structural  micellar  aggregation  numbers; and (2)  
+extensive Markov Chain Monte Carlo (MCMC) Bayesian parameter estimation sweeps across thousands  
+of  experimental  DST  curves.  Job  submissions,  monitoring,  and  artifact  downloads  are  managed 
+programmatically via the Kaggle API.
+3.4. Optional Linux Environment: Windows Subsystem for Linux (WSL2)
+For headless Linux compilation, Modelica C-code generation, and automated regression testing  
+pipelines, Windows Subsystem for Linux (WSL2 Ubuntu 24.04 LTS) is configured on the host machine. 
+This tier ensures platform-independent reproducibility.
+4. Agentic Collaboration and Division of Labor
+To achieve maximum productivity, project workflows are partitioned between two specialized  
+artificial intelligence agents: Antigravity (agy), operating locally on the host machine, and Arena AI,  
+operating within a high-capability browser sandbox [25].
+4.1. Role and Responsibilities of Antigravity (Local Execution Agent)
+Antigravity functions as the core numerical and systems engineering agent. Its responsibilities  
+comprise:  (1)  developing  and  maintaining  Scilab  scripts,  Xcos  block  diagrams,  and  Python-Scilab 
+
+6
+bridging  routines;  (2)  compiling  and  running  local  simulations  via  the  native  Scilab  engine;  (3) 
+managing the Intel Arc GPU for surrogate model training and running Kaggle GPU cloud jobs; (4)  
+maintaining  the  GitHub  repository  (prashant-kotian/surfactant-dynamics-sim);  and  (5)  authoring 
+publication manuscripts strictly compliant with MANUSCRIPT_FORMATTING_SPEC.md.
+4.2. Role and Responsibilities of Arena AI (Browser and Data Mining Agent)
+Arena  AI  functions  as  the  research  intelligence  and  literature  acquisition  agent.  Its  
+responsibilities comprise: (1) querying academic databases (ScienceDirect, ACS, RSC, Springer) to  
+locate target experimental studies; (2) extracting and digitizing graphical data curves from scanned  
+PDFs using automated image processing and WebPlotDigitizer routines; (3) packaging digitized records  
+into curated JSON schema files; and (4) uploading raw papers, literature syntheses, and digitized data  
+tables to the shared Google Drive repository (kotianinterface@gmail.com) and creating pull requests on  
+GitHub.
+4.3. Synchronization Infrastructure
+Bidirectional  communication  between  Antigravity  and  Arena  AI  is  established  across  two 
+channels:  (1)  GitHub  (prashant-kotian/surfactant-dynamics-sim)  serves  as  the  primary  version-
+controlled  codebase  for  models,  scripts,  and  structured  JSON  datasets;  and  (2)  Google  Drive 
+(kotianinterface@gmail.com)  serves as the  storage  repository  for  large  binary files,  high-resolution 
+microscope videos, raw literature PDFs, and intermediate simulation state files.
+Table 2. Task partitioning and synchronization protocols between Antigravity and Arena AI.
+Workflow Dimension Antigravity  (Local  Host  
+Agent)
+Arena  AI  (Browser  
+Sandbox Agent)
+Shared  Synchronization  
+Channel
+Literature Acquisition Receives  curated  PDFs  & 
+schemas
+Discovers,  downloads  &  
+synthesizes papers
+Google  Drive  /  literature/ 
+index
+Data Digitization Benchmarks  digitized  
+values in solvers
+Extracts  (x,  y)  coordinates 
+from PDF figures
+GitHub data/curated/ (JSON 
+format)
+Scilab-Xcos Modeling Authors  &  
+executes .sce / .zcos files
+Reviews  mathematical  
+equations & logic
+GitHub scilab/ repository
+
+7
+GPU Acceleration Intel  Arc  GPU  (local)  & 
+Kaggle GPU (cloud)
+Not  applicable  (browser  
+sandbox only)
+Kaggle  API  /  output  
+checkpoints
+Manuscript Preparation Generates  .docx  &  verifies 
+headless PDF
+Contributes  literature  
+reviews & discussions
+GitHub  docs/  &  Google  
+Drive drafts
+5. Detailed Four-Phase Plan of Action
+The project is structured into four sequential, milestone-driven phases spanning an eight-month  
+development lifecycle.
+5.1. Phase 1: Analytical Verification and Baseline Solvers (Months 1-2)
+Objective:  Establish  the  foundational  Scilab-Xcos  numerical  architecture  and  verify  solver 
+precision against exact analytical solutions.
+Key Deliverables: (1) Construct Xcos state-space block diagrams for diffusion-controlled planar  
+adsorption;  (2)  Benchmark  SUNDIALS  CVode  solver  against  asymptotic  short-time  (gamma(t) 
+proportional to t 0.5) and long-time (gamma(t) proportional to t -0.5) Ward-Tordai solutions; (3) Verify  
+linear Lucassen-van den Tempel (LVDT) viscoelastic limits for small strain amplitudes (epsilon < 0.02);  
+and (4) Initialize the automated continuous integration pipeline on GitHub.
+5.2. Phase 2: Experimental Data Mining and Model Validation (Months 3-4)
+Objective: Ingest digitized experimental datasets from Arena AI and calibrate dynamic kinetic  
+parameters across model surfactant classes.
+Key  Deliverables:  (1)  Arena  AI  curates  50+  benchmark  DST  and  LAOD  datasets  into 
+data/curated/; (2) Antigravity executes non-linear least-squares fitting in Scilab to extract kinetic rate  
+constants (ka, kd) and micellar relaxation times (tau1, tau2); (3) Validate dynamic surface tension  
+predictions against Kruss PAT-1M measurements for SDS, CTAB, and Triton X-100; and (4) Deploy  
+Intel Arc GPU surrogate models for real-time Ward-Tordai convolution.
+5.3. Phase 3: Non-Equilibrium Discovery and Parameter Sweeps (Months 5-6)
+
+8
+Objective:  Explore  unmapped  physical  regimes,  identify  novel  non-linear  phenomena,  and 
+construct predictive engineering regime maps.
+Key Deliverables: (1) Map higher-order Fourier harmonic distortion (2*omega, 3*omega) under  
+large-amplitude area oscillations (epsilon = 0.20-0.50); (2) Simulate dynamic Marangoni tip-streaming  
+in microfluidic junctions, identifying critical Capillary numbers (Ca_crit) governing satellite droplet  
+suppression; (3) Model acoustic resonance in thin liquid film drainage, predicting subharmonic rupture  
+frequencies; and (4) Execute multi-GPU Bayesian sensitivity analyses on Kaggle.
+5.4. Phase 4: Manuscript Preparation and Journal Submission (Months 7-8)
+Objective: Package theoretical formulations, simulation codes, and experimental validations into  
+peer-reviewed manuscripts.
+Key  Deliverables:  (1)  Author  Manuscript  1  on  Non-linear  LAOD  Rheology  for  Journal  of 
+Colloid and Interface Science (JCIS); (2) Author Manuscript 2 on Microfluidic Marangoni Droplet  
+Breakup for Chemical Engineering Science (CES); (3) Publish open-source software release on GitHub  
+with  full  documentation  and  interactive  examples;  and  (4)  Verify  all  manuscripts  against  
+MANUSCRIPT_FORMATTING_SPEC.md.
+6. Conclusion and Immediate Next Steps
+This  operational  roadmap  provides  an  unambiguous,  rigorous  framework  for  transforming 
+SurfactantKit and Scilab-Xcos into an internationally recognized computational platform for dynamic  
+colloid science. By combining local Intel hardware and cloud GPU acceleration with a disciplined  
+division of labor between Antigravity and Arena AI, the project is uniquely positioned to produce  
+reproducible, high-impact scientific discoveries.
+Immediate  Action  Items:  (1)  Clone  the  newly  initialized  GitHub  repository  
+(prashant-kotian/surfactant-dynamics-sim);  (2)  Establish  the  shared  Google  Drive  directory  
+
+9
+(kotianinterface@gmail.com); (3) Dispatch Arena AI to begin data mining of baseline DST literature for  
+SDS, CTAB, and Triton X-100; and (4) Implement Phase 1 analytical Ward-Tordai benchmark tests in  
+Scilab.
+7. References
+[1] M. J. Rosen, J. T. Kunjappu, Surfactants and Interfacial Phenomena, 4th ed., John Wiley & Sons,  
+Hoboken, NJ, 2012.
+[2] D. Myers, Surfactant Science and Technology, 4th ed., John Wiley & Sons, Hoboken, NJ, 2020.
+[3] P.  D.  Kotian,  SurfactantKit:  A  Comprehensive  Python  Framework  for  Molecular  Colloid 
+Thermodynamics and Interfacial Transport, The ChemSolver, 2026.
+[4] Scilab Enterprises, Scilab: Open Source Software for Numerical Computation, Version 2025.0.0,  
+Dassault Systemes, 2025.
+[5] S. L. Campbell, J. P. Chancelier, R. Nikoukhah, Modeling and Simulation in Scilab/Scicos with  
+ScicosLab 4.4, 2nd ed., Springer, New York, NY, 2010.
+[6] R. Miller, V. B. Fainerman, A. V. Makievski, J. Kragel, D. O. Grigoriev, F. Ravera, L. Liggieri,  
+Dynamics of adsorption of surfactants and proteins, Adv. Colloid Interface Sci. 86 (2000) 39-82.
+[7] H. A. Stone, Dynamics of drop deformation and breakup in viscous flows, Annu. Rev. Fluid Mech.  
+26 (1994) 65-102.
+[8] P. Stevenson, Foam Engineering: Fundamentals and Applications, John Wiley & Sons, Chichester,  
+2012.
+[9] J. Eastoe, J. S. Dalton, Dynamic surface tension and adsorption mechanisms of surfactants at the air-
+water interface, Adv. Colloid Interface Sci. 85 (2000) 103-144.
+[10] R. Miller, J. K. Ferri, A. Javadi, E. V. Aksenenko, N. Mucic, V. B. Fainerman, Rheology of  
+interfacial layers, Colloid Polym. Sci. 288 (2010) 937-950.
+
+10
+[11] J.  Eastoe,  P.  Rogueda,  D.  Harrison,  A.  M.  Howe,  A.  R.  Pitt,  Dynamic  surface  tensions and 
+adsorption kinetics of novel ionic gemini surfactants, Langmuir 13 (1997) 6489-6494.
+[12] R. Zana, Gemini surfactants: a new class of self-assembling molecules, Adv. Colloid Interface Sci.  
+97 (2002) 205-253.
+[13] F. M. Menger, C. A. Keiper, Gemini surfactants, Angew. Chem. Int. Ed. 39 (2000) 1906-1920.
+[14] J. Lucassen, M. van den Tempel, Dynamic measurements of surface dilatational properties of  
+surfactant solutions, Chem. Eng. Sci. 27 (1972) 1283-1291.
+[15] F. Ravera, M. Ferrari, L. Liggieri, R. Miller, A. Passerone, Measurement of the surface dilatational  
+properties of adsorbed surfactant layers, Langmuir 16 (2000) 9878-9884.
+[16] E. H. Lucassen-Reynders, Interfacial Rheology, Marcel Dekker, New York, NY, 1981.
+[17] S.  L.  Anna,  N.  Bontoux,  H.  A.  Stone,  Formation  of  dispersions  using  flow  focusing  in 
+microchannels, Appl. Phys. Lett. 82 (2003) 364-366.
+[18] P. Garstecki, M. J. Fuerstman, H. A. Stone, G. M. Whitesides, Formation of droplets and bubbles in  
+a microfluidic T-junction—scaling and mechanism of break-up, Lab Chip 6 (2006) 437-446.
+[19] D.  Exerowa,  P.  M.  Kruglyakov,  Foams  and  Foam  Films:  Theory,  Experiment,  Application, 
+Elsevier, Amsterdam, 1998.
+[20] V. Bergeron, Forces and structure in thin liquid films, J. Phys.: Condens. Matter 11 (1999) R215-
+R238.
+[21] A.  C.  Hindmarsh,  P.  N.  Brown,  K.  E.  Grant,  S.  L.  Lee,  R.  Serban,  D.  E.  Shumaker,  C.  S. 
+Woodward, SUNDIALS: Suite of nonlinear and differential/algebraic equation solvers, ACM Trans.  
+Math. Softw. 31 (2005) 363-396.
+[22] Intel Corporation, Intel Arc Graphics Architecture White Paper, Intel Corporation, Santa Clara, CA, 
+2024.
+
+11
+[23] L.  Lu,  P.  Jin,  G.  E.  Karniadakis,  DeepONet:  Learning  nonlinear  operators  for  identifying 
+differential equations based on the universal approximation theorem of operators, Nat. Mach. Intell. 3  
+(2021) 218-229.
+[24] Kaggle Inc., Kaggle Compute Platform Architecture and API Reference, Google LLC, 2025.
+[25] J. S. Brown, Collaborative Multi-Agent Architectures for Autonomous Scientific Discovery, AI  
+Open 4 (2023) 112-125.

@@ -1,0 +1,279 @@
+S1
+Supporting Information for
+“Entropy-Regulated Dynamics of Surface Tension: Coupling Langmuir 
+Kinetics with High-Precision Tensiometry”
+Khaldoun A. Al-Sou’od
+Department of Chemistry, Al al-Bayt University, Mafraq 25113, Jordan
+Email: khaldoun@aabu.edu.jo | Tel: +962-79-5861350 | Fax: +962-2-6297025
+Eqs. S1–S12  Kinetic and Thermodynamic Derivations  
+Table S1 Physical Properties of Liquids  
+Table S2 Calibration Statistics for K20 Tensiometer  
+Table S3  Fitted parameters for γ(T) and γ(C) correlations
+Table S4 γ(t) Fit Diagnostics and Residual Tests  
+Table S5a Uncertainty Propagation  
+Table S5b Sensitivity Coefficients  
+Table S6 Model Performance Summary
+Figure S1  Surface tension (γ) as a function of temperature (T) for water, ethanol, and water + 
+ionic liquid systems measured using the K20 tensiometer
+    𝐸𝑞. 𝑆1[1 ― 𝑒―(𝑘𝑎𝐶𝑏+𝑘𝑑)𝑡] 𝑘𝑎𝐶𝑏
+𝑘𝑎𝐶𝑏+𝑘𝑑
+𝛤∞  ―𝑅𝑇𝛾0 = (𝑡)𝛾.
+𝑘𝑎 = 𝑘𝑎,0 𝑒𝑥𝑝 ― 𝐸𝑎―𝑇𝛥𝑆𝑎𝑅𝑇 ,    𝑘𝑑 = 𝑘𝑑,0 𝑒𝑥𝑝 ― 𝐸𝑑―𝑇𝛥𝑆𝑑𝑅𝑇   𝐸𝑞. 𝑆2
+𝑆𝑔𝑒𝑛 = 𝑱𝑞 ∇  1𝑇 ― 𝑱𝑚 ∇ 𝜇𝑇   𝐸𝑞. 𝑆3
+𝑑𝑆𝑔𝑒𝑛
+𝑑𝑡 = 0  ⇒   𝑘𝑎𝑘𝑑 = 𝛤𝑒𝑞𝐶𝑏 𝛤∞ ― 𝛤𝑒𝑞 ≡ 𝐾 = 𝑒𝑥𝑝 ― ∆𝐺𝑎𝑑𝑠𝑅𝑇 = 𝑒𝑥𝑝 ∆𝑆𝑎𝑑𝑠𝑅𝑇 𝑒𝑥𝑝 ― ∆𝐻𝑎𝑑𝑠𝑅𝑇  𝐸𝑞. 𝑆4
+𝑑𝜃
+𝑑𝜏 = 𝐷𝑎𝛾(1 ― 𝜃) ― 𝜃    𝐸𝑞. 𝑆5
+𝜃𝑒𝑞   =   
+𝐷𝑎𝛾
+1 + 𝐷𝑎𝛾
+,𝜃(𝜏)   =   𝜃𝑒𝑞   +    𝜃(0) ― 𝜃𝑒𝑞  𝑒― 1+𝐷𝑎𝛾 𝜏     𝐸𝑞.𝑆6
+Steady state: 𝛾(∞,𝑇,𝐶𝑏) = 𝛾0(𝑇) ― 𝑅𝑇 𝛤∞ 
+𝑘𝑎(𝑇)𝐶𝑏
+𝑘𝑎(𝑇)𝐶𝑏+𝑘𝑑(𝑇)            Eq.  S7
+
+S2
+Initial slope (clean surface): 
+𝑑𝛾
+𝑑𝑡 ∣𝑡=0 = ―𝑅𝑇 𝛤∞ 𝑘𝑎(𝑇) 𝐶𝑏                Eq.  S8
+𝑢2𝛾 = ( ∂𝛾∂𝐹  𝑢𝐹)2 + ( ∂𝛾∂𝐿  𝑢𝐿)2 + ( ∂𝛾∂𝜃  𝑢𝜃)2 + ( ∂𝛾∂𝑇  𝑢𝑇)2 Eq.  S9
+𝛾(𝑡,𝑇,𝐶𝑏) = 𝛾0(𝑇) ― 𝑅𝑇 𝛤∞[ 𝑘𝑎(𝑇)𝐶𝑏𝑘𝑎(𝑇)𝐶𝑏+𝑘𝑑(𝑇)][1 ― 𝑒―(𝑘𝑎(𝑇)𝐶𝑏+𝑘𝑑(𝑇))𝑡    Eq. S10 9,12,13
+𝑙𝑛 𝑘𝑖
+𝑇 = 𝑙𝑛 𝑘𝐵𝑇 + 𝛥𝑆‡𝑖𝑅 ― 𝛥𝐻‡𝑖𝑅   𝑖 𝜖 {𝑎,𝑑} Eq.  S1123–25
+𝐷𝑎𝛾 = 𝑘𝑎𝐶𝑏𝑘𝑑 Eq.  S12
+Table S1.  Physical properties of the studied liquids
+Liquid Density (g cm⁻³) Viscosity (mPa·s) Purity (%) Temperature 
+(°C)
+Method
+Water 0.998 ± 0.001 1.00 ± 0.01 99.99 25 ± 0.1 Wilhelmy plate
+Ethanol 0.789 ± 0.002 1.20 ± 0.02 99.8 25 ± 0.1 Du Noüy ring
+Toluene 0.867 ± 0.002 0.59 ± 0.02 99.9 25 ± 0.1 Du Noüy ring
+n-Decane 0.730 ± 0.002 0.92 ± 0.02 99.5 25 ± 0.1 Wilhelmy plate
+Table S2†. Calibration statistics for K20 force tensiometer
+Reference Liquid Measured γ (mN m⁻¹) Literature γ (mN m⁻¹) Deviation (%) R²
+Water 72.80 ± 0.05 72.80 ± 0.05 0.0 0.999
+Ethanol 22.30 ± 0.08 22.27 ± 0.05 0.1 0.998
+Toluene 28.50 ± 0.07 28.52 ± 0.05 −0.1 0.996
+n-Decane 23.80 ± 0.06 23.83 ± 0.05 −0.1 0.997
+†Calibration statistics for K20 force tensiometer. K20 Force Tensiometer (KRÜSS), microbalance resolution ±0.01 
+µN; Pt100 temperature probe verification ±0.05 °C; measurements at 25 ± 0.1 °C under a closed draft shield.
+Table S3. Fitted parameters for γ(T) and γ(C) correlations
+System Model Type Parameter k 
+(mN m⁻¹ K⁻¹)
+γ₀ (mN 
+m⁻¹)
+R² Remarks
+Water Linear (γ = γ₀ − kT) 0.150 72.8 0.999 Excellent linearity over 20–60 
+°C
+Ethanol Linear 0.070 22.3 0.997 Slightly lower slope; weaker T-
+dependence
+Water + IL 
+(1 mM)
+Linear 0.100 68.0 0.998 Reduced γ₀ due to IL 
+adsorption
+SDS 
+solution
+γ–C empirical — — 0.996 CMC ≈ 3.5 mM determined 
+graphically
+Table S4. Fit quality and residual diagnostics for equilibrium surface tension (γeq) as a function of 
+bulk concentration (Cb) and temperature (T) for SDS and SDS + [EMIM][BF₄]. Reported statistics 
+are coefficient of determination (R²), root-mean-square error (RMSE), mean absolute error 
+(MAE), maximum absolute residual, number of data points (N), Durbin–Watson (DW) statistic, 
+Shapiro–Wilk p-value, and lag-1 autocorrelation of residuals ACF(1). All γ eq values are in 
+
+S3
+mN·m⁻¹; concentrations in mol·L⁻¹; temperature in °C. Filtering applied as indicated. τ obtained 
+from single-exponential fits (τ = 1/k).
+System T 
+(°
+C)
+Cb 
+(M
+)
+γeq 
+(mN/
+m)
+R² RMS
+E 
+(mN/
+m)
+MAE 
+(mN/
+m)
+Max 
+|Resid
+ual| 
+(mN/
+m)
+N 
+poi
+nts
+DW 
+statis
+tic
+Shap
+iro p
+ACF
+(1)
+Filter τ 
+(s)
+SDS 10 1.0
+E-5
+44.92 0.99
+67
+0.102 0.081 0.312 356 2.08 0.54 -0.03 Savitz
+ky–
+Golay 
+(7, 
+poly=
+3)
+3.
+80
+SDS 25 1.0
+E-4
+43.68 0.99
+21
+0.148 0.120 0.441 318 1.88 0.73 0.04 Savitz
+ky–
+Golay 
+(7, 
+poly=
+3)
+1.
+70
+SDS 40 1.0
+E-3
+41.44 0.98
+98
+0.186 0.152 0.558 274 1.74 0.22 0.09 Savitz
+ky–
+Golay 
+(7, 
+poly=
+3)
+0.
+85
+SDS + 
+[EMIM][
+BF₄] (5 
+mM)
+25 1.0
+E-4
+42.96 0.99
+54
+0.095 0.072 0.284 401 2.11 0.67 -0.02 Savitz
+ky–
+Golay 
+(7, 
+poly=
+3)
+1.
+20
+SDS + 
+[EMIM][
+BF₄] (5 
+mM)
+40 1.0
+E-3
+40.72 0.98
+79
+0.210 0.166 0.601 288 1.83 0.31 0.11 Savitz
+ky–
+Golay 
+(7, 
+poly=
+3)
+0.
+62
+Notes: Savitzky–Golay filter window (points) and polynomial order in parentheses. DW≈2 
+implies minimal first-order autocorrelation; |ACF(1)|<0.1 indicates weak lag-1 dependence. 
+Shapiro p>0.05 suggests approximately normal residuals.
+Table S5a. Uncertainty propagation terms and component-wise contributions to γ.
+Uncertainty budget for γ including instrument noise (σinst), baseline drift slope (βdrift), temperature 
+uncertainty (σT), density and ring-correction factors, and timing resolution. For each component, 
+the nominal value, unit, sensitivity coefficient (∂γ/∂x), and contribution (mNm⁻¹) are reported. The 
+combined standard uncertainty 𝑢𝑐is computed by root-sum-of-squares per Eq. S9.
+Component Symbol Nominal Unit Sensitivity 
+(∂γ/∂x)
+Sensitivity 
+Unit
+Contribution 
+(mN/m)
+Contribution²
+Instrument 
+noise
+σinst 0.10 mN/m 1.00 ∂γ/∂σinst 0.100 0.010000
+
+S4
+Baseline drift 
+slope
+βdrift 0.001 mN/m·s 30.00 ∂γ/∂βdrift (s) 0.030 0.000900
+Temperature 
+uncertainty
+σT 0.10 °C 0.12 |∂γ/∂T| 
+(mN/m·°C⁻¹)
+0.012 0.000144
+Density 
+correction 
+factor
+σρ 0.20 % 0.30 mN/m per % 0.060 0.003600
+Ring 
+correction 
+factor
+σkcorr 0.002 — 10.00 mN/m per 
+unit
+0.020 0.000400
+Timing 
+resolution 
+(dynamic fits)
+σt 0.10 s 0.05 mN/m per s 0.005 0.000025
+Σ = 0.015069
+Combined 
+standard 
+uncertainty
+uc mN/m 𝑢𝑐 = ∑𝑐2𝑖 0.123
+Assumptions: |∂γ/∂T| ≈ 0.12 mN m⁻¹ °C⁻¹ near 25 °C; drift contribution computed over a 
+representative 30 s window for dynamic runs.
+Table S5b. Local sensitivity coefficients for fitted parameters (ka, kd, Γ∞).
+Parameter Ref Value Unit ∂lnk/∂T (K⁻¹) ∂lnk/∂lnCb ∂lnk/∂lnη ∂lnk/∂lnI
+ka 0.12 s⁻¹·M⁻¹ 0.018 0.65 -0.30 0.12
+kd 0.004 s⁻¹ 0.010 0.02 0.15 -0.05
+Γ∞ 3.1 µmol·m⁻² -0.004 0.08 0.05 0.03
+Table S6. Summary of model performance and statistical metrics
+Model Type Mean Absolute 
+Error (MAE)
+Standard 
+Deviation (SD)
+Predictive 
+Range (°C)
+R² Remarks
+Linear (γ = γ₀ − 
+kT)
+0.24 0.28 20–60 0.998 Excellent fit for pure liquids
+Exponential (γ = 
+γ∞ + A e⁻ᵏᵗ)
+0.18 0.21 10–60 0.997 Best agreement with 
+relaxation data
+Empirical γ–C 0.30 0.33 0–10 mM 0.996 Slight deviation near CMC 
+region
+Arrhenius (ln k = 
+−Eₐ/RT + ln A)
+0.22 0.27 293–333 K 0.995 Consistent linearity for 
+kinetic parameters
+
+S5
+Figure S1  Surface tension (γ) as a function of temperature (T) for water, ethanol, and water + 
+ionic liquid systems measured using the K20 tensiometer
+15
+25
+35
+45
+55
+65
+75
+15 25 35 45 55 65
+Water
+Ethanol
+Water + 1L
+Surface tension,  (mN m-1)
+Temperature, T (oC)

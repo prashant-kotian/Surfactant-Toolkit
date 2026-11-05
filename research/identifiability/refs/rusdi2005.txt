@@ -1,0 +1,499 @@
+Micelle Formation and Surface Adsorption of Octaethylene
+Glycol Monoalkyl Ether (C nE8)
+Muhammad Rusdi, /C3 Yoshikiyo Moroi, /C3;1 Thein Hlaing, 1 and Keisuke Matsuoka 1
+Laboratory of Physical Chemistry, Faculty of Education (FKIP), Jambi University, Jambi 36361, Indonesia
+1Chemistry and Physics of Condensed Matter, Graduate School of Sciences, Kyushu University-Ropponmatsu,
+Fukuoka 810-8560
+Received September 14, 2004; E-mail: moroiscc@mbox.nc.kyushu-u.ac.jp
+The surface tension was measured against the concentration of C nE8 (n ¼ 14, 16, and 18) at temperatures of 298.2,
+303.2, 308.2, 313.2, and 318.2 K, from which the critical micelle concentration (CMC) was determined. The CMC de-
+creased with increasing carbon number at lower temperatures, where the decreasing rate became much smaller at higher
+temperatures. The CMC values were examined by pyrene ﬂuorescence, and the I1=I3 ratio of the pyrene spectrum steeply
+decreased below the CMC, and ﬁnally reached a plateau at higher surfactant concentrations. The I1=I3 ratios indicate that
+the microenvironment of pyrene in the micellar region becomes more hydrophobic with increasing the alkyl chain of
+CnE8. The aggregation number by a static light-scattering method increased with increasing the alkyl chain at a deﬁnite
+temperature and with raising the temperature for all of the surfactants. The thermodynamic parameters ( /C1G/C14, /C1H/C14,
+T/C1S/C14) of the micelle formation were calculated from the temperature dependence of CMC and the aggregation number,
+and the micellization was found to be entropy-driven. The surface excess concentration ( /C0) was also determined from the
+change in the surface tension with the concentration from which the molecular surface area ( A) below the CMC was
+evaluated. The molecular surface areas suggest that longer monoalkyl ethers form a bi-molecular layer with the hydro-
+phobic tail intruding inwards. The positive entropy change ( /C1s) for the surface adsorption decreased and stayed almost
+constant with increasing concentration for C 14E8 and C16E8, while the change remained almost zero for C 18E8 at whole
+concentrations below the CMC. These results suggest that the non-fully extended alkyl chain in the bulk could not well
+contribute to a positive entropy change upon adsorption, which results in a smaller decreasing rate in CMC with increas-
+ing carbon number of alkylchain for C 16E8 and C 18E8 compared with the decreasing rate for C nE8 with n less than 14.
+Many results have been reported in the literature dealing
+with the critical micelle concentration (CMC) of both ionic
+and nonionic surfactants as a function of the temperature by
+using a variety of experimental techniques. 1–3 In general, the
+dependence of CMC on the temperature for an ionic surfactant
+shows a U-shaped curve with a minimum around room temper-
+ature.4,5 However, in the case of nonionic surfactants, there are
+several trends in the CMC dependence on the temperature, i.e.,
+decreasing with increasing temperature, 6 monotonous increas-
+ing with increasing temperature, 7 having a maximum at a cer-
+tain temperature ( /C3-shape),8 and having a minimum similar to
+ionic surfactants. 9 The thermodynamic parameters of micelli-
+zation, therefore, have shown various values.
+In the surface-adsorption process, nonionic surfactants have
+also demonstrated a variety of trends of surface excess with the
+temperature, i.e., increasing with raising the temperature 10,11 or
+decreasing with raising the temperature. 7,11 Moreover, the en-
+tropy change also showed a variety of trends on the concentra-
+tion, i.e., increasing with increasing concentration 12 or de-
+creasing with increasing concentration. 4 This means that the
+temperature dependence of the surface excess and the entropy
+change for a nonionic surfactant are still controversial. These
+changes can be explained by following three eﬀects accompa-
+nied by the adsorption process. First, the systematic orientation
+of surfactant molecules at an interfacial region gives rise to a
+decrease in the entropy change. Second, dehydration of the
+head group and the melting of iceberg water molecules around
+hydrophobic tail provide a positive entropy change. Third, a
+thermal solubility increase of the monomer prevents micelle
+formation. These eﬀects also play an important role in the mo-
+lecular aggregation in bulk, and lead to a complicated phase
+behavior of nonionic surfactants. 13 The object of the present
+investigation is experimentally to determine the thermodynam-
+ic parameters of both micellization and surface adsorption of
+polyethylene glycol n-alkyl ethers with the same ethylene ox-
+ide chain, but diﬀerent long alkyl chains from C14 to C18.
+Experimental
+Materials. Octaethylene glycol monoalkyl ethers (C nE8,
+n ¼ 14, 16, and 18) were purchased from Nikkol Chemical Co.,
+Ltd (>99%), and were used as received, because the gas chroma-
+tograph attached for purity certiﬁcation had only one sharp peak
+for each surfactant. The purity was further checked by an elemen-
+tal analysis in percentage: C, 63.60 (63.42); H, 10.95% (11.01) for
+C14E8, C, 64.65 (64.52); H, 11.11% (11.12) for C 16E8, and C,
+65.59 (65.49); H, 11.25% (11.33) for C 18E8, where the values in
+parentheses are the calculated ones.
+Methods. The surface tension of a surfactant solution was
+measured by a drop volume method as a function of the temper-
+ature at various concentrations under atmospheric pressure. After
+ca. 80% of the total drop volume was left standing for adsorption
+equilibrium, the total volume was determined. The temperature
+604 Bull. Chem. Soc. Jpn., 78, 604–610 (2005) /C211 2005 The Chemical Society of Japan
+Published on the web April 8, 2005; DOI 10.1246/bcsj.78.604
+
+was controlled within /C60:01 K by immersing the apparatus in a
+thermostat. The experimental error for the surface tension was
+/C60:05 mN m/C01. Surface-tension measurements of the C nE8 solu-
+tions were made over the temperature range 298.2–318.2 K. A pe-
+riod of time between 40 min and 1 h was taken for equilibrium
+readings. This time interval is acceptable for lower surfactant con-
+centrations to reach their equilibrium surface adsorption.
+A stock solution of C nE8 was introduced stepwise into a satu-
+rated solution of pyrene, whose concentration was about 4 /C2 10/C07
+mol dm/C03. The ﬂuorescence-emission spectra were monitored
+with a ﬂuorescence photometer (Hitachi model 650-60), where
+the temperature was 298:2 /C6 0:3 K. The excitation and emission
+slit widths were 5 and 1.5 nm, respectively, where the excitation
+wavelength was 336 nm. The I1=I3 ratio of the pyrene ﬂuores-
+cence spectrum was plotted against the C nE8 concentrations.
+A static light-scattering measurement was made using a laser
+light-scattering photometer (Otsuka Denshi, SLS 600). The light
+source was a 5 mW He–Ne laser, and the wavelength was 633
+nm. The temperature was controlled within /C60:3 K at 298.2,
+308.2, and 318.2 K by circulating thermostated water. The instru-
+ment was calibrated using puriﬁed benzene. C nE8 solutions were
+ﬁltrated through a membrane ﬁlter having a pore size of 0.1 mm
+(Millex-VV). The speciﬁc refractive-index increments of the solu-
+tions were measured using a diﬀerential refractometer (Otsuka
+Denshi DRM-1020). The light source was a 20-mW iodine lamp
+having a wavelength of 632.8 nm.
+The cloud points of the surfactant solutions were determined
+visually by noting the temperature at which turbidity started to
+be observed, where the surfactant concentration was 100-times
+the CMC.
+Results and Discussion
+CMC and Aggregation Number. The surface tensions
+were plotted against the logarithm of the concentration, as
+shown in Figs. 1, 2, and 3 for C 14E8,C 16E8, and C18E8, respec-
+tively. Figure 4 illustrates the surface tension change against
+the logarithm of the C nE8 concentration at 298.2 K for com-
+paring these three surfactants; a similar trend was also ob-
+served at other temperatures. It is quite interesting that the sur-
+face activity at lower concentrations became less for a longer
+alkyl chain homologue, which suggests that a longer alkyl
+chain is not fully extended. The critical micelle concentration
+(CMC) at diﬀerent temperatures was determined from a sharp
+break in the above changes; the results are given in Table 1.
+The CMC values slightly decreased with increasing tempera-
+ture over the temperature range from 298.2 to 308.2 K, and
+then remained almost constant for C 14E8 and C 16E8, while
+those for C 18E8 stayed almost the same at all temperatures.
+These changes were caused by the fact that increasing dehy-
+Fig. 1. Change of surface tension with C 14E8 concentration.
+Fig. 2. Change of surface tension with C 16E8 concentration.
+Fig. 3. Change of surface tension with C 18E8 concentration.
+Fig. 4. Change of surface tension with C nE8 concentration
+at 298.2 K.
+M. Rusdi et al. Bull. Chem. Soc. Jpn., 78, No. 4 (2005) 605
+
+dration of the head group with temperature worked more to de-
+crease the CMC than thermal motion to increase the CMC at
+lower temperatures for the shorter surfactants. On the other
+hand, increasing hydrophobic dehydration seems to have been
+compensated by the above increasing thermal motion at higher
+temperatures, resulting in the stationary values of CMC. At the
+same time, the CMC change with alkyl chain length was found
+to be very small, which clearly indicates that the hydrophobic
+group was not fully extended and did not totally contribute to
+the micellization of C 16E8 and C 18E8 (see Fig. 5).
+The CMC values of C nE8, whose carbon number is from 6
+to 14 (Ref. 14), are plotted together with the present experi-
+mental values in Fig. 5, where the CMC values in the refer-
+ence were determined by a surface-tension method, and are in-
+terpolated or extrapolated ones with regards to the number of
+ethylene oxides using the reference data. From the ﬁgure, the
+CMC value of C 14E8 is just on a line for the relationship be-
+tween the logarithm of CMC and the carbon number for the
+shorter homologues. On the other hand, the linear relationship
+observed from 6 to 14 is not applicable to the CMC’s of C 16E8
+and C18E8. This might be caused by the fact that the longer al-
+kyl chain was not fully extended. A similar behavior has been
+observed, where the logarithm of the partition coeﬃcient of
+fatty acids between aqueous solution and organic solvent lin-
+early increased from C7 up to C14, while the logarithm values
+for C16 to C18 deviated downwards from the linearity. 15 The
+above observations strongly suggest that a transition in the
+shape of a long alkyl chain from a fully extended to a looped
+state at a certain chain length is highly possible, as the result of
+an intramolecular hydrophobic interaction. Such a hydropho-
+bic interaction would reduce the hydrophobic eﬀects of an in-
+dividual molecule for transfer into an organic medium or for
+dimerization.15 These phenomena are discussed again latter.
+The CMC dependence of C nE8 was also compared with
+those of n-alkanesulfonic acid, whose carbon number changed
+from 12 to 22 (Fig. 5). The result showed that a linear relation-
+ship was maintained up to 22 carbon atoms for the n-alkane-
+sulfonic acids at 342.2 K. 16 This was due to a long-range elec-
+trostatic repulsive force between ionic head groups of n-
+alkanesulfonic acid. Therefore, lnCMC was able to linearly
+decrease up to carbon numbers of 22. From the linear relation-
+ship between lnCMC and the carbon number of alkyl chain,
+the contribution of CH 2 group to /C1G/C14 of micellization could
+be obtained. 17,18 This is mentioned later.
+The CMC values were examined by the pyrene ﬂuorescence
+spectrum (I1=I3) in Fig. 6, where the CMC values from surface
+tension are shown by dashed lines. The I1=I3 ratio slowly de-
+creased below the CMC and then rapidly above it for C 14E8,
+while it sharply decreased for C 16E8 and C18E8 with increasing
+the concentration, even at concentrations below the CMC. This
+fact suggests that there exists a weak association among C nE8
+monomers or a looped alkyl chain of the monomers, at concen-
+trations below the CMC for C 16E8 and C 18E8. The ratio grad-
+ually decreased above the CMC, and ﬁnally reached a plateau
+at higher surfactant concentrations for C nE8. This behavior can
+suggest the following two possibilities: (i) pyrene is associated
+with a looped alkyl chain or with some kind of premicellar ag-
+gregates of C nE8 at lower concentrations than the CMC, and
+the aggregates grow in size with increasing concentrations
+Table 1. The CMC and the Aggregation Number of C nE8 at
+Several Temperatures
+Compound Temperature CMC /C2 105 Aggregation number
+K mol dm /C03 //C21000
+C14E8 298.2 1.81 1.34
+303.2 1.72 —
+308.2 1.67 1.74
+313.2 1.67 —
+318.2 1.67 3.60
+C16E8 298.2 1.60 2.29
+303.2 1.56 —
+308.2 1.49 4.37
+313.2 1.49 —
+318.2 1.49 7.42
+C18E8 298.2 1.39 5.27
+303.2 1.34 —
+308.2 1.43 7.82
+313.2 1.46 —
+318.2 1.46 13.9
+Fig. 5. Dependence of lnCMC on the carbon number of al-
+kyl chain for C nE8 at 298.2 K and for n-alkanesulfonic
+acids at 342.2 K.
+Fig. 6. I1=I3 ratio of pyrene ﬂuorescence with C nE8 con-
+centration at 298.2 K.
+606 Bull. Chem. Soc. Jpn., 78, No. 4 (2005) Solution Properties of C nE8
+
+and (ii) a few surfactant molecules may self-associate with
+pyrene into small aggregates that are not formed in the absence
+of pyrene, where pyrene acts as a trigger for their formation.
+Moreover, the I1=I3 ratio at the plateau region decreases more
+with a longer alkyl chain surfactant, which indicates that the
+solubilized pyrene resides in a more hydrophobic environment
+as the aggregate size increases and that the dielectric constant
+of the hydrophobic micellar region decreases with increasing
+alkyl chain length.
+The static-light scattering method is most commonly used to
+determine the molecular weight of macromolecules or mi-
+celles. This method is very useful for a micellar system whose
+micelles are monodisperse or polydisperse in size and have a
+clear CMC. The scattered light intensity at 90 /C14 from solutions
+above the CMC was analyzed by the Debye equation,
+KðC /C0 CMCÞ
+R90 /C0 R090 ¼ 1M þ 2BðC /C0 CMCÞ; ð1Þ
+where K is the optical constant, C is the total surfactant con-
+centration (g/cm 3), R090 is the reduced intensity ( R90) at the
+CMC, M is the weight-average molecular weight of micelles,
+and B is the second virial coeﬃcient. The optical constant is
+given by
+K ¼ 4/C252 /C22nn20ð@ /C22nn=@CÞ2
+NA/C214 ð2Þ
+for polarized incident light of wavelength /C21, where /C22nn0 is the
+solvent refractive index, @ /C22nn=@C is the refractive-index incre-
+ment of the solution, and NA is Avogadro’s number. The inter-
+cept values of the plots on the ordinate were determined by a
+linear-regression analysis. The aggregation number of micelles
+(n) was obtained by the equation n ¼ M=W, where W is the
+molecular weight of C nE8. The thus-obtained aggregation
+numbers are given in Table 1. The aggregation number in-
+creased with increasing alkyl chain length at a deﬁnite temper-
+ature and with raising temperature for all of the surfactants.
+The increase in the aggregation number with temperature
+means an approach of the aggregates to a separate phase at
+the cloud point. The cloud point was determined to be 346,
+341, and 336 K for C 14E8,C 16E8, and C 18E8, respectively.
+Decreasing the cloud point of C nE8 with increasing carbon
+number corresponds to an easing of the phase separation with
+increasing aggregation number. It clearly indicates that the
+hydrophobicity of alkyl chain plays an important role in the
+micellar size.
+The temperature dependence of the aggregation number is
+more pronounced for a longer alkyl chain than for a shorter
+one. This means that the hydrophobic group has a larger eﬀect
+than the hydrophilic group on the micelle aggregation number.
+Thermodynamics of Micellization. Based on the mass-
+action model of micelle formation, the following equilibrium
+can be given for monodisperse micelle formation of a nonionic
+surfactant:5
+nS /C10
+Kn
+Mn; ð3Þ
+where S and M n are the monomer and micelle of the aggrega-
+tion number ( n), respectively. From Eq. 3, the micellization
+constant ( Kn) is given as
+Kn ¼ n /C0 2ð2n3 /C0 n2ÞðcmcÞn/C01 ; ð4Þ
+where the Philips deﬁnition of CMC was employed. 5,19 The
+important implication of Eq. 4 is that the micellization con-
+stant ( Kn) can be estimated in terms of the CMC value and
+the aggregation number of micelles.
+The standard Gibbs energy change per mole of the surfac-
+tant then follows from the micellization constant,
+/C1G/C14 ¼ RT lnCMC þð RT=nÞ lnð2n2Þ for n > 50: ð5Þ
+The corresponding enthalpy ( /C1H/C14) and entropy ( /C1S/C14) changes
+are given, respectively, as
+/C1H/C14
+T2 ¼/C0 @@T /C1G/C14T/C18/C19 P; ð6Þ
+/C1S/C14 ¼ð /C1H/C14 /C0 /C1G/C14Þ=T: ð7Þ
+Since the temperature dependence of two micellization pa-
+rameters (CMC, n) had already been obtained (Table 1), it be-
+came possible to evaluate the thermodynamic variables: /C1G/C14,
+/C1H/C14, and /C1S/C14 (Figs. 7a–7c). According to their values, they
+are more dependent on the temperature for C 14E8 and C 16E8
+than for C 18E8; in addition, the micellization was found to
+be entropy-driven over the examined temperature range. This
+fact originates from the small temperature dependence of the
+CMC’s; also, the contribution of the temperature dependence
+of the aggregation number (see the second term of Eq. 5) is
+negligibly small compared with that of the CMC change, even
+for a very large aggregation number. A small enthalpy change
+means that during the micellization the attractive interaction
+among the hydrophobic chains is opposed by the steric hin-
+drance of the bulky oxyethylene chains, which are associated
+with many water molecules.
+On the other hand, the contribution to the /C1G/C14 per methyl-
+ene group (–CH 2–) of the present surfactants is an important
+parameter to see the hydrophobicity of the inner micelles. This
+can be determined by the slope of ln CMC against the number
+of carbon atoms in an alkyl chain. As for an ionic surfactant,
+the following equation can be used: 18
+/C1ð/C1G/C14Þ
+/C1nc
+/C20/C21
+¼ 1 þ mn/C18/C19 RT /C1ðlnCMCÞ/C1nc/C20/C21 T;P
+/C0 RTn /C1ðln½Mn/C138Þ/C1nc
+/C20/C21
+T;P
+: ð8Þ
+The results are /C01:10RT (T ¼ 298:2 K) and /C01:08RT (T ¼
+303:2 K) for C nE8 and n-alkanesulfonic acids, respectively,
+where 0.67 was used for the degree of counterion binding to
+the micelle ( m=n) for n-alkanesulfonic acids.17 This means that
+a micellar core of C nE8 is almost the same in hydrophobicity
+as that of n-alkanesulfonic acids.
+The micellization for the present three surfactants was con-
+ﬁrmed by the solubilization of butylbenzene into the micelle,
+where the maximum additive concentration started to steeply
+increase with increasing concentration above the CMC ob-
+tained by the surface tension. 20 Therefore, the CMC mentioned
+above is quite similar to the conventional one, above which
+surfactant molecules start to aggregate, although the aggrega-
+tion numbers are very large.
+M. Rusdi et al. Bull. Chem. Soc. Jpn., 78, No. 4 (2005) 607
+
+Surface Properties. Figures 1, 2, and 3 illustrate the sur-
+face tension vs logarithm of concentration plot for C nE8. These
+results indicate that the temperature dependence of the surface
+activity is more prominent for a shorter alkyl chain than for a
+longer one.
+The surface tension ( /C13) is a function of temperature ( T),
+pressure ( P), and chemical potential ( /C22i) of component i
+(the Gibbs–Duhem equation for interface). However, as for a
+system of two phases (air and solution) and three components
+(surfactant, water, and air), it becomes trivariant under equili-
+brium according to the phase rule. Then, we have the follow-
+ing Gibbs equation for the surface tension: 5,21
+d/C13 ¼/C0 ssdT þ /C28ddP /C0 /C0d/C22; ð9Þ
+where ss, /C28d, and /C0 are the excess entropy per unit area at the
+interfacial layer, the thickness between the two dividing sur-
+faces, and the surface excess of surfactant per unit area, re-
+spectively. At constant temperature and pressure, the surface
+excess of the surfactant ( /C0) becomes a function of the surfac-
+tant concentration,
+/C0 ¼/C0 1RT d/C13dl nC/C18/C19 T;P; ð10Þ
+where R is the gas constant (8.314 J K /C01 mol/C01), T is the abso-
+lute temperature, and C is the surfactant concentration. The
+surface tension versus the logarithm of the concentration be-
+low the CMC was analyzed by dividing the plot into two parts.
+The surface tensions at higher concentrations were analyzed by
+a linear equation, while those at lower concentrations were
+done by the second-order equation against the concentration;
+the slope of the equations was used to determine the surface
+excess by Eq. 10.
+The calculated surface excess ( /C0)o fC nE8 is shown as a
+function of the concentration at diﬀerent temperatures in
+Figs. 8a–8c. These ﬁgures indicate that the surface excess in-
+creased with increasing concentration at lower concentrations,
+and then reached a maximum plateau at around a half CMC.
+Furthermore, the surface excess decreased with increasing
+temperature due to an increase in the thermal motion of the
+molecules. The systematic increase in /C0 with the alkylchain
+length indicates that the surface adsorption takes place with
+the alkyl chain fully elongated instead of looped. That is, the
+attractive interaction of hydrophobic alkyl chains became
+stronger for the elongated state than for the looped one. The
+surface excess value of C 14E8 in this study was smaller than
+a reference value obtained by the Wilhelmy method. 22 Tajima
+et al. also found the dissimilarity of the surface excess value
+due to diﬀerent methods. 23
+From the surface excess, the molecular surface area ( A)a t
+the surface layer can be calculated by
+A ¼ 1=NA/C0; ð11Þ
+where NA is Avogadro’s number. The results are shown in
+Fig. 9. The molecular surface area increased with increasing
+temperature and with decreasing carbon number of C nE8,a s
+is usually observed. This result indicates that a longer alkyl
+chain becomes more closely packed than a shorter one by a
+stronger attractive interaction between the hydrophobic chains.
+The important ﬁnding is that the molecular surface area is less
+than the cross-sectional area of the alkyl chain for C 16E8 and
+C18E8. Such small molecular surface areas strongly suggest
+that the molecules form bi-lamellar aggregates with the hydro-
+phobic tails contacted with one another while intruding in-
+ward, where a layer of water molecules with a certain width
+lies between the air/solution interface and a plane made of
+upper head groups of the bi-lamellar aggregates. 24
+Fig. 7. Changes of /C1G/C14, /C1H/C14, and T/C1S/C14 of micellization
+with temperature for C 14E8 (a), C 16E8 (b), and C 18E8 (c).
+608 Bull. Chem. Soc. Jpn., 78, No. 4 (2005) Solution Properties of C nE8
+
+The chemical potential of the surfactant is also a function of
+the temperature, pressure, and concentration,
+d/C22 ¼/C0 sdT þ vdP þ @/C22@C/C18/C19 T;PdC; ð12Þ
+where s and v are the partial molar entropy and volume, re-
+spectively. After introducing Eq. 12 into Eq. 9, the following
+equation is obtained:
+/C1s ¼ ss /C0 /C0s ¼/C0 @/C13@T/C18/C19 P;C : ð13Þ
+The thus-obtained results are shown in Fig. 10. It can be seen
+from Fig. 10 that the entropy change of adsorption or surface
+condensation decreased with increasing concentration of C nE8.
+In addition, the entropy changes of C nE8 adsorption were all
+positive, except for C 18E8 at higher concentrations. This means
+that the melting of iceberg water molecules around long alkyl
+chain with a positive entropy change on the adsorption still
+contributed more than the concentration and the orientation
+of molecules in the surface layer by adsorption with a negative
+entropy change. Decreasing entropy change with increasing
+concentration of C nE8 means that the C nE8 molecules became
+more ordered, or more restricted, with increasing adsorbed
+amount. The positive entropy changes decreased with increas-
+ing alkyl chain length of C nE8, which also suggests that the
+alkyl chain is not fully extended in a monomeric state but is
+Fig. 8. Change of surface excess with concentration for
+C14E8 (a), C 16E8 (b), and C 18E8 (c).
+Fig. 9. Temperature dependence of molecular surface area
+of C nE8 just below the CMC.
+Fig. 10. Entropy changes for surface adsorption with con-
+centration over the whole temperature range studied.
+M. Rusdi et al. Bull. Chem. Soc. Jpn., 78, No. 4 (2005) 609
+
+fully extended in bi-lamellar aggregates, and therefore can
+not perfectly contribute to the positive entropy change at
+adsorption.
+Conclusion
+The CMC dependence on the carbon number of a long alkyl
+chain was very small, which means that a long alkyl chain in
+the monomeric state can not totally contribute to the micelliza-
+tion. The alkyl chains are as closely packed in C 14E8 micelles
+as they are in ionic micelles, judging from the Gibbs energy
+change of transfer per CH 2 group from aqueous bulk to micelle
+interior. CnE8 with a longer alkyl chain is less surface active at
+concentrations far below the cmc, which suggests that the
+longer alkyl chain does not fully contribute to the adsorption
+by its hydrophobicity, too. Two possibilities are suggested:
+1) a longer alkyl chain is not fully extended, but is folded or
+looped in the bulk, 2) very weak inter-molecular association
+takes place among hydrophobic alkyl chains of the molecules.
+According to the molecular surface area in the adsorbed
+state, bi-lamellar aggregates are formed for longer C nE8 with
+hydrophobic tails in contact with one another and intruding
+inward.
+References
+1 M. J. Rosen, ‘ ‘Surfactants and Interfacial Phenomena,’ ’ 2nd
+ed, Wiley, New York (1989).
+2 ‘ ‘Nonionic Surfactants: Physical Chemistry,’ ’ ed by M. J.
+Schick, Marcel Dekker, New York (1987).
+3 P. Mukerjee and K. J. Mysels, Nat. Stand. Ref. Data Ser.,
+Nat. Bur. Stand. (U.S.) , 36, (1971).
+4 T. Yamabe, Y. Moroi, Y. Abe, and T. Takahasi, Langmuir,
+16, 9754 (2000).
+5 Y. Moroi, ‘ ‘Micelles: Theoretical and Applied Aspects,’ ’
+Plenum Press, New York (1992).
+6 A. Mailiaris, J. L. Moigne, J. Sturm, and R. Zana, J. Phys.
+Chem., 89, 2709 (1985).
+7 E. H. Crook, G. F. Trebbi, and D. B. Fordyce, J. Phys.
+Chem., 68, 3592 (1964).
+8 M. N. Islam and T. Kato, J. Phys. Chem. B , 107, 965
+(2003).
+9 H. Oda, S. Nagadome, S. Lee, F. Ohseto, Y. Sasaki, and
+G. Sugihara, J. Oil Chem. Soc. Jpn. , 46, 559 (1997).
+10 K. Wongwailikhit, A. Ohta, K. Seno, A. Nomura, T.
+Shinozuka, T. Takiue, and M. Aratono, J. Phys. Chem. B , 105,
+11462 (2001).
+11 M. N. Islam and T. Kato, Langmuir, 19, 7201 (2003).
+12 K. Motomura, S. Iwanaga, S. Uryu, H. Matsukiyo, M.
+Yamanaka, and R. Matuura, Colloids Surf. , 9, 19 (1984).
+13 H. Kunieda, H. Kabir, K. Aramaki, and K. Shigeta, J. Mol.
+Liq., 90, 157 (2001).
+14 Y. Iwasawa (editor-in-chief), ‘ ‘Kagakubinran (Handbook
+of Chemistry),’ ’ ed by the Chem. Soc. Jpn., 5th ed, Maruzen
+Co., Tokyo (2003).
+15 P. Mukerjee, Adv. Colloid Interface Sci. , 1, 241 (1967).
+16 M. Saito, Y. Moroi, and R. Matuura, J. Colloid Interface
+Sci., 76, 256 (1980).
+17 K. Matsuoka and Y. Moroi, J. Phys. Chem. , 97, 13006
+(1993).
+18 Y. Moroi, M. Take’uchi, N. Yoshida, and A. Yamauchi,
+J. Colloid Interface Sci. , 197, 221 (1998).
+19 J. N. Phillips, Trans. Faraday Soc. , 51, 561 (1955).
+20 The results will be submitted for publication as a separate
+paper.
+21 K. Motomura and M. Aratono, Langmuir, 3, 302 (1987).
+22 M. Ueno, Y. Takasawa, H. Miyashige, Y. Tabata, and K.
+Meguro, Colloid Polym. Sci. , 259, 761 (1981).
+23 K. Tajima, M. Iwahashi, and T. Sasaki, Bull. Chem. Soc.
+Jpn., 44, 3251 (1971).
+24 Y. Moroi, M. Rusdi, and I. Kubo, J. Phys. Chem. B , 108,
+6351 (2004).
+610 Bull. Chem. Soc. Jpn., 78, No. 4 (2005) Solution Properties of C nE8

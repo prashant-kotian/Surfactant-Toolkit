@@ -1,0 +1,442 @@
+Surface Dilational Viscoelasticity of C 14EO8 Micellar Solution Studied
+by Bubble Proﬁle Analysis Tensiometry
+V. B. Fainerman, † J. T. Petkov, ‡ and R. Miller* ,§
+Medical Physicochemical Centre, Donetsk Medical Uni Versity, 16 Ilych A Venue, 83003 Donetsk, Ukraine,
+UnileVer R&D Port Sunlight, Quarry Road East, Bebington, CH63 3JW, U.K., and Max-Planck-Institut fu ¨r
+Kolloid- and Grenzﬂa¨chenforschung, Am Mu¨hlenberg 1, 14424 Potsdam, Germany
+ReceiVed December 28, 2007. Re Vised Manuscript Recei Ved March 27, 2008
+The experimental dependences of viscoelasticity modulus and phase angle as a function of frequency for various
+C14Ε/Omikron8 concentrations at the critical micelle concentration (cmc) of 7 µmol/L and far above the cmc (up to 70 ×
+cmc) were studied using the buoyant bubble proﬁle analysis method. With increasing C 14EO8 concentration the
+viscoelasticity modulus decreases and the phase angle increases. At the highest surfactant concentrations, the phase
+angle was more than 45°. For the theoretical description of the equilibrium surface tension isotherm and the limiting
+elasticity modulus, a combined theoretical model was used considering surface reorientation and molecular compression.
+To analyze the experimental dependencies of the viscoelasticity modulus and phase angle on frequency, a model
+proposed by Joos for fast micellar kinetics was applied. This theory agrees well with the experimental data of the
+viscoelasticity modulus obtained for all concentrations of the studied nonionic surfactant C 14EO8.
+Introduction
+Many modern technologies depend on the optimum use of
+surfactants, while the applied concentrations are often above the
+critical micelle concentration (cmc) and special effects are directly
+related to the presence of micelles. The formation and dissolution
+of micelles or the release or incorporation of single molecules
+are controlled by the relaxation times of slow and fast dissociation
+processes.
+The presence of micelles in the bulk have an impact on the
+adsorption kinetics and hence the dilational elasticity. The ﬁrst
+work on this subject was published by Lucassen more than 30
+years ago.1,2 This topic was further discussed in many subsequent
+publications.3–21 The state-of-the-art in micelles dissociation
+kinetics theory and the inﬂuence of micelles on the adsorption
+dynamics and dilational rheology were presented in recent
+reviews.22–26
+When surfactant molecules adsorb at the interface, the
+concentration of monomers in the subsurface decreases and a
+concentration gradient of monomers results. Such a molecular
+distribution is not in local equilibrium with micelles in the bulk,
+which react and release single molecules (fast micellar kinetics)
+or even completely disintegrate (slow micellar dissolution), in
+order to re-establish the local equilibrium. This change in the
+local micelle concentration generates in turn a concentration
+gradient of micelles that initiates a diffusion process of micelles.
+Hence, the adsorption of surfactants at an interface generates a
+diffusion process of monomers and micelles and a disintegration
+of micelles. All these processes are directed toward the
+re-establishment of equilibrium for the whole system: locally in
+the bulk between monomers and micelles and close to the interface
+between monomers in the subsurface and at the interface.
+In rheological experiments, i.e., when the surface layer is
+periodically compressed and expanded around the equilibrium
+state, we also meet the situation that molecules desorb from the
+interface, increasing the local concentration of monomers such
+that micelles have to either take up molecules or form new
+micelles. In this case, diffusion ﬂuxes of monomers and micelles
+from and to the interface exist, depending on the respective
+situation at the interface. 1,6–8,14,23,24 New instrumentations for
+dilational rheology based on harmonic oscillations of drops or
+bubbles work in a broad frequency range and represent an
+excellent methodology to study the effect of micellar dynamics
+* Corresponding author. E-mail: miller@mpikg.mpg.de.
+† Donetsk Medical University.
+‡ Unilever R&D Port Sunlight.
+§ Max-Planck-Institut fu¨r Kolloid- and Grenzﬂa¨chenforschung.
+(1) Lucassen, J. Faraday Discuss. Chem. Soc. 1975, 59,7 6.
+(2) Lucassen, J.; Giles, D. J. Chem. Soc. Faraday Trans 1 1975, 71, 217.
+(3) Fainerman, V. B. Kolloidn. Zh. 1981, 43,9 4.
+(4) Miller, R. Colloid Polym. Sci. 1981, 259, 1124–1128.
+(5) Fainerman, V. B.Kolloidn. Zh. (Russ.)1981, 43, 717;Kolloidn. Zh. (Russ.)
+1981, 43, 926.
+(6) Joos, P.; van Hunsel, J. Colloids Surf. 1988, 33,9 9.
+(7) Noskov, B. A. Fluid Dynamics 1989, 24, 251.
+(8) Noskov, B. A. Kolloidn. Zh. (Russ.) 1990, 52, 509.
+(9) Dushkin, C. D.; Ivanov, I. B. Colloids Surf. 1991, 60, 213.
+(10) Dushkin, C. D.; Ivanov, I. B.; Kralchevsky, P. A. Colloids Surf. 1991,
+60, 235.
+(11) Fainerman, V. B.; Makievski, A. V. Colloids Surf. 1993, 69, 249.
+(12) Garrett, P. R.; Joos, P. Colloids Surf. A 1994, 90, 149–154.
+(13) Patist, A.; Axelberd, T.; Shah, D. O. J. Colloid Interface Sci. 1998, 208,
+259–265.
+(14) Joos, P.Dynamic Surface Phenomena; VSP: Dordrecht, The Netherlands,
+1999.
+(15) Zhmud, B. V.; Tiberg, F.; Kizling, J. Langmuir 2000, 16, 2557–2565.
+(16) Danov, K. D.; Valkovska, D. S.; Kralchevsky, P. A. J. Colloid Interface
+Sci. 2002, 251, 18–25.
+(17) Liao, Y. C.; Basaran, O. A.; Franses, E. I.AIChE J. 2003, 49, 3229–3240.
+(18) Frese, C.; Ruppert, S.; Sugar, M.; Schmidt-Lewerkuehne, H.; Wittern,
+K. P.; Fainerman, V. B.; Eggers, R.; Miller, R.J. Colloid Interface Sci.2004, 267,
+475–482.
+(19) Nyrkova, I. A.; Semenov, A. N. Macromol. Theory Simul. 2005, 14,
+569–585.
+(20) Colegate, D. M.; Bain, C. D.Phys. ReV. Lett.2005, 95, 198302-1198302-4.
+(21) Song, Q.; Couzis, A.; Somasundaran, P.; Maldarelli, C. Colloids Surf. A
+2006, 282-283, 162–182.
+(22) Eastoe, J.; Dalton, J. S. AdV. Colloid Interface Sci. 2000, 85, 103–144.
+(23) Noskov, B. A.; Grigoriev, D. O.; Fainerman, V. B.; Mo¨bius, D.; Miller,
+R. (Eds.) Adsorption from micellar solutions. InSurfactantssChemistry, Interfacial
+Properties and Application, Studies in Interface Science ; Elsevier: New York,
+2001; Vol. 13,p p4 0 2-510.
+(24) Noskov, B. A. AdV. Colloid Interface Sci. 2002, 95, 237–293.
+(25) Danov, K. D.; Kralchevsky, P. A.; Denkov, N. D.; Ananthapadmanabhan,
+K. P.; Lips, A. AdV. Colloid Interface Sci. 2006, 119, 1–16.
+(26) Danov, K. D.; Kralchevsky, P. A.; Denkov, N. D.; Ananthapadmanabhan,
+K. P.; Lips, A. AdV. Colloid Interface Sci. 2006, 119, 17–33.
+6447Langmuir 2008, 24, 6447-6452
+10.1021/la704058y CCC: $40.75  2008 American Chemical Society
+Published on Web 06/03/2008
+
+on interfacial properties, such as the viscoelastic modulus and
+phase angle.27–32
+In the present work, bubble and drop proﬁle analysis
+tensiometry is used to study the dilational rheology of C 14EO8
+micellar solutions. The target is the evaluation of the models
+derived by Lucassen1 and Joos,14 respectively, for describing the
+rheological behavior of surface layers formed from micellar
+solution with various micelle dissolution mechanisms and the
+analysis of the mechanism valid for C14EO8 micelles. It is shown
+by comparison of experimental results with model calculations
+that there is a satisfactory agreement between our data and the
+theory of Joos. 14
+Experimental Section
+The experiments were performed with two different versions of
+a bubble/drop proﬁle analysis tensiometer (PAT-1 and PAT-2P,
+SINTERFACE Technologies, Germany), the principle of which was
+described in much detail elsewhere. 28,33,34 The temperature of the
+measuring glass cell (volume V ) 20 mL) was kept constant at 25
+°C. In this study we used a buoyant (oblate) bubble formed at a
+Teﬂon capillary with a tip diameter of 3 mm. To study the dilational
+elasticity, after having reached the adsorption equilibrium, the buoyant
+(oblate) bubble was subjected to harmonic oscillations with
+frequencies between f ) 0.005 and 0.2 Hz. Due to the wetting
+behavior, the oscillating bubble arrangement provided more stable
+results as compared to oscillating drops. The substance studied was
+the oxyethylated surfactant C14Ε/Omikron8 (from Sigma Chemical), and it
+was used without further puriﬁcation. The solutions were prepared
+using Milli-Q water.
+Theory
+For premicellar solutions or for micellar solutions in which
+the disintegration of micelles does not take place, the dilational
+elasticity can be calculated from the expression (see refs 1, 6,
+14, 35, 36)
+ε(iω) ) ε0[1 + (1 - i)/dzeta]-1 (1)
+where /dzeta ) /radical1(ωD/2ω), ε0 )- dγ/d ln Γ is the limiting (high
+frequency) elasticity,Γ is the adsorption,γ is the surface tension,
+c is the bulk surfactant concentration, ωD ) D(dΓ/dc)-2 is the
+characteristic frequency for a diffusion relaxation, and ω ) 2πf
+is the angular frequency of the generated oscillation of area A
+at frequencyf. The viscoelasticityε(iω) is taken here as a complex
+number where the real part is called the storage modulus equal
+to the dilational elasticity, and the imaginary part is called the
+loss modulus, representing the dilational viscosity. Equation 1
+can be transformed into expressions for the viscoelasticity
+modulus ε and phase angle /phitwo between stress (d γ) and strain
+(dA):
+|ε| ) ε0(1 + 2/dzeta + 2/dzeta2)-1/2
+φ ) arctan[/dzeta/(1 + /dzeta)] (2)
+The theoretical equations for the modulus ε(iω) for various
+micelle dissociation mechanisms were derived in refs 1, 6– 8,
+14, 23, 24. In the present study, a very simple expression is used,
+obtained by assuming fast micellar kinetics under the condition
+that the constant of fast micelle dissociation kf is very large
+(kff∞ , see eq 10.57 in ref 14):
+ε(iω) ) ε0[1 + (1 - i)/dzeta√(1 + /betatwo)(1 +R /betatwo)]-1 (3)
+where /betatwo ) (c0 - ck)/ck, R) Dm/D ≈ 0.25, ck ) cmc, c0 is the
+total surfactant concentration, and D and Dm are the diffusion
+coefﬁcients of surfactant monomers and micelles, respectively.
+From a formal point of view, eq 3 is identical to eqs 1 and 2,
+provided that the diffusion coefﬁcientD for monomers is replaced
+by the so-called effective diffusion coefﬁcient of monomersD*,
+as proposed by Joos: 6,14
+D* ) D(1 + /betatwo)(1 +R /betatwo) (4)
+In ref 1, rheological equations for the slow process of micelle
+dissociation were derived (complete micelle dissolution). Under
+the condition ksf∞ , they have the same form like eqs 3 and 4;
+however, instead of /betatwo they contain the parameter m/betatwo, with m
+being the micelle aggregation number.
+It was shown by Danov et al.26 that eq 4 describes the diffusion
+processes in micellar solutions for a time range exceeding the
+time of fast micelle dissociation. At the same time eq 4 with the
+parameterm/betatwo instead of/betatwo can be used in a time range signiﬁcantly
+longer than the time of the slow micelle dissolution process, as
+demonstrated in ref 26. Thus, for the description of the dilatational
+viscoelasticity modulus of micellar solutions eq 2 can be used.
+In this case, we have to assume thatc0 ) cmc for c0 > cmc, and
+instead of D we use an effective diffusion coefﬁcientD* for the
+monomers, as given by eq 4.
+The limiting elasticity ε0 )- dγ/d ln Γ and the derivative
+dΓ/dc which enter eqs 1 and 2 can be determined from the equation
+of state and adsorption isotherm atc ) cmc. Therefore, it is very
+important to describe this isotherm accurately close to the cmc.
+It was shown recently that the whole set of experimental data
+available for C14EO8 solutions up to the cmc, including dynamic
+and equilibrium surface tension, adsorption values, and dilational
+rheology, is described in the best possible way by a combined
+reorientation/compression model. 33 This model assumes the
+ability of the oxyethylene group to be adsorbed at the solution/
+air interface at low surface coverage and to be partially desorbed
+with increasing surface pressure, leading to a reorientation of the
+EO groups. In addition, the model accounts for the internal
+compressibility of the monomolecular interfacial layer in the
+state of minimum molar area, realized, for example, by a change
+in the tilt of the hydrocarbon chains.
+The reorientation model was described in detail else-
+where,33,37,38 and assumes that two orientations of adsorbed
+(27) Benjamins, J.; Cagna, A.; Lucassen-Reynders, E. H. Colloids Surf. A
+1996, 114, 245.
+(28) Loglio, G.; Pandolﬁni, P.; Miller, R.; Makievski, A. V.; Ravera, F.; Ferrari,
+M.; Liggieri, L. Drop and bubble shape analysis as tool for dilational rheology
+studies of interfacial layers. InNoVel Methods To Study Interfacial Layers;M o¨bius,
+D., Miller, R., Eds.; Elsevier, Amsterdam, 2001, pp 439 -484.
+(29) Wantke, K. D.; Fruhner, H.J. Colloid Interface Sci.2001, 237, 185–199.
+(30) O¨ rtegren, J.; Wantke, K. D.; Motschmann, H. ReV. Sci. Instrum. 2003,
+74, 5167–5172.
+(31) Ravera, F.; Ferrari, M.; Liggieri, L. Colloids Surf. A 2006, 282-283,
+210–216.
+(32) Benjamins, J.; Lyklema, H.; Lucassen-Reynders, E. H. Langmuir 2006,
+22, 6181–6188.
+(33) Fainerman, V. B. Zholob, S. A. Petkov, J. T. Miller, R. Colloids Surf.
+A 2008, in press .
+(34) Miller, R.; Olak, C.; Makievski, A. V.SO¨ FW (Engl. Version) 2004, 2–10.
+(35) Lucassen, J.; van den Tempel, M. Chem. Eng. Sci. 1972, 27, 1283.
+(36) Lucassen, J.; Hansen, R. S. J. Colloid Interface Sci. 1967, 23, 319.
+(37) Fainerman, V. B.; Kovalchuk, V. I.; Aksenenko, E. V.; Michel, M.; Leser,
+M. E.; Miller, R. J. Phys. Chem. 2004, 108, 13700–13705.
+(38) Kovalchuk, V. I.; Miller, R.; Fainerman, V. B.; Loglio, G. AdV. Colloid
+Interface Sci. 2005, 114-115, 303–313.
+(39) Lin, S. Y.; Lee, Y. C.; Shao, M. J.; Hsu, C. T. J. Colloid Interface Sci.
+2003, 244, 372.
+(40) Lee, Y. C.; Stebe, K. J.; Liu, H. S.; Lin, S. Y.Colloids Surf. A 2003, 220,
+139–150.
+(41) Zholob, S. A.; Makievski, A. V.; Miller, R.; Fainerman, V. B.AdV. Colloid
+Interface Sci. 2007, 134-135, 322–329.
+(42) Access to software packages is free of charge via http://www.sinterface.com
+or http://www.mpikg.mpg.de/gf/miller/.
+(43) Miller, R.; Fainerman, V. B.; Mo ¨hwald, H. Surf. Detergents 2002, 5,
+281–286.
+6448 Langmuir, Vol. 24, No. 13, 2008 Fainerman et al.
+
+surfactant molecule coexist at the surface, with different molar
+areas ω1 and ω2 (for deﬁniteness we assumeω1 > ω2). Assuming
+ideal enthalpy and entropy of mixing of the surface layer, the
+equations of state and adsorption isotherm read 37,38
+Π )- RTωS ln(1 - θ) (5)
+b2c )
+Γ2ωS
+(1 - θ)ω2/ωS
+(6)
+where Π ) γ0 - γ is the surface pressure, R is the gas law
+constant, T is the temperature, θ ) ωSΓ is the surface coverage,
+γ0 is the surface tension of the solvent (water/air surface tension),
+and b2 is the adsorption equilibrium constant in state 2. The total
+adsorption Γ and mean molar area ωS are deﬁned by
+Γ ) Γ1 + Γ2 (7)
+ωSΓ ) θ ) ω1Γ1 + ω2Γ2 (8)
+and the ratio of adsorptions in the two possible states of the
+adsorbed molecules is given by
+Γ1
+Γ2
+) exp(
+ω1 - ω2
+ωS )(
+ω1
+ω2)
+R
+exp[-
+Π(ω1 - ω2)
+RT ] (9)
+The constantR accounts for the fact that the adsorption equilibrium
+constant for surfactant molecules adsorbed in state 1 (with larger
+area) can exceed that in state 2, which results in an additional
+(as compared toR) 0) increase of the fraction of states of larger
+area. For R) 0, the adsorption activities b1 and b2 are identical.
+The combined reorientation/compression model assumes the
+variation of the molar area caused by a two-dimensional
+compressibility in state 2 with lower area according to the
+equation33
+ω2 ) ω20(1 - κΠ) (10)
+where the proportionality factorκ is the relative two-dimensional
+compressibility coefﬁcient of the surfactant surface layer, and
+ω20 is the molar area of the surfactant at Π ) 0.
+Results and Discussion
+The equilibrium surface tensions of C14EO8 solutions obtained
+from the emerging (prolate) bubble proﬁle techniques in ref 33
+are shown in Figure 1, together with values obtained in the present
+study mainly for micellar solutions using the buoyant (oblate)
+bubble method. It should be noted that equilibrium surface
+tensions as shown in Figure 1 were measured for C14EO8 using
+the emerging and buoyant bubble methods and are quite consistent
+with those reported in the literature.39,40 The theoretical surface
+tension isotherm shown in Figure 1 was calculated using eqs
+5–10 with parameters given in ref 33: ω1 ) 1.0 × 106 m2/mol,
+ω2 ) 4.4 × 105 m2/mol, R) 0.9, b2 ) 1.0 × 105 m3/mol, and
+κ ) 0.009 m/mN. It follows from Figure 1 that the cmc for
+C14EO8 is 7 µmol/L.
+The dilational rheology of C14EO8 adsorption layers for various
+concentrations was studied using the oscillating buoyant (oblate)
+bubble method at frequencies between 0.005 and 0.2 Hz and a
+magnitude ∆A of area oscillations of 5%. The details of the
+calculation procedure employed in the PAT tensiometer is
+explained elsewhere.41
+As an example, the time dependence of surface tension γ(t)
+and bubble surface area A(t) during harmonic oscillations at a
+frequency of 0.05 Hz and magnitude 5% for a 50µmol/L C14EO8
+solution is shown in Figure 2. The results demonstrate the high
+quality of the experimental techniques based on buoyant (oblate)
+bubble proﬁle analysis. The oscillation experiments were
+performed after the adsorption equilibrium was established and
+the results analyzed by a Fourier transformation: 28
+ε(iω) ) A0
+F[∆γ]
+F[∆A] (11)
+where A0 is the initial area of the bubble surface. For the example
+shown in Figure 2, the viscoelasticity modulus | ε| and phase
+angle /phitwo are 15.2 mN/m and 46.8 °, respectively.
+The experimental dependencies of the viscoelasticity modulus
+|ε| as a function of frequency f for various C14Ε/Omikron8 concentra-
+tions below the cmc (c0 ) 5 µmol/L), at cmc ) 7 µmol/L, and
+slightly above the cmc are presented in Figure 3. With increasing
+micellar surfactant concentration, the viscoelasticity modulus
+becomes lower, caused by the essential inﬂuence of micelle
+dynamics on the diffusion-controlled exchange of monomers
+between the solution bulk and the surface layer. The theoretical
+curves shown in Figure 3 for c0 ) 5 µmol/L to c0 ) cmc were
+calculated from eq 2 using the program IsoFit. 42 The obtained
+diffusion coefﬁcient of monomers of 4 × 10-10 m2/s is in
+Figure 1. Equilibrium surface tension isotherms of C14EO8 solutions measured by emerging bubble (0) and buoyant bubble methods (2), respectively.
+The curve was calculated from eqs 5–10.
+Viscoelasticity of C 14EO8 Langmuir, Vol. 24, No. 13, 2008 6449
+
+agreement with data discussed in refs 43, 44. The theoretical
+curves in Figure 3 for c0 > cmc were calculated according to
+eq 3, leading to an excellent agreement with the experimentally
+determined viscoelasticity modulus. At the same time, calculations
+from eq 3 with m/betatwo instead of /betatwo at m ) 501,26 (shown in Figure
+3 as well) give much lower values for the viscoelasticity modulus.
+In agreement with Danov’s theory,26 this means that in the studied
+frequency range, the C14EO8 micelles are subject to fast micellar
+kinetics with the release of single monomers, while for a slow
+complete micelle disintegration a possibly much lower frequency
+of area oscillations would be required.
+In Figure 4 the viscoelasticity modulus |ε| is shown as a function
+of frequency f for C14EO8 concentrations from 50 to 500 µmol/
+L, which corresponds to 7× cmc up to 70× cmc. For comparison,
+the data for a solution at cmc ) 7 µmol/L are also shown. The
+theoretical dependencies calculated using eq 3 agree well with the
+experimental data at all studied frequencies, even at the highest
+concentration of 500 µmol/L. This agreement indicates not only
+the suitability of the used model but also the high quality of
+rheological experiments performed using the buoyant (oblate)
+bubble method. Note, a modulus | ε| value of 1.0 mN/m
+(concentration 500µmol/L, frequency 0.01 Hz and less) at bubble
+area variations of 5% corresponds to surface tension oscillations
+of 0.05 mN/m. The experimental error in the determination of
+|ε| at values aroud 1.0 mN/m does not exceed 50%, if compared
+with theoretical values. Hence, the error due to the dependence
+of surface tension on surface area28 cannot exceed 0.025 mN/m
+and cannot be higher than 0.1 mN/m for a bubble area variation
+of 20%. The experiments performed by the buoyant (oblate)
+bubble method have in fact shown that 20% variations in the
+(44) Fainerman, V. B.; Mys, V. D.; Makievski, A. V.; Petkov, J. T.; Miller,
+R. J. Colloid Interface Sci. 2006, 302, 40–46.
+Figure 2 . Time dependence of surface tension (black points) and bubble surface area (light points) during harmonic oscillations at a frequency of
+0.05 Hz and a concentration of C 14EO8 of 50 µmol/L.
+Figure 3. Viscoelasticity module |ε| as a function of frequencyf for various C14Ε/Omikron8 concentrations below the cmc (5µmol/L, ]), at cmc ) 7 µmol/L
+(0), and above the cmc at 12 ( 2), 15 ( [), 20 ( 4), and 30 µmol/L (9). Thin and thick dotted lines were calculated according to eq 2 for the cmc
+and 5 µmol/L, respectively; thin solid lines are calculated for c0 > cmc according to eq 3; dotted lines are calculated from eq 3 with the parameter
+m/betatwo instead of /betatwo (m ) 50); the numbers correspond to concentrations given in µmol/L.
+6450 Langmuir, Vol. 24, No. 13, 2008 Fainerman et al.
+
+bubble area at equilibrium leads to a surface tension variation
+of less than 0.1 mN/m.
+The dependences of the phase angle φ on frequency f for
+the same concentrations of C14Ε/Omikron8 as in Figure 3 arepresented
+in Figure 5. With increasing concentration, the phase angle φ
+increases up to a value of 50 °, as shown in Figure 5.
+The theoretical dependence/phitwo, as calculated from eq 3,predicts
+a maximum phase angle of 45 °, in good agreement with
+experimental data at c0 < 2 × cmc, while at c0 > 2 × cmc the
+theoretical values of the phase angle are less than those from
+the experiment. There can be several reasons for this phase
+angle behavior. First, the condition kff∞ may no longer hold
+when the micelle concentration is increased, in agreement
+with the theoretical equation by Joos (see eq 10.54 in ref 14).
+Hence the phase angle can signiﬁcantly increase (up to 90 °)
+due to the additional relaxation process of fast micelle
+dissociation. Note, according to the theory presented in ref
+1, there is a similar effect for the slow process of micelle
+dissolution when the condition ksf∞ is not fulﬁlled. Second,
+the increase in the diffusion coefﬁcient (especially when using
+an effective diffusion coefﬁcient D*, which according to eq
+3 could by increased by several orders of magnitude for c0 .
+cmc) could signiﬁcantly inﬂuence the phase angle for oscillations
+of a spherical meniscus. According to the theory by Joos (see
+eq 8.63 in ref 14) the phase angle at low frequencies of bubble
+area oscillation and high diffusion coefﬁcients can rise up to 90°.
+Finally, it is impossible to eliminate the inﬂuence of experimental
+errors (note, in particular, the above-mentioned dependence of
+surface tension on the bubble size), which have a relatively weak
+impact on the elasticity module but inﬂuence much more strongly
+the phase angle. For these reasons, the phase angles at large
+concentrations of C14EO8 micellar solutions (above 100 µmol/
+L) and low frequencies can reach values of 90°-100°. Any phase
+angle above 90° is without physical sense, as it would correspond
+to a negative surface viscosity. However, at such high phase
+angles, their experimental determination is rather inaccurate,
+Figure 4. Viscoelasticity module |ε| as a function of frequency f for various C14Ε/Omikron8 concentrations above the cmc [50-500 µmol/L corresponding
+to (7-70) × cmc] at 50 ( 9), 70 ( ]), 100 ( [), 200 ( 2), and 500 µmol/L (∆). The thick line was calculated from eq 2 for c0 ) cmc (0); the thin
+lines were calculated for c0 > cmc according to eq 3. The numbers correspond to concentrations given in µmol/L.
+Figure 5. Phase angle /phitwo as a function of frequency f for C14Ε/Omikron8 concentrations below cmc (5 µmol/L, [), at the cmc ) 7 µmol/L (0), and above
+the cmc at 12 (2), 15 ([), 20 (4), and 30 µmol/L (9). Theoretical curves for concentrations below 5µmol/L (thin dotted line) and at cmc) 7 µmol/L
+(thick line) calculated from eq 2 with D ) 4 × 10-10 m2/s; thin solid lines are calculated for c0 > cmc according to eq 3. The numbers correspond
+to concentrations given in µmol/L.
+Viscoelasticity of C 14EO8 Langmuir, Vol. 24, No. 13, 2008 6451
+
+due to the very small surface tension amplitudes, so any values
+beyond a physical sense have to be disregarded.
+Conclusions
+Using the surfactant C 14EO8 we demonstrate how the effect
+of micellar kinetics on the dilatational rheological properties
+of adsorption layers can be experimentally studied. The
+experimental dependences of viscoelasticity modulus and phase
+angle as a function of frequency for various C 14Ε/Omikron8
+concentrations at cmc ) 7 µmol/L and far above the cmc (up
+to 500 µmol/L corresponding to 70 × cmc) were studied using
+the buoyant (oblate) bubble proﬁle method. It is shown that
+the increase in C 14EO8 concentration leads to a decrease of
+the viscoelasticity modulus and an increase in the phase angle.
+For the theoretical description of the C 14EO8 solutions’
+equilibrium surface tension isotherm and limiting (high-
+frequency) elasticity modulus, the so-called combined reori-
+entation/compression model 33,37 was successfully applied. To
+analyze the experimental dependencies of the viscoelasticity
+modulus on frequency, the theoretical model proposed by Joos14
+for fast micellar kinetics was employed. This model is based on
+the assumption that the equilibrium between micelles and
+monomers exist and involves the so-called effective diffusion
+coefﬁcient of monomers. It is shown that the theory agrees well
+with the experimental values of viscoelasticity modulus for all
+the C14EO8 concentrations studied.
+Acknowledgment. The work was ﬁnancially supported by a
+project of the European Space Agency (FASES MAP AO-99-
+052) and the DFG SPP 1273 (Mi418/14-1).
+LA704058Y
+6452 Langmuir, Vol. 24, No. 13, 2008 Fainerman et al.

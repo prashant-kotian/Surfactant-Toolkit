@@ -1,0 +1,1280 @@
+Journal of Surfactants and Detergents, 2026; 0:1–16
+https://doi.org/10.1002/jsde.70095
+1
+Journal of Surfactants and Detergents
+ORIGINAL ARTICLE
+Protocol- Induced False Identifiability in Dynamic 
+Surface Tension and Dilational Measurements of 
+Surfactant Interfaces
+Khaldoun A. Al-Sou'od  |  Raed Ghanem
+Department of Chemistry, Al al-  Bayt University, Mafraq, Jordan
+Correspondence:  Khaldoun A. Al-  Sou'od (khaldoun@aabu.edu.jo )
+Received:  28 July 2026 | Revised:  14 August 2026 | Accepted:  18 August 2026
+Keywords: cross-  protocol prediction | dynamic surface tension | interfacial dilational rheology | model identifiability | protocol uncertainty | 
+surfactant adsorption
+ABSTRACT
+Dynamic surface tension and interfacial dilational measurements are used to assign adsorption, diffusion, and structural- 
+relaxation mechanisms in surfactant systems. However, small unmeasured variations in area forcing or baseline stability can 
+generate identifiable relaxation modes. We quantify this failure mode, termed protocol-  induced false identifiability, using a 
+nested entropy-  constrained hierarchy for soluble nonionic surfactant interfaces. Model M0 describes diffusion with instanta -
+neous interfacial equilibrium, Model M1 adds finite-  rate adsorption, and Model M2 adds a nonequilibrium internal variable. 
+Conservation, nonnegative entropy production, free-  energy decay, numerical convergence, and nested limits were verified. With 
+multi- protocol forcing, synthetic estimation recovered the four M2 dynamic parameters with median absolute relative errors 
+of 0.34%–2.02%, showing that the model is identifiable in principle. Experimental falsification used two independent digitiza -
+tions of a published polyoxyethylene (23) lauryl ether step-  relaxation trace, yielding 148 consensus points. Under an equal-  step 
+assumption, M2 improved the corrected Akaike information criterion (AICc) by 36.61 relative to M0; however, diffusion-  only 
+models with linear drift or segment-  specific amplitudes outperformed M2 by 5.68 and 16.84 AICc units, respectively. M2 also 
+increased leave-  one- segment- out error by 8.95%, whereas the drift model reduced it by 35.6%. Published oscillatory spectra 
+provided additional- mode screening: Poloxamer P9400 showed the strongest signal, but available records were insufficient for 
+locked nonlinear validation. Because the commercial ethoxylate and block- copolymer datasets lack batch- resolved compositional 
+characterization sufficient for microscopic attribution, their reanalysis is restricted to model-  discrimination screening rather 
+than compound- specific mechanism assignment. The audit offers a workflow for preventing false mechanistic assignments by 
+requiring competition with nuisance-  protocol models and locked cross- protocol prediction.
+1   |   Introduction
+Fluid interfaces containing surface-  active species evolve 
+through coupled bulk transport, adsorption and desorption, mo-
+lecular rearrangement, and interfacial deformation. These pro -
+cesses determine the performance of foams, emulsions, coatings, 
+detergents, pharmaceutical dispersions, enhanced-  oil- recovery 
+fluids, and microfluidic systems. Equilibrium surface tension 
+alone is inadequate when interface creation or deformation 
+occurs on timescales comparable to surfactant transport and 
+interfacial equilibration (Ward and Tordai  1946; Bergfreund 
+et al. 2021; Kovalchuk et al. 2023). Dynamic surface tension, γ(t), 
+and the complex interfacial dilational modulus then provide the 
+principal experimental records of the evolving interfacial layer.
+© 2026 AOCS.
+All rights reserved, including rights for text and data mining and training of artificial intelligence technologies or similar technologies.
+
+
+2 Journal of Surfactants and Detergents, 2026
+The classical diffusion-  controlled description is rooted in the 
+Ward–Tordai formulation (Ward and Tordai  1946). Subsequent 
+theories have introduced finite adsorption barriers, nonideal 
+equations of state, electrostatic interactions, curvature, micel -
+lization, multicomponent transport, and internal interfacial 
+states. Recent microscopic and experimentally constrained 
+studies have improved forward descriptions of adsorption 
+kinetics over wide concentration ranges (Scher et  al.  2023; 
+Huang et  al.  2025), while an entropy- regulated tensiometric 
+treatment coupled adsorption kinetics with high-  precision 
+dynamic surface-  tension measurements (Al-  Sou'od  2026). 
+Kovalchuk et  al.  ( 2023) emphasized that quantitative inter -
+pretation of surfactant layers should connect tensiometry with 
+thermodynamic equations of state, direct information on in -
+terfacial composition, structural characterization, and molec -
+ular modeling; dilational rheology is particularly sensitive to 
+small changes in composition and structure. These advances 
+sharpen forward modeling, but forward adequacy does not 
+by itself establish that a mechanism or fitted parameter is 
+uniquely identified by a measured response.
+Sample composition is a separate and potentially domi -
+nant source of ambiguity. Classical work by Mysels and 
+Florence ( 1973) and Lunkenheimer and Miller ( 1987) showed 
+that trace surface-  active impurities can strongly alter dy -
+namic or equilibrium interfacial behavior, and Priester 
+et al. ( 1998) demonstrated this specifically for oligoethylene-  
+glycol ether surfactants. Commercial ethoxylates and PEO-  
+PPO- PEO block copolymers can additionally contain homolog 
+and molecular-  mass distributions. Consequently, a relaxation 
+feature observed in a commercial material cannot be assigned 
+uniquely to a molecular adsorption or rearrangement mecha -
+nism unless composition and surface-  chemical purity are in -
+dependently established.
+Mechanistic ambiguity and model dependence are therefore not 
+new problems. Boos et al. (2013) showed that quantitative differ-
+ences among interfacial-  rheology data and analysis routes can 
+alter interpretation even for carefully studied nonionic systems. 
+Rosales- Anzola and Urbina- Villalba (2025) further showed that 
+agreement with equilibrium surface tension is necessary but 
+not sufficient for selecting an equation of state and adsorption 
+isotherm, and Rosales- Anzola (2025) demonstrated that the pre-
+dictive fidelity of multicomponent dilational models depends 
+critically on the thermodynamic adsorption model. Free-  energy 
+formulations of adsorption kinetics likewise provide alternative 
+nonequilibrium constructions and clarify the limits of equilib -
+rium mappings between coverage and tension (Diamant and 
+Andelman  1996). The present study therefore does not claim 
+first recognition of mechanistic non- uniqueness; it isolates and 
+quantifies one narrower failure mode: apparent mechanistic 
+identifiability created by fixing uncertain protocol variables to 
+ideal values.
+A dynamic surface-  tension or dilational record is not a direct 
+measurement of one elementary process. Bulk diffusion, inter -
+facial transfer, micelle disassembly, lateral interactions, mo -
+lecular orientation, aggregation, and structural relaxation can 
+generate overlapping signatures. Different parameter combina -
+tions can therefore produce nearly indistinguishable responses. 
+A visually excellent fit to one record neither proves the assumed 
+mechanism nor ensures that fitted diffusion coefficients, kinetic 
+constants, or relaxation times will transfer to another concentra-
+tion, area history, or forcing frequency.
+The ambiguity is especially important when the adsorbed layer 
+possesses its own structural dynamics. Conventional mod -
+els assume
+so that every instantaneous surface excess, Γ, maps to a 
+unique surface tension. Experimental studies instead show 
+concentration-   and frequency-  dependent responses associated 
+with molecular orientation, packing, association, and lateral 
+organization (Bergfreund et al.  2021; Kovalchuk et al.  2023 , 
+2024 ; Chen et al. 2024). Generalized interfacial rheology mod -
+els can represent broad response spectra accurately (Loglio 
+et al.  2024), but numerical flexibility does not prove that fit -
+ted coefficients correspond uniquely to distinct molecular 
+processes.
+The minimal thermodynamic extension is therefore to introduce 
+an internal variable, 𝜉, and enlarge the interfacial state space to
+Interfaces with the same Γ may then exhibit different tensions 
+because their molecular organization and history differ. This 
+construction permits delayed relaxation, aging, overshoot, and 
+compression–expansion hysteresis while separating the amount 
+adsorbed from the state of interfacial organization.
+Any enlarged state space must satisfy the second law. 
+Adsorption and structural relaxation must be driven by conju -
+gate thermodynamic forces and constrained so that interfacial 
+entropy production remains nonnegative (van Sluijs et al. 2025). 
+Thermodynamic admissibility, however, is only a necessary 
+condition. Structural identifiability asks whether ideal observa -
+tions uniquely determine the parameters of a specified model, 
+whereas practical identifiability asks whether finite, noisy ob -
+servations determine them with bounded uncertainty (Wieland 
+et  al. 2021; Simpson and Maclaren  2023). Identifiability anal-
+ysis can also determine which perturbations are minimally 
+sufficient to distinguish competing mechanisms (Gevertz and 
+Kareva 2024 ).
+This need for mechanism discrimination is especially relevant 
+to polymer- surfactant and other multiscale interfacial systems, 
+in which transport and relaxation processes can contribute si -
+multaneously to the measured dynamic surface tension (Ritacco 
+et al. 2025).
+The present work asks a narrow and falsifiable question: con -
+ditional on a specified constitutive family, can a thermody -
+namically admissible additional interfacial relaxation mode 
+be distinguished from small, unmeasured variations in the 
+experimental forcing? We construct a nested model hierarchy 
+comprising M0, M1, and M2 from a common free-  energy struc-
+ture; verify conservation, dissipation, numerical convergence, 
+and limiting relations; establish coefficient-  rank conditions 
+and multi- protocol synthetic recoverability; and require candi -
+date mechanisms to compete with finite-  adsorption, drift, and 
+(1)𝛾 = 𝛾(Γ, T)
+(2)𝛾 = 𝛾(Γ, 𝜉, T)
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+3Journal of Surfactants and Detergents, 2026
+step- amplitude alternatives under held- out time-  and frequency- 
+domain prediction. The central contribution is a quantitative 
+demonstration of protocol-  induced false identifiability: under 
+idealized equal-  step assumptions, M2 appears decisively sup -
+ported, yet its apparent additional mode loses support and pre -
+dictive transfer when low-  dimensional nuisance models are 
+admitted. Composition/purity uncertainty and constitutive-  
+model uncertainty remain distinct limitations and are not 
+claimed to be smaller than the protocol effect studied here.
+2   |   Theoretical Framework
+2.1   |   State Variables, Conservation, and Geometry
+A planar liquid occupies z > 0 with an interface at z = 0. The 
+bulk concentration is c(z, t), the surface excess is Γ(t), and the 
+fractional coverage is
+Bulk transport is Fickian,
+with adsorption flux J defined as positive toward the interface,
+Conservation of the adsorbed amount A𝛤  gives
+The geometric term is essential: expansion dilutes the sur -
+face layer, whereas compression increases Γ even when J = 0. 
+Spherical transport was retained for the published bubble exper-
+iments when required; planar and spherical operators were not 
+pooled into an apparent diffusion coefficient.
+2.2   |   Interfacial Free Energy and Surface Tension
+The M2 construction is deliberately phenomenological and 
+minimal. It follows a free-  energy-  based nonequilibrium strat -
+egy (Diamant and Andelman  1996; van Sluijs et  al.  2025) 
+rather than postulating a specific molecular rearrangement 
+pathway. The variable ξ is a macroscopic internal coordinate 
+that permits the interfacial state to retain one delayed degree 
+of freedom beyond surface excess; it is not identified a priori 
+with orientation, aggregation, packing, or conformational 
+change.
+The dimensionless interfacial free energy used in the verified 
+M2 model is
+The coverage-  dependent terms provide a Frumkin-  type inter -
+facial thermodynamics, while the quadratic internal-  variable 
+penalty is chosen so that the nonequilibrium contribution van -
+ishes when the internal coordinate reaches its local equilibrium 
+value. This is one admissible constitutive choice for stress- 
+testing an additional relaxation mode; it is not asserted to be a 
+universal equation of state for surfactant layers.
+The dimensional free-  energy density is
+The surface chemical potential and mechanical tension are
+At equilibrium 𝜉 = 𝜃, so the structural term vanishes and the 
+equilibrium Frumkin isotherm is unchanged. Under finite-  
+rate forcing, the same coverage may correspond to different 
+tensions.
+Accordingly, the equilibrium constitutive component of the hi -
+erarchy is Frumkin-  type; the Langmuir form is recovered only 
+as the corresponding zero-  interaction limiting case. The kinetic 
+hierarchy M0–M2 should therefore not be read as a claim that a 
+simple Langmuir isotherm uniquely describes the experimental 
+systems. All inverse conclusions below are conditional on the 
+constitutive family being tested.
+2.3   |   Thermodynamic Forces and Model Hierarchy
+Equations  ( 7–14) form a linked thermodynamic construc -
+tion rather than a set of independent empirical fitting terms. 
+Starting from the selected interfacial free energy, the surface 
+chemical potential and mechanical tension are obtained by the 
+corresponding thermodynamic derivatives. The adsorption af -
+finity is the bulk-  surface chemical-  potential difference; finite-  
+rate adsorption is written as a dissipative force–flux relation; 
+and the internal coordinate follows relaxational dynamics 
+driven by its conjugate thermodynamic force. With positive 
+kinetic coefficients, these choices generate the nonnegative 
+entropy- production expression used below. The construction 
+is therefore thermodynamically constrained, while its consti -
+tutive adequacy for any particular material remains an exper -
+imental question.
+For an ideal dilute bulk phase, the adsorption affinity is
+M1 and M2 use
+where j = d𝜃 ∕ d/uni0303.s1t  in the dimensionless formulation. M2 adds
+(3)𝜃 = ΓΓ∞ ,0 <𝜃< 1.
+(4)𝜕c𝜕t = D 𝜕2c𝜕z2 , z > 0,
+(5)J = D 𝜕z c(0, t).
+(6)d𝛤dt +Γ d ln Adt = J.
+(7)
+𝜙(𝜃, 𝜉) = 𝜃 ln 𝜃 + (1 − 𝜃) ln(1 − 𝜃) − a2 𝜃2 + 𝜅2 (𝜉 − 𝜃)2.
+(8)𝜓s = 𝛾0 + 𝜇0s Γ+ RT Γ∞𝜙(𝜃, 𝜉).
+(9)𝜇s − 𝜇0s
+RT = ln
+/parenleft.s2 𝜃
+1 − 𝜃
+/parenright.s2
+− a𝜃 + 𝜅(𝜃 − 𝜉),
+(10)𝛾 = 𝛾0 + RT Γ∞
+/bracketleft.s2
+ln(1 − 𝜃) + a2 𝜃2 + 𝜅2 /parenleft.s1𝜉2 − 𝜃2/parenright.s1/bracketright.s2.
+(11)
+xΓ = 𝜇b − 𝜇sRT = ln/parenleft.s1ΛCs/parenright.s1 − ln/parenleft.s2 𝜃1 − 𝜃 /parenright.s2 + a𝜃 − 𝜅(𝜃 − 𝜉).
+(12)j = DaΓxΓ,
+(13)d𝜉
+d/uni0303.s1t = r𝜉 (𝜃 − 𝜉).
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+4
+ Journal of Surfactants and Detergents, 2026
+The corresponding interfacial entropy-  production terms are
+M0 is obtained by instantaneous interfacial equilibrium. M1 re -
+tains finite-  rate adsorption but sets 𝜅 = 0. M2 retains D, DaΓ, 
+r𝜉, and 𝜅 with zero adsorption- structure cross- coupling. The fully 
+coupled model M3 was excluded because no available experimen-
+tal dataset identified an additional reciprocal coupling parameter.
+The hierarchy is a falsification ladder, not a presumed ladder of 
+physical realism. M0 is the lowest- complexity diffusion- controlled 
+baseline; M1 is admitted only to test whether a finite interfacial-  
+transfer timescale is required; and M2 is admitted only to test 
+whether one additional nonequilibrium interfacial degree of free-
+dom remains necessary after simpler explanations fail. Each ex -
+tension must recover the simpler model in the appropriate limit, 
+and no extension is retained solely because it is more flexible 
+(Figure 1).
+2.4   |   Linear Identifiability of M2
+For a small area perturbation around equilibrium, define
+Linearization gives
+and
+The resulting coefficient map has four independent 
+coefficients,
+For 𝜅> 0, r𝜉 > 0, DaΓ > 0, and 𝜒> 0, the coefficient map is full 
+rank and can be inverted. When 𝜅 = 0, M2 collapses to M1 and 
+r𝜉 becomes unobservable. Thus a fitted structural rate is mean -
+ingful only when the structural amplitude is nonzero and prac -
+tically bounded (Figure 2 ).
+2.5   |   From the Nonlinear Internal- Variable Model 
+to the Reduced Oscillatory Surrogate
+The frequency-  domain screening model used below is a con -
+trolled linear surrogate, not an independent constitutive law. Let 
+𝜀 = 𝛿 ln A, s = i𝜔, and define the coverage-  response function
+At equilibrium, 𝜉eq = 𝜃eq, and Equation (13) gives
+Linearization of Equation (10) therefore yields
+where geq = RT Γ∞
+/bracketleft.s2
+− /parenleft.s11 − 𝜃eq/parenright.s1−1 + a𝜃eq/bracketright.s2. Equation (19c) is the exact 
+small- amplitude stress decomposition; the coverage re sponse 
+HΓ still contains adsorption-  diffusion coupling and structural 
+feedback. The additive Debye form used for literature screening 
+(14)𝜎Γ = DaΓx2Γ ≥ 0, 𝜎𝜉 = r𝜉 𝜅(𝜃 − 𝜉)2 ≥ 0.
+(15)
+𝜒 = 1
+𝜃eq
+�1 − 𝜃eq� − a, q = √𝜏Ds, 𝛽(q) = DaΓqq + DaΓ .
+(16)/uni0302.s2𝛿𝜉 = r𝜉s + r𝜉 /uni0302.s2𝛿𝜃,
+(17)
+/uni0302.s2𝛿𝜃
+/uni0302.s5𝛿 ln A =− 𝜃eq
+s
+s + 𝛽(q)
+/bracketleft.s2
+𝜒 + 𝜅 ss + r𝜉
+/bracketright.s2 .
+(18)
+B3 = DaΓ√𝜏D , B2 = r𝜉 + DaΓ(𝜒 + 𝜅)𝜏D , B1 = DaΓr𝜉𝜏3∕2D , B0 = DaΓ𝜒r𝜉𝜏2D .
+(19a)HΓ(s) =− /uni0302.s2𝛿𝜃/uni0302.s1𝜀.
+(19b)/uni0302.s5𝛿𝜃 − 𝛿𝜉 = ss + r𝜉 /uni0302.s2𝛿𝜃.
+(19c)
+M2(s) = base(s) + RT Γ∞𝜅𝜃 eqHΓ(s) ss + r𝜉 , base(s) =− geqHΓ(s),
+FIGURE 1     |    Nested thermodynamic model hierarchy and the inference rule used in this work. M3 is shown only to define the boundary of the 
+present study; it was not estimated.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+5
+Journal of Surfactants and Detergents, 2026
+follows only when (i) structural feedback on HΓ is weak over the 
+fitted range and (ii) HΓ varies slowly across the structural transi-
+tion. Then HΓ(s) can be replaced locally by a positive reference am-
+plitude, 𝜏𝜉 = r−1𝜉 , and the second term reduces to 𝛥Es 𝜏𝜉 ∕ /parenleft.s11 + s𝜏𝜉 /parenright.s1. 
+These assumptions are stated explicitly because the reduced spec-
+trum can detect an additional mode but cannot by itself validate 
+the complete nonlinear M2 mechanism.
+This reduced term is therefore analogous to a single Debye/Mx-  
+like relaxation contribution within broader spectral descriptions 
+(Loglio et  al. 2024), but its fitted timescale is not assigned to a 
+unique microscopic pathway. It is used only as a screening sur -
+rogate for an additional mode; validation of the nonlinear M2 
+state space requires the full set of time-  and frequency-  domain 
+observables.
+3   |   Materials and Methods
+3.1   |   Numerical Solution and Verification
+The diffusion equation was discretized conservatively on a 
+stretched finite-  volume grid refined near the interface. The ki -
+netic boundary relation was eliminated analytically using the 
+Wright omega function, avoiding a nested nonlinear root solve 
+and maintaining positive subsurface concentration. The result -
+ing stiff method-  of- lines system was integrated with an implicit 
+backward- differentiation method.
+Every model was subjected to four non-  negotiable checks: total 
+mass balance, nonnegative entropy production, nonincreasing 
+grand potential under closed isothermal conditions, and conver-
+gence with mesh and domain refinement. Nested limiting rela -
+tions were also tested directly: M1 approached M0 as DaΓ → ∞, 
+and M2 approached M1 as 𝜅 → 0 or as structural relaxation be -
+came instantaneous.
+3.2   |   Synthetic Recovery and Protocol Design
+The synthetic parameter values were illustrative rather than 
+experimental estimates. M0 recovery used 100 noisy repli -
+cates. M1 used expansion and compression responses with 
+50 replicates. M2 used expansion and compression step re -
+sponses together with a complex frequency response, followed 
+by prediction of a held-  out mild-  expansion protocol over 30 
+noise realizations. Positive parameters were estimated on a 
+logarithmic scale. Practical identifiability was assessed using 
+FIGURE 2    |    Protocol- induced false identifiability in the figure 5 of Hansen (2008) C12EO23 (polyoxyethylene (23) lauryl ether) transient. (A) Two- 
+pass consensus points and representative fits. (B) Residual structure under M0, M2, and the drift comparator. (C) AICc distance from the best candidate 
+model; lower values are favored. (D) Leave- one- segment- out squared error; M2 is worse than M0, while nuisance- aware diffusion models transfer better. 
+Experimental markers were independently digitized from Hansen (2008); curves, residuals, and model- ranking panels are from the present work.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+6
+ Journal of Surfactants and Detergents, 2026
+profile likelihood; Fisher-  information intervals were retained 
+as local diagnostics.
+3.3   |   Published Experimental Datasets
+This study combines original model development, numerical 
+verification, synthetic recovery, and reanalysis of two pub -
+lished experimental datasets (Hansen  2008 ; Loglio et al. 1995); 
+no new experiments were performed. The DC12PO dataset 
+served as an external diffusion-  controlled comparator and 
+contained a digitized transient area-  pulse response plus seven 
+harmonic conditions from the same sample. Hansen's study 
+provided oscillatory curves for polyoxyethylene (23) lauryl 
+ether, Poloxamer 188, and Poloxamer P9400, together with 
+step- relaxation traces or parameter summaries. Coordinates 
+extracted from published figures are explicitly treated as 
+digitized observations and are never represented as original 
+instrument data. The datasets and their diagnostic roles are 
+summarized in Table 1 .
+Material identities are reported using generic names, with 
+the corresponding commercial trade names given here 
+only for source identification: dodecanol poly(oxyeth -
+ylene)23 (C12EO23; polyoxyethylene (23) lauryl ether; Brij 
+35), EO76- PO30-  EO76 (Poloxamer 188; Pluronic F68), and 
+EO21- PO50-  EO21 (Poloxamer P9400; Pluronic P9400) 
+(Hansen  2008). Thereafter, the generic names polyoxyeth -
+ylene (23) lauryl ether, Poloxamer 188, and Poloxamer P9400 
+are used throughout the manuscript.
+Polyoxyethylene (23) lauryl ether, Poloxamer 188, and 
+Poloxamer P9400 are commercially designated surfactant ma -
+terials and are not treated here as chemically monodisperse 
+model compounds. The nominal compositions are retained 
+only to identify the systems reported in the source study. The 
+published records available for the present reanalysis do not 
+provide batch-  resolved homolog distributions, molecular-  
+mass distributions, trace surface-  active impurity profiles, or 
+other compositional information sufficient to reconstruct the 
+surface-  chemical purity of the tested samples. Such effects 
+are known to modify interfacial adsorption and relaxation 
+behavior (Mysels and Florence  1973; Lunkenheimer and 
+Miller  1987; Priester et al.  1998). Accordingly, these datasets 
+are used strictly as diagnostic records for model discrimina -
+tion and protocol sensitivity, not for assigning compound-  
+specific microscopic adsorption mechanisms.
+The concentration choices were fixed from source-  level diag -
+nostic roles before model comparison. The C12EO23 dataset 
+(polyoxyethylene (23) lauryl ether, 2 ppm) was selected because 
+Hansen described the low-  pressure surface as almost entirely 
+elastic and well represented by diffusional exchange. The 
+EO76- PO30-  EO76 dataset (Poloxamer 188, 10,000 ppm) was 
+selected because it had the smallest published step-  relaxation 
+fitting error for that block copolymer. The EO21- PO50-  EO21 
+dataset (Poloxamer P9400, 10 ppm) was selected because it 
+was below the reported critical micelle concentration (CMC), 
+provided a complete resolvable E′/E″ spectrum, and exhibited 
+source-  reported frequency dependence attributed to config -
+urational relaxation. These prespecified diagnostic rules re -
+duce, but do not eliminate, selection bias; analysis across all 
+published concentrations remains a desirable extension.
+These prespecified roles are logical roles in the falsification de -
+sign, not molecular positive or negative controls. They reduce 
+post hoc selection of datasets but do not remove uncertainty 
+due to commercial composition, sample history, or unreported 
+impurities.
+For digitized Hansen spectra, conservative uncertainties were 
+assigned as 0.15/0.25 mN m−1 for polyoxyethylene (23) lauryl 
+ether E� ∕ E��, 0.15/0.18 mN m−1 for Poloxamer 188, and 0.10/0.15 
+mN m−1 for Poloxamer P9400. Frequency-  coordinate uncer -
+tainty was also perturbed during Monte Carlo propagation.
+3.4   |   Raw- Trace Digitization 
+and Nuisance- Protocol Audit
+Fig.  5 of Hansen  ( 2008) was rendered independently at 600 
+and 400 dpi. Open-  circle marker centers were detected in each 
+raster after exclusion of the fitted-  curve band, gridlines, and 
+axes. Cross-  pass consensus required agreement within 0.35 s 
+TABLE 1     |    Published experimental datasets and their diagnostic roles.
+System Role Data used Status
+DC12PO External negative control Digitized transient; seven 
+harmonic conditions
+Published curve/table data
+C12EO23 (polyoxyethylene 
+(23) lauryl ether), 2 ppm
+Raw- trace falsification 
+comparator
+Hansen (2008), Fig. 5 
+transient; Fig. 2 E′/E″; 
+source Table 1 summary
+Two- pass digitized 
+trace and spectrum
+EO76- PO30- EO76 
+(Poloxamer 188), 10,000 ppm
+Intermediate comparator Hansen (2008), Fig. 10 
+E′/E″; source Table 2 
+step summary
+Digitized spectrum
+EO21- PO50- EO21 
+(Poloxamer P9400), 10 ppm
+Additional- mode 
+screening candidate
+Hansen (2008), Fig. 14 
+E′/E″; source Table 3 
+step summary
+Digitized spectrum; raw 
+step trace unavailable
+Note: Source experimental records are from Hansen ( 2008) and Loglio et al. ( 1995); coordinates used in the present analysis are independent digitizations of published 
+figures and are not original instrument files.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+7
+Journal of Surfactants and Detergents, 2026
+and 0.06 mN m−1. The two passes produced 203 and 239 can -
+didates; 163 strict matches yielded 148 consensus points after 
+near- duplicate merging. An isolated switch-  point marker near 
+40 s that did not survive cross-  pass consensus was excluded. 
+Frequency-  domain observations were not used during tran -
+sient estimation.
+The four approximately 20 s relaxation segments were fitted 
+first under the source-  model assumption of one common step-  
+response amplitude. M0, M1, and a reduced two-  mode M2 
+were then compared with three nuisance alternatives that re -
+tained diffusion-  only physics: M0 with a linear baseline drift, 
+M0 with separate expansion and contraction amplitudes, and 
+M0 with one amplitude per segment. The nuisance models 
+were not introduced to claim that any specific instrumental 
+defect occurred. They test whether the published trace con -
+tains enough information to distinguish a structural mode 
+from small, unreported variations in baseline or area-  step 
+magnitude.
+Model comparison used AICc and leave-  one- segment- out pre -
+diction. The four-  amplitude model was eligible for in-  sample 
+comparison but not for blind prediction of an unseen segment be-
+cause its held- out amplitude is undefined without the measured 
+area waveform. figure 5 of Hansen (Hansen  2008) does not re -
+port the fractional area step ΔA ∕ A0; consequently, the transient 
+identifies the relaxation rate and tension-  step amplitude, but 
+not an independent absolute value of E0. The source-  reported 
+E0 = 16.7 mN m−1 was used only as an explicit amplitude anchor 
+for the subsequent time- to- frequency audit.
+3.5   |   Reduced Frequency- Domain Screening 
+Hierarchy
+A separate model-  form limitation applies to this literature 
+reanalysis. The available spectra do not include the equilib -
+rium isotherms, independently measured surface excesses, or 
+concentration- resolved adsorption data needed to discriminate 
+fairly among alternative equations of state and adsorption iso -
+therms. Adding several thermodynamic adsorption models 
+without those constraining observables would introduce addi -
+tional underdetermined parameters rather than resolve con -
+stitutive uncertainty. The reduced spectral comparisons below 
+are therefore explicitly conditional on the tested constitutive 
+family and do not validate a unique adsorption-  layer thermo -
+dynamic model (Rosales-  Anzola and Urbina-  Villalba  2025; 
+Rosales- Anzola 2025).
+The published oscillatory data do not contain the equilibrium 
+isotherms, surface excesses, or raw step traces required to iden -
+tify the full nonlinear M1 or M2 parameter vectors. Three re -
+duced frequency-  domain models were therefore compared. 
+With s = i𝜔 and qD =
+√
+𝜔D ∕ s, the diffusion-  only response is
+Its real and imaginary parts are identical to the Lucassen form 
+used by Hansen. A finite adsorption barrier gives the reduced 
+M1 response (Noskov and Loglio 1998).
+where 𝜏a is the proper adsorption- relaxation time. Equation (21) 
+reduces to Equation ( 20) as 𝜏a → 0 and to a kinetic Maxwell re -
+sponse when bulk diffusion becomes fast. The structural-  mode 
+surrogate is
+Positive ΔE and 𝜏𝜉 ensure nonnegative storage and loss contri -
+butions. As a sensitivity check, a five-  parameter model contain-
+ing both Equation (21) and the structural term was also fitted. It 
+was retained only if it improved AICc relative to Equation ( 22) 
+and produced a bounded 𝜏a. This distinction is critical: M2,red 
+screens for an additional structural-  like mode, whereas only the 
+full state-  space M2 contains the complete adsorption-  structure 
+dynamics of Equations (9–15).
+3.6   |   Model Selection and Claim Rules
+Comparisons used corrected Akaike information criterion 
+(AICc), leave-  one- frequency- out or leave-  one- segment- out 
+prediction, profile likelihood, parametric bootstrap for the 
+boundary case, and Monte Carlo propagation of digitization un -
+certainty. Parsimony was imposed as an inference rule rather 
+than a qualitative preference: a more complex model was re -
+tained only when its additional parameters were practically 
+bounded, its information-  criterion advantage was stable, held- 
+out prediction improved, and neither a simpler physical model 
+nor a plausible nuisance-  protocol model provided an equally 
+adequate explanation. When those requirements were not met, 
+the simpler model was retained. Even when a reduced spectral 
+mode passed these tests, it was classified only as screening ev -
+idence rather than validation of the nonlinear M2 mechanism. 
+AICc was interpreted only within the candidate set being com -
+pared; decisive preference over an underspecified baseline was 
+not treated as mechanistic evidence. When the required equi -
+librium and adsorption observables are available, constitutive 
+alternatives must likewise enter the candidate set before a mo -
+lecular mechanism is assigned.
+4   |   Results
+4.1   |   C12EO23 (Polyoxyethylene (23) Lauryl 
+Ether) Raw- Trace Audit: Protocol- Induced False 
+Identifiability
+The two independent figure 5 of Hansen ( 2008) digitizations 
+produced 203 and 239 candidate marker centers. Strict cross-  
+pass matching retained 163 coordinates and yielded 148 high-  
+confidence consensus points after near-  duplicate merging. 
+M0 recovered a tension-  step amplitude of 2.0261 mN m−1, 
+𝛾0 = 53.1831 mN m−1, and 𝜔0 = 0.007020 s−1, with a transient 
+RMSE of 0.0271 mN m−1. The 95% profile-  likelihood interval 
+for 𝜔0 was 0.006437–0.007639 s−1, and the segment-  bootstrap 
+interval was 0.006483–0.007582 s−1. Both contain the pub -
+lished value of 0.007 s−1. The raw-  figure extraction therefore 
+(20)0,red(s) = E01 + qD .
+(21)1,red(s) = E0
+1 + 𝜏a
+√s𝜔D
+1 +
+√
+𝜔D ∕ s + 𝜏a
+√s𝜔D ,
+(22)2,red(s) = 0,red(s) +Δ E
+s𝜏𝜉
+1 + s𝜏𝜉
+.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+8
+ Journal of Surfactants and Detergents, 2026
+reproduces the source relaxation rate without using the oscil -
+latory spectrum. Because ΔA ∕ A0 is absent from figure  5 of 
+Hansen (Hansen  2008 ), this agreement validates the normal -
+ized transient shape and rate, not an independent absolute 
+modulus.
+Under the ideal assumption that all four area steps had one 
+identical amplitude and that the baseline was stationary, M2 
+reduced AICc from − 1061.39 to − 1097.99. The nominal struc -
+tural component had an amplitude of 0.1540 mN m−1 and a 
+relaxation time of 2.97 s. Relative to M0 alone, 𝛥AICc = 36.61 
+would conventionally be called decisive. The inference did not 
+survive expansion of the candidate set. A diffusion-  only model 
+with a linear drift of only 7.29 × 10−4 mN m−1 s−1 was favored 
+over M2 by 5.68 AICc units. A model with one amplitude per 
+segment, spanning only 1.997–2.066 mN m−1 (a 3.39% range), 
+was favored over M2 by 16.84 units. Separate expansion and 
+contraction amplitudes gave essentially the same in-  sample 
+support as the drift model.
+Held- out prediction reversed the apparent mechanistic ranking. 
+The leave-  one- segment- out SSE was 0.2196 for M0 and 0.2393 
+for M2, so the structural extension was 8.95% worse than dif -
+fusion alone. The drift comparator reduced the error to 0.1415, 
+35.6% below M0, while the two-  amplitude comparator gave 
+0.1755. The four-  amplitude model could not be used for blind 
+prediction because the amplitude of an unobserved segment is 
+undefined without a measured area waveform. Thus, the M2 
+curvature was not transferable; it was a flexible representation 
+of residual structure that was equally or more parsimoniously 
+explained by unmeasured protocol degrees of freedom (Table 2).
+Using the source-  reported E0 = 16.7 mN m−1 only as an ampli -
+tude anchor, locked transfer from the raw trace to the figure 2 
+of Hansen (2008) spectrum gave complex RMSE values of 0.868 
+mN m−1 for M0 and 0.635 mN m−1 for M2. M2 reduced the dis -
+crepancy, but its reduced 𝜒2 remained 6.72 and the transient 
+structural timescale was unstable to the nuisance controls. The 
+transfer is therefore diagnostic cross-  domain consistency, not 
+external validation of M2.
+4.2   |   Thermodynamic and Numerical Verification
+The nested solvers satisfied stringent internal checks (Table  3). 
+M0 reproduced Ward-  Tordai short-  time scaling and recovered 
+D with a median absolute relative error of 0.183% when Γ∞ 
+was treated as independently known. M1 preserved mass to 
+7.62 × 10−15, remained entropy producing, and approached M0 
+within 2.01 × 10−5 mN m−1 at large DaΓ. In 50 noisy replicates, 
+M1 recovered D and DaΓ with median absolute relative errors 
+of 4.20% and 6.76%, and predicted the held-  out protocol with a 
+median RMSE of 0.0200 mN m−1 versus 0.1033 for M0.
+M2 preserved open-  and closed-  domain mass to 6.76 × 10−15 
+and 7.69 × 10−16, respectively. The total entropy production re -
+mained positive, the grand potential decreased monotonically, 
+and the finest-  mesh difference was 2.92 × 10−5 mN m−1. Setting 
+𝜅 = 0 reproduced M1 to 8.29 × 10−10 mN m−1. The model gen -
+erated a maximum path-  dependent tension difference of 0.252 
+mN m−1 between states with matched coverage but different 
+structural histories.
+4.3   |   Structural and Practical Identifiability Under 
+Informative Protocols
+For M0, D and Γ∞ occur through the confounded combination 
+Γ∞ ∕
+√
+D; D becomes identifiable only when Γ∞ is known inde -
+pendently. M1's two-  parameter coefficient map had rank two. 
+M2's four- parameter map had rank four under the nondegener -
+ate conditions specified above.
+The synthetic M2 experiment recovered all four dynamic param-
+eters accurately: median absolute relative errors were 0.34% for D, 
+0.69% for DaΓ, 2.02% for r𝜉, and 0.54% for 𝜅. The median Fisher- 
+information condition number was 5.43 × 103, showing that the 
+problem remained sloppy despite being identifiable. M2 never -
+theless outperformed M1 in all 30 held-  out predictions. Figure 3 
+demonstrates that the structural variable created measurable path 
+dependence and that time-  and frequency- domain protocols sup-
+plied complementary information.
+TABLE 2     |    C12EO23 (polyoxyethylene (23) lauryl ether) raw-  trace confounding and predictive audit.
+Model Parameters AICc
+𝚫AICc 
+from best
+Leave- one- 
+segment- out SSE Interpretation
+M0 3 −1061.39 53.45 0.2196 Diffusion baseline
+M1 4 −1062.69 52.15 — Adsorption time 
+collapses near zero
+M2 5 −1097.99 16.84 0.2393 Strong in- sample gain; 
+poorer transfer
+M0 + drift 4 −1103.67 11.16 0.1415 Best transferable 
+nuisance model
+M0 + expansion/
+contraction amplitudes
+4 −1103.61 11.23 0.1755 Protocol asymmetry 
+explanation
+M0 + four segment 
+amplitudes
+6 −1114.84 0.00 Not estimable blind Best in- sample; requires 
+measured step amplitudes
+Note: Experimental markers were independently digitized from Hansen ( 2008); all model fits, nuisance-  model comparisons, and predictive audits are from the present 
+work.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+9
+Journal of Surfactants and Detergents, 2026
+4.4   |   DC12PO Negative Control
+The DC12PO experiment was used to test whether M2 would 
+manufacture a structural mechanism in a system reported 
+to be diffusion controlled under small perturbations (Loglio 
+et al. 1995). The transient- only fit could be improved by M2, but 
+the decisive test was transfer to the harmonic response. In the 
+direct frequency fit, M0, M1, and M2 had AICc values of 11.56, 
+15.61, and 25.70, giving Akaike weights of 0.882, 0.117, and 
+0.00075. The paired bootstrap probability that M2 had lower 
+harmonic loss was 0.577, and the 95% interval for the paired loss 
+difference included zero. M0 was therefore retained (Figure 4 ).
+4.5   |   Polyoxyethylene (23) Lauryl Ether 
+and Poloxamer 188 Frequency- Domain Comparators
+Polyoxyethylene (23) lauryl ether at 2 ppm was selected before 
+fitting because the source article described this low-  pressure 
+surface as almost entirely elastic and well represented by diffu -
+sional exchange (Kovalchuk et al. 2024). M0 recovered E0 = 17.51 
+mN m−1 and 𝜔0 = 0.00875 s−1, close to the published step values 
+16.7 mN m−1 and 0.007 s−1. The finite- barrier model collapsed to 
+𝜏a = 4.4 × 10−4 s, did not reduce the residual sum of squares, and 
+TABLE 3     |    Numerical verification and synthetic inference summary.
+Metric M0 M1 M2
+Open- domain 
+normalized mass 
+error
+5.42e−12 7.62e−15 6.76e−15
+Closed- domain 
+normalized mass 
+error
+2.20e −15 9.61e−16 7.69e−16
+Finest reported 
+mesh difference 
+(mN m−1)
+6.450e−04 2.044e −05 2.920e −05
+Nested- limit 
+difference (mN m−1)
+— 2.006e −05 8.290e −10
+Synthetic replicates 100 50 30
+Held- out RMSE, 
+selected model 
+(mN m−1)
+— 0.0200 0.0199
+Held- out RMSE, 
+simpler model 
+(mN m−1)
+— 0.1033 0.0629
+FIGURE 3     |    Synthetic verification of M2. (A) Path dependence at matched coverage. (B) Nonnegative adsorption, structural, and total entro -
+py production. (C) Held-  out protocol prediction after multi-  protocol calibration. (D) Complex frequency response used to resolve the structural 
+timescale.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+10
+ Journal of Surfactants and Detergents, 2026
+was AICc- penalized by 2.32. M2,red improved AICc by only 4.91. 
+Under digitization uncertainty, the 95% range of ΔAICc was −1.81 
+to 10.08 and exceeded 10 in only 2.6% of replicates. polyoxyethylene 
+(23) lauryl ether was therefore retained as the weak, uncertainty- 
+sensitive comparator in the spectral hierarchy (Figure 5).
+Poloxamer 188 at 10000 ppm was chosen because it gave the 
+smallest published step-  fit error for that polymer. The finite-  
+barrier model again collapsed to the instantaneous limit 
+(𝜏a = 1.0 × 10−5 s) and had the same leave-  one- frequency-  out 
+error as M0. In contrast, M2,red improved AICc by 20.9 and 
+decreased leave-  one- frequency-  out squared error from 3.638 
+to 2.162. The structural amplitude was bounded, ΔE = 2.97 
+mN m−1 (2.13–3.48), but the profile interval for 𝜏𝜉 was broad, 
+0.096–15.7 s. Adding a finite-  barrier parameter to the structural 
+model worsened AICc by 2.31. Poloxamer 188 was therefore 
+classified as an intermediate comparator rather than a clean 
+structural positive or negative control.
+4.6   |   EO21- PO50- EO21 (Poloxamer P9400) 
+Additional- Mode Screening
+For Poloxamer P9400 at 10 ppm, the step-  relaxation summary 
+reported E0 = 12.9 mN m−1 and 𝜔0 = 0.108 s−1 (Kovalchuk 
+et  al. 2024). A free diffusion-  only fit to the digitized spectrum 
+shifted these values to E0 = 15.11 mN m−1 and 𝜔0 = 0.245 
+s−1. The finite-  barrier model did not improve the residual sum 
+of squares and collapsed to effectively instantaneous adsorption, 
+𝜏a = 3.2 × 10−5 s; its AICc was 2.32 units worse than M0 and its 
+leave- one- frequency- out error was unchanged. Thus finite-  rate 
+adsorption, in the reduced form of Equation (21), did not explain 
+the spectral departure.
+M2,red separated a diffusive baseline, ED = 12.08 mN m−1 and 
+𝜔D = 0.0749 s−1, from a structural increment 𝛥E = 2.57 mN m−1 
+and 𝜏𝜉 = 0.390 s. The resulting rate, 2.56 s−1, was close to the 
+approximately 3 s−1 crossover discussed in the source article. 
+The model reduced the combined RMSE from 0.398 to 0.271 
+mN m−1, improved AICc by 27.4, and decreased leave-  one- 
+frequency-  out squared error from 7.302 to 3.898. The 95% pro -
+file intervals were 1.91–3.09 mN m−1 for 𝛥E and 0.295–0.479  s 
+for 𝜏𝜉. In 500 digitization- uncertainty realizations, the AICc 
+advantage remained above 10 in all replicates. Adding an 
+adsorption-  barrier parameter to M2,red lowered the residual 
+sum of squares only marginally and worsened AICc by 2.51, 
+leaving 𝜏a unsupported. This is the strongest additional-  mode 
+screening signal within the tested reduced hierarchy, not val -
+idation of nonlinear M2 or of a unique molecular relaxation 
+mechanism (Figure  6).
+FIGURE 4     |    DC12PO negative-  control analysis. (A) Time-  domain fits. (B) Locked time-  to- frequency predictions. (C) Frequency-  domain model 
+comparison. (D) Time-  only profile for the structural parameter, illustrating why a bounded time-  domain estimate is not sufficient when it does not 
+transfer robustly across protocols. Experimental points were independently digitized from Loglio et al. ( 1995); model fits, locked predictions, and 
+profile analysis are from the present work.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+11
+Journal of Surfactants and Detergents, 2026
+The cross-  system pattern is more informative than any sin -
+gle fit. The finite-  adsorption-  barrier alternative did not im -
+prove  any Hansen spectrum and collapsed to the diffusion 
+limit. The additional-  mode surrogate was strongly rejected 
+for the independent DC12PO harmonic data, weak and un -
+certainty sensitive for polyoxyethylene (23) lauryl ether, in -
+termediate for Poloxamer 188, and strongest for Poloxamer 
+P9400  (Table  4). This ordered response argues against au -
+tomatic selection of either extra mechanism (Figure  7). It 
+does not establish M2 experimentally: the spectral hierar -
+chy only screens for an additional positive relaxation mode 
+and cannot exclude unmeasured time-  domain forcing fea -
+tures, constitutive-  model misspecification, or composition-  
+dependent effects.
+Taken together, the graded controls shift the emphasis from 
+post hoc mechanism assignment to prospective experimen -
+tal design. The decisive question is not whether an extended 
+model can fit a response, but whether the measured forcing 
+history and independent protocols are sufficient to separate 
+material relaxation from protocol uncertainty. This require -
+ment motivates the experimental-  design principles devel -
+oped below.
+5   |   Discussion
+5.1   |   From Thermodynamic Admissibility to a 
+Defensible Mechanism
+The model hierarchy establishes what can be represented con -
+sistently, not what a finite experimental record can uniquely 
+prove. M2 is thermodynamically admissible, satisfies the re -
+quired nested limits, and is structurally identifiable under non -
+degenerate conditions. The synthetic experiments further show 
+that its dynamic parameters can be recovered when the forcing 
+histories are known and sufficiently diverse. These results are 
+necessary validation of the framework, but they are conditional 
+on the information supplied to the inverse problem.
+The principal novelty is not the internal variable, the Debye-  
+like term, entropy production, or the general recognition that 
+surfactant-  dynamics models can be nonunique. Adsorption 
+kinetics, generalized rheological descriptions, thermody -
+namic constraints, impurity effects, and identifiability work -
+flows have each been developed previously (Al-  Sou'od  2026; 
+Mysels and Florence  1973; Lunkenheimer and Miller  1987; 
+Priester et  al.  1998; Boos et  al.  2013; Rosales- Anzola and 
+FIGURE 5     |    Frequency-  domain comparator analysis. (A, B) C12EO23 (polyoxyethylene (23) lauryl ether) at 2 ppm. (C, D) EO76-  PO30-  EO76 
+(Poloxamer 188 ) at 10,000 ppm. Solid curves are fitted responses; dashed curves are predictions using the published step-  relaxation diffusion 
+parameters. Experimental markers were independently digitized from Hansen ( 2008 ); fitted and locked-  prediction curves are from the present 
+work.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+12
+ Journal of Surfactants and Detergents, 2026
+Urbina- Villalba  2025; Rosales- Anzola  2025; Diamant and 
+Andelman 1996; Loglio et al. 2024; Wieland et al. 2021; Simpson 
+and Maclaren 2023; Gevertz and Kareva  2024). Here, these ele -
+ments are combined into a narrower falsifiable inference chain 
+in which a mechanistic extension must compete explicitly with 
+plausible protocol-  level nuisance models and survive locked 
+held- out transfer. The evidential question is therefore not simply 
+“Can the model fit the response?” but “Which claim remains de-
+fensible after protocol uncertainty is admitted, conditional on 
+the material characterization and constitutive model?”
+This positioning is complementary to, not a replacement for, 
+the route emphasized by Kovalchuk et al. ( 2023). A consistent 
+mechanistic analysis should first establish the material and 
+FIGURE 6     |    EO21- PO50- EO21 (Poloxamer P9400) additional- mode screening. (A) Storage modulus. (B) Loss modulus. (C) Profile likelihood 
+for the structural increment. (D) Profile likelihood for the structural relaxation time. Experimental markers were independently digitized from 
+Hansen (2008); fitted curves and profile- likelihood analyses are from the present work.
+TABLE 4     |    Frequency- domain model- selection and alternative-  mechanism evidence.
+Dataset
+𝚫AICc 
+M0–
+M1
+𝚫AICc 
+M0–
+M2,red LOO SSE: M0→M1→M2,red Structural result Classification
+DC12PO −4.05 −14.14 Protocol transfer not robust Harmonic M2 
+weight 0.00075
+M0 selected
+C12EO23 (polyoxyethylene 
+(23) lauryl ether), 2 ppm
+−2.32 4.91 6.808 → 6.808 → 5.800 ΔE = 0.95; 
+uncertainty-  sensitive
+Weak comparator
+EO76- PO30- EO76 
+(Poloxamer 188), 
+10,000 ppm
+−2.32 20.87 3.638 → 3.638 → 2.162 ΔE = 2.97; 𝜏𝜉 
+weakly bounded
+Intermediate
+EO21- PO50- EO21 
+(Poloxamer P9400), 10 ppm
+−2.32 27.35 7.302 → 7.303 → 3.898 ΔE = 2.57;   
+𝜏𝜉 = 0.390 s
+Screening supported
+Note: Experimental observations were independently digitized from Hansen ( 2008) and Loglio et al. ( 1995); model selection, uncertainty propagation, and classification 
+are from the present work.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+13
+Journal of Surfactants and Detergents, 2026
+equilibrium adsorption layer as well as the available data per -
+mit, using direct interfacial-  composition measurements, appro -
+priate equations of state, structural information, and molecular 
+modeling where possible. The present protocol-  identifiability 
+audit addresses a subsequent evidential question: even after a 
+physically plausible model family is specified, are the forcing 
+history and independent perturbations informative enough 
+to distinguish its extra dynamic coordinates from lower-  
+dimensional experimental or protocol alternatives?
+5.2   |   Protocol- Induced False Identifiability as 
+the Central Finding
+Protocol- induced false identifiability is defined here as an ap -
+parently bounded and strongly selected mechanistic parame -
+ter whose support depends on fixing uncertain features of the 
+forcing protocol to ideal values. The polyoxyethylene (23) lauryl 
+ether transient provides the direct demonstration. Within the 
+restricted M0–M2 hierarchy, M2 improved AICc by 36.61 units 
+and produced a nominal structural amplitude and relaxation 
+time. Once small baseline drift or segment-  dependent step am-
+plitudes were admitted, however, diffusion-  only nuisance mod-
+els became more parsimonious than M2.
+The reversal was not merely an information-  criterion effect. M2 
+reduced the full- record residual but increased leave- one- segment- 
+out error by 8.95% relative to M0, whereas the drift model reduced 
+that error by 35.6%. Thus the added structural coordinate interpo-
+lated residual structure without transferring as a reproducible ma-
+terial property. A bounded estimate obtained under the equal- step 
+assumption was therefore conditional, not mechanistically secure.
+This conclusion does not assert that the original experiment con-
+tained instrumental drift or incorrect area steps. It identifies an 
+information limit in the published record. The fitted nuisance 
+magnitudes were small—a baseline change of approximately 
+0.058 mN m−1 over 80 s and only a 3.39% span in segment ampli-
+tudes—yet they occupied the same residual scale as the nominal 
+structural contribution. Without the measured area waveform 
+and baseline history, the tension trace alone cannot distinguish 
+those explanations.
+5.3   |   Why AICc, Bounded Profiles, and Good Fits 
+Are Insufficient
+AICc ranks models only within the candidate set supplied to 
+it. The large preference for M2 over M0 was mathematically 
+correct for the restricted comparison and scientifically incom -
+plete because the model universe omitted lower-  dimensional 
+protocol explanations. Profile likelihood is subject to the same 
+conditionality: a parameter may be bounded within one model 
+while disappearing when an omitted nuisance degree of free -
+dom is introduced.
+Held- out transfer is therefore the sharper discriminator. A 
+mechanistic extension is retained only when thermodynamic 
+admissibility, practical parameter bounds, superiority over sim -
+pler physical and nuisance models, and improved prediction 
+of data not used for estimation are all satisfied. This is the op -
+erational parsimony rule used here: added parameters are not 
+rewarded for reducing residuals alone. If predictive adequacy 
+is comparable, the lower-  complexity explanation is preferred. 
+The collapse of the finite-  barrier model toward M0 removes 
+one physical alternative in the Hansen spectra, but it does not 
+remove protocol confounding, composition/purity uncertainty, 
+or constitutive-  model uncertainty. Candidate-  set completeness 
+and transfer testing are separate requirements, and neither can 
+substitute for the other.
+FIGURE 7     |    Cross- system alternative- mechanism audit. Bars show the AICc change relative to diffusion-  only for a finite adsorption barrier and 
+for the structural- mode surrogate. Positive values favor the alternative; negative values favor M0. The dashed line at 10 is a strong- evidence guide, not 
+a mechanistic proof. Values were calculated in the present work from experimental records independently digitized from Hansen ( 2008) and Loglio 
+et al. (1995).
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+14
+ Journal of Surfactants and Detergents, 2026
+5.4   |   Scope of the Cross- System Evidence
+The four experimental systems support a graded rather than 
+binary interpretation. DC12PO rejects the additional mode 
+through failure of cross-  domain transfer. The polyoxyethylene 
+(23) lauryl ether raw trace demonstrates loss of mechanistic 
+preference after nuisance controls. Poloxamer 188 remains in -
+termediate because its additional-  mode amplitude is bounded 
+but its relaxation timescale is broad. Poloxamer P9400 provides 
+the strongest spectral screening evidence that a single diffusion 
+mode is insufficient: the structural surrogate improves AICc, 
+leave- one- frequency- out prediction, and robustness to digitiza -
+tion uncertainty, whereas the finite adsorption-  barrier model 
+does not.
+These outcomes do not establish that the same nonlinear M2 
+mechanism operates in any of the experimental systems. In par -
+ticular, Poloxamer P9400 cannot be treated as a validated M2 
+case because the raw step-  relaxation trace and measured area 
+history required for locked time-  domain testing were unavail -
+able. The defensible conclusion is narrower: within the tested 
+reduced hierarchy, the Poloxamer P9400 spectrum supports an 
+additional positive relaxation mode whose microscopic origin 
+and nonlinear state-  space interpretation remain unresolved. 
+The conclusion is conditional on the reduced constitutive family 
+and on the incompletely characterized composition of the com -
+mercial material.
+The internal variable must therefore remain a macroscopic la -
+tent coordinate. It represents a nonequilibrium contribution that 
+may be required after diffusion, finite-  rate adsorption, and plau-
+sible protocol explanations have been excluded. It is not direct 
+evidence for a unique molecular orientation, aggregation state, 
+packing transition, or conformational pathway. Molecular inter-
+pretation requires independent structural observables or experi -
+mentally locked multi- protocol validation.
+An additional limitation applies specifically to polyoxyeth -
+ylene (23) lauryl ether, Poloxamer 188, and Poloxamer P9400. 
+Their detailed homolog or molecular-  mass distributions, trace 
+surface- active impurities, and batch-  specific sample histories 
+cannot be reconstructed from the published records. Such com -
+positional factors may generate or modify relaxation signatures 
+independently of the protocol effects analyzed here (Mysels 
+and Florence  1973; Lunkenheimer and Miller  1987; Priester 
+et  al.  1998). They are therefore unresolved confounders, not 
+mechanisms that the present reanalysis can identify or exclude.
+5.5   |   Minimum Evidential Standard for Future 
+Experiments
+A defensible surfactant dynamic-  interface experiment must 
+characterize the material and record the forcing history with 
+fidelity comparable to the response. Sample identity, supplier/
+batch, relevant purity or homolog- distribution information, con-
+centration preparation, and sample history should be retained 
+whenever they can affect interfacial behavior. For every per -
+turbation, the measured area waveform A (t), rise time, baseline 
+evolution, instrument response, and replicate identity should be 
+retained together with the surface- tension record γ(t). Nominally 
+repeated steps are insufficient; deliberately varied amplitudes, 
+durations, and frequencies are needed to decorrelate material 
+relaxation from protocol imperfections.
+The inference plan should be fixed at the model-  class level 
+before interpreting the fitted mechanism. M0–M2 should 
+compete against drift, offset, amplitude asymmetry, and 
+instrument-  response alternatives, while plausible equations 
+of state or adsorption isotherms should also be challenged 
+when the equilibrium surface-  tension, surface-  excess, and 
+concentration-  resolved data required to constrain them are 
+available. At least one protocol class should be reserved for 
+locked prediction, while profile likelihood, bootstrap uncer -
+tainty, leave-  one- segment- out, leave-  one- frequency- out, and 
+time- to- frequency transfer should be treated as primary evi -
+dence. An internal mode should be assigned only if it survives 
+these tests with shared parameters and is not an artifact of 
+sample composition or model form.
+5.6   |   Boundaries of the Present Evidence 
+and Falsifiable Next Tests
+The present evidence is limited by raster-  digitized coordinates, 
+unavailable original instrument files, the absence of the mea -
+sured area history in figure  5 of Hansen (Hansen  2008), in -
+complete composition/purity information for the commercial 
+Hansen materials, and constitutive-  model uncertainty. The 
+two- pass consensus constrains extraction error but cannot re -
+cover pixel-  level covariance, undocumented preprocessing, 
+the true segment-  wise forcing, or batch-  specific surface-  active 
+contaminants. The reduced frequency hierarchy screens among 
+diffusion, a finite adsorption barrier, and one additional posi -
+tive mode; it does not identify the complete nonlinear M2 pa -
+rameter vector and cannot discriminate among alternative 
+adsorption equations of state without independent equilibrium 
+adsorption observables. These limitations can be as important 
+as, or more important than, the protocol uncertainty quanti -
+fied here; the present study does not rank their universal mag -
+nitudes. The selected datasets test logical falsification roles 
+rather than population-  level generality across surfactants and 
+concentrations.
+These limitations define direct falsification experiments. 
+polyoxyethylene (23) lauryl ether should be repeated with a 
+compositionally characterized sample, synchronized A (t) and 
+γ(t), deliberately varied step amplitudes, and an independently 
+characterized baseline. Poloxamer P9400 requires raw step-  
+relaxation records, measured area histories, and sufficient 
+compositional characterization so that one parameter set 
+can be locked across time-  and frequency-  domain protocols. 
+Equilibrium surface tension and, where feasible, independent 
+surface-  excess data are also needed to test alternative adsorp -
+tion equations of state before interpreting a dynamic mode 
+molecularly. Extension across concentrations and chemi -
+cally distinct, well-  characterized surfactants should then test 
+whether the graded evidence pattern persists. Only if an added 
+mode survives composition controls, constitutive-  model com -
+petition, nuisance-  protocol competition, and prospective 
+transfer should it be promoted from a useful surrogate to a 
+validated interfacial mechanism.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+15
+Journal of Surfactants and Detergents, 2026
+6   |   Conclusions
+An entropy-  constrained internal-  variable model can be ther -
+modynamically admissible and identifiable under known, suf -
+ficiently diverse perturbations. Synthetic calculations verified 
+conservation, dissipation, nested limits, and accurate recovery 
+of the four M2 dynamic parameters. This establishes identifi -
+ability of the specified model under informative protocols; it 
+does not establish M2 as a universal constitutive description. 
+The experimental analysis exposed the harder problem: an ad -
+ditional relaxation mode can appear decisively selected when 
+unmeasured protocol features are fixed to ideal values.
+Two- pass digitization of the polyoxyethylene (23) lauryl ether 
+transient independently recovered the published diffusion rate. 
+Under equal-  step assumptions, M2 improved AICc by 36.61, 
+but diffusion-  only models with small drift or step-  amplitude 
+variation were more parsimonious, and M2 performed worse 
+in leave-  one- segment- out prediction. This is direct evidence of 
+protocol- induced false identifiability, not evidence for a poly -
+oxyethylene (23) lauryl ether structural mode.
+Poloxamer P9400 provides the strongest additional-  mode 
+screening signal, Poloxamer 188 remains intermediate, and 
+DC12PO retains M0. None of these experimental results val -
+idates the nonlinear M2 mechanism or a unique microscopic 
+relaxation pathway. The commercial-  material results are ad -
+ditionally conditional on unresolved composition/purity and 
+on the reduced constitutive family. For surfactant tensiometry 
+and interfacial rheology, the proposed audit supplies one layer 
+of a broader validation sequence: characterize the material and 
+equilibrium layer, challenge plausible constitutive models, com-
+pare mechanistic and nuisance-  protocol alternatives, require 
+bounded parameters, and reserve at least one protocol for locked 
+prediction. An internal interfacial mode should be assigned only 
+after these independent sources of uncertainty have been chal -
+lenged successfully.
+Nomenclature
+Roman Symbols
+A(t) interfacial area
+c(x,t) bulk surfactant concentration
+D bulk diffusion coefficient
+DaΓ adsorption Damköhler number
+E*(ω) complex interfacial dilational modulus
+Greek Symbols
+Γ surface excess
+γ surface tension
+κ structural coupling parameter
+ξ nonequilibrium structural variable
+ω angular frequency
+ω₀ diffusion-  controlled relaxation rate
+τa adsorption- relaxation time
+τs structural relaxation time
+Models and Statistics
+M0 diffusion with instantaneous interfacial equilibrium
+M1 diffusion with finite-  rate adsorption
+M2 M1 plus a nonequilibrium structural variable
+AICc corrected Akaike information criterion
+RMSE root- mean- square error
+SSE sum of squared errors
+Author Contributions
+Khaldoun A. Al-  Sou'od: conceptualization, methodology, mathemat -
+ical formulation, software, formal analysis, validation, visualization, 
+data curation, writing – original draft, and writing – review and editing. 
+Raed Ghanem:  validation, investigation, data curation and writing – 
+review and editing.
+Acknowledgments
+The authors acknowledge Al al- Bayt University for institutional support.
+During manuscript preparation, the authors used OpenAI ChatGPT for 
+language editing, document organization, coding assistance, and con -
+sistency checking. The authors independently verified all mathematical 
+formulations, computational procedures, numerical outputs, interpre -
+tations, and references and take full responsibility for the content.
+Funding
+The authors have nothing to report.
+Ethics Statement
+This research did not involve human participants or animals.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Data Availability Statement
+All executable source code, digitized literature-  derived datasets, numer-
+ical verification outputs, provenance records, uncertainty analyses, and 
+figure-  generation resources are openly available in Zenodo at https://  
+doi. org/ 10. 5281/ zenodo. 21644943 (Al- Sou'od and Ghanem 2026).
+References
+Al- Sou'od, K. A. 2026. “Entropy-  Regulated Dynamics of Surface 
+Tension: Coupling Langmuir Kinetics With High-  Precision 
+Tensiometry.” Journal of Physical Chemistry B 130: 1730–1742. https://  
+doi. org/ 10. 1021/ acs. jpcb. 5c07514.
+Al- Sou'od, K. A., and R. Ghanem. 2026. Protocol- Induced False 
+Identifiability in Dynamic Interfaces: Reproducibility Package, Version 
+2.1.0 [Software]. Zenodo. https:// doi. org/ 10. 5281/ zenodo. 21644943.
+Bergfreund, J., S. Siegenthaler, V. Lutz- Bueno, P. Bertsch, and P. Fischer. 
+2021. “Surfactant Adsorption to Different Fluid Interfaces.” Langmuir  
+37: 6722–6727. https:// doi. org/ 10. 1021/ acs. langm uir. 1c00668.
+Boos, J., N. Preisig, and C. Stubenrauch. 2013. “Dilational Surface 
+Rheology Studies of n-  Dodecyl- β- D- Maltoside, Hexaoxyethylene 
+Dodecyl Ether, and Their 1:1 Mixture.” Advances in Colloid and Interface 
+Science 197- 198: 108–117. https:// doi. org/ 10. 1016/j. cis. 2013. 05. 001.
+Chen, X., B. Zhang, F. Yuan, et  al. 2024. “Dilational Rheological 
+Properties of Extended Anionic Surfactants at the Decane-  Water 
+Interface.” Journal of Molecular Liquids 414: 126182. https://  doi. org/ 10. 
+1016/j. molliq. 2024. 126182.
+Diamant, H., and D. Andelman. 1996. “Kinetics of Surfactant 
+Adsorption at Fluid-  Fluid Interfaces.” Journal of Physical Chemistry 
+100: 13732–13742. https:// doi. org/ 10. 1021/ jp960 377k.
+Gevertz, J. L., and I. Kareva. 2024. “Minimally Sufficient Experimental 
+Design Using Identifiability Analysis.” npj Systems Biology and 
+Applications  10: 2. https:// doi. org/ 10. 1038/ s41540- 023- 00325- 1.
+Hansen, F. K. 2008. “Surface Dilatational Elasticity of Poly(Oxy 
+Ethylene)- Based Surfactants by Oscillation and Relaxation 
+Measurements of Sessile Bubbles.” Langmuir 24: 189–197. https:// doi. 
+org/ 10. 1021/ la702 4582.
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+16
+ Journal of Surfactants and Detergents, 2026
+Huang, B., S. V. Iasella, M. Rathi, et al. 2025. “New Experiments and 
+Models to Describe Soluble Surfactant Adsorption Above and Below the 
+Critical Micelle Concentration.” Journal of Colloid and Interface Science 
+677: 557–568. https:// doi. org/ 10. 1016/j. jcis. 2024. 07. 204.
+Kovalchuk, V. I., E. V. Aksenenko, E. Schneck, and R. Miller. 2023. 
+“Surfactant Adsorption Layers: Experiments and Modeling.” Langmuir  
+39: 3537–3545. https:// doi. org/ 10. 1021/ acs. langm uir. 2c03511.
+Kovalchuk, V. I., G. Loglio, E. V. Aksenenko, et  al. 2024. “Dynamic 
+Dilational Viscoelasticity of Surfactant Layers at Liquid-  Liquid 
+Interfaces.” Current Opinion in Colloid & Interface Science 74: 101849. 
+https:// doi. org/ 10. 1016/j. cocis. 2024. 101849.
+Loglio, G., A. Czakaj, E. Jarek, et  al. 2024. “An Adoption of the 
+Fractional Maxwell Model for Characterizing the Interfacial Dilational 
+Viscoelasticity of Complex Surfactant Systems.” Colloids Interfaces  8: 
+44. https:// doi. org/ 10. 3390/ collo ids80 40044 .
+Loglio, G., R. Miller, A. Stortini, U. Tesei, N. Degli Innocenti, and R. 
+Cini. 1995. “Nonequilibrium Properties of Fluid Interfaces: Aperiodic 
+Diffusion-  Controlled Regime. 2. Experiments.” Colloids and Surfaces A: 
+Physicochemical and Engineering Aspects  95: 63–68.
+Lunkenheimer, K., and R. Miller. 1987. “A Criterion for Judging the 
+Purity of Adsorbed Surfactant Layers.” Journal of Colloid and Interface 
+Science 120: 176–183. https:// doi. org/ 10. 1016/ 0021- 9797(87) 90337- 7.
+Mysels, K. J., and A. T. Florence. 1973. “The Effect of Impurities on 
+Dynamic Surface Tension-  Basis for a Valid Surface Purity Criterion.” 
+Journal of Colloid and Interface Science 43: 577–582. https://  doi. org/ 10. 
+1016/ 0021- 9797(73) 90405- 0.
+Noskov, B. A., and G. Loglio. 1998. “Dynamic Surface Elasticity of 
+Surfactant Solutions.” Colloids and Surfaces A: Physicochemical and 
+Engineering Aspects 143: 167–183. https:// doi. org/ 10. 1016/ S0927- 7757(98) 
+00263- 5.
+Priester, T., M. Bartoszek, and K. Lunkenheimer. 1998. “Influence of 
+Surface-  Active Trace Impurities on the Surface Properties of Aqueous 
+Solutions of Oligoethylene Glycol Monooctyl Ethers.” Journal of Colloid 
+and Interface Science  208: 6–13. https:// doi. org/ 10. 1006/ jcis. 1998. 5773.
+Ritacco, H. A., M. D. Fernández Leyes, and J. F. Sánchez Morales. 2025. 
+“Dynamic Surface Tension of Polymer-  Surfactant Mixtures at Water- 
+Gas Interfaces.” Current Opinion in Colloid & Interface Science 75: 
+101877. https:// doi. org/ 10. 1016/j. cocis. 2024. 101877.
+Rosales- Anzola, S. D. 2025. “Generalized Theoretical Framework for the 
+Dilatational Viscoelasticity of Multicomponent Surfactant Mixtures.” 
+Industrial & Engineering Chemistry Research 64: 23433–23449. https://  
+doi. org/ 10. 1021/ acs. iecr. 5c03651.
+Rosales- Anzola, S. D., and G. Urbina-  Villalba. 2025. “Methodological 
+Approach to Selecting State Equations and Adsorption Isotherms.” 
+Journal of Applied Science and Engineering 28: 451–458. https://  doi. org/ 
+10. 6180/ jase. 202503_ 28(3). 0003.
+Scher, Y., O. Lauber Bonomo, A. Pal, and S. Reuveni. 2023. “Microscopic 
+Theory of Adsorption Kinetics.” Journal of Chemical Physics 158: 
+094107. https:// doi. org/ 10. 1063/5. 0121359.
+Simpson, M. J., and O. J. Maclaren. 2023. “Profile- Wise Analysis: A Profile 
+Likelihood- Based Workflow for Identifiability Analysis, Estimation, and 
+Prediction With Mechanistic Mathematical Models.” PLoS Computational 
+Biology 19: e1011515. https:// doi. org/ 10. 1371/ journ al. pcbi. 1011515.
+van Sluijs, T. B., S. K. F. Stoter, and E. H. van Brummelen. 2025. 
+“Thermodynamics of Surfactant-  Enriched Binary-  Fluid Systems.” 
+Langmuir 41: 2141–2155. https:// doi. org/ 10. 1021/ acs. langm uir. 4c01724.
+Ward, A. F. H., and L. Tordai. 1946. “Time-  Dependence of Boundary 
+Tensions of Solutions I. The Role of Diffusion in Time-  Effects.” Journal 
+of Chemical Physics 14: 453–461. https://  doi. org/ 10. 1063/1. 1724167.
+Wieland, F.- G., A. L. Hauber, M. Rosenblatt, C. Tönsing, and J. Timmer. 
+2021. “On Structural and Practical Identifiability.” Current Opinion in 
+Systems Biology  25: 60–69. https:// doi. org/ 10. 1016/j. coisb. 2021. 03. 005.
+Supporting Information
+Additional supporting information can be found online in the 
+Supporting Information section. Data S1: jsde70095-  sup- 0001- Supinfo.
+zip. 
+ 15589293, 0, Downloaded from https://aocs.onlinelibrary.wiley.com/doi/10.1002/jsde.70095 by Prashant D. Kotian - Institute Of Chemical Technology, Mumbai , Wiley Online Library on [04/11/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
