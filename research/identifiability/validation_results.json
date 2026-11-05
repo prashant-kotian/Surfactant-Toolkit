@@ -1,0 +1,101 @@
+[
+ {
+  "c0_uM": 5.0,
+  "theta": 0.4117647058823529,
+  "Pi": 3.683132972545446,
+  "E0": 4.8587557779311314,
+  "D": 4.03415832338449,
+  "reported": "LVDT sufficient (below cmc)",
+  "resolved": false
+ },
+ {
+  "c0_uM": 7.0,
+  "theta": 0.494949494949495,
+  "Pi": 4.741429630148513,
+  "E0": 6.802258089103585,
+  "D": 4.833975374312515,
+  "reported": "LVDT sufficient (at cmc)",
+  "resolved": false
+ },
+ {
+  "c0_uM": 12.0,
+  "theta": 0.6268656716417911,
+  "Pi": 6.8426329233843335,
+  "E0": 11.66101386703472,
+  "D": 6.37599743293464,
+  "reported": "LVDT sufficient (small micelle effect)",
+  "resolved": false
+ },
+ {
+  "c0_uM": 15.0,
+  "theta": 0.6774193548387097,
+  "Pi": 7.85315220910124,
+  "E0": 14.5762673337934,
+  "D": 7.0158776186846445,
+  "reported": "LVDT sufficient",
+  "resolved": false
+ },
+ {
+  "c0_uM": 20.0,
+  "theta": 0.736842105263158,
+  "Pi": 9.266348780757118,
+  "E0": 19.435023111724536,
+  "D": 7.744429860389632,
+  "reported": "LVDT sufficient",
+  "resolved": false
+ },
+ {
+  "c0_uM": 30.0,
+  "theta": 0.8076923076923077,
+  "Pi": 11.443470889869555,
+  "E0": 29.152534667586792,
+  "D": 8.480731063700768,
+  "reported": "transitional; digitised data cannot separate models",
+  "resolved": false
+ },
+ {
+  "c0_uM": 50.0,
+  "theta": 0.875,
+  "Pi": 14.43356943643846,
+  "E0": 48.58755777931132,
+  "D": 8.93142812037037,
+  "reported": "eq 3 required, excellent agreement",
+  "resolved": true
+ },
+ {
+  "c0_uM": 70.0,
+  "theta": 0.9074074074074074,
+  "Pi": 16.516619325798104,
+  "E0": 68.02258089103587,
+  "D": 9.042742002637935,
+  "reported": "eq 3 required",
+  "resolved": true
+ },
+ {
+  "c0_uM": 100.0,
+  "theta": 0.9333333333333333,
+  "Pi": 18.796792230761323,
+  "E0": 97.17511555862266,
+  "D": 9.087782038430916,
+  "reported": "eq 3 required",
+  "resolved": true
+ },
+ {
+  "c0_uM": 200.0,
+  "theta": 0.9655172413793104,
+  "Pi": 23.37266867135741,
+  "E0": 194.3502311172455,
+  "D": 9.106676624276343,
+  "reported": "eq 3 required",
+  "resolved": true
+ },
+ {
+  "c0_uM": 500.0,
+  "theta": 0.9859154929577465,
+  "Pi": 29.587600688636083,
+  "E0": 485.87557779311385,
+  "D": 9.108484091960056,
+  "reported": "eq 3 required",
+  "resolved": true
+ }
+]

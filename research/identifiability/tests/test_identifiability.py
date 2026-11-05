@@ -195,3 +195,51 @@ def test_phase_is_blind_to_the_amplitude_of_E():
         vals.add(round(lag_deg(2 * math.pi * 0.03, E0 * E_scale, D, H,
                                B_single(2 * math.pi * 0.03, 2.0, 9.0)), 10))
     assert len(vals) == 1
+
+
+# --- 5. design engine: invariants that must hold ---------------------------
+
+def test_gibbs_elasticity_rises_with_coverage():
+    """E0 = RT Gamma/(1-theta) must increase monotonically with concentration.
+
+    An earlier version of the engine returned RT*h*c0 = RT*Gamma*theta*(1-theta),
+    which falls with coverage and inverted every design conclusion. Langmuir has
+    dPi/dlnc = RT*theta/(1-theta) -> 0 at low coverage and divergent at saturation,
+    so E0 must rise, steeply, and without bound until the isotherm breaks down.
+    """
+    from research.identifiability.design_engine import elasticity_scale, isotherm_slope
+    gi, K = 2.8e-6, 140.0
+    cs = np.logspace(-6, -1, 20)          # mol/m^3, i.e. 1 uM to 100 mM
+    E = [elasticity_scale(gi, K, c) for c in cs]
+    assert all(E[i] < E[i + 1] for i in range(len(E) - 1)), "E0 must increase with c"
+
+
+def test_discrimination_is_zero_for_identical_models():
+    """A model cannot be distinguished from itself, at any noise level."""
+    from research.identifiability.design_engine import discrimination
+    fr = np.logspace(-3, 0, 6)
+    m = dict(E0=50.0, C=0.5, tau=10.0, D=D)
+    assert discrimination(fr, m, m, [H]) == pytest.approx(0.0, abs=1e-12)
+
+
+def test_discrimination_increases_with_relaxation_strength():
+    """Bigger surface relaxation must be easier to detect, monotonically."""
+    from research.identifiability.design_engine import discrimination
+    fr = np.logspace(-3, 0, 8)
+    ds = [discrimination(fr, dict(E0=50.0, C=C, tau=10.0, D=D),
+                         dict(E0=50.0, C=0.0, tau=10.0, D=D), [H])
+          for C in (0.05, 0.2, 0.6, 2.0)]
+    assert all(ds[i] < ds[i + 1] for i in range(len(ds) - 1))
+
+
+def test_worst_case_nuisance_is_a_minimum_not_an_average():
+    """The metric must be the minimum over the nuisance prior, so widening the
+    prior can only reduce it. This is what makes the number honest: a design is
+    not allowed to look good only at the nominal isotherm slope."""
+    from research.identifiability.design_engine import discrimination
+    fr = np.logspace(-3, 0, 8)
+    t = dict(E0=50.0, C=0.6, tau=10.0, D=D)
+    r = dict(E0=50.0, C=0.0, tau=10.0, D=D)
+    narrow = discrimination(fr, t, r, [H])
+    wide = discrimination(fr, t, r, [H * f for f in (0.3, 0.5, 1.0, 2.0, 3.3)])
+    assert wide <= narrow + 1e-12
