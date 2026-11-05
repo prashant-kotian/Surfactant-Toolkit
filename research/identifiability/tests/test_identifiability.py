@@ -1,0 +1,173 @@
+"""Tests for the identifiability module.
+
+These exist for one reason: the previous project's headline claims were
+retracted because a sign convention and an algebra slip went unnoticed. Every
+non-obvious step in this module is therefore pinned by a test against an
+independent reference, not against itself.
+"""
+
+from __future__ import annotations
+
+import math
+import sys
+from pathlib import Path
+
+import numpy as np
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+
+from research.identifiability.models import (  # noqa: E402
+    B_log_normal, B_single, B_two_mode, lag_cap_deg, lag_deg, modulus_from_B,
+)
+from research.laod_tau2.linear_response import linear_response  # noqa: E402
+
+D = 3.8e-10
+H = 3.275302547717482e-06
+E0 = 60.0
+
+
+# --- 1. the model must reproduce the independently validated reference -----
+
+def test_lvdt_matches_calibrated_reference():
+    """B = 1 must reproduce laod_tau2.linear_response to machine precision.
+
+    This is the single most important test in the file: it pins both the
+    algebra and the sign convention against a function that was itself
+    verified against a PDE solver in the earlier work.
+    """
+    for f in [1e-4, 1e-3, 1e-2, 0.1, 1.0, 10.0, 1e3]:
+        omega = 2 * math.pi * f
+        ref = abs(linear_response(omega, c0=0.071, K=140.0,
+                                  gamma_inf=2.8e-6, D=D, capacity=0.0).lag_deg)
+        got = lag_deg(omega, E0, D, H, 1.0 + 0j)
+        assert abs(ref - got) < 1e-9, (f, ref, got)
+
+
+def test_B_one_recovers_lvdt_everywhere():
+    """B_single with Cm = 0 must be identical to LVDT, for any tau."""
+    for tau in [1e-3, 1.0, 1e3]:
+        for f in [1e-3, 1.0]:
+            omega = 2 * math.pi * f
+            assert lag_deg(omega, E0, D, H, B_single(omega, 0.0, tau)) == pytest.approx(
+                lag_deg(omega, E0, D, H, 1.0 + 0j), abs=1e-12)
+
+
+# --- 2. the 45 degree ceiling and the generalisation -----------------------
+
+def test_lvdt_ceiling_is_45():
+    """LVDT lag approaches 45 deg as frequency falls and never exceeds it."""
+    freqs = [1e-1, 1e-2, 1e-3, 1e-4, 1e-6, 1e-8]
+    vals = [lag_deg(2 * math.pi * f, E0, D, H, 1.0 + 0j) for f in freqs]
+    assert all(v < 45.0 + 1e-9 for v in vals)
+    # convergence to the ceiling is slow (like 45 - c sqrt(f)), so the limit
+    # is checked at 1e-8 Hz rather than at a frequency someone might measure
+    assert vals[-1] == pytest.approx(45.0, abs=1e-2)
+    assert vals == sorted(vals), "lag must increase monotonically as f falls"
+
+
+def test_cap_formula_is_exact():
+    """|delta| -> 45 + |arg B|/2 as f -> 0, for several admittances.
+
+    Verified against the numerical limit, so this is a test of the derivation
+    rather than a restatement of it.
+    """
+    cases = {
+        "single Cm=2 tau=8": B_single(2 * math.pi * 1e-7, 2.0, 8.0),
+        "two-mode": B_two_mode(2 * math.pi * 1e-7, 1.5, 1.0, 50.0),
+        "log-normal": B_log_normal(2 * math.pi * 1e-7, 2.0, 5.0, 1.5),
+    }
+    for name, B in cases.items():
+        numeric = lag_deg(2 * math.pi * 1e-9, E0, D, H, complex(B))
+        predicted = lag_cap_deg(0.0, complex(B))
+        assert abs(numeric - predicted) < 5e-3, (name, numeric, predicted)
+
+
+def test_passive_relaxation_is_bounded_by_67_5():
+    """No passive relaxation can produce |delta| above 67.5 deg.
+
+    The bound is 45 + 45/2. If this test ever fails for a physically sensible
+    B, the whole class argument in the paper is wrong, so it is checked over a
+    deliberately extreme range of parameters rather than a typical one.
+    """
+    worst = 0.0
+    for Cm in [0.1, 1.0, 10.0, 60.0]:
+        for tau in np.logspace(-4, 3, 15):
+            B = B_single(2 * math.pi * 1e-9, Cm, tau)
+            worst = max(worst, lag_cap_deg(0.0, B))
+    for Cm in [0.1, 5.0, 60.0]:
+        B = B_log_normal(2 * math.pi * 1e-9, Cm, 1.0, 3.0)
+        worst = max(worst, lag_cap_deg(0.0, B))
+    assert worst <= 67.5 + 1e-9, worst
+
+
+def test_published_data_lies_inside_the_bound():
+    """The C14E8 data (max 52 deg) is consistent with the class, as it should
+    be -- the bound must not be violated by real data, or it is wrong."""
+    obs = [46.5, 50.5, 52.0, 48.5, 41.0, 32.5]
+    assert max(obs) <= 67.5
+
+
+# --- 3. structural facts used in the interpretation ------------------------
+
+def test_E0_cancels_from_the_phase():
+    """Phase is independent of E0. This is why phase-only data cannot
+    identify the Gibbs elasticity, and the fit therefore excludes it."""
+    for E in [1.0, 60.0, 400.0]:
+        a = lag_deg(2 * math.pi * 0.05, 1.0, D, H, B_single(1.0, 1.0, 1.0))
+        b = lag_deg(2 * math.pi * 0.05, E, D, H, B_single(1.0, 1.0, 1.0))
+        assert a == pytest.approx(b, abs=1e-12)
+
+
+def test_two_mode_and_log_normal_can_degenerate_to_single():
+    """The extra freedom in the richer models can be switched off, so they can
+    never fit worse than the simpler model. Hence a chi-square improvement
+    alone is not evidence for the extra mechanism."""
+    omega = 2 * math.pi * 0.05
+    single = B_single(omega, 1.2, 7.0)
+    assert B_two_mode(omega, 1.2, 7.0, 7.0) == pytest.approx(single, abs=1e-12)
+
+
+def test_modulus_is_finite_and_positive_over_the_band():
+    """Guard against the overflow/NaN that an unbounded tau produces."""
+    for tau in np.logspace(-4, 3, 20):
+        E = modulus_from_B(2 * math.pi * 0.1, E0, D, H, B_single(2 * math.pi * 0.1, 5.0, tau))
+        assert np.isfinite(E) and abs(E) > 0
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
+
+
+# --- 4. the degeneracy that survives the full complex observable -----------
+
+def test_only_h_over_sqrt_D_is_identifiable():
+    """Scaling h and D together so that h/sqrt(D) is fixed leaves E unchanged.
+
+    Consequence: no amount of phase *or amplitude* precision separates the
+    isotherm slope from the diffusion coefficient. An independent value of one
+    is required. This is a structural degeneracy, not a noise limit, and it is
+    the reason the amplitude test reports h/sqrt(D) = 1.0000 while h and D
+    individually wander by factors of several.
+    """
+    for f in [0.005, 0.05, 0.5]:
+        w = 2 * math.pi * f
+        B = complex(B_single(w, 1.0, 5.0))
+        h0, D0 = H, D
+        k = 4.0                     # scale h by 4, D by 16 -> h/sqrt(D) fixed
+        E_ref = modulus_from_B(w, E0, D0, h0, B)
+        E_scaled = modulus_from_B(w, E0, D0 * k ** 2, h0 * k, B)
+        assert abs(E_ref - E_scaled) < 1e-12 * abs(E_ref)
+
+
+def test_phase_is_blind_to_the_amplitude_of_E():
+    """The phase carries no information about E0 at all, for any frequency.
+
+    This is why the phase-only fit returns E0 = 350 mN/m from data generated
+    with E0 = 72: it is not a bad fit, it is an unconstrained parameter.
+    """
+    vals = set()
+    for E_scale in [0.5, 1.0, 7.0, 50.0]:
+        vals.add(round(lag_deg(2 * math.pi * 0.03, E0 * E_scale, D, H,
+                               B_single(2 * math.pi * 0.03, 2.0, 9.0)), 10))
+    assert len(vals) == 1
