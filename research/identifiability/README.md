@@ -29,5 +29,8 @@ generalisation derivable rather than numerical.
 
 ## Caveat
 
-The 67.5 degree class bound is elementary. It is probably already in a review,
-and no novelty claim should be made until that is checked.
+The 67.5 degree class bound was WITHDRAWN in round 29 -- it was a scan
+artefact. The ceiling for one relaxation is
+45 + atan(C/(2 sqrt(C+1)))/2, which rises to 90 deg, and Fainerman 2008 already
+states that observation in words. The surviving contribution is the closed-form
+inversion (ceiling -> lower bound on C), not the bound itself.

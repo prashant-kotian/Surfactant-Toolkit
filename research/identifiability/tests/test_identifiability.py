@@ -18,7 +18,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
 from research.identifiability.models import (  # noqa: E402
-    B_log_normal, B_single, B_two_mode, lag_cap_deg, lag_deg, modulus_from_B,
+    B_log_normal, B_single, B_two_mode, capacity_from_cap, lag_cap_deg, lag_deg,
+    max_cap_single_relaxation, modulus_from_B,
 )
 from research.laod_tau2.linear_response import linear_response  # noqa: E402
 
@@ -83,29 +84,52 @@ def test_cap_formula_is_exact():
         assert abs(numeric - predicted) < 5e-3, (name, numeric, predicted)
 
 
-def test_passive_relaxation_is_bounded_by_67_5():
-    """No passive relaxation can produce |delta| above 67.5 deg.
+def test_cap_rises_towards_90_and_is_not_bound_by_67_5():
+    """CORRECTED. The round-27 claim that a passive relaxation cannot exceed
+    67.5 deg was an artefact of scanning tau at one frequency.
 
-    The bound is 45 + 45/2. If this test ever fails for a physically sensible
-    B, the whole class argument in the paper is wrong, so it is checked over a
-    deliberately extreme range of parameters rather than a typical one.
+    The maximum of |arg B| over frequency is at w tau = sqrt(C+1):
+        tan(|arg B|_max) = C / (2 sqrt(C+1)),
+    which has no finite bound below 45 deg. This test checks the analytic
+    optimum against a two-dimensional numerical search, so it fails if either
+    the formula or the reasoning is wrong.
     """
-    worst = 0.0
-    for Cm in [0.1, 1.0, 10.0, 60.0]:
-        for tau in np.logspace(-4, 3, 15):
-            B = B_single(2 * math.pi * 1e-9, Cm, tau)
-            worst = max(worst, lag_cap_deg(0.0, B))
-    for Cm in [0.1, 5.0, 60.0]:
-        B = B_log_normal(2 * math.pi * 1e-9, Cm, 1.0, 3.0)
-        worst = max(worst, lag_cap_deg(0.0, B))
-    assert worst <= 67.5 + 1e-9, worst
+    for C in [0.5, 2.0, 20.0, 200.0]:
+        analytic = max_cap_single_relaxation(C)
+        best = 0.0
+        for tau in np.logspace(-6, 6, 120):
+            for f in np.logspace(-8, 2, 60):
+                B = B_single(2 * math.pi * f, C, tau)
+                best = max(best, lag_cap_deg(0.0, B))
+        assert abs(best - analytic) < 0.05, (C, best, analytic)
+    assert max_cap_single_relaxation(1e6) > 89.0
+
+
+def test_capacity_from_cap_inverts_the_ceiling():
+    """The useful direction: a measured ceiling turns into a bound on C."""
+    for C in [0.1, 0.5, 2.0, 10.0, 100.0]:
+        d = max_cap_single_relaxation(C)
+        assert capacity_from_cap(d) == pytest.approx(C, rel=1e-9)
+    assert capacity_from_cap(45.0) == 0.0
+    assert capacity_from_cap(50.0) == pytest.approx(0.420, abs=1e-3)
+
+
+def test_fainerman_ceiling_bounds_capacity():
+    """Fainerman 2008 reports a maximum phase angle of about 50 deg for C14EO8
+    (text: 'the phase angle increases up to a value of 50 deg', and at
+    30 umol/L the digitised maximum is 52 deg). That bounds C to ~0.4-0.6
+    without fitting any curve -- the argument is a ceiling, not a regression.
+    """
+    assert 0.3 < capacity_from_cap(50.0) < 0.5
+    assert 0.55 < capacity_from_cap(52.0) < 0.75
 
 
 def test_published_data_lies_inside_the_bound():
-    """The C14E8 data (max 52 deg) is consistent with the class, as it should
-    be -- the bound must not be violated by real data, or it is wrong."""
+    """The C14E8 data (max 52 deg) must satisfy whatever bound the theory gives.
+    If a test here ever rejects real published data, the theory is wrong, not
+    the data."""
     obs = [46.5, 50.5, 52.0, 48.5, 41.0, 32.5]
-    assert max(obs) <= 67.5
+    assert max(obs) < 90.0 and max(obs) <= max_cap_single_relaxation(1e6)
 
 
 # --- 3. structural facts used in the interpretation ------------------------

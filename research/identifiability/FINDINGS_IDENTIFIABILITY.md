@@ -44,13 +44,20 @@ Verified numerically to 5e-3° across three admittances (test 3). Three conseque
 1. The 45° figure is the value for **B = 1**, i.e. a layer that re-equilibrates
    instantaneously with the subsurface. Diffusion sets the *shape* of |δ|(ω); the
    *ceiling* is set by surface relaxation.
-2. A passive layer has Im B ≤ 0 (B is a positive-weighted sum of 1/(1+iωτ)), so
-   0 ≤ |arg B| < 45° and **every passive relaxation mechanism is confined to
-   45–67.5°**. Checked over C_m up to 60 and τ over 7 decades (test 4).
-3. Therefore a measured |δ| **above 67.5° falsifies the entire mechanism class at once** —
-   barrier, reorientation, exchange, any distribution of times — and points outside it
-   (surface viscoelasticity, a non-passive layer, or failure of planar/local-equilibrium
-   assumptions).
+2. ~~A passive layer is confined to 45–67.5°.~~ **RETRACTED in round 29.** For
+   B = 1 + C/(1+ix), |arg B| is maximised at x = √(C+1), where
+   tan|arg B| = C/(2√(C+1)). That has **no finite bound below 45°**; the ceiling rises
+   towards 90° as C grows: C = 2 → 60.0°, C = 20 → 77.7°, C = 200 → 86.0°.
+   The 67.5° figure came from scanning τ at a **single frequency**, so the optimum was
+   never reached. It was a search artefact presented as a theorem — exactly the error
+   class that invalidated the previous paper, caught this time only because reading
+   Fainerman 2008 made me check the claim against his text.
+3. The correct and still-useful statement is the **inversion**: a measured ceiling
+   lower-bounds C with no fitting at all,
+   `C = 2T² + 2T√(T²+1)` with `T = tan(2(δ_max − 45°))`.
+   δ_max = 50° → C ≥ 0.42; δ_max = 55° → C ≥ 1.04; δ_max = 60° → C ≥ 2.00.
+   For C14E8 this gives C ≈ 0.6 from the reported 50–52° ceiling — consistent with,
+   but obtained independently of, the τ-fit.
 
 Point 3 is the useful one. The existing literature argues one mechanism against another,
 which needs the data to be able to tell them apart. This bound is mechanism-agnostic and
@@ -195,6 +202,15 @@ assignment.
 - The D substitution: C12E8's diffusion coefficient is used for C14E8. Stated in the code,
   and it affects the frequency scale, not the |arg B| statements.
 - `h` is calibrated, not measured. Every number in §4's sensitivity table moves with it.
+
+**Errata carried forward from round 27:**
+- The 67.5° class bound is withdrawn (see §2.2). The mechanism-specific falsification test
+  it was meant to support does not exist in the form proposed.
+- Related: Fainerman's own eq 3 is wrong (log appears instead of power; eq 2 is the correct
+  Lucassen form), and Danov & Kralchevsky note Joos' *semiempirical* D_A expression "lacks a
+  theoretical basis". The literature this rests on is not internally consistent, which
+  strengthens the case for the algebra-first approach but also limits how much any single
+  paper can be leaned on.
 
 **The obvious next question**, which the current code cannot answer: is the *joint* design
 (frequency band + amplitude + equilibrium isotherm with reported uncertainty) identifiable

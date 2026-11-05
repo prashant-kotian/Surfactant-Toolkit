@@ -111,25 +111,53 @@ def lag_cap_deg(omega, B):
     """Low-frequency limit of |delta| for a given admittance, in degrees.
 
     As u -> 0, arg(1 + Z) -> arg Z = arg B / 2 - 45 deg, so arg E -> 45 - arg B/2
-    and hence
+    and hence, at a given omega,
 
-        |delta|_max = 45 deg + |arg B| / 2.
+        |delta| -> 45 deg + |arg B(omega)| / 2.
 
-    Consequences:
+    B = 1 gives 45 deg -- the classical LVDT ceiling -- so that ceiling is a
+    property of *instantaneous* surface re-equilibration, not of diffusion.
 
-    * B = 1 gives 45 deg exactly -- the classical LVDT ceiling. That ceiling is
-      therefore not a property of diffusion as such but of *instantaneous*
-      surface re-equilibration.
-    * A passive relaxation has Im B <= 0 (a positive-weighted sum of
-      1/(1+iw tau)), so 0 <= |arg B| < 45 deg and every passive mechanism is
-      confined to |delta| in [0, 67.5] deg.
-    * A measured |delta| above 67.5 deg falsifies the entire class at once --
-      barrier, reorientation, exchange, or any distribution of times -- and
-      points outside it: surface viscoelasticity, a non-passive layer, or
-      breakdown of the planar / local-equilibrium assumption.
+    CORRECTION (round 29). An earlier version of this module asserted that a
+    passive relaxation is confined to 45-67.5 deg, because Im B <= 0 implies
+    |arg B| < 45 in the limit of a single dominant time constant. That bound is
+    wrong. The maximum of |arg B| over frequency, for B = 1 + C/(1+ix), occurs at
+    x = sqrt(C+1) and equals atan(C / (2 sqrt(C+1))), which increases without
+    bound towards 45 deg as C grows. The 67.5 figure came from scanning tau at a
+    single frequency, so the optimum was never reached -- a search artefact
+    masquerading as a theorem.
 
-    The factor of one half is what makes the bound tight: the exponent of B
-    enters the observable halved, so the phase is a compressed image of the
-    surface relaxation spectrum.
+    The correct statement is the inversion, implemented in `capacity_from_cap`:
+    a measured ceiling bounds C, and a ceiling near 90 deg requires a large C.
+    Fainerman et al. (Langmuir 2008, 24, 6447) make exactly this point in words,
+    citing Joos, for the fast micelle-dissociation case. So the ceiling is
+    prior art as an observation; what is not is the closed-form bound below.
     """
     return 45.0 + abs(math.degrees(cmath.phase(B))) / 2.0
+
+
+def max_cap_single_relaxation(C):
+    """Largest |delta| achievable by B = 1 + C/(1+iw tau), over all w and tau.
+
+    |arg B| is maximised at w tau = sqrt(C+1), giving
+        tan(|arg B|_max) = C / (2 sqrt(C+1)).
+    """
+    if C <= 0:
+        return 45.0
+    return 45.0 + math.degrees(math.atan(C / (2.0 * math.sqrt(C + 1.0)))) / 2.0
+
+
+def capacity_from_cap(delta_max_deg):
+    """Inverse of `max_cap_single_relaxation`: the C implied by a measured ceiling.
+
+    Solves T = tan(2(delta - 45)) for C, with T = C / (2 sqrt(C+1)), giving
+        C = 2T^2 + 2T sqrt(T^2 + 1).
+    A measurement of the ceiling therefore lower-bounds the surface relaxation
+    strength with no fitting at all.
+    """
+    if delta_max_deg <= 45.0:
+        return 0.0
+    T = math.tan(math.radians(2.0 * (delta_max_deg - 45.0)))
+    return 2.0 * T * T + 2.0 * T * math.sqrt(T * T + 1.0)
+
+
