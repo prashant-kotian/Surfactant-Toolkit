@@ -23,4 +23,19 @@ keywords:
   - benchmark
   - large language models
   - Model Context Protocol
+preferred-citation:
+  type: article
+  title: "Surfactant-Toolkit and SurfBench-200: an open computation toolkit and a benchmark of tool-augmented language-model reasoning in surfactant science"
+  authors:
+    - family-names: Kotian
+      given-names: Prashant D.
+      affiliation: "Independent researcher, Mumbai, India"
+      orcid: "https://orcid.org/0000-0002-3256-8464"
+  status: preprint
+  publisher:
+    name: ChemRxiv
+  year: 2026
+  month: 11
+  doi: "10.26434/chemrxiv.15011497/v1"
+  url: "https://doi.org/10.26434/chemrxiv.15011497/v1"
 # Keep version equal to the package version in pyproject.toml.

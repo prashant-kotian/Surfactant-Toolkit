@@ -140,4 +140,12 @@ only to a client whose tool calls you approve.
 - Every grading input carries a content hash in the provenance ledger
   (`results/results_summary.md`).
 
+## Cite
+
+Kotian, P. D. Surfactant-Toolkit and SurfBench-200: an open computation toolkit and a benchmark of
+tool-augmented language-model reasoning in surfactant science. ChemRxiv 2026 (preprint).
+https://doi.org/10.26434/chemrxiv.15011497/v1
+
+The manuscript uses release v1.2.0 of this repository: https://doi.org/10.5281/zenodo.23841834
+
 License: MIT. Citation: `CITATION.cff`.
